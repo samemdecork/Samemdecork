@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صمم ديكورك — AI Design</title>
+<style>
+:root{--ink:#263126;--green:#344c35;--cream:#fbf8f1;--line:#d9cfbf;--muted:#766e63}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+.page{max-width:1100px;margin:auto;padding:18px}header{height:70px;display:flex;justify-content:space-between;align-items:center}
+.back{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 15px;cursor:pointer;font:inherit}
+.hero{background:linear-gradient(135deg,#eee3d1,#c9b99f);border:1px solid var(--line);border-radius:28px;padding:28px}
+.hero h1{font-size:32px;margin:0 0 8px}.hero p{margin:0;color:var(--muted);line-height:1.8}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.option{border:1px solid var(--line);background:#fff;border-radius:15px;padding:13px;text-align:right;cursor:pointer;font:inherit}.option.active{border:2px solid var(--green);background:#f0f4ee}
+label{display:block;margin:16px 0 7px;font-weight:bold}input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:13px;background:#fff;font:inherit}
+textarea{min-height:85px;resize:vertical}.upload{border:2px dashed #b9ad9b;border-radius:18px;padding:26px;text-align:center;margin-top:10px;background:#faf7f0;cursor:pointer}.upload input{display:none}
+.preview{margin-top:12px;display:none;border-radius:18px;overflow:hidden;background:#eee;height:230px}.preview img{width:100%;height:100%;object-fit:cover}
+.ai{margin-top:18px;background:var(--green);color:#fff;border-radius:20px;padding:20px}.ai h2{margin-top:0}.ai button{border:0;background:#fff;color:var(--ink);border-radius:13px;padding:13px 18px;width:100%;font:inherit;font-weight:bold;cursor:pointer}
+.result{display:none;margin-top:15px;background:#f4efe5;border-radius:18px;padding:18px;line-height:1.8}.tag{display:inline-block;background:#e6eadf;border-radius:20px;padding:6px 10px;margin:3px;font-size:13px}
+.note{font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px}
+@media(max-width:750px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<header><button class="back" onclick="history.back()">← رجوع</button><b style="font-size:22px">صمم ديكورك</b></header>
+
+<section class="hero">
+<h1>🤖 صمّم مشروعك بالذكاء الاصطناعي</h1>
+<p>صوّر المكان، عطينا القياسات والستايل والميزانية، وخلي التطبيق يجهز لك تصوراً أولياً للمشروع.</p>
+</section>
+
+<div class="layout">
+<section class="card">
+<h2>1. نوع المشروع</h2>
+<div class="grid">
+<button class="option active" onclick="pick(this,'مطبخ')">🍳 <b>مطبخ</b></button>
+<button class="option" onclick="pick(this,'غرفة نوم')">🛏️ <b>غرفة نوم</b></button>
+<button class="option" onclick="pick(this,'موبيل تلفاز')">📺 <b>موبيل تلفاز</b></button>
+<button class="option" onclick="pick(this,'Dressing')">🚪 <b>Dressing</b></button>
+<button class="option" onclick="pick(this,'صالون')">🛋️ <b>صالون</b></button>
+</div>
+
+<h2 style="margin-top:24px">2. صورة المكان</h2>
+<label class="upload" for="photo">
+📷<br><b>اضغط هنا لاختيار صورة</b>
+<div class="note">الصورة تبقى جزءاً من طلب التصميم. الربط الحقيقي مع AI سيتم في المرحلة التالية.</div>
+<input id="photo" type="file" accept="image/*" onchange="showPhoto(event)">
+</label>
+<div class="preview" id="preview"><img id="photoView"></div>
+
+<h2 style="margin-top:24px">3. المعلومات</h2>
+<div class="grid">
+<div><label>الطول (م)</label><input id="length" type="number" min="1" step=".1" placeholder="مثلاً 4"></div>
+<div><label>العرض (م)</label><input id="width" type="number" min="1" step=".1" placeholder="مثلاً 3.5"></div>
+</div>
+
+<label>الستايل</label>
+<select id="style"><option>عصري</option><option>مودرن فاخر</option><option>Minimal</option><option>كلاسيكي</option><option>دافئ وخشبي</option></select>
+
+<label>الخامة المفضلة</label>
+<select id="material"><option>MDF + ميلامين</option><option>Lacquer</option><option>خشب طبيعي</option><option>لم أحدد بعد</option></select>
+
+<label>الميزانية التقريبية (DH)</label>
+<input id="budget" type="number" placeholder="مثلاً 25000">
+
+<label>ملاحظات إضافية</label>
+<textarea id="notes" placeholder="مثلاً: بغيت لون فاتح، إضاءة LED، بلاكار كبير..."></textarea>
+</section>
+
+<section class="card">
+<h2>المعاينة والطلب</h2>
+<div class="ai">
+<h2>✨ جاهز للتصميم</h2>
+<p>منين نربطو الـAI الحقيقي، غادي يستعمل الصورة والمعلومات اللي دخلتي باش يقترح تصميم مناسب للمكان.</p>
+<button onclick="simulate()">صمّم بالـAI</button>
+</div>
+<div class="result" id="result">
+<b>تم تجهيز الطلب التجريبي ✅</b><br>
+<span class="tag" id="rType">مطبخ</span>
+<span class="tag" id="rStyle">عصري</span>
+<p id="rText"></p>
+<strong>ملاحظة:</strong> الثمن النهائي كيتحدد بعد المعاينة والقياسات الدقيقة.
+</div>
+<div class="note">
+<b>الهدف ديال التطبيق:</b> نعطيو للزبون تصور واضح على الشكل والاختيارات وتقدير أولي للثمن، ومن بعد يقدر يتواصل معاك باش تكمل المشروع بشكل احترافي.
+</div>
+</section>
+</div>
+</div>
+
+<script>
+let type='مطبخ';
+function pick(el,v){document.querySelectorAll('.option').forEach(x=>x.classList.remove('active'));el.classList.add('active');type=v}
+function showPhoto(e){const f=e.target.files[0];if(!f)return;document.getElementById('photoView').src=URL.createObjectURL(f);document.getElementById('preview').style.display='block'}
+function simulate(){
+const style=document.getElementById('style').value;
+const budget=document.getElementById('budget').value;
+document.getElementById('rType').textContent=type;
+document.getElementById('rStyle').textContent=style;
+document.getElementById('rText').textContent='طلبك التجريبي جاهز. المشروع: '+type+' — الستايل: '+style+(budget?' — الميزانية: '+Number(budget).toLocaleString('fr-FR')+' DH':'')+'. المرحلة القادمة هي ربط هذه البيانات بالـAI الحقيقي لإنشاء تصور بصري.';
+document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>

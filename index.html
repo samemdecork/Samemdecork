@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#334b35"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="صمم ديكورك"><link rel="icon" href="./icons/icon-192.png" type="image/png"><link rel="apple-touch-icon" href="./icons/icon-192.png">
 <title>صمم ديكورك — V5 AI</title>
 <style>
 :root{--ink:#263126;--green:#334b35;--cream:#fbf8f1;--sand:#e9dfcf;--gold:#a77d45;--line:#d8cdbd}
@@ -24,24 +25,28 @@ section{margin-top:36px}.title{display:flex;justify-content:space-between;align-
 </head>
 <body><div class="page">
 <header><button class="head" onclick="alert('القائمة')">☰</button><div class="brand"><div class="logo"></div><div><b>صمم ديكورك</b><small>دفتر المهندس → واقع</small></div></div><button class="head">♡</button></header>
-<div class="hero"><div class="copy"><div class="tag">V5 • AI Design</div><h1>من الرسم بالقلم<br>حتى الديكور الواقعي</h1><p>صوّر المكان، دخل القياسات، اختار الستايل والخامات والميزانية، وخلي المشروع ياخذ شكل واضح قبل التنفيذ.</p><div class="actions"><button class="primary" onclick="location.href='ai-design.html'">🤖 ابدأ التصميم بالـAI</button><button class="secondary" onclick="document.getElementById('photo').click()">📷 رفع صورة المكان</button></div></div><div class="scene"><div class="room"><div class="wall"></div><div class="floor"></div><div class="kitchen"></div><div class="tv"></div><div class="paper"></div><div class="pencil">✎</div></div></div></div>
-<div class="ai"><div><b>🤖 صمّم مشروعك بالصورة والذكاء الاصطناعي</b><div class="muted">مطبخ • غرفة نوم • موبيل تلفاز • Dressing • صالون</div></div><button onclick="location.href='ai-design.html'">صمّم بالـAI →</button></div>
+<div class="hero"><div class="copy"><div class="tag">V5 • AI Design</div><h1>من الرسم بالقلم<br>حتى الديكور الواقعي</h1><p>صوّر المكان، دخل القياسات، اختار الستايل والخامات والميزانية، وخلي المشروع ياخذ شكل واضح قبل التنفيذ.</p><div class="actions"><button class="primary" onclick="goAI()">🤖 ابدأ التصميم بالـAI</button><button class="secondary" onclick="document.getElementById('photo').click()">📷 رفع صورة المكان</button></div></div><div class="scene"><div class="room"><div class="wall"></div><div class="floor"></div><div class="kitchen"></div><div class="tv"></div><div class="paper"></div><div class="pencil">✎</div></div></div></div>
+<div class="ai"><div><b>🤖 صمّم مشروعك بالصورة والذكاء الاصطناعي</b><div class="muted">مطبخ • غرفة نوم • موبيل تلفاز • Dressing • صالون</div></div><button onclick="goAI()">صمّم بالـAI →</button></div>
 <section><div class="title"><h2>اختار نوع المشروع</h2><span class="muted">أو استعمل AI للتصميم الكامل</span></div>
 <div class="grid4">
 <div class="cat" onclick="location.href='kitchen.html'"><div class="art k"></div><div class="ci"><h3>المطبخ</h3><span class="muted">L • U • جزيرة</span></div></div>
 <div class="cat" onclick="location.href='bedroom.html'"><div class="art b"></div><div class="ci"><h3>غرفة النوم</h3><span class="muted">سرير • بلاكار</span></div></div>
-<div class="cat" onclick="location.href='ai-design.html'"><div class="art t"></div><div class="ci"><h3>موبيل التلفاز</h3><span class="muted">مكتبة • فاصل</span></div></div>
-<div class="cat" onclick="location.href='ai-design.html'"><div class="art d"></div><div class="ci"><h3>Dressing</h3><span class="muted">أبواب • زجاج</span></div></div>
+<div class="cat" onclick="goAI()"><div class="art t"></div><div class="ci"><h3>موبيل التلفاز</h3><span class="muted">مكتبة • فاصل</span></div></div>
+<div class="cat" onclick="goAI()"><div class="art d"></div><div class="ci"><h3>Dressing</h3><span class="muted">أبواب • زجاج</span></div></div>
 </div></section>
-<section><div class="title"><h2>صالون</h2><span class="muted">تصميم بالـAI</span></div><div class="cat" style="padding:15px" onclick="location.href='ai-design.html'"><div class="art s" style="border-radius:15px"></div><div class="ci"><h3>صمّم الصالون بالصورة</h3><span class="muted">اختار الستايل والخامات والميزانية</span></div></div></section>
+<section><div class="title"><h2>صالون</h2><span class="muted">تصميم بالـAI</span></div><div class="cat" style="padding:15px" onclick="goAI()"><div class="art s" style="border-radius:15px"></div><div class="ci"><h3>صمّم الصالون بالصورة</h3><span class="muted">اختار الستايل والخامات والميزانية</span></div></div></section>
 <section><div class="title"><h2>القياسات والصورة</h2><span class="muted">معلومات المشروع</span></div><div class="box"><div class="formgrid"><div class="field"><label>الطول (م)</label><input id="length" type="number" min="1" value="4"></div><div class="field"><label>العرض (م)</label><input id="width" type="number" min="1" value="3"></div><div class="field"><label>العلو (م)</label><input type="number" min="1" value="2.7"></div></div><div class="upload" id="uploadBox">📷 <b>صوّر أو اختار صورة للمكان</b><br><span class="muted">المعاينة كتظهر هنا</span><br><button onclick="document.getElementById('photo').click()">اختيار صورة</button><input id="photo" type="file" accept="image/*" hidden onchange="showPhoto(event)"></div></div></section>
 <section><div class="workflow"><div class="box"><div class="title"><h2>مراحل المشروع</h2></div><div class="steps"><div class="step"><div class="num">1</div><b>صوّر</b><p class="muted">المكان</p></div><div class="step"><div class="num">2</div><b>قيس</b><p class="muted">الأبعاد</p></div><div class="step"><div class="num">3</div><b>اختار</b><p class="muted">الخامات</p></div><div class="step"><div class="num">4</div><b>صمّم</b><p class="muted">النتيجة</p></div></div></div><div class="calc"><h3>💰 تقدير أولي</h3><span style="color:#dce3d8">المساحة: <b id="area">12</b> m²</span><div class="price"><span id="price">10,800</span> DH</div><input id="level" type="range" min="600" max="1600" value="900" oninput="estimate()"><div class="muted" style="color:#dce3d8">ثمن تقريبي للمتر: <b id="rate">900</b> DH</div><div class="result">المرحلة الحالية: <b>التصميم بالـAI</b></div></div></div></section>
 <section><div class="title"><h2>قبل / بعد</h2><span class="muted">فكرة المعرض</span></div><div class="beforeafter"><div class="ba before">قبل التنفيذ</div><div class="ba after">التصميم المقترح بالـAI</div></div></section>
-<div class="cta"><div><h2 style="margin:0 0 7px">جاهز تبدا المشروع؟</h2><span>جمع المعلومات ديالك وخلي الخطوة الجاية واضحة.</span></div><button onclick="location.href='ai-design.html'">طلب تصميم بالـAI →</button></div>
+<div class="cta"><div><h2 style="margin:0 0 7px">جاهز تبدا المشروع؟</h2><span>جمع المعلومات ديالك وخلي الخطوة الجاية واضحة.</span></div><button onclick="goAI()">طلب تصميم بالـAI →</button></div>
 <div class="bottom"><button>♡<br><small>المفضلة</small></button><button>▣<br><small>مشاريعي</small></button><button class="active">⌂<br><small>الرئيسية</small></button><button>DH<br><small>الثمن</small></button><button>♙<br><small>حسابي</small></button></div>
 <footer style="text-align:center;color:#81786c;font-size:12px;margin:32px 0 10px">صمم ديكورك © 2026</footer></div>
 <script>
+function goAI(){ window.location.href='ai-design.html'; }
 function estimate(){let a=(+document.getElementById('length').value||0)*(+document.getElementById('width').value||0),r=+document.getElementById('level').value;document.getElementById('area').textContent=a.toFixed(1);document.getElementById('rate').textContent=r.toLocaleString('fr-FR');document.getElementById('price').textContent=Math.round(a*r).toLocaleString('fr-FR')}
 function showPhoto(e){let f=e.target.files[0];if(!f)return;let url=URL.createObjectURL(f);document.getElementById('uploadBox').innerHTML='<img src="'+url+'" alt="صورة المكان" style="max-width:100%;max-height:240px;border-radius:14px;display:block;margin:auto"><br><button onclick="location.href=\\'ai-design.html\\'">استعمل الصورة مع AI</button>'}
 estimate();
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js', {scope:'./'}));
+}
 </script></body></html>

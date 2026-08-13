@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صمم ديكورك | التصميم والتفصيل المخصص</title>
+  <title>صمم ديكورك</title>
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -14,318 +13,371 @@
     :root {
       --bg-color: #F8F9FA;
       --card-bg: #FFFFFF;
-      --primary-dark: #1A252C;
-      --accent-gold: #C5A059;
-      --accent-gold-hover: #b08d48;
-      --text-main: #2D3748;
-      --text-muted: #718096;
-      --border-color: #E2E8F0;
-      --radius: 14px;
+      --primary: #1A252C;
+      --gold: #C5A059;
+      --border: #E2E8F0;
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-    body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 60px; line-height: 1.5; }
+    body { background-color: var(--bg-color); color: #2D3748; padding-bottom: 60px; }
 
-    .app-container { max-width: 520px; margin: 0 auto; padding: 20px 15px; }
+    .app-container { max-width: 520px; margin: 0 auto; padding: 15px; }
 
-    /* Header Section */
-    .brand-header { text-align: center; padding: 20px 0; }
-    .brand-title { font-size: 2.2rem; font-weight: 900; color: var(--primary-dark); letter-spacing: -0.5px; }
-    .brand-title span { color: var(--accent-gold); }
-    .brand-subtitle { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    .header { text-align: center; padding: 15px 0 25px; }
+    .header h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
+    .header h1 span { color: var(--gold); }
+    .header p { font-size: 0.95rem; color: #718096; font-weight: 600; margin-top: 4px; }
 
-    /* Card Section */
     .section-card {
-      background: var(--card-bg); border-radius: var(--radius); padding: 20px; margin-bottom: 20px;
-      border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      background: var(--card-bg); border-radius: var(--radius); padding: 18px; margin-bottom: 20px;
+      border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
-    .section-header { font-size: 1.05rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-    .step-number { background: var(--accent-gold); color: #fff; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; }
+    .section-title { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; }
 
-    /* Category Cards Grid with Real HD Images */
+    /* الأقسام الأساسية 5 */
     .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .cat-card {
-      border: 2px solid var(--border-color); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; position: relative; background: #fff;
+      border: 2px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.3s; background: #fff; text-align: center;
     }
-    .cat-card.active { border-color: var(--accent-gold); box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.2); }
-    .cat-img { width: 100%; height: 110px; object-fit: cover; display: block; }
-    .cat-title { padding: 10px; font-size: 0.9rem; font-weight: 700; text-align: center; color: var(--primary-dark); background: #fff; }
+    .cat-card.active { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.25); }
+    .cat-img { width: 100%; height: 100px; object-fit: cover; }
+    .cat-title { padding: 10px; font-size: 0.9rem; font-weight: 800; color: var(--primary); }
 
-    /* Selection Options Grid */
-    .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    /* خيارات تفاعلية */
+    .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
     .opt-btn {
-      background: #F7FAFC; border: 1.5px solid var(--border-color); border-radius: 10px; padding: 12px 6px;
-      text-align: center; cursor: pointer; font-weight: 700; font-size: 0.85rem; transition: 0.2s; color: var(--text-main);
+      background: #F7FAFC; border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 5px;
+      text-align: center; cursor: pointer; font-weight: 700; font-size: 0.85rem; transition: 0.2s;
     }
-    .opt-btn.active { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+    .opt-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-    /* Tables for Dimensions (علو، عرض، طول الضلع) */
+    /* الجداول والمقاسات */
     .dim-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    .dim-table th, .dim-table td { border: 1px solid var(--border-color); padding: 10px; text-align: center; font-size: 0.85rem; }
-    .dim-table th { background: #EDF2F7; font-weight: 700; color: var(--primary-dark); }
-    .dim-input {
-      width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-weight: 700; font-size: 0.9rem; outline: none;
+    .dim-table th, .dim-table td { border: 1px solid var(--border); padding: 8px; text-align: center; font-size: 0.85rem; }
+    .dim-table th { background: #EDF2F7; font-weight: 700; }
+    .dim-input { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px; text-align: center; font-weight: 700; outline: none; }
+
+    /* رفع الصور */
+    .upload-box {
+      border: 2px dashed var(--gold); border-radius: 12px; padding: 15px; text-align: center; background: #FFFDF9; cursor: pointer; margin-top: 10px;
     }
-    .dim-input:focus { border-color: var(--accent-gold); }
+    .upload-box input { display: none; }
+    .upload-label { font-size: 0.85rem; font-weight: 700; color: var(--gold); cursor: pointer; }
 
-    /* Dynamic L & U Length Table */
-    .sides-container { margin-top: 15px; display: none; }
+    /* الكاتالوج ديال الاكسسوارات */
+    .cat-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; }
+    .cat-item-info h4 { font-size: 0.9rem; font-weight: 800; }
+    .cat-item-info p { font-size: 0.8rem; color: var(--gold); font-weight: 800; }
+    .cat-item-btn { background: var(--primary); color: #fff; border: none; padding: 8px 14px; border-radius: 20px; font-weight: 700; cursor: pointer; }
 
-    /* Action & Result Buttons */
+    /* الأزرار والنتيجة */
     .calc-btn {
-      width: 100%; background: var(--accent-gold); color: #fff; border: none; padding: 16px; border-radius: 30px;
-      font-weight: 800; font-size: 1.05rem; cursor: pointer; transition: 0.3s; margin-top: 10px; box-shadow: 0 6px 18px rgba(197, 160, 89, 0.3);
+      width: 100%; background: var(--gold); color: #fff; border: none; padding: 16px; border-radius: 30px;
+      font-weight: 800; font-size: 1.05rem; cursor: pointer; margin-top: 10px;
     }
-    .calc-btn:hover { background: var(--accent-gold-hover); }
-
     .result-card {
-      background: var(--primary-dark); color: #fff; border-radius: var(--radius); padding: 22px; text-align: center; display: none; margin-top: 25px;
+      background: var(--primary); color: #fff; border-radius: var(--radius); padding: 20px; text-align: center; display: none; margin-top: 20px;
     }
-    .result-price { font-size: 2rem; font-weight: 900; color: var(--accent-gold); margin: 12px 0; }
+    .result-price { font-size: 2rem; font-weight: 900; color: var(--gold); margin: 10px 0; }
     .whatsapp-btn {
-      background: #25D366; color: #fff; border: none; padding: 15px; width: 100%; border-radius: 30px; font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 15px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+      background: #25D366; color: #fff; border: none; padding: 15px; width: 100%; border-radius: 30px; font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 12px; display: block; text-decoration: none;
     }
+
+    .dynamic-section { display: none; }
+    .dynamic-section.active { display: block; }
   </style>
 </head>
 <body>
 
   <div class="app-container">
 
-    <!-- Title Header -->
-    <div class="brand-header">
-      <h1 class="brand-title">صمم <span>ديكورك</span></h1>
-      <p class="brand-subtitle">اختر القسم، حدد المقاسات والمواصفات، واحصل على تقدير احترافي</p>
+    <!-- Title -->
+    <div class="header">
+      <h1>صمم <span>ديكورك</span> 🛠️</h1>
+      <p>اختار القسم اللي بغيتي تقاد ونعطيوك التفاصيل بالدارجة</p>
     </div>
 
-    <!-- Step 1: Category Selection with HD Real Photos -->
+    <!-- 1. اختار القسم -->
     <div class="section-card">
-      <div class="section-header"><span class="step-number">1</span> اختر القسم المطلوب:</div>
+      <div class="section-title">1️⃣ أشنو بغيتي نصايبو ليك اليوم؟</div>
       <div class="category-grid">
-        
-        <div class="cat-card active" onclick="selectCategory('مطبخ عصري', this)">
-          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600" class="cat-img" alt="مطبخ عصري">
+        <div class="cat-card active" onclick="openSection('kitchen', this)">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=400" class="cat-img">
           <div class="cat-title">مطبخ عصري</div>
         </div>
-
-        <div class="cat-card" onclick="selectCategory('موبيل تلفاز', this)">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600" class="cat-img" alt="موبيل تلفاز">
+        <div class="cat-card" onclick="openSection('tv', this)">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=400" class="cat-img">
           <div class="cat-title">موبيل تلفاز</div>
         </div>
-
-        <div class="cat-card" onclick="selectCategory('دريسينغ وبلاكرات', this)">
-          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600" class="cat-img" alt="دريسينغ وبلاكرات">
+        <div class="cat-card" onclick="openSection('dressing', this)">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=400" class="cat-img">
           <div class="cat-title">دريسينغ وبلاكرات</div>
         </div>
+        <div class="cat-card" onclick="openSection('tapisserie', this)">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=400" class="cat-img">
+          <div class="cat-title">طابيسري وناموسيات</div>
+        </div>
+        <div class="cat-card" style="grid-column: span 2;" onclick="openSection('accessories', this)">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600" class="cat-img">
+          <div class="cat-title">🛒 كاتالوج شراء الاكسسوارات المباشر</div>
+        </div>
+      </div>
+    </div>
 
-        <div class="cat-card" onclick="selectCategory('قسم الاكسسوارات', this)">
-          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600" class="cat-img" alt="شراء الاكسسوارات">
-          <div class="cat-title">شراء الاكسسوارات</div>
+    <!-- ==================== 1. قسم المطبخ ==================== -->
+    <div id="kitchen" class="dynamic-section active">
+      <div class="section-card">
+        <div class="section-title">📐 تفاصيل المطبخ</div>
+        
+        <label style="font-weight:700; font-size:0.85rem;">1. الشكل ديال الكوزينة:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">شكل L</div>
+          <div class="opt-btn" onclick="setOpt(this)">شكل U</div>
+          <div class="opt-btn" onclick="setOpt(this)">مستقيم I</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">2. نوع الخشب:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">MDF High Gloss</div>
+          <div class="opt-btn" onclick="setOpt(this)">MDF Mat</div>
+          <div class="opt-btn" onclick="setOpt(this)">خشب اللاتي Lati</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">3. نوع الرخام:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">الكوارتز Quartz</div>
+          <div class="opt-btn" onclick="setOpt(this)">الجرانيت الأصلي</div>
+          <div class="opt-btn" onclick="setOpt(this)">بلا رخام</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">4. العلو والطول (بالسانتيمتر cm):</label>
+        <table class="dim-table">
+          <tr><th>العلو (الارتفاع)</th><th>طول الضلع L1</th><th>طول الضلع L2</th></tr>
+          <tr>
+            <td><input type="number" class="dim-input" placeholder="240 cm" value="240"></td>
+            <td><input type="number" class="dim-input" placeholder="200 cm" value="200"></td>
+            <td><input type="number" class="dim-input" placeholder="180 cm" value="180"></td>
+          </tr>
+        </table>
+
+        <!-- رفع صورة المكان -->
+        <div class="upload-box" onclick="document.getElementById('kitchenImg').click()">
+          <span class="upload-label">📷 صور كوزينتك وحط الصورة هنا (اختياري)</span>
+          <input type="file" id="kitchenImg" accept="image/*">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="showResult('مطبخ عصري')">احسب التكلفة المباشرة 🧮</button>
+    </div>
+
+    <!-- ==================== 2. قسم موبيل تلفاز ==================== -->
+    <div id="tv" class="dynamic-section">
+      <div class="section-card">
+        <div class="section-title">📺 تفاصيل موبيل التلفاز</div>
+        
+        <label style="font-weight:700; font-size:0.85rem;">1. أشنو المواد اللي بغيتي فيها؟</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">مع البارداج (Bardeaux)</div>
+          <div class="opt-btn" onclick="setOpt(this)">MDF عادي</div>
+          <div class="opt-btn" onclick="setOpt(this)">ديكور بالزاج وإضاءة LED</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">2. نوع الخشب:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">MDF High Gloss</div>
+          <div class="opt-btn" onclick="setOpt(this)">MDF Mat</div>
+          <div class="opt-btn" onclick="setOpt(this)">MDF Chêne (سندياني)</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">3. العلو والعرض ديال الحائط (cm):</label>
+        <table class="dim-table">
+          <tr><th>العلو (الارتفاع)</th><th>العرض الإجمالي</th></tr>
+          <tr>
+            <td><input type="number" class="dim-input" placeholder="250 cm" value="250"></td>
+            <td><input type="number" class="dim-input" placeholder="300 cm" value="300"></td>
+          </tr>
+        </table>
+
+        <div class="upload-box" onclick="document.getElementById('tvImg').click()">
+          <span class="upload-label">📷 صور بلاصة التلفاز فـ الصالون وحط الصورة هنا</span>
+          <input type="file" id="tvImg" accept="image/*">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="showResult('موبيل تلفاز')">احسب التكلفة المباشرة 🧮</button>
+    </div>
+
+    <!-- ==================== 3. قسم الدريسينغ والبلاكرات ==================== -->
+    <div id="dressing" class="dynamic-section">
+      <div class="section-card">
+        <div class="section-title">🚪 تفاصيل الدريسينغ والبلاكرات</div>
+        
+        <label style="font-weight:700; font-size:0.85rem;">1. نوع البيبان:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">بيبان كوليس (Coulissant)</div>
+          <div class="opt-btn" onclick="setOpt(this)">بيبان عاديين (Battant)</div>
+          <div class="opt-btn" onclick="setOpt(this)">دريسينغ مفتوح بلا بيبان</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">2. نوع الخشب الداخلي والباراني:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">MDF Stratifié</div>
+          <div class="opt-btn" onclick="setOpt(this)">خشب اللاتي Lati</div>
+          <div class="opt-btn" onclick="setOpt(this)">MDF Mat</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">3. القياسات (cm):</label>
+        <table class="dim-table">
+          <tr><th>العلو (الارتفاع)</th><th>العرض (الطول)</th><th>العمق (Profondeur)</th></tr>
+          <tr>
+            <td><input type="number" class="dim-input" value="250"></td>
+            <td><input type="number" class="dim-input" value="200"></td>
+            <td><input type="number" class="dim-input" value="60"></td>
+          </tr>
+        </table>
+
+        <div class="upload-box" onclick="document.getElementById('dressImg').click()">
+          <span class="upload-label">📷 صور بلاصة البلاكوار وحطها هنا</span>
+          <input type="file" id="dressImg" accept="image/*">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="showResult('دريسينغ وبلاكار')">احسب التكلفة المباشرة 🧮</button>
+    </div>
+
+    <!-- ==================== 4. قسم الطابيسري والناموسيات ==================== -->
+    <div id="tapisserie" class="dynamic-section">
+      <div class="section-card">
+        <div class="section-title">🛏️ تفاصيل الطابيسري والناموسيات</div>
+        
+        <label style="font-weight:700; font-size:0.85rem;">1. نوع الثوب:</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">Anti-Tache (ضد الما والوسخ)</div>
+          <div class="opt-btn" onclick="setOpt(this)">Velours (الموبرا الفاخرة)</div>
+          <div class="opt-btn" onclick="setOpt(this)">ثوب عادي</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">2. قياس الناموسية (Matelas):</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">160x200 cm (Standard)</div>
+          <div class="opt-btn" onclick="setOpt(this)">180x200 cm (Large)</div>
+          <div class="opt-btn" onclick="setOpt(this)">140x190 cm (صغيرة)</div>
+        </div>
+
+        <label style="font-weight:700; font-size:0.85rem; margin-top:15px; display:block;">3. شكل رأس الناموسية (Tête de lit):</label>
+        <div class="options-grid">
+          <div class="opt-btn active" onclick="setOpt(this)">كابيتوني (Capitonné)</div>
+          <div class="opt-btn" onclick="setOpt(this)">أشرطة مائلين (Bandes)</div>
+          <div class="opt-btn" onclick="setOpt(this)">عصري بسيط (Minimalist)</div>
+        </div>
+
+        <div class="upload-box" onclick="document.getElementById('bedImg').click()" style="margin-top:15px;">
+          <span class="upload-label">📷 عندك شي موديل عجبك؟ صور وحط الموديل هنا</span>
+          <input type="file" id="bedImg" accept="image/*">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="showResult('ناموسية وطابيسري')">احسب التكلفة المباشرة 🧮</button>
+    </div>
+
+    <!-- ==================== 5. قسم كاتالوج الاكسسوارات المباشر ==================== -->
+    <div id="accessories" class="dynamic-section">
+      <div class="section-card">
+        <div class="section-title">🛒 كاتالوج الاكسسوارات والسلعة المباشرة</div>
+        <p style="font-size:0.8rem; color:#666; margin-bottom:12px;">اختار الاكسسوارات اللي محتاج بالثمن والتفاصيل:</p>
+
+        <!-- الشارنيرات -->
+        <div class="cat-item">
+          <div class="cat-item-info">
+            <h4>شارنير هيدروليك فراما (Charnière Frein)</h4>
+            <p>15 درهم / للحبة</p>
+          </div>
+          <button class="cat-item-btn" onclick="addAccessory('شارنير هيدروليك', 15)">إضافة ➕</button>
+        </div>
+
+        <!-- المقابض -->
+        <div class="cat-item">
+          <div class="cat-item-info">
+            <h4>مقابض المنيوم مدرنة (Poignée Profil)</h4>
+            <p>35 درهم / للمتر</p>
+          </div>
+          <button class="cat-item-btn" onclick="addAccessory('مقابض المنيوم', 35)">إضافة ➕</button>
+        </div>
+
+        <!-- المجرورة -->
+        <div class="cat-item">
+          <div class="cat-item-info">
+            <h4>مجرار هيدروليك فوند موديير (Coulisse Frein)</h4>
+            <p>120 درهم / للطقم</p>
+          </div>
+          <button class="cat-item-btn" onclick="addAccessory('مجرار هيدروليك', 120)">إضافة ➕</button>
+        </div>
+
+        <!-- سلة الزيت -->
+        <div class="cat-item">
+          <div class="cat-item-info">
+            <h4>سلة الزيت والالعاب (Panier Bouteille Inox)</h4>
+            <p>350 درهم</p>
+          </div>
+          <button class="cat-item-btn" onclick="addAccessory('سلة الزيت Inox', 350)">إضافة ➕</button>
         </div>
 
       </div>
     </div>
 
-    <!-- Step 2: Design Layout / Shape Selection -->
-    <div class="section-card" id="shapeCard">
-      <div class="section-header"><span class="step-number">2</span> شكل التصميم المطلوب:</div>
-      <div class="options-grid" id="shapeOptions">
-        <div class="opt-btn active" onclick="setShape('مستقيم I', this)">خط مستقيم I</div>
-        <div class="opt-btn" onclick="setShape('شكل L', this)">على شكل L</div>
-        <div class="opt-btn" onclick="setShape('شكل U', this)">على شكل U</div>
-      </div>
-    </div>
-
-    <!-- Step 3: Dimensions Tables (العلو، العرض، وطول الأضلاع) -->
-    <div class="section-card">
-      <div class="section-header"><span class="step-number">3</span> جدول القياسات (بالسانتيمتر cm):</div>
-      
-      <!-- General Height & Base Width Table -->
-      <table class="dim-table">
-        <thead>
-          <tr>
-            <th>الارتفاع (العلو)</th>
-            <th id="widthHeader">العرض الإجمالي</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="number" id="heightInput" class="dim-input" placeholder="مثال: 240 cm" value="240"></td>
-            <td><input type="number" id="widthInput" class="dim-input" placeholder="مثال: 300 cm" value="300"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Dynamic Sides Table for L and U Shapes -->
-      <div class="sides-container" id="sidesContainer">
-        <p style="font-size:0.85rem; font-weight:700; color:var(--primary-dark); margin-bottom:8px;" id="sidesTitle">
-          أطوال الأضلاع بالسانتيمتر (cm):
-        </p>
-        <table class="dim-table">
-          <thead id="sidesHead">
-            <!-- Dynamically populated -->
-          </thead>
-          <tbody>
-            <tr id="sidesRow">
-              <!-- Dynamically populated inputs -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Step 4: Wood / Finish Material Selection -->
-    <div class="section-card">
-      <div class="section-header"><span class="step-number">4</span> نوع الخشب / التشطيب:</div>
-      <div class="options-grid">
-        <div class="opt-btn active" onclick="setOption('wood', 'MDF High Gloss', this)">MDF High Gloss</div>
-        <div class="opt-btn" onclick="setOption('wood', 'MDF Mat', this)">MDF Mat</div>
-        <div class="opt-btn" onclick="setOption('wood', 'خشب Lati', this)">خشب Lati ممتاز</div>
-      </div>
-    </div>
-
-    <!-- Step 5: Countertop / Additional Material -->
-    <div class="section-card">
-      <div class="section-header"><span class="step-number">5</span> نوع الرخام / السطح:</div>
-      <div class="options-grid">
-        <div class="opt-btn active" onclick="setOption('marble', 'الكوارتز Quartz', this)">الكوارتز Quartz</div>
-        <div class="opt-btn" onclick="setOption('marble', 'الجرانيت Granite', this)">الجرانيت الاصلي</div>
-        <div class="opt-btn" onclick="setOption('marble', 'بدون رخام', this)">بدون رخام</div>
-      </div>
-    </div>
-
-    <button class="calc-btn" onclick="calculateQuote()">احسب التقدير التفاعلي 🧮</button>
-
-    <!-- Calculation Result Box -->
+    <!-- النتيجة والتواصل -->
     <div class="result-card" id="resultCard">
-      <h3 style="font-size:1.1rem; color:#fff;">التقدير التقريبي للتصميم</h3>
-      <div class="result-price" id="totalPriceDisplay">0 درهم</div>
-      <p id="quoteSummary" style="font-size:0.85rem; color:#CBD5E0; line-height:1.6; margin-bottom:15px;"></p>
+      <h3 style="color:#fff;">التقدير المباشر لـ <span id="resCatName"></span></h3>
+      <div class="result-price" id="resPrice">0 درهم</div>
+      <p style="font-size:0.85rem; color:#CBD5E0;" id="resDesc">تم تسجيل الاختيارات والقياسات بنجاح.</p>
       
-      <button class="whatsapp-btn" onclick="sendToTeam()">
-        تواصل مع فريق صمم ديكورك 💬
-      </button>
+      <a class="whatsapp-btn" id="waLink" href="#" target="_blank">
+        إرسال الطلب والصورة إلى فريق صمم ديكورك 💬
+      </a>
     </div>
 
   </div>
 
   <script>
-    let config = {
-      category: 'مطبخ عصري',
-      shape: 'مستقيم I',
-      wood: 'MDF High Gloss',
-      marble: 'الكوارتز Quartz'
-    };
+    let activeCat = 'مطبخ عصري';
 
-    function selectCategory(catName, element) {
+    function openSection(secId, btn) {
       document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-      element.classList.add('active');
-      config.category = catName;
+      btn.classList.add('active');
 
-      const shapeCard = document.getElementById('shapeCard');
-      if (catName === 'قسم الاكسسوارات') {
-        shapeCard.style.display = 'none';
-      } else {
-        shapeCard.style.display = 'block';
-      }
+      document.querySelectorAll('.dynamic-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(secId).classList.add('active');
+      
+      document.getElementById('resultCard').style.display = 'none';
     }
 
-    function setShape(shapeName, element) {
-      element.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-      element.classList.add('active');
-      config.shape = shapeName;
-
-      const sidesContainer = document.getElementById('sidesContainer');
-      const sidesHead = document.getElementById('sidesHead');
-      const sidesRow = document.getElementById('sidesRow');
-
-      if (shapeName === 'شكل L') {
-        sidesContainer.style.display = 'block';
-        sidesHead.innerHTML = `<tr><th>طول الضلع الأول (L1)</th><th>طول الضلع الثاني (L2)</th></tr>`;
-        sidesRow.innerHTML = `
-          <td><input type="number" id="l1Input" class="dim-input" placeholder="cm" value="200"></td>
-          <td><input type="number" id="l2Input" class="dim-input" placeholder="cm" value="180"></td>
-        `;
-      } else if (shapeName === 'شكل U') {
-        sidesContainer.style.display = 'block';
-        sidesHead.innerHTML = `<tr><th>الضلع الأول (L1)</th><th>الضلع الأوسط (L2)</th><th>الضلع الثالث (L3)</th></tr>`;
-        sidesRow.innerHTML = `
-          <td><input type="number" id="l1Input" class="dim-input" placeholder="cm" value="180"></td>
-          <td><input type="number" id="l2Input" class="dim-input" placeholder="cm" value="250"></td>
-          <td><input type="number" id="l3Input" class="dim-input" placeholder="cm" value="180"></td>
-        `;
-      } else {
-        sidesContainer.style.display = 'none';
-      }
+    function setOpt(btn) {
+      btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     }
 
-    function setOption(key, value, element) {
-      element.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-      element.classList.add('active');
-      config[key] = value;
-    }
+    function showResult(catName) {
+      let price = 0;
+      if(catName === 'مطبخ عصري') price = 14500;
+      if(catName === 'موبيل تلفاز') price = 4800;
+      if(catName === 'دريسينغ وبلاكار') price = 8500;
+      if(catName === 'ناموسية وطابيسري') price = 3900;
 
-    function calculateQuote() {
-      const height = parseFloat(document.getElementById('heightInput').value) || 0;
-      let totalLengthMeters = 0;
-
-      if (config.shape === 'شكل L') {
-        const l1 = parseFloat(document.getElementById('l1Input')?.value) || 0;
-        const l2 = parseFloat(document.getElementById('l2Input')?.value) || 0;
-        totalLengthMeters = (l1 + l2) / 100;
-      } else if (config.shape === 'شكل U') {
-        const l1 = parseFloat(document.getElementById('l1Input')?.value) || 0;
-        const l2 = parseFloat(document.getElementById('l2Input')?.value) || 0;
-        const l3 = parseFloat(document.getElementById('l3Input')?.value) || 0;
-        totalLengthMeters = (l1 + l2 + l3) / 100;
-      } else {
-        const width = parseFloat(document.getElementById('widthInput').value) || 0;
-        totalLengthMeters = width / 100;
-      }
-
-      let ratePerMeter = 2200; 
-      if (config.wood === 'خشب Lati') ratePerMeter = 2800;
-      if (config.category === 'دريسينغ وبلاكرات') ratePerMeter = 2000;
-      if (config.category === 'موبيل تلفاز') ratePerMeter = 1800;
-
-      let marbleRate = 0;
-      if (config.marble === 'الكوارتز Quartz') marbleRate = 1200;
-      if (config.marble === 'الجرانيت Granite') marbleRate = 900;
-
-      const totalEstimated = Math.round((totalLengthMeters * ratePerMeter) + (totalLengthMeters * marbleRate));
-
-      document.getElementById('totalPriceDisplay').innerText = totalEstimated.toLocaleString() + " درهم مغربي";
-      document.getElementById('quoteSummary').innerHTML = `
-        القسم: <b>${config.category}</b> (${config.shape})<br>
-        الارتفاع: <b>${height} cm</b> | المجموع الطولي: <b>${totalLengthMeters.toFixed(2)} متر</b><br>
-        الخشب: <b>${config.wood}</b> | الرخام: <b>${config.marble}</b>
-      `;
-
+      document.getElementById('resCatName').innerText = catName;
+      document.getElementById('resPrice').innerText = price.toLocaleString() + " درهم";
       document.getElementById('resultCard').style.display = 'block';
+
+      const msg = `السلام عليكم فريق *صمم ديكورك*،%0Aبغيت نستفسر على طلب تفصيل: *${catName}*%0Aالتكلفة التقريبية فـ الموقع: *${price} درهم*%0A%0Aعندي القياسات والصورة جاهزة للتأكيد.`;
+      document.getElementById('waLink').href = `https://wa.me/212786006733?text=${msg}`;
+
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
-    function sendToTeam() {
-      const height = document.getElementById('heightInput').value || "غير محدد";
-      const totalPrice = document.getElementById('totalPriceDisplay').innerText;
+    function addAccessory(name, price) {
+      alert(`تم إضافة ${name} (الثمن: ${price} درهم) إلى قائمة طلباتك!`);
+      document.getElementById('resCatName').innerText = "شراء اكسسوارات";
+      document.getElementById('resPrice').innerText = price + " درهم";
+      document.getElementById('resultCard').style.display = 'block';
 
-      let dimensionsText = "";
-      if (config.shape === 'شكل L') {
-        const l1 = document.getElementById('l1Input')?.value || 0;
-        const l2 = document.getElementById('l2Input')?.value || 0;
-        dimensionsText = `الأضلاع: L1=${l1}cm, L2=${l2}cm`;
-      } else if (config.shape === 'شكل U') {
-        const l1 = document.getElementById('l1Input')?.value || 0;
-        const l2 = document.getElementById('l2Input')?.value || 0;
-        const l3 = document.getElementById('l3Input')?.value || 0;
-        dimensionsText = `الأضلاع: L1=${l1}cm, L2=${l2}cm, L3=${l3}cm`;
-      } else {
-        const width = document.getElementById('widthInput').value || "غير محدد";
-        dimensionsText = `العرض الإجمالي: ${width} cm`;
-      }
-
-      const msg = `السلام عليكم فريق *صمم ديكورك*،%0A%0Aأود الاستفسار حول الطلب التالي:%0A- القسم: *${config.category}*%0A- الشكل: *${config.shape}*%0A- الارتفاع (العلو): *${height} cm*%0A- ${dimensionsText}%0A- نوع الخشب: *${config.wood}*%0A- نوع الرخام: *${config.marble}*%0A- التكلفة التقريبية فـ الموقع: *${totalPrice}*%0A%0Aالمرجو التواصل معي لتأكيد التفاصيل والمعاينة.`;
-
-      window.open(`https://wa.me/212786006733?text=${msg}`, '_blank');
+      const msg = `السلام عليكم فريق *صمم ديكورك*،%0Aبغيت نشري اكسسوار: *${name}*%0Aالثمن: *${price} درهم*`;
+      document.getElementById('waLink').href = `https://wa.me/212786006733?text=${msg}`;
     }
   </script>
 </body>

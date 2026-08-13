@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- الوسوم الأساسية للـ SEO -->
   <title>صمّم ديكورك | Samemdecork</title>
   <meta name="description" content="صمم ديكورك بالذكاء الاصطناعي في المغرب - تحويل رسم القياسات إلى تصميم واقعي للمطابخ، الصالونات، الـ Dressing وموبيليا التلفاز مع تقدير التكلفة بالدرهم.">
   <meta name="keywords" content="تصميم ديكور المغرب, مطابخ MDF, تصميم صالون مدرن, Dressing المغرب, meuble TV, تصميم داخلي AI, حساب تكلفة الديكور">
   <meta name="author" content="صمّم ديكورك">
   <meta name="robots" content="index, follow">
 
-  <!-- وسوم التواصل الاجتماعي (Facebook / WhatsApp) -->
   <meta property="og:title" content="صمّم ديكورك | من الرسم إلى الديكور الواقعي بالذكاء الاصطناعي">
   <meta property="og:description" content="صوّر المكان، أدخل القياسات، واكتشف تصميم مشروعك وتكلفته التقديرية فوراً.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800">
   <meta property="og:url" content="https://samemdecork.github.io/Samemdecork/">
   <meta property="og:type" content="website">
 
-  <!-- PWA & Fonts -->
   <link rel="manifest" href="./icons/icon-192.png">
   <link rel="icon" type="image/png" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
@@ -38,305 +35,95 @@
       --radius: 16px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Tajawal', sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-bottom: 60px;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; padding-bottom: 60px; }
 
     header {
       background: rgba(18, 20, 24, 0.85);
       backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       border-bottom: 1px solid var(--card-border);
       padding: 15px 20px;
     }
 
-    .header-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .brand-subtitle { font-size: 0.8rem; color: var(--text-muted); display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
-    .brand-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .brand-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Hero Section */
     .hero {
-      text-align: center;
-      padding: 40px 20px;
+      text-align: center; padding: 40px 20px;
       background: radial-gradient(circle at top, rgba(201, 156, 88, 0.15) 0%, transparent 70%);
-      border-radius: var(--radius);
-      margin-bottom: 30px;
-      border: 1px solid var(--card-border);
+      border-radius: var(--radius); margin-bottom: 30px; border: 1px solid var(--card-border);
     }
 
     .badge {
-      display: inline-block;
-      background: rgba(201, 156, 88, 0.2);
-      color: var(--primary);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 15px;
+      display: inline-block; background: rgba(201, 156, 88, 0.2); color: var(--primary);
+      padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 15px;
       border: 1px solid rgba(201, 156, 88, 0.3);
     }
 
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-      line-height: 1.3;
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 25px;
-      font-size: 1.05rem;
-    }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
+    .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 25px; font-size: 1.05rem; }
 
     .btn-ai {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(201, 156, 88, 0.3);
-      transition: all 0.3s ease;
+      color: #fff; padding: 12px 28px; border-radius: 30px; font-weight: 700;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(201, 156, 88, 0.3); transition: all 0.3s ease; border: none; cursor: pointer;
     }
+    .btn-ai:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 156, 88, 0.4); }
 
-    .btn-ai:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(201, 156, 88, 0.4);
-    }
+    .section-title { margin-bottom: 20px; }
+    .section-title h2 { font-size: 1.5rem; color: var(--text-main); }
+    .section-title span { color: var(--text-muted); font-size: 0.9rem; }
 
-    /* Section Header */
-    .section-title {
-      margin-bottom: 20px;
-    }
-
-    .section-title h2 {
-      font-size: 1.5rem;
-      color: var(--text-main);
-    }
-
-    .section-title span {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px; }
 
     .project-card {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      height: 240px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--card-border);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      text-decoration: none;
-      color: #fff;
-      cursor: pointer;
+      position: relative; border-radius: var(--radius); overflow: hidden; height: 240px;
+      background-size: cover; background-position: center; border: 1px solid var(--card-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: flex-end;
+      padding: 20px; text-decoration: none; color: #fff; cursor: pointer;
     }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.1) 100%);
-      transition: opacity 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-
-    .card-info {
-      position: relative;
-      z-index: 2;
-    }
-
-    .card-info h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .card-info span {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
+    .project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.1) 100%); }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    .card-info { position: relative; z-index: 2; }
+    .card-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .card-info span { font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); }
 
     /* Before / After Slider Section */
-    .slider-section {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 25px;
-      margin-bottom: 40px;
-    }
+    .slider-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 25px; margin-bottom: 40px; }
+    .before-after-container { position: relative; width: 100%; height: 380px; overflow: hidden; border-radius: 12px; margin-top: 20px; user-select: none; }
+    .before-after-container img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+    .img-overlay { position: absolute; top: 0; right: 0; height: 100%; width: 50%; overflow: hidden; border-left: 3px solid var(--primary); z-index: 2; }
+    .img-overlay img { width: 100%; max-width: none; }
+    .slider-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; }
+    .slider-badge { position: absolute; top: 15px; padding: 6px 12px; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); border-radius: 6px; font-size: 0.8rem; font-weight: 700; z-index: 5; }
+    .badge-before { right: 15px; } .badge-after { left: 15px; }
 
-    .before-after-container {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-      border-radius: 12px;
-      margin-top: 20px;
-      user-select: none;
-    }
+    .grid-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .info-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 25px; }
+    .steps-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px; }
+    .step-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border: 1px solid var(--card-border); text-align: center; }
+    .step-number { width: 32px; height: 32px; background: var(--primary); color: #000; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .price-value { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
 
-    .before-after-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* Modal / Popup Form */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+      display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
     }
+    .modal-box {
+      background: #181b20; border: 1px solid var(--card-border); border-radius: var(--radius);
+      padding: 25px; max-width: 500px; width: 100%; color: var(--text-main); position: relative;
+    }
+    .modal-close { position: absolute; top: 15px; left: 15px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.4); color: #fff; }
 
-    .img-overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 50%;
-      overflow: hidden;
-      border-left: 3px solid var(--primary);
-      z-index: 2;
-    }
-
-    .img-overlay img {
-      width: 100%;
-      max-width: none;
-    }
-
-    .slider-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: ew-resize;
-      z-index: 10;
-    }
-
-    .slider-badge {
-      position: absolute;
-      top: 15px;
-      padding: 6px 12px;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(5px);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      z-index: 5;
-    }
-    .badge-before { right: 15px; }
-    .badge-after { left: 15px; }
-
-    /* Steps & Calculator Grid */
-    .grid-two {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .info-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 25px;
-    }
-
-    .steps-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .step-item {
-      background: rgba(255,255,255,0.03);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      text-align: center;
-    }
-
-    .step-number {
-      width: 32px;
-      height: 32px;
-      background: var(--primary);
-      color: #000;
-      font-weight: 800;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 8px;
-    }
-
-    .price-value {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--card-border);
-    }
+    footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--card-border); }
   </style>
 </head>
 <body>
@@ -355,56 +142,49 @@
 
   <div class="container">
 
-    <!-- Hero -->
     <section class="hero">
       <span class="badge">🤖 صمّم مشروعك بالصورة والذكاء الاصطناعي</span>
       <h1>من الرسم بالقلم<br>حتى الديكور الواقعي</h1>
       <p>صوّر المكان، دخل القياسات، اختار الستايل والخامات والميزانية، وخلي المشروع ياخذ شكل واضح قبل التنفيذ.</p>
-      <a href="#projects" class="btn-ai">ابدأ التصميم الآن ✨</a>
+      <button onclick="openModal('مشروع جديد')" class="btn-ai">ابدأ التصميم الآن ✨</button>
     </section>
 
-    <!-- Projects Grid -->
     <section id="projects">
       <div class="section-title">
         <h2>اختار نوع المشروع</h2>
-        <span>أو استعمل الـ AI للتصميم الكامل</span>
+        <span>اضغط على أي قسم لبدء إدخال القياسات والصور</span>
       </div>
 
       <div class="projects-grid">
-        <!-- المطبخ -->
-        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800');">
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800');" onclick="openModal('المطبخ')">
           <div class="card-info">
             <h3>المطبخ</h3>
             <span>L • U • جزيرة عصري</span>
           </div>
         </div>
 
-        <!-- غرفة النوم -->
-        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=800');">
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=800');" onclick="openModal('غرفة النوم')">
           <div class="card-info">
             <h3>غرفة النوم</h3>
             <span>سرير • بلاكار دافيء</span>
           </div>
         </div>
 
-        <!-- موبيل التلفاز -->
-        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800');">
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800');" onclick="openModal('موبيل التلفاز')">
           <div class="card-info">
             <h3>موبيل التلفاز</h3>
             <span>مكتبة • فاصل خشب</span>
           </div>
         </div>
 
-        <!-- Dressing -->
-        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800');">
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800');" onclick="openModal('Dressing')">
           <div class="card-info">
             <h3>Dressing</h3>
             <span>أبواب زجاجية • إضاءة</span>
           </div>
         </div>
 
-        <!-- الصالون -->
-        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800');">
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800');" onclick="openModal('الصالون')">
           <div class="card-info">
             <h3>الصالون</h3>
             <span>مودرن بلمسة تقليدية</span>
@@ -413,7 +193,7 @@
       </div>
     </section>
 
-    <!-- Interactive Before / After Section -->
+    <!-- Before / After -->
     <section class="slider-section">
       <div class="section-title">
         <h2>معرض النتائج (قبل / بعد)</h2>
@@ -423,53 +203,29 @@
       <div class="before-after-container" id="sliderContainer">
         <span class="slider-badge badge-after">التصميم المقترح بالـAI</span>
         <span class="slider-badge badge-before">قبل التنفيذ</span>
-        
-        <!-- After Image -->
         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000" alt="بعد التنفيذ">
-        
-        <!-- Before Image Overlay -->
         <div class="img-overlay" id="imgOverlay">
           <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000" id="beforeImg" alt="قبل التنفيذ">
         </div>
-
         <input type="range" min="0" max="100" value="50" class="slider-input" id="sliderInput">
       </div>
     </section>
 
-    <!-- Steps & Calculator Grid -->
+    <!-- Steps & Calculator -->
     <div class="grid-two">
-      
-      <!-- Steps -->
       <div class="info-card">
         <div class="section-title">
           <h2>مراحل المشروع</h2>
           <span>خطوات بسيطة للحصول على نتيجتك</span>
         </div>
         <div class="steps-list">
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <b>صوّر</b>
-            <p style="font-size:0.8rem; color:var(--text-muted);">المكان</p>
-          </div>
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <b>قيس</b>
-            <p style="font-size:0.8rem; color:var(--text-muted);">الأبعاد</p>
-          </div>
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <b>اختار</b>
-            <p style="font-size:0.8rem; color:var(--text-muted);">الخامات</p>
-          </div>
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <b>صمّم</b>
-            <p style="font-size:0.8rem; color:var(--text-muted);">النتيجة</p>
-          </div>
+          <div class="step-item"><div class="step-number">1</div><b>صوّر</b><p style="font-size:0.8rem; color:var(--text-muted);">المكان</p></div>
+          <div class="step-item"><div class="step-number">2</div><b>قيس</b><p style="font-size:0.8rem; color:var(--text-muted);">الأبعاد</p></div>
+          <div class="step-item"><div class="step-number">3</div><b>اختار</b><p style="font-size:0.8rem; color:var(--text-muted);">الخامات</p></div>
+          <div class="step-item"><div class="step-number">4</div><b>صمّم</b><p style="font-size:0.8rem; color:var(--text-muted);">النتيجة</p></div>
         </div>
       </div>
 
-      <!-- Interactive Calculator -->
       <div class="info-card" style="display:flex; flex-direction:column; justify-content:center;">
         <div class="section-title">
           <h2>💰 حاسبة الميزانية التفاعلية</h2>
@@ -479,12 +235,12 @@
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
           <div>
             <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:4px;">المساحة (متر مربع m²):</label>
-            <input type="number" id="areaInput" value="12" min="1" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem;" oninput="calculateCost()">
+            <input type="number" id="areaInput" value="12" min="1" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff;" oninput="calculateCost()">
           </div>
 
           <div>
             <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:4px;">نوع الخامة والجودة:</label>
-            <select id="materialSelect" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff; font-size: 0.9rem;" onchange="calculateCost()">
+            <select id="materialSelect" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff;" onchange="calculateCost()">
               <option value="600">اقتصادي - MDF عادي (600 DH/m²)</option>
               <option value="900" selected>متوسط - MDF Stratifié ممتاز (900 DH/m²)</option>
               <option value="1400">ممتاز - MDF High Gloss / خشب رفيع (1400 DH/m²)</option>
@@ -498,17 +254,44 @@
           </div>
         </div>
       </div>
-
     </div>
 
   </div>
 
+  <!-- Modal Window for project details -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle" style="color: var(--primary); margin-bottom: 15px;">تصميم مشروع</h3>
+      
+      <div class="form-group">
+        <label>صورة المكان أو رسم القياسات (اختياري):</label>
+        <input type="file" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label>المساحة أو الأبعاد الإجمالية (متر):</label>
+        <input type="text" placeholder="مثال: 3m x 4m">
+      </div>
+
+      <div class="form-group">
+        <label>نوع الخامات المفضلة:</label>
+        <select>
+          <option>MDF Stratifié</option>
+          <option>MDF High Gloss</option>
+          <option>خشب طبيعي / الرخام</option>
+        </select>
+      </div>
+
+      <button class="btn-ai" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="submitProject()">تأكيد وطلب التصميم ✨</button>
+    </div>
+  </div>
+
   <footer>
-    صمم ديكورك © 2026 • جميع الحقوق محفوظة حمزة اشطيبي
+    صمم ديكورك © 2026 • جميع الحقوق محفوظة
   </footer>
 
   <script>
-    // Before/After Slider Control
     const sliderInput = document.getElementById('sliderInput');
     const imgOverlay = document.getElementById('imgOverlay');
     const beforeImg = document.getElementById('beforeImg');
@@ -524,7 +307,6 @@
     window.addEventListener('resize', updateSlider);
     updateSlider();
 
-    // Cost Calculator Logic
     function calculateCost() {
       const area = parseFloat(document.getElementById('areaInput').value) || 0;
       const materialRate = parseFloat(document.getElementById('materialSelect').value) || 0;
@@ -532,6 +314,21 @@
       
       document.getElementById('totalPrice').innerHTML = total.toLocaleString() + ' <span style="font-size:1.1rem; color:#fff;">DH</span>';
       document.getElementById('pricePerM2').innerText = `(ثمن المتر: ${materialRate} DH)`;
+    }
+
+    // Modal Functions
+    function openModal(projectName) {
+      document.getElementById('modalTitle').innerText = 'تصميم ' + projectName;
+      document.getElementById('projectModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').style.display = 'none';
+    }
+
+    function submitProject() {
+      alert('تم استلام معلومات مشروعك بنجاح! جاري إعداد التصميم التقديري.');
+      closeModal();
     }
   </script>
 </body>

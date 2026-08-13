@@ -1,52 +1,504 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="manifest" href="./manifest.json"><meta name="theme-color" content="#334b35"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="صمم ديكورك"><link rel="icon" href="./icons/icon-192.png" type="image/png"><link rel="apple-touch-icon" href="./icons/icon-192.png">
-<title>صمم ديكورك — V5 AI</title>
-<style>
-:root{--ink:#263126;--green:#334b35;--cream:#fbf8f1;--sand:#e9dfcf;--gold:#a77d45;--line:#d8cdbd}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
-button,input{font:inherit}.page{max-width:1180px;margin:auto;padding:14px}header{height:70px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px}.logo{width:50px;height:50px;border:2px solid var(--ink);border-radius:16px;background:#fff;position:relative}.logo:before{content:"";position:absolute;inset:0 50% 0 0;background:var(--ink)}.logo:after{content:"✎";position:absolute;left:9px;top:10px;color:#fff;font-size:22px}.brand b{font-size:22px}.brand small{display:block;color:#776e63;margin-top:3px}.head{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px}
-.hero{margin-top:10px;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:linear-gradient(120deg,#f8f1e5,#dfd0ba);display:grid;grid-template-columns:1fr 1.08fr;min-height:440px}.copy{padding:45px;display:flex;flex-direction:column;justify-content:center}.tag{color:var(--gold);font-weight:bold}.copy h1{font-size:43px;line-height:1.25;margin:13px 0}.copy p{color:#696158;line-height:2}.actions{display:flex;gap:9px;flex-wrap:wrap}.primary{background:var(--green);color:#fff;border:0;border-radius:15px;padding:15px 22px}.secondary{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px 19px}
-.scene{position:relative;background:#cbb9a0;min-height:440px}.room{position:absolute;inset:9% 8% 9% 12%;background:#f6f0e5;border-radius:20px;overflow:hidden}.wall{position:absolute;inset:0 0 35%;background:linear-gradient(140deg,#eee5d7,#c9b9a2)}.floor{position:absolute;bottom:0;left:0;right:0;height:36%;background:#ae8d67}.kitchen{position:absolute;right:8%;bottom:28%;width:48%;height:31%;background:#65715f;border-radius:8px}.tv{position:absolute;left:10%;bottom:29%;width:29%;height:22%;background:#27312c;border-radius:7px}.paper{position:absolute;left:7%;top:8%;width:39%;height:42%;background:#fffdf8;border:1px solid #b9ad9d;border-radius:10px;transform:rotate(-7deg)}.pencil{position:absolute;left:7%;bottom:8%;font-size:42px;transform:rotate(-25deg)}
-.ai{margin:-24px auto 0;max-width:850px;background:#fff;border:2px solid var(--gold);border-radius:20px;padding:16px;box-shadow:0 10px 24px #34271a12;position:relative;display:flex;align-items:center;justify-content:space-between;gap:15px}.ai b{font-size:19px}.ai button{background:var(--green);color:#fff;border:0;border-radius:13px;padding:13px 20px;cursor:pointer}
-section{margin-top:36px}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:13px}.title h2{margin:0;font-size:24px}.muted{color:#776e64;font-size:13px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.cat{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer}.cat:hover{transform:translateY(-3px)}.art{height:135px}.k{background:linear-gradient(140deg,#e8dfcf 0 55%,#71806c 56%)}.b{background:linear-gradient(140deg,#d8c8b3,#f1ece3)}.t{background:linear-gradient(140deg,#d8c7ad 0 50%,#29332e 51%)}.d{background:linear-gradient(140deg,#f1eadf 0 52%,#b69b77 53%)}.s{background:linear-gradient(140deg,#d9c7b1,#7d6d5b)}.ci{padding:14px}.ci h3{margin:0 0 5px}
-.box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px}.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.field label{display:block;font-weight:bold;margin-bottom:7px}.field input{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.upload{margin-top:12px;border:2px dashed #c8b9a5;border-radius:18px;padding:24px;text-align:center;background:#fcfaf5}.upload button{margin-top:9px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 15px}
-.workflow{display:grid;grid-template-columns:1.1fr .9fr;gap:13px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.step{border:1px solid var(--line);border-radius:16px;padding:13px}.num{width:31px;height:31px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin-bottom:8px}
-.calc{background:var(--green);color:#fff;border-radius:22px;padding:22px}.calc input{width:100%}.price{font-size:32px;font-weight:bold;margin:12px 0}.result{margin-top:12px;padding:13px;border-radius:14px;background:#ffffff14;color:#edf1eb}
-.beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ba{height:180px;border-radius:18px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold}.before{background:#d5c8b5}.after{background:linear-gradient(135deg,#e8dfcf,#71806c)}
-.cta{margin-top:28px;background:var(--green);color:#fff;border-radius:24px;padding:25px;display:flex;justify-content:space-between;align-items:center}.cta button{border:0;background:#fff;color:var(--ink);border-radius:13px;padding:12px 18px}.bottom{position:sticky;bottom:9px;max-width:750px;margin:28px auto 0;background:#fff;border:1px solid var(--line);border-radius:21px;padding:7px;display:flex;justify-content:space-around}.bottom button{border:0;background:transparent;padding:9px 13px}.bottom .active{background:var(--green);color:#fff;border-radius:13px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.scene{order:-1;min-height:290px}.copy{padding:30px 23px}.copy h1{font-size:33px}.grid4{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr 1fr}.workflow{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.ai{flex-direction:column;align-items:stretch}}
-@media(max-width:480px){.grid4{gap:8px}.art{height:105px}.formgrid{grid-template-columns:1fr}.beforeafter{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صمّم ديكورك | Samemdecork</title>
+  <link rel="manifest" href="./icons/icon-192.png">
+  <link rel="icon" type="image/png" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #c99c58;
+      --primary-dark: #a67c3b;
+      --bg-dark: #121418;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: rgba(18, 20, 24, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--card-border);
+      padding: 15px 20px;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: radial-gradient(circle at top, rgba(201, 156, 88, 0.15) 0%, transparent 70%);
+      border-radius: var(--radius);
+      margin-bottom: 30px;
+      border: 1px solid var(--card-border);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(201, 156, 88, 0.2);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border: 1px solid rgba(201, 156, 88, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 25px;
+      font-size: 1.05rem;
+    }
+
+    .btn-ai {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(201, 156, 88, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-ai:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 156, 88, 0.4);
+    }
+
+    /* Section Header */
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      font-size: 1.5rem;
+      color: var(--text-main);
+    }
+
+    .section-title span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.1) 100%);
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .project-card:hover::before {
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .card-info {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-info h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-info span {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Before / After Slider Section */
+    .slider-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin-bottom: 40px;
+    }
+
+    .before-after-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-top: 20px;
+      user-select: none;
+    }
+
+    .before-after-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .img-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      border-left: 3px solid var(--primary);
+      z-index: 2;
+    }
+
+    .img-overlay img {
+      width: 100%;
+      max-width: none;
+    }
+
+    .slider-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 10;
+    }
+
+    .slider-badge {
+      position: absolute;
+      top: 15px;
+      padding: 6px 12px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 5;
+    }
+    .badge-before { right: 15px; }
+    .badge-after { left: 15px; }
+
+    /* Steps & Calculator */
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 25px;
+    }
+
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .step-item {
+      background: rgba(255,255,255,0.03);
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #000;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+
+    .price-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
 </head>
-<body><div class="page">
-<header><button class="head" onclick="alert('القائمة')">☰</button><div class="brand"><div class="logo"></div><div><b>صمم ديكورك</b><small>دفتر المهندس → واقع</small></div></div><button class="head">♡</button></header>
-<div class="hero"><div class="copy"><div class="tag">V5 • AI Design</div><h1>من الرسم بالقلم<br>حتى الديكور الواقعي</h1><p>صوّر المكان، دخل القياسات، اختار الستايل والخامات والميزانية، وخلي المشروع ياخذ شكل واضح قبل التنفيذ.</p><div class="actions"><button class="primary" onclick="goAI()">🤖 ابدأ التصميم بالـAI</button><button class="secondary" onclick="document.getElementById('photo').click()">📷 رفع صورة المكان</button></div></div><div class="scene"><div class="room"><div class="wall"></div><div class="floor"></div><div class="kitchen"></div><div class="tv"></div><div class="paper"></div><div class="pencil">✎</div></div></div></div>
-<div class="ai"><div><b>🤖 صمّم مشروعك بالصورة والذكاء الاصطناعي</b><div class="muted">مطبخ • غرفة نوم • موبيل تلفاز • Dressing • صالون</div></div><button onclick="goAI()">صمّم بالـAI →</button></div>
-<section><div class="title"><h2>اختار نوع المشروع</h2><span class="muted">أو استعمل AI للتصميم الكامل</span></div>
-<div class="grid4">
-<div class="cat" onclick="location.href='kitchen.html'"><div class="art k"></div><div class="ci"><h3>المطبخ</h3><span class="muted">L • U • جزيرة</span></div></div>
-<div class="cat" onclick="location.href='bedroom.html'"><div class="art b"></div><div class="ci"><h3>غرفة النوم</h3><span class="muted">سرير • بلاكار</span></div></div>
-<div class="cat" onclick="goAI()"><div class="art t"></div><div class="ci"><h3>موبيل التلفاز</h3><span class="muted">مكتبة • فاصل</span></div></div>
-<div class="cat" onclick="goAI()"><div class="art d"></div><div class="ci"><h3>Dressing</h3><span class="muted">أبواب • زجاج</span></div></div>
-</div></section>
-<section><div class="title"><h2>صالون</h2><span class="muted">تصميم بالـAI</span></div><div class="cat" style="padding:15px" onclick="goAI()"><div class="art s" style="border-radius:15px"></div><div class="ci"><h3>صمّم الصالون بالصورة</h3><span class="muted">اختار الستايل والخامات والميزانية</span></div></div></section>
-<section><div class="title"><h2>القياسات والصورة</h2><span class="muted">معلومات المشروع</span></div><div class="box"><div class="formgrid"><div class="field"><label>الطول (م)</label><input id="length" type="number" min="1" value="4"></div><div class="field"><label>العرض (م)</label><input id="width" type="number" min="1" value="3"></div><div class="field"><label>العلو (م)</label><input type="number" min="1" value="2.7"></div></div><div class="upload" id="uploadBox">📷 <b>صوّر أو اختار صورة للمكان</b><br><span class="muted">المعاينة كتظهر هنا</span><br><button onclick="document.getElementById('photo').click()">اختيار صورة</button><input id="photo" type="file" accept="image/*" hidden onchange="showPhoto(event)"></div></div></section>
-<section><div class="workflow"><div class="box"><div class="title"><h2>مراحل المشروع</h2></div><div class="steps"><div class="step"><div class="num">1</div><b>صوّر</b><p class="muted">المكان</p></div><div class="step"><div class="num">2</div><b>قيس</b><p class="muted">الأبعاد</p></div><div class="step"><div class="num">3</div><b>اختار</b><p class="muted">الخامات</p></div><div class="step"><div class="num">4</div><b>صمّم</b><p class="muted">النتيجة</p></div></div></div><div class="calc"><h3>💰 تقدير أولي</h3><span style="color:#dce3d8">المساحة: <b id="area">12</b> m²</span><div class="price"><span id="price">10,800</span> DH</div><input id="level" type="range" min="600" max="1600" value="900" oninput="estimate()"><div class="muted" style="color:#dce3d8">ثمن تقريبي للمتر: <b id="rate">900</b> DH</div><div class="result">المرحلة الحالية: <b>التصميم بالـAI</b></div></div></div></section>
-<section><div class="title"><h2>قبل / بعد</h2><span class="muted">فكرة المعرض</span></div><div class="beforeafter"><div class="ba before">قبل التنفيذ</div><div class="ba after">التصميم المقترح بالـAI</div></div></section>
-<div class="cta"><div><h2 style="margin:0 0 7px">جاهز تبدا المشروع؟</h2><span>جمع المعلومات ديالك وخلي الخطوة الجاية واضحة.</span></div><button onclick="goAI()">طلب تصميم بالـAI →</button></div>
-<div class="bottom"><button>♡<br><small>المفضلة</small></button><button>▣<br><small>مشاريعي</small></button><button class="active">⌂<br><small>الرئيسية</small></button><button>DH<br><small>الثمن</small></button><button>♙<br><small>حسابي</small></button></div>
-<footer style="text-align:center;color:#81786c;font-size:12px;margin:32px 0 10px">صمم ديكورك © 2026</footer></div>
-<script>
-function goAI(){ window.location.href='ai-design.html'; }
-function estimate(){let a=(+document.getElementById('length').value||0)*(+document.getElementById('width').value||0),r=+document.getElementById('level').value;document.getElementById('area').textContent=a.toFixed(1);document.getElementById('rate').textContent=r.toLocaleString('fr-FR');document.getElementById('price').textContent=Math.round(a*r).toLocaleString('fr-FR')}
-function showPhoto(e){let f=e.target.files[0];if(!f)return;let url=URL.createObjectURL(f);document.getElementById('uploadBox').innerHTML='<img src="'+url+'" alt="صورة المكان" style="max-width:100%;max-height:240px;border-radius:14px;display:block;margin:auto"><br><button onclick="location.href=\\'ai-design.html\\'">استعمل الصورة مع AI</button>'}
-estimate();
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js', {scope:'./'}));
-}
-</script></body></html>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div>
+          <span class="brand-title">صمّم ديكورك</span>
+          <span class="brand-subtitle">دفتر المهندس ← واقع</span>
+        </div>
+      </div>
+      <span class="badge" style="margin:0;">V5 • AI Design</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <span class="badge">🤖 صمّم مشروعك بالصورة والذكاء الاصطناعي</span>
+      <h1>من الرسم بالقلم<br>حتى الديكور الواقعي</h1>
+      <p>صوّر المكان، دخل القياسات، اختار الستايل والخامات والميزانية، وخلي المشروع ياخذ شكل واضح قبل التنفيذ.</p>
+      <a href="#projects" class="btn-ai">ابدأ التصميم الآن ✨</a>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>اختار نوع المشروع</h2>
+        <span>أو استعمل الـ AI للتصميم الكامل</span>
+      </div>
+
+      <div class="projects-grid">
+        <!-- المطبخ -->
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800');">
+          <div class="card-info">
+            <h3>المطبخ</h3>
+            <span>L • U • جزيرة عصري</span>
+          </div>
+        </div>
+
+        <!-- غرفة النوم -->
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=800');">
+          <div class="card-info">
+            <h3>غرفة النوم</h3>
+            <span>سرير • بلاكار دافيء</span>
+          </div>
+        </div>
+
+        <!-- موبيل التلفاز -->
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800');">
+          <div class="card-info">
+            <h3>موبيل التلفاز</h3>
+            <span>مكتبة • فاصل خشب</span>
+          </div>
+        </div>
+
+        <!-- Dressing -->
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800');">
+          <div class="card-info">
+            <h3>Dressing</h3>
+            <span>أبواب زجاجية • إضاءة</span>
+          </div>
+        </div>
+
+        <!-- الصالون -->
+        <div class="project-card" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800');">
+          <div class="card-info">
+            <h3>الصالون</h3>
+            <span>مودرن بلمسة تقليدية</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Before / After Section -->
+    <section class="slider-section">
+      <div class="section-title">
+        <h2>معرض النتائج (قبل / بعد)</h2>
+        <span>حرك الشريط لرؤية التحول بالتصميم بالـ AI</span>
+      </div>
+
+      <div class="before-after-container" id="sliderContainer">
+        <span class="slider-badge badge-after">التصميم المقترح بالـAI</span>
+        <span class="slider-badge badge-before">قبل التنفيذ</span>
+        
+        <!-- After Image -->
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000" alt="بعد التنفيذ">
+        
+        <!-- Before Image Overlay -->
+        <div class="img-overlay" id="imgOverlay">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000" id="beforeImg" alt="قبل التنفيذ">
+        </div>
+
+        <input type="range" min="0" max="100" value="50" class="slider-input" id="sliderInput">
+      </div>
+    </section>
+
+    <!-- Info & Cost Estimation Grid -->
+    <div class="grid-two">
+      
+      <!-- Steps -->
+      <div class="info-card">
+        <div class="section-title">
+          <h2>مراحل المشروع</h2>
+          <span>خطوات بسيطة للحصول على نتيجتك</span>
+        </div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <b>صوّر</b>
+            <p style="font-size:0.8rem; color:var(--text-muted);">المكان</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <b>قيس</b>
+            <p style="font-size:0.8rem; color:var(--text-muted);">الأبعاد</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <b>اختار</b>
+            <p style="font-size:0.8rem; color:var(--text-muted);">الخامات</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <b>صمّم</b>
+            <p style="font-size:0.8rem; color:var(--text-muted);">النتيجة</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Estimate -->
+      <div class="info-card" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
+        <span style="color:var(--text-muted); font-size:0.9rem;">💰 تقدير أولي للمشروع</span>
+        <div class="price-value">10,800 <span style="font-size:1.2rem; color:#fff;">DH</span></div>
+        <p style="color:var(--text-muted); font-size:0.9rem;">المساحة التقديرية: <b>12 m²</b></p>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:5px;">ثمن تقريبي للمتر: <b>900 DH</b> (خامات MDF عالي الجودة)</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    صمم ديكورك © 2026 • جميع الحقوق محفوظة
+  </footer>
+
+  <script>
+    // Before/After Slider Control
+    const sliderInput = document.getElementById('sliderInput');
+    const imgOverlay = document.getElementById('imgOverlay');
+    const beforeImg = document.getElementById('beforeImg');
+    const sliderContainer = document.getElementById('sliderContainer');
+
+    function updateSlider() {
+      const value = sliderInput.value;
+      // Since direction is RTL, set overlay width from right
+      imgOverlay.style.width = (100 - value) + '%';
+      beforeImg.style.width = sliderContainer.offsetWidth + 'px';
+    }
+
+    sliderInput.addEventListener('input', updateSlider);
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
+  </script>
+</body>
+</html>
+

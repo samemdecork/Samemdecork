@@ -3,77 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صمم ديكورك | استوديو الذكاء الاصطناعي</title>
-
+  <title>صمم ديكورك | حمزة اشطيبي</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-
+  
   <style>
     :root {
       --bg-cream: #f6f3ee;
       --card-bg: #ffffff;
       --green-dark: #3a4735;
-      --gold-accent: #b89758;
+      --green-accent: #2e3b2a;
       --text-dark: #222222;
       --text-muted: #777777;
+      --gold-accent: #b89758;
       --border-color: #e8e2d8;
-      --radius-lg: 20px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-dark); padding-bottom: 40px; }
+    body { background-color: var(--bg-cream); color: var(--text-dark); padding-bottom: 90px; }
 
-    .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; padding: 20px; }
+    .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; padding: 15px; }
 
-    header { text-align: center; margin-bottom: 25px; }
-    header h1 { font-size: 1.8rem; font-weight: 800; color: var(--green-dark); }
-    header p { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
-
-    .upload-card {
-      background: var(--card-bg); border: 2px dashed var(--gold-accent); border-radius: var(--radius-lg);
-      padding: 30px 20px; text-align: center; cursor: pointer; transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 20px; position: relative; overflow: hidden;
+    /* Top Nav */
+    .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 5px 20px; }
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1px solid var(--border-color);
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; color: var(--text-dark);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .upload-card:hover { background: #faf8f5; border-color: var(--green-dark); }
+    .nav-right-group { display: flex; gap: 10px; }
 
-    .upload-icon { font-size: 2.8rem; margin-bottom: 10px; display: block; }
-    .upload-title { font-size: 1.1rem; font-weight: 800; color: var(--text-dark); }
-    .upload-subtitle { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
-
-    /* AI Scanning Animation */
-    .scanner-overlay {
-      position: absolute; inset: 0; background: rgba(58, 71, 53, 0.92);
-      display: none; flex-direction: column; justify-content: center; align-items: center; color: #fff; z-index: 10;
+    /* Hero Banner */
+    .hero-banner {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden; height: 320px;
+      background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000') center/cover;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 20px;
+      box-shadow: var(--shadow); margin-bottom: 20px;
     }
-    .scan-line {
-      width: 100%; height: 3px; background: var(--gold-accent); position: absolute; top: 0;
-      box-shadow: 0 0 15px var(--gold-accent); animation: scan 2s infinite ease-in-out;
+    .hero-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(246, 243, 238, 0.85) 0%, rgba(246, 243, 238, 0.4) 50%, rgba(0,0,0,0.2) 100%);
     }
-    @keyframes scan { 0% { top: 0%; } 50% { top: 95%; } 100% { top: 0%; } }
 
-    .spinner {
-      width: 45px; height: 45px; border: 4px solid rgba(255,255,255,0.2);
-      border-top-color: var(--gold-accent); border-radius: 50%; animation: spin 1s infinite linear; margin-bottom: 15px;
+    .hero-content { position: relative; z-index: 2; text-align: center; margin-top: 10px; }
+    .main-title { font-size: 2.2rem; font-weight: 800; color: #222; margin-bottom: 4px; }
+    .subtitle-badge { font-size: 0.85rem; color: #555; font-weight: 600; margin-bottom: 12px; }
+    .hero-heading { font-size: 1.4rem; font-weight: 800; color: #111; line-height: 1.3; }
+
+    /* Search & Camera Bar */
+    .action-bar {
+      position: relative; z-index: 2; background: var(--green-dark); border-radius: 50px;
+      padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      box-shadow: 0 8px 20px rgba(58, 71, 53, 0.3); color: #fff;
     }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-    /* Result Box */
-    .result-section { display: none; background: var(--card-bg); border-radius: var(--radius-lg); padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 20px; border: 1px solid var(--border-color); }
-    .result-title { font-size: 1rem; font-weight: 800; color: var(--green-dark); margin-bottom: 10px; text-align: center; }
-    .result-img-box { position: relative; border-radius: 14px; overflow: hidden; height: 260px; margin-bottom: 15px; }
-    .result-img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-    .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
-    .option-btn {
-      background: var(--bg-cream); border: 1px solid var(--border-color); padding: 8px; border-radius: 10px;
-      font-size: 0.75rem; font-weight: 700; text-align: center; cursor: pointer;
+    .camera-trigger { display: flex; align-items: center; gap: 10px; background: none; border: none; color: #fff; font-size: 0.85rem; text-align: right; cursor: pointer; flex: 1; }
+    .cam-icon-box {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
     }
-    .option-btn.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .search-input-box { display: flex; align-items: center; background: rgba(255,255,255,0.1); border-radius: 30px; padding: 6px 14px; flex: 1; }
+    .search-input-box input { background: none; border: none; outline: none; color: #fff; width: 100%; font-size: 0.8rem; text-align: right; }
+    .search-input-box input::placeholder { color: rgba(255,255,255,0.7); }
 
-    .action-btn {
+    /* Section Headings */
+    .section-header { text-align: center; margin: 25px 0 15px; }
+    .section-header h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); display: inline-block; }
+    .section-header h3::before, .section-header h3::after { content: '✦'; color: var(--gold-accent); font-size: 0.7rem; margin: 0 8px; }
+
+    /* Category Cards Grid */
+    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card-item {
+      background: var(--card-bg); border-radius: var(--radius-md); overflow: hidden;
+      border: 1px solid var(--border-color); box-shadow: var(--shadow); cursor: pointer;
+    }
+    .card-img-box { height: 130px; position: relative; }
+    .card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .card-icon-badge {
+      position: absolute; bottom: -18px; right: 50%; transform: translateX(50%);
+      width: 36px; height: 36px; background: var(--green-dark); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 3px solid #fff; z-index: 2;
+    }
+    .card-body { padding: 22px 10px 12px; text-align: center; }
+    .card-body h4 { font-size: 0.95rem; font-weight: 700; }
+    .card-body p { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Budget Selector */
+    .budget-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .budget-btn {
+      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      padding: 12px 5px; text-align: center; cursor: pointer;
+    }
+    .budget-btn.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .budget-btn .symbol { font-size: 1.1rem; font-weight: 800; display: block; color: var(--gold-accent); }
+    .budget-btn.active .symbol { color: #fff; }
+    .budget-btn .label { font-size: 0.8rem; font-weight: 700; display: block; }
+
+    /* Materials Grid */
+    .materials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+    .material-circle {
+      width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 6px; overflow: hidden;
+      border: 2px solid var(--border-color);
+    }
+    .material-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* AI Studio Modal Overlay */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      display: none; justify-content: center; align-items: flex-end; z-index: 1000;
+    }
+    .modal-box {
+      background: var(--bg-cream); width: 100%; max-width: 480px; border-radius: 24px 24px 0 0;
+      padding: 25px 20px 30px; position: relative; max-height: 90vh; overflow-y: auto;
+    }
+
+    /* Analysis Overlay for User's Real Image */
+    .user-image-container {
+      position: relative; width: 100%; height: 240px; border-radius: 16px; overflow: hidden;
+      margin-top: 15px; border: 2px solid var(--gold-accent); display: none;
+    }
+    .user-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    .ai-grid-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(rgba(184, 151, 88, 0.2) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(184, 151, 88, 0.2) 1px, transparent 1px);
+      background-size: 20px 20px; pointer-events: none;
+    }
+    .scan-bar {
+      position: absolute; width: 100%; height: 4px; background: #00ffcc;
+      box-shadow: 0 0 12px #00ffcc; top: 0; animation: scanAnim 2.5s infinite ease-in-out;
+    }
+    @keyframes scanAnim { 0% { top: 0; } 50% { top: 95%; } 100% { top: 0; } }
+
+    .analysis-card {
+      background: #fff; border-radius: 12px; padding: 12px; margin-top: 12px;
+      border: 1px solid var(--border-color); font-size: 0.8rem; display: none;
+    }
+
+    .submit-btn {
       width: 100%; background: var(--green-dark); color: #fff; padding: 14px; border-radius: 30px;
-      border: none; font-weight: 800; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: none; font-weight: 800; font-size: 0.95rem; cursor: pointer; margin-top: 15px;
+    }
+
+    /* Bottom Nav Bar */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95);
+      border-top: 1px solid var(--border-color); display: flex; justify-content: space-around;
+      align-items: center; padding: 10px 0 8px; z-index: 100; max-width: 480px; margin: 0 auto;
+    }
+    .nav-item { text-align: center; text-decoration: none; color: var(--text-muted); font-size: 0.7rem; flex: 1; }
+    .nav-item.active { color: var(--green-dark); font-weight: 700; }
+    .center-nav-btn {
+      width: 52px; height: 52px; background: var(--green-dark); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      margin-top: -25px; border: 4px solid var(--bg-cream); box-shadow: 0 6px 15px rgba(58, 71, 53, 0.4);
     }
   </style>
 </head>
@@ -81,78 +169,205 @@
 
   <div class="app-container">
 
-    <header>
-      <h1>مولّد التصاميم الذكي 🤖✨</h1>
-      <p>ارفع صورة المكان وسيقوم الذكاء الاصطناعي برسم النموذج التقريبي فـ البلاصة</p>
-    </header>
-
-    <!-- Upload Box -->
-    <div class="upload-card" onclick="document.getElementById('imageInput').click()">
-      <span class="upload-icon">📸</span>
-      <div class="upload-title">صوّر المكان أو اختر صورة</div>
-      <div class="upload-subtitle">انقر هنا لتحميل صورة الغرفة أو المطبخ</div>
-      <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="processImage(event)">
-
-      <!-- Scanning Screen -->
-      <div class="scanner-overlay" id="scannerOverlay">
-        <div class="scan-line"></div>
-        <div class="spinner"></div>
-        <b style="font-size: 1rem; color: var(--gold-accent);">جاري تحليل المكان...</b>
-        <span style="font-size: 0.75rem; opacity: 0.8; margin-top: 5px;">تطبيق الخامات، الإضاءة والـ MDF 3D</span>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+      <button class="icon-btn">☰</button>
+      <div class="nav-right-group">
+        <button class="icon-btn">♡</button>
+        <button class="icon-btn">👤</button>
       </div>
     </div>
 
-    <!-- AI Output Result -->
-    <div class="result-section" id="resultSection">
-      <div class="result-title">✨ التصميم التقريبي المقترح بالذكاء الاصطناعي</div>
-      
-      <div class="result-img-box">
-        <img id="aiResultImg" src="" alt="النتيجة المقترحة">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <div class="hero-content">
+        <h1 class="main-title">صمم ديكورك</h1>
+        <div class="subtitle-badge">— من الفكرة حتى التنفيذ —</div>
+        <div class="hero-heading">حوّل فكرتك إلى مساحة تعكس شخصيتك</div>
       </div>
 
-      <div style="font-size:0.8rem; font-weight:700; margin-bottom:8px; color:var(--text-muted);">اختر لون ونوع الخامة للتعديل الفوري:</div>
-      <div class="options-grid">
-        <div class="option-btn active" onclick="changeMaterial(this, 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800')">MDF خشبي</div>
-        <div class="option-btn" onclick="changeMaterial(this, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800')">رخام أبيض</div>
-        <div class="option-btn" onclick="changeMaterial(this, 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800')">High Gloss أسود</div>
+      <!-- Search & AI Camera Bar -->
+      <div class="action-bar">
+        <button class="camera-trigger" onclick="openStudioModal()">
+          <div class="cam-icon-box">📷</div>
+          <div>
+            <b>صمّم بلاصتك بالذكاء الاصطناعي</b><br>
+            <span style="font-size:0.65rem; opacity:0.8;">صوّر مكانك وخذ تحليل للمساحة</span>
+          </div>
+        </button>
+        <div class="search-input-box">
+          <input type="text" placeholder="بحث...">
+          <span>🔍</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="cards-grid">
+      <div class="card-item" onclick="openStudioModal()">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=500" alt="المطابخ">
+          <div class="card-icon-badge">🍳</div>
+        </div>
+        <div class="card-body">
+          <h4>تصاميم المطابخ</h4>
+          <p>مطابخ عصريّة وعملية</p>
+        </div>
       </div>
 
-      <button class="action-btn" onclick="openDeal()">💬 أعجبني التصميم - التفاهم على الثمن والتنفيذ</button>
+      <div class="card-item" onclick="openStudioModal()">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=500" alt="غرف النوم">
+          <div class="card-icon-badge">🛏️</div>
+        </div>
+        <div class="card-body">
+          <h4>غرف النوم</h4>
+          <p>تصاميم مريحة وأنيقة</p>
+        </div>
+      </div>
+
+      <div class="card-item" onclick="openStudioModal()">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=500" alt="التلفاز">
+          <div class="card-icon-badge">📺</div>
+        </div>
+        <div class="card-body">
+          <h4>موبيل التلفاز</h4>
+          <p>موديلات عصريّة</p>
+        </div>
+      </div>
+
+      <div class="card-item" onclick="openStudioModal()">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=500" alt="Dressing">
+          <div class="card-icon-badge">🚪</div>
+        </div>
+        <div class="card-body">
+          <h4>الخزائن و Dressing</h4>
+          <p>استغلال المساحات</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Section -->
+    <div class="section-header">
+      <h3>اختر حسب ميزانيتك</h3>
+    </div>
+
+    <div class="budget-grid">
+      <div class="budget-btn active">
+        <span class="symbol">$</span>
+        <span class="label">اقتصادي</span>
+      </div>
+      <div class="budget-btn">
+        <span class="symbol">$$</span>
+        <span class="label">متوسط</span>
+      </div>
+      <div class="budget-btn">
+        <span class="symbol">$$$</span>
+        <span class="label">Premium</span>
+      </div>
+      <div class="budget-btn">
+        <span class="symbol">💎</span>
+        <span class="label">Luxury</span>
+      </div>
+    </div>
+
+    <!-- Materials Section -->
+    <div class="section-header">
+      <h3>اختر الخامات والتفاصيل</h3>
+    </div>
+
+    <div class="materials-grid">
+      <div>
+        <div class="material-circle"><img src="https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=200"></div>
+        <span style="font-size: 0.75rem;">الخشب</span>
+      </div>
+      <div>
+        <div class="material-circle"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=200"></div>
+        <span style="font-size: 0.75rem;">الرخام</span>
+      </div>
+      <div>
+        <div class="material-circle"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=200"></div>
+        <span style="font-size: 0.75rem;">الأقشمة</span>
+      </div>
+      <div>
+        <div class="material-circle"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=200"></div>
+        <span style="font-size: 0.75rem;">الإكسسوارات</span>
+      </div>
     </div>
 
   </div>
 
+  <!-- Bottom Nav Bar -->
+  <div class="bottom-nav">
+    <a href="#" class="nav-item active">🏠<br>الرئيسية</a>
+    <a href="#" class="nav-item">🧮<br>حاسب الثمن</a>
+    <a href="#" class="center-nav-btn" onclick="openStudioModal()">📷</a>
+    <a href="#" class="nav-item">📁<br>مشاريعي</a>
+    <a href="#" class="nav-item">👤<br>الحساب</a>
+  </div>
+
+  <!-- AI Studio Modal -->
+  <div class="modal-overlay" id="studioModal">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="color:var(--green-dark);">استوديو المسح والتصمبم الذكي 🤖</h3>
+        <button onclick="closeStudioModal()" style="background:none; border:none; font-size:1.4rem; cursor:pointer;">✕</button>
+      </div>
+
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">اختر صورة المكان الخاص بك للتحليل:</p>
+
+      <input type="file" id="userImgInput" accept="image/*" style="margin-top:10px;" onchange="analyzeUserImage(event)">
+
+      <!-- Image Overlay container -->
+      <div class="user-image-container" id="imgContainer">
+        <img id="userRealImg" alt="صورتك">
+        <div class="ai-grid-overlay"></div>
+        <div class="scan-bar"></div>
+      </div>
+
+      <div class="analysis-card" id="analysisCard">
+        <b style="color:var(--green-dark);">📊 نتائج مسح المساحة بالذكاء الاصطناعي:</b>
+        <ul style="margin-right:18px; margin-top:5px; line-height:1.6; color:#444;">
+          <li>زاوية الجدران والإضاءة: <b>مضبوطة ✅</b></li>
+          <li>الخامة المقترحة: <b>MDF Gloss عالية الجودة + حواف خشبية</b></li>
+          <li>التقدير المبدئي: <b>جاهز للتفاوض على المقاسات</b></li>
+        </ul>
+      </div>
+
+      <button class="submit-btn" onclick="sendWhatsAppDeal()">التفاهم على الثمن والتنفيذ مع السي حمزة 💬</button>
+    </div>
+  </div>
+
   <script>
-    function processImage(event) {
+    function openStudioModal() {
+      document.getElementById('studioModal').style.display = 'flex';
+    }
+
+    function closeStudioModal() {
+      document.getElementById('studioModal').style.display = 'none';
+    }
+
+    function analyzeUserImage(event) {
       const file = event.target.files[0];
       if (file) {
-        // Show scanner
-        const scanner = document.getElementById('scannerOverlay');
-        scanner.style.display = 'flex';
-
-        // Simulate AI Processing (3 seconds)
-        setTimeout(() => {
-          scanner.style.display = 'none';
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('userRealImg').src = e.target.result;
+          document.getElementById('imgContainer').style.display = 'block';
           
-          // Display output image
-          const resultImg = document.getElementById('aiResultImg');
-          resultImg.src = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800";
-          
-          document.getElementById('resultSection').style.display = 'block';
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }, 3000);
+          setTimeout(() => {
+            document.getElementById('analysisCard').style.display = 'block';
+          }, 2000);
+        }
+        reader.readAsDataURL(file);
       }
     }
 
-    function changeMaterial(btn, imgUrl) {
-      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('aiResultImg').src = imgUrl;
-    }
-
-    function openDeal() {
-      const message = "السلام عليكم السي حمزة، عجبني النموذج المقترح بالذكاء الاصطناعي فـ الموقع وبغيت نتفاهم معاك على الثمن والتنفيذ.";
-      window.open(`https://wa.me/212786006733?text=${encodeURIComponent(message)}`, '_blank');
+    function sendWhatsAppDeal() {
+      const msg = "السلام عليكم السي حمزة، رفعت صورة المكان فـ الموقع وأريد التفاهم على تصميم الخشب والميزانية المناسبة.";
+      window.open(`https://wa.me/212786006733?text=${encodeURIComponent(msg)}`, '_blank');
     }
   </script>
 </body>

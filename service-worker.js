@@ -6,8 +6,8 @@ const ASSETS = [
   "./kitchen.html",
   "./bedroom.html",
   "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./icon-192.png",
+  "./icon-512.png"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

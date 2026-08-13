@@ -3,198 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>R wood | LuxDesign Morocco</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  
+  <title>R wood | صمم ديكورك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-cream: #F9F8F6;
-      --card-white: #FFFFFF;
-      --green-lux: #2A3628;
-      --gold-lux: #C5A059;
-      --text-main: #1C1C1C;
-      --text-sub: #666666;
-      --border-light: #E8E5DF;
-      --radius-main: 16px;
+      --green-dark: #3a4735;
+      --gold: #b89758;
+      --bg: #f8f6f2;
+      --card: #ffffff;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-    body { background-color: var(--bg-cream); color: var(--text-main); padding-bottom: 80px; }
+    body { background: var(--bg); color: #222; padding: 15px; padding-bottom: 50px; }
+    .container { max-width: 480px; margin: 0 auto; }
 
-    .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; padding: 20px 15px; }
+    .header { text-align: center; padding: 15px 0; }
+    .header h1 { color: var(--green-dark); font-size: 1.8rem; font-weight: 800; }
+    .header p { font-size: 0.9rem; color: #666; margin-top: 4px; }
 
-    /* Top Luxe Header */
-    .lux-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; }
-    .lux-logo { font-size: 1.3rem; font-weight: 800; color: var(--green-lux); letter-spacing: 1px; }
-    .lux-logo span { color: var(--gold-lux); font-weight: 300; }
-    .lux-btn { background: none; border: 1px solid var(--border-light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-
-    /* Hero Banner */
-    .hero-box {
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000') center/cover;
-      border-radius: var(--radius-main); height: 260px; padding: 25px 20px; color: #fff;
-      display: flex; flex-direction: column; justify-content: flex-end; position: relative; margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    .step-card {
+      background: var(--card); border-radius: 16px; padding: 18px; margin-bottom: 15px;
+      border: 1px solid #e0dcd3; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
-    .hero-tag { font-size: 0.75rem; letter-spacing: 2px; color: var(--gold-lux); font-weight: 700; text-transform: uppercase; }
-    .hero-title { font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin: 6px 0; }
-    .hero-desc { font-size: 0.8rem; opacity: 0.9; margin-bottom: 15px; font-weight: 300; }
+    .step-title { font-size: 1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 
-    /* Interactive Before / After Slider Section */
-    .section-title { font-size: 1.1rem; font-weight: 800; color: var(--green-lux); margin-bottom: 5px; }
-    .section-sub { font-size: 0.8rem; color: var(--text-sub); margin-bottom: 15px; }
-
-    .ba-slider-container {
-      position: relative; width: 100%; height: 250px; border-radius: var(--radius-main);
-      overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 25px; border: 1px solid var(--border-light);
-    }
-    .ba-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ba-before { z-index: 1; }
-    .ba-after { z-index: 2; width: 50%; overflow: hidden; border-left: 2px solid var(--gold-lux); }
-    .ba-after img { position: absolute; top: 0; right: 0; height: 100%; width: 100%; object-fit: cover; max-width: none; }
+    .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .options-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     
-    .ba-range {
-      position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; z-index: 3; cursor: ew-resize;
+    .opt-btn {
+      background: var(--bg); border: 2px solid #e0dcd3; border-radius: 12px; padding: 12px 8px;
+      text-align: center; cursor: pointer; transition: 0.2s; font-weight: 700; font-size: 0.85rem;
     }
-    .ba-badge {
-      position: absolute; bottom: 10px; background: rgba(0,0,0,0.6); color: #fff;
-      padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 600; backdrop-filter: blur(4px);
-    }
-    .badge-before { right: 10px; z-index: 1; }
-    .badge-after { left: 10px; z-index: 2; color: var(--gold-lux); }
+    .opt-btn.active { border-color: var(--green-dark); background: var(--green-dark); color: #fff; }
+    .opt-btn span { display: block; font-size: 1.2rem; margin-bottom: 4px; }
 
-    /* Categories Lux Grid */
-    .lux-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
-    .lux-card {
-      background: var(--card-white); border-radius: var(--radius-main); padding: 12px;
-      border: 1px solid var(--border-light); text-align: center; cursor: pointer; transition: 0.3s;
-    }
-    .lux-card:hover { border-color: var(--gold-lux); }
-    .lux-card-img { height: 110px; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
-    .lux-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .lux-card-h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
-    .lux-card-p { font-size: 0.7rem; color: var(--text-sub); margin-top: 2px; }
+    .input-box { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ccc; font-size: 0.9rem; outline: none; margin-top: 5px; }
 
-    /* Floating Studio Button */
-    .lux-studio-btn {
-      background: var(--green-lux); color: #fff; border: none; border-radius: 30px;
-      width: 100%; padding: 15px; font-weight: 700; font-size: 0.9rem; display: flex;
-      align-items: center; justify-content: center; gap: 10px; cursor: pointer;
-      box-shadow: 0 8px 20px rgba(42, 54, 40, 0.25); margin-bottom: 25px;
+    .result-box {
+      background: var(--green-dark); color: #fff; border-radius: 16px; padding: 20px; text-align: center; display: none; margin-top: 20px;
     }
+    .result-price { font-size: 1.8rem; font-weight: 800; color: var(--gold); margin: 10px 0; }
 
-    /* Bottom Nav Bar */
-    .lux-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px); border-top: 1px solid var(--border-light);
-      display: flex; justify-content: space-around; padding: 12px 0 8px; max-width: 480px; margin: 0 auto; z-index: 100;
+    .main-btn {
+      width: 100%; background: var(--gold); color: #fff; border: none; padding: 15px; border-radius: 30px;
+      font-weight: 800; font-size: 1rem; cursor: pointer; margin-top: 15px;
     }
-    .lux-nav-item { text-decoration: none; color: var(--text-sub); font-size: 0.7rem; text-align: center; font-weight: 500; }
-    .lux-nav-item.active { color: var(--green-lux); font-weight: 800; }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="container">
 
-    <!-- Lux Header -->
-    <div class="lux-header">
-      <div class="lux-logo">R WOOD <span>DESIGN</span></div>
-      <button class="lux-btn">👤</button>
+    <div class="header">
+      <h1>R WOOD 🪵</h1>
+      <p>اختاري القسم اللي بغيتي، حدد خياراتك، وخد فكرة واضحة على الكلفة والتصميم!</p>
     </div>
 
-    <!-- Hero Banner -->
-    <div class="hero-box">
-      <span class="hero-tag">Sur-Mesure & Interior</span>
-      <h1 class="hero-title">تصاميم جدارية ومطابخ MDF فاخرة</h1>
-      <p class="hero-desc">إتقان ودقة فنية عالية من التصميم ثلاثي الأبعاد إلى التنفيذ</p>
-    </div>
-
-    <!-- Interactive Before / After Section -->
-    <div>
-      <div class="section-title">معاينة تحويل المساحات 🔄</div>
-      <div class="section-sub">حرك الشريط لرؤية تحويل المساحة قبل وبعد التنفيذ</div>
-
-      <div class="ba-slider-container">
-        <!-- Before Image (Original Empty Room) -->
-        <img class="ba-image ba-before" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800" alt="قبل">
-        <span class="ba-badge badge-before">المساحة قبل</span>
-
-        <!-- After Image (Finished Lux MDF / Interior) -->
-        <div class="ba-after" id="baAfterBox">
-          <img id="baAfterImg" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" alt="بعد">
-        </div>
-        <span class="ba-badge badge-after">بعد التنفيذ ✨</span>
-
-        <!-- Invisible Range Input for dragging -->
-        <input type="range" min="0" max="100" value="50" class="ba-range" oninput="slideBeforeAfter(this.value)">
+    <!-- Step 1: الأقسام الاربعة -->
+    <div class="step-card">
+      <div class="step-title">1️⃣ أشنو القسم اللي بغيتي تصمم أو تشري؟</div>
+      <div class="options-grid">
+        <div class="opt-btn active" onclick="setCategory('مطبخ', this)"><span>🍳</span>مطبخ عصري</div>
+        <div class="opt-btn" onclick="setCategory('موبيل تلفاز', this)"><span>📺</span>موبيل تلفاز</div>
+        <div class="opt-btn" onclick="setCategory('دريسينغ وبلاكرات', this)"><span>🚪</span>دريسينغ وبلاكرات</div>
+        <div class="opt-btn" onclick="setCategory('إكسسوارات الخشب', this)"><span>🔩</span>قسم الاكسسوارات</div>
       </div>
     </div>
 
-    <!-- AI Scan Trigger -->
-    <button class="lux-studio-btn" onclick="openStudio()">
-      <span>📸</span> صوّر مكانك وخذ معاينة مخصصة (Sur-Mesure)
-    </button>
-
-    <!-- Lux Services Grid -->
-    <div class="section-title">خدماتنا الرئيسية</div>
-    <div class="section-sub" style="margin-bottom:12px;">تصاميم مخصصة تناسب مساحة منزلكم</div>
-
-    <div class="lux-grid">
-      <div class="lux-card">
-        <div class="lux-card-img"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=500"></div>
-        <div class="lux-card-h4">المطابخ العصرية</div>
-        <div class="lux-card-p">MDF High Gloss & Quartz</div>
-      </div>
-      <div class="lux-card">
-        <div class="lux-card-img"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=500"></div>
-        <div class="lux-card-h4">الـ Dressing والخزائن</div>
-        <div class="lux-card-p">استغلال أنيق للمساحات</div>
-      </div>
-      <div class="lux-card">
-        <div class="lux-card-img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=500"></div>
-        <div class="lux-card-h4">جداريات التلفاز</div>
-        <div class="lux-card-p">خشب مع إضاءة LED</div>
-      </div>
-      <div class="lux-card">
-        <div class="lux-card-img"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=500"></div>
-        <div class="lux-card-h4">غرف النوم والأسرة</div>
-        <div class="lux-card-p">تصاميم راقية ومريحة</div>
+    <!-- Step 2: الشكل (يتغير حسب القسم) -->
+    <div class="step-card" id="shapeCard">
+      <div class="step-title">2️⃣ الشكل أو التفصيل المطلوب:</div>
+      <div class="options-grid-3" id="shapeOptions">
+        <div class="opt-btn active" onclick="selectOpt(this, 'shape', 'شكل L')"><span>📐</span>شكل L</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'shape', 'شكل U')"><span>🔄</span>شكل U</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'shape', 'خط مستقيم I')"><span>📏</span>مستقيم I</div>
       </div>
     </div>
 
-  </div>
+    <!-- Step 3: نوع الخشب و MDF -->
+    <div class="step-card">
+      <div class="step-title">3️⃣ نوع الخشب أو الألواح المطلوبة:</div>
+      <div class="options-grid-3">
+        <div class="opt-btn active" onclick="selectOpt(this, 'wood', 'MDF High Gloss')"><span>✨</span>MDF Gloss</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'wood', 'MDF Mat')"><span>🎨</span>MDF Mat</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'wood', 'خشب Lati')"><span>🪵</span>خشب Lati</div>
+      </div>
+    </div>
 
-  <!-- Lux Bottom Nav -->
-  <div class="lux-nav">
-    <a href="#" class="lux-nav-item active">🏠<br>الرئيسية</a>
-    <a href="#" class="lux-nav-item">🖼️<br>الأعمال</a>
-    <a href="#" class="lux-nav-item">💬<br>تواصل معنا</a>
+    <!-- Step 4: نوع السطح أو الاكسسوار -->
+    <div class="step-card">
+      <div class="step-title">4️⃣ نوع السطح أو الإضافات:</div>
+      <div class="options-grid-3">
+        <div class="opt-btn active" onclick="selectOpt(this, 'extra', 'الكوارتز Quartz')">الكوارتز</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'extra', 'الجرانيت Granite')">الجرانيت</div>
+        <div class="opt-btn" onclick="selectOpt(this, 'extra', 'إكسسوارات بريميوم')">إكسسوارات فاخرة</div>
+      </div>
+    </div>
+
+    <!-- Step 5: القياس -->
+    <div class="step-card">
+      <div class="step-title">5️⃣ القياس والمساحة التقديرية:</div>
+      <label style="font-size:0.8rem; font-weight:700;">الطول أو المساحة التقريبية (بالمتر):</label>
+      <input type="number" id="meters" class="input-box" value="3" onchange="calculate()">
+    </div>
+
+    <button class="main-btn" onclick="calculate()">احسب التكلفة التقديرية 🧮</button>
+
+    <!-- Result -->
+    <div class="result-box" id="resultBox">
+      <h3>ملخص الطلب والتكلفة 📋</h3>
+      <div class="result-price" id="totalPrice">0 درهم</div>
+      <p id="resultSummary" style="font-size:0.85rem; opacity:0.9; line-height:1.5;"></p>
+      
+      <button class="main-btn" style="background:#25D366; margin-top:15px;" onclick="sendWhatsApp()">إرسال الطلب إلى فريق R wood 💬</button>
+    </div>
+
   </div>
 
   <script>
-    function slideBeforeAfter(val) {
-      const afterBox = document.getElementById('baAfterBox');
-      const afterImg = document.getElementById('baAfterImg');
-      
-      afterBox.style.width = val + '%';
-      
-      // Keep image width stable during clipping
-      const containerWidth = document.querySelector('.ba-slider-container').offsetWidth;
-      afterImg.style.width = containerWidth + 'px';
+    let choices = {
+      category: 'مطبخ',
+      shape: 'شكل L',
+      wood: 'MDF High Gloss',
+      extra: 'الكوارتز Quartz'
+    };
+
+    function setCategory(cat, btn) {
+      document.querySelectorAll('.step-card:first-child .opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      choices.category = cat;
+
+      // تغيير خيارات الشكل حسب القسم لتكون واقعية
+      const shapeOpts = document.getElementById('shapeOptions');
+      if (cat === 'مطبخ') {
+        shapeOpts.innerHTML = `
+          <div class="opt-btn active" onclick="selectOpt(this, 'shape', 'شكل L')"><span>📐</span>شكل L</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'شكل U')"><span>🔄</span>شكل U</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'مستقيم I')"><span>📏</span>مستقيم I</div>
+        `;
+        choices.shape = 'شكل L';
+      } else if (cat === 'موبيل تلفاز') {
+        shapeOpts.innerHTML = `
+          <div class="opt-btn active" onclick="selectOpt(this, 'shape', 'جداري معلق')"><span>📺</span>معلق عصري</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'مكتبة متكاملة')"><span>📚</span>مكتبة كاملة</div>
+        `;
+        choices.shape = 'جداري معلق';
+      } else if (cat === 'دريسينغ وبلاكرات') {
+        shapeOpts.innerHTML = `
+          <div class="opt-btn active" onclick="selectOpt(this, 'shape', 'زاوية L')"><span>📐</span>زاوية L</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'حائط واحد')"><span>🚪</span>حائط واحد</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'غرفة Dressing مستقلة')"><span>✨</span>غرفة كاملة</div>
+        `;
+        choices.shape = 'زاوية L';
+      } else {
+        shapeOpts.innerHTML = `
+          <div class="opt-btn active" onclick="selectOpt(this, 'shape', 'مفصلات ومقابض')"><span>🔩</span>مفصلات ومقابض</div>
+          <div class="opt-btn" onclick="selectOpt(this, 'shape', 'إضاءة LED وأرفف')"><span>💡</span>إضاءة وأرفف</div>
+        `;
+        choices.shape = 'مفصلات ومقابض';
+      }
     }
 
-    // Set initial size on load
-    window.onload = function() {
-      slideBeforeAfter(50);
+    function selectOpt(btn, group, value) {
+      btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      choices[group] = value;
     }
 
-    function openStudio() {
-      const message = "السلام عليكم السي حمزة، بغيت نستفسر على خدمة التصميم والتنفيذ لـ MDF فـ منزلي.";
-      window.open(`https://wa.me/212786006733?text=${encodeURIComponent(message)}`, '_blank');
+    function calculate() {
+      const meters = parseFloat(document.getElementById('meters').value) || 3;
+      
+      let baseRate = 2200;
+      if (choices.category === 'دريسينغ وبلاكرات') baseRate = 2000;
+      if (choices.category === 'موبيل تلفاز') baseRate = 1800;
+      if (choices.category === 'إكسسوارات الخشب') baseRate = 800;
+
+      const total = meters * baseRate;
+
+      document.getElementById('totalPrice').innerText = total.toLocaleString() + " درهم";
+      document.getElementById('resultSummary').innerHTML = `
+        القسم: <b>${choices.category}</b> (${choices.shape})<br>
+        الخشب / المادة: <b>${choices.wood}</b> | الإضافة: <b>${choices.extra}</b><br>
+        المساحة التقريبية: <b>${meters} متر</b>
+      `;
+      document.getElementById('resultBox').style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function sendWhatsApp() {
+      const meters = document.getElementById('meters').value || "3";
+      const total = document.getElementById('totalPrice').innerText;
+      
+      const msg = `سلام عليكم، تفاصيل الطلب من موقع R wood:%0A- القسم: *${choices.category}*%0A- التصميم: *${choices.shape}*%0A- الخشب: *${choices.wood}*%0A- الإضافات: *${choices.extra}*%0A- القياس: *${meters} متر*%0A- التكلفة التقريبية: *${total}*%0A%0Aبغيت نتاصل بكم للتأكيد والمواعيد.`;
+      
+      window.open(`https://wa.me/212786006733?text=${msg}`, '_blank');
     }
   </script>
 </body>

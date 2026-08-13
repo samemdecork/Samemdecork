@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- الوسوم الأساسية للـ SEO -->
   <title>صمّم ديكورك | Samemdecork</title>
+  <meta name="description" content="صمم ديكورك بالذكاء الاصطناعي في المغرب - تحويل رسم القياسات إلى تصميم واقعي للمطابخ، الصالونات، الـ Dressing وموبيليا التلفاز مع تقدير التكلفة بالدرهم.">
+  <meta name="keywords" content="تصميم ديكور المغرب, مطابخ MDF, تصميم صالون مدرن, Dressing المغرب, meuble TV, تصميم داخلي AI, حساب تكلفة الديكور">
+  <meta name="author" content="صمّم ديكورك">
+  <meta name="robots" content="index, follow">
+
+  <!-- وسوم التواصل الاجتماعي (Facebook / WhatsApp) -->
+  <meta property="og:title" content="صمّم ديكورك | من الرسم إلى الديكور الواقعي بالذكاء الاصطناعي">
+  <meta property="og:description" content="صوّر المكان، أدخل القياسات، واكتشف تصميم مشروعك وتكلفته التقديرية فوراً.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800">
+  <meta property="og:url" content="https://samemdecork.github.io/Samemdecork/">
+  <meta property="og:type" content="website">
+
+  <!-- PWA & Fonts -->
   <link rel="manifest" href="./icons/icon-192.png">
   <link rel="icon" type="image/png" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
@@ -53,12 +68,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
     .brand-title {
@@ -187,10 +196,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
-    .project-card:hover::before {
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%);
-    }
-
     .card-info {
       position: relative;
       z-index: 2;
@@ -276,7 +281,7 @@
     .badge-before { right: 15px; }
     .badge-after { left: 15px; }
 
-    /* Steps & Calculator */
+    /* Steps & Calculator Grid */
     .grid-two {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -323,7 +328,6 @@
       font-size: 2.2rem;
       font-weight: 800;
       color: var(--primary);
-      margin: 10px 0;
     }
 
     footer {
@@ -432,7 +436,7 @@
       </div>
     </section>
 
-    <!-- Info & Cost Estimation Grid -->
+    <!-- Steps & Calculator Grid -->
     <div class="grid-two">
       
       <!-- Steps -->
@@ -465,12 +469,34 @@
         </div>
       </div>
 
-      <!-- Price Estimate -->
-      <div class="info-card" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
-        <span style="color:var(--text-muted); font-size:0.9rem;">💰 تقدير أولي للمشروع</span>
-        <div class="price-value">10,800 <span style="font-size:1.2rem; color:#fff;">DH</span></div>
-        <p style="color:var(--text-muted); font-size:0.9rem;">المساحة التقديرية: <b>12 m²</b></p>
-        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:5px;">ثمن تقريبي للمتر: <b>900 DH</b> (خامات MDF عالي الجودة)</p>
+      <!-- Interactive Calculator -->
+      <div class="info-card" style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="section-title">
+          <h2>💰 حاسبة الميزانية التفاعلية</h2>
+          <span>حدد المساحة ونوع الخامة للحصول على التكلفة</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+          <div>
+            <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:4px;">المساحة (متر مربع m²):</label>
+            <input type="number" id="areaInput" value="12" min="1" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem;" oninput="calculateCost()">
+          </div>
+
+          <div>
+            <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:4px;">نوع الخامة والجودة:</label>
+            <select id="materialSelect" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(0,0,0,0.3); color: #fff; font-size: 0.9rem;" onchange="calculateCost()">
+              <option value="600">اقتصادي - MDF عادي (600 DH/m²)</option>
+              <option value="900" selected>متوسط - MDF Stratifié ممتاز (900 DH/m²)</option>
+              <option value="1400">ممتاز - MDF High Gloss / خشب رفيع (1400 DH/m²)</option>
+            </select>
+          </div>
+
+          <div style="text-align: center; background: rgba(201, 156, 88, 0.1); padding: 12px; border-radius: 12px; border: 1px solid rgba(201, 156, 88, 0.2); margin-top: 5px;">
+            <span style="color:var(--text-muted); font-size:0.8rem;">التكلفة التقديرية الإجمالية:</span>
+            <div class="price-value" id="totalPrice" style="margin: 2px 0;">10,800 <span style="font-size:1.1rem; color:#fff;">DH</span></div>
+            <span id="pricePerM2" style="color:var(--primary); font-size:0.8rem;">(ثمن المتر: 900 DH)</span>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -478,7 +504,7 @@
   </div>
 
   <footer>
-    صمم ديكورك © 2026 • جميع الحقوق محفوظة
+    صمم ديكورك © 2026 • جميع الحقوق محفوظة حمزة اشطيبي
   </footer>
 
   <script>
@@ -490,7 +516,6 @@
 
     function updateSlider() {
       const value = sliderInput.value;
-      // Since direction is RTL, set overlay width from right
       imgOverlay.style.width = (100 - value) + '%';
       beforeImg.style.width = sliderContainer.offsetWidth + 'px';
     }
@@ -498,7 +523,16 @@
     sliderInput.addEventListener('input', updateSlider);
     window.addEventListener('resize', updateSlider);
     updateSlider();
+
+    // Cost Calculator Logic
+    function calculateCost() {
+      const area = parseFloat(document.getElementById('areaInput').value) || 0;
+      const materialRate = parseFloat(document.getElementById('materialSelect').value) || 0;
+      const total = area * materialRate;
+      
+      document.getElementById('totalPrice').innerHTML = total.toLocaleString() + ' <span style="font-size:1.1rem; color:#fff;">DH</span>';
+      document.getElementById('pricePerM2').innerText = `(ثمن المتر: ${materialRate} DH)`;
+    }
   </script>
 </body>
 </html>
-

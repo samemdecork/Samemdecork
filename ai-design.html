@@ -1,698 +1,668 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#9b4f3f">
 
-<title>التصميم | صمم ديكورك</title>
+<meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>صمم ديكورك | التصميم</title>
 
 <style>
-.option-card{
-  position:relative;
-  cursor:pointer;
-  background:#fff;
-  border:2px solid #dfd0c8;
-  border-radius:18px;
-  padding:18px;
-  min-height:105px;
-  transition:.2s;
-  box-shadow:0 8px 22px rgba(74,48,38,.06);
+
+*{
+box-sizing:border-box;
 }
 
-.option-card:hover{
-  transform:translateY(-3px);
-  border-color:#b96d59;
+body{
+margin:0;
+font-family:Arial,Tahoma,sans-serif;
+background:#f7f3ef;
+color:#3f3029;
 }
 
-.option-card.selected{
-  border-color:#9b4f3f;
-  background:#fff8f5;
-  box-shadow:0 10px 28px rgba(155,79,63,.18);
+header{
+background:#fff;
+border-bottom:1px solid #eaded7;
+position:sticky;
+top:0;
+z-index:10;
 }
 
-.option-card.selected:after{
-  content:"✓";
-  position:absolute;
-  top:10px;
-  left:10px;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#9b4f3f;
-  color:white;
-  font-weight:900;
+.nav{
+max-width:1100px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-.option-card h3{
-  margin:5px 0;
+.logo{
+font-size:22px;
+font-weight:900;
+color:#8f4739;
+text-decoration:none;
 }
 
-.option-card p{
-  margin:0;
-  color:#806c62;
-  font-size:12px;
+.logo small{
+display:block;
+font-size:9px;
+letter-spacing:2px;
+color:#92776c;
+margin-top:3px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:18px;
+.menu{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
 }
 
-.fields{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:20px;
+.menu a{
+text-decoration:none;
+color:#5b4941;
+padding:9px 13px;
+border-radius:10px;
+font-size:14px;
 }
 
-.field label{
-  display:block;
-  margin-bottom:7px;
-  font-weight:bold;
+.menu a:hover{
+background:#f3e8e2;
 }
 
-.field input{
-  width:100%;
-  box-sizing:border-box;
-  padding:14px;
-  border:2px solid #dfd0c8;
-  border-radius:12px;
-  font-size:16px;
+.menu .active{
+background:#8f4739;
+color:#fff;
 }
 
-.color-grid .option-card{
-  min-height:125px;
+.container{
+max-width:1000px;
+margin:35px auto;
+padding:0 18px;
 }
 
-.swatches{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin-top:12px;
+.hero{
+text-align:center;
+margin-bottom:25px;
 }
 
-.swatch{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  border:2px solid white;
-  box-shadow:0 0 0 1px #cdbbb2;
+.hero h1{
+margin:0 0 10px;
+font-size:32px;
 }
 
-.notice{
-  margin-top:20px;
-  padding:15px;
-  border-radius:14px;
-  background:#fff8f5;
-  border:1px solid #ead8cf;
+.hero p{
+color:#806e65;
+margin:0;
+}
+
+.progress{
+display:flex;
+justify-content:center;
+gap:8px;
+margin:25px 0;
+flex-wrap:wrap;
+}
+
+.progress span{
+padding:8px 12px;
+border-radius:20px;
+background:#e9ddd6;
+font-size:12px;
+}
+
+.progress span.active{
+background:#8f4739;
+color:white;
+}
+
+.box{
+background:#fff;
+border-radius:22px;
+padding:25px;
+box-shadow:0 10px 35px rgba(70,45,35,.08);
+}
+
+.step{
+display:none;
+}
+
+.step.active{
+display:block;
+}
+
+.step h2{
+margin-top:0;
+}
+
+.sub{
+color:#86746c;
+font-size:14px;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.option{
+position:relative;
+border:2px solid #e2d4cc;
+background:#fff;
+border-radius:17px;
+padding:22px;
+min-height:100px;
+cursor:pointer;
+transition:.2s;
+}
+
+.option:hover{
+border-color:#b76a58;
+transform:translateY(-2px);
+}
+
+.option.selected{
+border-color:#8f4739;
+background:#fff7f4;
+box-shadow:0 7px 20px rgba(143,71,57,.15);
+}
+
+.option.selected::after{
+content:"✓";
+position:absolute;
+left:12px;
+top:12px;
+width:30px;
+height:30px;
+border-radius:50%;
+background:#8f4739;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+}
+
+.option .icon{
+font-size:28px;
+margin-bottom:7px;
+}
+
+.option h3{
+margin:0 0 5px;
+}
+
+.option p{
+margin:0;
+font-size:12px;
+color:#8b776d;
+}
+
+.inputs{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.input-group label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
+border:2px solid #e1d4cc;
+border-radius:12px;
+font-size:16px;
+outline:none;
+}
+
+.input-group input:focus{
+border-color:#8f4739;
+}
+
+.color{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.color-circle{
+width:38px;
+height:38px;
+border-radius:50%;
+border:2px solid white;
+box-shadow:0 0 0 1px #cdbdb5;
+}
+
+.buttons{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-top:25px;
+}
+
+button{
+border:0;
+cursor:pointer;
+border-radius:12px;
+padding:13px 22px;
+font-size:15px;
+font-weight:bold;
+}
+
+.next{
+background:#8f4739;
+color:white;
+}
+
+.back{
+background:#eee3dc;
+color:#4d3931;
+}
+
+.summary{
+background:#faf5f1;
+border:1px solid #eadbd3;
+border-radius:15px;
+padding:18px;
+line-height:2;
+}
+
+.success{
+margin-top:15px;
+padding:15px;
+border-radius:14px;
+background:#edf4ed;
+color:#355538;
+display:none;
+}
+
+footer{
+text-align:center;
+padding:30px 15px;
+color:#806e65;
+font-size:13px;
 }
 
 @media(max-width:700px){
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
 
-  .fields{
-    grid-template-columns:1fr;
-  }
+.nav{
+flex-direction:column;
 }
 
-@media(max-width:480px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.options{
+grid-template-columns:1fr;
 }
+
+.inputs{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.box{
+padding:18px;
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-<div class="wrap nav">
+
+<div class="nav">
 
 <a class="logo" href="index.html">
+
 صمم ديكورك
-<small>DESIGN YOUR DECOR</small>
+
+<small>
+DESIGN YOUR DECOR
+</small>
+
 </a>
 
+
 <nav class="menu">
-<a href="index.html">الرئيسية</a>
-<a href="works.html">أعمالنا</a>
-<a href="tapis.html">الطابيسي</a>
-<a href="accessories.html">الإكسسوارات</a>
-<a class="cta" href="ai-design.html">🤖 صمّم الآن</a>
+
+<a href="index.html">
+الرئيسية
+</a>
+
+<a href="works.html">
+أعمالنا
+</a>
+
+<a href="tapis.html">
+الطابيسي
+</a>
+
+<a href="accessories.html">
+الإكسسوارات
+</a>
+
+<a class="active" href="ai-design.html">
+🤖 صمّم الآن
+</a>
+
 </nav>
 
 </div>
+
 </header>
 
 
-<main class="wrap">
 
-<section class="section">
+<div class="container">
 
-<div class="title">
 
-<h1>صمّم ديكورك خطوة بخطوة</h1>
+<div class="hero">
+
+<h1>
+صمّم ديكورك خطوة بخطوة
+</h1>
 
 <p>
-اختيار القسم → الشكل → القياسات → الخامة → اللون → الميزانية → الملخص
+اختار القسم والشكل والقياسات والخامة واللون والميزانية
 </p>
 
 </div>
 
 
-<div class="form">
 
-<div id="wizard"></div>
+<div class="progress">
 
+<span id="p1" class="active">
+1 القسم
+</span>
 
-<div class="buttons" style="margin-top:18px">
+<span id="p2">
+2 الشكل
+</span>
 
-<button class="btn primary" id="next">
-التالي ←
-</button>
+<span id="p3">
+3 القياسات
+</span>
 
-<button class="btn" id="back" style="background:#f1e7df">
-رجوع
-</button>
+<span id="p4">
+4 الخامة واللون
+</span>
 
-</div>
-
-</div>
-
-
-<div class="notice">
-الاختيارات كتتحفظ مباشرة وكتبان بعلامة ✓.
-تقدر تبدل أي اختيار قبل ما تكمل.
-</div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-<div class="wrap foot">
-
-<div>
-<b>صمم ديكورك</b>
-<br>
-<small>تصميم وديكور بطريقة عصرية</small>
-</div>
-
-<div>
-<b>Chtaibi Hamza</b>
-<br>
-<small>© 2026 جميع الحقوق محفوظة</small>
-</div>
+<span id="p5">
+5 الملخص
+</span>
 
 </div>
 
-</footer>
 
 
-<script>
+<div class="box">
 
-const params = new URLSearchParams(location.search);
 
-const preset = params.get("type");
+<!-- STEP 1 -->
 
+<div id="step1" class="step active">
 
-const rooms = {
+<h2>
+1. اختار القسم
+</h2>
 
-kitchen:[
-"🍳",
-"المطبخ",
-[
-"L",
-"U",
-"مستقيم",
-"جزيرة"
-]
-],
-
-bedroom:[
-"🛏️",
-"غرفة النوم",
-[
-"سرير + بلاكار",
-"بلاكار كامل",
-"سرير + تسريحة",
-"مخصص"
-]
-],
-
-tv:[
-"📺",
-"موبيل التلفاز",
-[
-"موبيل كامل",
-"معلق",
-"فاصل",
-"مخصص"
-]
-],
-
-wardrobe:[
-"🚪",
-"Dressing",
-[
-"أبواب عادية",
-"أبواب زجاج",
-"Dressing كامل",
-"مخصص"
-]
-],
-
-salon:[
-"🛋️",
-"الصالون",
-[
-"مكتبة تلفاز",
-"جلسة كاملة",
-"فاصل ديكوري",
-"مخصص"
-]
-]
-
-};
-
-
-const materials = [
-
-"MDF",
-"MDF laqué",
-"خشب طبيعي",
-"ميلامين"
-
-];
-
-
-const styles = [
-
-"مودرن",
-"مودرن دافئ",
-"مينيمال",
-"كلاسيك راقي",
-"مغربي عصري"
-
-];
-
-
-const colors = [
-
-[
-"أبيض دافئ",
-"#f4eee8"
-],
-
-[
-"أحمر ترابي",
-"#9b4f3f"
-],
-
-[
-"بني خشبي",
-"#76533f"
-],
-
-[
-"كابوتشينو",
-"#b99b82"
-],
-
-[
-"أخضر زيتوني",
-"#68705a"
-],
-
-[
-"أسود مع خشب",
-"#24211f"
-]
-
-];
-
-
-const accessories = [
-
-"أساسية",
-"متوسطة",
-"Premium"
-
-];
-
-
-let data = {
-
-room:preset || "",
-
-shape:"",
-
-width:"",
-
-depth:"",
-
-height:"",
-
-material:"MDF",
-
-style:"مودرن",
-
-color:"أبيض دافئ",
-
-budget:"",
-
-accessories:"أساسية"
-
-};
-
-
-let step = 1;
-
-
-
-function option(title, selected, click, desc=""){
-
-return `
-
-<div
-class="option-card ${selected ? "selected" : ""}"
-onclick="${click}"
->
-
-<h3>${title}</h3>
-
-${desc ? `<p>${desc}</p>` : ""}
-
-</div>
-
-`;
-
-}
-
-
-
-function render(){
-
-let html = "";
-
-
-/* القسم */
-
-if(step === 1){
-
-html = `
-
-<h2>1. اختار القسم</h2>
-
-<p class="muted">
-اختار المجال اللي بغيتي تصمم.
+<p class="sub">
+شنو بغيتي تصمم؟
 </p>
 
-<div class="grid">
 
-`;
-
-for(const [key,value] of Object.entries(rooms)){
-
-html += option(
-
-value[1],
-
-data.room === key,
-
-`data.room='${key}'; data.shape=''; render()`,
-
-value[0]
-
-);
-
-}
-
-html += `</div>`;
-
-}
+<div class="options">
 
 
+<div class="option"
+data-type="room"
+data-value="kitchen">
 
-/* الشكل */
+<div class="icon">🍳</div>
 
-if(step === 2){
+<h3>
+المطبخ
+</h3>
 
-const room = rooms[data.room] || rooms.kitchen;
-
-html = `
-
-<h2>2. اختار الشكل</h2>
-
-<p class="muted">
-الاختيار اللي ضغطتي عليه غادي يبان بعلامة ✓.
+<p>
+L • U • مستقيم • جزيرة
 </p>
 
-<div class="grid">
-
-`;
-
-room[2].forEach(shape=>{
-
-html += option(
-
-shape,
-
-data.shape === shape,
-
-`data.shape=${JSON.stringify(shape)}; render()`
-
-);
-
-});
-
-html += `</div>`;
-
-}
+</div>
 
 
 
-/* القياسات */
+<div class="option"
+data-type="room"
+data-value="bedroom">
 
-if(step === 3){
+<div class="icon">🛏️</div>
 
-html = `
+<h3>
+غرفة النوم
+</h3>
 
-<h2>3. القياسات</h2>
-
-<p class="muted">
-دخل القياسات التقريبية.
+<p>
+سرير • بلاكار • تسريحة
 </p>
 
-<div class="fields">
+</div>
 
-<div class="field">
+
+
+<div class="option"
+data-type="room"
+data-value="tv">
+
+<div class="icon">📺</div>
+
+<h3>
+موبيل التلفاز
+</h3>
+
+<p>
+معلق • فاصل • كامل
+</p>
+
+</div>
+
+
+
+<div class="option"
+data-type="room"
+data-value="wardrobe">
+
+<div class="icon">🚪</div>
+
+<h3>
+Dressing
+</h3>
+
+<p>
+أبواب • زجاج • كامل
+</p>
+
+</div>
+
+
+
+<div class="option"
+data-type="room"
+data-value="salon">
+
+<div class="icon">🛋️</div>
+
+<h3>
+الصالون
+</h3>
+
+<p>
+مكتبة • فاصل • جلسة
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- STEP 2 -->
+
+<div id="step2" class="step">
+
+<h2>
+2. اختار الشكل
+</h2>
+
+<p class="sub">
+مثلاً في المطبخ اختار L أو U أو الشكل المستقيم.
+</p>
+
+
+<div id="shapeOptions"
+class="options">
+</div>
+
+</div>
+
+
+
+<!-- STEP 3 -->
+
+<div id="step3" class="step">
+
+<h2>
+3. القياسات
+</h2>
+
+<p class="sub">
+دخل القياسات التقريبية بالسنتيمتر.
+</p>
+
+
+<div class="inputs">
+
+<div class="input-group">
 
 <label>
-العرض (سم)
+العرض
 </label>
 
 <input
 id="width"
 type="number"
-value="${data.width}"
-placeholder="مثال: 300"
->
+placeholder="مثال: 300">
 
 </div>
 
 
-<div class="field">
+<div class="input-group">
 
 <label>
-الطول / العمق (سم)
+العمق
 </label>
 
 <input
 id="depth"
 type="number"
-value="${data.depth}"
-placeholder="مثال: 180"
->
+placeholder="مثال: 180">
 
 </div>
 
 
-<div class="field">
+<div class="input-group">
 
 <label>
-الارتفاع (سم)
+الارتفاع
 </label>
 
 <input
 id="height"
 type="number"
-value="${data.height}"
-placeholder="مثال: 250"
->
+placeholder="مثال: 250">
 
 </div>
 
 </div>
 
-`;
-
-}
-
-
-
-/* الخامة والستايل واللون */
-
-if(step === 4){
-
-html = `
-
-<h2>4. اختار الخامة</h2>
-
-<div class="grid">
-
-`;
-
-materials.forEach(material=>{
-
-html += option(
-
-material,
-
-data.material === material,
-
-`data.material=${JSON.stringify(material)}; render()`
-
-);
-
-});
-
-
-html += `
-
 </div>
 
 
-<h2 style="margin-top:28px">
-اختار الستايل
+
+<!-- STEP 4 -->
+
+<div id="step4" class="step">
+
+<h2>
+4. الخامة واللون والميزانية
 </h2>
 
-<div class="grid">
-
-`;
-
-styles.forEach(style=>{
-
-html += option(
-
-style,
-
-data.style === style,
-
-`data.style=${JSON.stringify(style)}; render()`
-
-);
-
-});
-
-
-html += `
-
-</div>
-
-
-<h2 style="margin-top:28px">
-اختار اللون
-</h2>
-
-<div class="grid color-grid">
-
-`;
-
-
-colors.forEach(color=>{
-
-html += `
-
-<div
-class="option-card ${data.color === color[0] ? "selected" : ""}"
-onclick="data.color=${JSON.stringify(color[0])}; render()"
->
 
 <h3>
-${color[0]}
+الخامة
 </h3>
 
-<div class="swatches">
-
-<span
-class="swatch"
-style="background:${color[1]}"
-></span>
-
-<span class="muted">
-
-${data.color === color[0] ? "✓ مختار" : "اختار"}
-
-</span>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-html += `
-
+<div id="materialOptions"
+class="options">
 </div>
 
 
-<h2 style="margin-top:28px">
+
+<h3 style="margin-top:25px">
+اللون
+</h3>
+
+<div id="colorOptions"
+class="options">
+</div>
+
+
+
+<h3 style="margin-top:25px">
+الستايل
+</h3>
+
+<div id="styleOptions"
+class="options">
+</div>
+
+
+
+<h3 style="margin-top:25px">
 الإكسسوارات
-</h2>
+</h3>
 
-<div class="grid">
-
-`;
-
-accessories.forEach(accessory=>{
-
-html += option(
-
-accessory,
-
-data.accessories === accessory,
-
-`data.accessories=${JSON.stringify(accessory)}; render()`
-
-);
-
-});
-
-
-html += `
-
+<div id="accessoryOptions"
+class="options">
 </div>
 
 
-<div
-class="field"
-style="margin-top:18px"
->
+
+<div class="input-group"
+style="margin-top:20px">
 
 <label>
 الميزانية التقريبية بالدرهم
@@ -701,166 +671,226 @@ style="margin-top:18px"
 <input
 id="budget"
 type="number"
-value="${data.budget}"
-placeholder="مثال: 15000"
->
+placeholder="مثال: 15000">
 
 </div>
 
-`;
-
-}
+</div>
 
 
 
-/* الملخص */
+<!-- STEP 5 -->
 
-if(step === 5){
-
-const room = rooms[data.room] || rooms.kitchen;
-
-
-html = `
+<div id="step5" class="step">
 
 <h2>
-5. ملخص طلبك
+5. ملخص التصميم
 </h2>
 
 
-<div class="grid">
-
-
-<div class="card">
-
-<h3>
-${room[1]}
-</h3>
-
-<p class="muted">
-
-الشكل:
-${data.shape || "غير محدد"}
-
-</p>
-
-<p class="muted">
-
-القياسات:
-
-${data.width || "-"}
-×
-
-${data.depth || "-"}
-×
-
-${data.height || "-"}
-سم
-
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-${data.style}
-</h3>
-
-<p class="muted">
-
-الخامة:
-${data.material}
-
-<br>
-
-اللون:
-${data.color}
-
-<br>
-
-الميزانية:
-${data.budget || "غير محددة"} درهم
-
-<br>
-
-الإكسسوارات:
-${data.accessories}
-
-</p>
-
-</div>
-
-
+<div
+id="summary"
+class="summary">
 </div>
 
 
 <div
-class="banner"
-style="margin-top:18px"
->
+id="success"
+class="success">
 
-<h2>
-🤖 جاهز للتصميم
-</h2>
+✓ جميع الاختيارات محفوظة ويمكنك الرجوع وتغيير أي اختيار.
 
-<p>
-جميع الاختيارات ديالك محفوظة.
-</p>
+</div>
 
+</div>
+
+
+
+<div class="buttons">
 
 <button
-class="btn light"
-onclick="makePrompt()"
->
+id="back"
+class="back"
+type="button">
 
-إنشاء وصف التصميم
+← رجوع
 
 </button>
 
 
-<div id="result"></div>
+<button
+id="next"
+class="next"
+type="button">
+
+التالي →
+
+</button>
 
 </div>
 
-`;
 
-}
+</div>
 
-
-document.getElementById("wizard").innerHTML = html;
-
-
-document.getElementById("back").style.visibility =
-step > 1 ? "visible" : "hidden";
-
-
-document.getElementById("next").textContent =
-step === 5 ? "إعادة من البداية" : "التالي ←";
-
-}
+</div>
 
 
 
-/* حفظ القياسات */
+<footer>
 
-function save(){
+<b>
+صمم ديكورك
+</b>
 
-[
-"width",
-"depth",
-"height",
-"budget"
+<br>
 
-].forEach(id=>{
+تصميم وديكور بطريقة عصرية
 
-const element = document.getElementById(id);
+<br><br>
 
-if(element){
+Chtaibi Hamza
 
-data[id] = element.value;
+<br>
 
-}
+© 2026 جميع الحقوق محفوظة
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   DATA
+========================= */
+
+const data = {
+
+room:"",
+shape:"",
+width:"",
+depth:"",
+height:"",
+material:"",
+color:"",
+style:"",
+accessory:"",
+budget:""
+
+};
+
+
+const shapes = {
+
+kitchen:[
+"L",
+"U",
+"مستقيم",
+"جزيرة"
+],
+
+bedroom:[
+"سرير + بلاكار",
+"بلاكار كامل",
+"سرير + تسريحة",
+"مخصص"
+],
+
+tv:[
+"موبيل كامل",
+"معلق",
+"فاصل",
+"مخصص"
+],
+
+wardrobe:[
+"أبواب عادية",
+"أبواب زجاج",
+"Dressing كامل",
+"مخصص"
+],
+
+salon:[
+"مكتبة تلفاز",
+"جلسة كاملة",
+"فاصل ديكوري",
+"مخصص"
+]
+
+};
+
+
+const materials=[
+
+"MDF",
+
+"MDF laqué",
+
+"ميلامين",
+
+"خشب طبيعي"
+
+];
+
+
+const colors=[
+
+["أبيض دافئ","#f4eee8"],
+
+["أحمر ترابي","#9b4f3f"],
+
+["بني خشبي","#76533f"],
+
+["كابوتشينو","#b99b82"],
+
+["أخضر زيتوني","#68705a"],
+
+["أسود مع بني","#24211f"]
+
+];
+
+
+const styles=[
+
+"مودرن",
+
+"مودرن دافئ",
+
+"مينيمال",
+
+"كلاسيك راقي",
+
+"مغربي عصري"
+
+];
+
+
+const accessories=[
+
+"أساسية",
+
+"متوسطة",
+
+"Premium"
+
+];
+
+
+let currentStep=1;
+
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function clearSelected(selector){
+
+document
+.querySelectorAll(selector)
+.forEach(el=>{
+
+el.classList.remove("selected");
 
 });
 
@@ -868,49 +898,301 @@ data[id] = element.value;
 
 
 
-/* التالي */
+function selectOption(element){
 
-document.getElementById("next").onclick = function(){
+clearSelected(
+`.option[data-type="${element.dataset.type}"]`
+);
 
-save();
+element.classList.add("selected");
+
+data[element.dataset.type]=
+element.dataset.value;
+
+}
 
 
-if(step === 5){
 
-step = 1;
+/* =========================
+   ROOM
+========================= */
 
-data = {
+document
+.querySelectorAll('[data-type="room"]')
+.forEach(card=>{
 
-room:"",
+card.addEventListener("click",function(){
 
-shape:"",
+selectOption(this);
 
-width:"",
+data.shape="";
 
-depth:"",
+showShapes();
 
-height:"",
+});
 
-material:"MDF",
+});
 
-style:"مودرن",
 
-color:"أبيض دافئ",
 
-budget:"",
+/* =========================
+   SHAPES
+========================= */
 
-accessories:"أساسية"
+function showShapes(){
 
-};
+const box=
+document.getElementById("shapeOptions");
 
-render();
+box.innerHTML="";
+
+
+if(!data.room){
 
 return;
 
 }
 
 
-if(step === 1 && !data.room){
+shapes[data.room].forEach(shape=>{
+
+const div=
+document.createElement("div");
+
+div.className="option";
+
+div.dataset.type="shape";
+
+div.dataset.value=shape;
+
+
+div.innerHTML=`
+
+<h3>
+${shape}
+</h3>
+
+<p>
+اضغط للاختيار
+</p>
+
+`;
+
+
+div.addEventListener("click",function(){
+
+/*
+المهم هنا:
+نسجل الاختيار مباشرة
+*/
+
+clearSelected(
+'#shapeOptions .option'
+);
+
+this.classList.add("selected");
+
+data.shape=this.dataset.value;
+
+});
+
+box.appendChild(div);
+
+});
+
+}
+
+
+
+/* =========================
+   MATERIAL
+========================= */
+
+function createOptions(
+containerId,
+items,
+type
+){
+
+const container=
+document.getElementById(containerId);
+
+container.innerHTML="";
+
+
+items.forEach(item=>{
+
+const div=
+document.createElement("div");
+
+div.className="option";
+
+div.dataset.type=type;
+
+div.dataset.value=
+Array.isArray(item)
+? item[0]
+: item;
+
+
+if(Array.isArray(item)){
+
+div.innerHTML=`
+
+<div class="color">
+
+<span
+class="color-circle"
+style="background:${item[1]}">
+</span>
+
+<h3>
+${item[0]}
+</h3>
+
+</div>
+
+`;
+
+}else{
+
+div.innerHTML=`
+
+<h3>
+${item}
+</h3>
+
+<p>
+اضغط للاختيار
+</p>
+
+`;
+
+}
+
+
+div.addEventListener("click",function(){
+
+clearSelected(
+`#${containerId} .option`
+);
+
+this.classList.add("selected");
+
+data[type]=this.dataset.value;
+
+});
+
+
+container.appendChild(div);
+
+});
+
+}
+
+
+
+createOptions(
+"materialOptions",
+materials,
+"material"
+);
+
+
+createOptions(
+"colorOptions",
+colors,
+"color"
+);
+
+
+createOptions(
+"styleOptions",
+styles,
+"style"
+);
+
+
+createOptions(
+"accessoryOptions",
+accessories,
+"accessory"
+);
+
+
+
+/* =========================
+   STEPS
+========================= */
+
+function showStep(number){
+
+currentStep=number;
+
+
+document
+.querySelectorAll(".step")
+.forEach(step=>{
+
+step.classList.remove("active");
+
+});
+
+
+document
+.getElementById("step"+number)
+.classList.add("active");
+
+
+document
+.querySelectorAll(".progress span")
+.forEach(x=>{
+
+x.classList.remove("active");
+
+});
+
+
+document
+.getElementById("p"+number)
+.classList.add("active");
+
+
+document.getElementById("back").style.visibility=
+number===1
+? "hidden"
+: "visible";
+
+
+document.getElementById("next").textContent=
+number===5
+? "بداية جديدة"
+: "التالي →";
+
+
+if(number===5){
+
+createSummary();
+
+}
+
+}
+
+
+
+/* =========================
+   NEXT
+========================= */
+
+document
+.getElementById("next")
+.addEventListener("click",function(){
+
+
+
+if(currentStep===1){
+
+if(!data.room){
 
 alert("اختار القسم أولاً");
 
@@ -918,8 +1200,23 @@ return;
 
 }
 
+showShapes();
 
-if(step === 2 && !data.shape){
+showStep(2);
+
+return;
+
+}
+
+
+
+if(currentStep===2){
+
+/*
+هنا الحل ديال مشكل L
+*/
+
+if(!data.shape){
 
 alert("اختار الشكل أولاً");
 
@@ -927,105 +1224,163 @@ return;
 
 }
 
+showStep(3);
 
-step++;
-
-render();
-
-};
-
-
-
-/* رجوع */
-
-document.getElementById("back").onclick = function(){
-
-save();
-
-if(step > 1){
-
-step--;
-
-render();
+return;
 
 }
 
+
+
+if(currentStep===3){
+
+data.width=
+document.getElementById("width").value;
+
+data.depth=
+document.getElementById("depth").value;
+
+data.height=
+document.getElementById("height").value;
+
+
+showStep(4);
+
+return;
+
+}
+
+
+
+if(currentStep===4){
+
+data.budget=
+document.getElementById("budget").value;
+
+
+showStep(5);
+
+return;
+
+}
+
+
+
+if(currentStep===5){
+
+location.reload();
+
+}
+
+});
+
+
+
+/* =========================
+   BACK
+========================= */
+
+document
+.getElementById("back")
+.addEventListener("click",function(){
+
+if(currentStep>1){
+
+showStep(currentStep-1);
+
+}
+
+});
+
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function createSummary(){
+
+const roomNames={
+
+kitchen:"المطبخ",
+
+bedroom:"غرفة النوم",
+
+tv:"موبيل التلفاز",
+
+wardrobe:"Dressing",
+
+salon:"الصالون"
+
 };
 
 
+document
+.getElementById("summary")
+.innerHTML=`
 
-/* إنشاء وصف */
+<b>القسم:</b>
+${roomNames[data.room] || "-"}
 
-function makePrompt(){
+<br>
 
-const room = rooms[data.room] || rooms.kitchen;
+<b>الشكل:</b>
+${data.shape || "-"}
 
+<br>
 
-document.getElementById("result").innerHTML = `
-
-<div
-style="
-margin-top:15px;
-text-align:right;
-background:#fff;
-color:#4a3026;
-padding:15px;
-border-radius:14px;
-"
->
-
-<b>
-وصف التصميم:
-</b>
-
-<p>
-
-تصميم ${room[1]}
-
-بأسلوب ${data.style}
-
-وشكل ${data.shape}
-
-بخامة ${data.material}
-
-ولون ${data.color}
-
-وقياسات
-
-${data.width || "غير محددة"}
-
+<b>القياسات:</b>
+${data.width || "-"}
 ×
-
-${data.depth || "غير محددة"}
-
+${data.depth || "-"}
 ×
+${data.height || "-"}
+سم
 
-${data.height || "غير محددة"}
+<br>
 
-سم.
+<b>الخامة:</b>
+${data.material || "-"}
 
-الميزانية التقريبية:
+<br>
 
+<b>اللون:</b>
+${data.color || "-"}
+
+<br>
+
+<b>الستايل:</b>
+${data.style || "-"}
+
+<br>
+
+<b>الإكسسوارات:</b>
+${data.accessory || "-"}
+
+<br>
+
+<b>الميزانية:</b>
 ${data.budget || "غير محددة"}
-
-درهم.
-
-الإكسسوارات:
-
-${data.accessories}.
-
-</p>
-
-</div>
+درهم
 
 `;
 
+
+document
+.getElementById("success")
+.style.display="block";
+
 }
 
 
-render();
+/* =========================
+   START
+========================= */
+
+showStep(1);
 
 </script>
 
 </body>
+
 </html>

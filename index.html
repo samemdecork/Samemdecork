@@ -1,1073 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="صمم ديكورك - صمم مشروعك خطوة بخطوة بالدارجة المغربية">
-  <title>صمم ديكورك</title>
-
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:Arial,"Tahoma",sans-serif;
-      background:#f6f7f9;
-      color:#18202b;
-      line-height:1.7;
-    }
-    button,input,select{font:inherit}
-    button{cursor:pointer;border:0}
-
-    header{
-      background:#111827;
-      color:white;
-      padding:18px 20px;
-      position:sticky;
-      top:0;
-      z-index:20;
-      box-shadow:0 3px 15px #0002;
-    }
-
-    .nav{
-      max-width:1100px;
-      margin:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:15px;
-    }
-
-    .logo{
-      font-size:22px;
-      font-weight:900;
-    }
-
-    .logo span{color:#d6a85f}
-
-    .nav button{
-      background:#ffffff16;
-      color:white;
-      padding:9px 14px;
-      border-radius:10px;
-      margin-right:5px;
-    }
-
-    main{
-      max-width:1100px;
-      margin:auto;
-      padding:25px 16px 60px;
-    }
-
-    .hero{
-      background:linear-gradient(135deg,#111827,#293548);
-      color:white;
-      border-radius:24px;
-      padding:40px 25px;
-      margin-bottom:25px;
-      text-align:center;
-    }
-
-    .hero h1{
-      font-size:36px;
-      margin-bottom:8px;
-    }
-
-    .hero p{
-      color:#e5e7eb;
-      max-width:650px;
-      margin:0 auto 22px;
-    }
-
-    .primary{
-      background:#d6a85f;
-      color:#111827;
-      padding:13px 24px;
-      border-radius:12px;
-      font-weight:bold;
-    }
-
-    .section{
-      background:white;
-      border-radius:20px;
-      padding:22px;
-      margin-bottom:20px;
-      box-shadow:0 4px 20px #00000009;
-    }
-
-    .section h2{
-      margin-bottom:7px;
-      font-size:25px;
-    }
-
-    .muted{color:#697386}
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .card{
-      background:#fff;
-      border:2px solid #edf0f4;
-      border-radius:17px;
-      padding:20px 12px;
-      text-align:center;
-      transition:.2s;
-    }
-
-    .card:hover{
-      transform:translateY(-3px);
-      border-color:#d6a85f;
-    }
-
-    .icon{font-size:38px;margin-bottom:8px}
-
-    .card h3{font-size:18px}
-
-    .card small{color:#737b88}
-
-    .choices{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .choice{
-      background:#f8fafc;
-      border:2px solid #e5e7eb;
-      padding:14px;
-      border-radius:13px;
-      text-align:center;
-      font-weight:bold;
-    }
-
-    .choice.selected{
-      background:#fff8ea;
-      border-color:#d6a85f;
-    }
-
-    label{
-      display:block;
-      font-weight:bold;
-      margin:16px 0 7px;
-    }
-
-    input,select{
-      width:100%;
-      padding:13px;
-      border:1px solid #d8dde5;
-      border-radius:11px;
-      background:white;
-      outline:none;
-    }
-
-    input:focus,select:focus{
-      border-color:#d6a85f;
-    }
-
-    .formgrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:15px;
-    }
-
-    .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:22px;
-    }
-
-    .secondary{
-      background:#eef1f5;
-      color:#18202b;
-      padding:12px 20px;
-      border-radius:11px;
-      font-weight:bold;
-    }
-
-    .whatsapp{
-      background:#159447;
-      color:white;
-      padding:12px 20px;
-      border-radius:11px;
-      font-weight:bold;
-    }
-
-    .project{
-      background:#f8fafc;
-      border-radius:15px;
-      padding:18px;
-      margin-top:15px;
-    }
-
-    .project div{
-      padding:6px 0;
-      border-bottom:1px solid #e8ebef;
-    }
-
-    .catalog{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:15px;
-      margin-top:18px;
-    }
-
-    .work{
-      border-radius:16px;
-      overflow:hidden;
-      background:#f8fafc;
-      border:1px solid #e9edf2;
-    }
-
-    .work .fakeimg{
-      height:170px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:55px;
-      background:linear-gradient(135deg,#e8dfd0,#c7b79e);
-    }
-
-    .work .info{padding:14px}
-
-    .account{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
-    }
-
-    footer{
-      background:#111827;
-      color:#dce1e8;
-      text-align:center;
-      padding:22px;
-      margin-top:20px;
-    }
-
-    .hidden{display:none!important}
-
-    .progress{
-      height:7px;
-      background:#e9edf2;
-      border-radius:20px;
-      overflow:hidden;
-      margin:15px 0;
-    }
-
-    .progress span{
-      display:block;
-      height:100%;
-      width:20%;
-      background:#d6a85f;
-      transition:.3s;
-    }
-
-    @media(max-width:800px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .choices{grid-template-columns:repeat(2,1fr)}
-      .catalog{grid-template-columns:1fr 1fr}
-    }
-
-    @media(max-width:550px){
-      .hero h1{font-size:29px}
-      .grid,.choices,.catalog,.formgrid,.account{
-        grid-template-columns:1fr;
-      }
-      .nav{align-items:flex-start}
-      .nav button{padding:7px 9px;font-size:13px}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#151515">
+<title>صمم ديكورك | ديكور على قياسك</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<header>
-  <div class="nav">
-    <div class="logo">صمم <span>ديكورك</span></div>
-    <div>
-      <button onclick="showSection('home')">الرئيسية</button>
-      <button onclick="showSection('works')">أعمالنا</button>
-      <button onclick="showSection('account')">حسابي</button>
-    </div>
-  </div>
+<header class="top">
+  <a class="brand" href="#home"><span class="brand-mark">SD</span><span><b>صمم ديكورك</b><small>ديكور على قياسك</small></span></a>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#services">صمّم دابا</a>
+    <a href="#works">أعمالنا</a>
+    <a href="#shop">الإكسسوارات</a>
+    <a href="#account">حسابي</a>
+  </nav>
+  <a class="wa" href="https://wa.me/212754350706?text=سلام،%20بغيت%20نصمم%20ديكور%20عندي" target="_blank">واتساب</a>
 </header>
 
-<main>
-
-  <!-- HOME -->
-  <section id="home">
-
-    <div class="hero">
-      <h1>صمّم ديكورك بسهولة 🇲🇦</h1>
-      <p>
-        عندك بلاصة وباغي تدير فيها ديكور؟
-        جاوبنا غير على شوية ديال الأسئلة، وحنا نعاونك تحدد شنو باغي على حساب ذوقك والبيدجي ديالك.
-      </p>
-      <button class="primary" onclick="startDesign()">يلا نبدأو التصميم ✨</button>
+<main id="home">
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">✨ ديكور مغربي عصري • على القياس</div>
+    <h1>صمّم <em>ديكورك</em><br>قبل ما تبدا الخدمة.</h1>
+    <p>اختار شنو بغيتي، جاوبنا على شوية ديال الأسئلة، صيفط صورة البلاصة والقياسات… وحنا نوجدولك الفكرة اللي مناسبة ليك.</p>
+    <div class="hero-actions">
+      <a class="primary" href="#services">بدا صمّم دابا <span>←</span></a>
+      <a class="ghost" href="#works">شوف أعمالنا</a>
     </div>
+    <div class="trust"><span>✓ قياس على حسب البلاصة</span><span>✓ اختيارات حسب البيدجي</span><span>✓ تواصل مباشر</span></div>
+  </div>
+  <div class="hero-image">
+    <img src="assets/work-4.png" alt="مطبخ من أعمال صمم ديكورك">
+    <div class="floating"><b>مشروع مطبخ</b><small>مودرن • أخضر + خشب</small></div>
+  </div>
+</section>
 
-    <div class="section">
-      <h2>شنو بغيتي تصاوب؟</h2>
-      <p class="muted">اختار القسم اللي باغي، وغادي نمشيو معاك خطوة بخطوة.</p>
+<section id="services" class="section">
+  <div class="section-head"><div><span class="kicker">اختار المشروع</span><h2>شنو بغيتي نصممو ليك؟</h2></div><p>كل قسم غادي يدوزك من اختيارات بسيطة بالصور.</p></div>
+  <div class="cards">
+    <button class="service" onclick="openWizard('المطبخ')"><img src="assets/work-4.png"><span><b>المطبخ</b><small>L • U • مستقيم • جزيرة</small></span><i>←</i></button>
+    <button class="service" onclick="openWizard('موبل التلفاز')"><img src="assets/work-2.jpg"><span><b>موبل التلفاز</b><small>خشب • بارداج • زاج</small></span><i>←</i></button>
+    <button class="service" onclick="openWizard('دريسینگ')"><img src="assets/work-1.jpg"><span><b>دريسینگ</b><small>أبواب • زاج • تخزين</small></span><i>←</i></button>
+    <button class="service" onclick="openWizard('تابيسري / مدخل')"><img src="assets/work-6.jpg"><span><b>تابيسري ومدخل</b><small>مرايا • كونسول • ديكور</small></span><i>←</i></button>
+  </div>
+</section>
 
-      <div class="grid">
+<section id="works" class="section dark">
+  <div class="section-head"><div><span class="kicker">من خدمتنا</span><h2>أعمالنا كاطالوغ</h2></div><p>شوف أفكار من الخدمة اللي درناها.</p></div>
+  <div class="gallery">
+    <figure><img src="assets/work-1.jpg"><figcaption>مطبخ خشب طبيعي</figcaption></figure>
+    <figure><img src="assets/work-2.jpg"><figcaption>موبل تلفاز مودرن</figcaption></figure>
+    <figure><img src="assets/work-3.jpg"><figcaption>مدخل + مرايا</figcaption></figure>
+    <figure><img src="assets/work-4.png"><figcaption>مطبخ L عصري</figcaption></figure>
+    <figure><img src="assets/work-5.jpg"><figcaption>مطبخ بألوان هادئة</figcaption></figure>
+    <figure><img src="assets/work-6.jpg"><figcaption>كونسول وديكور</figcaption></figure>
+    <figure><img src="assets/work-7.jpg"><figcaption>مطبخ أخضر</figcaption></figure>
+    <figure><img src="assets/work-8.jpg"><figcaption>مرايا وإضاءة</figcaption></figure>
+    <figure><img src="assets/work-9.jpg"><figcaption>ديكور مدخل</figcaption></figure>
+    <figure><img src="assets/work-10.jpg"><figcaption>تفاصيل مطبخ</figcaption></figure>
+  </div>
+</section>
 
-        <button class="card" onclick="startProject('مطبخ')">
-          <div class="icon">🍳</div>
-          <h3>مطبخ</h3>
-          <small>صمم المطبخ ديالك</small>
-        </button>
+<section id="shop" class="section">
+  <div class="section-head"><div><span class="kicker">قريباً / كاطالوغ</span><h2>الإكسسوارات للبيع</h2></div><p>هنا غادي تزيد المنتجات ديالك: الصورة، الاسم، الثمن والوصف.</p></div>
+  <div class="shop-grid">
+    <article class="product"><div class="product-photo">🪞</div><b>مرايا مودرن</b><span>اختار الشكل والحجم</span><strong>الثمن يحدد من بعد</strong><button>سول على المنتوج</button></article>
+    <article class="product"><div class="product-photo">💡</div><b>إضاءة ديكور</b><span>موديلات مختلفة</span><strong>الثمن يحدد من بعد</strong><button>سول على المنتوج</button></article>
+    <article class="product"><div class="product-photo">🪴</div><b>إكسسوارات المدخل</b><span>لمسة بسيطة وراقية</span><strong>الثمن يحدد من بعد</strong><button>سول على المنتوج</button></article>
+  </div>
+</section>
 
-        <button class="card" onclick="startProject('غرفة النوم')">
-          <div class="icon">🛏️</div>
-          <h3>غرفة النوم</h3>
-          <small>اختار الستايل والمواصفات</small>
-        </button>
-
-        <button class="card" onclick="startProject('موبل التلفاز')">
-          <div class="icon">📺</div>
-          <h3>موبل التلفاز</h3>
-          <small>خشب، زاج، بارداج...</small>
-        </button>
-
-        <button class="card" onclick="startProject('طابيسري')">
-          <div class="icon">🛋️</div>
-          <h3>طابيسري</h3>
-          <small>اختيارات على حساب ذوقك</small>
-        </button>
-
-        <button class="card" onclick="startProject('Dressing')">
-          <div class="icon">👗</div>
-          <h3>Dressing</h3>
-          <small>اختار الشكل والأبواب</small>
-        </button>
-
-        <button class="card" onclick="startProject('خزانة')">
-          <div class="icon">🚪</div>
-          <h3>خزانة</h3>
-          <small>صمم الخزانة ديالك</small>
-        </button>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- DESIGNER -->
-  <section id="designer" class="section hidden">
-
-    <h2 id="projectTitle">تصميم المشروع</h2>
-    <p class="muted">جاوب غير على الأسئلة، وإلى ما كنتيش عارف شي اختيار اختار «ما عارفش».</p>
-
-    <div class="progress">
-      <span id="progressBar"></span>
-    </div>
-
-    <div id="questions"></div>
-
-    <div class="actions">
-      <button class="secondary" onclick="showSection('home')">رجوع</button>
-      <button class="primary" onclick="nextStep()">التالي ←</button>
-    </div>
-
-  </section>
-
-
-  <!-- RESULT -->
-  <section id="result" class="section hidden">
-
-    <h2>مزيان! هادي هي المعلومات ديال مشروعك ✅</h2>
-    <p class="muted">شوف واش كلشي صحيح قبل ما تصيفط الطلب.</p>
-
-    <div id="summary" class="project"></div>
-
-    <div class="actions">
-      <button class="secondary" onclick="showSection('home')">
-        تعديل المشروع
-      </button>
-
-      <button class="whatsapp" onclick="sendWhatsApp()">
-        📱 صيفط الطلب فواتساب
-      </button>
-    </div>
-
-  </section>
-
-
-  <!-- WORKS -->
-  <section id="works" class="section hidden">
-
-    <h2>أعمالنا 🖼️</h2>
-    <p class="muted">
-      هنا غادي نعرضو الأعمال ديالنا بحال كاطالوغ باش الزبون يشوف الخدمة قبل ما يطلب.
-    </p>
-
-    <div class="catalog">
-
-      <div class="work">
-        <div class="fakeimg">🍳</div>
-        <div class="info">
-          <h3>مطبخ مودرن</h3>
-          <p class="muted">تصميم عصري وخزانات حتى للسقف.</p>
-        </div>
-      </div>
-
-      <div class="work">
-        <div class="fakeimg">📺</div>
-        <div class="info">
-          <h3>موبل تلفاز</h3>
-          <p class="muted">خشب + زاج + إضاءة LED.</p>
-        </div>
-      </div>
-
-      <div class="work">
-        <div class="fakeimg">👗</div>
-        <div class="info">
-          <h3>Dressing</h3>
-          <p class="muted">أبواب عصرية وتقسيم عملي.</p>
-        </div>
-      </div>
-
-      <div class="work">
-        <div class="fakeimg">🛏️</div>
-        <div class="info">
-          <h3>غرفة النوم</h3>
-          <p class="muted">ستايل هادئ وعصري.</p>
-        </div>
-      </div>
-
-      <div class="work">
-        <div class="fakeimg">🛋️</div>
-        <div class="info">
-          <h3>طابيسري</h3>
-          <p class="muted">اختيار الألوان والثوب حسب الديكور.</p>
-        </div>
-      </div>
-
-      <div class="work">
-        <div class="fakeimg">🚪</div>
-        <div class="info">
-          <h3>خزانات</h3>
-          <p class="muted">استغلال ذكي للمساحة.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ACCOUNT -->
-  <section id="account" class="section hidden">
-
-    <h2>حسابي 👤</h2>
-    <p class="muted">
-      من هنا غادي يقدر الزبون يدير حساب ويشوف الطلبات والمشاريع ديالو.
-    </p>
-
-    <div class="account">
-
-      <div>
-        <label>الاسم الكامل</label>
-        <input id="userName" placeholder="مثلاً: محمد العلوي">
-      </div>
-
-      <div>
-        <label>رقم الهاتف</label>
-        <input id="userPhone" placeholder="06XXXXXXXX">
-      </div>
-
-    </div>
-
-    <div class="actions">
-      <button class="primary" onclick="saveAccount()">حفظ الحساب</button>
-    </div>
-
-    <div id="accountMessage" class="project hidden"></div>
-
-  </section>
-
+<section id="account" class="section account">
+  <div class="account-box">
+    <div><span class="kicker">حساب الزبون</span><h2>خلي مشاريعك مجموعين فحساب واحد.</h2><p>سجّل باش تقدر ترجع للطلبات ديالك، الصور والاختيارات ديالك من بعد.</p></div>
+    <form onsubmit="saveAccount(event)">
+      <label>الاسم<input id="name" required placeholder="مثلاً: محمد"></label>
+      <label>رقم الهاتف<input id="phone" required inputmode="tel" placeholder="06xxxxxxxx"></label>
+      <button class="primary" type="submit">سجّل حسابي</button>
+      <div id="accountMsg"></div>
+    </form>
+  </div>
+</section>
 </main>
 
+<footer><b>صمم ديكورك</b><span>© 2026 جميع الحقوق محفوظة — Hamza Chtaibi</span><a href="https://wa.me/212754350706" target="_blank">تواصل معنا على واتساب</a></footer>
 
-<footer>
-  © 2026 صمم ديكورك — جميع الحقوق محفوظة | Hamza Chtaibi
-</footer>
-
+<div class="modal" id="wizard">
+  <div class="modal-card">
+    <button class="close" onclick="closeWizard()">×</button>
+    <div class="step" id="step"></div>
+    <h2 id="wTitle">المطبخ</h2>
+    <p id="wHint"></p>
+    <div id="wBody"></div>
+    <div class="modal-actions"><button class="ghost" id="back" onclick="prevStep()">رجوع</button><button class="primary" id="next" onclick="nextStep()">التالي</button></div>
+  </div>
+</div>
 
 <script>
-
-  /*
-    ⚠️ بدّل الرقم التالي برقم واتساب ديالك
-    مثال المغرب:
-    2126XXXXXXXX
-  */
-  const WHATSAPP = "212600000000";
-
-
-  let project = {
-    type:"",
-    answers:{}
-  };
-
-  let step = 0;
-  let questions = [];
-
-
-  function showSection(id){
-
-    ["home","designer","result","works","account"].forEach(section=>{
-      document.getElementById(section).classList.add("hidden");
-    });
-
-    document.getElementById(id).classList.remove("hidden");
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-  }
-
-
-  function startDesign(){
-    document.querySelector("#home .section").scrollIntoView({
-      behavior:"smooth"
-    });
-  }
-
-
-  function startProject(type){
-
-    project = {
-      type:type,
-      answers:{}
-    };
-
-    step = 0;
-
-    buildQuestions(type);
-
-    document.getElementById("projectTitle").textContent =
-      "يلا نصممو " + type + " ديالك ✨";
-
-    showSection("designer");
-
-    renderQuestion();
-  }
-
-
-  function buildQuestions(type){
-
-    if(type === "مطبخ"){
-
-      questions = [
-
-        {
-          key:"shape",
-          title:"شنو الشكل اللي بغيتي للمطبخ؟",
-          options:["L","U","مستقيم","مع جزيرة","ما عارفش"]
-        },
-
-        {
-          key:"budget",
-          title:"شحال البيدجي اللي ناوي تصرف؟",
-          options:[
-            "أقل من 10,000 درهم",
-            "10,000 - 20,000 درهم",
-            "20,000 - 30,000 درهم",
-            "أكثر من 30,000 درهم"
-          ]
-        },
-
-        {
-          key:"wood",
-          title:"شنو نوع الخشب اللي كيعجبك؟",
-          options:["MDF","Mélaminé","Laqué","Bois","ما عارفش"]
-        },
-
-        {
-          key:"counter",
-          title:"شنو بغيتي فالسطح؟",
-          options:["Quartz","Granite","Marbre","مازال ما قررتش"]
-        },
-
-        {
-          key:"upper",
-          title:"بغيتي الخزانات الفوقانية؟",
-          options:["إيه","لا","ما عارفش"]
-        },
-
-        {
-          key:"island",
-          title:"بغيتي جزيرة فالمطبخ؟",
-          options:["إيه","لا","مازال ما قررتش"]
-        },
-
-        {
-          key:"dimensions",
-          title:"دخل القياسات التقريبية",
-          dimensions:true
-        }
-
-      ];
-
-    }else if(type === "موبل التلفاز"){
-
-      questions = [
-
-        {
-          key:"style",
-          title:"شنو الستايل اللي بغيتي؟",
-          options:["مودرن","بسيط","فخم","ما عارفش"]
-        },
-
-        {
-          key:"material",
-          title:"شنو المادة اللي بغيتي؟",
-          options:["خشب","بارداج","زاج","خشب + زاج","ما عارفش"]
-        },
-
-        {
-          key:"led",
-          title:"بغيتي LED؟",
-          options:["إيه","لا","مازال ما قررتش"]
-        },
-
-        {
-          key:"storage",
-          title:"بغيتي بلايص للتخزين؟",
-          options:["إيه","لا"]
-        },
-
-        {
-          key:"budget",
-          title:"شحال البيدجي ديالك؟",
-          options:[
-            "أقل من 3,000 درهم",
-            "3,000 - 6,000 درهم",
-            "6,000 - 10,000 درهم",
-            "أكثر من 10,000 درهم"
-          ]
-        },
-
-        {
-          key:"dimensions",
-          title:"دخل القياسات التقريبية",
-          dimensions:true
-        }
-
-      ];
-
-    }else if(type === "طابيسري"){
-
-      questions = [
-
-        {
-          key:"type",
-          title:"شنو باغي دير؟",
-          options:["صالون","بانكيت","كراسي","رأس السرير","طابيسري حسب صورة"]
-        },
-
-        {
-          key:"style",
-          title:"شنو الستايل؟",
-          options:["مودرن","كلاسيك","فاخر","بسيط"]
-        },
-
-        {
-          key:"color",
-          title:"شنو اللون اللي كيعجبك؟",
-          options:["فاتح","غامق","بيج","رمادي","اختيار آخر"]
-        },
-
-        {
-          key:"budget",
-          title:"شحال البيدجي ديالك؟",
-          options:[
-            "أقل من 3,000 درهم",
-            "3,000 - 7,000 درهم",
-            "7,000 - 15,000 درهم",
-            "أكثر من 15,000 درهم"
-          ]
-        },
-
-        {
-          key:"dimensions",
-          title:"دخل القياسات التقريبية",
-          dimensions:true
-        }
-
-      ];
-
-    }else if(type === "Dressing"){
-
-      questions = [
-
-        {
-          key:"doors",
-          title:"شنو نوع البيبان اللي بغيتي؟",
-          options:["خشب","زاج","خشب + زاج","مفتوح","ما عارفش"]
-        },
-
-        {
-          key:"style",
-          title:"شنو الستايل؟",
-          options:["مودرن","بسيط","فاخر","ما عارفش"]
-        },
-
-        {
-          key:"color",
-          title:"شنو اللون؟",
-          options:["أبيض","بيج","رمادي","خشبي","اختيار آخر"]
-        },
-
-        {
-          key:"led",
-          title:"بغيتي LED داخل الـDressing؟",
-          options:["إيه","لا","مازال ما قررتش"]
-        },
-
-        {
-          key:"budget",
-          title:"شحال البيدجي ديالك؟",
-          options:[
-            "أقل من 4,000 درهم",
-            "4,000 - 8,000 درهم",
-            "8,000 - 15,000 درهم",
-            "أكثر من 15,000 درهم"
-          ]
-        },
-
-        {
-          key:"dimensions",
-          title:"دخل القياسات التقريبية",
-          dimensions:true
-        }
-
-      ];
-
-    }else{
-
-      questions = [
-
-        {
-          key:"style",
-          title:"شنو الستايل اللي بغيتي؟",
-          options:["مودرن","بسيط","فاخر","كلاسيك","ما عارفش"]
-        },
-
-        {
-          key:"material",
-          title:"شنو المادة اللي بغيتي؟",
-          options:["MDF","Mélaminé","Bois","خشب + زاج","ما عارفش"]
-        },
-
-        {
-          key:"budget",
-          title:"شحال البيدجي ديالك؟",
-          options:[
-            "أقل من 4,000 درهم",
-            "4,000 - 8,000 درهم",
-            "8,000 - 15,000 درهم",
-            "أكثر من 15,000 درهم"
-          ]
-        },
-
-        {
-          key:"dimensions",
-          title:"دخل القياسات التقريبية",
-          dimensions:true
-        }
-
-      ];
-    }
-  }
-
-
-  function renderQuestion(){
-
-    const q = questions[step];
-
-    const container = document.getElementById("questions");
-
-    let html = `
-      <div>
-        <h3>${q.title}</h3>
-    `;
-
-    if(q.options){
-
-      html += `<div class="choices">`;
-
-      q.options.forEach(option=>{
-
-        const selected =
-          project.answers[q.key] === option
-          ? "selected"
-          : "";
-
-        html += `
-          <button
-            class="choice ${selected}"
-            onclick="chooseOption('${escapeQuotes(q.key)}','${escapeQuotes(option)}')">
-            ${option}
-          </button>
-        `;
-
-      });
-
-      html += `</div>`;
-
-    }
-
-    if(q.dimensions){
-
-      const d = project.answers.dimensions || {};
-
-      html += `
-
-        <div class="formgrid">
-
-          <div>
-            <label>الطول بالسنتيمتر</label>
-            <input id="length" type="number" value="${d.length || ""}" placeholder="مثلاً 300">
-          </div>
-
-          <div>
-            <label>العرض بالسنتيمتر</label>
-            <input id="width" type="number" value="${d.width || ""}" placeholder="مثلاً 250">
-          </div>
-
-          <div>
-            <label>العلو بالسنتيمتر</label>
-            <input id="height" type="number" value="${d.height || ""}" placeholder="مثلاً 260">
-          </div>
-
-        </div>
-
-        <label>صورة البلاصة</label>
-        <input id="photo" type="file" accept="image/*">
-
-      `;
-
-    }
-
-    html += `</div>`;
-
-    container.innerHTML = html;
-
-    const percent =
-      Math.round(((step + 1) / questions.length) * 100);
-
-    document.getElementById("progressBar").style.width =
-      percent + "%";
-  }
-
-
-  function chooseOption(key,value){
-
-    project.answers[key] = value;
-
-    renderQuestion();
-  }
-
-
-  function nextStep(){
-
-    const q = questions[step];
-
-    if(q.dimensions){
-
-      const length = document.getElementById("length").value;
-      const width = document.getElementById("width").value;
-      const height = document.getElementById("height").value;
-
-      project.answers.dimensions = {
-        length,
-        width,
-        height
-      };
-
-    }
-
-    if(step < questions.length - 1){
-
-      step++;
-
-      renderQuestion();
-
-    }else{
-
-      createSummary();
-
-      showSection("result");
-
-    }
-  }
-
-
-  function createSummary(){
-
-    let html = `
-      <strong>نوع المشروع:</strong> ${project.type}
-    `;
-
-    Object.entries(project.answers).forEach(([key,value])=>{
-
-      if(key === "dimensions"){
-
-        html += `
-          <div>
-            <strong>القياسات:</strong>
-            ${value.length || "-"} ×
-            ${value.width || "-"} ×
-            ${value.height || "-"} سم
-          </div>
-        `;
-
-      }else{
-
-        html += `
-          <div>
-            <strong>${translateKey(key)}:</strong> ${value}
-          </div>
-        `;
-
-      }
-
-    });
-
-    html += `
-      <div>
-        <strong>التقدير الأولي:</strong>
-        غادي يتحدد الثمن النهائي من بعد ما نشوفو القياسات والصور والتفاصيل.
-      </div>
-    `;
-
-    document.getElementById("summary").innerHTML = html;
-  }
-
-
-  function translateKey(key){
-
-    const names = {
-      shape:"الشكل",
-      budget:"البيدجي",
-      wood:"نوع الخشب",
-      counter:"السطح",
-      upper:"الخزانات الفوقانية",
-      island:"الجزيرة",
-      style:"الستايل",
-      material:"المادة",
-      led:"LED",
-      storage:"التخزين",
-      type:"النوع",
-      color:"اللون",
-      doors:"البيبان"
-    };
-
-    return names[key] || key;
-  }
-
-
-  function sendWhatsApp(){
-
-    let text =
-      "سلام، بغيت نطلب تصميم من صمم ديكورك 🇲🇦%0A%0A";
-
-    text +=
-      "نوع المشروع: " + project.type + "%0A";
-
-    Object.entries(project.answers).forEach(([key,value])=>{
-
-      if(key === "dimensions"){
-
-        text +=
-          "القياسات: " +
-          (value.length || "-") + " × " +
-          (value.width || "-") + " × " +
-          (value.height || "-") +
-          " سم%0A";
-
-      }else{
-
-        text +=
-          translateKey(key) + ": " +
-          value + "%0A";
-
-      }
-
-    });
-
-    const url =
-      "https://wa.me/" + WHATSAPP + "?text=" + text;
-
-    window.open(url,"_blank");
-  }
-
-
-  function saveAccount(){
-
-    const name =
-      document.getElementById("userName").value.trim();
-
-    const phone =
-      document.getElementById("userPhone").value.trim();
-
-    if(!name || !phone){
-
-      alert("دخل الاسم ورقم الهاتف من فضلك.");
-
-      return;
-    }
-
-    localStorage.setItem(
-      "samemdecork_user",
-      JSON.stringify({name,phone})
-    );
-
-    const box =
-      document.getElementById("accountMessage");
-
-    box.classList.remove("hidden");
-
-    box.innerHTML =
-      "مرحبا " + name +
-      " 👋 تم حفظ المعلومات ديالك فهاد الجهاز. التسجيل الحقيقي بحساب وكلمة السر غادي نربطوه من بعد بقاعدة البيانات.";
-  }
-
-
-  function loadAccount(){
-
-    const saved =
-      localStorage.getItem("samemdecork_user");
-
-    if(!saved) return;
-
-    const user = JSON.parse(saved);
-
-    document.getElementById("userName").value =
-      user.name || "";
-
-    document.getElementById("userPhone").value =
-      user.phone || "";
-  }
-
-
-  function escapeQuotes(text){
-
-    return text
-      .replace(/'/g,"&#39;")
-      .replace(/"/g,"&quot;");
-  }
-
-
-  loadAccount();
-
+let currentSection='', step=0, answers={};
+const steps=['الشكل','البيدجي','المواد','الصورة'];
+function openWizard(name){ currentSection=name; step=0; answers={}; document.getElementById('wizard').classList.add('show'); renderStep(); }
+function closeWizard(){document.getElementById('wizard').classList.remove('show')}
+function renderStep(){
+  document.getElementById('step').textContent=`المرحلة ${step+1} من ${steps.length} • ${steps[step]}`;
+  document.getElementById('wTitle').textContent=currentSection;
+  const body=document.getElementById('wBody');
+  document.getElementById('back').style.visibility=step?'visible':'hidden';
+  document.getElementById('next').textContent=step===3?'صيفط الطلب':'التالي';
+  if(step===0) body.innerHTML=`<p class="question">شنو الشكل اللي بغيتي؟</p><div class="choice-grid">${['L','U','مستقيم','جزيرة'].map(x=>`<button class="choice" onclick="pick(this,'shape','${x}')"><b>${x}</b><small>اختيار مناسب للمساحة</small></button>`).join('')}</div>`;
+  if(step===1) body.innerHTML=`<p class="question">شحال ناوي تصرف تقريباً؟</p><div class="choice-grid">${['أقل من 8,000 DH','8,000 – 15,000 DH','15,000 – 25,000 DH','أكثر من 25,000 DH'].map(x=>`<button class="choice" onclick="pick(this,'budget','${x}')">${x}</button>`).join('')}</div>`;
+  if(step===2) body.innerHTML=`<p class="question">شنو المواد اللي كتعجبك؟</p><div class="choice-grid">${['MDF / ميلامين','خشب طبيعي','رخام / Quartz','زاج'].map(x=>`<button class="choice" onclick="pick(this,'material','${x}')">${x}</button>`).join('')}</div>`;
+  if(step===3) body.innerHTML=`<p class="question">صيفط لينا صورة البلاصة باش نشوفوها مزيان.</p><label class="upload"><input id="roomPhoto" type="file" accept="image/*" onchange="preview(event)"><span>📷 اختار صورة من التليفون</span></label><div id="preview"></div><textarea id="note" placeholder="إلى بغيتي، كتب لينا القياسات أو أي ملاحظة..."></textarea>`;
+}
+function pick(el,key,val){document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');answers[key]=val}
+function preview(e){const f=e.target.files[0];if(!f)return;answers.photo=f.name;document.getElementById('preview').innerHTML=`<img src="${URL.createObjectURL(f)}">`}
+function nextStep(){if(step<3){step++;renderStep();return} const note=document.getElementById('note')?.value||''; const text=`سلام، بغيت نطلب تصميم ${currentSection}. الشكل: ${answers.shape||'-'} | البيدجي: ${answers.budget||'-'} | المواد: ${answers.material||'-'} | الصورة: ${answers.photo||'غادي نصيفطها من بعد'} | ملاحظة: ${note}`; window.open('https://wa.me/212754350706?text='+encodeURIComponent(text),'_blank'); closeWizard()}
+function prevStep(){if(step>0){step--;renderStep()}}
+function saveAccount(e){e.preventDefault();localStorage.setItem('sdUser',JSON.stringify({name:name.value,phone:phone.value}));accountMsg.innerHTML='<span class="ok">✓ تسجل الحساب فهاد الجهاز.</span>'}
 </script>
-
 </body>
 </html>

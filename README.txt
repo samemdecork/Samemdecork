@@ -1,9 +1,7 @@
-# صمم ديكورك — النسخة النهائية
-
-- `index.html` = الصفحة الرئيسية بدون معرض الأعمال.
-- `works.html` = صفحة مستقلة فيها جميع صور الأعمال.
-- `images/hero/` = الصور المختارة للواجهة الرئيسية فقط.
-- `images/works/` = صور الأعمال.
-- اسم صاحب الأعمال: chtaibi hamza.
-
-مهم: ارفع المجلد كاملًا بما فيه مجلد `images` وملفي `index.html` و`works.html`.
+هذه النسخة SELF-CONTAINED.
+الصور مدموجة داخل index.html و works.html، يعني ما كاين حتى مجلد images خاصك ترفعو.
+ارفع غير:
+- index.html
+- works.html
+- README.txt
+إلى نفس المكان في GitHub Pages.

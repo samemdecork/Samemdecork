@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="أعمال صمم ديكورك — مطابخ، خزائن وDressing وأعمال ديكور من تنفيذ chtaibi hamza.">
+<title>أعمالنا — صمم ديكورك</title>
+<style>
+:root{--ink:#263126;--green:#344c35;--sand:#e9dfcf;--cream:#fbf8f1;--gold:#b18a54;--line:#d9cfbf}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+.page{max-width:1200px;margin:auto;padding:16px}header{height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px}.mark{width:46px;height:46px;border:2px solid var(--ink);border-radius:14px;background:#fff;position:relative;overflow:hidden}.mark:before{content:"";position:absolute;inset:0 48% 0 0;background:var(--ink);clip-path:polygon(0 0,100% 12%,82% 100%,0 88%)}.mark:after{content:"✎";position:absolute;left:8px;top:8px;color:white;font-size:21px}.brand b{font-size:21px}.brand small{display:block;color:#766e63;margin-top:2px}
+.headerBtn{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px;color:var(--ink);text-decoration:none}
+.top{background:#e7ddce;border:1px solid var(--line);border-radius:26px;padding:28px 30px;margin-top:8px}.top h1{margin:0 0 8px;font-size:32px}.top p{color:#696157;line-height:1.9;margin:0}
+.search{margin:18px auto;max-width:800px;background:#fff;border:1px solid var(--line);border-radius:19px;padding:14px 19px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 25px #34271a15}.search input{border:0;outline:0;width:100%;background:transparent}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filter{border:1px solid var(--line);background:#fff;border-radius:13px;padding:9px 14px;cursor:pointer}.filter.active{background:var(--green);color:#fff}
+.sectionTitle{display:flex;align-items:end;justify-content:space-between;margin:22px 0 15px}.sectionTitle h2{margin:0;font-size:25px}.muted{color:#766e63;font-size:13px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.work{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:.2s}.work:hover{transform:translateY(-3px);box-shadow:0 12px 25px #34271a16}.work img{width:100%;aspect-ratio:1.08/1;object-fit:cover;display:block;background:#eee}.workInfo{padding:11px 13px}.workInfo b{font-size:14px}.workInfo span{display:block;margin-top:4px}
+.nav{position:sticky;bottom:10px;margin:25px auto 0;max-width:760px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px;display:flex;justify-content:space-around;box-shadow:0 12px 28px #34271a18}.nav a{color:var(--ink);text-decoration:none;padding:10px 14px;border-radius:13px;text-align:center;font-size:12px}.nav a.active{background:var(--green);color:white}
+.lightbox{position:fixed;inset:0;background:#111c;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.lightbox.show{display:flex}.lightbox img{max-width:min(1100px,96vw);max-height:88vh;border-radius:18px}.close{position:fixed;top:18px;left:18px;border:0;background:#fff;color:#222;border-radius:50%;width:42px;height:42px;font-size:23px;cursor:pointer}
+footer{margin:42px 0 14px;text-align:center;color:#81786c;font-size:13px}
+@media(max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}.page{padding:11px}.top{padding:23px 18px}}
+@media(max-width:480px){.gallery{gap:9px}.work{border-radius:15px}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<a class="headerBtn" href="index.html">الرئيسية</a>
+<div class="brand"><div class="mark"></div><div><b>صمم ديكورك</b><small>أعمال chtaibi hamza</small></div></div>
+<a class="headerBtn" href="index.html#types">صمّم</a>
+</header>
+<section class="top">
+<h1>أعمالنا</h1>
+<p>هنا جمعنا الأعمال اللي صايبنا فعلياً. اختار النوع اللي بغيتي وشوف الصور كاملة، ويمكنك الضغط على أي صورة باش تكبرها.</p>
+</section>
+<div class="search">⌕ <input id="search" placeholder="قلب فالأعمال..." oninput="renderWorks()"></div>
+<div class="filters">
+<button class="filter active" onclick="setFilter('all',this)">الكل</button>
+<button class="filter" onclick="setFilter('kitchen',this)">مطابخ</button>
+<button class="filter" onclick="setFilter('wardrobe',this)">خزائن و Dressing</button>
+<button class="filter" onclick="setFilter('other',this)">أعمال أخرى</button>
+</div>
+<div class="sectionTitle"><h2>معرض الأعمال</h2><span class="muted" id="count"></span></div>
+<div class="gallery" id="gallery"><article class="work" data-cat="kitchen" data-name="مطبخ عمل 001" onclick="openLightbox('images/works/work-001.webp')"><img src="images/works/work-001.webp" alt="مطبخ — عمل 001" loading="lazy"><div class="workInfo"><b>عمل 001</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 002" onclick="openLightbox('images/works/work-002.webp')"><img src="images/works/work-002.webp" alt="مطبخ — عمل 002" loading="lazy"><div class="workInfo"><b>عمل 002</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 003" onclick="openLightbox('images/works/work-003.webp')"><img src="images/works/work-003.webp" alt="مطبخ — عمل 003" loading="lazy"><div class="workInfo"><b>عمل 003</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 004" onclick="openLightbox('images/works/work-004.webp')"><img src="images/works/work-004.webp" alt="مطبخ — عمل 004" loading="lazy"><div class="workInfo"><b>عمل 004</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 005" onclick="openLightbox('images/works/work-005.webp')"><img src="images/works/work-005.webp" alt="مطبخ — عمل 005" loading="lazy"><div class="workInfo"><b>عمل 005</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 006" onclick="openLightbox('images/works/work-006.webp')"><img src="images/works/work-006.webp" alt="مطبخ — عمل 006" loading="lazy"><div class="workInfo"><b>عمل 006</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 007" onclick="openLightbox('images/works/work-007.webp')"><img src="images/works/work-007.webp" alt="مطبخ — عمل 007" loading="lazy"><div class="workInfo"><b>عمل 007</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 008" onclick="openLightbox('images/works/work-008.webp')"><img src="images/works/work-008.webp" alt="مطبخ — عمل 008" loading="lazy"><div class="workInfo"><b>عمل 008</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 009" onclick="openLightbox('images/works/work-009.webp')"><img src="images/works/work-009.webp" alt="مطبخ — عمل 009" loading="lazy"><div class="workInfo"><b>عمل 009</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 010" onclick="openLightbox('images/works/work-010.webp')"><img src="images/works/work-010.webp" alt="مطبخ — عمل 010" loading="lazy"><div class="workInfo"><b>عمل 010</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 011" onclick="openLightbox('images/works/work-011.webp')"><img src="images/works/work-011.webp" alt="مطبخ — عمل 011" loading="lazy"><div class="workInfo"><b>عمل 011</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 012" onclick="openLightbox('images/works/work-012.webp')"><img src="images/works/work-012.webp" alt="مطبخ — عمل 012" loading="lazy"><div class="workInfo"><b>عمل 012</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 013" onclick="openLightbox('images/works/work-013.webp')"><img src="images/works/work-013.webp" alt="مطبخ — عمل 013" loading="lazy"><div class="workInfo"><b>عمل 013</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 014" onclick="openLightbox('images/works/work-014.webp')"><img src="images/works/work-014.webp" alt="مطبخ — عمل 014" loading="lazy"><div class="workInfo"><b>عمل 014</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 015" onclick="openLightbox('images/works/work-015.webp')"><img src="images/works/work-015.webp" alt="مطبخ — عمل 015" loading="lazy"><div class="workInfo"><b>عمل 015</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 016" onclick="openLightbox('images/works/work-016.webp')"><img src="images/works/work-016.webp" alt="مطبخ — عمل 016" loading="lazy"><div class="workInfo"><b>عمل 016</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 017" onclick="openLightbox('images/works/work-017.webp')"><img src="images/works/work-017.webp" alt="مطبخ — عمل 017" loading="lazy"><div class="workInfo"><b>عمل 017</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 018" onclick="openLightbox('images/works/work-018.webp')"><img src="images/works/work-018.webp" alt="مطبخ — عمل 018" loading="lazy"><div class="workInfo"><b>عمل 018</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 019" onclick="openLightbox('images/works/work-019.webp')"><img src="images/works/work-019.webp" alt="مطبخ — عمل 019" loading="lazy"><div class="workInfo"><b>عمل 019</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 020" onclick="openLightbox('images/works/work-020.webp')"><img src="images/works/work-020.webp" alt="مطبخ — عمل 020" loading="lazy"><div class="workInfo"><b>عمل 020</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 021" onclick="openLightbox('images/works/work-021.webp')"><img src="images/works/work-021.webp" alt="مطبخ — عمل 021" loading="lazy"><div class="workInfo"><b>عمل 021</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 022" onclick="openLightbox('images/works/work-022.webp')"><img src="images/works/work-022.webp" alt="مطبخ — عمل 022" loading="lazy"><div class="workInfo"><b>عمل 022</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 023" onclick="openLightbox('images/works/work-023.webp')"><img src="images/works/work-023.webp" alt="مطبخ — عمل 023" loading="lazy"><div class="workInfo"><b>عمل 023</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 024" onclick="openLightbox('images/works/work-024.webp')"><img src="images/works/work-024.webp" alt="مطبخ — عمل 024" loading="lazy"><div class="workInfo"><b>عمل 024</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 025" onclick="openLightbox('images/works/work-025.webp')"><img src="images/works/work-025.webp" alt="مطبخ — عمل 025" loading="lazy"><div class="workInfo"><b>عمل 025</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 026" onclick="openLightbox('images/works/work-026.webp')"><img src="images/works/work-026.webp" alt="مطبخ — عمل 026" loading="lazy"><div class="workInfo"><b>عمل 026</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 027" onclick="openLightbox('images/works/work-027.webp')"><img src="images/works/work-027.webp" alt="مطبخ — عمل 027" loading="lazy"><div class="workInfo"><b>عمل 027</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 028" onclick="openLightbox('images/works/work-028.webp')"><img src="images/works/work-028.webp" alt="مطبخ — عمل 028" loading="lazy"><div class="workInfo"><b>عمل 028</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 029" onclick="openLightbox('images/works/work-029.webp')"><img src="images/works/work-029.webp" alt="مطبخ — عمل 029" loading="lazy"><div class="workInfo"><b>عمل 029</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 030" onclick="openLightbox('images/works/work-030.webp')"><img src="images/works/work-030.webp" alt="مطبخ — عمل 030" loading="lazy"><div class="workInfo"><b>عمل 030</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 031" onclick="openLightbox('images/works/work-031.webp')"><img src="images/works/work-031.webp" alt="مطبخ — عمل 031" loading="lazy"><div class="workInfo"><b>عمل 031</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 032" onclick="openLightbox('images/works/work-032.webp')"><img src="images/works/work-032.webp" alt="مطبخ — عمل 032" loading="lazy"><div class="workInfo"><b>عمل 032</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 033" onclick="openLightbox('images/works/work-033.webp')"><img src="images/works/work-033.webp" alt="مطبخ — عمل 033" loading="lazy"><div class="workInfo"><b>عمل 033</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 034" onclick="openLightbox('images/works/work-034.webp')"><img src="images/works/work-034.webp" alt="مطبخ — عمل 034" loading="lazy"><div class="workInfo"><b>عمل 034</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 035" onclick="openLightbox('images/works/work-035.webp')"><img src="images/works/work-035.webp" alt="مطبخ — عمل 035" loading="lazy"><div class="workInfo"><b>عمل 035</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 036" onclick="openLightbox('images/works/work-036.webp')"><img src="images/works/work-036.webp" alt="مطبخ — عمل 036" loading="lazy"><div class="workInfo"><b>عمل 036</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 037" onclick="openLightbox('images/works/work-037.webp')"><img src="images/works/work-037.webp" alt="مطبخ — عمل 037" loading="lazy"><div class="workInfo"><b>عمل 037</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 038" onclick="openLightbox('images/works/work-038.webp')"><img src="images/works/work-038.webp" alt="مطبخ — عمل 038" loading="lazy"><div class="workInfo"><b>عمل 038</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 039" onclick="openLightbox('images/works/work-039.webp')"><img src="images/works/work-039.webp" alt="مطبخ — عمل 039" loading="lazy"><div class="workInfo"><b>عمل 039</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 040" onclick="openLightbox('images/works/work-040.webp')"><img src="images/works/work-040.webp" alt="مطبخ — عمل 040" loading="lazy"><div class="workInfo"><b>عمل 040</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 041" onclick="openLightbox('images/works/work-041.webp')"><img src="images/works/work-041.webp" alt="مطبخ — عمل 041" loading="lazy"><div class="workInfo"><b>عمل 041</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 042" onclick="openLightbox('images/works/work-042.webp')"><img src="images/works/work-042.webp" alt="مطبخ — عمل 042" loading="lazy"><div class="workInfo"><b>عمل 042</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 043" onclick="openLightbox('images/works/work-043.webp')"><img src="images/works/work-043.webp" alt="خزانة / Dressing — عمل 043" loading="lazy"><div class="workInfo"><b>عمل 043</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 044" onclick="openLightbox('images/works/work-044.webp')"><img src="images/works/work-044.webp" alt="خزانة / Dressing — عمل 044" loading="lazy"><div class="workInfo"><b>عمل 044</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 045" onclick="openLightbox('images/works/work-045.webp')"><img src="images/works/work-045.webp" alt="خزانة / Dressing — عمل 045" loading="lazy"><div class="workInfo"><b>عمل 045</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 046" onclick="openLightbox('images/works/work-046.webp')"><img src="images/works/work-046.webp" alt="خزانة / Dressing — عمل 046" loading="lazy"><div class="workInfo"><b>عمل 046</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 047" onclick="openLightbox('images/works/work-047.webp')"><img src="images/works/work-047.webp" alt="خزانة / Dressing — عمل 047" loading="lazy"><div class="workInfo"><b>عمل 047</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 048" onclick="openLightbox('images/works/work-048.webp')"><img src="images/works/work-048.webp" alt="خزانة / Dressing — عمل 048" loading="lazy"><div class="workInfo"><b>عمل 048</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 049" onclick="openLightbox('images/works/work-049.webp')"><img src="images/works/work-049.webp" alt="خزانة / Dressing — عمل 049" loading="lazy"><div class="workInfo"><b>عمل 049</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 050" onclick="openLightbox('images/works/work-050.webp')"><img src="images/works/work-050.webp" alt="خزانة / Dressing — عمل 050" loading="lazy"><div class="workInfo"><b>عمل 050</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 051" onclick="openLightbox('images/works/work-051.webp')"><img src="images/works/work-051.webp" alt="خزانة / Dressing — عمل 051" loading="lazy"><div class="workInfo"><b>عمل 051</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 052" onclick="openLightbox('images/works/work-052.webp')"><img src="images/works/work-052.webp" alt="خزانة / Dressing — عمل 052" loading="lazy"><div class="workInfo"><b>عمل 052</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 053" onclick="openLightbox('images/works/work-053.webp')"><img src="images/works/work-053.webp" alt="خزانة / Dressing — عمل 053" loading="lazy"><div class="workInfo"><b>عمل 053</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="wardrobe" data-name="خزانة / Dressing عمل 054" onclick="openLightbox('images/works/work-054.webp')"><img src="images/works/work-054.webp" alt="خزانة / Dressing — عمل 054" loading="lazy"><div class="workInfo"><b>عمل 054</b><span class="muted">خزانة / Dressing</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 055" onclick="openLightbox('images/works/work-055.webp')"><img src="images/works/work-055.webp" alt="مطبخ — عمل 055" loading="lazy"><div class="workInfo"><b>عمل 055</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 056" onclick="openLightbox('images/works/work-056.webp')"><img src="images/works/work-056.webp" alt="مطبخ — عمل 056" loading="lazy"><div class="workInfo"><b>عمل 056</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 057" onclick="openLightbox('images/works/work-057.webp')"><img src="images/works/work-057.webp" alt="مطبخ — عمل 057" loading="lazy"><div class="workInfo"><b>عمل 057</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 058" onclick="openLightbox('images/works/work-058.webp')"><img src="images/works/work-058.webp" alt="مطبخ — عمل 058" loading="lazy"><div class="workInfo"><b>عمل 058</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 059" onclick="openLightbox('images/works/work-059.webp')"><img src="images/works/work-059.webp" alt="مطبخ — عمل 059" loading="lazy"><div class="workInfo"><b>عمل 059</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 060" onclick="openLightbox('images/works/work-060.webp')"><img src="images/works/work-060.webp" alt="مطبخ — عمل 060" loading="lazy"><div class="workInfo"><b>عمل 060</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 061" onclick="openLightbox('images/works/work-061.webp')"><img src="images/works/work-061.webp" alt="مطبخ — عمل 061" loading="lazy"><div class="workInfo"><b>عمل 061</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 062" onclick="openLightbox('images/works/work-062.webp')"><img src="images/works/work-062.webp" alt="مطبخ — عمل 062" loading="lazy"><div class="workInfo"><b>عمل 062</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 063" onclick="openLightbox('images/works/work-063.webp')"><img src="images/works/work-063.webp" alt="مطبخ — عمل 063" loading="lazy"><div class="workInfo"><b>عمل 063</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 064" onclick="openLightbox('images/works/work-064.webp')"><img src="images/works/work-064.webp" alt="مطبخ — عمل 064" loading="lazy"><div class="workInfo"><b>عمل 064</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 065" onclick="openLightbox('images/works/work-065.webp')"><img src="images/works/work-065.webp" alt="مطبخ — عمل 065" loading="lazy"><div class="workInfo"><b>عمل 065</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 066" onclick="openLightbox('images/works/work-066.webp')"><img src="images/works/work-066.webp" alt="مطبخ — عمل 066" loading="lazy"><div class="workInfo"><b>عمل 066</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 067" onclick="openLightbox('images/works/work-067.webp')"><img src="images/works/work-067.webp" alt="مطبخ — عمل 067" loading="lazy"><div class="workInfo"><b>عمل 067</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 068" onclick="openLightbox('images/works/work-068.webp')"><img src="images/works/work-068.webp" alt="مطبخ — عمل 068" loading="lazy"><div class="workInfo"><b>عمل 068</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 069" onclick="openLightbox('images/works/work-069.webp')"><img src="images/works/work-069.webp" alt="مطبخ — عمل 069" loading="lazy"><div class="workInfo"><b>عمل 069</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 070" onclick="openLightbox('images/works/work-070.webp')"><img src="images/works/work-070.webp" alt="مطبخ — عمل 070" loading="lazy"><div class="workInfo"><b>عمل 070</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 071" onclick="openLightbox('images/works/work-071.webp')"><img src="images/works/work-071.webp" alt="مطبخ — عمل 071" loading="lazy"><div class="workInfo"><b>عمل 071</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 072" onclick="openLightbox('images/works/work-072.webp')"><img src="images/works/work-072.webp" alt="مطبخ — عمل 072" loading="lazy"><div class="workInfo"><b>عمل 072</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 073" onclick="openLightbox('images/works/work-073.webp')"><img src="images/works/work-073.webp" alt="ديكور وأعمال أخرى — عمل 073" loading="lazy"><div class="workInfo"><b>عمل 073</b><span class="muted">ديكور وأعمال أخرى</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 074" onclick="openLightbox('images/works/work-074.webp')"><img src="images/works/work-074.webp" alt="ديكور وأعمال أخرى — عمل 074" loading="lazy"><div class="workInfo"><b>عمل 074</b><span class="muted">ديكور وأعمال أخرى</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 075" onclick="openLightbox('images/works/work-075.webp')"><img src="images/works/work-075.webp" alt="ديكور وأعمال أخرى — عمل 075" loading="lazy"><div class="workInfo"><b>عمل 075</b><span class="muted">ديكور وأعمال أخرى</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 076" onclick="openLightbox('images/works/work-076.webp')"><img src="images/works/work-076.webp" alt="مطبخ — عمل 076" loading="lazy"><div class="workInfo"><b>عمل 076</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 077" onclick="openLightbox('images/works/work-077.webp')"><img src="images/works/work-077.webp" alt="مطبخ — عمل 077" loading="lazy"><div class="workInfo"><b>عمل 077</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 078" onclick="openLightbox('images/works/work-078.webp')"><img src="images/works/work-078.webp" alt="مطبخ — عمل 078" loading="lazy"><div class="workInfo"><b>عمل 078</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 079" onclick="openLightbox('images/works/work-079.webp')"><img src="images/works/work-079.webp" alt="مطبخ — عمل 079" loading="lazy"><div class="workInfo"><b>عمل 079</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 080" onclick="openLightbox('images/works/work-080.webp')"><img src="images/works/work-080.webp" alt="مطبخ — عمل 080" loading="lazy"><div class="workInfo"><b>عمل 080</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 081" onclick="openLightbox('images/works/work-081.webp')"><img src="images/works/work-081.webp" alt="مطبخ — عمل 081" loading="lazy"><div class="workInfo"><b>عمل 081</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 082" onclick="openLightbox('images/works/work-082.webp')"><img src="images/works/work-082.webp" alt="مطبخ — عمل 082" loading="lazy"><div class="workInfo"><b>عمل 082</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 083" onclick="openLightbox('images/works/work-083.webp')"><img src="images/works/work-083.webp" alt="مطبخ — عمل 083" loading="lazy"><div class="workInfo"><b>عمل 083</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 084" onclick="openLightbox('images/works/work-084.webp')"><img src="images/works/work-084.webp" alt="مطبخ — عمل 084" loading="lazy"><div class="workInfo"><b>عمل 084</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 085" onclick="openLightbox('images/works/work-085.webp')"><img src="images/works/work-085.webp" alt="مطبخ — عمل 085" loading="lazy"><div class="workInfo"><b>عمل 085</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 086" onclick="openLightbox('images/works/work-086.webp')"><img src="images/works/work-086.webp" alt="مطبخ — عمل 086" loading="lazy"><div class="workInfo"><b>عمل 086</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 087" onclick="openLightbox('images/works/work-087.webp')"><img src="images/works/work-087.webp" alt="مطبخ — عمل 087" loading="lazy"><div class="workInfo"><b>عمل 087</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 088" onclick="openLightbox('images/works/work-088.webp')"><img src="images/works/work-088.webp" alt="مطبخ — عمل 088" loading="lazy"><div class="workInfo"><b>عمل 088</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 089" onclick="openLightbox('images/works/work-089.webp')"><img src="images/works/work-089.webp" alt="مطبخ — عمل 089" loading="lazy"><div class="workInfo"><b>عمل 089</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="kitchen" data-name="مطبخ عمل 090" onclick="openLightbox('images/works/work-090.webp')"><img src="images/works/work-090.webp" alt="مطبخ — عمل 090" loading="lazy"><div class="workInfo"><b>عمل 090</b><span class="muted">مطبخ</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 091" onclick="openLightbox('images/works/work-091.webp')"><img src="images/works/work-091.webp" alt="ديكور وأعمال أخرى — عمل 091" loading="lazy"><div class="workInfo"><b>عمل 091</b><span class="muted">ديكور وأعمال أخرى</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 092" onclick="openLightbox('images/works/work-092.webp')"><img src="images/works/work-092.webp" alt="ديكور وأعمال أخرى — عمل 092" loading="lazy"><div class="workInfo"><b>عمل 092</b><span class="muted">ديكور وأعمال أخرى</span></div></article>
+<article class="work" data-cat="other" data-name="ديكور وأعمال أخرى عمل 093" onclick="openLightbox('images/works/work-093.webp')"><img src="images/works/work-093.webp" alt="ديكور وأعمال أخرى — عمل 093" loading="lazy"><div class="workInfo"><b>عمل 093</b><span class="muted">ديكور وأعمال أخرى</span></div></article></div>
+<nav class="nav">
+<a href="index.html">⌂<br>الرئيسية</a>
+<a href="works.html" class="active">▣<br>أعمالنا</a>
+<a href="index.html#types">✎<br>صمّم</a>
+<a href="index.html#about">♙<br>حساب</a>
+</nav>
+<footer>صمم ديكورك © 2026 — chtaibi hamza</footer>
+</div>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()"><button class="close" onclick="closeLightbox()">×</button><img id="lightImg" alt=""></div>
+<script>
+let currentFilter='all';
+function setFilter(f,el){currentFilter=f;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderWorks()}
+function renderWorks(){
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ let n=0;
+ document.querySelectorAll('.work').forEach(w=>{
+   const ok=(currentFilter==='all'||w.dataset.cat===currentFilter)&&(!q||w.dataset.name.toLowerCase().includes(q));
+   w.style.display=ok?'block':'none'; if(ok)n++;
+ });
+ document.getElementById('count').textContent=n+' عمل';
+}
+function openLightbox(src){document.getElementById('lightImg').src=src;document.getElementById('lightbox').classList.add('show')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('show')}
+renderWorks();
+</script>
+</body>
+</html>

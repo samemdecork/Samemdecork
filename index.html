@@ -29,7 +29,7 @@ footer{margin:42px 0 14px;text-align:center;color:#81786c;font-size:13px}
 <body>
 <div class="page">
 <header>
-  <button class="headerBtn" onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})">أعمالنا</button>
+  <a class="headerBtn" href="works.html" style="text-decoration:none">أعمالنا</a>
   <div class="brand"><div class="mark"></div><div><b>صمم ديكورك</b><small>من دفتر المهندس → واقع</small></div></div>
   <button class="headerBtn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">عنا</button>
 </header>
@@ -52,8 +52,6 @@ footer{margin:42px 0 14px;text-align:center;color:#81786c;font-size:13px}
   </div>
 </section>
 
-<div class="search">⌕ <input id="search" placeholder="قلب فالأعمال: مطبخ، خزانة، غرفة، موبيل تلفاز..." oninput="filterWorks()"></div>
-
 <section class="section" id="types">
   <div class="sectionTitle"><h2>شنو باغي تصمم؟</h2><span class="muted">اختار النوع اللي مناسب ليك</span></div>
   <div class="trust">
@@ -63,61 +61,23 @@ footer{margin:42px 0 14px;text-align:center;color:#81786c;font-size:13px}
   </div>
 </section>
 
-<section class="section" id="works">
-  <div class="sectionTitle"><h2>أعمالنا</h2><span class="muted" id="count"></span></div>
-  <div class="filters">
-    <button class="filter active" data-filter="all" onclick="setFilter('all',this)">الكل</button>
-    <button class="filter" data-filter="kitchen" onclick="setFilter('kitchen',this)">مطابخ</button>
-    <button class="filter" data-filter="wardrobe" onclick="setFilter('wardrobe',this)">خزائن و Dressing</button>
-    <button class="filter" data-filter="other" onclick="setFilter('other',this)">أعمال أخرى</button>
-  </div>
-  <div class="gallery" id="gallery"></div>
-</section>
 
 <section class="section" id="about">
   <div class="about">
     <div class="name">chtaibi hamza</div>
     <h2>خدمة حقيقية، وتصميم على قياسك</h2>
-    <p>الصور اللي فوق من الأعمال اللي تصايبو فعلياً. الهدف ديال «صمم ديكورك» هو نخلي الزبون يقدر يشوف الفكرة، يحدد القياسات والخامات والميزانية، ومن بعد يتواصل معنا باش يتحول التصميم لخدمة حقيقية.</p>
+    <p>شوف بعض الأعمال الحقيقية ديالنا داخل قسم «أعمالنا»، واختار الفكرة اللي قريبة للذوق ديالك. من بعد نقدروا نخدموها حسب القياسات والخامات والميزانية ديالك.</p>
+    <div style="margin-top:16px">
+      <a class="primary" href="works.html" style="display:inline-block;text-decoration:none">شوف جميع أعمالنا</a>
+    </div>
   </div>
 </section>
 
 <nav class="nav">
-  <a href="#" class="active">⌂<br>الرئيسية</a>
-  <a href="#works">▣<br>أعمالنا</a>
+  <a href="index.html" class="active">⌂<br>الرئيسية</a>
+  <a href="works.html">▣<br>أعمالنا</a>
   <a href="#types">✎<br>صمّم</a>
   <a href="#about">♙<br>حساب</a>
 </nav>
 <footer>صمم ديكورك © 2026 — chtaibi hamza</footer>
 </div>
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox()"><button class="close" onclick="closeLightbox()">×</button><img id="lightImg" alt=""></div>
-
-<script>
-const heroImages = [
-"images/hero/hero-1.webp","images/hero/hero-2.webp","images/hero/hero-3.webp","images/hero/hero-4.webp","images/hero/hero-5.webp","images/hero/hero-6.webp"
-];
-let heroIndex=0;
-const heroImg=document.getElementById('heroImg'), dots=document.getElementById('dots');
-heroImages.forEach((_,i)=>{const b=document.createElement('button');b.className='dot'+(i===0?' active':'');b.onclick=()=>showHero(i);dots.appendChild(b)});
-function showHero(i){heroIndex=i;heroImg.src=heroImages[i];document.querySelectorAll('.dot').forEach((d,n)=>d.classList.toggle('active',n===i))}
-setInterval(()=>showHero((heroIndex+1)%heroImages.length),5000);
-
-const works = [
-{src:"images/works/work-001.webp",name:"عمل 001",cat:"kitchen "},{src:"images/works/work-002.webp",name:"عمل 002",cat:"kitchen "},{src:"images/works/work-003.webp",name:"عمل 003",cat:"kitchen "},{src:"images/works/work-004.webp",name:"عمل 004",cat:"kitchen "},{src:"images/works/work-005.webp",name:"عمل 005",cat:"kitchen "},{src:"images/works/work-006.webp",name:"عمل 006",cat:"kitchen "},{src:"images/works/work-007.webp",name:"عمل 007",cat:"kitchen "},{src:"images/works/work-008.webp",name:"عمل 008",cat:"kitchen "},{src:"images/works/work-009.webp",name:"عمل 009",cat:"kitchen "},{src:"images/works/work-010.webp",name:"عمل 010",cat:"kitchen "},{src:"images/works/work-011.webp",name:"عمل 011",cat:"kitchen "},{src:"images/works/work-012.webp",name:"عمل 012",cat:"kitchen "},{src:"images/works/work-013.webp",name:"عمل 013",cat:"kitchen "},{src:"images/works/work-014.webp",name:"عمل 014",cat:"kitchen "},{src:"images/works/work-015.webp",name:"عمل 015",cat:"kitchen "},{src:"images/works/work-016.webp",name:"عمل 016",cat:"kitchen "},{src:"images/works/work-017.webp",name:"عمل 017",cat:"kitchen "},{src:"images/works/work-018.webp",name:"عمل 018",cat:"kitchen "},{src:"images/works/work-019.webp",name:"عمل 019",cat:"kitchen "},{src:"images/works/work-020.webp",name:"عمل 020",cat:"kitchen "},{src:"images/works/work-021.webp",name:"عمل 021",cat:"kitchen "},{src:"images/works/work-022.webp",name:"عمل 022",cat:"kitchen "},{src:"images/works/work-023.webp",name:"عمل 023",cat:"kitchen "},{src:"images/works/work-024.webp",name:"عمل 024",cat:"kitchen "},{src:"images/works/work-025.webp",name:"عمل 025",cat:"kitchen "},{src:"images/works/work-026.webp",name:"عمل 026",cat:"kitchen "},{src:"images/works/work-027.webp",name:"عمل 027",cat:"kitchen "},{src:"images/works/work-028.webp",name:"عمل 028",cat:"kitchen "},{src:"images/works/work-029.webp",name:"عمل 029",cat:"kitchen "},{src:"images/works/work-030.webp",name:"عمل 030",cat:"kitchen "},{src:"images/works/work-031.webp",name:"عمل 031",cat:"kitchen "},{src:"images/works/work-032.webp",name:"عمل 032",cat:"kitchen "},{src:"images/works/work-033.webp",name:"عمل 033",cat:"kitchen "},{src:"images/works/work-034.webp",name:"عمل 034",cat:"kitchen "},{src:"images/works/work-035.webp",name:"عمل 035",cat:"kitchen "},{src:"images/works/work-036.webp",name:"عمل 036",cat:"kitchen "},{src:"images/works/work-037.webp",name:"عمل 037",cat:"kitchen "},{src:"images/works/work-038.webp",name:"عمل 038",cat:"kitchen "},{src:"images/works/work-039.webp",name:"عمل 039",cat:"kitchen "},{src:"images/works/work-040.webp",name:"عمل 040",cat:"kitchen "},{src:"images/works/work-041.webp",name:"عمل 041",cat:"kitchen "},{src:"images/works/work-042.webp",name:"عمل 042",cat:"kitchen "},{src:"images/works/work-043.webp",name:"عمل 043",cat:"wardrobe "},{src:"images/works/work-044.webp",name:"عمل 044",cat:"wardrobe "},{src:"images/works/work-045.webp",name:"عمل 045",cat:"wardrobe "},{src:"images/works/work-046.webp",name:"عمل 046",cat:"wardrobe "},{src:"images/works/work-047.webp",name:"عمل 047",cat:"wardrobe "},{src:"images/works/work-048.webp",name:"عمل 048",cat:"wardrobe "},{src:"images/works/work-049.webp",name:"عمل 049",cat:"wardrobe "},{src:"images/works/work-050.webp",name:"عمل 050",cat:"wardrobe "},{src:"images/works/work-051.webp",name:"عمل 051",cat:"wardrobe "},{src:"images/works/work-052.webp",name:"عمل 052",cat:"wardrobe "},{src:"images/works/work-053.webp",name:"عمل 053",cat:"wardrobe "},{src:"images/works/work-054.webp",name:"عمل 054",cat:"wardrobe "},{src:"images/works/work-055.webp",name:"عمل 055",cat:"kitchen "},{src:"images/works/work-056.webp",name:"عمل 056",cat:"kitchen "},{src:"images/works/work-057.webp",name:"عمل 057",cat:"kitchen "},{src:"images/works/work-058.webp",name:"عمل 058",cat:"kitchen "},{src:"images/works/work-059.webp",name:"عمل 059",cat:"kitchen "},{src:"images/works/work-060.webp",name:"عمل 060",cat:"kitchen "},{src:"images/works/work-061.webp",name:"عمل 061",cat:"kitchen "},{src:"images/works/work-062.webp",name:"عمل 062",cat:"kitchen "},{src:"images/works/work-063.webp",name:"عمل 063",cat:"kitchen "},{src:"images/works/work-064.webp",name:"عمل 064",cat:"kitchen "},{src:"images/works/work-065.webp",name:"عمل 065",cat:"kitchen "},{src:"images/works/work-066.webp",name:"عمل 066",cat:"kitchen "},{src:"images/works/work-067.webp",name:"عمل 067",cat:"kitchen "},{src:"images/works/work-068.webp",name:"عمل 068",cat:"kitchen "},{src:"images/works/work-069.webp",name:"عمل 069",cat:"kitchen "},{src:"images/works/work-070.webp",name:"عمل 070",cat:"kitchen "},{src:"images/works/work-071.webp",name:"عمل 071",cat:"kitchen "},{src:"images/works/work-072.webp",name:"عمل 072",cat:"kitchen "},{src:"images/works/work-073.webp",name:"عمل 073",cat:"other "},{src:"images/works/work-074.webp",name:"عمل 074",cat:"other "},{src:"images/works/work-075.webp",name:"عمل 075",cat:"other "},{src:"images/works/work-076.webp",name:"عمل 076",cat:"kitchen "},{src:"images/works/work-077.webp",name:"عمل 077",cat:"kitchen "},{src:"images/works/work-078.webp",name:"عمل 078",cat:"kitchen "},{src:"images/works/work-079.webp",name:"عمل 079",cat:"kitchen "},{src:"images/works/work-080.webp",name:"عمل 080",cat:"kitchen "},{src:"images/works/work-081.webp",name:"عمل 081",cat:"kitchen "},{src:"images/works/work-082.webp",name:"عمل 082",cat:"kitchen "},{src:"images/works/work-083.webp",name:"عمل 083",cat:"kitchen "},{src:"images/works/work-084.webp",name:"عمل 084",cat:"kitchen "},{src:"images/works/work-085.webp",name:"عمل 085",cat:"kitchen "},{src:"images/works/work-086.webp",name:"عمل 086",cat:"kitchen "},{src:"images/works/work-087.webp",name:"عمل 087",cat:"kitchen "},{src:"images/works/work-088.webp",name:"عمل 088",cat:"kitchen "},{src:"images/works/work-089.webp",name:"عمل 089",cat:"kitchen "},{src:"images/works/work-090.webp",name:"عمل 090",cat:"kitchen "},{src:"images/works/work-091.webp",name:"عمل 091",cat:"other "},{src:"images/works/work-092.webp",name:"عمل 092",cat:"other "},{src:"images/works/work-093.webp",name:"عمل 093",cat:"other "}
-];
-let currentFilter='all';
-function renderWorks(){
-  const q=document.getElementById('search').value.trim().toLowerCase();
-  const list=works.filter(w=>(currentFilter==='all'||w.cat.trim()===currentFilter)&&(!q||w.name.toLowerCase().includes(q)));
-  document.getElementById('count').textContent=list.length+' عمل';
-  document.getElementById('gallery').innerHTML=list.map((w,i)=>`<article class="work" onclick="openLightbox('${w.src}')"><img src="${w.src}" alt="${w.name}" loading="lazy"><div class="workInfo"><b>${w.name}</b><span class="muted">${w.cat.trim()==='kitchen'?'مطبخ':w.cat.trim()==='wardrobe'?'خزانة / Dressing':'ديكور وأعمال أخرى'}</span></div></article>`).join('');
-}
-function setFilter(f,el){currentFilter=f;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderWorks()}
-function filterWorks(){renderWorks()}
-function openLightbox(src){document.getElementById('lightImg').src=src;document.getElementById('lightbox').classList.add('show')}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('show')}
-renderWorks();
-</script>
-</body>
-</html>

@@ -1,0 +1,31 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#9b4f3f"><title>التصميم | صمم ديكورك</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="wrap nav"><a class="logo" href="index.html">صمم ديكورك<small>DESIGN YOUR DECOR</small></a><nav class="menu"><a href="index.html">الرئيسية</a><a href="works.html">أعمالنا</a><a href="tapis.html">الطابيسي</a><a href="accessories.html">الإكسسوارات</a><a class="cta" href="ai-design.html">🤖 صمّم الآن</a></nav></div></header>
+<main class="wrap"><section class="section"><div class="title"><h1>صمّم ديكورك خطوة بخطوة</h1><p>اختيار القسم → الشكل → القياسات → الخامة → الميزانية → الملخص</p></div>
+<div class="form">
+<div id="steps"></div>
+<div id="wizard"></div>
+<div class="buttons" style="margin-top:18px"><button class="btn primary" id="next">التالي ←</button><button class="btn" id="back" style="background:#f1e7df">رجوع</button></div>
+</div>
+<div class="notice">الثمن التقريبي قبل أخذ القياس الحقيقي داخل المشروع، ولا يشمل الإكسسوارات الثقيلة مثل الشبكة. يمكن تغيير الاختيارات حسب الميزانية.</div></section>
+<script>
+const q=new URLSearchParams(location.search), preset=q.get("type");
+const rooms={kitchen:["🍳","المطبخ",["L","U","مستقيم","جزيرة"]],bedroom:["🛏️","غرفة النوم",["سرير + بلاكار","بلاكـار كامل","سرير + تسريحة","مخصص"]],tv:["📺","موبيل التلفاز",["موبيل كامل","معلق","فاصل","مخصص"]],wardrobe:["🚪","Dressing",["أبواب عادية","أبواب زجاج","Dressing كامل","مخصص"]],salon:["🛋️","الصالون",["مكتبة تلفاز","جلسة كاملة","فاصل ديكوري","مخصص"]]};
+let data={room:preset||"",shape:"",width:"",depth:"",height:"",material:"MDF",style:"مودرن",color:"أبيض دافئ",budget:"",accessories:"أساسية",photo:""};
+let step=1;
+function render(){let h="";
+if(step===1){h='<h2>1. اختار القسم</h2><p class="muted">اختار المجال اللي بغيتي تصمم.</p><div class="grid">';for(const [k,v] of Object.entries(rooms))h+=`<div class="card ${data.room===k?'selected':''}" onclick="data.room='${k}';render()"><div class="icon">${v[0]}</div><h3>${v[1]}</h3></div>`;h+="</div>";}
+if(step===2){let r=rooms[data.room]||rooms.kitchen;h=`<h2>2. اختار الشكل</h2><div class="grid">`;r[2].forEach(x=>h+=`<div class="card ${data.shape===x?'selected':''}" onclick="data.shape='${x}';render()"><h3>${x}</h3></div>`);h+="</div>";}
+if(step===3){h=`<h2>3. القياسات</h2><p class="muted">تقدر تدخل قياسات تقريبية دابا وتأكدها من بعد.</p><div class="fields"><div class="field"><label>العرض (سم)</label><input id="width" type="number" value="${data.width}"></div><div class="field"><label>الطول / العمق (سم)</label><input id="depth" type="number" value="${data.depth}"></div><div class="field"><label>الارتفاع (سم)</label><input id="height" type="number" value="${data.height}"></div><div class="field"><label>صورة المكان</label><input id="photo" type="file" accept="image/*"></div></div>`;}
+if(step===4){h=`<h2>4. الخامة والستايل والميزانية</h2><div class="fields"><div class="field"><label>الخامة</label><select id="material"><option>MDF</option><option>MDF laqué</option><option>خشب طبيعي</option><option>ميلامين</option></select></div><div class="field"><label>الستايل</label><select id="style"><option>مودرن</option><option>مودرن دافئ</option><option>مينيمال</option><option>كلاسيك راقي</option><option>مغربي عصري</option></select></div><div class="field"><label>اللون</label><select id="color"><option>أبيض دافئ</option><option>أحمر ترابي</option><option>بني خشبي</option><option>كابوتشينو</option><option>أخضر زيتوني</option><option>أسود مع خشب</option></select></div><div class="field"><label>الميزانية التقريبية (درهم)</label><input id="budget" type="number" value="${data.budget}"></div><div class="field"><label>الإكسسوارات</label><select id="accessories"><option>أساسية</option><option>متوسطة</option><option>Premium</option></select></div></div>`;}
+if(step===5){let r=rooms[data.room]||rooms.kitchen;h=`<h2>5. ملخص طلبك</h2><div class="grid"><div class="card"><h3>${r[1]}</h3><p class="muted">الشكل: ${data.shape||"غير محدد"}</p><p class="muted">القياسات: ${data.width||"-"} × ${data.depth||"-"} × ${data.height||"-"} سم</p></div><div class="card"><h3>${data.style}</h3><p class="muted">الخامة: ${data.material}<br>اللون: ${data.color}<br>الميزانية: ${data.budget||"غير محددة"} درهم<br>الإكسسوارات: ${data.accessories}</p></div></div><div class="banner" style="margin-top:18px"><h2>🤖 جاهز للتصميم</h2><p>هاد الوصف واجد باش يتستعمل مع الذكاء الاصطناعي أو مع المصمم قبل التنفيذ.</p><button class="btn light" onclick="makePrompt()">إنشاء وصف التصميم</button><div id="result"></div></div>`;}
+document.getElementById("wizard").innerHTML=h;
+document.getElementById("back").style.visibility=step>1?"visible":"hidden";
+document.getElementById("next").textContent=step===5?"إعادة من البداية":"التالي ←";
+}
+function save(){["width","depth","budget","material","style","color","accessories"].forEach(id=>{let e=document.getElementById(id);if(e)data[id]=e.value});}
+document.getElementById("next").onclick=()=>{save();if(step===5){step=1;data={room:"",shape:"",width:"",depth:"",height:"",material:"MDF",style:"مودرن",color:"أبيض دافئ",budget:"",accessories:"أساسية"};}else{if(step===1&&!data.room){alert("اختار القسم أولاً");return}if(step===2&&!data.shape){alert("اختار الشكل أولاً");return}step++;}render()};
+document.getElementById("back").onclick=()=>{save();if(step>1)step--;render()};
+function makePrompt(){const r=rooms[data.room]||rooms.kitchen;document.getElementById("result").innerHTML=`<div style="margin-top:15px;text-align:right;background:#fff;color:#4a3026;padding:15px;border-radius:14px"><b>وصف التصميم:</b><p>تصميم ${r[1]} بأسلوب ${data.style}، شكل ${data.shape}، خامة ${data.material}، لون ${data.color}، قياسات ${data.width||"غير محددة"} × ${data.depth||"غير محددة"} × ${data.height||"غير محددة"} سم، ميزانية تقريبية ${data.budget||"غير محددة"} درهم، إكسسوارات ${data.accessories}.</p></div>`}
+render();
+</script></main>
+<footer><div class="wrap foot"><div><b>صمم ديكورك</b><br><small>تصميم وديكور بطريقة عصرية</small></div><div><b>Chtaibi Hamza</b><br><small>© 2026 جميع الحقوق محفوظة</small></div></div></footer></body></html>

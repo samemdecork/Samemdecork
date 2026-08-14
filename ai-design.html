@@ -39,6 +39,7 @@
 <div class="choice" data-room="bedroom"><span class="emoji">🛏️</span><b>غرفة النوم</b><small>سرير • بلاكار • تسريحة</small></div>
 <div class="choice" data-room="tv"><span class="emoji">📺</span><b>موبيل التلفاز</b><small>مكتبة • برداج • فاصل</small></div>
 <div class="choice" data-room="wardrobe"><span class="emoji">🚪</span><b>بلاكـار / Dressing</b><small>أبواب • زجاج • تخزين</small></div>
+<div class="choice" data-room="salon"><span class="emoji">🛋️</span><b>الصالون</b><small>مكتبة • فاصل • ديكور</small></div>
 </div>
 <div class="actions"><span></span><button class="btn next" onclick="go(2)">التالي ←</button></div>
 </section>
@@ -89,11 +90,12 @@
 
 <script>
 let step=1, room=new URLSearchParams(location.search).get('type')||'';
-const labels={kitchen:'المطبخ',bedroom:'غرفة النوم',tv:'موبيل التلفاز',wardrobe:'بلاكـار / Dressing'};
+const labels={kitchen:'المطبخ',bedroom:'غرفة النوم',tv:'موبيل التلفاز',wardrobe:'بلاكـار / Dressing',salon:'الصالون'};
 const shapes={
 kitchen:[['L','L','استغلال جوج حيطان'],['U','U','استغلال 3 جهات'],['—','مستقيم','على حيط واحد'],['◫','جزيرة','مع جزيرة وسطية']],
 bedroom:[['▣','سرير + بلاكار','تنظيم كامل'],['↔','بلاكـار كامل','من الأرض للسقف'],['⌂','سرير + تسريحة','حل عملي'],['＋','تصميم مخصص','حسب الغرفة']],
 tv:[['▤','موبيل كامل','مكتبة + تلفاز'],['▥','معلق','ستايل خفيف'],['◫','فاصل','بين فضاءين'],['＋','مخصص','حسب الحيط']],
+salon:[['▤','مكتبة تلفاز','جدار رئيسي'],['↔','جلسة كاملة','تنظيم متكامل'],['◫','فاصل ديكوري','تقسيم الفضاء'],['＋','تصميم مخصص','حسب المكان']],
 wardrobe:[['▥','أبواب عادية','مظهر مودرن'],['▦','أبواب زجاج','إطار أسود/ألمنيوم'],['↔','Dressing كامل','تخزين كبير'],['＋','مخصص','حسب المكان']]
 };
 if(room){document.querySelector(`[data-room="${room}"]`)?.classList.add('selected');}

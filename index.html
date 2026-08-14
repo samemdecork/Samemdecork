@@ -2,14 +2,21 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#8f4739">
 
 <title>صمم ديكورك</title>
 
 <style>
+
+/* =========================
+   GENERAL
+========================= */
 
 *{
 box-sizing:border-box;
@@ -21,6 +28,15 @@ font-family:Arial,Tahoma,sans-serif;
 background:#f7f3ef;
 color:#352a25;
 }
+
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
 background:#fff;
@@ -34,9 +50,11 @@ z-index:20;
 max-width:1150px;
 margin:auto;
 padding:15px 20px;
+
 display:flex;
 align-items:center;
 justify-content:space-between;
+
 gap:20px;
 }
 
@@ -64,9 +82,14 @@ flex-wrap:wrap;
 .menu a{
 text-decoration:none;
 color:#594941;
+
 padding:9px 13px;
+
 border-radius:10px;
+
 font-size:14px;
+
+transition:.2s;
 }
 
 .menu a:hover{
@@ -75,27 +98,43 @@ background:#f3e8e2;
 
 .menu .cta{
 background:#8f4739;
-color:white;
+color:#fff;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
 max-width:1150px;
+
 height:620px;
+
 margin:25px auto 55px;
+
 position:relative;
+
 overflow:hidden;
+
 border-radius:28px;
+
 background:#222;
-box-shadow:0 18px 50px rgba(50,30,20,.16);
+
+box-shadow:
+0 18px 50px rgba(50,30,20,.16);
 }
+
+
+/* الصور المتحركة */
 
 .slide{
 position:absolute;
+
 inset:0;
 
 background-size:cover;
+
 background-position:center;
 
 opacity:0;
@@ -112,8 +151,12 @@ opacity:1;
 transform:scale(1);
 }
 
+
+/* طبقة فوق الصور */
+
 .overlay{
 position:absolute;
+
 inset:0;
 
 background:
@@ -125,14 +168,20 @@ rgba(20,13,10,.12)
 );
 }
 
+
+/* محتوى Hero */
+
 .hero-content{
 position:absolute;
+
 top:50%;
 right:7%;
+
 transform:translateY(-50%);
 
 max-width:600px;
-color:white;
+
+color:#fff;
 }
 
 .badge{
@@ -153,8 +202,11 @@ backdrop-filter:blur(8px);
 
 .hero h1{
 font-size:58px;
+
 line-height:1.1;
+
 margin:20px 0 15px;
+
 font-weight:900;
 }
 
@@ -164,65 +216,100 @@ color:#e5b66e;
 
 .hero p{
 font-size:18px;
+
 line-height:1.9;
+
 color:#eee;
+
 margin:0 0 25px;
 }
 
+
+/* أزرار Hero */
+
 .buttons{
 display:flex;
+
 gap:12px;
+
 flex-wrap:wrap;
 }
 
 .btn{
 display:inline-block;
+
 padding:14px 23px;
+
 border-radius:12px;
+
 text-decoration:none;
+
 font-weight:bold;
 }
 
 .primary{
 background:#9b4f3f;
-color:white;
+color:#fff;
 }
 
 .light{
-background:white;
+background:#fff;
 color:#5b4036;
 }
 
+
+/* نقاط السلايدر */
+
 .dots{
 position:absolute;
+
 bottom:25px;
+
 left:50%;
+
 transform:translateX(-50%);
 
 display:flex;
+
 gap:8px;
 }
 
 .dot{
 width:8px;
 height:8px;
+
 border-radius:20px;
+
 background:rgba(255,255,255,.5);
+
 transition:.3s;
+
+cursor:pointer;
 }
 
 .dot.active{
 width:28px;
+
 background:#e5b66e;
 }
 
-/* SECTIONS */
+
+/* =========================
+   MAIN WRAPPER
+========================= */
 
 .wrap{
 max-width:1150px;
+
 margin:auto;
+
 padding:0 20px;
 }
+
+
+/* =========================
+   SECTION TITLE
+========================= */
 
 .section{
 margin-bottom:60px;
@@ -230,34 +317,44 @@ margin-bottom:60px;
 
 .title{
 text-align:center;
+
 margin-bottom:25px;
 }
 
 .title h2{
 font-size:30px;
+
 margin:0 0 8px;
 }
 
 .title p{
 color:#806e65;
+
 margin:0;
 }
 
+
+/* =========================
+   CATEGORY GRID
+========================= */
+
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
+
+grid-template-columns:
+repeat(4,1fr);
+
 gap:16px;
 }
 
-/*
-الأقسام ما فيهاش رسوم.
-الصورة كتظهر غير منين نحطو صورة القسم.
-حالياً خليتها نظيفة وبسيطة.
-*/
+
+/* جميع البطاقات نفس الشكل */
 
 .card{
 display:block;
+
 text-decoration:none;
+
 color:#352a25;
 
 background:#fff;
@@ -266,40 +363,77 @@ border:1px solid #eaded7;
 
 border-radius:20px;
 
-padding:22px;
+overflow:hidden;
 
-transition:.25s;
+transition:
+transform .25s ease,
+box-shadow .25s ease,
+border-color .25s ease;
 
-box-shadow:0 7px 25px rgba(60,40,30,.05);
+box-shadow:
+0 7px 25px rgba(60,40,30,.05);
 }
 
 .card:hover{
 transform:translateY(-5px);
-box-shadow:0 15px 35px rgba(60,40,30,.12);
+
+box-shadow:
+0 15px 35px rgba(60,40,30,.12);
+
 border-color:#c98b7b;
 }
 
-.card .icon{
-font-size:34px;
-margin-bottom:12px;
+
+/* الصور كلها نفس القياس */
+
+.card img{
+width:100%;
+
+height:220px;
+
+display:block;
+
+object-fit:cover;
+
+transition:
+transform .6s ease;
 }
 
-.card h3{
+.card:hover img{
+transform:scale(1.05);
+}
+
+
+/* معلومات البطاقة */
+
+.card-info{
+padding:18px;
+}
+
+.card-info h3{
 margin:0 0 7px;
+
 font-size:18px;
 }
 
-.card p{
+.card-info p{
 margin:0;
+
 font-size:13px;
+
 color:#87756c;
+
 line-height:1.6;
 }
 
-/* BANNER */
+
+/* =========================
+   BANNER
+========================= */
 
 .banner{
 max-width:1150px;
+
 margin:0 auto 55px;
 
 padding:45px 30px;
@@ -313,32 +447,47 @@ linear-gradient(
 #75483d
 );
 
-color:white;
+color:#fff;
 
 text-align:center;
 }
 
 .banner h2{
 margin:0 0 10px;
+
 font-size:30px;
 }
 
 .banner p{
 color:#eadfd9;
+
 line-height:1.8;
+
+margin-bottom:22px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
 background:#211a17;
+
 color:#d7cbc4;
+
 padding:30px 20px;
 }
 
 .foot{
+max-width:1150px;
+
+margin:auto;
+
 display:flex;
+
 justify-content:space-between;
+
 gap:20px;
 }
 
@@ -346,9 +495,31 @@ gap:20px;
 color:#9f9088;
 }
 
-/* MOBILE */
 
-@media(max-width:800px){
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:
+repeat(2,1fr);
+}
+
+.hero{
+margin-left:15px;
+margin-right:15px;
+}
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
 
 .nav{
 flex-direction:column;
@@ -360,13 +531,18 @@ justify-content:center;
 
 .hero{
 height:570px;
-margin:15px 12px 40px;
+
+margin:
+15px 12px 40px;
+
 border-radius:22px;
 }
 
 .hero-content{
+
 right:20px;
 left:20px;
+
 text-align:center;
 }
 
@@ -382,16 +558,22 @@ font-size:15px;
 justify-content:center;
 }
 
-.grid{
-grid-template-columns:repeat(2,1fr);
+.card img{
+height:200px;
 }
 
 .foot{
 flex-direction:column;
+
 text-align:center;
 }
 
 }
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media(max-width:500px){
 
@@ -399,30 +581,40 @@ text-align:center;
 grid-template-columns:1fr;
 }
 
-.card{
-padding:18px;
+.card img{
+height:230px;
 }
 
 .hero h1{
 font-size:36px;
 }
 
+.hero-content{
+right:15px;
+left:15px;
 }
 
-/* IMPORTANT:
-الصورة كتتحرك بوحدها عبر JavaScript */
+}
+
 </style>
 
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <div class="nav">
 
-<a class="logo" href="index.html">
+
+<a class="logo"
+href="index.html">
 
 صمم ديكورك
 
@@ -451,7 +643,8 @@ DESIGN YOUR DECOR
 الإكسسوارات
 </a>
 
-<a class="cta" href="ai-design.html">
+<a class="cta"
+href="ai-design.html">
 ✨ صمّم ديكورك
 </a>
 
@@ -464,41 +657,38 @@ DESIGN YOUR DECOR
 
 
 <!-- =========================
-     الصورة الرئيسية المتحركة
+     HERO
 ========================= -->
 
 <section class="hero">
 
+
+<!-- الصور الموجودة عندك -->
 
 <div
 class="slide active"
 style="background-image:url('hero-1.webp')">
 </div>
 
-
 <div
 class="slide"
 style="background-image:url('hero-2.webp')">
 </div>
-
 
 <div
 class="slide"
 style="background-image:url('hero-3.webp')">
 </div>
 
-
 <div
 class="slide"
 style="background-image:url('hero-4.webp')">
 </div>
 
-
 <div
 class="slide"
 style="background-image:url('hero-5.webp')">
 </div>
-
 
 <div
 class="slide"
@@ -511,8 +701,11 @@ style="background-image:url('hero-6.webp')">
 
 <div class="hero-content">
 
+
 <span class="badge">
+
 تصميم • ديكور • ذكاء اصطناعي
+
 </span>
 
 
@@ -540,6 +733,7 @@ style="background-image:url('hero-6.webp')">
 
 <div class="buttons">
 
+
 <a
 class="btn primary"
 href="ai-design.html">
@@ -557,7 +751,9 @@ href="works.html">
 
 </a>
 
+
 </div>
+
 
 </div>
 
@@ -565,10 +761,15 @@ href="works.html">
 <div class="dots">
 
 <span class="dot active"></span>
+
 <span class="dot"></span>
+
 <span class="dot"></span>
+
 <span class="dot"></span>
+
 <span class="dot"></span>
+
 <span class="dot"></span>
 
 </div>
@@ -584,6 +785,7 @@ href="works.html">
 
 <section class="section wrap">
 
+
 <div class="title">
 
 <h2>
@@ -596,117 +798,22 @@ href="works.html">
 
 </div>
 
-     
+
+
 <div class="grid">
 
-<a class="card" href="ai-design.html?type=kitchen">
-<img src="images/kitchen.jpg" alt="المطبخ">
-<h3>المطبخ</h3>
-<p>شوف الاختيارات ديال المطبخ</p>
-</a>
 
-<a class="card" href="ai-design.html?type=bedroom">
-<img src="images/bedroom.jpg" alt="غرفة النوم">
-<h3>غرفة النوم</h3>
-<p>سرير • بلاكار • تسريحة</p>
-</a>
+<!-- المطبخ -->
 
-<a class="card" href="ai-design.html?type=tv">
-<img src="images/tv.jpg" alt="موبل التلفاز">
-<h3>موبل التلفاز</h3>
-<p>خشب • بارداج • زاج • فاصل</p>
-</a>
+<a
+class="card"
+href="ai-design.html?type=kitchen">
 
-<a class="card" href="ai-design.html?type=wardrobe">
-<img src="images/dressing.jpg" alt="Dressing">
-<h3>Dressing</h3>
-<p>أبواب • زجاج • تخزين</p>
-</a>
+<img
+src="images/kitchen.jpg"
+alt="المطبخ">
 
-<a class="card" href="ai-design.html?type=salon">
-<img src="images/salon.jpg" alt="الصالون">
-<h3>الصالون</h3>
-<p>مكتبات • فواصل • ديكور</p>
-</a>
-
-<a class="card" href="ai-design.html?type=entrance">
-<img src="images/entrance.jpg" alt="المدخل">
-<h3>المدخل</h3>
-<p>ديكور • تخزين • تصميم</p>
-</a>
-
-<a class="card" href="accessories.html">
-<img src="images/wardrobes.jpg" alt="الإكسسوارات">
-<h3>الإكسسوارات</h3>
-<p>اختار الإضافات حسب الميزانية</p>
-</a>
-
-<a class="card" href="ai-design.html">
-<img src="images/ai-design.jpg" alt="صمم بالذكاء الاصطناعي">
-<h3>صمّم بالذكاء الاصطناعي</h3>
-<p>صيفط الصورة وخلي الفكرة تبدا</p>
-</a>
-
-</div>
-</a>
-
-<a class="card" href="ai-design.html?type=bedroom">
-    <img src="work-2.jpg" alt="غرفة النوم">
-    <div class="card-info">
-        <h3>غرفة النوم</h3>
-        <p>سرير • بلاكار • تسريحة</p>
-    </div>
-</a>
-
-<a class="card" href="ai-design.html?type=tv">
-    <img src="work-3.jpg" alt="موبل التلفاز">
-    <div class="card-info">
-        <h3>موبل التلفاز</h3>
-        <p>خشب • بارداج • زاج • فاصل</p>
-    </div>
-</a>
-
-<a class="card" href="ai-design.html?type=wardrobe">
-    <img src="work-4.png" alt="Dressing">
-    <div class="card-info">
-        <h3>Dressing</h3>
-        <p>أبواب • زجاج • تخزين</p>
-    </div>
-</a>
-
-<a class="card" href="ai-design.html?type=salon">
-    <img src="work-5.jpg" alt="الصالون">
-    <div class="card-info">
-        <h3>الصالون</h3>
-        <p>مكتبات • فواصل • ديكور</p>
-    </div>
-</a>
-
-<a class="card" href="tapis.html">
-    <img src="work-6.jpg" alt="الطابيسري">
-    <div class="card-info">
-        <h3>الطابيسري</h3>
-        <p>زرابي • ستائر • مقاسات</p>
-    </div>
-</a>
-
-<a class="card" href="accessories.html">
-    <img src="work-7.jpg" alt="الإكسسوارات">
-    <div class="card-info">
-        <h3>الإكسسوارات</h3>
-        <p>اختار الإضافات حسب الميزانية</p>
-    </div>
-</a>
-
-<a class="card" href="works.html">
-    <img src="work-8.jpg" alt="أعمالنا">
-    <div class="card-info">
-        <h3>أعمالنا</h3>
-        <p>شوف الأعمال الحقيقية ديالنا</p>
-    </div>
-</a>
-
-</div>
+<div class="card-info">
 
 <h3>
 المطبخ
@@ -716,17 +823,23 @@ href="works.html">
 L • U • مستقيم • جزيرة
 </p>
 
+</div>
+
 </a>
 
 
+
+<!-- غرفة النوم -->
 
 <a
 class="card"
 href="ai-design.html?type=bedroom">
 
-<div class="icon">
-🛏️
-</div>
+<img
+src="images/bedroom.jpg"
+alt="غرفة النوم">
+
+<div class="card-info">
 
 <h3>
 غرفة النوم
@@ -736,17 +849,23 @@ href="ai-design.html?type=bedroom">
 سرير • بلاكار • تسريحة
 </p>
 
+</div>
+
 </a>
 
 
+
+<!-- موبل التلفاز -->
 
 <a
 class="card"
 href="ai-design.html?type=tv">
 
-<div class="icon">
-📺
-</div>
+<img
+src="images/tv.jpg"
+alt="موبل التلفاز">
+
+<div class="card-info">
 
 <h3>
 موبل التلفاز
@@ -756,37 +875,49 @@ href="ai-design.html?type=tv">
 خشب • بارداج • زاج • فاصل
 </p>
 
+</div>
+
 </a>
 
 
+
+<!-- Dressing -->
 
 <a
 class="card"
 href="ai-design.html?type=wardrobe">
 
-<div class="icon">
-🚪
-</div>
+<img
+src="images/dressing.jpg"
+alt="Dressing">
+
+<div class="card-info">
 
 <h3>
 Dressing
 </h3>
 
 <p>
-خشب • زاج • تخزين
+أبواب • زجاج • تخزين
 </p>
+
+</div>
 
 </a>
 
 
 
+<!-- الصالون -->
+
 <a
 class="card"
 href="ai-design.html?type=salon">
 
-<div class="icon">
-🛋️
-</div>
+<img
+src="images/salon.jpg"
+alt="الصالون">
+
+<div class="card-info">
 
 <h3>
 الصالون
@@ -796,37 +927,49 @@ href="ai-design.html?type=salon">
 مكتبات • فواصل • ديكور
 </p>
 
+</div>
+
 </a>
 
 
+
+<!-- المدخل -->
 
 <a
 class="card"
-href="tapis.html">
+href="ai-design.html?type=entrance">
 
-<div class="icon">
-🧶
-</div>
+<img
+src="images/entrance.jpg"
+alt="المدخل">
+
+<div class="card-info">
 
 <h3>
-الطابيسري
+المدخل
 </h3>
 
 <p>
-زرابي • ستائر • مقاسات
+ديكور • تخزين • تصميم
 </p>
+
+</div>
 
 </a>
 
 
+
+<!-- الإكسسوارات -->
 
 <a
 class="card"
 href="accessories.html">
 
-<div class="icon">
-🛒
-</div>
+<img
+src="images/wardrobes.jpg"
+alt="الإكسسوارات">
+
+<div class="card-info">
 
 <h3>
 الإكسسوارات
@@ -836,25 +979,33 @@ href="accessories.html">
 اختار الإضافات حسب الميزانية
 </p>
 
+</div>
+
 </a>
 
 
 
+<!-- الذكاء الاصطناعي -->
+
 <a
 class="card"
-href="works.html">
+href="ai-design.html">
 
-<div class="icon">
-✦
-</div>
+<img
+src="images/ai-design.jpg"
+alt="التصميم بالذكاء الاصطناعي">
+
+<div class="card-info">
 
 <h3>
-أعمالنا
+صمّم بالذكاء الاصطناعي
 </h3>
 
 <p>
-شوف الأعمال الحقيقية ديالنا
+صيفط الصورة وخلي الفكرة تبدا
 </p>
+
+</div>
 
 </a>
 
@@ -871,14 +1022,19 @@ href="works.html">
 
 <section class="banner">
 
+
 <h2>
 عندك بلاصة وباغي تعرف شنو يليق ليها؟
 </h2>
 
+
 <p>
+
 صيفط الصورة، دخل القياسات والميزانية،
 وخلي «صمم ديكورك» يعاونك تبدا الفكرة.
+
 </p>
+
 
 <a
 class="btn light"
@@ -887,6 +1043,7 @@ href="ai-design.html">
 🤖 صمّم ديكورك دابا
 
 </a>
+
 
 </section>
 
@@ -899,6 +1056,7 @@ href="ai-design.html">
 <footer>
 
 <div class="foot">
+
 
 <div>
 
@@ -918,12 +1076,17 @@ href="ai-design.html">
 <div>
 
 <small>
+
 © 2026 جميع الحقوق محفوظة
+
 <br>
+
 Chtaibi Hamza
+
 </small>
 
 </div>
+
 
 </div>
 
@@ -932,7 +1095,7 @@ Chtaibi Hamza
 
 
 <!-- =========================
-     الحركة ديال الصور
+     SLIDESHOW
 ========================= -->
 
 <script>
@@ -943,7 +1106,7 @@ document.querySelectorAll(".slide");
 const dots =
 document.querySelectorAll(".dot");
 
-let current = 0;
+let current=0;
 
 
 function nextSlide(){
@@ -958,9 +1121,9 @@ dots[current]
 current++;
 
 
-if(current >= slides.length){
+if(current>=slides.length){
 
-current = 0;
+current=0;
 
 }
 
@@ -974,9 +1137,7 @@ dots[current]
 }
 
 
-/*
-كل 5 ثواني كتبدل الصورة
-*/
+/* تغيير الصورة كل 5 ثواني */
 
 setInterval(
 nextSlide,
@@ -984,16 +1145,14 @@ nextSlide,
 );
 
 
-/*
-إلى ضغط الزبون على النقاط
-*/
+/* الضغط على النقاط */
 
 dots.forEach(
 (dot,index)=>{
 
 dot.addEventListener(
 "click",
-()=>{
+function(){
 
 slides[current]
 .classList.remove("active");
@@ -1012,7 +1171,6 @@ dots[current]
 .classList.add("active");
 
 }
-
 );
 
 }

@@ -1,15 +1,926 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#9b4f3f"><title>صمم ديكورك | Chtaibi Hamza</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="wrap nav"><a class="logo" href="index.html">صمم ديكورك<small>DESIGN YOUR DECOR</small></a><nav class="menu"><a href="index.html">الرئيسية</a><a href="works.html">أعمالنا</a><a href="tapis.html">الطابيسي</a><a href="accessories.html">الإكسسوارات</a><a class="cta" href="ai-design.html">🤖 صمّم الآن</a></nav></div></header>
-<main class="wrap"><section class="hero"><div class="hero-content"><span class="badge">تصميم • ديكور • ذكاء اصطناعي</span><h1>صمّم <span>ديكورك</span><br>بطريقتك</h1><p>اختار المساحة، دخل القياسات والميزانية، وخلي الذكاء الاصطناعي يساعدك توصل لفكرة تصميم مناسبة ليك.</p><div class="buttons"><a class="btn primary" href="ai-design.html">🤖 ابدأ التصميم</a><a class="btn light" href="works.html">شوف أعمالنا</a></div></div></section>
-<section class="section"><div class="title"><h2>اختار شنو بغيتي تصمم</h2><p>كل قسم كيدخلك مباشرة لمسار التصميم الخاص به</p></div><div class="grid">
-<a class="card" href="ai-design.html?type=kitchen"><div class="icon">🍳</div><h3>المطبخ</h3><p class="muted">L • U • مستقيم • جزيرة</p></a>
-<a class="card" href="ai-design.html?type=bedroom"><div class="icon">🛏️</div><h3>غرفة النوم</h3><p class="muted">سرير • بلاكار • تسريحة</p></a>
-<a class="card" href="ai-design.html?type=tv"><div class="icon">📺</div><h3>موبيل التلفاز</h3><p class="muted">مكتبة • برداج • فاصل</p></a>
-<a class="card" href="ai-design.html?type=wardrobe"><div class="icon">🚪</div><h3>Dressing</h3><p class="muted">أبواب • زجاج • تخزين</p></a>
-<a class="card" href="ai-design.html?type=salon"><div class="icon">🛋️</div><h3>الصالون</h3><p class="muted">ديكور • مكتبات • تقسيم</p></a>
-<a class="card" href="tapis.html"><div class="icon">🧶</div><h3>الطابيسي</h3><p class="muted">زرابي • مقاسات • ألوان</p></a>
-<a class="card" href="accessories.html"><div class="icon">🛒</div><h3>مبيعات الإكسسوارات</h3><p class="muted">مطبخ • Dressing • ديكور</p></a>
-<a class="card" href="works.html"><div class="icon">✦</div><h3>أعمالنا</h3><p class="muted">شوف الخدمة الحقيقية</p></a>
-</div></section>
-<section class="banner"><h2>عندك صورة للمكان؟</h2><p>رفع الصورة، دخل القياسات، اختار الخامة واللون والميزانية، ووجد طلب التصميم ديالك.</p><a class="btn light" href="ai-design.html">ابدأ التصميم بالذكاء الاصطناعي</a></section></main>
-<footer><div class="wrap foot"><div><b>صمم ديكورك</b><br><small>تصميم وديكور بطريقة عصرية</small></div><div><b>Chtaibi Hamza</b><br><small>© 2026 جميع الحقوق محفوظة</small></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#8f4739">
+
+<title>صمم ديكورك</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,Tahoma,sans-serif;
+background:#f7f3ef;
+color:#352a25;
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #eaded7;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.nav{
+max-width:1150px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+text-decoration:none;
+color:#8f4739;
+font-size:23px;
+font-weight:900;
+}
+
+.logo small{
+display:block;
+font-size:9px;
+letter-spacing:2px;
+color:#92776c;
+margin-top:3px;
+}
+
+.menu{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+}
+
+.menu a{
+text-decoration:none;
+color:#594941;
+padding:9px 13px;
+border-radius:10px;
+font-size:14px;
+}
+
+.menu a:hover{
+background:#f3e8e2;
+}
+
+.menu .cta{
+background:#8f4739;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+max-width:1150px;
+height:620px;
+margin:25px auto 55px;
+position:relative;
+overflow:hidden;
+border-radius:28px;
+background:#222;
+box-shadow:0 18px 50px rgba(50,30,20,.16);
+}
+
+.slide{
+position:absolute;
+inset:0;
+
+background-size:cover;
+background-position:center;
+
+opacity:0;
+
+transform:scale(1.08);
+
+transition:
+opacity 1.5s ease,
+transform 6s ease;
+}
+
+.slide.active{
+opacity:1;
+transform:scale(1);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+90deg,
+rgba(20,13,10,.88),
+rgba(20,13,10,.52),
+rgba(20,13,10,.12)
+);
+}
+
+.hero-content{
+position:absolute;
+top:50%;
+right:7%;
+transform:translateY(-50%);
+
+max-width:600px;
+color:white;
+}
+
+.badge{
+display:inline-block;
+
+padding:9px 15px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.13);
+
+border:1px solid rgba(255,255,255,.25);
+
+font-size:13px;
+
+backdrop-filter:blur(8px);
+}
+
+.hero h1{
+font-size:58px;
+line-height:1.1;
+margin:20px 0 15px;
+font-weight:900;
+}
+
+.hero h1 span{
+color:#e5b66e;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.9;
+color:#eee;
+margin:0 0 25px;
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-block;
+padding:14px 23px;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.primary{
+background:#9b4f3f;
+color:white;
+}
+
+.light{
+background:white;
+color:#5b4036;
+}
+
+.dots{
+position:absolute;
+bottom:25px;
+left:50%;
+transform:translateX(-50%);
+
+display:flex;
+gap:8px;
+}
+
+.dot{
+width:8px;
+height:8px;
+border-radius:20px;
+background:rgba(255,255,255,.5);
+transition:.3s;
+}
+
+.dot.active{
+width:28px;
+background:#e5b66e;
+}
+
+/* SECTIONS */
+
+.wrap{
+max-width:1150px;
+margin:auto;
+padding:0 20px;
+}
+
+.section{
+margin-bottom:60px;
+}
+
+.title{
+text-align:center;
+margin-bottom:25px;
+}
+
+.title h2{
+font-size:30px;
+margin:0 0 8px;
+}
+
+.title p{
+color:#806e65;
+margin:0;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+}
+
+/*
+الأقسام ما فيهاش رسوم.
+الصورة كتظهر غير منين نحطو صورة القسم.
+حالياً خليتها نظيفة وبسيطة.
+*/
+
+.card{
+display:block;
+text-decoration:none;
+color:#352a25;
+
+background:#fff;
+
+border:1px solid #eaded7;
+
+border-radius:20px;
+
+padding:22px;
+
+transition:.25s;
+
+box-shadow:0 7px 25px rgba(60,40,30,.05);
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(60,40,30,.12);
+border-color:#c98b7b;
+}
+
+.card .icon{
+font-size:34px;
+margin-bottom:12px;
+}
+
+.card h3{
+margin:0 0 7px;
+font-size:18px;
+}
+
+.card p{
+margin:0;
+font-size:13px;
+color:#87756c;
+line-height:1.6;
+}
+
+/* BANNER */
+
+.banner{
+max-width:1150px;
+margin:0 auto 55px;
+
+padding:45px 30px;
+
+border-radius:25px;
+
+background:
+linear-gradient(
+135deg,
+#2c211c,
+#75483d
+);
+
+color:white;
+
+text-align:center;
+}
+
+.banner h2{
+margin:0 0 10px;
+font-size:30px;
+}
+
+.banner p{
+color:#eadfd9;
+line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+background:#211a17;
+color:#d7cbc4;
+padding:30px 20px;
+}
+
+.foot{
+display:flex;
+justify-content:space-between;
+gap:20px;
+}
+
+.foot small{
+color:#9f9088;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.nav{
+flex-direction:column;
+}
+
+.menu{
+justify-content:center;
+}
+
+.hero{
+height:570px;
+margin:15px 12px 40px;
+border-radius:22px;
+}
+
+.hero-content{
+right:20px;
+left:20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.foot{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+@media(max-width:500px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.card{
+padding:18px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+}
+
+/* IMPORTANT:
+الصورة كتتحرك بوحدها عبر JavaScript */
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="nav">
+
+<a class="logo" href="index.html">
+
+صمم ديكورك
+
+<small>
+DESIGN YOUR DECOR
+</small>
+
+</a>
+
+
+<nav class="menu">
+
+<a href="index.html">
+الرئيسية
+</a>
+
+<a href="works.html">
+أعمالنا
+</a>
+
+<a href="tapis.html">
+الطابيسري
+</a>
+
+<a href="accessories.html">
+الإكسسوارات
+</a>
+
+<a class="cta" href="ai-design.html">
+✨ صمّم ديكورك
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     الصورة الرئيسية المتحركة
+========================= -->
+
+<section class="hero">
+
+
+<div
+class="slide active"
+style="background-image:url('hero-1.webp')">
+</div>
+
+
+<div
+class="slide"
+style="background-image:url('hero-2.webp')">
+</div>
+
+
+<div
+class="slide"
+style="background-image:url('hero-3.webp')">
+</div>
+
+
+<div
+class="slide"
+style="background-image:url('hero-4.webp')">
+</div>
+
+
+<div
+class="slide"
+style="background-image:url('hero-5.webp')">
+</div>
+
+
+<div
+class="slide"
+style="background-image:url('hero-6.webp')">
+</div>
+
+
+<div class="overlay"></div>
+
+
+<div class="hero-content">
+
+<span class="badge">
+تصميم • ديكور • ذكاء اصطناعي
+</span>
+
+
+<h1>
+
+صمّم
+
+<span>ديكورك</span>
+
+<br>
+
+بطريقتك
+
+</h1>
+
+
+<p>
+
+اختار شنو بغيتي تصمم،
+دخل القياسات والميزانية،
+وخلي الفكرة ديالك تبدا من هنا.
+
+</p>
+
+
+<div class="buttons">
+
+<a
+class="btn primary"
+href="ai-design.html">
+
+✨ ابدأ التصميم
+
+</a>
+
+
+<a
+class="btn light"
+href="works.html">
+
+شوف أعمالنا
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="dots">
+
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     الأقسام
+========================= -->
+
+<section class="section wrap">
+
+<div class="title">
+
+<h2>
+شنو بغيتي تصمم؟
+</h2>
+
+<p>
+اختار القسم، ومن بعد غادي ندخلوك للاختيارات ديالو
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<a
+class="card"
+href="ai-design.html?type=kitchen">
+
+<div class="icon">
+🍳
+</div>
+
+<h3>
+المطبخ
+</h3>
+
+<p>
+L • U • مستقيم • جزيرة
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="ai-design.html?type=bedroom">
+
+<div class="icon">
+🛏️
+</div>
+
+<h3>
+غرفة النوم
+</h3>
+
+<p>
+سرير • بلاكار • تسريحة
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="ai-design.html?type=tv">
+
+<div class="icon">
+📺
+</div>
+
+<h3>
+موبل التلفاز
+</h3>
+
+<p>
+خشب • بارداج • زاج • فاصل
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="ai-design.html?type=wardrobe">
+
+<div class="icon">
+🚪
+</div>
+
+<h3>
+Dressing
+</h3>
+
+<p>
+خشب • زاج • تخزين
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="ai-design.html?type=salon">
+
+<div class="icon">
+🛋️
+</div>
+
+<h3>
+الصالون
+</h3>
+
+<p>
+مكتبات • فواصل • ديكور
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="tapis.html">
+
+<div class="icon">
+🧶
+</div>
+
+<h3>
+الطابيسري
+</h3>
+
+<p>
+زرابي • ستائر • مقاسات
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="accessories.html">
+
+<div class="icon">
+🛒
+</div>
+
+<h3>
+الإكسسوارات
+</h3>
+
+<p>
+اختار الإضافات حسب الميزانية
+</p>
+
+</a>
+
+
+
+<a
+class="card"
+href="works.html">
+
+<div class="icon">
+✦
+</div>
+
+<h3>
+أعمالنا
+</h3>
+
+<p>
+شوف الأعمال الحقيقية ديالنا
+</p>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     BANNER
+========================= -->
+
+<section class="banner">
+
+<h2>
+عندك بلاصة وباغي تعرف شنو يليق ليها؟
+</h2>
+
+<p>
+صيفط الصورة، دخل القياسات والميزانية،
+وخلي «صمم ديكورك» يعاونك تبدا الفكرة.
+</p>
+
+<a
+class="btn light"
+href="ai-design.html">
+
+🤖 صمّم ديكورك دابا
+
+</a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="foot">
+
+<div>
+
+<b>
+صمم ديكورك
+</b>
+
+<br>
+
+<small>
+تصميم وديكور بطريقة عصرية
+</small>
+
+</div>
+
+
+<div>
+
+<small>
+© 2026 جميع الحقوق محفوظة
+<br>
+Chtaibi Hamza
+</small>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =========================
+     الحركة ديال الصور
+========================= -->
+
+<script>
+
+const slides =
+document.querySelectorAll(".slide");
+
+const dots =
+document.querySelectorAll(".dot");
+
+let current = 0;
+
+
+function nextSlide(){
+
+slides[current]
+.classList.remove("active");
+
+dots[current]
+.classList.remove("active");
+
+
+current++;
+
+
+if(current >= slides.length){
+
+current = 0;
+
+}
+
+
+slides[current]
+.classList.add("active");
+
+dots[current]
+.classList.add("active");
+
+}
+
+
+/*
+كل 5 ثواني كتبدل الصورة
+*/
+
+setInterval(
+nextSlide,
+5000
+);
+
+
+/*
+إلى ضغط الزبون على النقاط
+*/
+
+dots.forEach(
+(dot,index)=>{
+
+dot.addEventListener(
+"click",
+()=>{
+
+slides[current]
+.classList.remove("active");
+
+dots[current]
+.classList.remove("active");
+
+
+current=index;
+
+
+slides[current]
+.classList.add("active");
+
+dots[current]
+.classList.add("active");
+
+}
+
+);
+
+}
+);
+
+</script>
+
+
+</body>
+
+</html>

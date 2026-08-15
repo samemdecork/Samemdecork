@@ -10,6 +10,8 @@ content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#8f4739">
 
+<link rel="manifest" href="manifest.json">
+
 <title>صمم ديكورك</title>
 
 <style>
@@ -663,8 +665,6 @@ href="ai-design.html">
 <section class="hero">
 
 
-<!-- الصور الموجودة عندك -->
-
 <div
 class="slide active"
 style="background-image:url('hero-1.webp')">
@@ -803,8 +803,6 @@ href="works.html">
 <div class="grid">
 
 
-<!-- المطبخ -->
-
 <a
 class="card"
 href="ai-design.html?type=kitchen">
@@ -828,8 +826,6 @@ L • U • مستقيم • جزيرة
 </a>
 
 
-
-<!-- غرفة النوم -->
 
 <a
 class="card"
@@ -855,8 +851,6 @@ alt="غرفة النوم">
 
 
 
-<!-- موبل التلفاز -->
-
 <a
 class="card"
 href="ai-design.html?type=tv">
@@ -880,8 +874,6 @@ alt="موبل التلفاز">
 </a>
 
 
-
-<!-- Dressing -->
 
 <a
 class="card"
@@ -907,8 +899,6 @@ Dressing
 
 
 
-<!-- الصالون -->
-
 <a
 class="card"
 href="ai-design.html?type=salon">
@@ -932,8 +922,6 @@ alt="الصالون">
 </a>
 
 
-
-<!-- المدخل -->
 
 <a
 class="card"
@@ -959,8 +947,6 @@ alt="المدخل">
 
 
 
-<!-- الإكسسوارات -->
-
 <a
 class="card"
 href="accessories.html">
@@ -984,8 +970,6 @@ alt="الإكسسوارات">
 </a>
 
 
-
-<!-- الذكاء الاصطناعي -->
 
 <a
 class="card"
@@ -1137,15 +1121,11 @@ dots[current]
 }
 
 
-/* تغيير الصورة كل 5 ثواني */
-
 setInterval(
 nextSlide,
 5000
 );
 
-
-/* الضغط على النقاط */
 
 dots.forEach(
 (dot,index)=>{
@@ -1176,6 +1156,15 @@ dots[current]
 }
 );
 
+</script>
+
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("./service-worker.js");
+  });
+}
 </script>
 
 

@@ -1,1173 +1,1018 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#8f4739">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#121212">
 <link rel="manifest" href="manifest.json">
 
 <title>صمم ديكورك</title>
 
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:Arial,Tahoma,sans-serif;
-background:#f7f3ef;
-color:#352a25;
+  margin:0;
+  background:#121212;
+  color:#fff;
+  font-family:Tahoma,Arial,sans-serif;
 }
 
 a{
--webkit-tap-highlight-color:transparent;
+  text-decoration:none;
+  color:inherit;
 }
 
+.container{
+  width:min(1150px,92%);
+  margin:auto;
+}
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
-background:#fff;
-border-bottom:1px solid #eaded7;
-position:sticky;
-top:0;
-z-index:20;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#111111ee;
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #292929;
 }
 
 .nav{
-max-width:1150px;
-margin:auto;
-padding:15px 20px;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-gap:20px;
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-text-decoration:none;
-color:#8f4739;
-font-size:23px;
-font-weight:900;
+  color:#d9a957;
+  font-size:27px;
+  font-weight:900;
 }
 
-.logo small{
-display:block;
-font-size:9px;
-letter-spacing:2px;
-color:#92776c;
-margin-top:3px;
+.whatsapp{
+  background:#25D366;
+  color:#071b0d;
+  padding:12px 20px;
+  border-radius:30px;
+  font-weight:bold;
 }
 
-.menu{
-display:flex;
-gap:7px;
-flex-wrap:wrap;
-}
-
-.menu a{
-text-decoration:none;
-color:#594941;
-
-padding:9px 13px;
-
-border-radius:10px;
-
-font-size:14px;
-
-transition:.2s;
-}
-
-.menu a:hover{
-background:#f3e8e2;
-}
-
-.menu .cta{
-background:#8f4739;
-color:#fff;
-}
-
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-max-width:1150px;
-
-height:620px;
-
-margin:25px auto 55px;
-
-position:relative;
-
-overflow:hidden;
-
-border-radius:28px;
-
-background:#222;
-
-box-shadow:
-0 18px 50px rgba(50,30,20,.16);
+  height:590px;
+  margin:20px auto 55px;
+  width:min(1150px,94%);
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  background:#222;
 }
 
-
-/* الصور المتحركة */
-
-.slide{
-position:absolute;
-
-inset:0;
-
-background-size:cover;
-
-background-position:center;
-
-opacity:0;
-
-transform:scale(1.08);
-
-transition:
-opacity 1.5s ease,
-transform 6s ease;
+.hero-slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s;
 }
 
-.slide.active{
-opacity:1;
-transform:scale(1);
+.hero-slide.active{
+  opacity:1;
 }
 
-
-/* طبقة فوق الصور */
-
-.overlay{
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-90deg,
-rgba(20,13,10,.88),
-rgba(20,13,10,.52),
-rgba(20,13,10,.12)
-);
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    #111111ee,
+    #11111199,
+    #11111122
+  );
 }
-
-
-/* محتوى Hero */
 
 .hero-content{
-position:absolute;
-
-top:50%;
-right:7%;
-
-transform:translateY(-50%);
-
-max-width:600px;
-
-color:#fff;
+  position:absolute;
+  z-index:2;
+  top:50%;
+  right:7%;
+  transform:translateY(-50%);
+  max-width:700px;
 }
 
 .badge{
-display:inline-block;
-
-padding:9px 15px;
-
-border-radius:30px;
-
-background:rgba(255,255,255,.13);
-
-border:1px solid rgba(255,255,255,.25);
-
-font-size:13px;
-
-backdrop-filter:blur(8px);
+  display:inline-block;
+  border:1px solid #d9a95766;
+  background:#d9a95718;
+  color:#e6c47d;
+  padding:10px 18px;
+  border-radius:30px;
 }
 
 .hero h1{
-font-size:58px;
-
-line-height:1.1;
-
-margin:20px 0 15px;
-
-font-weight:900;
+  font-size:58px;
+  line-height:1.15;
+  margin:20px 0;
 }
 
-.hero h1 span{
-color:#e5b66e;
+.gold{
+  color:#d9a957;
 }
 
 .hero p{
-font-size:18px;
-
-line-height:1.9;
-
-color:#eee;
-
-margin:0 0 25px;
+  color:#ddd;
+  line-height:2;
+  font-size:18px;
 }
 
-
-/* أزرار Hero */
-
 .buttons{
-display:flex;
-
-gap:12px;
-
-flex-wrap:wrap;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
 }
 
 .btn{
-display:inline-block;
-
-padding:14px 23px;
-
-border-radius:12px;
-
-text-decoration:none;
-
-font-weight:bold;
+  padding:14px 24px;
+  border-radius:13px;
+  font-weight:bold;
 }
 
-.primary{
-background:#9b4f3f;
-color:#fff;
+.btn-main{
+  background:#d9a957;
+  color:#18130c;
 }
 
-.light{
-background:#fff;
-color:#5b4036;
+.btn-white{
+  background:white;
+  color:#222;
 }
 
+/* SECTIONS */
 
-/* نقاط السلايدر */
-
-.dots{
-position:absolute;
-
-bottom:25px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-display:flex;
-
-gap:8px;
-}
-
-.dot{
-width:8px;
-height:8px;
-
-border-radius:20px;
-
-background:rgba(255,255,255,.5);
-
-transition:.3s;
-
-cursor:pointer;
-}
-
-.dot.active{
-width:28px;
-
-background:#e5b66e;
-}
-
-
-/* =========================
-   MAIN WRAPPER
-========================= */
-
-.wrap{
-max-width:1150px;
-
-margin:auto;
-
-padding:0 20px;
-}
-
-
-/* =========================
-   SECTION TITLE
-========================= */
-
-.section{
-margin-bottom:60px;
+section{
+  margin-bottom:60px;
 }
 
 .title{
-text-align:center;
-
-margin-bottom:25px;
+  text-align:center;
+  margin-bottom:28px;
 }
 
 .title h2{
-font-size:30px;
-
-margin:0 0 8px;
+  font-size:32px;
+  margin-bottom:10px;
 }
 
 .title p{
-color:#806e65;
-
-margin:0;
+  color:#aaa;
 }
 
+/* PROJECTS */
 
-/* =========================
-   CATEGORY GRID
-========================= */
-
-.grid{
-display:grid;
-
-grid-template-columns:
-repeat(4,1fr);
-
-gap:16px;
+.projects{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
-
-
-/* جميع البطاقات نفس الشكل */
 
 .card{
-display:block;
-
-text-decoration:none;
-
-color:#352a25;
-
-background:#fff;
-
-border:1px solid #eaded7;
-
-border-radius:20px;
-
-overflow:hidden;
-
-transition:
-transform .25s ease,
-box-shadow .25s ease,
-border-color .25s ease;
-
-box-shadow:
-0 7px 25px rgba(60,40,30,.05);
+  background:#1e1e20;
+  border:1px solid #373737;
+  border-radius:22px;
+  overflow:hidden;
+  transition:.25s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-
-box-shadow:
-0 15px 35px rgba(60,40,30,.12);
-
-border-color:#c98b7b;
+  transform:translateY(-5px);
+  border-color:#d9a957;
 }
-
-
-/* الصور كلها نفس القياس */
 
 .card img{
-width:100%;
-
-height:220px;
-
-display:block;
-
-object-fit:cover;
-
-transition:
-transform .6s ease;
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
 }
-
-.card:hover img{
-transform:scale(1.05);
-}
-
-
-/* معلومات البطاقة */
 
 .card-info{
-padding:18px;
+  padding:18px;
 }
 
 .card-info h3{
-margin:0 0 7px;
-
-font-size:18px;
+  margin:0 0 8px;
 }
 
 .card-info p{
-margin:0;
-
-font-size:13px;
-
-color:#87756c;
-
-line-height:1.6;
+  color:#aaa;
+  font-size:14px;
+  line-height:1.7;
+  margin:0;
 }
 
+/* FEATURES */
 
-/* =========================
-   BANNER
-========================= */
-
-.banner{
-max-width:1150px;
-
-margin:0 auto 55px;
-
-padding:45px 30px;
-
-border-radius:25px;
-
-background:
-linear-gradient(
-135deg,
-#2c211c,
-#75483d
-);
-
-color:#fff;
-
-text-align:center;
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.banner h2{
-margin:0 0 10px;
-
-font-size:30px;
+.feature{
+  background:#1e1e20;
+  border:1px solid #353535;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
 }
 
-.banner p{
-color:#eadfd9;
-
-line-height:1.8;
-
-margin-bottom:22px;
+.feature-icon{
+  font-size:35px;
 }
 
+.feature p{
+  color:#aaa;
+  line-height:1.7;
+}
 
-/* =========================
-   FOOTER
-========================= */
+/* BEFORE AFTER */
+
+.before-after{
+  background:#1e1e20;
+  border:1px solid #363636;
+  border-radius:25px;
+  padding:25px;
+}
+
+.compare{
+  height:430px;
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.compare img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.before{
+  position:absolute;
+  top:0;
+  right:0;
+  height:100%;
+  width:50%;
+  overflow:hidden;
+}
+
+.before img{
+  width:100%;
+  max-width:none;
+}
+
+.range{
+  position:absolute;
+  bottom:15px;
+  left:5%;
+  width:90%;
+  z-index:5;
+  accent-color:#d9a957;
+}
+
+/* STEPS */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.step{
+  background:#1e1e20;
+  border:1px solid #353535;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+}
+
+.number{
+  width:45px;
+  height:45px;
+  margin:auto auto 15px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#d9a957;
+  color:#18130c;
+  font-weight:bold;
+}
+
+.step p{
+  color:#aaa;
+  line-height:1.7;
+}
+
+/* CALCULATOR */
+
+.calculator{
+  max-width:800px;
+  margin:auto;
+  background:#1e1e20;
+  border:1px solid #383838;
+  border-radius:25px;
+  padding:30px;
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:8px;
+}
+
+input,
+select{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #444;
+  background:#111;
+  color:white;
+  font-size:16px;
+}
+
+.result{
+  margin-top:20px;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  background:#292722;
+  border:1px solid #6d5939;
+}
+
+.result small{
+  color:#aaa;
+}
+
+.result strong{
+  display:block;
+  color:#d9a957;
+  font-size:40px;
+  margin-top:8px;
+}
+
+/* CTA */
+
+.cta{
+  background:linear-gradient(135deg,#241d18,#4b3526);
+  border:1px solid #594735;
+  border-radius:25px;
+  padding:45px 25px;
+  text-align:center;
+}
+
+.cta p{
+  color:#ddd;
+  line-height:1.8;
+}
+
+/* FLOAT WHATSAPP */
+
+.float-whatsapp{
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  z-index:200;
+  background:#25D366;
+  color:#06200d;
+  padding:14px 20px;
+  border-radius:35px;
+  font-weight:bold;
+  box-shadow:0 5px 25px #0008;
+}
+
+/* FOOTER */
 
 footer{
-background:#211a17;
-
-color:#d7cbc4;
-
-padding:30px 20px;
+  text-align:center;
+  color:#777;
+  padding:30px;
+  border-top:1px solid #292929;
 }
 
-.foot{
-max-width:1150px;
-
-margin:auto;
-
-display:flex;
-
-justify-content:space-between;
-
-gap:20px;
-}
-
-.foot small{
-color:#9f9088;
-}
-
-
-/* =========================
-   TABLET
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
-.grid{
-grid-template-columns:
-repeat(2,1fr);
+  .projects{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
 }
 
-.hero{
-margin-left:15px;
-margin-right:15px;
+@media(max-width:650px){
+
+  .nav{
+    min-height:70px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .whatsapp{
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+  .hero{
+    height:570px;
+    border-radius:22px;
+  }
+
+  .hero-content{
+    right:20px;
+    left:20px;
+    text-align:center;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .buttons{
+    justify-content:center;
+  }
+
+  .projects,
+  .features,
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .compare{
+    height:330px;
+  }
 }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-.nav{
-flex-direction:column;
-}
-
-.menu{
-justify-content:center;
-}
-
-.hero{
-height:570px;
-
-margin:
-15px 12px 40px;
-
-border-radius:22px;
-}
-
-.hero-content{
-
-right:20px;
-left:20px;
-
-text-align:center;
-}
-
-.hero h1{
-font-size:42px;
-}
-
-.hero p{
-font-size:15px;
-}
-
-.buttons{
-justify-content:center;
-}
-
-.card img{
-height:200px;
-}
-
-.foot{
-flex-direction:column;
-
-text-align:center;
-}
-
-}
-
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media(max-width:500px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.card img{
-height:230px;
-}
-
-.hero h1{
-font-size:36px;
-}
-
-.hero-content{
-right:15px;
-left:15px;
-}
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
+  <div class="container nav">
 
-<div class="nav">
+    <a href="index.html" class="logo">
+      صمم ديكورك
+    </a>
 
+    <a class="whatsapp"
+       href="https://wa.me/212XXXXXXXXX?text=السلام%20عليكم،%20بغيت%20نطلب%20تصميم%20ديكور">
+      💬 تواصل مباشر
+    </a>
 
-<a class="logo"
-href="index.html">
-
-صمم ديكورك
-
-<small>
-DESIGN YOUR DECOR
-</small>
-
-</a>
-
-
-<nav class="menu">
-
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="works.html">
-أعمالنا
-</a>
-
-<a href="tapis.html">
-الطابيسري
-</a>
-
-<a href="accessories.html">
-الإكسسوارات
-</a>
-
-<a class="cta"
-href="ai-design.html">
-✨ صمّم ديكورك
-</a>
-
-</nav>
-
-</div>
-
+  </div>
 </header>
 
 
+<!-- HERO -->
 
-<!-- =========================
-     HERO
-========================= -->
+<div class="hero">
 
-<section class="hero">
+  <div class="hero-slide active"
+       style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=85&w=1600')">
+  </div>
 
+  <div class="hero-slide"
+       style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=85&w=1600')">
+  </div>
 
-<div
-class="slide active"
-style="background-image:url('hero-1.webp')">
-</div>
+  <div class="hero-slide"
+       style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=85&w=1600')">
+  </div>
 
-<div
-class="slide"
-style="background-image:url('hero-2.webp')">
-</div>
+  <div class="hero-overlay"></div>
 
-<div
-class="slide"
-style="background-image:url('hero-3.webp')">
-</div>
+  <div class="hero-content">
 
-<div
-class="slide"
-style="background-image:url('hero-4.webp')">
-</div>
+    <span class="badge">
+      ✨ تصميم • ديكور • اختيارات ذكية
+    </span>
 
-<div
-class="slide"
-style="background-image:url('hero-5.webp')">
-</div>
+    <h1>
+      من الفكرة<br>
+      إلى <span class="gold">الديكور الواقعي</span>
+    </h1>
 
-<div
-class="slide"
-style="background-image:url('hero-6.webp')">
-</div>
+    <p>
+      اختار نوع المشروع، دخل القياسات، اختار الخامات
+      والألوان والإكسسوارات، واحسب الميزانية ديالك.
+    </p>
 
+    <div class="buttons">
 
-<div class="overlay"></div>
+      <a href="#projects" class="btn btn-main">
+        ✨ ابدأ التصميم
+      </a>
 
+      <a href="#calculator" class="btn btn-white">
+        💰 احسب الميزانية
+      </a>
 
-<div class="hero-content">
+    </div>
 
-
-<span class="badge">
-
-تصميم • ديكور • ذكاء اصطناعي
-
-</span>
-
-
-<h1>
-
-صمّم
-
-<span>ديكورك</span>
-
-<br>
-
-بطريقتك
-
-</h1>
-
-
-<p>
-
-اختار شنو بغيتي تصمم،
-دخل القياسات والميزانية،
-وخلي الفكرة ديالك تبدا من هنا.
-
-</p>
-
-
-<div class="buttons">
-
-
-<a
-class="btn primary"
-href="ai-design.html">
-
-✨ ابدأ التصميم
-
-</a>
-
-
-<a
-class="btn light"
-href="works.html">
-
-شوف أعمالنا
-
-</a>
-
+  </div>
 
 </div>
 
 
-</div>
+<main class="container">
 
 
-<div class="dots">
+<!-- PROJECTS -->
 
-<span class="dot active"></span>
+<section id="projects">
 
-<span class="dot"></span>
+  <div class="title">
 
-<span class="dot"></span>
+    <h2>اختار نوع مشروعك</h2>
 
-<span class="dot"></span>
+    <p>
+      اضغط على القسم اللي بغيتي باش تبدأ الاختيارات والقياسات
+    </p>
 
-<span class="dot"></span>
+  </div>
 
-<span class="dot"></span>
 
-</div>
+  <div class="projects">
 
+    <a class="card" href="ai-design.html?type=kitchen">
+
+      <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=85&w=1000">
+
+      <div class="card-info">
+
+        <h3>المطابخ العصرية</h3>
+
+        <p>
+          MDF • High Gloss • L / U • جزيرة
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <a class="card" href="ai-design.html?type=bedroom">
+
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=85&w=1000">
+
+      <div class="card-info">
+
+        <h3>غرف النوم</h3>
+
+        <p>
+          سرير • بلاكار • تسريحة • تخزين
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <a class="card" href="ai-design.html?type=tv">
+
+      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=85&w=1000">
+
+      <div class="card-info">
+
+        <h3>موبيل التلفاز</h3>
+
+        <p>
+          خشب • بارداج • زجاج • فاصل
+        </p>
+
+      </div>
+
+    </a>
+
+
+    <a class="card" href="ai-design.html?type=wardrobe">
+
+      <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=85&w=1000">
+
+      <div class="card-info">
+
+        <h3>Dressing & Placard</h3>
+
+        <p>
+          خزائن عصرية • أبواب زجاجية • تخزين
+        </p>
+
+      </div>
+
+    </a>
+
+  </div>
 
 </section>
 
 
+<!-- FEATURES -->
 
-<!-- =========================
-     الأقسام
-========================= -->
+<section>
 
-<section class="section wrap">
+  <div class="title">
 
+    <h2>جميع الاختيارات في مكان واحد</h2>
 
-<div class="title">
+    <p>
+      كلشي اللي يحتاجو الزبون قبل ما يبدأ المشروع
+    </p>
 
-<h2>
-شنو بغيتي تصمم؟
-</h2>
+  </div>
 
-<p>
-اختار القسم، ومن بعد غادي ندخلوك للاختيارات ديالو
-</p>
 
-</div>
+  <div class="features">
 
+    <div class="feature">
+      <div class="feature-icon">📐</div>
+      <h3>القياسات</h3>
+      <p>الطول والعرض والارتفاع والمساحة.</p>
+    </div>
 
+    <div class="feature">
+      <div class="feature-icon">🪵</div>
+      <h3>الخامات</h3>
+      <p>MDF و Stratifié و High Gloss وغيرها.</p>
+    </div>
 
-<div class="grid">
+    <div class="feature">
+      <div class="feature-icon">🎨</div>
+      <h3>الألوان</h3>
+      <p>اختيار اللون والستايل والتشطيب.</p>
+    </div>
 
+    <div class="feature">
+      <div class="feature-icon">🔩</div>
+      <h3>الإكسسوارات</h3>
+      <p>مقابض، إضاءة، زجاج وتجهيزات.</p>
+    </div>
 
-<a
-class="card"
-href="ai-design.html?type=kitchen">
+    <div class="feature">
+      <div class="feature-icon">📸</div>
+      <h3>صورة المكان</h3>
+      <p>إرسال صورة أو رسم القياسات.</p>
+    </div>
 
-<img
-src="images/kitchen.jpg"
-alt="المطبخ">
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <h3>واتساب</h3>
+      <p>تواصل مباشر لإكمال الطلب.</p>
+    </div>
 
-<div class="card-info">
-
-<h3>
-المطبخ
-</h3>
-
-<p>
-L • U • مستقيم • جزيرة
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html?type=bedroom">
-
-<img
-src="images/bedroom.jpg"
-alt="غرفة النوم">
-
-<div class="card-info">
-
-<h3>
-غرفة النوم
-</h3>
-
-<p>
-سرير • بلاكار • تسريحة
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html?type=tv">
-
-<img
-src="images/tv.jpg"
-alt="موبل التلفاز">
-
-<div class="card-info">
-
-<h3>
-موبل التلفاز
-</h3>
-
-<p>
-خشب • بارداج • زاج • فاصل
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html?type=wardrobe">
-
-<img
-src="images/dressing.jpg"
-alt="Dressing">
-
-<div class="card-info">
-
-<h3>
-Dressing
-</h3>
-
-<p>
-أبواب • زجاج • تخزين
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html?type=salon">
-
-<img
-src="images/salon.jpg"
-alt="الصالون">
-
-<div class="card-info">
-
-<h3>
-الصالون
-</h3>
-
-<p>
-مكتبات • فواصل • ديكور
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html?type=entrance">
-
-<img
-src="images/entrance.jpg"
-alt="المدخل">
-
-<div class="card-info">
-
-<h3>
-المدخل
-</h3>
-
-<p>
-ديكور • تخزين • تصميم
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="accessories.html">
-
-<img
-src="images/wardrobes.jpg"
-alt="الإكسسوارات">
-
-<div class="card-info">
-
-<h3>
-الإكسسوارات
-</h3>
-
-<p>
-اختار الإضافات حسب الميزانية
-</p>
-
-</div>
-
-</a>
-
-
-
-<a
-class="card"
-href="ai-design.html">
-
-<img
-src="images/ai-design.jpg"
-alt="التصميم بالذكاء الاصطناعي">
-
-<div class="card-info">
-
-<h3>
-صمّم بالذكاء الاصطناعي
-</h3>
-
-<p>
-صيفط الصورة وخلي الفكرة تبدا
-</p>
-
-</div>
-
-</a>
-
-
-</div>
+  </div>
 
 </section>
 
 
+<!-- BEFORE AFTER -->
 
-<!-- =========================
-     BANNER
-========================= -->
+<section>
 
-<section class="banner">
+  <div class="title">
 
+    <h2>معرض النتائج التفاعلي</h2>
 
-<h2>
-عندك بلاصة وباغي تعرف شنو يليق ليها؟
-</h2>
+    <p>
+      حرك الشريط وشوف الفرق بين قبل وبعد
+    </p>
 
-
-<p>
-
-صيفط الصورة، دخل القياسات والميزانية،
-وخلي «صمم ديكورك» يعاونك تبدا الفكرة.
-
-</p>
+  </div>
 
 
-<a
-class="btn light"
-href="ai-design.html">
+  <div class="before-after">
 
-🤖 صمّم ديكورك دابا
+    <div class="compare">
 
-</a>
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=85&w=1400"
+        alt="بعد التصميم">
 
+      <div class="before" id="before">
+
+        <img
+          src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=85&w=1400"
+          alt="قبل التصميم">
+
+      </div>
+
+      <input
+        id="range"
+        class="range"
+        type="range"
+        min="0"
+        max="100"
+        value="50">
+
+    </div>
+
+  </div>
 
 </section>
 
 
+<!-- STEPS -->
 
-<!-- =========================
-     FOOTER
-========================= -->
+<section>
+
+  <div class="title">
+
+    <h2>مراحل العمل معنا</h2>
+
+    <p>
+      خطوات بسيطة من الفكرة حتى التنفيذ
+    </p>
+
+  </div>
+
+
+  <div class="steps">
+
+    <div class="step">
+
+      <div class="number">1</div>
+
+      <h3>صوّر المكان</h3>
+
+      <p>
+        أرسل صورة أو رسم القياسات.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="number">2</div>
+
+      <h3>اختيار التصميم</h3>
+
+      <p>
+        حدد النوع والشكل والستايل.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="number">3</div>
+
+      <h3>اختيار الخامات</h3>
+
+      <p>
+        MDF والألوان والإكسسوارات.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="number">4</div>
+
+      <h3>التسليم والتركيب</h3>
+
+      <p>
+        نكمل معاك التفاصيل والتنفيذ.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+
+<section id="calculator">
+
+  <div class="title">
+
+    <h2>💰 حاسبة الميزانية التفاعلية</h2>
+
+    <p>
+      دخل المساحة واختار الجودة باش تشوف تقدير أولي
+    </p>
+
+  </div>
+
+
+  <div class="calculator">
+
+    <div class="field">
+
+      <label>
+        المساحة (متر مربع)
+      </label>
+
+      <input
+        id="area"
+        type="number"
+        min="1"
+        value="10">
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        نوع الخامة والجودة
+      </label>
+
+      <select id="material">
+
+        <option value="600">
+          اقتصادي — MDF عادي (600 DH/m²)
+        </option>
+
+        <option value="900" selected>
+          متوسط — MDF Stratifié ممتاز (900 DH/m²)
+        </option>
+
+        <option value="1400">
+          ممتاز — High Gloss / خشب (1400 DH/m²)
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="result">
+
+      <small>
+        التكلفة التقديرية الإجمالية
+      </small>
+
+      <strong id="total">
+        9,000 DH
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section>
+
+  <div class="cta">
+
+    <h2>
+      جاهز تبدا مشروعك؟
+    </h2>
+
+    <p>
+      اختار القسم، جمع القياسات والاختيارات،
+      ومن بعد تواصل معنا مباشرة على واتساب.
+    </p>
+
+    <br>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدا%20تصميم%20ديكوري">
+
+      💬 تواصل معنا عبر واتساب
+
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
 
 <footer>
-
-<div class="foot">
-
-
-<div>
-
-<b>
-صمم ديكورك
-</b>
-
-<br>
-
-<small>
-تصميم وديكور بطريقة عصرية
-</small>
-
-</div>
-
-
-<div>
-
-<small>
-
-© 2026 جميع الحقوق محفوظة
-
-<br>
-
-Chtaibi Hamza
-
-</small>
-
-</div>
-
-
-</div>
-
+  صمم ديكورك © 2026
 </footer>
 
 
+<a
+  class="float-whatsapp"
+  href="https://wa.me/212?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
 
-<!-- =========================
-     SLIDESHOW
-========================= -->
+  💬 واتساب
+
+</a>
+
 
 <script>
+
+/* صور الهيرو المتحركة */
 
 const slides =
-document.querySelectorAll(".slide");
+document.querySelectorAll(".hero-slide");
 
-const dots =
-document.querySelectorAll(".dot");
+let current = 0;
 
-let current=0;
+setInterval(function(){
 
+  slides[current].classList.remove("active");
 
-function nextSlide(){
+  current++;
 
-slides[current]
-.classList.remove("active");
+  if(current >= slides.length){
+    current = 0;
+  }
 
-dots[current]
-.classList.remove("active");
+  slides[current].classList.add("active");
 
-
-current++;
-
-
-if(current>=slides.length){
-
-current=0;
-
-}
+},5000);
 
 
-slides[current]
-.classList.add("active");
+/* قبل وبعد */
 
-dots[current]
-.classList.add("active");
+const range =
+document.getElementById("range");
 
-}
+const before =
+document.getElementById("before");
 
+range.addEventListener("input",function(){
 
-setInterval(
-nextSlide,
-5000
-);
+  before.style.width =
+  (100 - this.value) + "%";
 
-
-dots.forEach(
-(dot,index)=>{
-
-dot.addEventListener(
-"click",
-function(){
-
-slides[current]
-.classList.remove("active");
-
-dots[current]
-.classList.remove("active");
+});
 
 
-current=index;
+/* حاسبة الميزانية */
 
+const area =
+document.getElementById("area");
 
-slides[current]
-.classList.add("active");
+const material =
+document.getElementById("material");
 
-dots[current]
-.classList.add("active");
+const total =
+document.getElementById("total");
+
+function calculate(){
+
+  const result =
+  (Number(area.value) || 0) *
+  (Number(material.value) || 0);
+
+  total.textContent =
+  result.toLocaleString("fr-FR") + " DH";
 
 }
-);
 
-}
-);
+area.addEventListener("input",calculate);
+
+material.addEventListener("change",calculate);
+
+calculate();
 
 </script>
-
-
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker.register("./service-worker.js");
-  });
-}
-</script>
-
 
 </body>
-
 </html>

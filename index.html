@@ -4,675 +4,820 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111216">
+<meta name="description" content="صمم ديكورك - تصميم وتنفيذ المطابخ والصالونات والخزائن والإكسسوارات">
 
 <title>صمم ديكورك</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:#111216;
-  color:#fff;
-  font-family:Tahoma,Arial,sans-serif;
-  overflow-x:hidden;
+    background:#111216;
+    color:#f5f5f5;
+    font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+    overflow-x:hidden;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
-/* ================= HEADER ================= */
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111216f5;
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #292a2f;
+    position:sticky;
+    top:0;
+    z-index:9999;
+    background:rgba(17,18,22,.96);
+    border-bottom:1px solid #292a2e;
+    backdrop-filter:blur(15px);
 }
 
 .header{
-  width:min(1200px,92%);
-  min-height:100px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    min-height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.logo h1{
-  color:#dca94f;
-  font-size:30px;
-  font-weight:900;
+.brand{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
 }
 
-.logo p{
-  color:#ddd;
-  font-size:17px;
-  margin-top:2px;
+.brand-title{
+    color:#e2ad54;
+    font-size:29px;
+    font-weight:900;
+}
+
+.brand-sub{
+    color:#f1f1f1;
+    font-size:17px;
+    margin-top:4px;
+}
+
+.brand-sub span{
+    color:#e2ad54;
 }
 
 .whatsapp-top{
-  background:#20d768;
-  color:#fff;
-  padding:12px 23px;
-  border-radius:35px;
-  font-weight:bold;
-  box-shadow:0 5px 25px #0008;
+    background:#25d366;
+    color:#071b0d;
+    padding:12px 23px;
+    border-radius:30px;
+    font-weight:900;
+    font-size:16px;
+    box-shadow:0 5px 20px rgba(37,211,102,.16);
+    white-space:nowrap;
 }
 
-/* ================= HERO ================= */
+.whatsapp-top:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  width:min(1200px,92%);
-  height:620px;
-  margin:35px auto 70px;
-  border:1px solid #38393e;
-  border-radius:30px;
-  overflow:hidden;
-  position:relative;
-  background:#17181b;
+    width:min(1200px,94%);
+    margin:34px auto 60px;
+    min-height:650px;
+    border:1px solid #34353a;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    background:#17181c;
 }
 
 .hero-slide{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  animation:heroImages 18s infinite;
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transform:scale(1.04);
+    transition:
+        opacity 1s ease,
+        transform 6s ease;
 }
 
-.hero-slide:nth-child(1){
-  background-image:url("https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=90");
+.hero-slide.active{
+    opacity:1;
+    transform:scale(1);
 }
 
-.hero-slide:nth-child(2){
-  background-image:url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90");
-  animation-delay:6s;
-}
-
-.hero-slide:nth-child(3){
-  background-image:url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90");
-  animation-delay:12s;
-}
-
-@keyframes heroImages{
-  0%{opacity:0;transform:scale(1)}
-  8%{opacity:1}
-  30%{opacity:1;transform:scale(1.06)}
-  38%{opacity:0}
-  100%{opacity:0}
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      90deg,
-      #090a0de8,
-      #090a0db8,
-      #090a0d65
-    );
+.hero-slide:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,9,11,.93),
+            rgba(8,9,11,.76),
+            rgba(8,9,11,.34)
+        );
 }
 
 .hero-content{
-  position:absolute;
-  z-index:3;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
+    position:relative;
+    z-index:3;
+    min-height:650px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding:55px;
+    max-width:850px;
 }
 
 .badge{
-  background:#594727cc;
-  border:1px solid #92723b;
-  color:#e1b25b;
-  border-radius:30px;
-  padding:8px 22px;
-  margin-bottom:25px;
+    display:inline-block;
+    border:1px solid #80643b;
+    background:rgba(42,38,29,.85);
+    color:#e3b15c;
+    padding:10px 20px;
+    border-radius:30px;
+    margin-bottom:25px;
+    font-size:15px;
 }
 
-.hero h2{
-  font-size:clamp(42px,7vw,78px);
-  line-height:1.25;
-  font-weight:900;
-  max-width:900px;
+.hero h1{
+    font-size:clamp(44px,7vw,78px);
+    line-height:1.16;
+    margin-bottom:20px;
+    font-weight:900;
 }
 
 .gold{
-  color:#e1aa50;
+    color:#e2ad54;
 }
 
 .hero p{
-  max-width:760px;
-  color:#d1d1d3;
-  font-size:19px;
-  line-height:2;
-  margin:20px 0 28px;
+    color:#d2d2d2;
+    line-height:2;
+    font-size:19px;
+    max-width:700px;
+    margin-bottom:28px;
 }
 
-.main-button{
-  background:linear-gradient(135deg,#e7b75e,#c88d32);
-  padding:15px 38px;
-  border-radius:35px;
-  font-size:19px;
-  font-weight:bold;
-  box-shadow:0 10px 35px #c38c3740;
-  transition:.3s;
+.hero-buttons{
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
 }
 
-.main-button:hover{
-  transform:translateY(-3px);
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    padding:13px 28px;
+    border-radius:30px;
+    font-weight:900;
+    font-size:16px;
+    transition:.25s;
 }
 
-/* ================= SECTIONS ================= */
-
-.container{
-  width:min(1200px,92%);
-  margin:auto;
+.btn:hover{
+    transform:translateY(-3px);
 }
+
+.btn-gold{
+    background:#e0aa50;
+    color:#17130c;
+    box-shadow:0 10px 30px rgba(224,170,80,.18);
+}
+
+.btn-dark{
+    background:#17181ccc;
+    border:1px solid #747474;
+    color:white;
+}
+
+.hero-dots{
+    position:absolute;
+    z-index:5;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+}
+
+.dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#aaa;
+    transition:.3s;
+}
+
+.dot.active{
+    width:38px;
+    border-radius:20px;
+    background:#e2ad54;
+}
+
+/* =========================
+   TITLES
+========================= */
 
 .section{
-  margin:85px auto;
+    margin:75px auto;
 }
 
 .section-title{
-  text-align:center;
-  margin-bottom:35px;
+    text-align:center;
+    margin-bottom:32px;
 }
 
 .section-title h2{
-  font-size:38px;
-  font-weight:900;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title h2 span{
+    color:#e0ad57;
 }
 
 .section-title p{
-  color:#999ba0;
-  font-size:17px;
-  margin-top:6px;
+    color:#929399;
+    font-size:17px;
+    line-height:1.9;
 }
 
-/* ================= PROJECTS ================= */
+/* =========================
+   PROJECT CARDS
+========================= */
 
 .projects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
 }
 
 .project{
-  position:relative;
-  height:390px;
-  border:1px solid #414248;
-  border-radius:28px;
-  overflow:hidden;
-  background:#202125;
-  transition:.35s;
+    height:330px;
+    border:1px solid #38393e;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:#1b1c20;
+    transition:.3s;
 }
 
 .project:hover{
-  transform:translateY(-5px);
-  border-color:#dca74e;
+    border-color:#c89547;
+    transform:translateY(-4px);
 }
 
 .project img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
 }
 
 .project:hover img{
-  transform:scale(1.06);
+    transform:scale(1.06);
 }
 
 .project:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    #000e,
-    #00000015 70%
-  );
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.94),
+            rgba(0,0,0,.12) 70%
+        );
 }
 
 .project-info{
-  position:absolute;
-  z-index:3;
-  right:28px;
-  bottom:25px;
+    position:absolute;
+    z-index:2;
+    right:25px;
+    left:25px;
+    bottom:22px;
 }
 
 .project-info h3{
-  font-size:30px;
+    font-size:27px;
+    margin-bottom:7px;
 }
 
 .project-info p{
-  color:#ddd;
-  font-size:16px;
+    color:#d4d4d4;
+    font-size:15px;
 }
 
-/* ================= BEFORE AFTER ================= */
+/* =========================
+   BEFORE AFTER
+========================= */
 
 .before-after{
-  background:#202125;
-  border:1px solid #38393e;
-  border-radius:28px;
-  padding:38px;
+    background:#1c1d21;
+    border:1px solid #34353a;
+    border-radius:28px;
+    padding:30px;
 }
 
-.before-after h2{
-  text-align:center;
-  font-size:37px;
+.before-after-text{
+    text-align:center;
+    margin-bottom:25px;
 }
 
-.before-after>p{
-  text-align:center;
-  color:#999;
-  margin:7px 0 30px;
+.before-after-text h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.before-after-text p{
+    color:#96979b;
+    line-height:1.8;
 }
 
 .compare{
-  max-width:850px;
-  height:460px;
-  margin:auto;
-  position:relative;
-  overflow:hidden;
-  border-radius:22px;
-  border:1px solid #555;
-  touch-action:none;
+    position:relative;
+    height:520px;
+    overflow:hidden;
+    border-radius:22px;
+    border:1px solid #3d3e42;
+    background:#222;
 }
 
 .compare img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.before-img{
-  z-index:1;
-}
-
-.after-img{
-  z-index:2;
-  clip-path:inset(0 0 0 50%);
+.before-image{
+    clip-path:inset(0 50% 0 0);
 }
 
 .compare-label{
-  position:absolute;
-  top:18px;
-  z-index:8;
-  background:#111d;
-  padding:9px 18px;
-  border-radius:12px;
-  font-weight:bold;
+    position:absolute;
+    top:20px;
+    padding:11px 18px;
+    border-radius:12px;
+    background:rgba(10,10,10,.82);
+    font-weight:bold;
+    z-index:5;
 }
 
-.before-label{
-  right:18px;
+.label-before{
+    right:20px;
 }
 
-.after-label{
-  left:18px;
+.label-after{
+    left:20px;
 }
 
 .compare-line{
-  position:absolute;
-  z-index:10;
-  top:0;
-  bottom:0;
-  left:50%;
-  width:4px;
-  background:#e3ae55;
-  transform:translateX(-50%);
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:3px;
+    background:#e2ad54;
+    z-index:8;
+    transform:translateX(-50%);
 }
 
 .compare-handle{
-  position:absolute;
-  z-index:11;
-  top:50%;
-  left:50%;
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:#e3ae55;
-  color:#111;
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  font-weight:bold;
-  transform:translate(-50%,-50%);
-  box-shadow:0 4px 20px #0009;
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#e2ad54;
+    color:#111;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    z-index:10;
+    transform:translate(-50%,-50%);
+    box-shadow:0 5px 20px #000;
 }
 
-.auto-text{
-  text-align:center;
-  color:#aaa;
-  margin-top:18px;
-  font-size:14px;
+.compare input{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    cursor:ew-resize;
+    z-index:20;
 }
 
-/* ================= SERVICES ================= */
-
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.service{
-  background:#202125;
-  border:1px solid #37383d;
-  border-radius:22px;
-  padding:27px 20px;
-  text-align:center;
-  transition:.3s;
-}
-
-.service:hover{
-  border-color:#dca74e;
-  transform:translateY(-4px);
-}
-
-.service-icon{
-  font-size:38px;
-  margin-bottom:8px;
-}
-
-.service h3{
-  color:#e0aa52;
-  font-size:22px;
-}
-
-.service p{
-  color:#999;
-  margin-top:6px;
-}
-
-/* ================= STEPS ================= */
+/* =========================
+   WORK STEPS
+========================= */
 
 .steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
 }
 
 .step{
-  background:#202125;
-  border:1px solid #38393e;
-  border-radius:22px;
-  padding:28px 15px;
-  text-align:center;
+    background:#1c1d21;
+    border:1px solid #35363a;
+    border-radius:22px;
+    padding:28px 18px;
+    text-align:center;
+    min-height:210px;
 }
 
 .number{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#e0aa52;
-  color:#111;
-  margin:0 auto 15px;
-  display:grid;
-  place-items:center;
-  font-size:22px;
-  font-weight:bold;
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    margin:0 auto 15px;
+    background:#e1ac54;
+    color:#16120b;
+    font-size:20px;
+    font-weight:900;
 }
 
 .step h3{
-  font-size:21px;
+    font-size:21px;
+    margin-bottom:9px;
 }
 
 .step p{
-  color:#999;
-  margin-top:5px;
+    color:#96979b;
+    line-height:1.8;
 }
 
-/* ================= CALCULATOR ================= */
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.service{
+    background:#1b1c20;
+    border:1px solid #35363a;
+    border-radius:21px;
+    padding:28px 20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.service:hover{
+    border-color:#c89547;
+    transform:translateY(-4px);
+}
+
+.service-icon{
+    font-size:37px;
+    margin-bottom:12px;
+}
+
+.service h3{
+    color:#e0ad57;
+    margin-bottom:8px;
+    font-size:20px;
+}
+
+.service p{
+    color:#999;
+    line-height:1.8;
+}
+
+/* =========================
+   BUDGET
+========================= */
 
 .calculator{
-  max-width:800px;
-  margin:auto;
-  background:#202125;
-  border:1px solid #3c3d42;
-  border-radius:28px;
-  padding:35px;
+    max-width:780px;
+    margin:auto;
+    background:#1b1c20;
+    border:1px solid #3c3d40;
+    border-radius:27px;
+    padding:30px;
 }
 
 .field{
-  margin-bottom:23px;
+    margin-bottom:22px;
 }
 
 .field label{
-  display:block;
-  color:#c7c7ca;
-  margin-bottom:8px;
+    display:block;
+    margin-bottom:9px;
+    color:#ddd;
 }
 
-input,
-select{
-  width:100%;
-  padding:16px;
-  border-radius:13px;
-  background:#111216;
-  border:1px solid #3d3e43;
-  color:white;
-  font-size:16px;
+.field input,
+.field select{
+    width:100%;
+    padding:16px;
+    background:#111216;
+    border:1px solid #3d3e43;
+    border-radius:13px;
+    color:white;
+    font-size:16px;
+    outline:none;
 }
 
 .result{
-  margin-top:25px;
-  padding:25px;
-  text-align:center;
-  border-radius:20px;
-  background:#302e29;
-  border:1px solid #514631;
+    margin-top:25px;
+    padding:25px;
+    text-align:center;
+    border-radius:20px;
+    background:#302d27;
+    border:1px solid #5a4a31;
 }
 
-.result span{
-  color:#aaa;
+.result small{
+    color:#aaa;
 }
 
 .result strong{
-  display:block;
-  color:#e1aa52;
-  font-size:48px;
-  line-height:1.3;
+    display:block;
+    color:#e2ad54;
+    font-size:43px;
+    margin-top:8px;
 }
 
-/* ================= CONTACT ================= */
+/* =========================
+   CONTACT
+========================= */
 
 .contact{
-  border:1px solid #414248;
-  border-radius:28px;
-  padding:60px 25px;
-  text-align:center;
-  background:
-    linear-gradient(#000b,#000d),
-    url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90")
-    center/cover;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    border-radius:28px;
+    border:1px solid #3a3b3f;
+    padding:70px 25px;
+    background:
+        linear-gradient(
+            rgba(10,10,11,.84),
+            rgba(10,10,11,.9)
+        ),
+        url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90")
+        center/cover;
 }
 
 .contact h2{
-  font-size:40px;
+    font-size:40px;
+    margin-bottom:12px;
 }
 
 .contact p{
-  color:#ccc;
-  margin:10px 0 25px;
+    color:#ccc;
+    margin-bottom:27px;
+    line-height:1.8;
 }
 
-/* ================= FOOTER ================= */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-  margin-top:80px;
-  padding:35px 20px;
-  border-top:1px solid #292a2f;
-  color:#85858a;
-  text-align:center;
+    margin-top:80px;
+    border-top:1px solid #292a2e;
+    padding:30px 15px;
+    text-align:center;
+    color:#777;
 }
 
-/* ================= FLOAT WHATSAPP ================= */
+/* =========================
+   FLOAT WHATSAPP
+========================= */
 
 .float-wa{
-  position:fixed;
-  bottom:18px;
-  left:18px;
-  z-index:9999;
-  background:#25d366;
-  color:white;
-  padding:13px 20px;
-  border-radius:35px;
-  font-weight:bold;
-  box-shadow:0 5px 25px #000;
+    position:fixed;
+    z-index:99999;
+    left:18px;
+    bottom:18px;
+    background:#25d366;
+    color:#06150a;
+    padding:14px 21px;
+    border-radius:30px;
+    font-weight:900;
+    box-shadow:0 7px 25px rgba(0,0,0,.55);
 }
 
-/* ================= MOBILE ================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:850px){
 
-  .header{
-    min-height:90px;
-  }
+    .header{
+        min-height:74px;
+    }
 
-  .logo h1{
-    font-size:25px;
-  }
+    .brand-title{
+        font-size:24px;
+    }
 
-  .logo p{
-    font-size:14px;
-  }
+    .brand-sub{
+        font-size:14px;
+    }
 
-  .whatsapp-top{
-    padding:10px 16px;
-    font-size:14px;
-  }
+    .whatsapp-top{
+        padding:10px 16px;
+        font-size:14px;
+    }
 
-  .hero{
-    height:570px;
-  }
+    .hero{
+        min-height:570px;
+        margin-top:22px;
+        border-radius:25px;
+    }
 
-  .hero h2{
-    font-size:42px;
-  }
+    .hero-content{
+        min-height:570px;
+        padding:30px 25px;
+        align-items:center;
+        text-align:center;
+    }
 
-  .hero p{
-    font-size:16px;
-  }
+    .hero h1{
+        font-size:44px;
+    }
 
-  .projects{
-    grid-template-columns:1fr;
-  }
+    .hero p{
+        font-size:16px;
+    }
 
-  .services{
-    grid-template-columns:1fr 1fr;
-  }
+    .projects{
+        grid-template-columns:1fr;
+    }
 
-  .steps{
-    grid-template-columns:1fr 1fr;
-  }
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
 
+    .services{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .compare{
+        height:420px;
+    }
 }
 
-@media(max-width:520px){
+@media(max-width:560px){
 
-  .container{
-    width:90%;
-  }
+    .container{
+        width:92%;
+    }
 
-  .hero{
-    width:92%;
-    height:560px;
-    border-radius:25px;
-  }
+    .header{
+        padding:9px 0;
+    }
 
-  .hero h2{
-    font-size:38px;
-  }
+    .brand{
+        align-items:flex-start;
+    }
 
-  .hero p{
-    font-size:15px;
-  }
+    .brand-title{
+        font-size:21px;
+    }
 
-  .badge{
-    font-size:14px;
-  }
+    .brand-sub{
+        font-size:12px;
+    }
 
-  .main-button{
-    font-size:17px;
-    padding:14px 28px;
-  }
+    .whatsapp-top{
+        font-size:13px;
+        padding:9px 13px;
+    }
 
-  .project{
-    height:330px;
-  }
+    .hero{
+        width:92%;
+        min-height:560px;
+    }
 
-  .project-info h3{
-    font-size:26px;
-  }
+    .hero-content{
+        min-height:560px;
+        padding:28px 20px;
+    }
 
-  .services{
-    grid-template-columns:1fr;
-  }
+    .badge{
+        font-size:13px;
+    }
 
-  .steps{
-    grid-template-columns:1fr 1fr;
-  }
+    .hero h1{
+        font-size:39px;
+    }
 
-  .step{
-    padding:22px 10px;
-  }
+    .hero p{
+        font-size:15px;
+        line-height:1.9;
+    }
 
-  .step h3{
-    font-size:18px;
-  }
+    .btn{
+        width:100%;
+    }
 
-  .step p{
-    font-size:13px;
-  }
+    .hero-buttons{
+        width:100%;
+    }
 
-  .before-after{
-    padding:20px 12px;
-  }
+    .section{
+        margin:60px auto;
+    }
 
-  .before-after h2{
-    font-size:29px;
-  }
+    .section-title h2{
+        font-size:31px;
+    }
 
-  .compare{
-    height:350px;
-  }
+    .project{
+        height:300px;
+    }
 
-  .calculator{
-    padding:22px;
-  }
+    .services{
+        grid-template-columns:1fr;
+    }
 
-  .result strong{
-    font-size:40px;
-  }
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .contact h2{
-    font-size:32px;
-  }
+    .step{
+        min-height:190px;
+        padding:22px 10px;
+    }
 
+    .step h3{
+        font-size:18px;
+    }
+
+    .step p{
+        font-size:13px;
+    }
+
+    .before-after{
+        padding:18px;
+    }
+
+    .before-after-text h2{
+        font-size:28px;
+    }
+
+    .compare{
+        height:370px;
+    }
+
+    .calculator{
+        padding:20px;
+    }
+
+    .result strong{
+        font-size:36px;
+    }
+
+    .contact h2{
+        font-size:31px;
+    }
+
+    .float-wa{
+        left:12px;
+        bottom:12px;
+        font-size:14px;
+    }
 }
 
 </style>
@@ -680,22 +825,29 @@ footer{
 
 <body>
 
-
 <!-- ================= HEADER ================= -->
 
 <header>
 
-<div class="header">
+<div class="container header">
 
-<a href="index.html" class="logo">
-<h1>صمم ديكورك</h1>
-<p>🛠️ تصميم وديكور واقعي</p>
+<a href="index.html" class="brand">
+
+<div class="brand-title">
+صمم ديكورك
+</div>
+
+<div class="brand-sub">
+🛠️ <span>تصميم وديكور</span> • خدمات واقعية
+</div>
+
 </a>
 
 <a
 class="whatsapp-top"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم"
-target="_blank">
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور"
+target="_blank"
+>
 💬 تواصل مباشر
 </a>
 
@@ -708,34 +860,75 @@ target="_blank">
 
 <section class="hero">
 
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
+<div
+class="hero-slide active"
+style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90')">
+</div>
 
-<div class="hero-overlay"></div>
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=90')">
+</div>
+
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=90')">
+</div>
+
+<div
+class="hero-slide"
+style="background-image:url('https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1800&q=90')">
+</div>
+
 
 <div class="hero-content">
 
 <div class="badge">
-🎨 تصميم • ديكور • تنفيذ
+🎨 ورشة وتصميم ديكور عصري
 </div>
 
-<h2>
-من رسم القياسات بالقلم
+<h1>
+من الفكرة
 <br>
-إلى <span class="gold">التصميم والديكور الواقعي</span>
-</h2>
+<span class="gold">إلى الديكور</span>
+<br>
+الواقعي
+</h1>
 
 <p>
-اكتشف خدماتنا في المطابخ العصرية،
-الصالونات، الطابييسري، الإكسسوارات والخزائن.
-<br>
-صوّر مكانك، دخل القياسات وحسب ميزانيتك.
+اختار شنو بغيتي تصمم، دخل القياسات،
+اختار الخامات والألوان والإكسسوارات،
+ومن بعد تواصل معنا باش نكملو المشروع.
 </p>
 
-<a href="#projects" class="main-button">
-✨ ابدأ تصميم مكانك الآن
+<div class="hero-buttons">
+
+<a
+href="#projects"
+class="btn btn-gold"
+>
+✨ ابدأ تصميم مكانك
 </a>
+
+<a
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور"
+target="_blank"
+class="btn btn-dark"
+>
+💬 تواصل معنا
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-dots">
+
+<div class="dot active"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
 
 </div>
 
@@ -752,11 +945,11 @@ target="_blank">
 <div class="section-title">
 
 <h2>
-اختر <span class="gold">نوع مشروعك</span>
+اختر <span>نوع مشروعك</span>
 </h2>
 
 <p>
-اضغط على أي قسم لبدء إدخال القياسات وتحميل الصور
+اضغط على أي قسم باش تبدأ إدخال القياسات وتحميل الصور
 </p>
 
 </div>
@@ -768,11 +961,17 @@ target="_blank">
 <a href="kitchen.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1400&q=90"
+alt="المطابخ العصرية">
 
 <div class="project-info">
+
 <h3>المطابخ العصرية</h3>
-<p>MDF • High Gloss • L / U</p>
+
+<p>
+MDF • High Gloss • L / U
+</p>
+
 </div>
 
 </a>
@@ -781,11 +980,17 @@ src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=c
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1400&q=90"
+alt="محل الطيابسري">
 
 <div class="project-info">
-<h3>محل الطابييسري</h3>
-<p>تغليف الصالونات • القنوات • Capitonnage</p>
+
+<h3>محل الطيابسري</h3>
+
+<p>
+تغليف الصالونات • الكونتوار • Capitonnage
+</p>
+
 </div>
 
 </a>
@@ -794,11 +999,17 @@ src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fi
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=90"
+alt="الإكسسوارات">
 
 <div class="project-info">
+
 <h3>الإكسسوارات</h3>
-<p>سلطات هيدروليك • إضاءة • مقابض</p>
+
+<p>
+سلّات هيدروليك • إضاءة • مقابض
+</p>
+
 </div>
 
 </a>
@@ -807,11 +1018,17 @@ src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fi
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=90"
+alt="الصالونات">
 
 <div class="project-info">
+
 <h3>الصالونات</h3>
-<p>مودرن بلمسة مغربية تقليدية</p>
+
+<p>
+مودرن • لمسة مغربية تقليدية
+</p>
+
 </div>
 
 </a>
@@ -820,11 +1037,17 @@ src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fi
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90"
+alt="Mobil télé">
 
 <div class="project-info">
-<h3>موبيلي التلفاز</h3>
-<p>مكتبة • بديل الخشب والرخام</p>
+
+<h3>Mobil télé</h3>
+
+<p>
+مكتبة • بديل الخشب • الرخام
+</p>
+
 </div>
 
 </a>
@@ -833,15 +1056,20 @@ src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fi
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1400&q=90">
+src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1400&q=90"
+alt="Dressing">
 
 <div class="project-info">
+
 <h3>Dressing & Placard</h3>
-<p>خزائن عصرية • أبواب زجاجية</p>
+
+<p>
+خزائن عصرية • أبواب زجاجية
+</p>
+
 </div>
 
 </a>
-
 
 </div>
 
@@ -854,421 +1082,71 @@ src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=c
 
 <div class="before-after">
 
+<div class="before-after-text">
+
 <h2>
-معرض النتائج التفاعلي
+معرض النتائج <span class="gold">(قبل / بعد)</span>
 </h2>
 
 <p>
-شوف كيفاش الفكرة كتتحول من المكان الأصلي إلى التصميم
+حرك الشريط وشوف كيفاش كتتحول الفكرة إلى تصميم واقعي.
 </p>
 
-
-<div class="compare" id="compare">
-
-<img
-class="before-img"
-src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=90">
-
-<img
-class="after-img"
-src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90">
-
-
-<div class="compare-label before-label">
-المكان قبل
 </div>
 
-<div class="compare-label after-label">
+
+<div class="compare">
+
+<img
+src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90"
+alt="بعد التصميم">
+
+<img
+class="before-image"
+src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90"
+alt="قبل التصميم">
+
+<div class="compare-label label-before">
+المكان قبل التعديل
+</div>
+
+<div class="compare-label label-after">
 المقترح النهائي
 </div>
 
-<div class="compare-line" id="line"></div>
+<div class="compare-line"></div>
 
-<div class="compare-handle" id="handle">
+<div class="compare-handle">
 ↔
 </div>
 
-</div>
-
-<div class="auto-text">
-✨ الصورة كتتحرك أوتوماتيكياً — وتقدر تحركها بيدك
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= SERVICES ================= -->
-
-<section class="section">
-
-<div class="section-title">
-
-<h2>
-كل خدماتك <span class="gold">فبلاصة وحدة</span>
-</h2>
-
-<p>
-اختيارات تساعدك قبل بداية المشروع
-</p>
+<input
+id="compareRange"
+type="range"
+min="0"
+max="100"
+value="50"
+aria-label="مقارنة قبل وبعد">
 
 </div>
-
-
-<div class="services">
-
-
-<div class="service">
-<div class="service-icon">📐</div>
-<h3>القياسات</h3>
-<p>الطول والعرض والارتفاع والمساحة</p>
-</div>
-
-
-<div class="service">
-<div class="service-icon">🪵</div>
-<h3>الخامات</h3>
-<p>MDF والخشب والزجاج والخامات المختلفة</p>
-</div>
-
-
-<div class="service">
-<div class="service-icon">🎨</div>
-<h3>الألوان</h3>
-<p>اختار اللون والستايل والتشطيب</p>
-</div>
-
-
-<div class="service">
-<div class="service-icon">🔩</div>
-<h3>الإكسسوارات</h3>
-<p>مقابض وإضاءة وزجاج وتجهيزات</p>
-</div>
-
-
-<div class="service">
-<div class="service-icon">📸</div>
-<h3>صور المكان</h3>
-<p>أرسل صور المكان والقياسات</p>
-</div>
-
-
-<div class="service">
-<div class="service-icon">💬</div>
-<h3>واتساب</h3>
-<p>تواصل معنا مباشرة لإكمال الطلب</p>
-</div>
-
 
 </div>
 
 </section>
 
 
-<!-- ================= STEPS ================= -->
+<!-- ================= WORK ================= -->
 
 <section class="section">
 
 <div class="section-title">
 
 <h2>
-مراحل العمل <span class="gold">معنا</span>
+مراحل <span>العمل معنا</span>
 </h2>
 
 <p>
 خطوات بسيطة للحصول على النتيجة
 </p>
 
-</div>
-
-
-<div class="steps">
-
-
-<div class="step">
-<div class="number">1</div>
-<h3>صوّر المكان</h3>
-<p>أرسل الصور أو رسم القياسات</p>
-</div>
-
-
-<div class="step">
-<div class="number">2</div>
-<h3>التصميم 3D</h3>
-<p>معاينة قبل التنفيذ</p>
-</div>
-
-
-<div class="step">
-<div class="number">3</div>
-<h3>اختيار الخامات</h3>
-<p>MDF / الثوب / الإكسسوارات</p>
-</div>
-
-
-<div class="step">
-<div class="number">4</div>
-<h3>التسليم والتركيب</h3>
-<p>إتقان وتفاصيل دقيقة</p>
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- ================= CALCULATOR ================= -->
-
-<section class="section">
-
-<div class="calculator">
-
-<div class="section-title">
-
-<h2>
-حاسبة الميزانية 💰
-</h2>
-
-<p>
-حدد المساحة الجملية ونوع الخشب للنتيجة الحالية
-</p>
-
-</div>
-
-
-<div class="field">
-
-<label>
-المساحة (متر مربع m²):
-</label>
-
-<input
-id="area"
-type="number"
-value="10"
-min="1">
-
-</div>
-
-
-<div class="field">
-
-<label>
-نوع الخامة والجودة:
-</label>
-
-<select id="material">
-
-<option value="600">
-اقتصادي - MDF (600 DH/m²)
-</option>
-
-<option value="900" selected>
-متوسط - MDF Stratifié ممتاز (900 DH/m²)
-</option>
-
-<option value="1400">
-ممتاز - High Gloss / Premium (1400 DH/m²)
-</option>
-
-</select>
-
-</div>
-
-
-<div class="result">
-
-<span>
-التكلفة التقديرية الإجمالية:
-</span>
-
-<strong id="total">
-DH 9,000
-</strong>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="section">
-
-<div class="contact">
-
-<h2>
-عندك مشروع؟
-</h2>
-
-<p>
-صيفط لينا الصور والقياسات وتواصل معنا مباشرة عبر WhatsApp
-</p>
-
-<a
-class="main-button"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور%20وبغيت%20نتواصل%20معاكم"
-target="_blank">
-
-💬 تواصل معنا عبر WhatsApp
-
-</a>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-صمم ديكورك © 2026
-</footer>
-
-
-<a
-class="float-wa"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم"
-target="_blank">
-
-💬 واتساب
-
-</a>
-
-
-<script>
-
-/* =================================================
-   حاسبة الميزانية
-================================================= */
-
-const area = document.getElementById("area");
-const material = document.getElementById("material");
-const total = document.getElementById("total");
-
-function calculate(){
-
-  const value =
-    (Number(area.value) || 0) *
-    (Number(material.value) || 0);
-
-  total.textContent =
-    "DH " + value.toLocaleString("fr-FR");
-
-}
-
-area.addEventListener("input",calculate);
-material.addEventListener("change",calculate);
-
-calculate();
-
-
-/* =================================================
-   معرض قبل / بعد
-   يتحرك لوحدو + يمكن تحريكه باليد
-================================================= */
-
-const compare = document.getElementById("compare");
-const afterImg = document.querySelector(".after-img");
-const line = document.getElementById("line");
-const handle = document.getElementById("handle");
-
-let position = 50;
-let direction = 1;
-let dragging = false;
-
-function setPosition(value){
-
-  position = Math.max(5,Math.min(95,value));
-
-  afterImg.style.clipPath =
-    `inset(0 0 0 ${position}%)`;
-
-  line.style.left =
-    position + "%";
-
-  handle.style.left =
-    position + "%";
-}
-
-
-/* الحركة الأوتوماتيكية */
-
-setInterval(function(){
-
-  if(!dragging){
-
-    position += direction * 0.35;
-
-    if(position >= 90){
-      direction = -1;
-    }
-
-    if(position <= 10){
-      direction = 1;
-    }
-
-    setPosition(position);
-  }
-
-},30);
-
-
-/* الماوس */
-
-compare.addEventListener("mousedown",function(e){
-
-  dragging = true;
-
-  const rect =
-    compare.getBoundingClientRect();
-
-  setPosition(
-    ((e.clientX - rect.left) / rect.width) * 100
-  );
-
-});
-
-window.addEventListener("mouseup",function(){
-
-  dragging = false;
-
-});
-
-window.addEventListener("mousemove",function(e){
-
-  if(!dragging) return;
-
-  const rect =
-    compare.getBoundingClientRect();
-
-  setPosition(
-    ((e.clientX - rect.left) / rect.width) * 100
-  );
-
-});
-
-
-/* الهاتف */
-
-compare.addEventListener("touchstart",function(e){
-
-  dragging = true;
-
-  const rect =
-    compare.getBoundingClientRect();
-
-  setPosition(
-    ((e.touches[0].clientX - rect.left) /
-    rect.width) * 100
-  );
-
-},{passive:true});
-
-
-window.addEventListener("touch
+</

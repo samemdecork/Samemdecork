@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0b0b0b">
 <link rel="manifest" href="manifest.json">
 
@@ -10,543 +10,385 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
 body{
-  background:#0b0b0b;
-  color:#fff;
-  font-family:Tahoma,Arial,sans-serif;
-  line-height:1.7;
+ margin:0;
+ background:#0b0b0b;
+ color:#fff;
+ font-family:Tahoma,Arial,sans-serif
 }
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
+a{text-decoration:none;color:inherit}
 
 .container{
-  width:min(1180px,92%);
-  margin:auto;
+ width:min(1200px,92%);
+ margin:auto
 }
 
 /* HEADER */
-
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(10,10,10,.96);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #292929;
+ position:sticky;
+ top:0;
+ z-index:1000;
+ background:#0b0b0bf5;
+ backdrop-filter:blur(12px);
+ border-bottom:1px solid #292929
 }
 
 .nav{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+ min-height:75px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between
 }
 
 .logo{
-  font-size:29px;
-  font-weight:900;
-  color:#d8aa57;
+ font-size:29px;
+ font-weight:900;
+ color:#d9aa56
 }
 
-.logo span{
-  color:#fff;
-}
+.logo span{color:#fff}
 
 .nav-links{
-  display:flex;
-  align-items:center;
-  gap:24px;
+ display:flex;
+ align-items:center;
+ gap:25px
 }
 
 .nav-links a{
-  color:#ddd;
-  transition:.25s;
+ color:#ddd;
+ transition:.3s
 }
 
-.nav-links a:hover{
-  color:#d8aa57;
-}
+.nav-links a:hover{color:#d9aa56}
 
 .wa{
-  background:#25D366;
-  color:#07140b!important;
-  padding:10px 18px;
-  border-radius:30px;
-  font-weight:bold;
-}
-
-.menu{
-  display:none;
-  font-size:28px;
-  cursor:pointer;
+ background:#25D366;
+ color:#06130a!important;
+ padding:10px 18px;
+ border-radius:30px;
+ font-weight:bold
 }
 
 /* HERO */
-
 .hero{
-  width:min(1180px,94%);
-  height:600px;
-  margin:22px auto 65px;
-  border-radius:30px;
-  overflow:hidden;
-  position:relative;
-  border:1px solid #353535;
-  box-shadow:0 25px 70px #000;
-  background:
-    linear-gradient(90deg,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.52),
-      rgba(0,0,0,.20)),
-    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90")
-    center/cover;
+ width:min(1200px,94%);
+ height:590px;
+ margin:22px auto 65px;
+ border-radius:30px;
+ overflow:hidden;
+ position:relative;
+ border:1px solid #3a3a3a;
+ background:
+ linear-gradient(90deg,#000e,#0008,#0002),
+ url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90")
+ center/cover
 }
 
 .hero-content{
-  position:absolute;
-  top:50%;
-  right:7%;
-  transform:translateY(-50%);
-  max-width:700px;
+ position:absolute;
+ top:50%;
+ right:7%;
+ transform:translateY(-50%);
+ max-width:720px
 }
 
 .badge{
-  display:inline-block;
-  color:#e1b55f;
-  border:1px solid #806438;
-  background:#151515cc;
-  padding:9px 18px;
-  border-radius:30px;
-  margin-bottom:22px;
+ display:inline-block;
+ color:#e1b45c;
+ border:1px solid #806337;
+ background:#151515cc;
+ padding:9px 18px;
+ border-radius:30px;
+ margin-bottom:22px
 }
 
 .hero h1{
-  font-size:clamp(44px,7vw,76px);
-  line-height:1.15;
-  margin-bottom:18px;
-  font-weight:900;
+ font-size:clamp(45px,7vw,78px);
+ line-height:1.15;
+ margin-bottom:18px
 }
 
-.gold{
-  color:#dcae58;
-}
+.gold{color:#dbaa55}
 
 .hero p{
-  color:#ddd;
-  font-size:19px;
-  max-width:680px;
-  margin-bottom:28px;
+ color:#ddd;
+ font-size:19px;
+ line-height:2;
+ margin-bottom:27px
 }
 
 .buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+ display:flex;
+ gap:12px;
+ flex-wrap:wrap
 }
 
 .btn{
-  display:inline-block;
-  padding:14px 25px;
-  border-radius:12px;
-  font-weight:bold;
-  transition:.25s;
+ display:inline-block;
+ padding:14px 25px;
+ border-radius:12px;
+ font-weight:bold
 }
 
 .btn-gold{
-  background:#d9a953;
-  color:#17120b;
-}
-
-.btn-gold:hover{
-  transform:translateY(-3px);
-  background:#edc16b;
+ background:#d9aa56;
+ color:#17120b
 }
 
 .btn-dark{
-  border:1px solid #777;
-  background:#111c;
+ background:#111c;
+ border:1px solid #777
 }
 
-.btn-dark:hover{
-  border-color:#d9a953;
-}
-
-/* TITLES */
-
-section{
-  margin:75px auto;
-}
+/* SECTIONS */
+section{margin:75px auto}
 
 .title{
-  text-align:center;
-  margin-bottom:32px;
+ text-align:center;
+ margin-bottom:32px
 }
 
 .title h2{
-  font-size:36px;
-  margin-bottom:8px;
+ font-size:37px;
+ margin-bottom:8px
 }
 
-.title h2 span{
-  color:#dcae58;
+.title span{color:#dbaa55}
+
+.title p{color:#999}
+
+/* CHOICES */
+.choices{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:17px
 }
 
-.title p{
-  color:#999;
+.choice{
+ height:300px;
+ border-radius:23px;
+ overflow:hidden;
+ position:relative;
+ border:1px solid #363636;
+ background:#181818;
+ transition:.3s
 }
 
-/* PROJECTS */
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
+.choice:hover{
+ transform:translateY(-6px);
+ border-color:#d9aa56;
+ box-shadow:0 18px 45px #000
 }
 
-.project{
-  height:300px;
-  position:relative;
-  overflow:hidden;
-  border-radius:22px;
-  border:1px solid #363636;
-  background:#171717;
-  transition:.3s;
+.choice img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:.5s
 }
 
-.project:hover{
-  transform:translateY(-6px);
-  border-color:#d6a74f;
-  box-shadow:0 18px 45px #000;
+.choice:hover img{transform:scale(1.06)}
+
+.choice:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(to top,#000e,transparent 65%)
 }
 
-.project img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+.choice-info{
+ position:absolute;
+ z-index:2;
+ right:20px;
+ left:20px;
+ bottom:18px
 }
 
-.project:hover img{
-  transform:scale(1.07);
-}
-
-.project:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,.95),
-    transparent 65%
-  );
-}
-
-.project-info{
-  position:absolute;
-  right:20px;
-  left:20px;
-  bottom:18px;
-  z-index:2;
-}
-
-.project-info h3{
-  font-size:23px;
-}
-
-.project-info p{
-  color:#ccc;
-  font-size:13px;
-}
+.choice-info h3{font-size:23px}
+.choice-info p{color:#ccc;font-size:13px}
 
 /* FEATURES */
-
 .features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px
 }
 
 .feature{
-  background:#171717;
-  border:1px solid #303030;
-  border-radius:20px;
-  padding:27px;
-  text-align:center;
-  transition:.25s;
-}
-
-.feature:hover{
-  border-color:#8b6a38;
-  transform:translateY(-4px);
+ background:#171717;
+ border:1px solid #333;
+ border-radius:20px;
+ padding:28px;
+ text-align:center
 }
 
 .icon{
-  font-size:35px;
-  margin-bottom:8px;
+ font-size:35px;
+ margin-bottom:8px
 }
 
 .feature h3{
-  color:#ddb05c;
-  margin-bottom:7px;
+ color:#dcae58;
+ margin-bottom:7px
 }
 
 .feature p{
-  color:#999;
+ color:#999;
+ line-height:1.8
 }
 
 /* STEPS */
-
 .steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:17px
 }
 
 .step{
-  background:#171717;
-  border:1px solid #303030;
-  border-radius:20px;
-  padding:25px 16px;
-  text-align:center;
+ background:#171717;
+ border:1px solid #333;
+ border-radius:20px;
+ padding:25px 15px;
+ text-align:center
 }
 
 .number{
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  margin:auto auto 12px;
-  background:#d9aa55;
-  color:#111;
-  border-radius:50%;
-  font-weight:bold;
-  font-size:20px;
+ width:50px;
+ height:50px;
+ display:grid;
+ place-items:center;
+ margin:auto auto 12px;
+ background:#d9aa56;
+ color:#111;
+ border-radius:50%;
+ font-weight:bold;
+ font-size:20px
 }
 
-/* BEFORE AFTER */
-
-.before-after{
-  background:#171717;
-  border:1px solid #343434;
-  border-radius:24px;
-  padding:20px;
-}
-
-.compare{
-  height:430px;
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-}
-
-.compare>img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.before{
-  position:absolute;
-  top:0;
-  right:0;
-  width:50%;
-  height:100%;
-  overflow:hidden;
-}
-
-.before img{
-  position:absolute;
-  top:0;
-  right:0;
-  width:100vw;
-  max-width:none;
-  height:100%;
-  object-fit:cover;
-}
-
-.range{
-  position:absolute;
-  z-index:5;
-  bottom:15px;
-  left:5%;
-  width:90%;
-  accent-color:#d9aa55;
+.step p{
+ color:#999;
+ margin-top:7px
 }
 
 /* CALCULATOR */
-
 .calculator{
-  max-width:750px;
-  margin:auto;
-  padding:30px;
-  background:#171717;
-  border:1px solid #3d3629;
-  border-radius:25px;
+ max-width:760px;
+ margin:auto;
+ background:#171717;
+ border:1px solid #423a2c;
+ border-radius:25px;
+ padding:30px
 }
 
-.field{
-  margin-bottom:20px;
-}
+.field{margin-bottom:20px}
 
 .field label{
-  display:block;
-  margin-bottom:8px;
+ display:block;
+ margin-bottom:8px
 }
 
 input,select{
-  width:100%;
-  padding:14px;
-  border-radius:11px;
-  border:1px solid #444;
-  background:#0d0d0d;
-  color:white;
-  font-size:16px;
+ width:100%;
+ padding:14px;
+ border-radius:11px;
+ border:1px solid #444;
+ background:#0d0d0d;
+ color:#fff;
+ font-size:16px
 }
 
 .result{
-  text-align:center;
-  margin-top:20px;
-  padding:20px;
-  border-radius:17px;
-  background:#29251f;
-  border:1px solid #635235;
+ margin-top:20px;
+ padding:22px;
+ text-align:center;
+ border-radius:18px;
+ background:#29251f;
+ border:1px solid #645237
 }
 
-.result small{
-  color:#aaa;
-}
+.result small{color:#aaa}
 
 .result strong{
-  display:block;
-  color:#dfae55;
-  font-size:40px;
+ display:block;
+ color:#dfae55;
+ font-size:40px
 }
 
 /* CONTACT */
-
 .contact{
-  text-align:center;
-  padding:65px 20px;
-  border-radius:27px;
-  border:1px solid #414141;
-  background:
-    linear-gradient(#000b,#000d),
-    url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85")
-    center/cover;
+ text-align:center;
+ padding:65px 20px;
+ border-radius:28px;
+ border:1px solid #404040;
+ background:
+ linear-gradient(#000b,#000d),
+ url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90")
+ center/cover
 }
 
-.contact h2{
-  font-size:38px;
-}
-
+.contact h2{font-size:38px}
 .contact p{
-  color:#ccc;
-  margin:10px 0 25px;
+ color:#ccc;
+ margin:10px 0 25px
 }
 
 /* FOOTER */
-
 footer{
-  border-top:1px solid #292929;
-  text-align:center;
-  padding:30px;
-  color:#777;
+ text-align:center;
+ color:#777;
+ border-top:1px solid #292929;
+ padding:30px
 }
 
-/* FLOATING WHATSAPP */
-
+/* FLOAT WHATSAPP */
 .float-wa{
-  position:fixed;
-  bottom:18px;
-  left:18px;
-  z-index:2000;
-  background:#25D366;
-  color:#06200d;
-  padding:13px 19px;
-  border-radius:30px;
-  font-weight:bold;
-  box-shadow:0 5px 25px #000;
+ position:fixed;
+ bottom:18px;
+ left:18px;
+ z-index:2000;
+ background:#25D366;
+ color:#06130a;
+ padding:13px 19px;
+ border-radius:30px;
+ font-weight:bold;
+ box-shadow:0 5px 25px #000
 }
 
 /* MOBILE */
-
 @media(max-width:950px){
-
-  .projects{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .steps{
-    grid-template-columns:repeat(2,1fr);
-  }
-
+ .choices{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:repeat(2,1fr)}
 }
 
-@media(max-width:700px){
+@media(max-width:650px){
+ .nav-links{
+  display:none
+ }
 
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:76px;
-    right:4%;
-    left:4%;
-    background:#151515;
-    border:1px solid #333;
-    border-radius:18px;
-    padding:18px;
-    flex-direction:column;
-  }
+ .hero{
+  height:520px
+ }
 
-  .nav-links.show{
-    display:flex;
-  }
+ .hero-content{
+  right:20px;
+  left:20px;
+  text-align:center
+ }
 
-  .menu{
-    display:block;
-  }
+ .hero h1{font-size:43px}
+ .hero p{font-size:16px}
 
-  .hero{
-    height:530px;
-  }
+ .buttons{justify-content:center}
 
-  .hero-content{
-    right:20px;
-    left:20px;
-    text-align:center;
-  }
+ .choices,
+ .features{
+  grid-template-columns:1fr
+ }
 
-  .hero h1{
-    font-size:43px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .buttons{
-    justify-content:center;
-  }
-
-  .projects,
-  .features{
-    grid-template-columns:1fr;
-  }
-
-  .steps{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .compare{
-    height:320px;
-  }
+ .steps{
+  grid-template-columns:1fr 1fr
+ }
 }
 </style>
 </head>
@@ -560,19 +402,17 @@ footer{
 صمم <span>ديكورك</span>
 </a>
 
-<div class="menu" onclick="toggleMenu()">☰</div>
-
-<nav class="nav-links" id="navLinks">
+<nav class="nav-links">
 
 <a href="index.html">الرئيسية</a>
 
-<a href="#projects">اختيارات</a>
+<a href="#choices">الاختيارات</a>
 
 <a href="kitchen.html">المطبخ</a>
 
 <a href="bedroom.html">غرفة النوم</a>
 
-<a href="#features">الخدمات</a>
+<a href="#services">الخدمات</a>
 
 <a
 class="wa"
@@ -587,7 +427,7 @@ target="_blank">
 </header>
 
 
-<!-- الواجهة الرئيسية -->
+<!-- HERO -->
 
 <div class="hero">
 
@@ -610,109 +450,100 @@ target="_blank">
 
 <div class="buttons">
 
-<a href="#projects" class="btn btn-gold">
+<a href="#choices" class="btn btn-gold">
 ✨ ابدأ التصميم
 </a>
 
-<a href="#contact" class="btn btn-dark">
-💬 تواصل معنا
+<a href="#services" class="btn btn-dark">
+شوف الخدمات
 </a>
 
 </div>
 
 </div>
-
 </div>
 
 
 <main class="container">
 
 
-<!-- الاختيارات -->
+<!-- CHOICES -->
 
-<section id="projects">
+<section id="choices">
 
 <div class="title">
 
 <h2>
-اختار <span>مشروعك</span>
+اختار <span>شنو بغيتي تصمم</span>
 </h2>
 
 <p>
-اختار القسم اللي بغيتي وتابع التصميم
+اختار القسم اللي بغيتي وبدأ مشروعك
 </p>
 
 </div>
 
 
-<div class="projects">
+<div class="choices">
 
-<a href="kitchen.html" class="project">
+<a href="kitchen.html" class="choice">
 
 <img
 src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
 
-<div class="project-info">
+<div class="choice-info">
 
 <h3>المطبخ</h3>
 
-<p>
-L • U • جزيرة • عصري
-</p>
+<p>L • U • جزيرة • مودرن</p>
 
 </div>
 
 </a>
 
 
-<a href="bedroom.html" class="project">
+<a href="bedroom.html" class="choice">
 
 <img
 src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
 
-<div class="project-info">
+<div class="choice-info">
 
 <h3>غرفة النوم</h3>
 
-<p>
-سرير • Dressing • خزائن
-</p>
+<p>سرير • Dressing • خزائن</p>
 
 </div>
 
 </a>
 
 
-<a href="ai-design.html" class="project">
+<a href="ai-design.html" class="choice">
 
 <img
 src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
 
-<div class="project-info">
+<div class="choice-info">
 
 <h3>تصميم ديكور</h3>
 
-<p>
-اختيارات • قياسات • ألوان
-</p>
+<p>قياسات • ألوان • خامات</p>
 
 </div>
 
 </a>
 
 
-<a href="ai-design.html" class="project">
+<a href="ai-design.html" class="choice">
 
 <img
 src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
 
-<div class="project-info">
+<div class="choice-info">
 
 <h3>Dressing & Placard</h3>
 
-<p>
-خزائن • زجاج • تخزين
-</p>
+<p>خزائن • زجاج • تخزين</p>
 
 </div>
 
@@ -723,9 +554,9 @@ src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=c
 </section>
 
 
-<!-- الخدمات -->
+<!-- SERVICES -->
 
-<section id="features">
+<section id="services">
 
 <div class="title">
 
@@ -734,7 +565,7 @@ src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=c
 </h2>
 
 <p>
-اختيارات تساعدك تبني فكرة المشروع قبل التنفيذ
+اختيارات تساعدك قبل بداية المشروع
 </p>
 
 </div>
@@ -743,80 +574,39 @@ src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=c
 <div class="features">
 
 <div class="feature">
-
 <div class="icon">📐</div>
-
 <h3>القياسات</h3>
-
-<p>
-دخل الطول والعرض والارتفاع ديال المكان.
-</p>
-
+<p>الطول والعرض والارتفاع والمساحة.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="icon">🪵</div>
-
 <h3>الخامات</h3>
-
-<p>
-اختيار MDF والخشب والزجاج والخامات المناسبة.
-</p>
-
+<p>MDF والخشب والزجاج والخامات المختلفة.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="icon">🎨</div>
-
 <h3>الألوان</h3>
-
-<p>
-اختار اللون والستايل والتشطيب.
-</p>
-
+<p>اختار اللون والستايل والتشطيب.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="icon">🔩</div>
-
 <h3>الإكسسوارات</h3>
-
-<p>
-مقابض، إضاءة، زجاج وتجهيزات.
-</p>
-
+<p>مقابض، إضاءة، زجاج وتجهيزات.</p>
 </div>
 
-
 <div class="feature">
-
 <div class="icon">📸</div>
-
 <h3>صور المكان</h3>
-
-<p>
-أرسل صور المكان باش تكون الفكرة أوضح.
-</p>
-
+<p>أرسل صور المكان والقياسات.</p>
 </div>
-
 
 <div class="feature">
-
 <div class="icon">💬</div>
-
 <h3>واتساب</h3>
-
-<p>
-تواصل مباشرة معنا لإكمال الطلب.
-</p>
-
+<p>تواصل معنا مباشرة لإكمال الطلب.</p>
 </div>
 
 </div>
@@ -824,53 +614,7 @@ src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=c
 </section>
 
 
-<!-- قبل وبعد -->
-
-<section>
-
-<div class="title">
-
-<h2>
-قبل <span>وبعد</span>
-</h2>
-
-<p>
-حرك الشريط وشوف الفرق
-</p>
-
-</div>
-
-
-<div class="before-after">
-
-<div class="compare">
-
-<img
-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=90">
-
-<div class="before" id="before">
-
-<img
-src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=90">
-
-</div>
-
-<input
-class="range"
-id="range"
-type="range"
-min="0"
-max="100"
-value="50">
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- المراحل -->
+<!-- STEPS -->
 
 <section>
 
@@ -886,54 +630,27 @@ value="50">
 <div class="steps">
 
 <div class="step">
-
 <div class="number">1</div>
-
 <h3>صوّر المكان</h3>
-
-<p>
-أرسل الصور والقياسات.
-</p>
-
+<p>أرسل الصور والقياسات.</p>
 </div>
 
-
 <div class="step">
-
 <div class="number">2</div>
-
 <h3>اختار التصميم</h3>
-
-<p>
-حدد النوع والشكل والستايل.
-</p>
-
+<p>حدد النوع والشكل.</p>
 </div>
 
-
 <div class="step">
-
 <div class="number">3</div>
-
 <h3>اختار الخامات</h3>
-
-<p>
-الألوان والخشب والإكسسوارات.
-</p>
-
+<p>الألوان والخشب والإكسسوارات.</p>
 </div>
 
-
 <div class="step">
-
 <div class="number">4</div>
-
 <h3>التنفيذ</h3>
-
-<p>
-نكمل معاك حتى التركيب.
-</p>
-
+<p>نكمل معاك حتى التركيب.</p>
 </div>
 
 </div>
@@ -941,7 +658,7 @@ value="50">
 </section>
 
 
-<!-- الميزانية -->
+<!-- CALCULATOR -->
 
 <section>
 
@@ -951,9 +668,7 @@ value="50">
 💰 حاسبة <span>الميزانية</span>
 </h2>
 
-<p>
-تقدير أولي فقط للتكلفة
-</p>
+<p>تقدير أولي للتكلفة</p>
 
 </div>
 
@@ -962,9 +677,7 @@ value="50">
 
 <div class="field">
 
-<label>
-المساحة بالمتر المربع
-</label>
+<label>المساحة بالمتر المربع</label>
 
 <input
 id="area"
@@ -977,9 +690,7 @@ value="10">
 
 <div class="field">
 
-<label>
-الجودة
-</label>
+<label>الجودة</label>
 
 <select id="material">
 
@@ -1002,9 +713,7 @@ value="10">
 
 <div class="result">
 
-<small>
-التكلفة التقديرية
-</small>
+<small>التكلفة التقديرية</small>
 
 <strong id="total">
 9,000 DH
@@ -1023,12 +732,10 @@ value="10">
 
 <div class="contact">
 
-<h2>
-عندك مشروع؟
-</h2>
+<h2>عندك مشروع؟</h2>
 
 <p>
-شرح لينا شنو بغيتي وتواصل معنا مباشرة عبر WhatsApp.
+تواصل معنا مباشرة عبر WhatsApp وشرح لينا شنو بغيتي.
 </p>
 
 <a
@@ -1064,51 +771,21 @@ target="_blank">
 
 <script>
 
-/* القائمة فالهاتف */
-
-function toggleMenu(){
-
-document
-.getElementById("navLinks")
-.classList.toggle("show");
-
-}
-
-
-/* قبل وبعد */
-
-const range=document.getElementById("range");
-
-const before=document.getElementById("before");
-
-range.addEventListener("input",function(){
-
-before.style.width=(100-this.value)+"%";
-
-});
-
-
-/* حاسبة الميزانية */
-
 const area=document.getElementById("area");
-
 const material=document.getElementById("material");
-
 const total=document.getElementById("total");
 
 function calculate(){
 
-let result=
-(Number(area.value)||0)*
-(Number(material.value)||0);
+ const result=
+ (Number(area.value)||0)*
+ (Number(material.value)||0);
 
-total.textContent=
-result.toLocaleString("fr-FR")+" DH";
-
+ total.textContent=
+ result.toLocaleString("fr-FR")+" DH";
 }
 
 area.addEventListener("input",calculate);
-
 material.addEventListener("change",calculate);
 
 calculate();

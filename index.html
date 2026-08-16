@@ -3,34 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#121212">
+<meta name="theme-color" content="#0b0b0b">
 <link rel="manifest" href="manifest.json">
 
 <title>صمم ديكورك</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  margin:0;
-  background:#121212;
+  background:#0b0b0b;
   color:#fff;
   font-family:Tahoma,Arial,sans-serif;
+  line-height:1.7;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 .container{
-  width:min(1150px,92%);
+  width:min(1180px,92%);
   margin:auto;
 }
 
@@ -39,9 +35,9 @@ a{
 header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:#111111ee;
-  backdrop-filter:blur(12px);
+  z-index:1000;
+  background:rgba(10,10,10,.96);
+  backdrop-filter:blur(14px);
   border-bottom:1px solid #292929;
 }
 
@@ -50,62 +46,70 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:20px;
 }
 
 .logo{
-  color:#d9a957;
-  font-size:27px;
+  font-size:29px;
   font-weight:900;
+  color:#d8aa57;
 }
 
-.whatsapp{
+.logo span{
+  color:#fff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.nav-links a{
+  color:#ddd;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  color:#d8aa57;
+}
+
+.wa{
   background:#25D366;
-  color:#071b0d;
-  padding:12px 20px;
+  color:#07140b!important;
+  padding:10px 18px;
   border-radius:30px;
   font-weight:bold;
+}
+
+.menu{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
 }
 
 /* HERO */
 
 .hero{
-  height:590px;
-  margin:20px auto 55px;
-  width:min(1150px,94%);
+  width:min(1180px,94%);
+  height:600px;
+  margin:22px auto 65px;
   border-radius:30px;
   overflow:hidden;
   position:relative;
-  background:#222;
-}
-
-.hero-slide{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 1s;
-}
-
-.hero-slide.active{
-  opacity:1;
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    90deg,
-    #111111ee,
-    #11111199,
-    #11111122
-  );
+  border:1px solid #353535;
+  box-shadow:0 25px 70px #000;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.52),
+      rgba(0,0,0,.20)),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90")
+    center/cover;
 }
 
 .hero-content{
   position:absolute;
-  z-index:2;
   top:50%;
   right:7%;
   transform:translateY(-50%);
@@ -114,70 +118,87 @@ header{
 
 .badge{
   display:inline-block;
-  border:1px solid #d9a95766;
-  background:#d9a95718;
-  color:#e6c47d;
-  padding:10px 18px;
+  color:#e1b55f;
+  border:1px solid #806438;
+  background:#151515cc;
+  padding:9px 18px;
   border-radius:30px;
+  margin-bottom:22px;
 }
 
 .hero h1{
-  font-size:58px;
+  font-size:clamp(44px,7vw,76px);
   line-height:1.15;
-  margin:20px 0;
+  margin-bottom:18px;
+  font-weight:900;
 }
 
 .gold{
-  color:#d9a957;
+  color:#dcae58;
 }
 
 .hero p{
   color:#ddd;
-  line-height:2;
-  font-size:18px;
+  font-size:19px;
+  max-width:680px;
+  margin-bottom:28px;
 }
 
 .buttons{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
-  margin-top:25px;
 }
 
 .btn{
-  padding:14px 24px;
-  border-radius:13px;
+  display:inline-block;
+  padding:14px 25px;
+  border-radius:12px;
   font-weight:bold;
+  transition:.25s;
 }
 
-.btn-main{
-  background:#d9a957;
-  color:#18130c;
+.btn-gold{
+  background:#d9a953;
+  color:#17120b;
 }
 
-.btn-white{
-  background:white;
-  color:#222;
+.btn-gold:hover{
+  transform:translateY(-3px);
+  background:#edc16b;
 }
 
-/* SECTIONS */
+.btn-dark{
+  border:1px solid #777;
+  background:#111c;
+}
+
+.btn-dark:hover{
+  border-color:#d9a953;
+}
+
+/* TITLES */
 
 section{
-  margin-bottom:60px;
+  margin:75px auto;
 }
 
 .title{
   text-align:center;
-  margin-bottom:28px;
+  margin-bottom:32px;
 }
 
 .title h2{
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:36px;
+  margin-bottom:8px;
+}
+
+.title h2 span{
+  color:#dcae58;
 }
 
 .title p{
-  color:#aaa;
+  color:#999;
 }
 
 /* PROJECTS */
@@ -185,42 +206,62 @@ section{
 .projects{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:17px;
 }
 
-.card{
-  background:#1e1e20;
-  border:1px solid #373737;
-  border-radius:22px;
+.project{
+  height:300px;
+  position:relative;
   overflow:hidden;
-  transition:.25s;
+  border-radius:22px;
+  border:1px solid #363636;
+  background:#171717;
+  transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-5px);
-  border-color:#d9a957;
+.project:hover{
+  transform:translateY(-6px);
+  border-color:#d6a74f;
+  box-shadow:0 18px 45px #000;
 }
 
-.card img{
+.project img{
   width:100%;
-  height:220px;
+  height:100%;
   object-fit:cover;
-  display:block;
+  transition:.5s;
 }
 
-.card-info{
-  padding:18px;
+.project:hover img{
+  transform:scale(1.07);
 }
 
-.card-info h3{
-  margin:0 0 8px;
+.project:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.95),
+    transparent 65%
+  );
 }
 
-.card-info p{
-  color:#aaa;
-  font-size:14px;
-  line-height:1.7;
-  margin:0;
+.project-info{
+  position:absolute;
+  right:20px;
+  left:20px;
+  bottom:18px;
+  z-index:2;
+}
+
+.project-info h3{
+  font-size:23px;
+}
+
+.project-info p{
+  color:#ccc;
+  font-size:13px;
 }
 
 /* FEATURES */
@@ -228,43 +269,83 @@ section{
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  gap:16px;
 }
 
 .feature{
-  background:#1e1e20;
-  border:1px solid #353535;
+  background:#171717;
+  border:1px solid #303030;
   border-radius:20px;
-  padding:25px;
+  padding:27px;
   text-align:center;
+  transition:.25s;
 }
 
-.feature-icon{
+.feature:hover{
+  border-color:#8b6a38;
+  transform:translateY(-4px);
+}
+
+.icon{
   font-size:35px;
+  margin-bottom:8px;
+}
+
+.feature h3{
+  color:#ddb05c;
+  margin-bottom:7px;
 }
 
 .feature p{
-  color:#aaa;
-  line-height:1.7;
+  color:#999;
+}
+
+/* STEPS */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.step{
+  background:#171717;
+  border:1px solid #303030;
+  border-radius:20px;
+  padding:25px 16px;
+  text-align:center;
+}
+
+.number{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  margin:auto auto 12px;
+  background:#d9aa55;
+  color:#111;
+  border-radius:50%;
+  font-weight:bold;
+  font-size:20px;
 }
 
 /* BEFORE AFTER */
 
 .before-after{
-  background:#1e1e20;
-  border:1px solid #363636;
-  border-radius:25px;
-  padding:25px;
+  background:#171717;
+  border:1px solid #343434;
+  border-radius:24px;
+  padding:20px;
 }
 
 .compare{
   height:430px;
   position:relative;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:18px;
 }
 
-.compare img{
+.compare>img{
   position:absolute;
   inset:0;
   width:100%;
@@ -276,67 +357,39 @@ section{
   position:absolute;
   top:0;
   right:0;
-  height:100%;
   width:50%;
+  height:100%;
   overflow:hidden;
 }
 
 .before img{
-  width:100%;
+  position:absolute;
+  top:0;
+  right:0;
+  width:100vw;
   max-width:none;
+  height:100%;
+  object-fit:cover;
 }
 
 .range{
   position:absolute;
+  z-index:5;
   bottom:15px;
   left:5%;
   width:90%;
-  z-index:5;
-  accent-color:#d9a957;
-}
-
-/* STEPS */
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.step{
-  background:#1e1e20;
-  border:1px solid #353535;
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-}
-
-.number{
-  width:45px;
-  height:45px;
-  margin:auto auto 15px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#d9a957;
-  color:#18130c;
-  font-weight:bold;
-}
-
-.step p{
-  color:#aaa;
-  line-height:1.7;
+  accent-color:#d9aa55;
 }
 
 /* CALCULATOR */
 
 .calculator{
-  max-width:800px;
+  max-width:750px;
   margin:auto;
-  background:#1e1e20;
-  border:1px solid #383838;
-  border-radius:25px;
   padding:30px;
+  background:#171717;
+  border:1px solid #3d3629;
+  border-radius:25px;
 }
 
 .field{
@@ -348,24 +401,23 @@ section{
   margin-bottom:8px;
 }
 
-input,
-select{
+input,select{
   width:100%;
   padding:14px;
-  border-radius:12px;
+  border-radius:11px;
   border:1px solid #444;
-  background:#111;
+  background:#0d0d0d;
   color:white;
   font-size:16px;
 }
 
 .result{
-  margin-top:20px;
-  padding:25px;
-  border-radius:18px;
   text-align:center;
-  background:#292722;
-  border:1px solid #6d5939;
+  margin-top:20px;
+  padding:20px;
+  border-radius:17px;
+  background:#29251f;
+  border:1px solid #635235;
 }
 
 .result small{
@@ -374,53 +426,59 @@ select{
 
 .result strong{
   display:block;
-  color:#d9a957;
+  color:#dfae55;
   font-size:40px;
-  margin-top:8px;
 }
 
-/* CTA */
+/* CONTACT */
 
-.cta{
-  background:linear-gradient(135deg,#241d18,#4b3526);
-  border:1px solid #594735;
-  border-radius:25px;
-  padding:45px 25px;
+.contact{
   text-align:center;
+  padding:65px 20px;
+  border-radius:27px;
+  border:1px solid #414141;
+  background:
+    linear-gradient(#000b,#000d),
+    url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
 }
 
-.cta p{
-  color:#ddd;
-  line-height:1.8;
+.contact h2{
+  font-size:38px;
 }
 
-/* FLOAT WHATSAPP */
-
-.float-whatsapp{
-  position:fixed;
-  bottom:18px;
-  left:18px;
-  z-index:200;
-  background:#25D366;
-  color:#06200d;
-  padding:14px 20px;
-  border-radius:35px;
-  font-weight:bold;
-  box-shadow:0 5px 25px #0008;
+.contact p{
+  color:#ccc;
+  margin:10px 0 25px;
 }
 
 /* FOOTER */
 
 footer{
-  text-align:center;
-  color:#777;
-  padding:30px;
   border-top:1px solid #292929;
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+/* FLOATING WHATSAPP */
+
+.float-wa{
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  z-index:2000;
+  background:#25D366;
+  color:#06200d;
+  padding:13px 19px;
+  border-radius:30px;
+  font-weight:bold;
+  box-shadow:0 5px 25px #000;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:950px){
 
   .projects{
     grid-template-columns:repeat(2,1fr);
@@ -430,29 +488,33 @@ footer{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .hero h1{
-    font-size:45px;
-  }
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
 
-  .nav{
-    min-height:70px;
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:76px;
+    right:4%;
+    left:4%;
+    background:#151515;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:18px;
+    flex-direction:column;
   }
 
-  .logo{
-    font-size:22px;
+  .nav-links.show{
+    display:flex;
   }
 
-  .whatsapp{
-    padding:10px 14px;
-    font-size:12px;
+  .menu{
+    display:block;
   }
 
   .hero{
-    height:570px;
-    border-radius:22px;
+    height:530px;
   }
 
   .hero-content{
@@ -462,11 +524,11 @@ footer{
   }
 
   .hero h1{
-    font-size:38px;
+    font-size:43px;
   }
 
   .hero p{
-    font-size:15px;
+    font-size:16px;
   }
 
   .buttons{
@@ -474,13 +536,16 @@ footer{
   }
 
   .projects,
-  .features,
-  .steps{
+  .features{
     grid-template-columns:1fr;
   }
 
+  .steps{
+    grid-template-columns:1fr 1fr;
+  }
+
   .compare{
-    height:330px;
+    height:320px;
   }
 }
 </style>
@@ -489,68 +554,73 @@ footer{
 <body>
 
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <a href="index.html" class="logo">
-      صمم ديكورك
-    </a>
+<a href="index.html" class="logo">
+صمم <span>ديكورك</span>
+</a>
 
-    <a class="whatsapp"
-       href="https://wa.me/212XXXXXXXXX?text=السلام%20عليكم،%20بغيت%20نطلب%20تصميم%20ديكور">
-      💬 تواصل مباشر
-    </a>
+<div class="menu" onclick="toggleMenu()">☰</div>
 
-  </div>
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">الرئيسية</a>
+
+<a href="#projects">اختيارات</a>
+
+<a href="kitchen.html">المطبخ</a>
+
+<a href="bedroom.html">غرفة النوم</a>
+
+<a href="#features">الخدمات</a>
+
+<a
+class="wa"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم"
+target="_blank">
+💬 واتساب
+</a>
+
+</nav>
+
+</div>
 </header>
 
 
-<!-- HERO -->
+<!-- الواجهة الرئيسية -->
 
 <div class="hero">
 
-  <div class="hero-slide active"
-       style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=85&w=1600')">
-  </div>
+<div class="hero-content">
 
-  <div class="hero-slide"
-       style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=85&w=1600')">
-  </div>
+<div class="badge">
+✨ تصميم • ديكور • تنفيذ
+</div>
 
-  <div class="hero-slide"
-       style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=85&w=1600')">
-  </div>
+<h1>
+صمم <span class="gold">ديكورك</span><br>
+بطريقتك
+</h1>
 
-  <div class="hero-overlay"></div>
+<p>
+حوّل فكرتك إلى تصميم أنيق وواقعي.
+اختار المشروع، القياسات، الخامات والألوان،
+ومن بعد تواصل معنا مباشرة.
+</p>
 
-  <div class="hero-content">
+<div class="buttons">
 
-    <span class="badge">
-      ✨ تصميم • ديكور • اختيارات ذكية
-    </span>
+<a href="#projects" class="btn btn-gold">
+✨ ابدأ التصميم
+</a>
 
-    <h1>
-      من الفكرة<br>
-      إلى <span class="gold">الديكور الواقعي</span>
-    </h1>
+<a href="#contact" class="btn btn-dark">
+💬 تواصل معنا
+</a>
 
-    <p>
-      اختار نوع المشروع، دخل القياسات، اختار الخامات
-      والألوان والإكسسوارات، واحسب الميزانية ديالك.
-    </p>
+</div>
 
-    <div class="buttons">
-
-      <a href="#projects" class="btn btn-main">
-        ✨ ابدأ التصميم
-      </a>
-
-      <a href="#calculator" class="btn btn-white">
-        💰 احسب الميزانية
-      </a>
-
-    </div>
-
-  </div>
+</div>
 
 </div>
 
@@ -558,372 +628,419 @@ footer{
 <main class="container">
 
 
-<!-- PROJECTS -->
+<!-- الاختيارات -->
 
 <section id="projects">
 
-  <div class="title">
+<div class="title">
 
-    <h2>اختار نوع مشروعك</h2>
+<h2>
+اختار <span>مشروعك</span>
+</h2>
 
-    <p>
-      اضغط على القسم اللي بغيتي باش تبدأ الاختيارات والقياسات
-    </p>
+<p>
+اختار القسم اللي بغيتي وتابع التصميم
+</p>
 
-  </div>
-
-
-  <div class="projects">
-
-    <a class="card" href="ai-design.html?type=kitchen">
-
-      <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=85&w=1000">
-
-      <div class="card-info">
-
-        <h3>المطابخ العصرية</h3>
-
-        <p>
-          MDF • High Gloss • L / U • جزيرة
-        </p>
-
-      </div>
-
-    </a>
+</div>
 
 
-    <a class="card" href="ai-design.html?type=bedroom">
+<div class="projects">
 
-      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=85&w=1000">
+<a href="kitchen.html" class="project">
 
-      <div class="card-info">
+<img
+src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
 
-        <h3>غرف النوم</h3>
+<div class="project-info">
 
-        <p>
-          سرير • بلاكار • تسريحة • تخزين
-        </p>
+<h3>المطبخ</h3>
 
-      </div>
+<p>
+L • U • جزيرة • عصري
+</p>
 
-    </a>
+</div>
 
-
-    <a class="card" href="ai-design.html?type=tv">
-
-      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=85&w=1000">
-
-      <div class="card-info">
-
-        <h3>موبيل التلفاز</h3>
-
-        <p>
-          خشب • بارداج • زجاج • فاصل
-        </p>
-
-      </div>
-
-    </a>
+</a>
 
 
-    <a class="card" href="ai-design.html?type=wardrobe">
+<a href="bedroom.html" class="project">
 
-      <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=85&w=1000">
+<img
+src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
 
-      <div class="card-info">
+<div class="project-info">
 
-        <h3>Dressing & Placard</h3>
+<h3>غرفة النوم</h3>
 
-        <p>
-          خزائن عصرية • أبواب زجاجية • تخزين
-        </p>
+<p>
+سرير • Dressing • خزائن
+</p>
 
-      </div>
+</div>
 
-    </a>
+</a>
 
-  </div>
+
+<a href="ai-design.html" class="project">
+
+<img
+src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
+
+<div class="project-info">
+
+<h3>تصميم ديكور</h3>
+
+<p>
+اختيارات • قياسات • ألوان
+</p>
+
+</div>
+
+</a>
+
+
+<a href="ai-design.html" class="project">
+
+<img
+src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
+
+<div class="project-info">
+
+<h3>Dressing & Placard</h3>
+
+<p>
+خزائن • زجاج • تخزين
+</p>
+
+</div>
+
+</a>
+
+</div>
 
 </section>
 
 
-<!-- FEATURES -->
+<!-- الخدمات -->
+
+<section id="features">
+
+<div class="title">
+
+<h2>
+كلشي <span>فبلاصة وحدة</span>
+</h2>
+
+<p>
+اختيارات تساعدك تبني فكرة المشروع قبل التنفيذ
+</p>
+
+</div>
+
+
+<div class="features">
+
+<div class="feature">
+
+<div class="icon">📐</div>
+
+<h3>القياسات</h3>
+
+<p>
+دخل الطول والعرض والارتفاع ديال المكان.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">🪵</div>
+
+<h3>الخامات</h3>
+
+<p>
+اختيار MDF والخشب والزجاج والخامات المناسبة.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">🎨</div>
+
+<h3>الألوان</h3>
+
+<p>
+اختار اللون والستايل والتشطيب.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">🔩</div>
+
+<h3>الإكسسوارات</h3>
+
+<p>
+مقابض، إضاءة، زجاج وتجهيزات.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">📸</div>
+
+<h3>صور المكان</h3>
+
+<p>
+أرسل صور المكان باش تكون الفكرة أوضح.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">💬</div>
+
+<h3>واتساب</h3>
+
+<p>
+تواصل مباشرة معنا لإكمال الطلب.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- قبل وبعد -->
 
 <section>
 
-  <div class="title">
+<div class="title">
 
-    <h2>جميع الاختيارات في مكان واحد</h2>
+<h2>
+قبل <span>وبعد</span>
+</h2>
 
-    <p>
-      كلشي اللي يحتاجو الزبون قبل ما يبدأ المشروع
-    </p>
+<p>
+حرك الشريط وشوف الفرق
+</p>
 
-  </div>
+</div>
 
 
-  <div class="features">
+<div class="before-after">
 
-    <div class="feature">
-      <div class="feature-icon">📐</div>
-      <h3>القياسات</h3>
-      <p>الطول والعرض والارتفاع والمساحة.</p>
-    </div>
+<div class="compare">
 
-    <div class="feature">
-      <div class="feature-icon">🪵</div>
-      <h3>الخامات</h3>
-      <p>MDF و Stratifié و High Gloss وغيرها.</p>
-    </div>
+<img
+src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=90">
 
-    <div class="feature">
-      <div class="feature-icon">🎨</div>
-      <h3>الألوان</h3>
-      <p>اختيار اللون والستايل والتشطيب.</p>
-    </div>
+<div class="before" id="before">
 
-    <div class="feature">
-      <div class="feature-icon">🔩</div>
-      <h3>الإكسسوارات</h3>
-      <p>مقابض، إضاءة، زجاج وتجهيزات.</p>
-    </div>
+<img
+src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=90">
 
-    <div class="feature">
-      <div class="feature-icon">📸</div>
-      <h3>صورة المكان</h3>
-      <p>إرسال صورة أو رسم القياسات.</p>
-    </div>
+</div>
 
-    <div class="feature">
-      <div class="feature-icon">💬</div>
-      <h3>واتساب</h3>
-      <p>تواصل مباشر لإكمال الطلب.</p>
-    </div>
+<input
+class="range"
+id="range"
+type="range"
+min="0"
+max="100"
+value="50">
 
-  </div>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- BEFORE AFTER -->
+<!-- المراحل -->
 
 <section>
 
-  <div class="title">
+<div class="title">
 
-    <h2>معرض النتائج التفاعلي</h2>
+<h2>
+كيفاش <span>كنخدمو؟</span>
+</h2>
 
-    <p>
-      حرك الشريط وشوف الفرق بين قبل وبعد
-    </p>
-
-  </div>
+</div>
 
 
-  <div class="before-after">
+<div class="steps">
 
-    <div class="compare">
+<div class="step">
 
-      <img
-        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=85&w=1400"
-        alt="بعد التصميم">
+<div class="number">1</div>
 
-      <div class="before" id="before">
+<h3>صوّر المكان</h3>
 
-        <img
-          src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=85&w=1400"
-          alt="قبل التصميم">
+<p>
+أرسل الصور والقياسات.
+</p>
 
-      </div>
+</div>
 
-      <input
-        id="range"
-        class="range"
-        type="range"
-        min="0"
-        max="100"
-        value="50">
 
-    </div>
+<div class="step">
 
-  </div>
+<div class="number">2</div>
+
+<h3>اختار التصميم</h3>
+
+<p>
+حدد النوع والشكل والستايل.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">3</div>
+
+<h3>اختار الخامات</h3>
+
+<p>
+الألوان والخشب والإكسسوارات.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">4</div>
+
+<h3>التنفيذ</h3>
+
+<p>
+نكمل معاك حتى التركيب.
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- STEPS -->
+<!-- الميزانية -->
 
 <section>
 
-  <div class="title">
+<div class="title">
 
-    <h2>مراحل العمل معنا</h2>
+<h2>
+💰 حاسبة <span>الميزانية</span>
+</h2>
 
-    <p>
-      خطوات بسيطة من الفكرة حتى التنفيذ
-    </p>
+<p>
+تقدير أولي فقط للتكلفة
+</p>
 
-  </div>
-
-
-  <div class="steps">
-
-    <div class="step">
-
-      <div class="number">1</div>
-
-      <h3>صوّر المكان</h3>
-
-      <p>
-        أرسل صورة أو رسم القياسات.
-      </p>
-
-    </div>
+</div>
 
 
-    <div class="step">
+<div class="calculator">
 
-      <div class="number">2</div>
+<div class="field">
 
-      <h3>اختيار التصميم</h3>
+<label>
+المساحة بالمتر المربع
+</label>
 
-      <p>
-        حدد النوع والشكل والستايل.
-      </p>
+<input
+id="area"
+type="number"
+min="1"
+value="10">
 
-    </div>
-
-
-    <div class="step">
-
-      <div class="number">3</div>
-
-      <h3>اختيار الخامات</h3>
-
-      <p>
-        MDF والألوان والإكسسوارات.
-      </p>
-
-    </div>
+</div>
 
 
-    <div class="step">
+<div class="field">
 
-      <div class="number">4</div>
+<label>
+الجودة
+</label>
 
-      <h3>التسليم والتركيب</h3>
+<select id="material">
 
-      <p>
-        نكمل معاك التفاصيل والتنفيذ.
-      </p>
+<option value="600">
+اقتصادي — 600 DH/m²
+</option>
 
-    </div>
+<option value="900" selected>
+متوسط — 900 DH/m²
+</option>
 
-  </div>
+<option value="1400">
+ممتاز — 1400 DH/m²
+</option>
 
-</section>
+</select>
 
-
-<!-- CALCULATOR -->
-
-<section id="calculator">
-
-  <div class="title">
-
-    <h2>💰 حاسبة الميزانية التفاعلية</h2>
-
-    <p>
-      دخل المساحة واختار الجودة باش تشوف تقدير أولي
-    </p>
-
-  </div>
+</div>
 
 
-  <div class="calculator">
+<div class="result">
 
-    <div class="field">
+<small>
+التكلفة التقديرية
+</small>
 
-      <label>
-        المساحة (متر مربع)
-      </label>
+<strong id="total">
+9,000 DH
+</strong>
 
-      <input
-        id="area"
-        type="number"
-        min="1"
-        value="10">
+</div>
 
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        نوع الخامة والجودة
-      </label>
-
-      <select id="material">
-
-        <option value="600">
-          اقتصادي — MDF عادي (600 DH/m²)
-        </option>
-
-        <option value="900" selected>
-          متوسط — MDF Stratifié ممتاز (900 DH/m²)
-        </option>
-
-        <option value="1400">
-          ممتاز — High Gloss / خشب (1400 DH/m²)
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="result">
-
-      <small>
-        التكلفة التقديرية الإجمالية
-      </small>
-
-      <strong id="total">
-        9,000 DH
-      </strong>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- CTA -->
+<!-- CONTACT -->
 
-<section>
+<section id="contact">
 
-  <div class="cta">
+<div class="contact">
 
-    <h2>
-      جاهز تبدا مشروعك؟
-    </h2>
+<h2>
+عندك مشروع؟
+</h2>
 
-    <p>
-      اختار القسم، جمع القياسات والاختيارات،
-      ومن بعد تواصل معنا مباشرة على واتساب.
-    </p>
+<p>
+شرح لينا شنو بغيتي وتواصل معنا مباشرة عبر WhatsApp.
+</p>
 
-    <br>
+<a
+class="btn btn-gold"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور%20وبغيت%20نتواصل%20معاكم"
+target="_blank">
 
-    <a
-      class="whatsapp"
-      href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدا%20تصميم%20ديكوري">
+💬 تواصل معنا عبر WhatsApp
 
-      💬 تواصل معنا عبر واتساب
+</a>
 
-    </a>
-
-  </div>
+</div>
 
 </section>
 
@@ -931,78 +1048,62 @@ footer{
 
 
 <footer>
-  صمم ديكورك © 2026
+صمم ديكورك © 2026
 </footer>
 
 
 <a
-  class="float-whatsapp"
-  href="https://wa.me/212?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
+class="float-wa"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم"
+target="_blank">
 
-  💬 واتساب
+💬 واتساب
 
 </a>
 
 
 <script>
 
-/* صور الهيرو المتحركة */
+/* القائمة فالهاتف */
 
-const slides =
-document.querySelectorAll(".hero-slide");
+function toggleMenu(){
 
-let current = 0;
+document
+.getElementById("navLinks")
+.classList.toggle("show");
 
-setInterval(function(){
-
-  slides[current].classList.remove("active");
-
-  current++;
-
-  if(current >= slides.length){
-    current = 0;
-  }
-
-  slides[current].classList.add("active");
-
-},5000);
+}
 
 
 /* قبل وبعد */
 
-const range =
-document.getElementById("range");
+const range=document.getElementById("range");
 
-const before =
-document.getElementById("before");
+const before=document.getElementById("before");
 
 range.addEventListener("input",function(){
 
-  before.style.width =
-  (100 - this.value) + "%";
+before.style.width=(100-this.value)+"%";
 
 });
 
 
 /* حاسبة الميزانية */
 
-const area =
-document.getElementById("area");
+const area=document.getElementById("area");
 
-const material =
-document.getElementById("material");
+const material=document.getElementById("material");
 
-const total =
-document.getElementById("total");
+const total=document.getElementById("total");
 
 function calculate(){
 
-  const result =
-  (Number(area.value) || 0) *
-  (Number(material.value) || 0);
+let result=
+(Number(area.value)||0)*
+(Number(material.value)||0);
 
-  total.textContent =
-  result.toLocaleString("fr-FR") + " DH";
+total.textContent=
+result.toLocaleString("fr-FR")+" DH";
 
 }
 

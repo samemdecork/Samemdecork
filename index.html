@@ -2,854 +2,904 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111216">
-<meta name="description" content="صمم ديكورك - تصميم وتنفيذ المطابخ والصالونات والخزائن والإكسسوارات">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#26352d">
+<meta name="description" content="صمم ديكورك - تصميم وتنفيذ الديكور والمطابخ وغرف النوم والخزائن">
 
 <title>صمم ديكورك</title>
 
 <style>
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:#111216;
-    color:#f5f5f5;
-    font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
-    overflow-x:hidden;
+  background:#f4eee5;
+  color:#26352d;
+  font-family:Tahoma,Arial,sans-serif;
+  overflow-x:hidden;
 }
 
 a{
-    text-decoration:none;
-    color:inherit;
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  display:block;
 }
 
 .container{
-    width:min(1200px,92%);
-    margin:auto;
+  width:min(1240px,92%);
+  margin:auto;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
-    position:sticky;
-    top:0;
-    z-index:9999;
-    background:rgba(17,18,22,.96);
-    border-bottom:1px solid #292a2e;
-    backdrop-filter:blur(15px);
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  transition:.4s;
+  background:linear-gradient(
+    rgba(25,38,31,.72),
+    transparent
+  );
 }
 
-.header{
-    min-height:78px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+header.scrolled{
+  background:rgba(38,53,45,.97);
+  box-shadow:0 8px 30px rgba(0,0,0,.15);
 }
 
-.brand{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
+.nav{
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.brand-title{
-    color:#e2ad54;
-    font-size:29px;
-    font-weight:900;
+.logo{
+  color:#f4eee5;
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:-1px;
 }
 
-.brand-sub{
-    color:#f1f1f1;
-    font-size:17px;
-    margin-top:4px;
+.logo span{
+  color:#d8c3a5;
 }
 
-.brand-sub span{
-    color:#e2ad54;
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
 }
 
-.whatsapp-top{
-    background:#25d366;
-    color:#071b0d;
-    padding:12px 23px;
-    border-radius:30px;
-    font-weight:900;
-    font-size:16px;
-    box-shadow:0 5px 20px rgba(37,211,102,.16);
-    white-space:nowrap;
+.nav-links a{
+  color:#fff;
+  font-size:14px;
+  transition:.3s;
 }
 
-.whatsapp-top:hover{
-    transform:translateY(-2px);
+.nav-links a:hover{
+  color:#d8c3a5;
 }
 
-/* =========================
-   HERO
-========================= */
+.wa-top{
+  background:#d8c3a5;
+  color:#26352d!important;
+  padding:12px 20px;
+  border-radius:30px;
+  font-weight:900;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-    width:min(1200px,94%);
-    margin:34px auto 60px;
-    min-height:650px;
-    border:1px solid #34353a;
-    border-radius:30px;
-    overflow:hidden;
-    position:relative;
-    background:#17181c;
+  height:100vh;
+  min-height:680px;
+  position:relative;
+  overflow:hidden;
+  background:#26352d;
 }
 
 .hero-slide{
-    position:absolute;
-    inset:0;
-    background-size:cover;
-    background-position:center;
-    opacity:0;
-    transform:scale(1.04);
-    transition:
-        opacity 1s ease,
-        transform 6s ease;
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:scale(1.08);
+  transition:
+    opacity 1.3s ease,
+    transform 7s ease;
+  background-size:cover;
+  background-position:center;
 }
 
 .hero-slide.active{
-    opacity:1;
-    transform:scale(1);
+  opacity:1;
+  transform:scale(1);
 }
 
-.hero-slide:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(8,9,11,.93),
-            rgba(8,9,11,.76),
-            rgba(8,9,11,.34)
-        );
+.hero-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(24,35,29,.92),
+      rgba(24,35,29,.60),
+      rgba(24,35,29,.18)
+    );
 }
 
 .hero-content{
-    position:relative;
-    z-index:3;
-    min-height:650px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
-    padding:55px;
-    max-width:850px;
+  position:relative;
+  z-index:3;
+  height:100%;
+  display:flex;
+  align-items:center;
 }
 
-.badge{
-    display:inline-block;
-    border:1px solid #80643b;
-    background:rgba(42,38,29,.85);
-    color:#e3b15c;
-    padding:10px 20px;
-    border-radius:30px;
-    margin-bottom:25px;
-    font-size:15px;
+.hero-text{
+  max-width:700px;
+  color:#fff;
+}
+
+.small-title{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#d8c3a5;
+  font-size:14px;
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+.small-title::before{
+  content:"";
+  width:45px;
+  height:1px;
+  background:#d8c3a5;
 }
 
 .hero h1{
-    font-size:clamp(44px,7vw,78px);
-    line-height:1.16;
-    margin-bottom:20px;
-    font-weight:900;
+  font-size:clamp(48px,8vw,92px);
+  line-height:1.02;
+  letter-spacing:-3px;
+  margin-bottom:25px;
 }
 
-.gold{
-    color:#e2ad54;
+.hero h1 span{
+  color:#d8c3a5;
 }
 
 .hero p{
-    color:#d2d2d2;
-    line-height:2;
-    font-size:19px;
-    max-width:700px;
-    margin-bottom:28px;
+  color:#eee;
+  font-size:18px;
+  line-height:2;
+  max-width:650px;
+  margin-bottom:32px;
 }
 
 .hero-buttons{
-    display:flex;
-    gap:13px;
-    flex-wrap:wrap;
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-height:52px;
-    padding:13px 28px;
-    border-radius:30px;
-    font-weight:900;
-    font-size:16px;
-    transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 28px;
+  border-radius:4px;
+  font-weight:bold;
+  transition:.3s;
 }
 
 .btn:hover{
-    transform:translateY(-3px);
+  transform:translateY(-3px);
 }
 
-.btn-gold{
-    background:#e0aa50;
-    color:#17130c;
-    box-shadow:0 10px 30px rgba(224,170,80,.18);
+.btn-beige{
+  background:#d8c3a5;
+  color:#26352d;
 }
 
-.btn-dark{
-    background:#17181ccc;
-    border:1px solid #747474;
-    color:white;
+.btn-outline{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.65);
+  background:rgba(0,0,0,.08);
+}
+
+.hero-counter{
+  position:absolute;
+  z-index:5;
+  bottom:40px;
+  left:4%;
+  color:#fff;
+  font-size:13px;
+}
+
+.hero-counter span{
+  color:#d8c3a5;
 }
 
 .hero-dots{
-    position:absolute;
-    z-index:5;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:8px;
+  position:absolute;
+  z-index:5;
+  bottom:42px;
+  right:4%;
+  display:flex;
+  gap:8px;
 }
 
 .dot{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:#aaa;
-    transition:.3s;
+  width:30px;
+  height:2px;
+  background:rgba(255,255,255,.45);
+  transition:.4s;
 }
 
 .dot.active{
-    width:38px;
-    border-radius:20px;
-    background:#e2ad54;
+  width:60px;
+  background:#d8c3a5;
 }
 
-/* =========================
-   TITLES
-========================= */
+/* ================= INTRO ================= */
 
-.section{
-    margin:75px auto;
+.intro{
+  padding:120px 0 100px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:32px;
+.intro-grid{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:80px;
+  align-items:center;
 }
 
-.section-title h2{
-    font-size:38px;
-    margin-bottom:10px;
+.eyebrow{
+  color:#7d705f;
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:18px;
 }
 
-.section-title h2 span{
-    color:#e0ad57;
+.intro h2{
+  font-size:clamp(35px,5vw,60px);
+  line-height:1.15;
+  color:#26352d;
 }
 
-.section-title p{
-    color:#929399;
-    font-size:17px;
-    line-height:1.9;
+.intro h2 span{
+  color:#a68760;
 }
 
-/* =========================
-   PROJECT CARDS
-========================= */
+.intro-text{
+  color:#5e625d;
+  font-size:17px;
+  line-height:2;
+}
+
+.intro-text strong{
+  color:#26352d;
+}
+
+/* ================= BIG PROJECTS ================= */
 
 .projects{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+  padding-bottom:100px;
+}
+
+.section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:35px;
+  gap:20px;
+}
+
+.section-heading h2{
+  font-size:48px;
+}
+
+.section-heading p{
+  color:#777;
+  max-width:420px;
+  line-height:1.8;
+}
+
+.project-list{
+  display:grid;
+  gap:25px;
 }
 
 .project{
-    height:330px;
-    border:1px solid #38393e;
-    border-radius:25px;
-    overflow:hidden;
-    position:relative;
-    background:#1b1c20;
-    transition:.3s;
+  position:relative;
+  height:520px;
+  overflow:hidden;
+  background:#26352d;
 }
 
-.project:hover{
-    border-color:#c89547;
-    transform:translateY(-4px);
+.project:nth-child(even){
+  height:430px;
 }
 
 .project img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.6s;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1s ease;
 }
 
 .project:hover img{
-    transform:scale(1.06);
+  transform:scale(1.05);
 }
 
-.project:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.94),
-            rgba(0,0,0,.12) 70%
-        );
+.project::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(18,27,22,.82),
+      transparent 60%
+    );
 }
 
 .project-info{
-    position:absolute;
-    z-index:2;
-    right:25px;
-    left:25px;
-    bottom:22px;
+  position:absolute;
+  z-index:2;
+  right:45px;
+  bottom:35px;
+  color:#fff;
+}
+
+.project-number{
+  color:#d8c3a5;
+  font-size:13px;
+  margin-bottom:10px;
 }
 
 .project-info h3{
-    font-size:27px;
-    margin-bottom:7px;
+  font-size:38px;
+  margin-bottom:8px;
 }
 
 .project-info p{
-    color:#d4d4d4;
-    font-size:15px;
+  color:#ddd;
 }
 
-/* =========================
-   BEFORE AFTER
-========================= */
+/* ================= CHOICES ================= */
 
-.before-after{
-    background:#1c1d21;
-    border:1px solid #34353a;
-    border-radius:28px;
-    padding:30px;
+.choices{
+  background:#26352d;
+  color:#fff;
+  padding:110px 0;
 }
 
-.before-after-text{
-    text-align:center;
-    margin-bottom:25px;
+.choices .section-heading h2{
+  color:#fff;
 }
 
-.before-after-text h2{
-    font-size:35px;
-    margin-bottom:10px;
+.choices .section-heading p{
+  color:#c6c8c4;
 }
 
-.before-after-text p{
-    color:#96979b;
-    line-height:1.8;
+.choice-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
 }
 
-.compare{
-    position:relative;
-    height:520px;
-    overflow:hidden;
-    border-radius:22px;
-    border:1px solid #3d3e42;
-    background:#222;
+.choice{
+  position:relative;
+  height:370px;
+  overflow:hidden;
 }
 
-.compare img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.choice img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.75;
+  transition:.7s;
 }
 
-.before-image{
-    clip-path:inset(0 50% 0 0);
+.choice::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(15,23,19,.85),
+    transparent 65%
+  );
 }
 
-.compare-label{
-    position:absolute;
-    top:20px;
-    padding:11px 18px;
-    border-radius:12px;
-    background:rgba(10,10,10,.82);
-    font-weight:bold;
-    z-index:5;
+.choice:hover img{
+  transform:scale(1.07);
+  opacity:1;
 }
 
-.label-before{
-    right:20px;
+.choice-info{
+  position:absolute;
+  z-index:3;
+  right:25px;
+  bottom:25px;
 }
 
-.label-after{
-    left:20px;
+.choice-info h3{
+  font-size:25px;
+  margin-bottom:7px;
 }
 
-.compare-line{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:50%;
-    width:3px;
-    background:#e2ad54;
-    z-index:8;
-    transform:translateX(-50%);
+.choice-info p{
+  color:#d8c3a5;
+  font-size:13px;
 }
 
-.compare-handle{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:#e2ad54;
-    color:#111;
-    display:grid;
-    place-items:center;
-    font-weight:900;
-    z-index:10;
-    transform:translate(-50%,-50%);
-    box-shadow:0 5px 20px #000;
-}
-
-.compare input{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    opacity:0;
-    cursor:ew-resize;
-    z-index:20;
-}
-
-/* =========================
-   WORK STEPS
-========================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:17px;
-}
-
-.step{
-    background:#1c1d21;
-    border:1px solid #35363a;
-    border-radius:22px;
-    padding:28px 18px;
-    text-align:center;
-    min-height:210px;
-}
-
-.number{
-    width:52px;
-    height:52px;
-    display:grid;
-    place-items:center;
-    border-radius:50%;
-    margin:0 auto 15px;
-    background:#e1ac54;
-    color:#16120b;
-    font-size:20px;
-    font-weight:900;
-}
-
-.step h3{
-    font-size:21px;
-    margin-bottom:9px;
-}
-
-.step p{
-    color:#96979b;
-    line-height:1.8;
-}
-
-/* =========================
-   SERVICES
-========================= */
+/* ================= SERVICES ================= */
 
 .services{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:17px;
+  padding:110px 0;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #c9bba8;
+  border-right:1px solid #c9bba8;
 }
 
 .service{
-    background:#1b1c20;
-    border:1px solid #35363a;
-    border-radius:21px;
-    padding:28px 20px;
-    text-align:center;
-    transition:.3s;
+  padding:35px;
+  min-height:210px;
+  border-left:1px solid #c9bba8;
+  border-bottom:1px solid #c9bba8;
+  transition:.3s;
 }
 
 .service:hover{
-    border-color:#c89547;
-    transform:translateY(-4px);
+  background:#e9dfd1;
 }
 
-.service-icon{
-    font-size:37px;
-    margin-bottom:12px;
+.service-number{
+  color:#a68760;
+  font-size:13px;
+  margin-bottom:25px;
 }
 
 .service h3{
-    color:#e0ad57;
-    margin-bottom:8px;
-    font-size:20px;
+  font-size:23px;
+  margin-bottom:10px;
 }
 
 .service p{
-    color:#999;
-    line-height:1.8;
+  color:#71736e;
+  line-height:1.8;
 }
 
-/* =========================
-   BUDGET
-========================= */
+/* ================= BEFORE AFTER ================= */
 
-.calculator{
-    max-width:780px;
-    margin:auto;
-    background:#1b1c20;
-    border:1px solid #3c3d40;
-    border-radius:27px;
-    padding:30px;
+.before-after{
+  background:#ded2c1;
+  padding:110px 0;
+}
+
+.compare{
+  height:620px;
+  position:relative;
+  overflow:hidden;
+  margin-top:40px;
+}
+
+.compare img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.before-img{
+  clip-path:inset(0 50% 0 0);
+}
+
+.compare-line{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:2px;
+  background:#fff;
+  z-index:5;
+}
+
+.compare-handle{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:52px;
+  height:52px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#d8c3a5;
+  color:#26352d;
+  display:grid;
+  place-items:center;
+  z-index:7;
+  font-weight:bold;
+}
+
+.compare input{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:ew-resize;
+  z-index:10;
+}
+
+/* ================= STEPS ================= */
+
+.steps{
+  padding:110px 0;
+}
+
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #c9bba8;
+}
+
+.step{
+  padding:35px 25px;
+  border-left:1px solid #c9bba8;
+}
+
+.step:last-child{
+  border-left:0;
+}
+
+.step-num{
+  font-size:40px;
+  color:#a68760;
+  margin-bottom:35px;
+}
+
+.step h3{
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.step p{
+  color:#777;
+  line-height:1.8;
+}
+
+/* ================= BUDGET ================= */
+
+.budget{
+  background:#26352d;
+  color:#fff;
+  padding:100px 0;
+}
+
+.budget-box{
+  max-width:750px;
+  margin:40px auto 0;
+  background:#304238;
+  padding:35px;
 }
 
 .field{
-    margin-bottom:22px;
+  margin-bottom:22px;
 }
 
 .field label{
-    display:block;
-    margin-bottom:9px;
-    color:#ddd;
+  display:block;
+  margin-bottom:8px;
 }
 
 .field input,
 .field select{
-    width:100%;
-    padding:16px;
-    background:#111216;
-    border:1px solid #3d3e43;
-    border-radius:13px;
-    color:white;
-    font-size:16px;
-    outline:none;
+  width:100%;
+  padding:15px;
+  border:1px solid #64746b;
+  background:#26352d;
+  color:#fff;
+  border-radius:3px;
+  font-size:16px;
 }
 
 .result{
-    margin-top:25px;
-    padding:25px;
-    text-align:center;
-    border-radius:20px;
-    background:#302d27;
-    border:1px solid #5a4a31;
+  margin-top:25px;
+  text-align:center;
+  padding:25px;
+  border:1px solid #7f8d83;
 }
 
 .result small{
-    color:#aaa;
+  color:#c9cec9;
 }
 
 .result strong{
-    display:block;
-    color:#e2ad54;
-    font-size:43px;
-    margin-top:8px;
+  display:block;
+  color:#d8c3a5;
+  font-size:42px;
+  margin-top:8px;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* ================= CONTACT ================= */
 
 .contact{
-    position:relative;
-    overflow:hidden;
-    text-align:center;
-    border-radius:28px;
-    border:1px solid #3a3b3f;
-    padding:70px 25px;
-    background:
-        linear-gradient(
-            rgba(10,10,11,.84),
-            rgba(10,10,11,.9)
-        ),
-        url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90")
-        center/cover;
+  min-height:550px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  position:relative;
+  background:
+    linear-gradient(rgba(24,35,29,.78),rgba(24,35,29,.88)),
+    url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90")
+    center/cover fixed;
+}
+
+.contact-content{
+  max-width:700px;
 }
 
 .contact h2{
-    font-size:40px;
-    margin-bottom:12px;
+  font-size:clamp(40px,6vw,70px);
+  margin-bottom:18px;
 }
 
 .contact p{
-    color:#ccc;
-    margin-bottom:27px;
-    line-height:1.8;
+  color:#ddd;
+  line-height:2;
+  font-size:18px;
+  margin-bottom:30px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
-    margin-top:80px;
-    border-top:1px solid #292a2e;
-    padding:30px 15px;
-    text-align:center;
-    color:#777;
+  background:#19251f;
+  color:#aaa;
+  text-align:center;
+  padding:35px 15px;
+  font-size:14px;
 }
 
-/* =========================
-   FLOAT WHATSAPP
-========================= */
+/* ================= FLOAT WHATSAPP ================= */
 
 .float-wa{
-    position:fixed;
-    z-index:99999;
-    left:18px;
-    bottom:18px;
-    background:#25d366;
-    color:#06150a;
-    padding:14px 21px;
-    border-radius:30px;
-    font-weight:900;
-    box-shadow:0 7px 25px rgba(0,0,0,.55);
+  position:fixed;
+  z-index:9999;
+  bottom:20px;
+  left:20px;
+  background:#25d366;
+  color:#06200d;
+  padding:14px 21px;
+  border-radius:30px;
+  font-weight:bold;
+  box-shadow:0 7px 25px rgba(0,0,0,.25);
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:850px){
 
-    .header{
-        min-height:74px;
-    }
+  .nav-links{
+    display:none;
+  }
 
-    .brand-title{
-        font-size:24px;
-    }
+  .nav{
+    height:72px;
+  }
 
-    .brand-sub{
-        font-size:14px;
-    }
+  .logo{
+    font-size:23px;
+  }
 
-    .whatsapp-top{
-        padding:10px 16px;
-        font-size:14px;
-    }
+  .hero{
+    min-height:650px;
+  }
 
-    .hero{
-        min-height:570px;
-        margin-top:22px;
-        border-radius:25px;
-    }
+  .hero-content{
+    padding-top:80px;
+  }
 
-    .hero-content{
-        min-height:570px;
-        padding:30px 25px;
-        align-items:center;
-        text-align:center;
-    }
+  .hero h1{
+    font-size:52px;
+    letter-spacing:-2px;
+  }
 
-    .hero h1{
-        font-size:44px;
-    }
+  .hero p{
+    font-size:16px;
+  }
 
-    .hero p{
-        font-size:16px;
-    }
+  .intro-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
 
-    .projects{
-        grid-template-columns:1fr;
-    }
+  .section-heading{
+    display:block;
+  }
 
-    .steps{
-        grid-template-columns:1fr 1fr;
-    }
+  .section-heading h2{
+    font-size:38px;
+    margin-bottom:12px;
+  }
 
-    .services{
-        grid-template-columns:1fr 1fr;
-    }
+  .choice-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .compare{
-        height:420px;
-    }
+  .services-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .steps-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .step{
+    border-bottom:1px solid #c9bba8;
+  }
+
+  .compare{
+    height:450px;
+  }
 }
 
 @media(max-width:560px){
 
-    .container{
-        width:92%;
-    }
+  .container{
+    width:90%;
+  }
 
-    .header{
-        padding:9px 0;
-    }
+  .wa-top{
+    padding:10px 14px;
+    font-size:13px;
+  }
 
-    .brand{
-        align-items:flex-start;
-    }
+  .hero{
+    min-height:650px;
+  }
 
-    .brand-title{
-        font-size:21px;
-    }
+  .hero-content{
+    align-items:center;
+    text-align:center;
+  }
 
-    .brand-sub{
-        font-size:12px;
-    }
+  .hero h1{
+    font-size:45px;
+  }
 
-    .whatsapp-top{
-        font-size:13px;
-        padding:9px 13px;
-    }
+  .hero p{
+    font-size:15px;
+  }
 
-    .hero{
-        width:92%;
-        min-height:560px;
-    }
+  .hero-buttons{
+    width:100%;
+  }
 
-    .hero-content{
-        min-height:560px;
-        padding:28px 20px;
-    }
+  .btn{
+    width:100%;
+  }
 
-    .badge{
-        font-size:13px;
-    }
+  .hero-dots{
+    right:50%;
+    transform:translateX(50%);
+    bottom:30px;
+  }
 
-    .hero h1{
-        font-size:39px;
-    }
+  .hero-counter{
+    display:none;
+  }
 
-    .hero p{
-        font-size:15px;
-        line-height:1.9;
-    }
+  .intro,
+  .projects,
+  .services,
+  .steps{
+    padding-top:70px;
+    padding-bottom:70px;
+  }
 
-    .btn{
-        width:100%;
-    }
+  .choice-grid{
+    grid-template-columns:1fr;
+  }
 
-    .hero-buttons{
-        width:100%;
-    }
+  .choice{
+    height:330px;
+  }
 
-    .section{
-        margin:60px auto;
-    }
+  .services-grid{
+    grid-template-columns:1fr;
+  }
 
-    .section-title h2{
-        font-size:31px;
-    }
+  .service{
+    min-height:auto;
+  }
 
-    .project{
-        height:300px;
-    }
+  .steps-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .services{
-        grid-template-columns:1fr;
-    }
+  .step{
+    padding:25px 15px;
+  }
 
-    .steps{
-        grid-template-columns:1fr 1fr;
-    }
+  .step-num{
+    font-size:32px;
+  }
 
-    .step{
-        min-height:190px;
-        padding:22px 10px;
-    }
+  .compare{
+    height:360px;
+  }
 
-    .step h3{
-        font-size:18px;
-    }
+  .budget{
+    padding:70px 0;
+  }
 
-    .step p{
-        font-size:13px;
-    }
+  .budget-box{
+    padding:20px;
+  }
 
-    .before-after{
-        padding:18px;
-    }
+  .contact{
+    min-height:500px;
+  }
 
-    .before-after-text h2{
-        font-size:28px;
-    }
-
-    .compare{
-        height:370px;
-    }
-
-    .calculator{
-        padding:20px;
-    }
-
-    .result strong{
-        font-size:36px;
-    }
-
-    .contact h2{
-        font-size:31px;
-    }
-
-    .float-wa{
-        left:12px;
-        bottom:12px;
-        font-size:14px;
-    }
+  .float-wa{
+    left:12px;
+    bottom:12px;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<header id="header">
 
-<header>
+<div class="container nav">
 
-<div class="container header">
-
-<a href="index.html" class="brand">
-
-<div class="brand-title">
-صمم ديكورك
-</div>
-
-<div class="brand-sub">
-🛠️ <span>تصميم وديكور</span> • خدمات واقعية
-</div>
-
+<a href="index.html" class="logo">
+صمم <span>ديكورك</span>
 </a>
+
+<nav class="nav-links">
+
+<a href="#projects">المشاريع</a>
+<a href="#choices">اختيارات</a>
+<a href="#services">الخدمات</a>
+<a href="#steps">كيف نخدمو</a>
 
 <a
-class="whatsapp-top"
+class="wa-top"
 href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور"
-target="_blank"
->
-💬 تواصل مباشر
+target="_blank">
+💬 واتساب
 </a>
+
+</nav>
 
 </div>
 
@@ -862,61 +912,59 @@ target="_blank"
 
 <div
 class="hero-slide active"
-style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90')">
+style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90')">
 </div>
 
 <div
 class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=90')">
+style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=2000&q=90')">
 </div>
 
 <div
 class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=90')">
+style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=90')">
 </div>
 
 <div
 class="hero-slide"
-style="background-image:url('https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1800&q=90')">
+style="background-image:url('https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=2000&q=90')">
 </div>
 
 
-<div class="hero-content">
+<div class="container hero-content">
 
-<div class="badge">
-🎨 ورشة وتصميم ديكور عصري
+<div class="hero-text">
+
+<div class="small-title">
+تصميم • ديكور • تنفيذ
 </div>
 
 <h1>
-من الفكرة
+خلي دارك
 <br>
-<span class="gold">إلى الديكور</span>
-<br>
-الواقعي
+<span>تحكي عليك</span>
 </h1>
 
 <p>
-اختار شنو بغيتي تصمم، دخل القياسات،
-اختار الخامات والألوان والإكسسوارات،
-ومن بعد تواصل معنا باش نكملو المشروع.
+من أول فكرة حتى التركيب النهائي.
+نصممو ليك المساحة، نختارو الخامات والألوان،
+ونحوّلو الفكرة ديالك إلى ديكور واقعي وأنيق.
 </p>
 
 <div class="hero-buttons">
 
-<a
-href="#projects"
-class="btn btn-gold"
->
-✨ ابدأ تصميم مكانك
+<a href="#choices" class="btn btn-beige">
+اكتشف المشاريع
 </a>
 
 <a
 href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور"
 target="_blank"
-class="btn btn-dark"
->
-💬 تواصل معنا
+class="btn btn-outline">
+تواصل معنا
 </a>
+
+</div>
 
 </div>
 
@@ -932,45 +980,107 @@ class="btn btn-dark"
 
 </div>
 
+<div class="hero-counter">
+<span>01</span> / 04
+</div>
+
 </section>
 
 
-<main class="container">
+<!-- ================= INTRO ================= -->
+
+<section class="intro">
+
+<div class="container intro-grid">
+
+<div>
+
+<div class="eyebrow">
+صمم ديكورك
+</div>
+
+<h2>
+أنت كتخيل...
+<br>
+<span>حنا كنصممو.</span>
+</h2>
+
+</div>
+
+<div class="intro-text">
+
+<p>
+الهدف ديال <strong>صمم ديكورك</strong> هو نخلي اختيار الديكور
+أسهل عليك، من خلال التصميم، القياسات، الخامات،
+الألوان والإكسسوارات.
+</p>
+
+<br>
+
+<p>
+شوف الفكرة قبل التنفيذ، اختار اللي مناسب ليك،
+ومن بعد تواصل معنا باش نكمّلو المشروع.
+</p>
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- ================= PROJECTS ================= -->
 
-<section class="section" id="projects">
+<section class="projects" id="projects">
 
-<div class="section-title">
+<div class="container">
 
-<h2>
-اختر <span>نوع مشروعك</span>
-</h2>
+<div class="section-heading">
+
+<h2>مشاريعنا</h2>
 
 <p>
-اضغط على أي قسم باش تبدأ إدخال القياسات وتحميل الصور
+مجموعة من الأفكار الواقعية للمطابخ، غرف النوم،
+الخزائن والديكور.
 </p>
 
 </div>
 
 
-<div class="projects">
-
+<div class="project-list">
 
 <a href="kitchen.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1400&q=90"
-alt="المطابخ العصرية">
+src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=90"
+alt="مطبخ">
 
 <div class="project-info">
 
-<h3>المطابخ العصرية</h3>
+<div class="project-number">01 / PROJECT</div>
 
-<p>
-MDF • High Gloss • L / U
-</p>
+<h3>المطابخ</h3>
+
+<p>L • U • جزيرة • مودرن</p>
+
+</div>
+
+</a>
+
+
+<a href="bedroom.html" class="project">
+
+<img
+src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=90"
+alt="غرفة النوم">
+
+<div class="project-info">
+
+<div class="project-number">02 / PROJECT</div>
+
+<h3>غرف النوم</h3>
+
+<p>سرير • Dressing • خزائن</p>
 
 </div>
 
@@ -980,96 +1090,286 @@ MDF • High Gloss • L / U
 <a href="ai-design.html" class="project">
 
 <img
-src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1400&q=90"
-alt="محل الطيابسري">
-
-<div class="project-info">
-
-<h3>محل الطيابسري</h3>
-
-<p>
-تغليف الصالونات • الكونتوار • Capitonnage
-</p>
-
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=90"
-alt="الإكسسوارات">
-
-<div class="project-info">
-
-<h3>الإكسسوارات</h3>
-
-<p>
-سلّات هيدروليك • إضاءة • مقابض
-</p>
-
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=90"
-alt="الصالونات">
-
-<div class="project-info">
-
-<h3>الصالونات</h3>
-
-<p>
-مودرن • لمسة مغربية تقليدية
-</p>
-
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90"
-alt="Mobil télé">
-
-<div class="project-info">
-
-<h3>Mobil télé</h3>
-
-<p>
-مكتبة • بديل الخشب • الرخام
-</p>
-
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1400&q=90"
+src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1800&q=90"
 alt="Dressing">
 
 <div class="project-info">
 
+<div class="project-number">03 / PROJECT</div>
+
 <h3>Dressing & Placard</h3>
 
-<p>
-خزائن عصرية • أبواب زجاجية
-</p>
+<p>زجاج • خشب • تخزين</p>
 
 </div>
 
 </a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CHOICES ================= -->
+
+<section class="choices" id="choices">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>شنو بغيتي تصمم؟</h2>
+
+<p>
+اختار القسم ديالك وبدأ المشروع مباشرة.
+</p>
+
+</div>
+
+
+<div class="choice-grid">
+
+
+<a href="kitchen.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>المطبخ</h3>
+
+<p>ابدأ التصميم →</p>
+
+</div>
+
+</a>
+
+
+<a href="bedroom.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>غرفة النوم</h3>
+
+<p>ابدأ التصميم →</p>
+
+</div>
+
+</a>
+
+
+<a href="ai-design.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>محل الطيابسري</h3>
+
+<p>اكتشف الأفكار →</p>
+
+</div>
+
+</a>
+
+
+<a href="ai-design.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>الصالونات</h3>
+
+<p>اكتشف الأفكار →</p>
+
+</div>
+
+</a>
+
+
+<a href="ai-design.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>Mobil Télé</h3>
+
+<p>اكتشف الأفكار →</p>
+
+</div>
+
+</a>
+
+
+<a href="ai-design.html" class="choice">
+
+<img
+src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
+
+<div class="choice-info">
+
+<h3>Dressing & Placard</h3>
+
+<p>ابدأ التصميم →</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services" id="services">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>الخدمات</h2>
+
+<p>
+كل ما تحتاجه باش تحول فكرتك لمشروع واضح.
+</p>
+
+</div>
+
+
+<div class="services-grid">
+
+<div class="service">
+
+<div class="service-number">01</div>
+
+<h3>القياسات</h3>
+
+<p>
+الطول، العرض، الارتفاع والمساحة.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">02</div>
+
+<h3>الخامات</h3>
+
+<p>
+MDF، الخشب، الزجاج، الرخام والخامات المختلفة.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">03</div>
+
+<h3>الألوان</h3>
+
+<p>
+اختيار الألوان والستايل والتشطيب.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">04</div>
+
+<h3>الإكسسوارات</h3>
+
+<p>
+مقابض، إضاءة، سلال، زجاج وتجهيزات.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">05</div>
+
+<h3>صور المكان</h3>
+
+<p>
+صيفط صور المكان باش نعرفو المساحة والوضعية.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">06</div>
+
+<h3>التصميم الذكي</h3>
+
+<p>
+اختيارات تساعدك تشوف الفكرة قبل التنفيذ.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">07</div>
+
+<h3>الميزانية</h3>
+
+<p>
+حساب أولي حسب المساحة والخامة المختارة.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">08</div>
+
+<h3>التنفيذ</h3>
+
+<p>
+من التصميم حتى التركيب النهائي.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">09</div>
+
+<h3>واتساب</h3>
+
+<p>
+تواصل مباشر باش نكملو تفاصيل المشروع.
+</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1078,18 +1378,16 @@ alt="Dressing">
 
 <!-- ================= BEFORE AFTER ================= -->
 
-<section class="section">
+<section class="before-after">
 
-<div class="before-after">
+<div class="container">
 
-<div class="before-after-text">
+<div class="section-heading">
 
-<h2>
-معرض النتائج <span class="gold">(قبل / بعد)</span>
-</h2>
+<h2>قبل / بعد</h2>
 
 <p>
-حرك الشريط وشوف كيفاش كتتحول الفكرة إلى تصميم واقعي.
+شوف الفرق بين المساحة والفكرة النهائية.
 </p>
 
 </div>
@@ -1098,21 +1396,15 @@ alt="Dressing">
 <div class="compare">
 
 <img
-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90"
-alt="بعد التصميم">
+src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=90"
+alt="قبل"
+>
 
 <img
-class="before-image"
-src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90"
-alt="قبل التصميم">
-
-<div class="compare-label label-before">
-المكان قبل التعديل
-</div>
-
-<div class="compare-label label-after">
-المقترح النهائي
-</div>
+class="before-img"
+src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90"
+alt="بعد"
+>
 
 <div class="compare-line"></div>
 
@@ -1125,8 +1417,7 @@ id="compareRange"
 type="range"
 min="0"
 max="100"
-value="50"
-aria-label="مقارنة قبل وبعد">
+value="50">
 
 </div>
 
@@ -1135,18 +1426,305 @@ aria-label="مقارنة قبل وبعد">
 </section>
 
 
-<!-- ================= WORK ================= -->
+<!-- ================= STEPS ================= -->
 
-<section class="section">
+<section class="steps" id="steps">
 
-<div class="section-title">
+<div class="container">
+
+<div class="section-heading">
+
+<h2>كيفاش كنخدمو؟</h2>
+
+<p>
+أربع مراحل بسيطة من الفكرة حتى التنفيذ.
+</p>
+
+</div>
+
+
+<div class="steps-grid">
+
+<div class="step">
+
+<div class="step-num">01</div>
+
+<h3>صوّر المكان</h3>
+
+<p>
+صيفط الصور والقياسات.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">02</div>
+
+<h3>اختار التصميم</h3>
+
+<p>
+حدد النوع والشكل اللي عجبك.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">03</div>
+
+<h3>اختار الخامات</h3>
+
+<p>
+الألوان والخشب والإكسسوارات.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">04</div>
+
+<h3>التنفيذ</h3>
+
+<p>
+نكملو معاك حتى التركيب.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BUDGET ================= -->
+
+<section class="budget">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>حاسبة الميزانية</h2>
+
+<p>
+تقدير أولي يساعدك تعرف الميزانية.
+</p>
+
+</div>
+
+
+<div class="budget-box">
+
+<div class="field">
+
+<label>
+المساحة بالمتر المربع
+</label>
+
+<input
+id="area"
+type="number"
+min="1"
+value="10">
+
+</div>
+
+
+<div class="field">
+
+<label>
+الخامة والجودة
+</label>
+
+<select id="material">
+
+<option value="600">
+اقتصادي — 600 DH/m²
+</option>
+
+<option value="900" selected>
+متوسط — 900 DH/m²
+</option>
+
+<option value="1400">
+ممتاز — 1400 DH/m²
+</option>
+
+<option value="1800">
+Premium — 1800 DH/m²
+</option>
+
+</select>
+
+</div>
+
+
+<div class="result">
+
+<small>
+التكلفة التقديرية
+</small>
+
+<strong id="total">
+9,000 DH
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+<div class="contact-content">
+
+<div class="eyebrow" style="color:#d8c3a5;">
+عندك مشروع؟
+</div>
 
 <h2>
-مراحل <span>العمل معنا</span>
+خلينا نحولو
+<br>
+لفكرة واقعية.
 </h2>
 
 <p>
-خطوات بسيطة للحصول على النتيجة
+صيفط لينا الصور والقياسات وشرح لينا شنو بغيتي،
+ونتواصلو معاك مباشرة.
 </p>
 
-</
+<a
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور%20وبغيت%20نتواصل%20معاكم"
+target="_blank"
+class="btn btn-beige">
+💬 تواصل معنا عبر واتساب
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+صمم ديكورك © 2026
+</footer>
+
+
+<a
+class="float-wa"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم"
+target="_blank">
+💬 واتساب
+</a>
+
+
+<script>
+
+/* HEADER */
+
+const header=document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+  if(window.scrollY>60){
+    header.classList.add("scrolled");
+  }else{
+    header.classList.remove("scrolled");
+  }
+
+});
+
+
+/* HERO SLIDER */
+
+const slides=document.querySelectorAll(".hero-slide");
+const dots=document.querySelectorAll(".dot");
+
+let current=0;
+
+function changeSlide(){
+
+  slides.forEach((slide,i)=>{
+    slide.classList.toggle("active",i===current);
+  });
+
+  dots.forEach((dot,i)=>{
+    dot.classList.toggle("active",i===current);
+  });
+
+  current++;
+
+  if(current>=slides.length){
+    current=0;
+  }
+
+}
+
+setInterval(changeSlide,5000);
+
+
+/* BEFORE AFTER */
+
+const range=document.getElementById("compareRange");
+const before=document.querySelector(".before-img");
+const line=document.querySelector(".compare-line");
+const handle=document.querySelector(".compare-handle");
+
+function compare(){
+
+  const value=range.value;
+
+  before.style.clipPath=
+    `inset(0 ${100-value}% 0 0)`;
+
+  line.style.left=value+"%";
+
+  handle.style.left=value+"%";
+
+}
+
+range.addEventListener("input",compare);
+
+compare();
+
+
+/* BUDGET */
+
+const area=document.getElementById("area");
+const material=document.getElementById("material");
+const total=document.getElementById("total");
+
+function calculate(){
+
+  const a=Number(area.value)||0;
+  const price=Number(material.value)||0;
+
+  const result=a*price;
+
+  total.textContent=
+    result.toLocaleString("fr-FR")+" DH";
+
+}
+
+area.addEventListener("input",calculate);
+material.addEventListener("change",calculate);
+
+calculate();
+
+</script>
+
+</body>
+</html>

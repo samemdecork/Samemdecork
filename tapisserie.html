@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الطابيسري والستور | صمم ديكورك</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f3ef;
+  color:#222;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:25px 15px 50px;
+}
+
+.header{
+  background:#171717;
+  color:white;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.header h1{
+  margin:0 0 8px;
+  font-size:30px;
+}
+
+.header p{
+  margin:0;
+  color:#ccc;
+}
+
+.steps{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.step{
+  padding:9px 14px;
+  border-radius:30px;
+  background:#ddd;
+  color:#555;
+  font-size:13px;
+}
+
+.step.active{
+  background:#222;
+  color:white;
+}
+
+.panel{
+  display:none;
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.panel.active{
+  display:block;
+}
+
+.panel h2{
+  margin-top:0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:14px;
+}
+
+.card{
+  border:2px solid #eee;
+  border-radius:16px;
+  padding:18px 12px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
+  background:#fff;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  border-color:#999;
+}
+
+.card.selected{
+  border-color:#111;
+  background:#f1f1f1;
+}
+
+.icon{
+  font-size:38px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.fabric{
+  height:75px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+.velvet{background:linear-gradient(135deg,#6d5966,#b29aa8,#594652)}
+.chanel{background:linear-gradient(135deg,#d8d2c8,#aaa397,#eee9df)}
+.linen{background:linear-gradient(135deg,#e8dfce,#bcae95,#eee5d4)}
+.leather{background:linear-gradient(135deg,#241b18,#68483a,#1b1513)}
+.gray{background:linear-gradient(135deg,#333,#888,#444)}
+.beige{background:linear-gradient(135deg,#cbb89b,#eee0c9,#a9967b)}
+
+.fields{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:25px;
+}
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:13px 25px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.next{
+  background:#171717;
+  color:white;
+}
+
+.back{
+  background:#e8e8e8;
+}
+
+.summary{
+  background:#f6f6f6;
+  border-radius:15px;
+  padding:20px;
+  line-height:2;
+}
+
+.total{
+  margin-top:15px;
+  padding:18px;
+  border-radius:15px;
+  background:#171717;
+  color:white;
+  text-align:center;
+  font-size:22px;
+}
+
+@media(max-width:600px){
+  .fields{
+    grid-template-columns:1fr;
+  }
+
+  .header h1{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+  <h1>🛋️ الطابيسري والستور</h1>
+  <p>اختار الشكل، الثوب، القياسات والستور ديالك</p>
+</header>
+
+<div class="steps">
+  <div class="step active">1 الشكل</div>
+  <div class="step">2 الثوب</div>
+  <div class="step">3 القياسات</div>
+  <div class="step">4 الستور</div>
+  <div class="step">5 الخوامي</div>
+  <div class="step">6 الخلاصة</div>
+</div>
+
+
+<!-- 1 الشكل -->
+<section class="panel active">
+
+<h2>اختار شكل الطابيسري</h2>
+
+<div class="grid">
+
+<div class="card" onclick="selectCard(this,'shape','صالون L')">
+<span class="icon">🛋️</span>
+<strong>صالون L</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'shape','صالون مستقيم')">
+<span class="icon">🛋️</span>
+<strong>مستقيم</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'shape','كنبة 3 مقاعد')">
+<span class="icon">🪑</span>
+<strong>3 مقاعد</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'shape','كنبة 2 مقاعد')">
+<span class="icon">🪑</span>
+<strong>2 مقاعد</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'shape','بانكيت')">
+<span class="icon">🪑</span>
+<strong>بانكيت</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'shape','شكل مخصص')">
+<span class="icon">✏️</span>
+<strong>شكل مخصص</strong>
+</div>
+
+</div>
+
+<div class="buttons">
+<span></span>
+<button class="next" onclick="nextStep()">التالي ←</button>
+</div>
+
+</section>
+
+
+<!-- 2 الثوب -->
+<section class="panel">
+
+<h2>اختار نوع الثوب</h2>
+
+<div class="grid">
+
+<div class="card" onclick="selectCard(this,'fabric','مخمل')">
+<div class="fabric velvet"></div>
+<strong>مخمل</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'fabric','شانيل')">
+<div class="fabric chanel"></div>
+<strong>شانيل</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'fabric','كتان')">
+<div class="fabric linen"></div>
+<strong>كتان</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'fabric','جلد')">
+<div class="fabric leather"></div>
+<strong>جلد</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'fabric','رمادي')">
+<div class="fabric gray"></div>
+<strong>ثوب رمادي</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'fabric','بيج')">
+<div class="fabric beige"></div>
+<strong>ثوب بيج</strong>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="back" onclick="prevStep()">→ السابق</button>
+<button class="next" onclick="nextStep()">التالي ←</button>
+</div>
+
+</section>
+
+
+<!-- 3 القياسات -->
+<section class="panel">
+
+<h2>القياسات</h2>
+<p>دخل القياسات بالسنتيمتر</p>
+
+<div class="fields">
+
+<div class="field">
+<label>الطول</label>
+<input type="number" id="length" placeholder="مثلاً 300">
+</div>
+
+<div class="field">
+<label>العرض</label>
+<input type="number" id="width" placeholder="مثلاً 180">
+</div>
+
+<div class="field">
+<label>الارتفاع</label>
+<input type="number" id="height" placeholder="مثلاً 85">
+</div>
+
+</div>
+
+<br>
+
+<div class="field">
+<label>عدد المقاعد</label>
+<select id="seats">
+<option value="">اختار</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>حسب التصميم</option>
+</select>
+</div>
+
+<div class="buttons">
+<button class="back" onclick="prevStep()">→ السابق</button>
+<button class="next" onclick="nextStep()">التالي ←</button>
+</div>
+
+</section>
+
+
+<!-- 4 الستور -->
+<section class="panel">
+
+<h2>الستور والخيّام</h2>
+
+<div class="grid">
+
+<div class="card" onclick="selectCard(this,'curtain','Voilage')">
+<span class="icon">🪟</span>
+<strong>Voilage</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'curtain','Blackout')">
+<span class="icon">🪟</span>
+<strong>Blackout</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'curtain','ستور مزدوج')">
+<span class="icon">🏠</span>
+<strong>ستور مزدوج</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'curtain','ستور مودرن')">
+<span class="icon">✨</span>
+<strong>ستور مودرن</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'curtain','خيّام')">
+<span class="icon">🪡</span>
+<strong>خيّام</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'curtain','بدون ستور')">
+<span class="icon">➖</span>
+<strong>بدون ستور</strong>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="back" onclick="prevStep()">→ السابق</button>
+<button class="next" onclick="nextStep()">التالي ←</button>
+</div>
+
+</section>
+
+
+<!-- 5 الخوامي -->
+<section class="panel">
+
+<h2>الخوامي والتفاصيل</h2>
+
+<div class="grid">
+
+<div class="card" onclick="selectCard(this,'details','خياطة عادية')">
+<span class="icon">🧵</span>
+<strong>خياطة عادية</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'details','خياطة فاخرة')">
+<span class="icon">🪡</span>
+<strong>خياطة فاخرة</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'details','بيب')">
+<span class="icon">〰️</span>
+<strong>بيب</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'details','كادر')">
+<span class="icon">▣</span>
+<strong>كادر</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'details','زواق')">
+<span class="icon">✨</span>
+<strong>زواق</strong>
+</div>
+
+<div class="card" onclick="selectCard(this,'details','بدون إضافات')">
+<span class="icon">—</span>
+<strong>بدون إضافات</strong>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="back" onclick="prevStep()">→ السابق</button>
+<button class="next" onclick="nextStep()">التالي ←</button>
+</div>
+
+</section>
+
+
+<!-- 6 الخلاصة -->
+<section class="panel">
+
+<h2>الخلاصة</h2>
+
+<div class="summary">
+
+<p><strong>الشكل:</strong> <span id="sShape">—</span></p>
+
+<p><strong>الثوب:</strong> <span id="sFabric">—</span></p>
+
+<p><strong>القياسات:</strong>
+<span id="sSize">—</span>
+</p>
+
+<p><strong>عدد المقاعد:</strong>
+<span id="sSeats">—</span>
+</p>
+
+<p><strong>الستور:</strong>
+<span id="sCurtain">—</span>
+</p>
+
+<p><strong>الخوامي والتفاصيل:</strong>
+<span id="sDetails">—</span>
+</p>
+
+</div>
+
+<div class="total">
+التصميم ديالك واجد ✅
+</div>
+
+<div class="buttons">
+<button class="back" onclick="prevStep()">→ السابق</button>
+<button class="next" onclick="finish()">تأكيد التصميم ✓</button>
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+let currentStep = 0;
+
+const panels = document.querySelectorAll(".panel");
+const steps = document.querySelectorAll(".step");
+
+let data = {
+  shape:"",
+  fabric:"",
+  curtain:"",
+  details:""
+};
+
+
+function selectCard(el,type,value){
+
+  el.parentElement
+    .querySelectorAll(".card")
+    .forEach(card => card.classList.remove("selected"));
+
+  el.classList.add("selected");
+
+  data[type] = value;
+}
+
+
+function updateSteps(){
+
+  panels.forEach((panel,i)=>{
+    panel.classList.toggle("active",i === currentStep);
+  });
+
+  steps.forEach((step,i)=>{
+    step.classList.toggle("active",i === currentStep);
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+function nextStep(){
+
+  if(currentStep === 0 && !data.shape){
+    alert("اختار شكل الطابيسري أولاً");
+    return;
+  }
+
+  if(currentStep === 1 && !data.fabric){
+    alert("اختار نوع الثوب أولاً");
+    return;
+  }
+
+  if(currentStep === 2){
+
+    if(
+      !document.getElementById("length").value ||
+      !document.getElementById("width").value ||
+      !document.getElementById("height").value
+    ){
+      alert("دخل القياسات كاملة");
+      return;
+    }
+  }
+
+  if(currentStep === 3 && !data.curtain){
+    alert("اختار نوع الستور");
+    return;
+  }
+
+  if(currentStep === 4 && !data.details){
+    alert("اختار الخوامي أو التفاصيل");
+    return;
+  }
+
+  if(currentStep < panels.length - 1){
+
+    currentStep++;
+
+    if(currentStep === 5){
+      showSummary();
+    }
+
+    updateSteps();
+  }
+}
+
+
+function prevStep(){
+
+  if(currentStep > 0){
+    currentStep--;
+    updateSteps();
+  }
+}
+
+
+function showSummary(){
+
+  document.getElementById("sShape").textContent =
+    data.shape || "—";
+
+  document.getElementById("sFabric").textContent =
+    data.fabric || "—";
+
+  document.getElementById("sSize").textContent =
+    document.getElementById("length").value +
+    " × " +
+    document.getElementById("width").value +
+    " × " +
+    document.getElementById("height").value +
+    " سم";
+
+  document.getElementById("sSeats").textContent =
+    document.getElementById("seats").value || "—";
+
+  document.getElementById("sCurtain").textContent =
+    data.curtain || "—";
+
+  document.getElementById("sDetails").textContent =
+    data.details || "—";
+}
+
+
+function finish(){
+
+  alert(
+    "تم تسجيل تصميم الطابيسري بنجاح ✅"
+  );
+}
+
+</script>
+
+</body>
+</html>

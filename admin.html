@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>الإدارة | صمم ديكورك</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f5f0e8;
+  color:#17231d;
+}
+
+/* LOGIN */
+
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.login-box{
+  width:min(420px,100%);
+  background:white;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 10px 40px #0002;
+  text-align:center;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.logo span{
+  color:#c9aa7b;
+}
+
+.login-box p{
+  color:#777;
+  margin:10px 0 25px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.login-btn{
+  width:100%;
+  background:#17231d;
+  color:white;
+}
+
+.login-btn:hover{
+  background:#c9aa7b;
+  color:#17231d;
+}
+
+.error{
+  color:#b3261e;
+  margin-top:12px;
+  display:none;
+}
+
+
+/* ADMIN */
+
+.admin{
+  display:none;
+}
+
+header{
+  background:#17231d;
+  color:white;
+  padding:18px 0;
+}
+
+.wrap{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.brand{
+  font-size:24px;
+  font-weight:900;
+}
+
+.brand span{
+  color:#c9aa7b;
+}
+
+.logout{
+  background:#c9aa7b;
+  color:#17231d;
+}
+
+main{
+  padding:45px 0 80px;
+}
+
+.title{
+  margin-bottom:30px;
+}
+
+.title h1{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.title p{
+  color:#777;
+  line-height:1.8;
+}
+
+
+/* UPLOAD BOX */
+
+.upload-box{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 5px 25px #0001;
+  margin-bottom:30px;
+}
+
+.upload-box h2{
+  margin-bottom:8px;
+}
+
+.upload-box p{
+  color:#777;
+  margin-bottom:20px;
+}
+
+.file-label{
+  display:inline-block;
+  background:#17231d;
+  color:white;
+  padding:14px 24px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.file-label:hover{
+  background:#c9aa7b;
+  color:#17231d;
+}
+
+#files{
+  display:none;
+}
+
+.preview{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.preview img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.upload{
+  margin-top:20px;
+  background:#c9aa7b;
+  color:#17231d;
+}
+
+.upload:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+
+/* PROGRESS */
+
+.progress-area{
+  display:none;
+  margin-top:20px;
+}
+
+.progress-bg{
+  height:10px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress{
+  width:0%;
+  height:100%;
+  background:#c9aa7b;
+  transition:.3s;
+}
+
+.status{
+  margin-top:10px;
+  color:#666;
+}
+
+
+/* INFO */
+
+.info{
+  background:#17231d;
+  color:white;
+  border-radius:15px;
+  padding:20px;
+  line-height:2;
+}
+
+.info strong{
+  color:#c9aa7b;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .nav{
+    flex-direction:column;
+  }
+
+  .title h1{
+    font-size:30px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- LOGIN -->
+
+<div id="login" class="login">
+
+  <div class="login-box">
+
+    <div class="logo">
+      صمم <span>ديكورك</span>
+    </div>
+
+    <p>
+      لوحة الإدارة الخاصة بالموقع
+    </p>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="كلمة المرور">
+
+    <button
+      class="login-btn"
+      onclick="login()">
+
+      دخول الإدارة
+
+    </button>
+
+    <div id="error" class="error">
+      كلمة المرور غير صحيحة
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<div id="admin" class="admin">
+
+<header>
+
+  <div class="wrap nav">
+
+    <div class="brand">
+      صمم <span>ديكورك</span>
+    </div>
+
+    <button
+      class="logout"
+      onclick="logout()">
+
+      تسجيل الخروج
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<div class="wrap">
+
+  <div class="title">
+
+    <h1>لوحة الإدارة</h1>
+
+    <p>
+      من هنا تقدر تضيف صور أعمالك وموديلاتك
+      مباشرة من الهاتف بدون ZIP.
+    </p>
+
+  </div>
+
+
+  <!-- UPLOAD -->
+
+  <div class="upload-box">
+
+    <h2>📸 إضافة صور جديدة</h2>
+
+    <p>
+      تقدر تختار صور كثيرة مرة وحدة.
+    </p>
+
+    <label
+      class="file-label"
+      for="files">
+
+      اختيار الصور
+
+    </label>
+
+    <input
+      id="files"
+      type="file"
+      accept="image/*"
+      multiple>
+
+
+    <div
+      id="preview"
+      class="preview">
+    </div>
+
+
+    <button
+      id="upload"
+      class="upload"
+      disabled>
+
+      ⬆️ رفع الصور
+
+    </button>
+
+
+    <div
+      id="progressArea"
+      class="progress-area">
+
+      <div class="progress-bg">
+
+        <div
+          id="progress"
+          class="progress">
+        </div>
+
+      </div>
+
+      <div
+        id="status"
+        class="status">
+
+        جاري التحضير...
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="info">
+
+    <strong>طريقة الاستعمال:</strong>
+
+    <br>
+
+    1. اضغط «اختيار الصور».
+
+    <br>
+
+    2. اختار جميع الصور اللي بغيتي.
+
+    <br>
+
+    3. اضغط «رفع الصور».
+
+    <br>
+
+    4. الصور غادي تمشي مباشرة لـ Cloudinary.
+
+    <br>
+
+    5. من بعد نربطوها مع صفحة «أعمالنا».
+
+  </div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* ==========================
+   SETTINGS
+========================== */
+
+const PASSWORD = "Chtaibi2026";
+
+const CLOUD_NAME = "rhao0lli";
+
+const UPLOAD_PRESET = "samemdecork_images";
+
+
+/* ==========================
+   LOGIN
+========================== */
+
+function login(){
+
+  const password =
+    document.getElementById("password").value;
+
+  if(password === PASSWORD){
+
+    sessionStorage.setItem(
+      "adminLogin",
+      "true"
+    );
+
+    showAdmin();
+
+  }else{
+
+    document.getElementById(
+      "error"
+    ).style.display = "block";
+
+  }
+
+}
+
+
+/* ==========================
+   SHOW ADMIN
+========================== */
+
+function showAdmin(){
+
+  document.getElementById(
+    "login"
+  ).style.display = "none";
+
+  document.getElementById(
+    "admin"
+  ).style.display = "block";
+
+}
+
+
+/* ==========================
+   LOGOUT
+========================== */
+
+function logout(){
+
+  sessionStorage.removeItem(
+    "adminLogin"
+  );
+
+  location.reload();
+
+}
+
+
+/* ==========================
+   AUTO LOGIN
+========================== */
+
+if(
+  sessionStorage.getItem("adminLogin")
+  === "true"
+){
+
+  showAdmin();
+
+}
+
+
+/* ==========================
+   FILES
+========================== */
+
+const filesInput =
+  document.getElementById("files");
+
+const preview =
+  document.getElementById("preview");
+
+const uploadButton =
+  document.getElementById("upload");
+
+const progressArea =
+  document.getElementById("progressArea");
+
+const progress =
+  document.getElementById("progress");
+
+const status =
+  document.getElementById("status");
+
+
+let files = [];
+
+
+/* ==========================
+   SELECT
+========================== */
+
+filesInput.addEventListener(
+  "change",
+  function(){
+
+    files =
+      Array.from(this.files);
+
+    preview.innerHTML = "";
+
+    if(files.length === 0){
+
+      uploadButton.disabled = true;
+
+      return;
+
+    }
+
+
+    files.forEach(file => {
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        function(event){
+
+          const img =
+            document.createElement("img");
+
+          img.src =
+            event.target.result;
+
+          preview.appendChild(img);
+
+        };
+
+      reader.readAsDataURL(file);
+
+    });
+
+
+    uploadButton.disabled = false;
+
+  }
+);
+
+
+/* ==========================
+   UPLOAD
+========================== */
+
+uploadButton.addEventListener(
+  "click",
+  async function(){
+
+    if(files.length === 0){
+
+      alert("اختار الصور أولاً");
+
+      return;
+
+    }
+
+
+    uploadButton.disabled = true;
+
+    progressArea.style.display =
+      "block";
+
+
+    let uploaded = 0;
+
+
+    for(const file of files){
+
+      try{
+
+        const formData =
+          new FormData();
+
+
+        formData.append(
+          "file",
+          file
+        );
+
+
+        formData.append(
+          "upload_preset",
+          UPLOAD_PRESET
+        );
+
+
+        const response =
+          await fetch(
+
+            `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+
+            {
+              method:"POST",
+              body:formData
+            }
+
+          );
+
+
+        if(!response.ok){
+
+          throw new Error(
+            "Upload failed"
+          );
+
+        }
+
+
+        await response.json();
+
+
+        uploaded++;
+
+
+        const percent =
+          Math.round(
+            uploaded /
+            files.length *
+            100
+          );
+
+
+        progress.style.width =
+          percent + "%";
+
+
+        status.textContent =
+          `تم رفع ${uploaded} من ${files.length}`;
+
+
+      }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+          "وقع خطأ أثناء رفع إحدى الصور.";
+
+      }
+
+    }
+
+
+    status.textContent =
+      "✅ تم رفع جميع الصور";
+
+
+    files = [];
+
+    filesInput.value = "";
+
+    preview.innerHTML = "";
+
+    uploadButton.disabled = true;
+
+  }
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>غرف النوم | صمم ديكورك</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial;background:#f5f0e8;color:#17231d}
+.wrap{width:min(900px,92%);margin:auto}
+header{background:#17231d;color:white;padding:20px 0}
+.logo{font-size:25px;font-weight:bold}.logo span{color:#c9aa7b}
+main{padding:45px 0}
+h1{font-size:42px;margin-bottom:10px}
+.sub{color:#666;margin-bottom:30px}
+.card{background:white;padding:25px;margin-bottom:18px;border-radius:12px;box-shadow:0 5px 20px #0001}
+h2{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.option{padding:18px;border:2px solid #ddd;border-radius:10px;cursor:pointer;background:#fff}
+.option:hover{border-color:#c9aa7b}
+input,select{width:100%;padding:14px;margin-top:8px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+button{width:100%;padding:16px;background:#c9aa7b;color:#17231d;border:0;border-radius:8px;font-weight:bold;font-size:17px;cursor:pointer}
+footer{text-align:center;padding:25px;background:#101a15;color:#aaa}
+</style>
+</head>
+
+<body>
+<header>
+<div class="wrap">
+<div class="logo">صمم <span>ديكورك</span></div>
+</div>
+</header>
+
+<main>
+<div class="wrap">
+
+<h1>غرف النوم</h1>
+<p class="sub">اختار التفاصيل الخاصة بغرفة النوم ديالك</p>
+
+<div class="card">
+<h2>شنو بغيتي تدير؟</h2>
+<div class="grid">
+<label class="option"><input type="radio" name="type" value="غرفة نوم كاملة"> غرفة نوم كاملة</label>
+<label class="option"><input type="radio" name="type" value="خزانة"> خزانة</label>
+<label class="option"><input type="radio" name="type" value="سرير"> سرير</label>
+<label class="option"><input type="radio" name="type" value="Dressing"> Dressing</label>
+</div>
+</div>
+
+<div class="card">
+<h2>قياسات الغرفة</h2>
+<label>الطول بالمتر</label>
+<input id="length" type="number" step="0.01" placeholder="مثلاً 4">
+<label>العرض بالمتر</label>
+<input id="width" type="number" step="0.01" placeholder="مثلاً 3">
+<label>الارتفاع بالمتر</label>
+<input id="height" type="number" step="0.01" placeholder="مثلاً 2.70">
+</div>
+
+<div class="card">
+<h2>الخزانة</h2>
+<select id="wardrobe">
+<option value="">اختار</option>
+<option>أبواب عادية</option>
+<option>أبواب زجاج</option>
+<option>أبواب جرارة</option>
+<option>بدون خزانة</option>
+</select>
+</div>
+
+<div class="card">
+<h2>الألوان</h2>
+<select id="color">
+<option>أبيض</option>
+<option>كابوتشينو</option>
+<option>خشب طبيعي</option>
+<option>رمادي</option>
+<option>أسود</option>
+</select>
+</div>
+
+<div class="card">
+<h2>صورة المكان</h2>
+<input id="photo" type="file" accept="image/*">
+</div>
+
+<div class="card">
+<h2>ملاحظات</h2>
+<input id="notes" placeholder="مثلاً: بغيت إضاءة داخل الخزانة">
+</div>
+
+<div class="card">
+<button onclick="send()">إرسال الطلب عبر واتساب</button>
+</div>
+
+</div>
+</main>
+
+<footer>Hamza Chtaibi © 2026 — صمم ديكورك</footer>
+
+<script>
+function send(){
+let type=document.querySelector('input[name="type"]:checked')?.value||"غير محدد";
+let msg=
+"السلام عليكم، بغيت نصمم غرفة نوم%0A%0A"+
+"النوع: "+type+"%0A"+
+"الطول: "+document.getElementById("length").value+" m%0A"+
+"العرض: "+document.getElementById("width").value+" m%0A"+
+"الارتفاع: "+document.getElementById("height").value+" m%0A"+
+"الخزانة: "+document.getElementById("wardrobe").value+"%0A"+
+"اللون: "+document.getElementById("color").value+"%0A"+
+"ملاحظات: "+document.getElementById("notes").value;
+window.open("https://wa.me/212754350706?text="+msg,"_blank");
+}
+</script>
+</body>
+</html>

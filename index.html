@@ -2,1208 +2,583 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#17231d">
-<meta name="description" content="صمم ديكورك - Hamza Chtaibi">
-<title>صمم ديكورك | Hamza Chtaibi</title>
+<meta name="description" content="صمم ديكورك - تصميم وتنفيذ الديكور">
+<link rel="manifest" href="manifest.json">
+<title>صمم ديكورك</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-font-family:Tahoma,Arial,sans-serif;
-background:#f5f0e8;
-color:#17231d;
-overflow-x:hidden
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f5f0e8;
+  color:#17231d;
 }
-button,a{font-family:inherit}
 a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
 .wrap{width:min(1200px,92%);margin:auto}
 
 /* HEADER */
 header{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:74px;
-z-index:100;
-color:#fff;
-transition:.3s
-}
-header.scrolled{
-background:#17231df7;
-box-shadow:0 5px 25px #0004
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  height:75px;
+  background:rgba(23,35,29,.96);
+  box-shadow:0 5px 25px #0003;
 }
 .nav{
-height:74px;
-display:flex;
-align-items:center;
-justify-content:space-between
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 .logo{
-font-size:25px;
-font-weight:900
+  color:#fff;
+  font-size:25px;
+  font-weight:900;
 }
 .logo span{color:#c9aa7b}
+
 .navlinks{
-display:flex;
-align-items:center;
-gap:10px
+  display:flex;
+  gap:25px;
+  align-items:center;
 }
 .navlinks a{
-padding:10px 13px;
-font-size:14px
+  color:#fff;
+  font-size:14px;
 }
 .navlinks a:hover{color:#c9aa7b}
-.navgold{
-background:#c9aa7b;
-color:#17231d!important;
-border-radius:25px;
-font-weight:bold
+
+.whatsapp{
+  background:#c9aa7b;
+  color:#17231d!important;
+  padding:11px 18px;
+  border-radius:25px;
+  font-weight:bold;
 }
 
 /* HERO */
 .hero{
-height:100vh;
-min-height:620px;
-position:relative;
-background:#17231d;
-color:white;
-overflow:hidden
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  color:#fff;
+  background:
+  linear-gradient(90deg,rgba(8,15,11,.9),rgba(8,15,11,.45)),
+  url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90")
+  center/cover;
 }
-.slide{
-position:absolute;
-inset:0;
-background-size:cover;
-background-position:center;
-opacity:0;
-transform:scale(1.08);
-transition:opacity 1s,transform 6s
+
+.hero-content{
+  padding-top:75px;
+  max-width:700px;
 }
-.slide.active{
-opacity:1;
-transform:scale(1)
-}
-.slide:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(
-90deg,
-rgba(8,15,11,.94),
-rgba(8,15,11,.58),
-rgba(8,15,11,.15)
-)
-}
-.herocontent{
-position:relative;
-z-index:2;
-height:100%;
-display:flex;
-align-items:center
-}
-.herobox{max-width:680px}
+
 .kicker{
-color:#c9aa7b;
-letter-spacing:2px;
-margin-bottom:15px
+  color:#c9aa7b;
+  letter-spacing:2px;
+  margin-bottom:18px;
+  font-size:14px;
 }
-.hero h1{
-font-size:clamp(48px,8vw,90px);
-line-height:1.05;
-margin-bottom:22px
+
+h1{
+  font-size:clamp(48px,8vw,90px);
+  line-height:1.05;
+  margin-bottom:25px;
 }
-.hero h1 span{color:#c9aa7b}
+h1 span{color:#c9aa7b}
+
 .hero p{
-font-size:17px;
-line-height:2;
-color:#eee;
-margin-bottom:28px
+  color:#eee;
+  line-height:2;
+  font-size:18px;
+  margin-bottom:30px;
 }
-.buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap
-}
+
 .btn{
-border:0;
-cursor:pointer;
-padding:14px 25px;
-border-radius:4px;
-font-weight:bold;
-font-size:15px;
-display:inline-flex;
-justify-content:center;
-align-items:center;
-transition:.25s
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 27px;
+  border-radius:4px;
+  font-weight:bold;
+  margin:5px;
 }
-.btn:hover{transform:translateY(-3px)}
 .gold{
-background:#c9aa7b;
-color:#17231d
-}
-.dark{
-background:#17231d;
-color:white
+  background:#c9aa7b;
+  color:#17231d;
 }
 .outline{
-border:1px solid #fff8;
-color:white;
-background:#0003
+  border:1px solid #fff;
+  color:#fff;
 }
 
 /* SECTIONS */
 section{padding:90px 0}
-.eyebrow{
-color:#9a7d58;
-font-size:13px;
-letter-spacing:2px;
-margin-bottom:14px
-}
-.head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:30px;
-margin-bottom:35px
-}
-.head h2{
-font-size:clamp(35px,5vw,58px)
-}
-.head p{
-max-width:440px;
-color:#70736e;
-line-height:1.9
-}
 
-/* INTRO */
-.introgrid{
-display:grid;
-grid-template-columns:1fr 1.3fr;
-gap:70px;
-align-items:center
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
 }
-.intro h2{
-font-size:clamp(40px,5vw,65px);
-line-height:1.15
+.section-title small{
+  color:#9a7d58;
+  letter-spacing:2px;
 }
-.intro h2 span{color:#9a7d58}
-.introtext{
-font-size:17px;
-line-height:2;
-color:#646963
+.section-title h2{
+  font-size:clamp(35px,5vw,55px);
+  margin:10px 0;
+}
+.section-title p{
+  color:#70736e;
 }
 
 /* CHOICES */
 .choices{
-background:#17231d;
-color:white
+  background:#17231d;
+  color:#fff;
 }
-.choices .head p{color:#ccd1cd}
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
+
+.choice-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
-.card{
-height:320px;
-position:relative;
-overflow:hidden;
-cursor:pointer;
-background:#111;
-border-radius:4px
+
+.choice{
+  position:relative;
+  height:330px;
+  overflow:hidden;
+  border-radius:3px;
+  background:#111;
 }
-.card img{
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:.72;
-transition:.6s
+
+.choice img{
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
 }
-.card:hover img{
-opacity:1;
-transform:scale(1.06)
+
+.choice:hover img{
+  transform:scale(1.07);
 }
-.card:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to top,#07100bf0,transparent 65%)
+
+.choice:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,#07100be8,transparent 65%);
 }
-.cardtext{
-position:absolute;
-right:23px;
-bottom:22px;
-z-index:2
+
+.choice-info{
+  position:absolute;
+  z-index:2;
+  right:22px;
+  bottom:22px;
 }
-.cardtext h3{font-size:24px}
-.cardtext p{
-color:#c9aa7b;
-margin-top:7px;
-font-size:13px
+
+.choice-info h3{
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.choice-info p{
+  color:#c9aa7b;
+  font-size:13px;
+}
+
+/* WORKS BUTTON */
+.works-section{
+  text-align:center;
+  background:#dfd4c4;
+}
+
+.works-btn{
+  display:inline-block;
+  background:#17231d;
+  color:#fff;
+  padding:18px 35px;
+  border-radius:4px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.works-btn:hover{
+  background:#c9aa7b;
+  color:#17231d;
 }
 
 /* SERVICES */
-.servicesgrid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-border-top:1px solid #c9bdac;
-border-right:1px solid #c9bdac
-}
-.service{
-padding:28px;
-min-height:170px;
-border-left:1px solid #c9bdac;
-border-bottom:1px solid #c9bdac
-}
-.service b{
-color:#9a7d58;
-font-size:13px
-}
-.service h3{margin:15px 0 8px}
-.service p{
-color:#70736e;
-line-height:1.8
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:#c9bdac;
 }
 
-/* CONTACT */
-.contact{
-background:
-linear-gradient(#17231ddd,#17231df2),
-url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=90")
-center/cover;
-color:white;
-text-align:center
+.service{
+  background:#f5f0e8;
+  padding:35px 25px;
+  min-height:180px;
 }
-.contact p{
-max-width:600px;
-margin:20px auto 25px;
-line-height:2;
-color:#ddd
+
+.service-number{
+  color:#9a7d58;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.service h3{
+  margin-bottom:10px;
+}
+
+.service p{
+  color:#70736e;
+  line-height:1.8;
 }
 
 /* FOOTER */
 footer{
-background:#101a15;
-color:#999;
-text-align:center;
-padding:28px 15px;
-line-height:2
-}
-footer strong{color:#c9aa7b}
-
-/* MODAL / DESIGNER */
-.modal{
-position:fixed;
-inset:0;
-background:#000b;
-z-index:500;
-display:none;
-align-items:center;
-justify-content:center;
-padding:15px
-}
-.modal.open{display:flex}
-.panel{
-width:min(720px,100%);
-max-height:92vh;
-overflow:auto;
-background:#f5f0e8;
-border-radius:8px;
-padding:25px
-}
-.paneltop{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:22px
-}
-.close{
-border:0;
-background:#17231d;
-color:white;
-width:40px;
-height:40px;
-border-radius:50%;
-font-size:20px;
-cursor:pointer
-}
-.progress{
-height:5px;
-background:#ddd;
-margin-bottom:25px;
-border-radius:10px;
-overflow:hidden
-}
-.progressbar{
-height:100%;
-width:20%;
-background:#c9aa7b;
-transition:.3s
-}
-.step{display:none}
-.step.active{display:block}
-.step h2{
-font-size:30px;
-margin-bottom:10px
-}
-.step p{
-color:#70736e;
-line-height:1.8;
-margin-bottom:20px
-}
-.options{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px
-}
-.option{
-border:1px solid #c9bdac;
-background:white;
-padding:18px;
-border-radius:5px;
-cursor:pointer;
-text-align:center;
-font-weight:bold;
-transition:.2s
-}
-.option:hover,
-.option.selected{
-background:#17231d;
-color:white;
-border-color:#17231d
-}
-.inputs{
-display:grid;
-gap:12px
-}
-.inputs label{font-weight:bold}
-.inputs input,
-.inputs select{
-width:100%;
-padding:14px;
-border:1px solid #bbb;
-border-radius:4px;
-font-size:16px
-}
-.modalbuttons{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-top:25px
-}
-.modalbuttons button{
-padding:13px 22px;
-border:0;
-border-radius:4px;
-cursor:pointer;
-font-weight:bold
-}
-.next{
-background:#c9aa7b;
-color:#17231d
-}
-.back{
-background:#ddd
-}
-.summary{
-background:white;
-padding:20px;
-line-height:2;
-border-radius:5px
+  background:#101a15;
+  color:#aaa;
+  text-align:center;
+  padding:30px 15px;
+  line-height:2;
 }
 
-/* WORKS */
-.works{
-background:#101a15;
-color:white
+footer strong{
+  color:#c9aa7b;
 }
-.worksgrid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
-}
-.work{
-height:260px;
-overflow:hidden
-}
-.work img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:.5s
-}
-.work:hover img{transform:scale(1.06)}
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-left:16px;
-bottom:16px;
-z-index:300;
-background:#25d366;
-color:#06200d;
-padding:13px 20px;
-border-radius:30px;
-font-weight:bold;
-box-shadow:0 6px 20px #0004
+/* WHATSAPP FLOAT */
+.float{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:200;
+  background:#25d366;
+  color:#06200d;
+  padding:13px 20px;
+  border-radius:30px;
+  font-weight:bold;
+  box-shadow:0 7px 25px #0004;
 }
 
 /* MOBILE */
 @media(max-width:800px){
-.navlinks a:not(.navgold){display:none}
-.introgrid{grid-template-columns:1fr}
-.grid,
-.servicesgrid{grid-template-columns:1fr 1fr}
-.worksgrid{grid-template-columns:1fr 1fr}
+  .navlinks{display:none}
+
+  .choice-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .services{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero-content{
+    margin:auto;
+  }
 }
-@media(max-width:560px){
-section{padding:70px 0}
-.wrap{width:90%}
-.hero h1{font-size:47px}
-.hero p{font-size:15px}
-.herocontent{text-align:center}
-.herobox{width:100%}
-.buttons .btn{width:100%}
-.grid,
-.servicesgrid,
-.worksgrid{grid-template-columns:1fr}
-.card{height:300px}
-.head{
-display:block
-}
-.head h2{margin-bottom:10px}
-.options{grid-template-columns:1fr}
+
+@media(max-width:550px){
+  section{padding:70px 0}
+
+  .wrap{width:90%}
+
+  h1{font-size:47px}
+
+  .hero p{font-size:15px}
+
+  .btn{
+    width:100%;
+    margin:5px 0;
+  }
+
+  .choice-grid,
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .choice{
+    height:300px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .float{
+    left:10px;
+    bottom:10px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header id="header">
-<div class="wrap nav">
+<header>
+  <div class="wrap nav">
 
-<a class="logo" href="#">
-صمم <span>ديكورك</span>
-</a>
+    <a href="index.html" class="logo">
+      صمم <span>ديكورك</span>
+    </a>
 
-<nav class="navlinks">
-<a href="#choices">التصميم</a>
-<a href="#services">الخدمات</a>
-<a href="#works">أعمالنا</a>
+    <nav class="navlinks">
+      <a href="#choices">صمم دابا</a>
+      <a href="#works">أعمالنا</a>
+      <a href="#services">الخدمات</a>
 
-<a class="navgold"
-target="_blank"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور">
-واتساب
-</a>
-</nav>
+      <a
+        class="whatsapp"
+        target="_blank"
+        href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور">
+        واتساب
+      </a>
+    </nav>
 
-</div>
+  </div>
 </header>
 
 
 <!-- HERO -->
 <section class="hero">
 
-<div class="slide active"
-style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90')">
-</div>
+  <div class="wrap hero-content">
 
-<div class="slide"
-style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=2000&q=90')">
-</div>
+    <div class="kicker">
+      تصميم • ديكور • تنفيذ
+    </div>
 
-<div class="slide"
-style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=90')">
-</div>
+    <h1>
+      خلي دارك<br>
+      <span>تحكي عليك</span>
+    </h1>
 
-<div class="wrap herocontent">
-<div class="herobox">
+    <p>
+      اختار القسم اللي بغيتي تصمم،
+      ومن بعد غادي ندوزوك مرحلة بمرحلة:
+      الشكل، القياسات، الخامات، الألوان والإكسسوارات.
+    </p>
 
-<div class="kicker">
-تصميم • ديكور • تنفيذ
-</div>
+    <a class="btn gold" href="#choices">
+      ابدأ التصميم
+    </a>
 
-<h1>
-خلي دارك<br>
-<span>تحكي عليك</span>
-</h1>
+    <a
+      class="btn outline"
+      target="_blank"
+      href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور">
+      تواصل معنا
+    </a>
 
-<p>
-اختار القسم اللي بغيتي، وغادي ندوزوك مرحلة بمرحلة
-باش تحدد الشكل والقياسات والخامات واللون.
-</p>
+  </div>
 
-<div class="buttons">
-
-<a class="btn gold" href="#choices">
-ابدأ التصميم
-</a>
-
-<a class="btn outline" href="#works">
-شوف أعمالنا
-</a>
-
-</div>
-</div>
-</div>
-
-</section>
-
-
-<!-- INTRO -->
-<section class="intro">
-
-<div class="wrap introgrid">
-
-<div>
-<div class="eyebrow">صمم ديكورك</div>
-
-<h2>
-أنت كتخيل...<br>
-<span>حنا كنصممو.</span>
-</h2>
-</div>
-
-<div class="introtext">
-<strong>صمم ديكورك</strong> كيسهّل عليك اختيار الديكور.
-كل قسم عندو الاختيارات الخاصة به، وما غاديش نعطيو الزبون
-كل الأسئلة مجموعين فصفحة طويلة.
-</div>
-
-</div>
 </section>
 
 
 <!-- CHOICES -->
 <section class="choices" id="choices">
 
-<div class="wrap">
+  <div class="wrap">
 
-<div class="head">
-<h2>شنو بغيتي تصمم؟</h2>
+    <div class="section-title">
+      <small>صمم ديكورك</small>
+      <h2>شنو بغيتي تصمم؟</h2>
+      <p style="color:#c8cec9">
+        اختار القسم وغادي تمشي مباشرة للمرحلة الأولى ديالو.
+      </p>
+    </div>
 
-<p>
-اختار القسم وغادي تفتح ليك نافذة خاصة بالمشروع ديالك.
-</p>
-</div>
+    <div class="choice-grid">
 
-<div class="grid">
+      <!-- KITCHEN -->
+      <a class="choice" href="kitchen.html">
+        <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>المطبخ</h3>
+          <p>ابدأ تصميم المطبخ ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('المطبخ')">
-<img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>المطبخ</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+      <!-- BEDROOM -->
+      <a class="choice" href="bedroom.html">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>غرفة النوم</h3>
+          <p>ابدأ تصميم غرفة النوم ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('غرفة النوم')">
-<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>غرفة النوم</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+      <!-- SALON -->
+      <a class="choice" href="salon.html">
+        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>الصالون</h3>
+          <p>ابدأ تصميم الصالون ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('Dressing')">
-<img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>Dressing</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+      <!-- DRESSING -->
+      <a class="choice" href="dressing.html">
+        <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>Dressing & Placard</h3>
+          <p>ابدأ التصميم ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('الصالون')">
-<img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>الصالون</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+      <!-- MEUBLE TV -->
+      <a class="choice" href="meuble-tv.html">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>Meuble TV</h3>
+          <p>ابدأ التصميم ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('Mobil TV')">
-<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>Mobil TV</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+      <!-- ACCESSORIES -->
+      <a class="choice" href="accessories.html">
+        <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
+        <div class="choice-info">
+          <h3>الإكسسوارات</h3>
+          <p>شوف الإكسسوارات ←</p>
+        </div>
+      </a>
 
-<div class="card" onclick="openDesigner('محل تجاري')">
-<img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
-<div class="cardtext">
-<h3>محل تجاري</h3>
-<p>ابدأ التصميم →</p>
-</div>
-</div>
+    </div>
 
-</div>
-</div>
+  </div>
+
+</section>
+
+
+<!-- WORKS -->
+<section class="works-section" id="works">
+
+  <div class="wrap">
+
+    <div class="section-title">
+      <small>REAL PROJECTS</small>
+      <h2>أعمالنا</h2>
+      <p>
+        شوف الصور الحقيقية ديال الأعمال والمشاريع اللي خدمنا.
+      </p>
+    </div>
+
+    <a class="works-btn" href="works.html">
+      📷 دخول إلى أعمالنا
+    </a>
+
+  </div>
+
 </section>
 
 
 <!-- SERVICES -->
 <section id="services">
 
-<div class="wrap">
+  <div class="wrap">
 
-<div class="head">
-<h2>الخدمات</h2>
-<p>من القياسات حتى التنفيذ.</p>
-</div>
+    <div class="section-title">
+      <small>SERVICES</small>
+      <h2>الخدمات</h2>
+      <p>من الفكرة حتى التنفيذ.</p>
+    </div>
 
-<div class="servicesgrid">
+    <div class="services">
 
-<div class="service">
-<b>01</b>
-<h3>القياسات</h3>
-<p>الطول والعرض والارتفاع حسب القسم.</p>
-</div>
+      <div class="service">
+        <div class="service-number">01</div>
+        <h3>التصميم</h3>
+        <p>نعاونك تختار الشكل المناسب للمساحة ديالك.</p>
+      </div>
 
-<div class="service">
-<b>02</b>
-<h3>الخامات</h3>
-<p>MDF، خشب، زجاج، رخام وخامات مختلفة.</p>
-</div>
+      <div class="service">
+        <div class="service-number">02</div>
+        <h3>القياسات</h3>
+        <p>إدخال الطول والعرض والارتفاع حسب كل قسم.</p>
+      </div>
 
-<div class="service">
-<b>03</b>
-<h3>الألوان</h3>
-<p>اختيار الألوان والستايل.</p>
-</div>
+      <div class="service">
+        <div class="service-number">03</div>
+        <h3>الخامات</h3>
+        <p>MDF، خشب، زجاج، رخام وخامات مختلفة.</p>
+      </div>
 
-<div class="service">
-<b>04</b>
-<h3>الإكسسوارات</h3>
-<p>مقابض، إضاءة، سلال وتجهيزات.</p>
-</div>
+      <div class="service">
+        <div class="service-number">04</div>
+        <h3>الألوان</h3>
+        <p>اختيار اللون والتشطيب والستايل.</p>
+      </div>
 
-<div class="service">
-<b>05</b>
-<h3>الصور</h3>
-<p>إرسال صور المكان باش نفهمو المساحة.</p>
-</div>
+      <div class="service">
+        <div class="service-number">05</div>
+        <h3>الإكسسوارات</h3>
+        <p>مقابض، إضاءة، سلال وتجهيزات.</p>
+      </div>
 
-<div class="service">
-<b>06</b>
-<h3>التنفيذ</h3>
-<p>من التصميم حتى التركيب.</p>
-</div>
+      <div class="service">
+        <div class="service-number">06</div>
+        <h3>التنفيذ</h3>
+        <p>من التصميم حتى التركيب النهائي.</p>
+      </div>
 
-</div>
-</div>
-</section>
+    </div>
 
+  </div>
 
-<!-- WORKS -->
-<section class="works" id="works">
-
-<div class="wrap">
-
-<div class="head">
-<h2>أعمالنا</h2>
-<p style="color:#ccc">
-شوف بعض الأعمال والمشاريع ديالنا.
-</p>
-</div>
-
-<div class="worksgrid">
-
-<div class="work">
-<img src="work-001.webp" onerror="this.src='work-1.jpg'">
-</div>
-
-<div class="work">
-<img src="work-002.webp" onerror="this.src='work-2.jpg'">
-</div>
-
-<div class="work">
-<img src="work-003.webp" onerror="this.src='work-3.jpg'">
-</div>
-
-<div class="work">
-<img src="work-004.webp" onerror="this.src='work-4.png'">
-</div>
-
-<div class="work">
-<img src="work-005.webp" onerror="this.src='work-5.jpg'">
-</div>
-
-<div class="work">
-<img src="work-006.webp" onerror="this.src='work-6.jpg'">
-</div>
-
-</div>
-
-<div style="text-align:center;margin-top:30px">
-
-<a
-class="btn gold"
-target="_blank"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20شفت%20أعمالكم%20وبغيت%20نستفسر">
-بغيت نفس الخدمة
-</a>
-
-</div>
-
-</div>
 </section>
 
 
 <!-- CONTACT -->
-<section class="contact">
+<section style="background:#dfd4c4;text-align:center">
 
-<div class="wrap">
+  <div class="wrap">
 
-<div class="eyebrow" style="color:#c9aa7b">
-عندك مشروع؟
-</div>
+    <div class="section-title">
+      <small>HAMZA CHTAIBI</small>
+      <h2>عندك مشروع؟</h2>
+      <p>
+        صيفط لينا الصور والقياسات وشرح لينا شنو بغيتي.
+      </p>
+    </div>
 
-<h2>
-خلينا نحولو<br>
-لفكرة واقعية.
-</h2>
+    <a
+      class="btn gold"
+      target="_blank"
+      href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور">
+      💬 تواصل معنا عبر واتساب
+    </a>
 
-<p>
-صيفط لينا الصور والقياسات وشرح لينا شنو بغيتي.
-</p>
+  </div>
 
-<a
-class="btn gold"
-target="_blank"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور">
-💬 تواصل معنا عبر واتساب
-</a>
-
-</div>
 </section>
 
 
-<!-- FOOTER -->
 <footer>
-
-<div>
-صمم ديكورك © 2026
-</div>
-
-<div>
-جميع الحقوق محفوظة لـ
-<strong>Hamza Chtaibi</strong>
-</div>
-
+  <strong>صمم ديكورك</strong> © 2026
+  <br>
+  جميع الحقوق محفوظة — <strong>Hamza Chtaibi</strong>
 </footer>
 
 
-<!-- WHATSAPP -->
 <a
-class="whatsapp"
-target="_blank"
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
-💬 واتساب
+  class="float"
+  target="_blank"
+  href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
+  💬 واتساب
 </a>
-
-
-<!-- DESIGNER MODAL -->
-<div class="modal" id="designer">
-
-<div class="panel">
-
-<div class="paneltop">
-<h2 id="projectTitle">المشروع</h2>
-
-<button class="close" onclick="closeDesigner()">
-×
-</button>
-</div>
-
-<div class="progress">
-<div class="progressbar" id="progress"></div>
-</div>
-
-
-<!-- STEP 1 -->
-<div class="step active" id="step1">
-
-<h2>اختار النوع</h2>
-
-<p>
-غادي نبدأو بالاختيارات الخاصة بالقسم اللي اخترتي.
-</p>
-
-<div class="options" id="dynamicOptions"></div>
-
-</div>
-
-
-<!-- STEP 2 -->
-<div class="step" id="step2">
-
-<h2>القياسات</h2>
-
-<p>
-دخل القياسات التقريبية ديال المكان.
-</p>
-
-<div class="inputs">
-
-<label>الطول بالمتر</label>
-<input id="length" type="number" min="0" step="0.01" placeholder="مثلاً 3.50">
-
-<label>العرض بالمتر</label>
-<input id="width" type="number" min="0" step="0.01" placeholder="مثلاً 2.80">
-
-<label>الارتفاع بالمتر</label>
-<input id="height" type="number" min="0" step="0.01" placeholder="مثلاً 2.60">
-
-</div>
-
-</div>
-
-
-<!-- STEP 3 -->
-<div class="step" id="step3">
-
-<h2>الخامة والستايل</h2>
-
-<p>
-اختار الخامة والجودة اللي بغيتي.
-</p>
-
-<div class="options">
-
-<div class="option" onclick="selectOption(this,'MDF')">
-MDF
-</div>
-
-<div class="option" onclick="selectOption(this,'خشب')">
-خشب
-</div>
-
-<div class="option" onclick="selectOption(this,'زجاج')">
-زجاج
-</div>
-
-<div class="option" onclick="selectOption(this,'مودرن')">
-مودرن
-</div>
-
-<div class="option" onclick="selectOption(this,'كلاسيك')">
-كلاسيك
-</div>
-
-<div class="option" onclick="selectOption(this,'راقي')">
-راقي
-</div>
-
-</div>
-
-</div>
-
-
-<!-- STEP 4 -->
-<div class="step" id="step4">
-
-<h2>الميزانية</h2>
-
-<p>
-شنو هي الميزانية التقريبية للمشروع؟
-</p>
-
-<div class="inputs">
-
-<label>الميزانية بالدرهم</label>
-
-<input
-id="budget"
-type="number"
-min="0"
-placeholder="مثلاً 15000">
-
-</div>
-
-</div>
-
-
-<!-- STEP 5 -->
-<div class="step" id="step5">
-
-<h2>الملخص</h2>
-
-<div class="summary" id="summary"></div>
-
-</div>
-
-
-<div class="modalbuttons">
-
-<button class="back" id="backBtn" onclick="previousStep()">
-رجوع
-</button>
-
-<button class="next" id="nextBtn" onclick="nextStep()">
-التالي
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<script>
-
-/* HEADER */
-window.addEventListener("scroll",()=>{
-document.getElementById("header")
-.classList.toggle("scrolled",window.scrollY>50);
-});
-
-
-/* HERO */
-const slides=document.querySelectorAll(".slide");
-let slideIndex=0;
-
-setInterval(()=>{
-slideIndex=(slideIndex+1)%slides.length;
-
-slides.forEach((s,i)=>{
-s.classList.toggle("active",i===slideIndex);
-});
-
-},5000);
-
-
-/* DESIGNER */
-let project="";
-let currentStep=1;
-let selectedType="";
-let selectedMaterial="";
-
-const modal=document.getElementById("designer");
-
-function openDesigner(name){
-
-project=name;
-currentStep=1;
-selectedType="";
-selectedMaterial="";
-
-document.getElementById("projectTitle").textContent=
-"تصميم "+name;
-
-const box=document.getElementById("dynamicOptions");
-
-let options=[];
-
-/* خيارات خاصة بكل قسم */
-
-if(name==="المطبخ"){
-options=[
-"مطبخ L",
-"مطبخ U",
-"مطبخ مستقيم",
-"مطبخ مع جزيرة"
-];
-}
-
-else if(name==="غرفة النوم"){
-options=[
-"غرفة نوم كاملة",
-"سرير + خزائن",
-"غرفة مع Dressing",
-"غرفة أطفال"
-];
-}
-
-else if(name==="Dressing"){
-options=[
-"Dressing مفتوح",
-"Dressing بأبواب",
-"خزانة حائط",
-"Placard"
-];
-}
-
-else if(name==="الصالون"){
-options=[
-"صالون مودرن",
-"صالون مغربي",
-"صالون كلاسيك",
-"صالون TV"
-];
-}
-
-else if(name==="Mobil TV"){
-options=[
-"Mobil TV معلق",
-"Mobil TV أرضي",
-"Mobil TV خشب",
-"Mobil TV مودرن"
-];
-}
-
-else{
-options=[
-"محل ملابس",
-"محل تجاري",
-"مكتب",
-"فضاء استقبال"
-];
-}
-
-box.innerHTML="";
-
-options.forEach(option=>{
-
-const div=document.createElement("div");
-
-div.className="option";
-div.textContent=option;
-
-div.onclick=()=>{
-
-document.querySelectorAll("#dynamicOptions .option")
-.forEach(x=>x.classList.remove("selected"));
-
-div.classList.add("selected");
-
-selectedType=option;
-
-};
-
-box.appendChild(div);
-
-});
-
-showStep(1);
-modal.classList.add("open");
-document.body.style.overflow="hidden";
-}
-
-
-function closeDesigner(){
-modal.classList.remove("open");
-document.body.style.overflow="";
-}
-
-
-function showStep(number){
-
-currentStep=number;
-
-document.querySelectorAll(".step")
-.forEach((s,i)=>{
-s.classList.toggle("active",i===number-1);
-});
-
-document.getElementById("progress").style.width=
-(number*20)+"%";
-
-document.getElementById("backBtn").style.visibility=
-number===1?"hidden":"visible";
-
-document.getElementById("nextBtn").textContent=
-number===5?"إرسال عبر واتساب":"التالي";
-
-if(number===5){
-makeSummary();
-}
-}
-
-
-function nextStep(){
-
-if(currentStep===1 && !selectedType){
-alert("اختار واحد من الاختيارات أولاً");
-return;
-}
-
-if(currentStep===2){
-
-const l=document.getElementById("length").value;
-const w=document.getElementById("width").value;
-
-if(!l || !w){
-alert("دخل الطول والعرض أولاً");
-return;
-}
-
-}
-
-if(currentStep<5){
-showStep(currentStep+1);
-}else{
-
-const text=
-"السلام عليكم،%0A%0A"+
-"بغيت مشروع: "+project+"%0A"+
-"النوع: "+selectedType+"%0A"+
-"الخامة/الستايل: "+selectedMaterial+"%0A"+
-"الطول: "+document.getElementById("length").value+" m%0A"+
-"العرض: "+document.getElementById("width").value+" m%0A"+
-"الارتفاع: "+document.getElementById("height").value+" m%0A"+
-"الميزانية: "+document.getElementById("budget").value+" DH";
-
-window.open(
-"https://wa.me/212754350706?text="+text,
-"_blank"
-);
-
-}
-
-}
-
-
-function previousStep(){
-
-if(currentStep>1){
-showStep(currentStep-1);
-}
-
-}
-
-
-function selectOption(element,value){
-
-document.querySelectorAll("#step3 .option")
-.forEach(x=>x.classList.remove("selected"));
-
-element.classList.add("selected");
-
-selectedMaterial=value;
-}
-
-
-function makeSummary(){
-
-const l=document.getElementById("length").value||"-";
-const w=document.getElementById("width").value||"-";
-const h=document.getElementById("height").value||"-";
-const b=document.getElementById("budget").value||"-";
-
-document.getElementById("summary").innerHTML=
-"<strong>القسم:</strong> "+project+"<br>"+
-"<strong>النوع:</strong> "+selectedType+"<br>"+
-"<strong>الخامة / الستايل:</strong> "+selectedMaterial+"<br>"+
-"<strong>الطول:</strong> "+l+" m<br>"+
-"<strong>العرض:</strong> "+w+" m<br>"+
-"<strong>الارتفاع:</strong> "+h+" m<br>"+
-"<strong>الميزانية:</strong> "+b+" DH";
-
-}
-
-
-/* CLOSE WHEN CLICKING OUTSIDE */
-modal.addEventListener("click",(e)=>{
-if(e.target===modal){
-closeDesigner();
-}
-});
-
-</script>
 
 </body>
 </html>

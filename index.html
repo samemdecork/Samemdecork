@@ -1,777 +1,848 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta name="theme-color" content="#26352d">
-<meta name="description" content="صمم ديكورك - صمم مطبخك، غرفة نومك وديكور منزلك بطريقة عصرية وواقعية">
+<meta name="theme-color" content="#20352c">
+<meta name="description" content="صمم ديكورك - صمم المساحة ديالك خطوة بخطوة">
 
 <title>صمم ديكورك</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
+html,body{
+ width:100%;
+ min-height:100%;
 }
 
 body{
-  background:#f4eee5;
-  color:#26352d;
-  font-family:Tahoma,Arial,sans-serif;
-  overflow-x:hidden;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#f3eee6;
+ color:#26362e;
+ overflow-x:hidden;
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
+ text-decoration:none;
+ color:inherit;
 }
 
-img{
-  display:block;
-  width:100%;
+button,
+input,
+select{
+ font-family:inherit;
+}
+
+/* ================= COLORS ================= */
+
+:root{
+ --green:#20352c;
+ --green2:#2e473b;
+ --beige:#d8c3a5;
+ --cream:#f3eee6;
+ --dark:#17251f;
+ --text:#26362e;
+ --muted:#777;
 }
 
 /* ================= HEADER ================= */
 
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  background:rgba(25,38,31,.20);
-  backdrop-filter:blur(10px);
-  transition:.4s;
-}
-
-header.scrolled{
-  background:#26352d;
-  box-shadow:0 8px 30px rgba(0,0,0,.25);
+.header{
+ position:absolute;
+ top:0;
+ right:0;
+ left:0;
+ z-index:100;
+ height:82px;
+ background:linear-gradient(
+  rgba(20,30,25,.8),
+  transparent
+ );
 }
 
 .nav{
-  width:min(1250px,92%);
-  height:78px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+ width:min(1240px,92%);
+ height:100%;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
 }
 
 .logo{
-  font-size:27px;
-  font-weight:900;
-  color:#fff;
+ color:white;
+ font-size:27px;
+ font-weight:900;
 }
 
 .logo span{
-  color:#d8c3a5;
+ color:var(--beige);
 }
 
 .nav-links{
-  display:flex;
-  align-items:center;
-  gap:27px;
+ display:flex;
+ align-items:center;
+ gap:25px;
 }
 
 .nav-links a{
-  color:#fff;
-  font-size:14px;
-  transition:.3s;
+ color:white;
+ font-size:14px;
+ transition:.3s;
 }
 
 .nav-links a:hover{
-  color:#d8c3a5;
+ color:var(--beige);
 }
 
-.wa{
-  background:#d8c3a5;
-  color:#26352d!important;
-  padding:12px 20px;
-  border-radius:30px;
-  font-weight:bold;
+.wa-top{
+ background:var(--beige);
+ color:var(--green)!important;
+ padding:11px 19px;
+ border-radius:30px;
+ font-weight:bold;
 }
 
 /* ================= HERO ================= */
 
 .hero{
-  height:100vh;
-  min-height:680px;
-  position:relative;
-  overflow:hidden;
-  background:#26352d;
+ position:relative;
+ width:100%;
+ height:100vh;
+ min-height:650px;
+ overflow:hidden;
+ background:var(--green);
 }
 
-.slide{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transform:scale(1.08);
-  transition:opacity 1.3s ease,transform 7s ease;
+.hero-slide{
+ position:absolute;
+ inset:0;
+ background-size:cover;
+ background-position:center;
+ opacity:0;
+ transform:scale(1.08);
+ transition:
+ opacity 1.3s ease,
+ transform 7s ease;
 }
 
-.slide.active{
-  opacity:1;
-  transform:scale(1);
+.hero-slide.active{
+ opacity:1;
+ transform:scale(1);
 }
 
-.slide:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(
-    90deg,
-    rgba(20,30,25,.94),
-    rgba(20,30,25,.68),
-    rgba(20,30,25,.18)
-  );
+.hero-slide:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:
+ linear-gradient(
+  90deg,
+  rgba(19,31,25,.94),
+  rgba(19,31,25,.62),
+  rgba(19,31,25,.18)
+ );
 }
 
 .hero-content{
-  position:relative;
-  z-index:3;
-  width:min(1250px,92%);
-  height:100%;
-  margin:auto;
-  display:flex;
-  align-items:center;
+ position:relative;
+ z-index:5;
+ width:min(1240px,92%);
+ height:100%;
+ margin:auto;
+ display:flex;
+ align-items:center;
 }
 
 .hero-text{
-  max-width:720px;
-  color:white;
+ color:white;
+ max-width:720px;
 }
 
-.mini{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  color:#d8c3a5;
-  font-size:14px;
-  margin-bottom:25px;
-}
-
-.mini:before{
-  content:"";
-  width:45px;
-  height:1px;
-  background:#d8c3a5;
+.eyebrow{
+ color:var(--beige);
+ letter-spacing:2px;
+ font-size:14px;
+ margin-bottom:22px;
 }
 
 .hero h1{
-  font-size:clamp(52px,8vw,94px);
-  line-height:1.03;
-  letter-spacing:-3px;
-  margin-bottom:25px;
+ font-size:clamp(48px,8vw,92px);
+ line-height:1;
+ letter-spacing:-3px;
+ margin-bottom:25px;
 }
 
 .hero h1 span{
-  color:#d8c3a5;
+ color:var(--beige);
 }
 
 .hero p{
-  color:#eee;
-  font-size:18px;
-  line-height:2;
-  max-width:650px;
-  margin-bottom:32px;
+ color:#eee;
+ font-size:18px;
+ line-height:2;
+ margin-bottom:30px;
+ max-width:650px;
 }
 
 .buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+ display:flex;
+ gap:12px;
+ flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px 28px;
-  border-radius:4px;
-  font-weight:bold;
-  transition:.3s;
+ border:0;
+ cursor:pointer;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ padding:15px 28px;
+ border-radius:4px;
+ font-weight:bold;
+ transition:.3s;
 }
 
 .btn:hover{
-  transform:translateY(-3px);
+ transform:translateY(-3px);
 }
 
-.btn-main{
-  background:#d8c3a5;
-  color:#26352d;
+.btn-beige{
+ background:var(--beige);
+ color:var(--green);
 }
 
-.btn-white{
-  color:white;
-  border:1px solid rgba(255,255,255,.7);
+.btn-outline{
+ color:white;
+ border:1px solid rgba(255,255,255,.7);
+ background:rgba(0,0,0,.15);
 }
 
-.dots{
-  position:absolute;
-  z-index:5;
-  bottom:35px;
-  right:4%;
-  display:flex;
-  gap:8px;
+.hero-dots{
+ position:absolute;
+ z-index:10;
+ bottom:35px;
+ right:4%;
+ display:flex;
+ gap:7px;
 }
 
 .dot{
-  width:28px;
-  height:2px;
-  background:#ffffff77;
-  transition:.4s;
+ width:28px;
+ height:2px;
+ background:#aaa;
+ transition:.4s;
 }
 
 .dot.active{
-  width:60px;
-  background:#d8c3a5;
+ width:60px;
+ background:var(--beige);
+}
+
+/* ================= COMMON ================= */
+
+.container{
+ width:min(1240px,92%);
+ margin:auto;
+}
+
+.section{
+ padding:100px 0;
+}
+
+.section-title{
+ margin-bottom:35px;
+}
+
+.section-title h2{
+ font-size:48px;
+ margin-bottom:10px;
+}
+
+.section-title p{
+ color:#777;
+ line-height:1.8;
 }
 
 /* ================= INTRO ================= */
 
 .intro{
-  padding:110px 0;
-}
-
-.container{
-  width:min(1250px,92%);
-  margin:auto;
+ padding:100px 0;
+ background:var(--cream);
 }
 
 .intro-grid{
-  display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:80px;
-  align-items:center;
-}
-
-.eyebrow{
-  color:#987b59;
-  font-size:13px;
-  letter-spacing:2px;
-  margin-bottom:18px;
+ display:grid;
+ grid-template-columns:1fr 1.4fr;
+ gap:70px;
+ align-items:center;
 }
 
 .intro h2{
-  font-size:clamp(38px,5vw,65px);
-  line-height:1.15;
+ font-size:clamp(38px,5vw,62px);
+ line-height:1.15;
 }
 
 .intro h2 span{
-  color:#a68760;
+ color:#a68760;
 }
 
 .intro-text{
-  color:#646861;
-  font-size:17px;
-  line-height:2;
-}
-
-/* ================= TITLES ================= */
-
-.heading{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:30px;
-  margin-bottom:35px;
-}
-
-.heading h2{
-  font-size:48px;
-}
-
-.heading p{
-  max-width:430px;
-  color:#777;
-  line-height:1.8;
-}
-
-/* ================= PROJECTS ================= */
-
-.projects{
-  padding-bottom:110px;
-}
-
-.project-grid{
-  display:grid;
-  gap:22px;
-}
-
-.project{
-  height:510px;
-  position:relative;
-  overflow:hidden;
-  background:#26352d;
-}
-
-.project:nth-child(even){
-  height:420px;
-}
-
-.project img{
-  height:100%;
-  object-fit:cover;
-  transition:1s;
-}
-
-.project:hover img{
-  transform:scale(1.06);
-}
-
-.project:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(15,23,19,.88),
-    transparent 65%
-  );
-}
-
-.project-info{
-  position:absolute;
-  z-index:2;
-  right:40px;
-  bottom:35px;
-  color:white;
-}
-
-.project-info small{
-  color:#d8c3a5;
-}
-
-.project-info h3{
-  font-size:40px;
-  margin:8px 0;
+ color:#626761;
+ font-size:17px;
+ line-height:2;
 }
 
 /* ================= CHOICES ================= */
 
 .choices{
-  background:#26352d;
-  color:white;
-  padding:110px 0;
+ padding:100px 0;
+ background:var(--green);
+ color:white;
 }
 
-.choices .heading h2{
-  color:white;
-}
-
-.choices .heading p{
-  color:#c8ccc8;
+.choices .section-title p{
+ color:#c7ccc8;
 }
 
 .choice-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:2px;
 }
 
 .choice{
-  height:370px;
-  position:relative;
-  overflow:hidden;
-  background:#172019;
+ position:relative;
+ height:350px;
+ overflow:hidden;
+ background:#111;
+ cursor:pointer;
 }
 
 .choice img{
-  height:100%;
-  object-fit:cover;
-  opacity:.75;
-  transition:.7s;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ opacity:.72;
+ transition:.7s;
 }
 
 .choice:hover img{
-  transform:scale(1.08);
-  opacity:1;
+ transform:scale(1.08);
+ opacity:1;
 }
 
 .choice:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(10,16,12,.9),
-    transparent 65%
-  );
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(
+  to top,
+  rgba(10,20,15,.9),
+  transparent 65%
+ );
 }
 
 .choice-info{
-  position:absolute;
-  z-index:3;
-  right:25px;
-  bottom:25px;
+ position:absolute;
+ z-index:3;
+ right:25px;
+ bottom:25px;
 }
 
 .choice-info h3{
-  font-size:25px;
-  margin-bottom:7px;
+ font-size:25px;
+ margin-bottom:7px;
 }
 
 .choice-info p{
-  color:#d8c3a5;
+ color:var(--beige);
+ font-size:13px;
 }
 
 /* ================= SERVICES ================= */
 
 .services{
-  padding:110px 0;
+ padding:100px 0;
+ background:var(--cream);
 }
 
 .service-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid #c9bba8;
-  border-right:1px solid #c9bba8;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ border-top:1px solid #cbbda9;
+ border-right:1px solid #cbbda9;
 }
 
 .service{
-  min-height:210px;
-  padding:35px;
-  border-left:1px solid #c9bba8;
-  border-bottom:1px solid #c9bba8;
-  transition:.3s;
+ min-height:190px;
+ padding:30px;
+ border-left:1px solid #cbbda9;
+ border-bottom:1px solid #cbbda9;
+ transition:.3s;
 }
 
 .service:hover{
-  background:#e9dfd1;
+ background:#e9dfd1;
 }
 
-.service-num{
-  color:#a68760;
-  margin-bottom:25px;
+.service-number{
+ color:#a68760;
+ margin-bottom:22px;
 }
 
 .service h3{
-  font-size:23px;
-  margin-bottom:10px;
+ font-size:22px;
+ margin-bottom:10px;
 }
 
 .service p{
-  color:#71736e;
-  line-height:1.8;
-}
-
-/* ================= BEFORE AFTER ================= */
-
-.before-after{
-  background:#ded2c1;
-  padding:110px 0;
-}
-
-.compare{
-  height:600px;
-  position:relative;
-  overflow:hidden;
-  margin-top:40px;
-}
-
-.compare img{
-  position:absolute;
-  inset:0;
-  height:100%;
-  object-fit:cover;
-}
-
-.after{
-  clip-path:inset(0 50% 0 0);
-}
-
-.compare-line{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:50%;
-  width:2px;
-  background:white;
-  z-index:5;
-}
-
-.handle{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#d8c3a5;
-  display:grid;
-  place-items:center;
-  z-index:7;
-  color:#26352d;
-  font-weight:bold;
-}
-
-.compare input{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  cursor:ew-resize;
-  z-index:10;
-}
-
-/* ================= STEPS ================= */
-
-.steps{
-  padding:110px 0;
-}
-
-.steps-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid #c9bba8;
-}
-
-.step{
-  padding:35px 25px;
-  border-left:1px solid #c9bba8;
-}
-
-.step-num{
-  color:#a68760;
-  font-size:40px;
-  margin-bottom:30px;
-}
-
-.step h3{
-  margin-bottom:12px;
-}
-
-.step p{
-  color:#777;
-  line-height:1.8;
+ color:#72756f;
+ line-height:1.8;
 }
 
 /* ================= BUDGET ================= */
 
 .budget{
-  background:#26352d;
-  color:white;
-  padding:100px 0;
-}
-
-.budget .heading p{
-  color:#c9cec9;
+ background:var(--green);
+ color:white;
+ padding:100px 0;
 }
 
 .budget-box{
-  max-width:750px;
-  margin:40px auto 0;
-  padding:35px;
-  background:#304238;
+ max-width:700px;
+ margin:auto;
+ background:#2d4439;
+ padding:35px;
 }
 
 .field{
-  margin-bottom:22px;
+ margin-bottom:20px;
 }
 
 .field label{
-  display:block;
-  margin-bottom:8px;
+ display:block;
+ margin-bottom:8px;
 }
 
 .field input,
 .field select{
-  width:100%;
-  padding:15px;
-  background:#26352d;
-  border:1px solid #66766d;
-  color:white;
-  border-radius:3px;
-  font-size:16px;
+ width:100%;
+ padding:15px;
+ border:1px solid #66766d;
+ background:#20352c;
+ color:white;
+ border-radius:3px;
+ font-size:16px;
 }
 
 .result{
-  margin-top:25px;
-  padding:25px;
-  border:1px solid #7c8981;
-  text-align:center;
+ text-align:center;
+ border:1px solid #78857e;
+ padding:25px;
+ margin-top:20px;
+}
+
+.result small{
+ color:#cbd0cc;
 }
 
 .result strong{
-  display:block;
-  color:#d8c3a5;
-  font-size:42px;
-  margin-top:8px;
+ display:block;
+ color:var(--beige);
+ font-size:42px;
+ margin-top:8px;
+}
+
+/* ================= WORK BUTTON ================= */
+
+.works-area{
+ padding:80px 0;
+ text-align:center;
+ background:#e4d8c7;
+}
+
+.works-area h2{
+ font-size:42px;
+ margin-bottom:12px;
+}
+
+.works-area p{
+ color:#666;
+ margin-bottom:25px;
 }
 
 /* ================= CONTACT ================= */
 
 .contact{
-  min-height:550px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  position:relative;
-  background:
-  linear-gradient(rgba(24,35,29,.78),rgba(24,35,29,.90)),
-  url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=90")
-  center/cover;
-}
-
-.contact-content{
-  width:min(700px,90%);
+ min-height:500px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ color:white;
+ background:
+ linear-gradient(
+  rgba(20,31,25,.82),
+  rgba(20,31,25,.9)
+ ),
+ url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=90")
+ center/cover;
 }
 
 .contact h2{
-  font-size:clamp(42px,6vw,72px);
-  margin-bottom:18px;
+ font-size:clamp(42px,6vw,70px);
+ margin-bottom:20px;
 }
 
 .contact p{
-  color:#ddd;
-  line-height:2;
-  font-size:18px;
-  margin-bottom:30px;
+ color:#ddd;
+ line-height:2;
+ margin-bottom:30px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-  background:#19251f;
-  color:#aaa;
-  text-align:center;
-  padding:35px;
+ background:#17251f;
+ color:#999;
+ text-align:center;
+ padding:35px 15px;
+ border-top:1px solid rgba(216,195,165,.2);
+}
+
+.footer-name{
+ color:var(--beige);
+ font-weight:bold;
+ margin-top:7px;
 }
 
 /* ================= WHATSAPP ================= */
 
 .float-wa{
-  position:fixed;
-  z-index:9999;
-  left:18px;
-  bottom:18px;
-  background:#25d366;
-  color:#06200d;
-  padding:14px 21px;
-  border-radius:30px;
-  font-weight:bold;
-  box-shadow:0 7px 25px #0005;
+ position:fixed;
+ z-index:9999;
+ bottom:18px;
+ left:18px;
+ background:#25d366;
+ color:#06200d;
+ padding:14px 21px;
+ border-radius:30px;
+ font-weight:bold;
+ box-shadow:0 7px 25px rgba(0,0,0,.25);
+}
+
+/* ================================================= */
+/* ================= DESIGN WIZARD ================= */
+/* ================================================= */
+
+.wizard-page{
+ position:fixed;
+ inset:0;
+ z-index:5000;
+ background:var(--cream);
+ overflow-y:auto;
+ display:none;
+}
+
+.wizard-page.show{
+ display:block;
+ animation:pageIn .35s ease;
+}
+
+@keyframes pageIn{
+ from{
+  opacity:0;
+  transform:translateX(25px);
+ }
+ to{
+  opacity:1;
+  transform:translateX(0);
+ }
+}
+
+.wizard-header{
+ height:75px;
+ background:var(--green);
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 5%;
+}
+
+.back-btn{
+ border:1px solid rgba(255,255,255,.4);
+ background:transparent;
+ color:white;
+ padding:10px 18px;
+ border-radius:25px;
+ cursor:pointer;
+}
+
+.wizard-logo{
+ font-weight:bold;
+ font-size:22px;
+}
+
+.wizard-logo span{
+ color:var(--beige);
+}
+
+.wizard-body{
+ width:min(1000px,92%);
+ min-height:calc(100vh - 75px);
+ margin:auto;
+ padding:45px 0 70px;
+}
+
+.progress{
+ display:flex;
+ gap:5px;
+ margin-bottom:40px;
+}
+
+.progress div{
+ height:4px;
+ flex:1;
+ background:#d4c8b7;
+}
+
+.progress div.active{
+ background:var(--green);
+}
+
+.wizard-title{
+ text-align:center;
+ margin-bottom:35px;
+}
+
+.wizard-title h1{
+ font-size:42px;
+ margin-bottom:10px;
+}
+
+.wizard-title p{
+ color:#777;
+}
+
+.options{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+}
+
+.option{
+ background:white;
+ border:1px solid #d8cdbd;
+ padding:25px;
+ min-height:130px;
+ cursor:pointer;
+ text-align:center;
+ transition:.3s;
+}
+
+.option:hover{
+ border-color:var(--green);
+ transform:translateY(-4px);
+ box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.option.selected{
+ background:var(--green);
+ color:white;
+ border-color:var(--green);
+}
+
+.option h3{
+ margin-bottom:8px;
+}
+
+.option p{
+ color:#777;
+ font-size:13px;
+}
+
+.option.selected p{
+ color:#ddd;
+}
+
+.wizard-next{
+ display:block;
+ width:100%;
+ margin-top:25px;
+ background:var(--green);
+ color:white;
+ border:0;
+ padding:17px;
+ cursor:pointer;
+ font-size:17px;
+}
+
+.wizard-next:disabled{
+ opacity:.4;
+ cursor:not-allowed;
+}
+
+/* ================= MEASURE ================= */
+
+.measure-box{
+ max-width:650px;
+ margin:auto;
+ background:white;
+ padding:30px;
+ border:1px solid #ddd2c1;
+}
+
+.measure-field{
+ margin-bottom:18px;
+}
+
+.measure-field label{
+ display:block;
+ margin-bottom:7px;
+}
+
+.measure-field input{
+ width:100%;
+ padding:15px;
+ border:1px solid #ccc;
+ background:white;
+ color:#222;
+ font-size:17px;
+}
+
+.summary{
+ background:var(--green);
+ color:white;
+ padding:25px;
+ margin-top:20px;
+ line-height:2;
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:850px){
 
-.nav-links{
+ .nav-links{
   display:none;
-}
+ }
 
-.hero{
-  min-height:650px;
-}
-
-.hero-content{
-  text-align:center;
-  justify-content:center;
-}
-
-.hero h1{
+ .hero h1{
   font-size:52px;
-}
+ }
 
-.buttons{
-  justify-content:center;
-}
-
-.intro-grid{
+ .intro-grid{
   grid-template-columns:1fr;
   gap:30px;
-}
+ }
 
-.heading{
-  display:block;
-}
-
-.heading h2{
-  font-size:38px;
-  margin-bottom:12px;
-}
-
-.choice-grid{
+ .choice-grid{
   grid-template-columns:1fr 1fr;
-}
+ }
 
-.service-grid{
+ .service-grid{
   grid-template-columns:1fr 1fr;
-}
+ }
 
-.steps-grid{
+ .options{
   grid-template-columns:1fr 1fr;
-}
+ }
 
 }
 
 @media(max-width:560px){
 
-.container{
+ .container{
   width:90%;
-}
+ }
 
-.hero h1{
-  font-size:45px;
-}
+ .hero{
+  min-height:650px;
+ }
 
-.hero p{
+ .hero-content{
+  text-align:center;
+  justify-content:center;
+ }
+
+ .hero h1{
+  font-size:46px;
+ }
+
+ .hero p{
   font-size:15px;
-}
+ }
 
-.btn{
+ .buttons{
+  justify-content:center;
+ }
+
+ .buttons .btn{
   width:100%;
-}
+ }
 
-.choice-grid{
+ .choice-grid{
   grid-template-columns:1fr;
-}
+ }
 
-.choice{
-  height:330px;
-}
+ .choice{
+  height:320px;
+ }
 
-.service-grid{
+ .service-grid{
   grid-template-columns:1fr;
-}
+ }
 
-.steps-grid{
-  grid-template-columns:1fr 1fr;
-}
+ .section{
+  padding:70px 0;
+ }
 
-.compare{
-  height:360px;
-}
+ .section-title h2{
+  font-size:38px;
+ }
 
-.float-wa{
+ .options{
+  grid-template-columns:1fr;
+ }
+
+ .wizard-title h1{
+  font-size:32px;
+ }
+
+ .wizard-body{
+  padding-top:30px;
+ }
+
+ .float-wa{
   left:10px;
   bottom:10px;
-}
+ }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 
-<header id="header">
+<!-- ================================================= -->
+<!-- ================= MAIN HOME ===================== -->
+<!-- ================================================= -->
+
+<div id="homePage">
+
+
+<header class="header">
 
 <div class="nav">
 
@@ -781,13 +852,14 @@ footer{
 
 <nav class="nav-links">
 
-<a href="#projects">المشاريع</a>
-<a href="#choices">الاختيارات</a>
+<a href="#choices">اختيارات</a>
+
 <a href="#services">الخدمات</a>
-<a href="#steps">كيف نخدمو</a>
+
+<a href="works.html">أعمالنا</a>
 
 <a
-class="wa"
+class="wa-top"
 href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور"
 target="_blank">
 💬 واتساب
@@ -800,28 +872,33 @@ target="_blank">
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
 <div
-class="slide active"
-style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90')">
+class="hero-slide active"
+style="background-image:url('hero-1.webp')">
 </div>
 
 <div
-class="slide"
-style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=2000&q=90')">
+class="hero-slide"
+style="background-image:url('hero-2.webp')">
 </div>
 
 <div
-class="slide"
-style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=90')">
+class="hero-slide"
+style="background-image:url('hero-3.webp')">
 </div>
 
 <div
-class="slide"
-style="background-image:url('https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=2000&q=90')">
+class="hero-slide"
+style="background-image:url('hero-4.webp')">
+</div>
+
+<div
+class="hero-slide"
+style="background-image:url('hero-5.webp')">
 </div>
 
 
@@ -829,7 +906,7 @@ style="background-image:url('https://images.unsplash.com/photo-1617104678098-de2
 
 <div class="hero-text">
 
-<div class="mini">
+<div class="eyebrow">
 تصميم • ديكور • تنفيذ
 </div>
 
@@ -841,21 +918,18 @@ style="background-image:url('https://images.unsplash.com/photo-1617104678098-de2
 
 <p>
 من أول فكرة حتى التركيب النهائي.
-نصممو ليك المساحة، نختارو الخامات والألوان،
-ونحوّلو الفكرة ديالك إلى ديكور واقعي وأنيق.
+اختار المساحة، الشكل، القياسات والخامات،
+وشوف مشروعك خطوة بخطوة.
 </p>
 
 <div class="buttons">
 
-<a href="#choices" class="btn btn-main">
-اكتشف الاختيارات
+<a href="#choices" class="btn btn-beige">
+ابدأ التصميم
 </a>
 
-<a
-href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور"
-target="_blank"
-class="btn btn-white">
-تواصل معنا
+<a href="works.html" class="btn btn-outline">
+🖼️ أعمالنا
 </a>
 
 </div>
@@ -865,9 +939,10 @@ class="btn btn-white">
 </div>
 
 
-<div class="dots">
+<div class="hero-dots">
 
 <div class="dot active"></div>
+<div class="dot"></div>
 <div class="dot"></div>
 <div class="dot"></div>
 <div class="dot"></div>
@@ -877,7 +952,7 @@ class="btn btn-white">
 </section>
 
 
-<!-- ================= INTRO ================= -->
+<!-- INTRO -->
 
 <section class="intro">
 
@@ -900,16 +975,15 @@ class="btn btn-white">
 <div class="intro-text">
 
 <p>
-الهدف ديال <strong>صمم ديكورك</strong> هو نخلي اختيار الديكور
-أسهل عليك، من خلال التصميم، القياسات، الخامات،
-الألوان والإكسسوارات.
+اختار القسم اللي بغيتي، ومن بعد غادي ندوزوك
+مرحلة بمرحلة باش ما تبقاش تهبط فصفحة طويلة.
 </p>
 
 <br>
 
 <p>
-شوف الفكرة قبل التنفيذ، اختار اللي مناسب ليك،
-ومن بعد تواصل معنا باش نكمّلو المشروع.
+كل اختيار كينقلك مباشرة للمرحلة الموالية،
+حتى توصل للخلاصة والتواصل معنا.
 </p>
 
 </div>
@@ -919,177 +993,138 @@ class="btn btn-white">
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
-
-<section class="projects" id="projects">
-
-<div class="container">
-
-<div class="heading">
-
-<h2>مشاريعنا</h2>
-
-<p>
-أفكار واقعية للمطابخ، غرف النوم، الخزائن والديكور.
-</p>
-
-</div>
-
-<div class="project-grid">
-
-
-<a href="kitchen.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=90"
-alt="المطبخ">
-
-<div class="project-info">
-
-<small>01 / PROJECT</small>
-
-<h3>المطابخ</h3>
-
-<p>L • U • جزيرة • مودرن</p>
-
-</div>
-
-</a>
-
-
-<a href="bedroom.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=90"
-alt="غرفة النوم">
-
-<div class="project-info">
-
-<small>02 / PROJECT</small>
-
-<h3>غرف النوم</h3>
-
-<p>سرير • Dressing • خزائن</p>
-
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="project">
-
-<img
-src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1800&q=90"
-alt="Dressing">
-
-<div class="project-info">
-
-<small>03 / PROJECT</small>
-
-<h3>Dressing & Placard</h3>
-
-<p>زجاج • خشب • تخزين</p>
-
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CHOICES ================= -->
+<!-- CHOICES -->
 
 <section class="choices" id="choices">
 
 <div class="container">
 
-<div class="heading">
+<div class="section-title">
 
 <h2>شنو بغيتي تصمم؟</h2>
 
 <p>
-اختار القسم ديالك وبدأ المشروع مباشرة.
+اختار القسم وغادي نبدأو معاك التصميم خطوة بخطوة.
 </p>
 
 </div>
 
+
 <div class="choice-grid">
 
 
-<a href="kitchen.html" class="choice">
+<!-- KITCHEN -->
 
-<img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
+<div
+class="choice"
+onclick="startDesign('المطبخ')">
+
+<img src="work-001.webp">
 
 <div class="choice-info">
+
 <h3>المطبخ</h3>
+
 <p>ابدأ التصميم →</p>
+
 </div>
 
-</a>
+</div>
 
 
-<a href="bedroom.html" class="choice">
+<!-- BEDROOM -->
 
-<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
+<div
+class="choice"
+onclick="startDesign('غرفة النوم')">
+
+<img src="work-010.webp">
 
 <div class="choice-info">
+
 <h3>غرفة النوم</h3>
+
 <p>ابدأ التصميم →</p>
+
 </div>
 
-</a>
-
-
-<a href="ai-design.html" class="choice">
-
-<img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90">
-
-<div class="choice-info">
-<h3>محل الطيابسري</h3>
-<p>اكتشف الأفكار →</p>
 </div>
 
-</a>
 
+<!-- DRESSING -->
 
-<a href="ai-design.html" class="choice">
+<div
+class="choice"
+onclick="startDesign('Dressing & Placard')">
 
-<img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
-
-<div class="choice-info">
-<h3>الصالونات</h3>
-<p>اكتشف الأفكار →</p>
-</div>
-
-</a>
-
-
-<a href="ai-design.html" class="choice">
-
-<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+<img src="work-020.webp">
 
 <div class="choice-info">
-<h3>Mobil Télé</h3>
-<p>اكتشف الأفكار →</p>
-</div>
 
-</a>
-
-
-<a href="ai-design.html" class="choice">
-
-<img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
-
-<div class="choice-info">
 <h3>Dressing & Placard</h3>
+
 <p>ابدأ التصميم →</p>
+
 </div>
 
-</a>
+</div>
+
+
+<!-- SALON -->
+
+<div
+class="choice"
+onclick="startDesign('الصالون')">
+
+<img src="work-030.webp">
+
+<div class="choice-info">
+
+<h3>الصالون</h3>
+
+<p>اكتشف التصميم →</p>
+
+</div>
+
+</div>
+
+
+<!-- MEUBLE TV -->
+
+<div
+class="choice"
+onclick="startDesign('Mobil Télé')">
+
+<img src="work-040.webp">
+
+<div class="choice-info">
+
+<h3>Mobil Télé</h3>
+
+<p>ابدأ التصميم →</p>
+
+</div>
+
+</div>
+
+
+<!-- BOISERIE -->
+
+<div
+class="choice"
+onclick="startDesign('محل الطيابسري')">
+
+<img src="work-050.webp">
+
+<div class="choice-info">
+
+<h3>محل الطيابسري</h3>
+
+<p>ابدأ التصميم →</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1098,13 +1133,13 @@ alt="Dressing">
 </section>
 
 
-<!-- ================= SERVICES ================= -->
+<!-- SERVICES -->
 
 <section class="services" id="services">
 
 <div class="container">
 
-<div class="heading">
+<div class="section-title">
 
 <h2>الخدمات</h2>
 
@@ -1114,11 +1149,897 @@ alt="Dressing">
 
 </div>
 
+
 <div class="service-grid">
 
-
 <div class="service">
-<div class="service-num">01</div>
+<div class="service-number">01</div>
 <h3>القياسات</h3>
 <p>الطول، العرض، الارتفاع والمساحة.</p>
-</
+</div>
+
+<div class="service">
+<div class="service-number">02</div>
+<h3>الخامات</h3>
+<p>MDF، الخشب، الزجاج، الرخام والخامات المختلفة.</p>
+</div>
+
+<div class="service">
+<div class="service-number">03</div>
+<h3>الألوان</h3>
+<p>اختيار الألوان والستايل والتشطيب.</p>
+</div>
+
+<div class="service">
+<div class="service-number">04</div>
+<h3>الإكسسوارات</h3>
+<p>مقابض، إضاءة، سلال، زجاج وتجهيزات.</p>
+</div>
+
+<div class="service">
+<div class="service-number">05</div>
+<h3>صور المكان</h3>
+<p>صيفط صور المكان باش نعرفو المساحة والوضعية.</p>
+</div>
+
+<div class="service">
+<div class="service-number">06</div>
+<h3>التصميم الذكي</h3>
+<p>اختيارات تساعدك تشوف الفكرة قبل التنفيذ.</p>
+</div>
+
+<div class="service">
+<div class="service-number">07</div>
+<h3>الميزانية</h3>
+<p>حساب أولي حسب المساحة والخامة المختارة.</p>
+</div>
+
+<div class="service">
+<div class="service-number">08</div>
+<h3>التنفيذ</h3>
+<p>من التصميم حتى التركيب النهائي.</p>
+</div>
+
+<div class="service">
+<div class="service-number">09</div>
+<h3>واتساب</h3>
+<p>تواصل مباشر باش نكملو تفاصيل المشروع.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WORKS -->
+
+<section class="works-area">
+
+<div class="container">
+
+<h2>أعمالنا</h2>
+
+<p>
+شوف المشاريع والصور الحقيقية ديال الأعمال.
+</p>
+
+<a href="works.html" class="btn btn-beige">
+🖼️ شوف جميع أعمالنا
+</a>
+
+</div>
+
+</section>
+
+
+<!-- BUDGET -->
+
+<section class="budget">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>حاسبة الميزانية</h2>
+
+<p>
+تقدير أولي للتكلفة.
+</p>
+
+</div>
+
+
+<div class="budget-box">
+
+<div class="field">
+
+<label>المساحة بالمتر المربع</label>
+
+<input
+id="area"
+type="number"
+min="1"
+value="10">
+
+</div>
+
+
+<div class="field">
+
+<label>الخامة والجودة</label>
+
+<select id="material">
+
+<option value="600">
+اقتصادي — 600 DH/m²
+</option>
+
+<option value="900" selected>
+متوسط — 900 DH/m²
+</option>
+
+<option value="1400">
+ممتاز — 1400 DH/m²
+</option>
+
+<option value="1800">
+Premium — 1800 DH/m²
+</option>
+
+</select>
+
+</div>
+
+
+<div class="result">
+
+<small>
+التكلفة التقديرية
+</small>
+
+<strong id="total">
+9,000 DH
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<div>
+
+<div class="eyebrow">
+عندك مشروع؟
+</div>
+
+<h2>
+خلينا نحولو
+<br>
+لفكرة واقعية.
+</h2>
+
+<p>
+صيفط لينا الصور والقياسات وشرح لينا شنو بغيتي.
+</p>
+
+<a
+class="btn btn-beige"
+target="_blank"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور%20وبغيت%20نتواصل%20معاكم">
+
+💬 تواصل معنا عبر واتساب
+
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div>
+صمم ديكورك © 2026 — جميع الحقوق محفوظة
+</div>
+
+<div class="footer-name">
+Hamza Chraibi
+</div>
+
+</footer>
+
+
+<a
+class="float-wa"
+target="_blank"
+href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
+
+💬 واتساب
+
+</a>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- ================= WIZARD PAGE =================== -->
+<!-- ================================================= -->
+
+<div id="wizardPage" class="wizard-page">
+
+<div class="wizard-header">
+
+<button
+class="back-btn"
+onclick="goBack()">
+← رجوع
+</button>
+
+<div class="wizard-logo">
+صمم <span>ديكورك</span>
+</div>
+
+</div>
+
+
+<div class="wizard-body">
+
+<div class="progress">
+
+<div id="p1"></div>
+<div id="p2"></div>
+<div id="p3"></div>
+<div id="p4"></div>
+<div id="p5"></div>
+
+</div>
+
+
+<div id="wizardContent"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ================================================= */
+/* HERO SLIDER */
+/* ================================================= */
+
+const slides=document.querySelectorAll(".hero-slide");
+const dots=document.querySelectorAll(".dot");
+
+let slideIndex=0;
+
+setInterval(()=>{
+
+ slides.forEach((s,i)=>{
+  s.classList.toggle("active",i===slideIndex);
+ });
+
+ dots.forEach((d,i)=>{
+  d.classList.toggle("active",i===slideIndex);
+ });
+
+ slideIndex++;
+
+ if(slideIndex>=slides.length){
+  slideIndex=0;
+ }
+
+},5000);
+
+
+/* ================================================= */
+/* BUDGET */
+/* ================================================= */
+
+const area=document.getElementById("area");
+const material=document.getElementById("material");
+const total=document.getElementById("total");
+
+function calculate(){
+
+ const a=Number(area.value)||0;
+ const p=Number(material.value)||0;
+
+ total.textContent=
+ (a*p).toLocaleString("fr-FR")+" DH";
+
+}
+
+area.addEventListener("input",calculate);
+material.addEventListener("change",calculate);
+
+calculate();
+
+
+/* ================================================= */
+/* DESIGN WIZARD */
+/* ================================================= */
+
+let design={
+ section:"",
+ shape:"",
+ length:"",
+ width:"",
+ height:"",
+ material:"",
+ color:"",
+ budget:""
+};
+
+let step=1;
+
+
+/* START */
+
+function startDesign(section){
+
+ design.section=section;
+ step=1;
+
+ document.getElementById("homePage").style.display="none";
+
+ document.getElementById("wizardPage")
+ .classList.add("show");
+
+ renderStep();
+
+}
+
+
+/* RENDER */
+
+function renderStep(){
+
+ const content=
+ document.getElementById("wizardContent");
+
+ for(let i=1;i<=5;i++){
+
+  document
+  .getElementById("p"+i)
+  .classList.toggle("active",i<=step);
+
+ }
+
+
+ /* ================= STEP 1 ================= */
+
+ if(step===1){
+
+  content.innerHTML=`
+
+  <div class="wizard-title">
+
+   <h1>${design.section}</h1>
+
+   <p>
+   اختار الشكل اللي مناسب للمشروع ديالك
+   </p>
+
+  </div>
+
+
+  <div class="options">
+
+   <div class="option"
+   onclick="selectShape(this,'L')">
+
+    <h3>شكل L</h3>
+    <p>مناسب للمساحات الركنية</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="selectShape(this,'U')">
+
+    <h3>شكل U</h3>
+    <p>استغلال كبير للمساحة</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="selectShape(this,'جزيرة')">
+
+    <h3>جزيرة</h3>
+    <p>تصميم مفتوح وعصري</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="selectShape(this,'مستقيم')">
+
+    <h3>مستقيم</h3>
+    <p>للمساحات الصغيرة</p>
+
+   </div>
+
+  </div>
+
+
+  <button
+  id="nextBtn"
+  class="wizard-next"
+  disabled
+  onclick="nextStep()">
+
+  التالي →
+
+  </button>
+
+  `;
+
+ }
+
+
+ /* ================= STEP 2 ================= */
+
+ if(step===2){
+
+  content.innerHTML=`
+
+  <div class="wizard-title">
+
+   <h1>القياسات</h1>
+
+   <p>
+   دخل القياسات باش نكملو التصميم
+   </p>
+
+  </div>
+
+
+  <div class="measure-box">
+
+   <div class="measure-field">
+
+    <label>الطول بالسنتيمتر</label>
+
+    <input
+    id="length"
+    type="number"
+    placeholder="مثلاً 300">
+
+   </div>
+
+
+   <div class="measure-field">
+
+    <label>العرض بالسنتيمتر</label>
+
+    <input
+    id="width"
+    type="number"
+    placeholder="مثلاً 250">
+
+   </div>
+
+
+   <div class="measure-field">
+
+    <label>الارتفاع بالسنتيمتر</label>
+
+    <input
+    id="height"
+    type="number"
+    placeholder="مثلاً 260">
+
+   </div>
+
+
+   <button
+   class="wizard-next"
+   onclick="saveMeasures()">
+
+   التالي →
+
+   </button>
+
+  </div>
+
+  `;
+
+ }
+
+
+ /* ================= STEP 3 ================= */
+
+ if(step===3){
+
+  content.innerHTML=`
+
+  <div class="wizard-title">
+
+   <h1>الخامة</h1>
+
+   <p>
+   اختار الخامة والتشطيب
+   </p>
+
+  </div>
+
+
+  <div class="options">
+
+   <div class="option"
+   onclick="chooseMaterial(this,'MDF')">
+
+    <h3>MDF</h3>
+    <p>اختيار عملي وأنيق</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="chooseMaterial(this,'خشب')">
+
+    <h3>خشب</h3>
+    <p>طبيعي وفخم</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="chooseMaterial(this,'زجاج')">
+
+    <h3>زجاج</h3>
+    <p>مودرن وأنيق</p>
+
+   </div>
+
+
+   <div class="option"
+   onclick="chooseMaterial(this,'MDF + زجاج')">
+
+    <h3>MDF + زجاج</h3>
+    <p>مزيج عصري</p>
+
+   </div>
+
+  </div>
+
+
+  <button
+  id="materialNext"
+  class="wizard-next"
+  disabled
+  onclick="nextStep()">
+
+  التالي →
+
+  </button>
+
+  `;
+
+ }
+
+
+ /* ================= STEP 4 ================= */
+
+ if(step===4){
+
+  content.innerHTML=`
+
+  <div class="wizard-title">
+
+   <h1>اللون والميزانية</h1>
+
+   <p>
+   آخر الاختيارات قبل الخلاصة
+   </p>
+
+  </div>
+
+
+  <div class="measure-box">
+
+
+   <div class="measure-field">
+
+    <label>اللون المفضل</label>
+
+    <select id="color">
+
+     <option value="">اختار اللون</option>
+     <option>أبيض</option>
+     <option>بيج</option>
+     <option>كابوتشينو</option>
+     <option>أخضر</option>
+     <option>رمادي</option>
+     <option>أسود</option>
+     <option>خشبي</option>
+
+    </select>
+
+   </div>
+
+
+   <div class="measure-field">
+
+    <label>الميزانية التقريبية</label>
+
+    <select id="budget">
+
+     <option value="">اختار الميزانية</option>
+     <option>أقل من 10,000 DH</option>
+     <option>10,000 - 20,000 DH</option>
+     <option>20,000 - 30,000 DH</option>
+     <option>أكثر من 30,000 DH</option>
+
+    </select>
+
+   </div>
+
+
+   <button
+   class="wizard-next"
+   onclick="saveFinalOptions()">
+
+   شوف الخلاصة →
+
+   </button>
+
+  </div>
+
+  `;
+
+ }
+
+
+ /* ================= STEP 5 ================= */
+
+ if(step===5){
+
+  content.innerHTML=`
+
+  <div class="wizard-title">
+
+   <h1>الخلاصة</h1>
+
+   <p>
+   راجع الاختيارات ديالك قبل التواصل معنا
+   </p>
+
+  </div>
+
+
+  <div class="measure-box">
+
+   <div class="summary">
+
+    <strong>القسم:</strong>
+    ${design.section}
+    <br>
+
+    <strong>الشكل:</strong>
+    ${design.shape}
+    <br>
+
+    <strong>الطول:</strong>
+    ${design.length} cm
+    <br>
+
+    <strong>العرض:</strong>
+    ${design.width} cm
+    <br>
+
+    <strong>الارتفاع:</strong>
+    ${design.height} cm
+    <br>
+
+    <strong>الخامة:</strong>
+    ${design.material}
+    <br>
+
+    <strong>اللون:</strong>
+    ${design.color}
+    <br>
+
+    <strong>الميزانية:</strong>
+    ${design.budget}
+
+   </div>
+
+
+   <a
+   class="wizard-next"
+   style="text-align:center;display:block"
+   target="_blank"
+   href="https://wa.me/212754350706?text=${encodeURIComponent(
+   getWhatsAppMessage()
+   )}">
+
+   💬 صيفط الطلب عبر واتساب
+
+   </a>
+
+  </div>
+
+  `;
+
+ }
+
+}
+
+
+/* ================================================= */
+/* SHAPE */
+/* ================================================= */
+
+function selectShape(element,value){
+
+ document
+ .querySelectorAll(".option")
+ .forEach(x=>x.classList.remove("selected"));
+
+ element.classList.add("selected");
+
+ design.shape=value;
+
+ document.getElementById("nextBtn").disabled=false;
+
+}
+
+
+/* ================================================= */
+/* NEXT */
+/* ================================================= */
+
+function nextStep(){
+
+ if(step<5){
+
+  step++;
+
+  renderStep();
+
+ }
+
+}
+
+
+/* ================================================= */
+/* MEASUREMENTS */
+/* ================================================= */
+
+function saveMeasures(){
+
+ design.length=
+ document.getElementById("length").value;
+
+ design.width=
+ document.getElementById("width").value;
+
+ design.height=
+ document.getElementById("height").value;
+
+ if(
+ !design.length ||
+ !design.width ||
+ !design.height
+ ){
+
+  alert("دخل القياسات كاملة من فضلك");
+
+  return;
+
+ }
+
+ nextStep();
+
+}
+
+
+/* ================================================= */
+/* MATERIAL */
+/* ================================================= */
+
+function chooseMaterial(element,value){
+
+ document
+ .querySelectorAll(".option")
+ .forEach(x=>x.classList.remove("selected"));
+
+ element.classList.add("selected");
+
+ design.material=value;
+
+ document.getElementById("materialNext").disabled=false;
+
+}
+
+
+/* ================================================= */
+/* FINAL OPTIONS */
+/* ================================================= */
+
+function saveFinalOptions(){
+
+ design.color=
+ document.getElementById("color").value;
+
+ design.budget=
+ document.getElementById("budget").value;
+
+ if(!design.color || !design.budget){
+
+  alert("اختار اللون والميزانية");
+
+  return;
+
+ }
+
+ nextStep();
+
+}
+
+
+/* ================================================= */
+/* WHATSAPP MESSAGE */
+/* ================================================= */
+
+function getWhatsAppMessage(){
+
+ return `السلام عليكم، بغيت نبدأ مشروع ديكور.
+
+القسم: ${design.section}
+الشكل: ${design.shape}
+الطول: ${design.length} cm
+العرض: ${design.width} cm
+الارتفاع: ${design.height} cm
+الخامة: ${design.material}
+اللون: ${design.color}
+الميزانية: ${design.budget}
+
+بغيت نكمل معاكم التفاصيل.`;
+
+}
+
+
+/* ================================================= */
+/* BACK */
+/* ================================================= */
+
+function goBack(){
+
+ if(step>1){
+
+  step--;
+
+  renderStep();
+
+ }else{
+
+  document
+  .getElementById("wizardPage")
+  .classList.remove("show");
+
+  document
+  .getElementById("homePage")
+  .style.display="block";
+
+ }
+
+}
+
+</script>
+
+</body>
+</html>

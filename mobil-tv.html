@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mobil TV | صمم ديكورك</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#f5f0e8;
+ color:#17231d
+}
+.wrap{width:min(900px,92%);margin:auto}
+header{
+ background:#17231d;
+ color:#fff;
+ padding:20px 0
+}
+.logo{
+ font-size:25px;
+ font-weight:bold
+}
+.logo span{color:#c9aa7b}
+
+main{padding:45px 0}
+h1{font-size:42px;margin-bottom:8px}
+.sub{color:#666;margin-bottom:30px}
+
+.card{
+ background:#fff;
+ padding:25px;
+ margin:18px 0;
+ border-radius:12px;
+ box-shadow:0 5px 20px #0001
+}
+
+h2{margin-top:0}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px
+}
+
+.option{
+ display:block;
+ padding:17px;
+ border:2px solid #ddd;
+ border-radius:10px;
+ cursor:pointer
+}
+
+.option:hover{
+ border-color:#c9aa7b
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+ margin-left:8px
+}
+
+input[type="number"],
+input[type="file"],
+select,
+textarea{
+ width:100%;
+ padding:14px;
+ margin-top:8px;
+ border:1px solid #ccc;
+ border-radius:8px;
+ font-size:16px;
+ background:white
+}
+
+textarea{
+ min-height:100px;
+ resize:vertical
+}
+
+button{
+ width:100%;
+ padding:17px;
+ background:#c9aa7b;
+ color:#17231d;
+ border:0;
+ border-radius:8px;
+ font-weight:bold;
+ font-size:17px;
+ cursor:pointer
+}
+
+button:hover{
+ opacity:.9
+}
+
+footer{
+ text-align:center;
+ background:#101a15;
+ color:#aaa;
+ padding:25px
+}
+
+@media(max-width:600px){
+ .grid{grid-template-columns:1fr}
+ h1{font-size:34px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap">
+<div class="logo">
+صمم <span>ديكورك</span>
+</div>
+</div>
+</header>
+
+<main>
+<div class="wrap">
+
+<h1>Mobil TV</h1>
+<p class="sub">
+صمم meuble TV حسب المساحة والستايل اللي بغيتي
+</p>
+
+<div class="card">
+<h2>الشكل</h2>
+
+<div class="grid">
+
+<label class="option">
+<input type="radio" name="shape" value="معلق">
+Meuble TV معلق
+</label>
+
+<label class="option">
+<input type="radio" name="shape" value="أرضي">
+Meuble TV أرضي
+</label>
+
+<label class="option">
+<input type="radio" name="shape" value="معلق وأرضي">
+معلق + أرضي
+</label>
+
+<label class="option">
+<input type="radio" name="shape" value="مع مكتبة">
+Meuble TV + مكتبة
+</label>
+
+</div>
+</div>
+
+<div class="card">
+<h2>قياسات الحائط</h2>
+
+<label>العرض</label>
+<input id="width" type="number" step="0.01" placeholder="مثلاً 3.50 متر">
+
+<label>الارتفاع</label>
+<input id="height" type="number" step="0.01" placeholder="مثلاً 2.70 متر">
+
+</div>
+
+<div class="card">
+<h2>التجهيزات</h2>
+
+<div class="grid">
+
+<label class="option">
+<input type="checkbox" value="TV">
+مكان التلفاز
+</label>
+
+<label class="option">
+<input type="checkbox" value="إضاءة LED">
+إضاءة LED
+</label>
+
+<label class="option">
+<input type="checkbox" value="رفوف">
+رفوف
+</label>
+
+<label class="option">
+<input type="checkbox" value="خزائن">
+خزائن مغلقة
+</label>
+
+<label class="option">
+<input type="checkbox" value="مكتبة">
+مكتبة جانبية
+</label>
+
+<label class="option">
+<input type="checkbox" value="زجاج">
+زجاج
+</label>
+
+</div>
+</div>
+
+<div class="card">
+<h2>الخامة</h2>
+
+<select id="material">
+<option>MDF</option>
+<option>خشب طبيعي</option>
+<option>MDF + خشب</option>
+<option>MDF + زجاج</option>
+<option>خشب + زجاج</option>
+</select>
+
+</div>
+
+<div class="card">
+<h2>اللون</h2>
+
+<select id="color">
+<option>أبيض</option>
+<option>كابوتشينو</option>
+<option>رمادي</option>
+<option>أسود</option>
+<option>خشب طبيعي</option>
+<option>بيج</option>
+</select>
+
+</div>
+
+<div class="card">
+<h2>صورة الحائط</h2>
+
+<p style="color:#777">
+صيفط صورة المكان باش نعرفو المساحة والوضعية.
+</p>
+
+<input id="photo" type="file" accept="image/*">
+
+</div>
+
+<div class="card">
+
+<h2>ملاحظات</h2>
+
+<textarea id="notes"
+placeholder="مثلاً: بغيت التلفاز يكون وسط والمكتبة فاليمين..."></textarea>
+
+</div>
+
+<div class="card">
+
+<button onclick="sendOrder()">
+إرسال الطلب عبر واتساب
+</button>
+
+</div>
+
+</div>
+</main>
+
+<footer>
+Hamza Chtaibi © 2026 — صمم ديكورك
+</footer>
+
+<script>
+
+function sendOrder(){
+
+let shape =
+document.querySelector('input[name="shape"]:checked')?.value
+||"غير محدد";
+
+let checks =
+[...document.querySelectorAll('input[type="checkbox"]:checked')]
+.map(x=>x.value)
+.join("، ");
+
+let width =
+document.getElementById("width").value || "غير محدد";
+
+let height =
+document.getElementById("height").value || "غير محدد";
+
+let material =
+document.getElementById("material").value;
+
+let color =
+document.getElementById("color").value;
+
+let notes =
+document.getElementById("notes").value || "لا توجد";
+
+let message =
+"السلام عليكم، بغيت نصمم Mobil TV%0A%0A"+
+"الشكل: "+shape+"%0A"+
+"العرض: "+width+" متر%0A"+
+"الارتفاع: "+height+" متر%0A"+
+"التجهيزات: "+(checks||"غير محددة")+"%0A"+
+"الخامة: "+material+"%0A"+
+"اللون: "+color+"%0A"+
+"ملاحظات: "+notes;
+
+window.open(
+"https://wa.me/212754350706?text="+message,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>

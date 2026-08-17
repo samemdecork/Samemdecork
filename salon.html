@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الصالون | صمم ديكورك</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma;background:#f5f0e8;color:#17231d}
+.wrap{width:min(900px,92%);margin:auto}
+header{background:#17231d;color:#fff;padding:20px}
+.logo{font-size:25px;font-weight:bold}.logo span{color:#c9aa7b}
+main{padding:45px 0}
+h1{font-size:42px}.sub{color:#666}
+.card{background:white;padding:25px;margin:18px 0;border-radius:12px;box-shadow:0 5px 20px #0001}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.option{padding:18px;border:2px solid #ddd;border-radius:10px}
+input,select{width:100%;padding:14px;margin-top:8px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+button{width:100%;padding:16px;background:#c9aa7b;border:0;border-radius:8px;font-weight:bold}
+footer{text-align:center;background:#101a15;color:#aaa;padding:25px}
+</style>
+</head>
+
+<body>
+
+<header><div class="wrap"><div class="logo">صمم <span>ديكورك</span></div></div></header>
+
+<main><div class="wrap">
+
+<h1>تصميم الصالون</h1>
+<p class="sub">اختار نوع الصالون والقياسات والتشطيب</p>
+
+<div class="card">
+<h2>نوع الصالون</h2>
+<div class="grid">
+<label class="option"><input type="radio" name="type" value="صالون مغربي"> صالون مغربي</label>
+<label class="option"><input type="radio" name="type" value="صالون مودرن"> صالون مودرن</label>
+<label class="option"><input type="radio" name="type" value="صالون كلاسيك"> كلاسيك</label>
+<label class="option"><input type="radio" name="type" value="صالون عصري"> عصري</label>
+</div>
+</div>
+
+<div class="card">
+<h2>القياسات</h2>
+<input id="length" type="number" placeholder="الطول بالمتر">
+<input id="width" type="number" placeholder="العرض بالمتر">
+<input id="height" type="number" placeholder="الارتفاع بالمتر">
+</div>
+
+<div class="card">
+<h2>التجهيزات</h2>
+<div class="grid">
+<label class="option"><input type="checkbox" value="TV"> meuble TV</label>
+<label class="option"><input type="checkbox" value="مكتبة"> مكتبة</label>
+<label class="option"><input type="checkbox" value="إضاءة"> إضاءة مخفية</label>
+<label class="option"><input type="checkbox" value="جبس"> جبس</label>
+</div>
+</div>
+
+<div class="card">
+<h2>الألوان</h2>
+<select id="color">
+<option>بيج</option>
+<option>أبيض</option>
+<option>رمادي</option>
+<option>خشب طبيعي</option>
+<option>كابوتشينو</option>
+</select>
+</div>
+
+<div class="card">
+<h2>صورة المكان</h2>
+<input type="file" accept="image/*">
+</div>
+
+<div class="card">
+<button onclick="send()">إرسال الطلب عبر واتساب</button>
+</div>
+
+</div></main>
+
+<footer>Hamza Chtaibi © 2026 — صمم ديكورك</footer>
+
+<script>
+function send(){
+let type=document.querySelector('input[name="type"]:checked')?.value||"غير محدد";
+let msg="السلام عليكم، بغيت نصمم الصالون%0A%0A"+
+"النوع: "+type+"%0A"+
+"الطول: "+document.getElementById("length").value+" m%0A"+
+"العرض: "+document.getElementById("width").value+" m%0A"+
+"الارتفاع: "+document.getElementById("height").value+" m%0A"+
+"اللون: "+document.getElementById("color").value;
+window.open("https://wa.me/212754350706?text="+msg,"_blank");
+}
+</script>
+
+</body>
+</html>

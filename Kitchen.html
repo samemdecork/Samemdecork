@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>تصميم المطبخ | صمم ديكورك</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f4eee5;
+  color:#26352d;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(900px,92%);
+  margin:auto;
+}
+
+header{
+  background:#26352d;
+  color:white;
+  padding:18px 0;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+.logo span{color:#d8c3a5}
+
+.back{
+  color:#d8c3a5;
+}
+
+.page{
+  padding:45px 0 90px;
+}
+
+.progress{
+  display:flex;
+  gap:6px;
+  margin-bottom:35px;
+}
+
+.progress div{
+  height:5px;
+  flex:1;
+  background:#d4c8b8;
+  border-radius:10px;
+}
+
+.progress div.active{
+  background:#26352d;
+}
+
+h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#777;
+  margin-bottom:35px;
+}
+
+.step{
+  display:none;
+}
+
+.step.active{
+  display:block;
+}
+
+.question{
+  font-size:24px;
+  margin-bottom:20px;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.option{
+  background:white;
+  border:2px solid #ddd2c2;
+  border-radius:16px;
+  padding:20px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.option:hover{
+  transform:translateY(-3px);
+}
+
+.option.selected{
+  border-color:#26352d;
+  background:#eee7dc;
+}
+
+.option strong{
+  display:block;
+  font-size:20px;
+  margin-bottom:7px;
+}
+
+.option small{
+  color:#777;
+}
+
+.fields{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:bold;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:15px;
+  border:1px solid #c8bba9;
+  border-radius:10px;
+  background:white;
+  font-size:16px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:30px;
+}
+
+button{
+  border:0;
+  padding:15px 28px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.next{
+  background:#26352d;
+  color:white;
+}
+
+.prev{
+  background:#ddd2c2;
+  color:#26352d;
+}
+
+.summary{
+  background:#26352d;
+  color:white;
+  padding:28px;
+  border-radius:18px;
+  line-height:2;
+}
+
+.summary span{
+  color:#d8c3a5;
+}
+
+.whatsapp{
+  display:block;
+  text-align:center;
+  background:#25d366;
+  color:#06200d;
+  padding:16px;
+  border-radius:10px;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+footer{
+  background:#19251f;
+  color:#aaa;
+  text-align:center;
+  padding:28px;
+}
+
+@media(max-width:600px){
+
+  h1{font-size:32px}
+
+  .options{
+    grid-template-columns:1fr;
+  }
+
+  .fields{
+    grid-template-columns:1fr;
+  }
+
+  .buttons button{
+    width:50%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<div class="logo">
+صمم <span>ديكورك</span>
+</div>
+
+<a class="back" href="index.html">
+← الرئيسية
+</a>
+
+</div>
+</header>
+
+
+<main class="page">
+
+<div class="container">
+
+<div class="progress">
+<div class="active"></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+
+<h1>تصميم المطبخ</h1>
+
+<p class="subtitle">
+جاوب على الأسئلة مرحلة بمرحلة باش نعرفو بالضبط شنو بغيتي.
+</p>
+
+
+<!-- STEP 1 -->
+
+<section class="step active">
+
+<h2 class="question">
+1. شنو شكل المطبخ؟
+</h2>
+
+<div class="options">
+
+<div class="option" data-name="shape" data-value="L">
+<strong>شكل L</strong>
+<small>مطبخ على جوج حيطان</small>
+</div>
+
+<div class="option" data-name="shape" data-value="U">
+<strong>شكل U</strong>
+<small>مطبخ على ثلاثة حيطان</small>
+</div>
+
+<div class="option" data-name="shape" data-value="مستقيم">
+<strong>مستقيم</strong>
+<small>مطبخ على حيط واحد</small>
+</div>
+
+<div class="option" data-name="shape" data-value="جزيرة">
+<strong>جزيرة</strong>
+<small>مطبخ مع جزيرة وسطية</small>
+</div>
+
+</div>
+
+<div class="buttons">
+<span></span>
+<button class="next" onclick="nextStep()">التالي →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 2 -->
+
+<section class="step">
+
+<h2 class="question">
+2. شنو بغيتي فوق الكوزينة؟
+</h2>
+
+<div class="options">
+
+<div class="option" data-name="upper" data-value="صنادق علوية">
+<strong>صنادق فوق</strong>
+<small>خزائن علوية حتى الفوق</small>
+</div>
+
+<div class="option" data-name="upper" data-value="كاسكيط">
+<strong>كاسكيط</strong>
+<small>شكل مفتوح وخفيف</small>
+</div>
+
+<div class="option" data-name="upper" data-value="مزيج">
+<strong>مزيج</strong>
+<small>صنادق + كاسكيط</small>
+</div>
+
+<div class="option" data-name="upper" data-value="بلا صنادق">
+<strong>بلا صنادق</strong>
+<small>الخزائن السفلية فقط</small>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="prev" onclick="prevStep()">← السابق</button>
+<button class="next" onclick="nextStep()">التالي →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 3 -->
+
+<section class="step">
+
+<h2 class="question">
+3. القياسات
+</h2>
+
+<div class="fields">
+
+<div class="field">
+<label>الطول</label>
+<input id="length" type="number" placeholder="مثلاً 300">
+</div>
+
+<div class="field">
+<label>العرض</label>
+<input id="width" type="number" placeholder="مثلاً 250">
+</div>
+
+<div class="field">
+<label>الارتفاع</label>
+<input id="height" type="number" placeholder="مثلاً 260">
+</div>
+
+</div>
+
+<p style="color:#777;margin-top:15px">
+القياسات بالسنتيمتر.
+</p>
+
+<div class="buttons">
+<button class="prev" onclick="prevStep()">← السابق</button>
+<button class="next" onclick="nextStep()">التالي →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 4 -->
+
+<section class="step">
+
+<h2 class="question">
+4. شنو الخامة اللي بغيتي؟
+</h2>
+
+<div class="options">
+
+<div class="option" data-name="material" data-value="MDF">
+<strong>MDF</strong>
+<small>اختيار عملي واقتصادي</small>
+</div>
+
+<div class="option" data-name="material" data-value="خشب">
+<strong>خشب</strong>
+<small>مظهر طبيعي وأنيق</small>
+</div>
+
+<div class="option" data-name="material" data-value="MDF مقاوم للماء">
+<strong>MDF مقاوم للماء</strong>
+<small>مناسب للمطبخ</small>
+</div>
+
+<div class="option" data-name="material" data-value="حسب الاقتراح">
+<strong>مازال ماعرفتش</strong>
+<small>خليونا نقترحو عليك</small>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="prev" onclick="prevStep()">← السابق</button>
+<button class="next" onclick="nextStep()">التالي →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 5 -->
+
+<section class="step">
+
+<h2 class="question">
+5. شنو الإضافات اللي بغيتي؟
+</h2>
+
+<div class="options">
+
+<div class="option" data-name="accessories" data-value="إضاءة LED">
+<strong>💡 إضاءة LED</strong>
+<small>إضاءة داخلية للخزائن</small>
+</div>
+
+<div class="option" data-name="accessories" data-value="أدراج هيدروليكية">
+<strong>🔩 أدراج هيدروليكية</strong>
+<small>فتح وإغلاق مريح</small>
+</div>
+
+<div class="option" data-name="accessories" data-value="زجاج">
+<strong>🪟 زجاج</strong>
+<small>أبواب زجاجية</small>
+</div>
+
+<div class="option" data-name="accessories" data-value="إكسسوارات كاملة">
+<strong>✨ إكسسوارات كاملة</strong>
+<small>تجهيز شامل</small>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="prev" onclick="prevStep()">← السابق</button>
+<button class="next" onclick="nextStep()">التالي →</button>
+</div>
+
+</section>
+
+
+<!-- STEP 6 -->
+
+<section class="step">
+
+<h2 class="question">
+6. الميزانية والتأكيد
+</h2>
+
+<div class="field">
+
+<label>الميزانية التقريبية بالدرهم</label>
+
+<input
+id="budget"
+type="number"
+placeholder="مثلاً 15000">
+
+</div>
+
+<div class="summary" style="margin-top:25px">
+
+<strong>ملخص طلبك</strong>
+
+<br>
+
+شكل المطبخ:
+<span id="sShape">—</span>
+
+<br>
+
+الخزائن العلوية:
+<span id="sUpper">—</span>
+
+<br>
+
+القياسات:
+<span id="sSize">—</span>
+
+<br>
+
+الخامة:
+<span id="sMaterial">—</span>
+
+<br>
+
+الإضافات:
+<span id="sAccessories">—</span>
+
+<br>
+
+الميزانية:
+<span id="sBudget">—</span>
+
+</div>
+
+<a
+id="whatsapp"
+class="whatsapp"
+target="_blank"
+href="#">
+💬 صيفط طلب المطبخ عبر واتساب
+</a>
+
+<div class="buttons">
+<button class="prev" onclick="prevStep()">← السابق</button>
+<span></span>
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+
+<footer>
+صمم ديكورك © 2026 — جميع الحقوق محفوظة
+<br>
+Hamza Chraibi
+</footer>
+
+
+<script>
+
+let currentStep=0;
+
+const steps=document.querySelectorAll(".step");
+const progress=document.querySelectorAll(".progress div");
+
+const data={
+shape:"",
+upper:"",
+material:"",
+accessories:""
+};
+
+
+/* اختيار */
+
+document.querySelectorAll(".option").forEach(option=>{
+
+option.addEventListener("click",()=>{
+
+const name=option.dataset.name;
+const value=option.dataset.value;
+
+document
+.querySelectorAll(`.option[data-name="${name}"]`)
+.forEach(x=>x.classList.remove("selected"));
+
+option.classList.add("selected");
+
+data[name]=value;
+
+});
+
+});
+
+
+function showStep(){
+
+steps.forEach((step,i)=>{
+step.classList.toggle("active",i===currentStep);
+});
+
+progress.forEach((bar,i)=>{
+bar.classList.toggle("active",i<=currentStep);
+});
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+if(currentStep===5){
+updateSummary();
+}
+
+}
+
+
+function nextStep(){
+
+if(currentStep<steps.length-1){
+
+currentStep++;
+
+showStep();
+
+}
+
+}
+
+
+function prevStep(){
+
+if(currentStep>0){
+
+currentStep--;
+
+showStep();
+
+}
+
+}
+
+
+function updateSummary(){
+
+const length=document.getElementById("length").value || "—";
+const width=document.getElementById("width").value || "—";
+const height=document.getElementById("height").value || "—";
+const budget=document.getElementById("budget").value || "—";
+
+document.getElementById("sShape").textContent=data.shape || "—";
+
+document.getElementById("sUpper").textContent=data.upper || "—";
+
+document.getElementById("sSize").textContent=
+`${length} × ${width} × ${height} cm`;
+
+document.getElementById("sMaterial").textContent=
+data.material || "—";
+
+document.getElementById("sAccessories").textContent=
+data.accessories || "—";
+
+document.getElementById("sBudget").textContent=
+budget==="—" ? "—" : budget+" DH";
+
+
+const message=
+`السلام عليكم، بغيت نصمم مطبخ.
+
+شكل المطبخ: ${data.shape || "غير محدد"}
+
+الخزائن العلوية: ${data.upper || "غير محدد"}
+
+القياسات:
+الطول: ${length} cm
+العرض: ${width} cm
+الارتفاع: ${height} cm
+
+الخامة: ${data.material || "غير محددة"}
+
+الإضافات: ${data.accessories || "غير محددة"}
+
+الميزانية: ${budget} DH
+
+الاسم: Hamza Chraibi`;
+
+document.getElementById("whatsapp").href=
+"https://wa.me/212754350706?text="+
+encodeURIComponent(message);
+
+}
+
+</script>
+
+</body>
+</html>

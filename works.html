@@ -1,9 +1,468 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#9b4f3f"><title>أعمالنا | صمم ديكورك</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="wrap nav"><a class="logo" href="index.html">صمم ديكورك<small>DESIGN YOUR DECOR</small></a><nav class="menu"><a href="index.html">الرئيسية</a><a href="works.html">أعمالنا</a><a href="tapis.html">الطابيسي</a><a href="accessories.html">الإكسسوارات</a><a class="cta" href="ai-design.html">🤖 صمّم الآن</a></nav></div></header>
-<main class="wrap"><section class="section"><div class="title"><h1>✦ أعمالنا</h1><p>نماذج من الأعمال المنجزة.</p></div><div class="works" id="works"></div></section>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0">
+
+<title>أعمالنا | صمم ديكورك</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f5f0e8;
+  color:#17231d;
+}
+
+.wrap{
+  width:min(1200px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  background:#17231d;
+  color:white;
+  padding:20px 0;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  color:white;
+  text-decoration:none;
+  font-size:25px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#c9aa7b;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  border:1px solid #c9aa7b;
+  padding:10px 18px;
+  border-radius:25px;
+}
+
+/* HERO */
+
+.hero{
+  padding:70px 0 40px;
+  text-align:center;
+}
+
+.hero small{
+  color:#9a7d58;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:clamp(40px,6vw,65px);
+  margin:12px 0;
+}
+
+.hero p{
+  color:#70736e;
+  line-height:2;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:15px;
+
+  padding:
+    20px 0
+    80px;
+}
+
+.photo{
+  height:350px;
+  overflow:hidden;
+  border-radius:5px;
+  background:#ddd;
+  position:relative;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.photo:hover img{
+  transform:scale(1.06);
+}
+
+.photo-info{
+  position:absolute;
+  right:0;
+  left:0;
+  bottom:0;
+
+  padding:25px 18px 15px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      transparent,
+      #000b
+    );
+}
+
+.photo-info strong{
+  font-size:18px;
+}
+
+/* LOADING */
+
+.loading{
+  text-align:center;
+  padding:50px;
+  color:#777;
+}
+
+.spinner{
+  width:45px;
+  height:45px;
+
+  border:4px solid #ddd;
+  border-top-color:#c9aa7b;
+
+  border-radius:50%;
+
+  animation:
+    spin .8s linear infinite;
+
+  margin:
+    0 auto
+    20px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:60px 20px;
+  color:#777;
+}
+
+/* FOOTER */
+
+footer{
+  background:#101a15;
+  color:#aaa;
+  text-align:center;
+  padding:30px;
+  line-height:2;
+}
+
+footer strong{
+  color:#c9aa7b;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .photo{
+    height:280px;
+  }
+
+}
+
+@media(max-width:550px){
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    height:320px;
+  }
+
+  .nav{
+    gap:15px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="wrap nav">
+
+<a
+  href="index.html"
+  class="logo">
+
+صمم <span>ديكورك</span>
+
+</a>
+
+<a
+  href="index.html"
+  class="back">
+
+← الرئيسية
+
+</a>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="wrap">
+
+<small>
+REAL PROJECTS
+</small>
+
+<h1>
+أعمالنا
+</h1>
+
+<p>
+صور حقيقية من أعمال ومشاريع
+صمم ديكورك
+</p>
+
+</div>
+
+</section>
+
+
+<main class="wrap">
+
+
+<div
+  id="loading"
+  class="loading">
+
+<div class="spinner"></div>
+
+جاري تحميل الأعمال...
+
+</div>
+
+
+<div
+  id="gallery"
+  class="gallery"
+  style="display:none">
+</div>
+
+
+<div
+  id="empty"
+  class="empty"
+  style="display:none">
+
+<h2>
+مازال ما كايناش صور
+</h2>
+
+<p>
+أول ما ترفع الصور من لوحة الإدارة
+غادي يبانوا هنا.
+</p>
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+<strong>
+صمم ديكورك
+</strong>
+
+© 2026
+
+<br>
+
+جميع الحقوق محفوظة —
+<strong>
+Hamza Chtaibi
+</strong>
+
+</footer>
+
+
 <script>
-const names=["work-001.webp","work-002.webp","work-003.webp","work-004.webp","work-005.webp","work-006.webp","work-007.webp","work-008.webp","work-009.webp","work-010.webp","work-011.webp","work-012.webp","work-013.webp","work-014.webp","work-015.webp","work-016.webp","work-017.webp","work-018.webp","work-019.webp","work-020.webp","work-021.webp","work-022.webp","work-023.webp","work-024.webp","work-025.webp","work-026.webp","work-027.webp","work-028.webp","work-029.webp","work-030.webp","work-031.webp","work-032.webp","work-033.webp","work-034.webp","work-035.webp","work-036.webp","work-037.webp","work-038.webp","work-039.webp","work-040.webp","work-041.webp","work-042.webp","work-043.webp","work-044.webp","work-045.webp","work-046.webp","work-047.webp","work-048.webp","work-049.webp","work-050.webp","work-051.webp","work-052.webp","work-053.webp","work-054.webp","work-055.webp","work-056.webp","work-057.webp","work-058.webp","work-059.webp","work-061.webp","work-070.webp","work-071.webp","work-072.webp","work-073.webp","work-074.webp","work-075.webp","work-076.webp","work-077.webp","work-078.webp","work-079.webp","work-081.webp","work-083.webp","work-085.webp","work-086.webp","work-087.webp","work-088.webp","work-089.webp","work-090.webp","work-091.webp","work-092.webp","work-093.webp"];
-const box=document.getElementById("works");
-names.forEach((n,i)=>{const f=document.createElement("figure");const img=document.createElement("img");img.src=n;img.alt="عمل من أعمالنا";img.loading="lazy";img.onerror=()=>f.remove();f.appendChild(img);const c=document.createElement("figcaption");c.textContent="من أعمال صمم ديكورك";f.appendChild(c);box.appendChild(f)});
-</script></main>
-<footer><div class="wrap foot"><div><b>صمم ديكورك</b><br><small>تصميم وديكور بطريقة عصرية</small></div><div><b>Chtaibi Hamza</b><br><small>© 2026 جميع الحقوق محفوظة</small></div></div></footer></body></html>
+
+async function loadImages(){
+
+  const loading =
+    document.getElementById("loading");
+
+  const gallery =
+    document.getElementById("gallery");
+
+  const empty =
+    document.getElementById("empty");
+
+
+  try{
+
+    const response =
+      await fetch("/api/images");
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Failed to load images"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    loading.style.display =
+      "none";
+
+
+    if(
+      !data.images ||
+      data.images.length === 0
+    ){
+
+      empty.style.display =
+        "block";
+
+      return;
+
+    }
+
+
+    gallery.style.display =
+      "grid";
+
+
+    data.images.forEach(image => {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "photo";
+
+
+      const img =
+        document.createElement("img");
+
+      img.src =
+        image.url;
+
+      img.alt =
+        "عمل من صمم ديكورك";
+
+      img.loading =
+        "lazy";
+
+
+      const info =
+        document.createElement("div");
+
+      info.className =
+        "photo-info";
+
+
+      const title =
+        document.createElement("strong");
+
+      title.textContent =
+        "صمم ديكورك";
+
+
+      info.appendChild(title);
+
+      item.appendChild(img);
+
+      item.appendChild(info);
+
+      gallery.appendChild(item);
+
+    });
+
+
+  }catch(error){
+
+    console.error(error);
+
+    loading.innerHTML = `
+
+      <h2>
+        وقع مشكل في تحميل الصور
+      </h2>
+
+      <p>
+        حاول تعاود تحديث الصفحة.
+      </p>
+
+    `;
+
+  }
+
+}
+
+
+loadImages();
+
+</script>
+
+
+</body>
+
+</html>

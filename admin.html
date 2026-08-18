@@ -1,12 +1,20 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>الإدارة | صمم ديكورك</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#17231d">
+
+<title>لوحة الإدارة | صمم ديكورك</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -30,7 +38,7 @@ body{
 }
 
 .login-box{
-  width:min(420px,100%);
+  width:min(430px,100%);
   background:white;
   padding:35px;
   border-radius:18px;
@@ -39,42 +47,48 @@ body{
 }
 
 .logo{
-  font-size:28px;
+  font-size:30px;
   font-weight:900;
-  margin-bottom:10px;
 }
 
 .logo span{
   color:#c9aa7b;
 }
 
-.login-box p{
+.login-text{
   color:#777;
-  margin:10px 0 25px;
+  margin:12px 0 25px;
+  line-height:1.8;
 }
 
-input{
+input,
+select{
   width:100%;
   padding:14px;
   border:1px solid #ddd;
   border-radius:10px;
   font-size:16px;
+  background:white;
+}
+
+.login input{
   margin-bottom:12px;
 }
 
 button{
   border:0;
   cursor:pointer;
-  padding:14px 22px;
-  border-radius:10px;
-  font-weight:bold;
-  font-size:15px;
+  font-family:inherit;
 }
 
 .login-btn{
   width:100%;
+  padding:14px;
+  border-radius:10px;
   background:#17231d;
   color:white;
+  font-weight:bold;
+  font-size:16px;
 }
 
 .login-btn:hover{
@@ -83,9 +97,9 @@ button{
 }
 
 .error{
+  display:none;
   color:#b3261e;
   margin-top:12px;
-  display:none;
 }
 
 
@@ -98,7 +112,8 @@ button{
 header{
   background:#17231d;
   color:white;
-  padding:18px 0;
+  padding:17px 0;
+  box-shadow:0 5px 20px #0002;
 }
 
 .wrap{
@@ -122,17 +137,38 @@ header{
   color:#c9aa7b;
 }
 
+.nav-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.home-btn,
+.logout{
+  padding:10px 15px;
+  border-radius:22px;
+  font-weight:bold;
+}
+
+.home-btn{
+  background:white;
+  color:#17231d;
+  text-decoration:none;
+}
+
 .logout{
   background:#c9aa7b;
   color:#17231d;
 }
+
+
+/* MAIN */
 
 main{
   padding:45px 0 80px;
 }
 
 .title{
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 .title h1{
@@ -146,32 +182,55 @@ main{
 }
 
 
-/* UPLOAD BOX */
+/* CARD */
 
-.upload-box{
+.card{
   background:white;
-  border-radius:18px;
   padding:25px;
+  border-radius:18px;
   box-shadow:0 5px 25px #0001;
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
-.upload-box h2{
+.card h2{
   margin-bottom:8px;
 }
 
-.upload-box p{
+.card-description{
   color:#777;
+  margin-bottom:20px;
+  line-height:1.7;
+}
+
+
+/* CATEGORY */
+
+.category-label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.category{
   margin-bottom:20px;
 }
 
+.category select{
+  cursor:pointer;
+}
+
+
+/* FILE */
+
 .file-label{
-  display:inline-block;
+  display:block;
+  text-align:center;
   background:#17231d;
   color:white;
-  padding:14px 24px;
+  padding:16px;
   border-radius:10px;
   cursor:pointer;
+  font-weight:bold;
 }
 
 .file-label:hover{
@@ -183,28 +242,72 @@ main{
   display:none;
 }
 
+
+/* PREVIEW */
+
+.preview-title{
+  margin-top:25px;
+  margin-bottom:12px;
+  font-weight:bold;
+}
+
 .preview{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+  grid-template-columns:
+    repeat(auto-fill,minmax(120px,1fr));
   gap:10px;
-  margin-top:20px;
 }
 
-.preview img{
-  width:100%;
+.preview-item{
+  position:relative;
   height:120px;
-  object-fit:cover;
+  overflow:hidden;
   border-radius:10px;
+  background:#eee;
 }
 
-.upload{
-  margin-top:20px;
+.preview-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.preview-number{
+  position:absolute;
+  top:7px;
+  right:7px;
+  background:#17231d;
+  color:white;
+  width:27px;
+  height:27px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+}
+
+
+/* UPLOAD */
+
+.upload-btn{
+  width:100%;
+  margin-top:22px;
+  padding:16px;
+  border-radius:10px;
   background:#c9aa7b;
   color:#17231d;
+  font-size:17px;
+  font-weight:bold;
 }
 
-.upload:disabled{
-  opacity:.5;
+.upload-btn:hover{
+  background:#17231d;
+  color:white;
+}
+
+.upload-btn:disabled{
+  opacity:.45;
   cursor:not-allowed;
 }
 
@@ -213,11 +316,12 @@ main{
 
 .progress-area{
   display:none;
-  margin-top:20px;
+  margin-top:22px;
 }
 
 .progress-bg{
-  height:10px;
+  width:100%;
+  height:12px;
   background:#eee;
   border-radius:20px;
   overflow:hidden;
@@ -233,6 +337,20 @@ main{
 .status{
   margin-top:10px;
   color:#666;
+  line-height:1.7;
+}
+
+
+/* SUCCESS */
+
+.success{
+  display:none;
+  margin-top:20px;
+  background:#e9f6ed;
+  color:#176b2c;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.8;
 }
 
 
@@ -241,8 +359,8 @@ main{
 .info{
   background:#17231d;
   color:white;
+  padding:22px;
   border-radius:15px;
-  padding:20px;
   line-height:2;
 }
 
@@ -257,22 +375,43 @@ main{
 
   .nav{
     flex-direction:column;
+    align-items:stretch;
+  }
+
+  .nav-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .home-btn,
+  .logout{
+    text-align:center;
   }
 
   .title h1{
     font-size:30px;
   }
 
+  .card{
+    padding:20px;
+  }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
 
-<div id="login" class="login">
+<div id="login"
+     class="login">
 
   <div class="login-box">
 
@@ -280,9 +419,9 @@ main{
       صمم <span>ديكورك</span>
     </div>
 
-    <p>
+    <div class="login-text">
       لوحة الإدارة الخاصة بالموقع
-    </p>
+    </div>
 
     <input
       id="password"
@@ -297,8 +436,12 @@ main{
 
     </button>
 
-    <div id="error" class="error">
+    <div
+      id="error"
+      class="error">
+
       كلمة المرور غير صحيحة
+
     </div>
 
   </div>
@@ -306,9 +449,13 @@ main{
 </div>
 
 
-<!-- ADMIN -->
+<!-- =========================
+     ADMIN
+========================= -->
 
-<div id="admin" class="admin">
+<div id="admin"
+     class="admin">
+
 
 <header>
 
@@ -318,13 +465,25 @@ main{
       صمم <span>ديكورك</span>
     </div>
 
-    <button
-      class="logout"
-      onclick="logout()">
+    <div class="nav-buttons">
 
-      تسجيل الخروج
+      <a
+        href="index.html"
+        class="home-btn">
 
-    </button>
+        الرئيسية
+
+      </a>
+
+      <button
+        class="logout"
+        onclick="logout()">
+
+        خروج
+
+      </button>
+
+    </div>
 
   </div>
 
@@ -335,110 +494,198 @@ main{
 
 <div class="wrap">
 
-  <div class="title">
 
-    <h1>لوحة الإدارة</h1>
+<div class="title">
 
-    <p>
-      من هنا تقدر تضيف صور أعمالك وموديلاتك
-      مباشرة من الهاتف بدون ZIP.
-    </p>
+  <h1>
+    لوحة الإدارة
+  </h1>
 
+  <p>
+    من هنا تقدر ترفع صور أعمالك وموديلاتك
+    مباشرة من الهاتف بدون ZIP.
+  </p>
+
+</div>
+
+
+<!-- =========================
+     UPLOAD CARD
+========================= -->
+
+<div class="card">
+
+  <h2>
+    📸 إضافة أعمال جديدة
+  </h2>
+
+  <p class="card-description">
+    اختار القسم، ومن بعد اختار الصور اللي بغيتي ترفع.
+  </p>
+
+
+  <!-- CATEGORY -->
+
+  <div class="category">
+
+    <label class="category-label">
+      القسم
+    </label>
+
+    <select id="category">
+
+      <option value="general">
+        🏠 أعمال عامة
+      </option>
+
+      <option value="kitchen">
+        🍳 المطابخ
+      </option>
+
+      <option value="salon">
+        🛋️ الصالونات
+      </option>
+
+      <option value="bedroom">
+        🛏️ غرف النوم
+      </option>
+
+      <option value="tapisserie">
+        🧵 الطابيسري والستور
+      </option>
+
+      <option value="dressing">
+        🚪 Dressing & Placard
+      </option>
+
+      <option value="meuble-tv">
+        📺 Meuble TV
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <!-- FILES -->
+
+  <label
+    for="files"
+    class="file-label">
+
+    📷 اختيار الصور
+
+  </label>
+
+  <input
+    id="files"
+    type="file"
+    accept="image/*"
+    multiple>
+
+
+  <!-- PREVIEW -->
+
+  <div
+    id="previewTitle"
+    class="preview-title"
+    style="display:none">
+
+    الصور المختارة
+
+  </div>
+
+  <div
+    id="preview"
+    class="preview">
   </div>
 
 
   <!-- UPLOAD -->
 
-  <div class="upload-box">
+  <button
+    id="upload"
+    class="upload-btn"
+    disabled>
 
-    <h2>📸 إضافة صور جديدة</h2>
+    ⬆️ رفع الصور
 
-    <p>
-      تقدر تختار صور كثيرة مرة وحدة.
-    </p>
-
-    <label
-      class="file-label"
-      for="files">
-
-      اختيار الصور
-
-    </label>
-
-    <input
-      id="files"
-      type="file"
-      accept="image/*"
-      multiple>
+  </button>
 
 
-    <div
-      id="preview"
-      class="preview">
-    </div>
+  <!-- PROGRESS -->
 
+  <div
+    id="progressArea"
+    class="progress-area">
 
-    <button
-      id="upload"
-      class="upload"
-      disabled>
-
-      ⬆️ رفع الصور
-
-    </button>
-
-
-    <div
-      id="progressArea"
-      class="progress-area">
-
-      <div class="progress-bg">
-
-        <div
-          id="progress"
-          class="progress">
-        </div>
-
-      </div>
+    <div class="progress-bg">
 
       <div
-        id="status"
-        class="status">
-
-        جاري التحضير...
-
+        id="progress"
+        class="progress">
       </div>
+
+    </div>
+
+    <div
+      id="status"
+      class="status">
 
     </div>
 
   </div>
 
 
-  <div class="info">
+  <!-- SUCCESS -->
 
-    <strong>طريقة الاستعمال:</strong>
-
-    <br>
-
-    1. اضغط «اختيار الصور».
-
-    <br>
-
-    2. اختار جميع الصور اللي بغيتي.
-
-    <br>
-
-    3. اضغط «رفع الصور».
-
-    <br>
-
-    4. الصور غادي تمشي مباشرة لـ Cloudinary.
-
-    <br>
-
-    5. من بعد نربطوها مع صفحة «أعمالنا».
+  <div
+    id="success"
+    class="success">
 
   </div>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info">
+
+  <strong>
+    كيفاش تخدم:
+  </strong>
+
+  <br>
+
+  1. اختار القسم.
+
+  <br>
+
+  2. ضغط على «اختيار الصور».
+
+  <br>
+
+  3. تقدر تختار صور كثيرة مرة وحدة.
+
+  <br>
+
+  4. شوف الصور قبل الرفع.
+
+  <br>
+
+  5. ضغط «رفع الصور».
+
+  <br>
+
+  6. الصور كتمشي مباشرة لـ Cloudinary.
+
+  <br>
+
+  7. من بعد غادي تظهر في صفحة أعمالنا.
+
+</div>
+
 
 </div>
 
@@ -449,27 +696,62 @@ main{
 
 <script>
 
-/* ==========================
+/* =========================
    SETTINGS
-========================== */
+========================= */
 
-const PASSWORD = "Chtaibi2026";
+const PASSWORD =
+  "Chtaibi2026";
 
-const CLOUD_NAME = "rhao0lli";
+const CLOUD_NAME =
+  "rhao0lli";
 
-const UPLOAD_PRESET = "samemdecork_images";
+const UPLOAD_PRESET =
+  "samemdecork_images";
 
 
-/* ==========================
+/* =========================
+   CATEGORY FOLDERS
+========================= */
+
+const folders = {
+
+  general:
+    "samemdecork/general",
+
+  kitchen:
+    "samemdecork/kitchen",
+
+  salon:
+    "samemdecork/salon",
+
+  bedroom:
+    "samemdecork/bedroom",
+
+  tapisserie:
+    "samemdecork/tapisserie",
+
+  dressing:
+    "samemdecork/dressing",
+
+  "meuble-tv":
+    "samemdecork/meuble-tv"
+
+};
+
+
+/* =========================
    LOGIN
-========================== */
+========================= */
 
 function login(){
 
-  const password =
-    document.getElementById("password").value;
+  const value =
+    document.getElementById(
+      "password"
+    ).value;
 
-  if(password === PASSWORD){
+  if(value === PASSWORD){
 
     sessionStorage.setItem(
       "adminLogin",
@@ -482,33 +764,36 @@ function login(){
 
     document.getElementById(
       "error"
-    ).style.display = "block";
+    ).style.display =
+      "block";
 
   }
 
 }
 
 
-/* ==========================
+/* =========================
    SHOW ADMIN
-========================== */
+========================= */
 
 function showAdmin(){
 
   document.getElementById(
     "login"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
   document.getElementById(
     "admin"
-  ).style.display = "block";
+  ).style.display =
+    "block";
 
 }
 
 
-/* ==========================
+/* =========================
    LOGOUT
-========================== */
+========================= */
 
 function logout(){
 
@@ -521,13 +806,14 @@ function logout(){
 }
 
 
-/* ==========================
+/* =========================
    AUTO LOGIN
-========================== */
+========================= */
 
 if(
-  sessionStorage.getItem("adminLogin")
-  === "true"
+  sessionStorage.getItem(
+    "adminLogin"
+  ) === "true"
 ){
 
   showAdmin();
@@ -535,35 +821,54 @@ if(
 }
 
 
-/* ==========================
-   FILES
-========================== */
+/* =========================
+   ELEMENTS
+========================= */
 
 const filesInput =
   document.getElementById("files");
 
+const category =
+  document.getElementById("category");
+
 const preview =
   document.getElementById("preview");
+
+const previewTitle =
+  document.getElementById(
+    "previewTitle"
+  );
 
 const uploadButton =
   document.getElementById("upload");
 
 const progressArea =
-  document.getElementById("progressArea");
+  document.getElementById(
+    "progressArea"
+  );
 
 const progress =
-  document.getElementById("progress");
+  document.getElementById(
+    "progress"
+  );
 
 const status =
-  document.getElementById("status");
+  document.getElementById(
+    "status"
+  );
+
+const success =
+  document.getElementById(
+    "success"
+  );
 
 
 let files = [];
 
 
-/* ==========================
-   SELECT
-========================== */
+/* =========================
+   SELECT FILES
+========================= */
 
 filesInput.addEventListener(
   "change",
@@ -572,49 +877,99 @@ filesInput.addEventListener(
     files =
       Array.from(this.files);
 
-    preview.innerHTML = "";
+    preview.innerHTML =
+      "";
+
+    success.style.display =
+      "none";
+
 
     if(files.length === 0){
 
-      uploadButton.disabled = true;
+      uploadButton.disabled =
+        true;
+
+      previewTitle.style.display =
+        "none";
 
       return;
 
     }
 
 
-    files.forEach(file => {
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        function(event){
-
-          const img =
-            document.createElement("img");
-
-          img.src =
-            event.target.result;
-
-          preview.appendChild(img);
-
-        };
-
-      reader.readAsDataURL(file);
-
-    });
+    previewTitle.style.display =
+      "block";
 
 
-    uploadButton.disabled = false;
+    files.forEach(
+      (file,index) => {
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload =
+          function(event){
+
+            const item =
+              document.createElement(
+                "div"
+              );
+
+            item.className =
+              "preview-item";
+
+
+            const img =
+              document.createElement(
+                "img"
+              );
+
+            img.src =
+              event.target.result;
+
+
+            const number =
+              document.createElement(
+                "div"
+              );
+
+            number.className =
+              "preview-number";
+
+            number.textContent =
+              index + 1;
+
+
+            item.appendChild(img);
+
+            item.appendChild(
+              number
+            );
+
+            preview.appendChild(
+              item
+            );
+
+          };
+
+
+        reader.readAsDataURL(file);
+
+      }
+    );
+
+
+    uploadButton.disabled =
+      false;
 
   }
 );
 
 
-/* ==========================
+/* =========================
    UPLOAD
-========================== */
+========================= */
 
 uploadButton.addEventListener(
   "click",
@@ -622,23 +977,42 @@ uploadButton.addEventListener(
 
     if(files.length === 0){
 
-      alert("اختار الصور أولاً");
+      alert(
+        "اختار الصور أولاً"
+      );
 
       return;
 
     }
 
 
-    uploadButton.disabled = true;
+    const selectedCategory =
+      category.value;
+
+    const folder =
+      folders[
+        selectedCategory
+      ];
+
+
+    uploadButton.disabled =
+      true;
 
     progressArea.style.display =
       "block";
 
+    success.style.display =
+      "none";
+
 
     let uploaded = 0;
 
+    let failed = 0;
 
-    for(const file of files){
+
+    for(
+      const file of files
+    ){
 
       try{
 
@@ -655,6 +1029,17 @@ uploadButton.addEventListener(
         formData.append(
           "upload_preset",
           UPLOAD_PRESET
+        );
+
+
+        /*
+          وضع الصورة داخل
+          مجلد القسم
+        */
+
+        formData.append(
+          "folder",
+          folder
         );
 
 
@@ -686,45 +1071,101 @@ uploadButton.addEventListener(
         uploaded++;
 
 
-        const percent =
-          Math.round(
-            uploaded /
-            files.length *
-            100
-          );
-
-
-        progress.style.width =
-          percent + "%";
-
-
-        status.textContent =
-          `تم رفع ${uploaded} من ${files.length}`;
-
-
       }catch(error){
 
-        console.error(error);
+        console.error(
+          error
+        );
 
-        status.textContent =
-          "وقع خطأ أثناء رفع إحدى الصور.";
+        failed++;
 
       }
+
+
+      const percent =
+        Math.round(
+          (
+            uploaded +
+            failed
+          )
+          /
+          files.length
+          *
+          100
+        );
+
+
+      progress.style.width =
+        percent + "%";
+
+
+      status.textContent =
+        `تمت معالجة ${
+          uploaded + failed
+        } من ${
+          files.length
+        } صورة`;
 
     }
 
 
-    status.textContent =
-      "✅ تم رفع جميع الصور";
+    if(failed === 0){
+
+      status.textContent =
+        "تم رفع جميع الصور بنجاح ✅";
+
+
+      success.innerHTML =
+        `
+        ✅ تم رفع
+        <strong>${uploaded}</strong>
+        صورة بنجاح.
+        <br>
+        القسم:
+        <strong>
+        ${category.options[
+          category.selectedIndex
+        ].text}
+        </strong>
+        `;
+
+    }else{
+
+      status.textContent =
+        "تم الرفع مع بعض الأخطاء";
+
+
+      success.innerHTML =
+        `
+        تم رفع
+        <strong>${uploaded}</strong>
+        صورة.
+        <br>
+        فشل رفع
+        <strong>${failed}</strong>
+        صورة.
+        `;
+
+    }
+
+
+    success.style.display =
+      "block";
 
 
     files = [];
 
-    filesInput.value = "";
+    filesInput.value =
+      "";
 
-    preview.innerHTML = "";
+    preview.innerHTML =
+      "";
 
-    uploadButton.disabled = true;
+    previewTitle.style.display =
+      "none";
+
+    uploadButton.disabled =
+      true;
 
   }
 );
@@ -732,4 +1173,5 @@ uploadButton.addEventListener(
 </script>
 
 </body>
+
 </html>

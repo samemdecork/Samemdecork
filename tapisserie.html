@@ -1,1440 +1,298 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#102019">
+<!-- ================================
+     الاختصاصات
+================================ -->
 
-<title>الطابيسري والستور | صمم ديكورك</title>
+<section class="departments" id="choices">
+
+  <div class="wrap">
+
+    <div class="section-title">
+      <small>صمم ديكورك</small>
+      <h2>اختار الاختصاص</h2>
+      <p>
+        كل خدمة عندها قسم خاص بها باش نسهلو عليك الاختيار والطلب.
+      </p>
+    </div>
+
+    <div class="department-grid">
+
+      <!-- الصالون -->
+      <a class="department" href="salon.html">
+        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>01</span>
+          <h3>الصالون</h3>
+          <p>صالونات • سدادر • كنب • صالونجي</p>
+        </div>
+      </a>
+
+
+      <!-- غرفة الطعام -->
+      <a class="department" href="salle-a-manger.html">
+        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>02</span>
+          <h3>غرفة الطعام</h3>
+          <p>طاولات • كراسي • Banquette • طابيسري</p>
+        </div>
+      </a>
+
+
+      <!-- الطابيسري -->
+      <a class="department featured" href="tapissrie.html">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>03</span>
+          <h3>الطابيسري</h3>
+          <p>سدادر • كراسي • كليك كلاك • كوفر • ناموسية</p>
+        </div>
+      </a>
+
+
+      <!-- الستور والردوات -->
+      <a class="department" href="rideaux.html">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>04</span>
+          <h3>الستور والردوات</h3>
+          <p>ستور • ريدوات • Blackout • ستور رول</p>
+        </div>
+      </a>
+
+
+      <!-- غرفة النوم -->
+      <a class="department" href="bedroom.html">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>05</span>
+          <h3>غرفة النوم</h3>
+          <p>سرير • Dressing • Placard • كوفر • ناموسية</p>
+        </div>
+      </a>
+
+
+      <!-- المطبخ -->
+      <a class="department" href="Kitchen.html">
+        <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>06</span>
+          <h3>المطبخ</h3>
+          <p>مطبخ L • U • جزيرة • خامات • ألوان</p>
+        </div>
+      </a>
+
+
+      <!-- Dressing -->
+      <a class="department" href="dressing.html">
+        <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>07</span>
+          <h3>Dressing & Placard</h3>
+          <p>أبواب • زجاج • تقسيمات • إكسسوارات</p>
+        </div>
+      </a>
+
+
+      <!-- Meuble TV -->
+      <a class="department" href="mobil-tv.html">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+        <div class="department-overlay"></div>
+
+        <div class="department-info">
+          <span>08</span>
+          <h3>Meuble TV</h3>
+          <p>موديلات • خشب • إضاءة • تخزين</p>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
 
-body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f5f0e8;
-  color:#17231d;
-}
+/* =================================
+   الأقسام الرئيسية
+================================= */
 
-button,
-input,
-select{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-/* HEADER */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:76px;
-  background:#102019;
-  box-shadow:0 5px 25px #0003;
-}
-
-.nav{
-  width:min(1200px,92%);
-  height:76px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  text-decoration:none;
-  color:#fff;
-  font-size:25px;
-  font-weight:900;
-}
-
-.logo span{
-  color:#c9aa7b;
-}
-
-.home{
-  text-decoration:none;
-  color:#fff;
-  border:1px solid #c9aa7b;
-  border-radius:30px;
-  padding:10px 20px;
-  transition:.25s;
-}
-
-.home:hover{
-  background:#c9aa7b;
-  color:#17231d;
-}
-
-/* HERO */
-
-.hero{
-  padding:70px 20px 55px;
-  text-align:center;
-  background:
-    linear-gradient(#102019d9,#102019d9),
-    url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90")
-    center/cover;
-  color:#fff;
-}
-
-.hero small{
-  color:#c9aa7b;
-  letter-spacing:3px;
-}
-
-.hero h1{
-  font-size:clamp(40px,7vw,70px);
-  margin:15px 0;
-}
-
-.hero p{
-  max-width:700px;
-  margin:auto;
-  color:#ddd;
-  line-height:2;
-}
-
-/* PROGRESS */
-
-.progress-wrap{
-  background:#fff;
-  padding:25px 10px;
-  position:sticky;
-  top:76px;
-  z-index:50;
-  border-bottom:1px solid #ddd;
-}
-
-.progress{
-  width:min(1000px,95%);
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:5px;
-}
-
-.step{
-  flex:1;
-  text-align:center;
-  color:#aaa;
-  font-size:12px;
-}
-
-.step-number{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:1px solid #ccc;
-  margin:0 auto 7px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-}
-
-.step.active{
-  color:#17231d;
-  font-weight:bold;
-}
-
-.step.active .step-number{
+.departments{
   background:#17231d;
   color:#fff;
-  border-color:#17231d;
+  padding:100px 0;
 }
 
-/* MAIN */
-
-.main{
-  width:min(1100px,92%);
-  margin:45px auto 80px;
-}
-
-.panel{
-  display:none;
-  animation:fade .35s ease;
-}
-
-.panel.active{
-  display:block;
-}
-
-@keyframes fade{
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.title{
+.departments .section-title{
   text-align:center;
-  margin-bottom:30px;
+  margin-bottom:50px;
 }
 
-.title small{
-  color:#9a7d58;
-  letter-spacing:2px;
-}
-
-.title h2{
-  font-size:35px;
-  margin:8px 0;
-}
-
-.title p{
-  color:#777;
-}
-
-/* CARDS */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.card{
-  background:#fff;
-  border:2px solid transparent;
-  border-radius:10px;
-  overflow:hidden;
-  transition:.25s;
-  box-shadow:0 5px 20px #0000000d;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px #0002;
-}
-
-.card.selected{
-  border-color:#c9aa7b;
-}
-
-.card img{
-  width:100%;
-  height:190px;
-  object-fit:cover;
-  display:block;
-}
-
-.card-body{
-  padding:15px;
-}
-
-.card-body h3{
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.card-body p{
-  color:#888;
+.departments .section-title small{
+  color:#c9aa7b;
+  letter-spacing:3px;
   font-size:13px;
-  line-height:1.7;
 }
 
-/* FABRIC */
+.departments .section-title h2{
+  font-size:clamp(38px,5vw,58px);
+  margin:12px 0;
+}
 
-.fabric-grid{
+.departments .section-title p{
+  color:#bfc6c1;
+  font-size:16px;
+}
+
+
+/* GRID */
+
+.department-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
-}
-
-.fabric{
-  background:#fff;
-  border:2px solid transparent;
-  border-radius:10px;
-  padding:8px;
-  text-align:center;
-}
-
-.fabric.selected{
-  border-color:#c9aa7b;
-}
-
-.fabric img{
-  width:100%;
-  height:130px;
-  object-fit:cover;
-  border-radius:7px;
-}
-
-.fabric strong{
-  display:block;
-  padding:10px 4px;
-}
-
-/* COLORS */
-
-.colors{
-  display:grid;
-  grid-template-columns:repeat(8,1fr);
-  gap:15px;
-  max-width:750px;
-  margin:auto;
-}
-
-.color{
-  text-align:center;
-  background:#fff;
-  padding:10px;
-  border-radius:10px;
-  border:2px solid transparent;
-}
-
-.color.selected{
-  border-color:#c9aa7b;
-}
-
-.color-dot{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  margin:auto;
-  border:1px solid #ddd;
-}
-
-/* MEASUREMENTS */
-
-.measure-box{
-  max-width:650px;
-  margin:auto;
-  background:#fff;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 8px 30px #0001;
-}
-
-.inputs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2,1fr);
   gap:18px;
 }
 
-.field label{
+
+/* CARD */
+
+.department{
+  position:relative;
+  height:370px;
+  overflow:hidden;
+  border-radius:5px;
+  background:#101612;
   display:block;
-  margin-bottom:8px;
-  font-weight:bold;
+  isolation:isolate;
 }
 
-.field input,
-.field select{
+.department img{
   width:100%;
-  padding:15px;
-  border:1px solid #ddd;
-  border-radius:7px;
-  font-size:17px;
-  outline:none;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s ease;
 }
 
-.field input:focus,
-.field select:focus{
-  border-color:#c9aa7b;
+.department:hover img{
+  transform:scale(1.08);
 }
 
-/* FINISHING */
 
-.finishing{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+/* DARK OVERLAY */
+
+.department-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(5,10,7,.95),
+      rgba(5,10,7,.35) 55%,
+      rgba(5,10,7,.05)
+    );
 }
 
-.finish{
-  background:#fff;
-  padding:22px;
-  border:2px solid transparent;
-  border-radius:10px;
+
+/* INFO */
+
+.department-info{
+  position:absolute;
+  right:28px;
+  left:28px;
+  bottom:25px;
+  z-index:2;
 }
 
-.finish.selected{
-  border-color:#c9aa7b;
-}
-
-.finish h3{
-  margin-bottom:7px;
-}
-
-.finish p{
-  color:#777;
+.department-info span{
+  color:#c9aa7b;
   font-size:13px;
+  letter-spacing:2px;
 }
 
-/* SUMMARY */
-
-.summary{
-  max-width:700px;
-  margin:auto;
-  background:#102019;
+.department-info h3{
+  font-size:30px;
+  margin:7px 0;
   color:#fff;
-  padding:30px;
-  border-radius:14px;
 }
 
-.summary h3{
-  color:#c9aa7b;
-  margin-bottom:20px;
-  font-size:25px;
+.department-info p{
+  color:#d5c09e;
+  font-size:14px;
+  line-height:1.7;
 }
 
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:13px 0;
-  border-bottom:1px solid #ffffff1c;
+
+/* TAPISSERIE FEATURE */
+
+.department.featured{
+  border:1px solid #c9aa7b;
 }
 
-.summary-row span:first-child{
-  color:#aaa;
-}
+.department.featured:before{
+  content:"اختصاص";
+  position:absolute;
+  top:20px;
+  right:20px;
+  z-index:3;
 
-/* BUTTONS */
+  background:#c9aa7b;
+  color:#17231d;
 
-.actions{
-  display:flex;
-  justify-content:space-between;
-  margin-top:30px;
-  gap:12px;
-}
+  padding:7px 14px;
+  border-radius:20px;
 
-.btn{
-  border:0;
-  padding:15px 28px;
-  border-radius:6px;
-  font-size:16px;
+  font-size:12px;
   font-weight:bold;
 }
 
-.prev{
-  background:#ddd6cc;
-  color:#17231d;
-}
-
-.next{
-  background:#17231d;
-  color:#fff;
-}
-
-.whatsapp{
-  background:#25d366;
-  color:#06200d;
-  width:100%;
-  margin-top:22px;
-}
-
-.btn:hover{
-  opacity:.88;
-}
-
-/* FOOTER */
-
-footer{
-  background:#101a15;
-  color:#aaa;
-  text-align:center;
-  padding:30px 15px;
-  line-height:2;
-}
-
-footer strong{
-  color:#c9aa7b;
-}
 
 /* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:700px){
 
-  .cards{
-    grid-template-columns:1fr 1fr;
+  .departments{
+    padding:70px 0;
   }
 
-  .fabric-grid{
-    grid-template-columns:1fr 1fr;
+  .department-grid{
+    grid-template-columns:1fr;
   }
 
-  .finishing{
-    grid-template-columns:1fr 1fr;
+  .department{
+    height:300px;
   }
 
-  .colors{
-    grid-template-columns:repeat(4,1fr);
+  .department-info{
+    right:20px;
+    left:20px;
+    bottom:20px;
+  }
+
+  .department-info h3{
+    font-size:25px;
+  }
+
+  .department-info p{
+    font-size:13px;
   }
 
 }
 
-@media(max-width:550px){
-
-  header,
-  .nav{
-    height:68px;
-  }
-
-  .progress-wrap{
-    top:68px;
-    overflow-x:auto;
-  }
-
-  .progress{
-    min-width:650px;
-  }
-
-  .main{
-    width:92%;
-    margin-top:30px;
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .fabric-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .finishing{
-    grid-template-columns:1fr;
-  }
-
-  .inputs{
-    grid-template-columns:1fr;
-  }
-
-  .measure-box{
-    padding:20px;
-  }
-
-  .hero{
-    padding:50px 18px;
-  }
-
-  .hero h1{
-    font-size:42px;
-  }
-
-  .actions{
-    flex-direction:column;
-  }
-
-  .actions .btn{
-    width:100%;
-  }
-
-  .logo{
-    font-size:21px;
-  }
-
-  .home{
-    padding:9px 15px;
-    font-size:14px;
-  }
-}
 </style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-
-<header>
-  <div class="nav">
-
-    <a href="index.html" class="logo">
-      صمم <span>ديكورك</span>
-    </a>
-
-    <a href="index.html" class="home">
-      ← الرئيسية
-    </a>
-
-  </div>
-</header>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <small>TEXTILE • CURTAINS • DECOR</small>
-
-  <h1>الطابيسري والستور</h1>
-
-  <p>
-    اختار الموديل، الثوب، اللون، القياسات والتشطيب
-    وخلي علينا نوجدولك العرض المناسب.
-  </p>
-
-</section>
-
-
-<!-- PROGRESS -->
-
-<div class="progress-wrap">
-
-  <div class="progress">
-
-    <div class="step active">
-      <div class="step-number">1</div>
-      النوع
-    </div>
-
-    <div class="step">
-      <div class="step-number">2</div>
-      الموديل
-    </div>
-
-    <div class="step">
-      <div class="step-number">3</div>
-      الثوب
-    </div>
-
-    <div class="step">
-      <div class="step-number">4</div>
-      القياسات
-    </div>
-
-    <div class="step">
-      <div class="step-number">5</div>
-      التشطيب
-    </div>
-
-    <div class="step">
-      <div class="step-number">6</div>
-      الطلب
-    </div>
-
-  </div>
-
-</div>
-
-
-<main class="main">
-
-
-<!-- STEP 1 -->
-
-<section class="panel active">
-
-  <div class="title">
-    <small>01 — النوع</small>
-    <h2>شنو بغيتي تدير؟</h2>
-    <p>اختار نوع الخدمة اللي مناسب ليك</p>
-  </div>
-
-  <div class="cards">
-
-    <div class="card option" data-group="type" data-value="ستور">
-      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>الستور</h3>
-        <p>ستور عصري للنوافذ والصالونات وغرف النوم.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="type" data-value="Rideaux">
-      <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Rideaux</h3>
-        <p>ستائر بأشكال وتشطيبات مختلفة.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="type" data-value="Double Rideaux">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Double Rideaux</h3>
-        <p>طبقة ديكور مع طبقة للحجب والخصوصية.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="type" data-value="Voilage">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Voilage</h3>
-        <p>خفيف وأنيق لإضاءة طبيعية جميلة.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="actions">
-    <span></span>
-    <button class="btn next">التالي ←</button>
-  </div>
-
-</section>
-
-
-<!-- STEP 2 -->
-
-<section class="panel">
-
-  <div class="title">
-    <small>02 — الموديل</small>
-    <h2>اختار الشكل</h2>
-    <p>اختار التصميم الأقرب لذوقك</p>
-  </div>
-
-  <div class="cards">
-
-    <div class="card option" data-group="model" data-value="Wave">
-      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Wave</h3>
-        <p>شكل عصري بخطوط منتظمة وأنيقة.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="model" data-value="Œillet">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Œillet</h3>
-        <p>حلقات عصرية وسهلة الاستعمال.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="model" data-value="Plis">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Plis</h3>
-        <p>طيات كلاسيكية راقية.</p>
-      </div>
-    </div>
-
-    <div class="card option" data-group="model" data-value="Panneaux">
-      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85">
-      <div class="card-body">
-        <h3>Panneaux</h3>
-        <p>بانوات مستقيمة للمساحات العصرية.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="actions">
-    <button class="btn prev">→ السابق</button>
-    <button class="btn next">التالي ←</button>
-  </div>
-
-</section>
-
-
-<!-- STEP 3 -->
-
-<section class="panel">
-
-  <div class="title">
-    <small>03 — الثوب</small>
-    <h2>اختار الخامة</h2>
-    <p>يمكنك تبديل الاختيار حتى تلقى الخامة المناسبة</p>
-  </div>
-
-  <div class="fabric-grid">
-
-    <div class="fabric option" data-group="fabric" data-value="Velours">
-      <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=700&q=85">
-      <strong>Velours</strong>
-    </div>
-
-    <div class="fabric option" data-group="fabric" data-value="Linen">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=85">
-      <strong>Linen</strong>
-    </div>
-
-    <div class="fabric option" data-group="fabric" data-value="Jacquard">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=85">
-      <strong>Jacquard</strong>
-    </div>
-
-    <div class="fabric option" data-group="fabric" data-value="Blackout">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85">
-      <strong>Blackout</strong>
-    </div>
-
-    <div class="fabric option" data-group="fabric" data-value="Voilage">
-      <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=700&q=85">
-      <strong>Voilage</strong>
-    </div>
-
-  </div>
-
-  <div class="actions">
-    <button class="btn prev">→ السابق</button>
-    <button class="btn next">التالي ←</button>
-  </div>
-
-</section>
-
-
-<!-- STEP 4 -->
-
-<section class="panel">
-
-  <div class="title">
-    <small>04 — القياسات</small>
-    <h2>دخل القياسات</h2>
-    <p>دخل القياسات بالسنتيمتر</p>
-  </div>
-
-  <div class="measure-box">
-
-    <div class="inputs">
-
-      <div class="field">
-        <label>العرض (cm)</label>
-        <input id="width" type="number" placeholder="مثلاً 350">
-      </div>
-
-      <div class="field">
-        <label>الارتفاع (cm)</label>
-        <input id="height" type="number" placeholder="مثلاً 250">
-      </div>
-
-      <div class="field">
-        <label>عدد النوافذ</label>
-        <input id="windows" type="number" value="1" min="1">
-      </div>
-
-      <div class="field">
-        <label>نوع التركيب</label>
-
-        <select id="installation">
-
-          <option value="Rail">
-            Rail
-          </option>
-
-          <option value="Tringle">
-            Tringle
-          </option>
-
-          <option value="Plafond">
-            Plafond
-          </option>
-
-          <option value="Mur">
-            Mur
-          </option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="actions">
-
-    <button class="btn prev">
-      → السابق
-    </button>
-
-    <button class="btn next">
-      التالي ←
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- STEP 5 -->
-
-<section class="panel">
-
-  <div class="title">
-    <small>05 — التشطيب</small>
-    <h2>اختار الخوامي والتشطيب</h2>
-    <p>اختار الطريقة اللي بغيتي يخرج بها العمل النهائي</p>
-  </div>
-
-  <div class="finishing">
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Wave">
-
-      <h3>〰️ Wave</h3>
-
-      <p>
-        تشطيب عصري وأنيق للـRideaux.
-      </p>
-
-    </div>
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Œillet">
-
-      <h3>⭕ Œillet</h3>
-
-      <p>
-        حلقات معدنية مع Tringle.
-      </p>
-
-    </div>
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Rail">
-
-      <h3>▰ Rail</h3>
-
-      <p>
-        تركيب عملي ومناسب للمساحات الحديثة.
-      </p>
-
-    </div>
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Motorisé">
-
-      <h3>⚡ Motorisé</h3>
-
-      <p>
-        ستور أو Rideaux بمحرك كهربائي.
-      </p>
-
-    </div>
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Plis">
-
-      <h3>〽️ Plis</h3>
-
-      <p>
-        طيات كلاسيكية راقية.
-      </p>
-
-    </div>
-
-    <div class="finish option"
-         data-group="finish"
-         data-value="Simple">
-
-      <h3>▌Simple</h3>
-
-      <p>
-        تصميم بسيط ونظيف.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="title" style="margin-top:45px">
-
-    <small>COULEUR</small>
-
-    <h2>اختار اللون</h2>
-
-  </div>
-
-
-  <div class="colors">
-
-    <div class="color option"
-         data-group="color"
-         data-value="Beige">
-
-      <div class="color-dot"
-           style="background:#d9c5a7"></div>
-
-      Beige
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Crème">
-
-      <div class="color-dot"
-           style="background:#eee4d2"></div>
-
-      Crème
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Taupe">
-
-      <div class="color-dot"
-           style="background:#9b8876"></div>
-
-      Taupe
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Gris">
-
-      <div class="color-dot"
-           style="background:#777"></div>
-
-      Gris
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Anthracite">
-
-      <div class="color-dot"
-           style="background:#303330"></div>
-
-      Anthracite
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Vert">
-
-      <div class="color-dot"
-           style="background:#526653"></div>
-
-      Vert
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Marron">
-
-      <div class="color-dot"
-           style="background:#694d3d"></div>
-
-      Marron
-
-    </div>
-
-    <div class="color option"
-         data-group="color"
-         data-value="Noir">
-
-      <div class="color-dot"
-           style="background:#111"></div>
-
-      Noir
-
-    </div>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button class="btn prev">
-      → السابق
-    </button>
-
-    <button class="btn next">
-      شوف الطلب ←
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- STEP 6 -->
-
-<section class="panel">
-
-  <div class="title">
-
-    <small>06 — الطلب</small>
-
-    <h2>راجع الاختيارات ديالك</h2>
-
-    <p>
-      إلى كلشي مناسب، صيفط لينا الطلب باش نعطيوك الثمن.
-    </p>
-
-  </div>
-
-
-  <div class="summary">
-
-    <h3>
-      🧵 تفاصيل المشروع
-    </h3>
-
-    <div class="summary-row">
-      <span>النوع</span>
-      <strong id="s-type">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>الموديل</span>
-      <strong id="s-model">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>الثوب</span>
-      <strong id="s-fabric">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>القياسات</span>
-      <strong id="s-size">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>التشطيب</span>
-      <strong id="s-finish">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>اللون</span>
-      <strong id="s-color">—</strong>
-    </div>
-
-    <div class="summary-row">
-      <span>عدد النوافذ</span>
-      <strong id="s-windows">—</strong>
-    </div>
-
-    <a
-      id="whatsappLink"
-      class="btn whatsapp"
-      target="_blank"
-      style="display:block;text-align:center;text-decoration:none">
-
-      📲 طلب عرض الثمن عبر واتساب
-
-    </a>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button class="btn prev">
-      → تعديل الاختيارات
-    </button>
-
-    <a
-      href="index.html"
-      class="btn next"
-      style="text-decoration:none;text-align:center">
-
-      ✓ الرئيسية
-
-    </a>
-
-  </div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-
-  <strong>صمم ديكورك</strong> © 2026
-
-  <br>
-
-  جميع الحقوق محفوظة —
-  <strong>Hamza Chtaibi</strong>
-
-</footer>
-
-
-<script>
-
-/* DATA */
-
-const choices = {
-
-  type:"",
-  model:"",
-  fabric:"",
-  finish:"",
-  color:""
-
-};
-
-
-/* PANELS */
-
-const panels =
-  document.querySelectorAll(".panel");
-
-const steps =
-  document.querySelectorAll(".step");
-
-let current = 0;
-
-
-/* OPTIONS */
-
-document
-.querySelectorAll(".option")
-.forEach(option => {
-
-  option.addEventListener("click",function(){
-
-    const group =
-      this.dataset.group;
-
-    document
-      .querySelectorAll(
-        `.option[data-group="${group}"]`
-      )
-      .forEach(x =>
-        x.classList.remove("selected")
-      );
-
-    this.classList.add("selected");
-
-    choices[group] =
-      this.dataset.value;
-
-  });
-
-});
-
-
-/* SHOW STEP */
-
-function showStep(index){
-
-  if(index < 0)
-    return;
-
-  if(index >= panels.length)
-    return;
-
-  current = index;
-
-  panels.forEach((panel,i) => {
-
-    panel.classList.toggle(
-      "active",
-      i === current
-    );
-
-  });
-
-  steps.forEach((step,i) => {
-
-    step.classList.toggle(
-      "active",
-      i <= current
-    );
-
-  });
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-  if(current === 5){
-
-    updateSummary();
-
-  }
-
-}
-
-
-/* NEXT */
-
-document
-.querySelectorAll(".next")
-.forEach(btn => {
-
-  btn.addEventListener("click",function(){
-
-    if(current === 0 && !choices.type){
-
-      alert("اختار نوع الخدمة أولاً.");
-      return;
-
-    }
-
-    if(current === 1 && !choices.model){
-
-      alert("اختار الموديل أولاً.");
-      return;
-
-    }
-
-    if(current === 2 && !choices.fabric){
-
-      alert("اختار نوع الثوب أولاً.");
-      return;
-
-    }
-
-    if(current === 3){
-
-      const width =
-        document.getElementById("width").value;
-
-      const height =
-        document.getElementById("height").value;
-
-      if(!width || !height){
-
-        alert(
-          "دخل العرض والارتفاع أولاً."
-        );
-
-        return;
-
-      }
-
-    }
-
-    if(current === 4){
-
-      if(!choices.finish){
-
-        alert(
-          "اختار طريقة التشطيب أولاً."
-        );
-
-        return;
-
-      }
-
-      if(!choices.color){
-
-        alert(
-          "اختار اللون أولاً."
-        );
-
-        return;
-
-      }
-
-    }
-
-    showStep(current + 1);
-
-  });
-
-});
-
-
-/* PREVIOUS */
-
-document
-.querySelectorAll(".prev")
-.forEach(btn => {
-
-  btn.addEventListener("click",function(){
-
-    showStep(current - 1);
-
-  });
-
-});
-
-
-/* SUMMARY */
-
-function updateSummary(){
-
-  const width =
-    document.getElementById("width").value || "—";
-
-  const height =
-    document.getElementById("height").value || "—";
-
-  const windows =
-    document.getElementById("windows").value || "1";
-
-  const installation =
-    document.getElementById("installation").value || "—";
-
-
-  document.getElementById("s-type")
-    .textContent =
-      choices.type || "—";
-
-  document.getElementById("s-model")
-    .textContent =
-      choices.model || "—";
-
-  document.getElementById("s-fabric")
-    .textContent =
-      choices.fabric || "—";
-
-  document.getElementById("s-size")
-    .textContent =
-      width + " × " + height + " cm";
-
-  document.getElementById("s-finish")
-    .textContent =
-      (choices.finish || "—")
-      + " / "
-      + installation;
-
-  document.getElementById("s-color")
-    .textContent =
-      choices.color || "—";
-
-  document.getElementById("s-windows")
-    .textContent =
-      windows;
-
-
-  const message =
-
-`السلام عليكم، بغيت عرض ثمن للطابيسري والستور.
-
-النوع: ${choices.type}
-الموديل: ${choices.model}
-الثوب: ${choices.fabric}
-
-القياسات:
-العرض: ${width} cm
-الارتفاع: ${height} cm
-عدد النوافذ: ${windows}
-
-التشطيب: ${choices.finish}
-اللون: ${choices.color}
-طريقة التركيب: ${installation}
-
-بغيت نعرف الثمن والتفاصيل.`;
-
-
-  document.getElementById(
-    "whatsappLink"
-  ).href =
-    "https://wa.me/212754350706?text="
-    + encodeURIComponent(message);
-
-}
-
-</script>
-
-</body>
-</html>

@@ -1,52 +1,53 @@
-export default async function handler(req, res) {
-  try {
-    const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-    const apiKey = process.env.CLOUDINARY_API_KEY;
-    const apiSecret = process.env.CLOUDINARY_API_SECRET;
+import { v2 as cloudinary } from "cloudinary";
 
-    if (!cloudName || !apiKey || !apiSecret) {
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+export default async function handler(req, res) {
+
+  try {
+
+    if (
+      !process.env.CLOUDINARY_CLOUD_NAME ||
+      !process.env.CLOUDINARY_API_KEY ||
+      !process.env.CLOUDINARY_API_SECRET
+    ) {
       return res.status(500).json({
         error: "Cloudinary environment variables are missing"
       });
     }
 
-    const auth = Buffer
-      .from(`${apiKey}:${apiSecret}`)
-      .toString("base64");
+    const result =
+      await cloudinary.api.resources({
+        type: "upload",
+        prefix: "samemdecork/",
+        resource_type: "image",
+        max_results: 500
+      });
 
-    const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/resources/search`,
-      {
-        method: "POST",
-        headers: {
-          "Authorization": `Basic ${auth}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          expression: "resource_type:image AND type:upload",
-          sort_by: [
-            {
-              created_at: "desc"
-            }
-          ],
-          max_results: 100
-        })
+    const images = (result.resources || []).map(img => {
+
+      const parts = img.public_id.split("/");
+
+      let category = "general";
+
+      if (parts.length >= 2) {
+        category = parts[1];
       }
-    );
 
-    const data = await response.json();
+      return {
+        url: img.secure_url,
+        public_id: img.public_id,
+        category: category,
+        created_at: img.created_at,
+        width: img.width,
+        height: img.height
+      };
 
-    if (!response.ok) {
-      return res.status(response.status).json(data);
-    }
-
-    const images = (data.resources || []).map(image => ({
-      url: image.secure_url,
-      public_id: image.public_id,
-      created_at: image.created_at,
-      width: image.width,
-      height: image.height
-    }));
+    });
 
     return res.status(200).json({
       images
@@ -59,5 +60,7 @@ export default async function handler(req, res) {
     return res.status(500).json({
       error: "Failed to load images"
     });
+
   }
+
 }

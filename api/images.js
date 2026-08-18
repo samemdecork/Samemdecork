@@ -1,5 +1,3 @@
-import { v2 as cloudinary } from "cloudinary";
-
 export default async function handler(req, res) {
   try {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -12,42 +10,104 @@ export default async function handler(req, res) {
       });
     }
 
-    cloudinary.config({
-      cloud_name: cloudName,
-      api_key: apiKey,
-      api_secret: apiSecret
+    const auth = Buffer
+      .from(`${apiKey}:${apiSecret}`)
+      .toString("base64");
+
+    const url =
+      `https://api.cloudinary.com/v1_1/${cloudName}` +
+      `/resources/image/upload?max_results=500`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Basic ${auth}`
+      }
     });
 
-    const result = await cloudinary.api.resources({
-      resource_type: "image",
-      type: "upload",
-      prefix: "samemdecork/",
-      max_results: 500
-    });
+    const data = await response.json();
 
-    const images = (result.resources || []).map((img) => {
-      const parts = img.public_id.split("/");
+    if (!response.ok) {
+      console.error("Cloudinary error:", data);
 
-      return {
-        url: img.secure_url,
-        public_id: img.public_id,
-        category: parts.length > 2 ? parts[1] : "general",
-        created_at: img.created_at,
-        width: img.width,
-        height: img.height
-      };
-    });
+      return res.status(500).json({
+        error: "Cloudinary request failed",
+        details: data
+      });
+    }
+
+    const resources = data.resources || [];
+
+    // غير الصور ديال موقع صمم ديكورك
+    const images = resources
+      .filter((img) => {
+
+        const publicId = img.public_id || "";
+        const assetFolder = img.asset_folder || "";
+
+        return (
+          publicId.startsWith("samemdecork/") ||
+          assetFolder === "samemdecork" ||
+          assetFolder.startsWith("samemdecork/")
+        );
+
+      })
+      .map((img) => {
+
+        const publicId =
+          img.public_id || "";
+
+        const assetFolder =
+          img.asset_folder || "";
+
+        let category = "general";
+
+        // نحاول نعرف القسم من المجلد
+        if (assetFolder.includes("/")) {
+
+          const parts =
+            assetFolder.split("/");
+
+          category =
+            parts[parts.length - 1];
+
+        } else if (
+          publicId.startsWith("samemdecork/")
+        ) {
+
+          const parts =
+            publicId.split("/");
+
+          if (parts.length >= 3) {
+            category = parts[1];
+          }
+
+        }
+
+        return {
+          url: img.secure_url,
+          public_id: publicId,
+          category: category,
+          created_at: img.created_at,
+          width: img.width,
+          height: img.height
+        };
+
+      });
 
     return res.status(200).json({
-      images
+      count: images.length,
+      images: images
     });
 
   } catch (error) {
-    console.error("CLOUDINARY ERROR:", error);
+
+    console.error("API ERROR:", error);
 
     return res.status(500).json({
       error: "Failed to load images",
       details: error.message
     });
+
   }
 }

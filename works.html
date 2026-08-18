@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>أعمالنا | صمم ديكورك</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -25,166 +23,185 @@ body{
   color:#17231d;
 }
 
-.wrap{
-  width:min(1200px,92%);
-  margin:auto;
-}
-
 /* HEADER */
 
 header{
-  background:#17231d;
-  color:white;
-  padding:20px 0;
+  height:82px;
+  background:#101f18;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 5px 20px #0003;
 }
 
-.nav{
+.header-inner{
+  width:min(1200px,92%);
+  margin:auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-  color:white;
-  text-decoration:none;
-  font-size:25px;
+  font-size:28px;
   font-weight:900;
+  color:#fff;
+  text-decoration:none;
 }
 
 .logo span{
   color:#c9aa7b;
 }
 
-.back{
-  color:white;
+/* HOME BUTTON */
+
+.home-btn{
   text-decoration:none;
+  color:#fff;
   border:1px solid #c9aa7b;
-  padding:10px 18px;
-  border-radius:25px;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:16px;
+  transition:.25s;
+}
+
+.home-btn:hover{
+  background:#c9aa7b;
+  color:#17231d;
 }
 
 /* HERO */
 
 .hero{
-  padding:70px 0 40px;
   text-align:center;
+  padding:75px 20px 45px;
 }
 
-.hero small{
+.eyebrow{
   color:#9a7d58;
-  letter-spacing:2px;
+  letter-spacing:3px;
+  font-size:14px;
+  margin-bottom:15px;
 }
 
-.hero h1{
-  font-size:clamp(40px,6vw,65px);
-  margin:12px 0;
+h1{
+  font-size:clamp(42px,7vw,70px);
+  margin-bottom:18px;
 }
 
 .hero p{
-  color:#70736e;
-  line-height:2;
+  color:#777;
+  font-size:17px;
+  line-height:1.9;
+}
+
+/* FILTERS */
+
+.filters{
+  width:min(1200px,92%);
+  margin:0 auto 45px;
+
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  border:1px solid #c9aa7b;
+  background:transparent;
+  color:#17231d;
+  padding:12px 20px;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:15px;
+  transition:.25s;
+}
+
+.filter:hover,
+.filter.active{
+  background:#17231d;
+  color:#fff;
 }
 
 /* GALLERY */
 
 .gallery{
+  width:min(1200px,92%);
+  margin:auto;
+
   display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:15px;
-
-  padding:
-    20px 0
-    80px;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.photo{
-  height:350px;
+.card{
+  background:#fff;
+  border-radius:8px;
   overflow:hidden;
-  border-radius:5px;
-  background:#ddd;
-  position:relative;
+  box-shadow:0 5px 20px #00000012;
+  animation:show .4s ease;
 }
 
-.photo img{
+.card img{
+  display:block;
   width:100%;
-  height:100%;
+  height:300px;
   object-fit:cover;
-  transition:.5s;
+  transition:.4s;
 }
 
-.photo:hover img{
-  transform:scale(1.06);
+.card:hover img{
+  transform:scale(1.04);
 }
 
-.photo-info{
-  position:absolute;
-  right:0;
-  left:0;
-  bottom:0;
-
-  padding:25px 18px 15px;
-
-  color:white;
-
-  background:
-    linear-gradient(
-      transparent,
-      #000b
-    );
+.card-info{
+  padding:15px;
+  background:#fff;
 }
 
-.photo-info strong{
+.card-category{
+  color:#9a7d58;
+  font-size:13px;
+}
+
+/* EMPTY / ERROR */
+
+.message{
+  width:min(700px,90%);
+  margin:40px auto;
+  text-align:center;
+  padding:35px 20px;
+  color:#777;
   font-size:18px;
+  line-height:2;
 }
-
-/* LOADING */
 
 .loading{
-  text-align:center;
-  padding:50px;
-  color:#777;
+  color:#9a7d58;
 }
 
-.spinner{
-  width:45px;
-  height:45px;
-
-  border:4px solid #ddd;
-  border-top-color:#c9aa7b;
-
-  border-radius:50%;
-
-  animation:
-    spin .8s linear infinite;
-
-  margin:
-    0 auto
-    20px;
+.error{
+  color:#9b3939;
 }
 
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-/* EMPTY */
-
-.empty{
-  text-align:center;
-  padding:60px 20px;
-  color:#777;
+.hidden{
+  display:none!important;
 }
 
 /* FOOTER */
 
 footer{
+  margin-top:80px;
   background:#101a15;
   color:#aaa;
   text-align:center;
-  padding:30px;
+  padding:30px 15px;
   line-height:2;
 }
 
@@ -192,277 +209,473 @@ footer strong{
   color:#c9aa7b;
 }
 
+/* ANIMATION */
+
+@keyframes show{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 /* MOBILE */
 
 @media(max-width:800px){
 
   .gallery{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
   }
 
-  .photo{
-    height:280px;
+  .card img{
+    height:230px;
   }
 
+  .logo{
+    font-size:23px;
+  }
+
+  .home-btn{
+    padding:10px 17px;
+    font-size:14px;
+  }
 }
 
 @media(max-width:550px){
+
+  header{
+    height:72px;
+  }
 
   .gallery{
     grid-template-columns:1fr;
   }
 
-  .photo{
-    height:320px;
+  .card img{
+    height:280px;
   }
 
-  .nav{
-    gap:15px;
+  .hero{
+    padding-top:55px;
   }
 
+  .filters{
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:8px;
+  }
+
+  .filter{
+    white-space:nowrap;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- HEADER -->
 
 <header>
 
-<div class="wrap nav">
+  <div class="header-inner">
 
-<a
-  href="index.html"
-  class="logo">
+    <a href="index.html" class="logo">
+      صمم <span>ديكورك</span>
+    </a>
 
-صمم <span>ديكورك</span>
+    <a href="index.html" class="home-btn">
+      ← الرئيسية
+    </a>
 
-</a>
-
-<a
-  href="index.html"
-  class="back">
-
-← الرئيسية
-
-</a>
-
-</div>
+  </div>
 
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero">
 
-<div class="wrap">
+  <div class="eyebrow">
+    REAL PROJECTS
+  </div>
 
-<small>
-REAL PROJECTS
-</small>
+  <h1>
+    أعمالنا
+  </h1>
 
-<h1>
-أعمالنا
-</h1>
-
-<p>
-صور حقيقية من أعمال ومشاريع
-صمم ديكورك
-</p>
-
-</div>
+  <p>
+    صور حقيقية من أعمال ومشاريع صمم ديكورك
+  </p>
 
 </section>
 
 
-<main class="wrap">
+<!-- FILTERS -->
 
+<div class="filters">
 
-<div
-  id="loading"
-  class="loading">
+  <button class="filter active" data-category="all">
+    الكل
+  </button>
 
-<div class="spinner"></div>
+  <button class="filter" data-category="kitchen">
+    🍳 المطابخ
+  </button>
 
-جاري تحميل الأعمال...
+  <button class="filter" data-category="salon">
+    🛋️ الصالونات
+  </button>
+
+  <button class="filter" data-category="bedroom">
+    🛏️ غرف النوم
+  </button>
+
+  <button class="filter" data-category="tapisserie">
+    🧵 الطابيسري والستور
+  </button>
+
+  <button class="filter" data-category="dressing">
+    🚪 Dressing
+  </button>
+
+  <button class="filter" data-category="mobil-tv">
+    📺 Meuble TV
+  </button>
+
+  <button class="filter" data-category="accessories">
+    ✨ الإكسسوارات
+  </button>
 
 </div>
 
 
-<div
-  id="gallery"
-  class="gallery"
-  style="display:none">
+<!-- GALLERY -->
+
+<div id="gallery" class="gallery"></div>
+
+
+<div id="loading" class="message loading">
+  ⏳ جاري تحميل الصور...
 </div>
 
 
-<div
-  id="empty"
-  class="empty"
-  style="display:none">
-
-<h2>
-مازال ما كايناش صور
-</h2>
-
-<p>
-أول ما ترفع الصور من لوحة الإدارة
-غادي يبانوا هنا.
-</p>
-
+<div id="error" class="message error hidden">
+  وقع مشكل في تحميل الصور.<br>
+  حاول تعاود تحديث الصفحة.
 </div>
 
 
-</main>
+<div id="empty" class="message hidden">
+  ما كايناش صور فهاد القسم دابا.
+</div>
 
+
+<!-- FOOTER -->
 
 <footer>
 
-<strong>
-صمم ديكورك
-</strong>
+  <strong>صمم ديكورك</strong> © 2026
 
-© 2026
+  <br>
 
-<br>
-
-جميع الحقوق محفوظة —
-<strong>
-Hamza Chtaibi
-</strong>
+  جميع الحقوق محفوظة —
+  <strong>Hamza Chtaibi</strong>
 
 </footer>
 
 
 <script>
 
+let allImages = [];
+let currentCategory = "all";
+
+const gallery =
+  document.getElementById("gallery");
+
+const loading =
+  document.getElementById("loading");
+
+const errorBox =
+  document.getElementById("error");
+
+const emptyBox =
+  document.getElementById("empty");
+
+
+/* تحويل أسماء الأقسام */
+
+function normalizeCategory(category){
+
+  if(!category){
+    return "general";
+  }
+
+  category =
+    category.toLowerCase().trim();
+
+  const map = {
+
+    "kitchen":"kitchen",
+    "kitchens":"kitchen",
+    "مطبخ":"kitchen",
+    "المطبخ":"kitchen",
+    "المطابخ":"kitchen",
+
+    "salon":"salon",
+    "صالون":"salon",
+    "الصالون":"salon",
+    "الصالونات":"salon",
+
+    "bedroom":"bedroom",
+    "غرفة النوم":"bedroom",
+    "غرف النوم":"bedroom",
+
+    "tapisserie":"tapisserie",
+    "tapiserie":"tapisserie",
+    "طابيسري":"tapisserie",
+    "الطابيسري":"tapisserie",
+    "الطابيسري والستور":"tapisserie",
+    "tapisserie et store":"tapisserie",
+    "stores":"tapisserie",
+    "store":"tapisserie",
+
+    "dressing":"dressing",
+    "placard":"dressing",
+
+    "mobil-tv":"mobil-tv",
+    "meuble-tv":"mobil-tv",
+    "meuble tv":"mobil-tv",
+
+    "accessories":"accessories",
+    "accessoire":"accessories",
+    "accessoires":"accessories",
+    "الإكسسوارات":"accessories"
+
+  };
+
+  return map[category] || category;
+}
+
+
+/* تحميل الصور */
+
 async function loadImages(){
 
-  const loading =
-    document.getElementById("loading");
-
-  const gallery =
-    document.getElementById("gallery");
-
-  const empty =
-    document.getElementById("empty");
-
+  loading.classList.remove("hidden");
+  errorBox.classList.add("hidden");
+  emptyBox.classList.add("hidden");
 
   try{
 
     const response =
-      await fetch("/api/images");
-
+      await fetch("/api/images",{
+        cache:"no-store"
+      });
 
     if(!response.ok){
 
       throw new Error(
-        "Failed to load images"
+        "API error: " + response.status
       );
 
     }
 
-
     const data =
       await response.json();
 
+    if(!data.images){
 
-    loading.style.display =
-      "none";
-
-
-    if(
-      !data.images ||
-      data.images.length === 0
-    ){
-
-      empty.style.display =
-        "block";
-
-      return;
+      throw new Error(
+        "No images returned"
+      );
 
     }
 
+    allImages =
+      data.images.map(img => ({
 
-    gallery.style.display =
-      "grid";
+        ...img,
 
+        category:
+          normalizeCategory(img.category)
 
-    data.images.forEach(image => {
+      }));
 
-      const item =
-        document.createElement("div");
+    loading.classList.add("hidden");
 
-      item.className =
-        "photo";
+    renderGallery();
 
+  }catch(err){
 
-      const img =
-        document.createElement("img");
+    console.error(err);
 
-      img.src =
-        image.url;
+    loading.classList.add("hidden");
 
-      img.alt =
-        "عمل من صمم ديكورك";
-
-      img.loading =
-        "lazy";
-
-
-      const info =
-        document.createElement("div");
-
-      info.className =
-        "photo-info";
-
-
-      const title =
-        document.createElement("strong");
-
-      title.textContent =
-        "صمم ديكورك";
-
-
-      info.appendChild(title);
-
-      item.appendChild(img);
-
-      item.appendChild(info);
-
-      gallery.appendChild(item);
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-    loading.innerHTML = `
-
-      <h2>
-        وقع مشكل في تحميل الصور
-      </h2>
-
-      <p>
-        حاول تعاود تحديث الصفحة.
-      </p>
-
-    `;
+    errorBox.classList.remove("hidden");
 
   }
 
 }
 
 
+/* عرض الصور */
+
+function renderGallery(){
+
+  gallery.innerHTML = "";
+
+  let images = allImages;
+
+  if(currentCategory !== "all"){
+
+    images =
+      allImages.filter(
+        img =>
+          img.category === currentCategory
+      );
+
+  }
+
+  if(images.length === 0){
+
+    emptyBox.classList.remove("hidden");
+
+    return;
+
+  }
+
+  emptyBox.classList.add("hidden");
+
+  images.forEach(img => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "card";
+
+    const image =
+      document.createElement("img");
+
+    image.src = img.url;
+
+    image.alt =
+      "مشروع صمم ديكورك";
+
+    image.loading = "lazy";
+
+    image.onerror = function(){
+
+      card.remove();
+
+    };
+
+    const info =
+      document.createElement("div");
+
+    info.className = "card-info";
+
+    const category =
+      document.createElement("div");
+
+    category.className =
+      "card-category";
+
+    category.textContent =
+      getCategoryName(img.category);
+
+    info.appendChild(category);
+
+    card.appendChild(image);
+
+    card.appendChild(info);
+
+    gallery.appendChild(card);
+
+  });
+
+}
+
+
+/* اسم القسم بالعربية */
+
+function getCategoryName(category){
+
+  const names = {
+
+    kitchen:"المطابخ",
+
+    salon:"الصالونات",
+
+    bedroom:"غرف النوم",
+
+    tapisseries:"الطابيسري والستور",
+
+    tapisserie:"الطابيسري والستور",
+
+    dressing:"Dressing & Placard",
+
+    "mobil-tv":"Meuble TV",
+
+    accessories:"الإكسسوارات",
+
+    general:"مشاريع صمم ديكورك"
+
+  };
+
+  return names[category] ||
+         "مشاريع صمم ديكورك";
+
+}
+
+
+/* الفلاتر */
+
+document
+  .querySelectorAll(".filter")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        document
+          .querySelectorAll(".filter")
+          .forEach(btn =>
+            btn.classList.remove("active")
+          );
+
+        this.classList.add("active");
+
+        currentCategory =
+          this.dataset.category;
+
+        renderGallery();
+
+        window.scrollTo({
+          top:
+            document.querySelector(".filters")
+              .offsetTop - 90,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+  });
+
+
+/* البداية */
+
 loadImages();
 
 </script>
 
-
 </body>
-
 </html>

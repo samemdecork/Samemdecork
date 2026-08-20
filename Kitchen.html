@@ -7,217 +7,263 @@
 <title>صمم مطبخك | صمم ديكورك</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
+
 body{
-font-family:Tahoma,Arial,sans-serif;
-background:#f5f0e8;
-color:#17231d;
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#f5f0e8;
+ color:#17231d;
 }
-.wrap{width:min(900px,92%);margin:auto}
+
 header{
-height:72px;background:#17231d;color:white;
-display:flex;align-items:center;
-position:sticky;top:0;z-index:20;
-box-shadow:0 4px 20px #0003
+ background:#17231d;
+ color:#fff;
+ padding:18px;
+ position:sticky;
+ top:0;
+ z-index:10;
 }
-.nav{display:flex;justify-content:space-between;align-items:center}
-.logo{color:white;text-decoration:none;font-size:23px;font-weight:bold}
+
+.nav{
+ max-width:850px;
+ margin:auto;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.logo{
+ color:#fff;
+ text-decoration:none;
+ font-size:22px;
+ font-weight:bold;
+}
+
 .logo span{color:#c9aa7b}
-.back{color:white;text-decoration:none;font-size:14px}
-main{padding:35px 0 70px}
-.top{text-align:center;margin-bottom:28px}
-.top small{color:#9a7d58;letter-spacing:2px}
-.top h1{font-size:clamp(32px,6vw,52px);margin:8px 0}
-.top p{color:#70736e;line-height:1.8}
 
-.progress{display:flex;gap:5px;margin-bottom:30px}
-.progress div{height:5px;flex:1;background:#d5cabb;border-radius:10px}
-.progress div.active{background:#c9aa7b}
+.back{
+ color:#fff;
+ text-decoration:none;
+}
 
-.step{display:none}
-.step.active{display:block}
+.container{
+ max-width:850px;
+ margin:auto;
+ padding:25px 15px 60px;
+}
+
+.title{
+ text-align:center;
+ margin-bottom:25px;
+}
+
+.title small{color:#9a7d58}
+
+.title h1{
+ font-size:38px;
+ margin:8px;
+}
+
+.title p{color:#777}
 
 .card{
-background:white;padding:28px;border-radius:8px;
-box-shadow:0 8px 30px #00000010
+ background:#fff;
+ border-radius:12px;
+ padding:25px;
+ margin-bottom:18px;
+ box-shadow:0 5px 25px #00000010;
 }
-.card h2{font-size:28px;margin-bottom:8px}
-.subtitle{color:#777;margin-bottom:25px;line-height:1.8}
 
-.options{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
-}
-.option{
-border:2px solid #e0d8cc;
-border-radius:7px;
-padding:22px 12px;
-text-align:center;
-cursor:pointer;
-background:white;
-transition:.2s
-}
-.option:hover{border-color:#c9aa7b}
-.option.selected{
-border-color:#c9aa7b;
-background:#f7f0e5;
-box-shadow:0 0 0 2px #c9aa7b33
-}
-.option .icon{font-size:42px;margin-bottom:12px}
-.option strong{display:block;font-size:17px;margin-bottom:6px}
-.option span{color:#777;font-size:12px}
+h2{margin-top:0}
 
-.fields{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
 }
-.field{margin-bottom:4px}
-.field.full{grid-column:1/-1}
-.field label{display:block;margin-bottom:8px;font-weight:bold}
-.field input,
-.field select,
-.field textarea{
-width:100%;
-padding:14px;
-border:1px solid #d2c8b9;
-border-radius:5px;
-background:#faf8f4;
-color:#17231d;
-font-size:16px;
-font-family:inherit
-}
-.field textarea{min-height:110px;resize:vertical}
 
-.marble-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
+.choice{
+ border:2px solid #e2d9cc;
+ border-radius:9px;
+ padding:20px 10px;
+ text-align:center;
+ cursor:pointer;
+ background:white;
+ transition:.2s;
 }
-.marble{
-min-height:140px;
-border-radius:7px;
-border:2px solid #e0d8cc;
-padding:20px;
-cursor:pointer;
-display:flex;
-flex-direction:column;
-justify-content:center;
-transition:.2s
+
+.choice:hover,
+.choice.active{
+ border-color:#c9aa7b;
+ background:#f8f1e7;
 }
-.marble.selected{
-border-color:#c9aa7b;
-box-shadow:0 0 0 2px #c9aa7b55
+
+.icon{
+ font-size:35px;
+ margin-bottom:8px;
 }
-.white{background:#f4f3ef}
-.black{background:#292a28;color:white}
-.gray{background:#aaa9a5}
-.beige{background:#d9c7a9}
-.quartz{background:#e7e3da}
-.granite{background:#555;color:white}
+
+.choice b{
+ display:block;
+}
+
+.choice small{
+ color:#777;
+}
+
+label{
+ display:block;
+ margin-bottom:15px;
+ font-weight:bold;
+}
+
+input,select,textarea{
+ width:100%;
+ padding:14px;
+ margin-top:7px;
+ border:1px solid #d5cabb;
+ border-radius:7px;
+ background:#faf8f4;
+ font-family:inherit;
+ font-size:16px;
+}
+
+textarea{
+ min-height:110px;
+ resize:vertical;
+}
 
 .upload{
-display:block;
-border:2px dashed #c9aa7b;
-background:#faf7f1;
-padding:35px 20px;
-text-align:center;
-border-radius:8px;
-cursor:pointer
+ border:2px dashed #c9aa7b;
+ padding:25px;
+ text-align:center;
+ border-radius:10px;
+ cursor:pointer;
+ background:#faf7f1;
 }
-.upload input{display:none}
-.upload-icon{font-size:45px;margin-bottom:10px}
-.upload p{color:#777;line-height:1.8}
-.preview{display:none;margin-top:20px}
+
+.upload input{
+ display:none;
+}
+
+.preview{
+ display:none;
+ margin-top:15px;
+}
+
 .preview img{
-width:100%;
-max-height:350px;
-object-fit:cover;
-border-radius:7px
+ width:100%;
+ max-height:300px;
+ object-fit:cover;
+ border-radius:8px;
+}
+
+.upload-status{
+ text-align:center;
+ margin-top:12px;
+ font-weight:bold;
+}
+
+.success{
+ color:#16853d;
+}
+
+.error{
+ color:#c62828;
 }
 
 .summary{
-background:#17231d;color:white;
-padding:25px;border-radius:7px
+ background:#17231d;
+ color:white;
+ border-radius:10px;
+ padding:20px;
 }
-.summary-row{
-display:flex;
-justify-content:space-between;
-gap:20px;
-padding:13px 0;
-border-bottom:1px solid #ffffff18
-}
-.summary-row:last-child{border:0}
-.summary-row span{color:#c9c9c9}
-.summary-row b{color:#c9aa7b;text-align:left}
 
-.buttons{
-display:flex;
-justify-content:space-between;
-gap:12px;
-margin-top:25px
+.row{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ padding:12px 0;
+ border-bottom:1px solid #ffffff18;
 }
-button{
-border:0;
-font-family:inherit;
-font-size:16px;
-font-weight:bold;
-padding:15px 25px;
-border-radius:5px;
-cursor:pointer
+
+.row:last-child{
+ border:0;
 }
-.next{background:#c9aa7b;color:#17231d}
-.prev{background:#e3dbcf;color:#17231d}
+
+.row span{
+ color:#ccc;
+}
+
+.row b{
+ color:#c9aa7b;
+ text-align:left;
+ max-width:65%;
+ word-break:break-word;
+}
+
 .whatsapp{
-display:block;
-width:100%;
-text-align:center;
-background:#25d366;
-color:#06200d;
-padding:16px;
-border-radius:5px;
-text-decoration:none;
-font-weight:bold;
-margin-top:20px
-}
-.save{
-width:100%;
-background:#17231d;
-color:white;
-margin-top:10px
-}
-.delete{
-width:100%;
-background:#eee;
-color:#333;
-margin-top:10px
-}
-.saved{
-text-align:center;
-color:#287a45;
-font-weight:bold;
-margin-top:10px;
-min-height:22px
+ display:block;
+ width:100%;
+ background:#25d366;
+ color:#06200d;
+ padding:16px;
+ border-radius:8px;
+ margin-top:20px;
+ text-align:center;
+ text-decoration:none;
+ font-weight:bold;
 }
 
-footer{
-background:#101a15;
-color:#999;
-text-align:center;
-padding:28px 15px;
-line-height:2
+.note{
+ color:#777;
+ font-size:13px;
+ line-height:1.8;
 }
-footer strong{color:#c9aa7b}
 
-@media(max-width:650px){
-main{padding-top:25px}
-.card{padding:20px}
-.options{grid-template-columns:1fr}
-.fields{grid-template-columns:1fr}
-.marble-grid{grid-template-columns:1fr}
-.buttons button{width:50%}
-.summary-row{font-size:14px}
+button{
+ width:100%;
+ border:0;
+ border-radius:8px;
+ padding:16px;
+ margin-top:15px;
+ background:#c9aa7b;
+ color:#17231d;
+ font-family:inherit;
+ font-size:17px;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed;
+}
+
+@media(max-width:600px){
+
+ .grid{
+  grid-template-columns:1fr;
+ }
+
+ .title h1{
+  font-size:32px;
+ }
+
+ .card{
+  padding:18px;
+ }
+
+ .row{
+  flex-direction:column;
+  gap:5px;
+ }
+
+ .row b{
+  max-width:100%;
+  text-align:right;
+ }
 }
 </style>
 </head>
@@ -225,788 +271,846 @@ main{padding-top:25px}
 <body>
 
 <header>
-<div class="wrap nav">
-<a href="index.html" class="logo">
+
+<div class="nav">
+
+<a class="logo" href="index.html">
 صمم <span>ديكورك</span>
 </a>
-<a href="index.html" class="back">← الرئيسية</a>
+
+<a class="back" href="index.html">
+← الرئيسية
+</a>
+
 </div>
+
 </header>
 
-<main>
-<div class="wrap">
 
-<div class="top">
+<div class="container">
+
+
+<div class="title">
+
 <small>CUISINE DESIGN</small>
+
 <h1>صمم مطبخك</h1>
-<p>اختار التفاصيل ديال المطبخ ديالك مرحلة بمرحلة.</p>
+
+<p>
+اختار التفاصيل ديال المطبخ ديالك وصيفط لينا الطلب.
+</p>
+
 </div>
 
-<div class="progress">
-<div class="active"></div>
-<div></div><div></div><div></div>
-<div></div><div></div><div></div><div></div>
-</div>
 
-<!-- 1 -->
-<div class="step active" id="step1">
+<!-- 1 الشكل -->
+
 <div class="card">
-<h2>01 — شكل المطبخ</h2>
-<p class="subtitle">شنو هو الشكل اللي بغيتي للمطبخ؟</p>
 
-<div class="options">
+<h2>1️⃣ شكل المطبخ</h2>
 
-<div class="option" data-group="shape" data-value="مطبخ L">
+<div class="grid">
+
+<div class="choice"
+data-type="shape"
+data-value="مطبخ L">
+
 <div class="icon">⌞</div>
-<strong>شكل L</strong>
-<span>زاوية على جوج جهات</span>
+
+<b>شكل L</b>
+
+<small>جوج جهات</small>
+
 </div>
 
-<div class="option" data-group="shape" data-value="مطبخ U">
+
+<div class="choice"
+data-type="shape"
+data-value="مطبخ U">
+
 <div class="icon">∪</div>
-<strong>شكل U</strong>
-<span>ثلاثة جوانب</span>
+
+<b>شكل U</b>
+
+<small>ثلاثة جهات</small>
+
 </div>
 
-<div class="option" data-group="shape" data-value="مطبخ مسطح">
+
+<div class="choice"
+data-type="shape"
+data-value="مطبخ مستقيم">
+
 <div class="icon">━</div>
-<strong>مسطح</strong>
-<span>حائط واحد</span>
+
+<b>مستقيم</b>
+
+<small>حائط واحد</small>
+
 </div>
 
-<div class="option" data-group="shape" data-value="مطبخ مع جزيرة">
+
+<div class="choice"
+data-type="shape"
+data-value="مطبخ مع جزيرة">
+
 <div class="icon">▣</div>
-<strong>مع جزيرة</strong>
-<span>جزيرة وسط المطبخ</span>
+
+<b>مع جزيرة</b>
+
+<small>جزيرة وسطية</small>
+
+</div>
+
 </div>
 
 </div>
 
-<div class="buttons">
-<span></span>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
 
-<!-- 2 -->
-<div class="step" id="step2">
-<div class="card">
-<h2>02 — الخزائن العلوية</h2>
-<p class="subtitle">شنو بغيتي يكون فوق الرخامة؟</p>
+<!-- 2 القياسات -->
 
-<div class="options">
-
-<div class="option" data-group="upper" data-value="صنادق فوقانية">
-<div class="icon">▤</div>
-<strong>صنادق فوقانية</strong>
-<span>خزائن حتى الفوق</span>
-</div>
-
-<div class="option" data-group="upper" data-value="كاسكيط">
-<div class="icon">▱</div>
-<strong>كاسكيط</strong>
-<span>خزائن علوية خفيفة</span>
-</div>
-
-<div class="option" data-group="upper" data-value="بدون خزائن علوية">
-<div class="icon">—</div>
-<strong>بدون</strong>
-<span>حائط مفتوح</span>
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
-
-<!-- 3 -->
-<div class="step" id="step3">
-<div class="card">
-<h2>03 — قياسات المطبخ</h2>
-<p class="subtitle">دخل القياسات بالسنتيمتر.</p>
-
-<div class="fields">
-
-<div class="field">
-<label>الطول</label>
-<input id="length" type="number" placeholder="300">
-</div>
-
-<div class="field">
-<label>العرض</label>
-<input id="width" type="number" placeholder="250">
-</div>
-
-<div class="field">
-<label>الارتفاع</label>
-<input id="height" type="number" placeholder="260">
-</div>
-
-<div class="field">
-<label>طول الجهة الثانية</label>
-<input id="side" type="number" placeholder="180">
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
-
-<!-- 4 -->
-<div class="step" id="step4">
-<div class="card">
-<h2>04 — الرخام / السطح</h2>
-<p class="subtitle">اختار نوع السطح.</p>
-
-<div class="marble-grid">
-
-<div class="marble white" data-group="marble" data-value="رخام أبيض">
-<b>رخام أبيض</b><span>راقي ومضيء</span>
-</div>
-
-<div class="marble black" data-group="marble" data-value="رخام أسود">
-<b>رخام أسود</b><span>مودرن وفخم</span>
-</div>
-
-<div class="marble gray" data-group="marble" data-value="رخام رمادي">
-<b>رخام رمادي</b><span>ستايل عصري</span>
-</div>
-
-<div class="marble beige" data-group="marble" data-value="رخام بيج">
-<b>رخام بيج</b><span>دافئ وراقي</span>
-</div>
-
-<div class="marble quartz" data-group="marble" data-value="Quartz">
-<b>Quartz</b><span>متين وسهل التنظيف</span>
-</div>
-
-<div class="marble granite" data-group="marble" data-value="Granite">
-<b>Granite</b><span>قوي ومقاوم</span>
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
-
-<!-- 5 -->
-<div class="step" id="step5">
-<div class="card">
-<h2>05 — الخامة واللون</h2>
-<p class="subtitle">اختار الخامة واللون والستايل.</p>
-
-<div class="fields">
-
-<div class="field">
-<label>نوع الخامة</label>
-<select id="material">
-<option value="">اختار الخامة</option>
-<option>MDF</option>
-<option>MDF مقاوم للرطوبة</option>
-<option>خشب طبيعي</option>
-<option>Melamine</option>
-<option>Laqué</option>
-</select>
-</div>
-
-<div class="field">
-<label>اللون</label>
-<select id="color">
-<option value="">اختار اللون</option>
-<option>أبيض</option>
-<option>أسود</option>
-<option>كابوتشينو</option>
-<option>رمادي</option>
-<option>أخضر</option>
-<option>بيج</option>
-<option>خشبي</option>
-</select>
-</div>
-
-<div class="field full">
-<label>ستايل المطبخ</label>
-<select id="style">
-<option value="">اختار الستايل</option>
-<option>مودرن</option>
-<option>كلاسيك</option>
-<option>مودرن فاخر</option>
-<option>بسيط</option>
-<option>إيطالي</option>
-</select>
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
-
-<!-- 6 -->
-<div class="step" id="step6">
-<div class="card">
-<h2>06 — الإكسسوارات</h2>
-<p class="subtitle">اختار التجهيزات اللي بغيتي.</p>
-
-<div class="options">
-
-<div class="option" data-group="accessories" data-value="Tiroirs Hydrauliques">
-<div class="icon">▤</div>
-<strong>أدراج هيدروليكية</strong>
-<span>Tiroirs Hydrauliques</span>
-</div>
-
-<div class="option" data-group="accessories" data-value="سلة ركنية">
-<div class="icon">◫</div>
-<strong>سلة ركنية</strong>
-<span>Corner Basket</span>
-</div>
-
-<div class="option" data-group="accessories" data-value="سلة توابل">
-<div class="icon">▥</div>
-<strong>سلة توابل</strong>
-<span>Épices</span>
-</div>
-
-<div class="option" data-group="accessories" data-value="إضاءة LED">
-<div class="icon">💡</div>
-<strong>إضاءة LED</strong>
-<span>إضاءة داخلية</span>
-</div>
-
-<div class="option" data-group="accessories" data-value="مقابض مودرن">
-<div class="icon">▭</div>
-<strong>مقابض مودرن</strong>
-<span>Poignées</span>
-</div>
-
-</div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
-</div>
-</div>
-
-<!-- 7 -->
-<div class="step" id="step7">
 <div class="card">
 
-<h2>07 — صورة المكان</h2>
-<p class="subtitle">صيفط صورة للمكان وملاحظاتك.</p>
+<h2>2️⃣ القياسات</h2>
 
-<label class="upload">
-<input id="photo" type="file" accept="image/*">
-<div class="upload-icon">📷</div>
-<strong>اضغط هنا لرفع صورة</strong>
-<p>JPG أو PNG</p>
+<label>
+الطول بالسنتيمتر
+<input id="length" type="number" placeholder="مثال: 300">
 </label>
 
-<div class="preview" id="preview">
-<img id="previewImg">
+<label>
+العرض بالسنتيمتر
+<input id="width" type="number" placeholder="مثال: 250">
+</label>
+
+<label>
+الارتفاع بالسنتيمتر
+<input id="height" type="number" placeholder="مثال: 260">
+</label>
+
+<label>
+الجهة الثانية
+<input id="side" type="number" placeholder="مثال: 180">
+</label>
+
 </div>
 
-<div class="field" style="margin-top:20px">
-<label>ملاحظات إضافية</label>
-<textarea id="notes" placeholder="مثلاً: بغيت الفرن هنا..."></textarea>
-</div>
 
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ السابق</button>
-<button class="next" onclick="nextStep()">التالي ←</button>
-</div>
+<!-- 3 الخزائن -->
 
-</div>
-</div>
-
-<!-- 8 -->
-<div class="step" id="step8">
 <div class="card">
 
-<h2>08 — ملخص المطبخ</h2>
-<p class="subtitle">راجع الاختيارات ديالك.</p>
+<h2>3️⃣ الخزائن العلوية</h2>
+
+<div class="grid">
+
+<div class="choice"
+data-type="upper"
+data-value="خزائن حتى السقف">
+
+<div class="icon">▤</div>
+
+<b>حتى السقف</b>
+
+</div>
+
+
+<div class="choice"
+data-type="upper"
+data-value="خزائن علوية">
+
+<div class="icon">▥</div>
+
+<b>خزائن علوية</b>
+
+</div>
+
+
+<div class="choice"
+data-type="upper"
+data-value="بدون خزائن علوية">
+
+<div class="icon">—</div>
+
+<b>بدون</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 4 الرخام -->
+
+<div class="card">
+
+<h2>4️⃣ الرخام / السطح</h2>
+
+<div class="grid">
+
+<div class="choice"
+data-type="marble"
+data-value="رخام أبيض">
+
+<div class="icon">⬜</div>
+
+<b>رخام أبيض</b>
+
+</div>
+
+
+<div class="choice"
+data-type="marble"
+data-value="رخام أسود">
+
+<div class="icon">⬛</div>
+
+<b>رخام أسود</b>
+
+</div>
+
+
+<div class="choice"
+data-type="marble"
+data-value="رخام رمادي">
+
+<div class="icon">◻️</div>
+
+<b>رخام رمادي</b>
+
+</div>
+
+
+<div class="choice"
+data-type="marble"
+data-value="Quartz">
+
+<div class="icon">◇</div>
+
+<b>Quartz</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 5 الخامة -->
+
+<div class="card">
+
+<h2>5️⃣ الخامة واللون</h2>
+
+<label>
+
+الخامة
+
+<select id="material">
+
+<option value="">اختار الخامة</option>
+
+<option>MDF</option>
+
+<option>MDF مقاوم للرطوبة</option>
+
+<option>Melamine</option>
+
+<option>Laqué</option>
+
+<option>خشب طبيعي</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+اللون
+
+<select id="color">
+
+<option value="">اختار اللون</option>
+
+<option>أبيض</option>
+
+<option>أسود</option>
+
+<option>رمادي</option>
+
+<option>بيج</option>
+
+<option>كابوتشينو</option>
+
+<option>أخضر</option>
+
+<option>خشبي</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+الستايل
+
+<select id="style">
+
+<option value="">اختار الستايل</option>
+
+<option>مودرن</option>
+
+<option>مودرن فاخر</option>
+
+<option>كلاسيك</option>
+
+<option>بسيط</option>
+
+<option>إيطالي</option>
+
+</select>
+
+</label>
+
+</div>
+
+
+<!-- 6 الاكسسوارات -->
+
+<div class="card">
+
+<h2>6️⃣ الإكسسوارات</h2>
+
+<div class="grid">
+
+<div class="choice multi"
+data-value="أدراج هيدروليكية">
+
+<div class="icon">▤</div>
+
+<b>أدراج هيدروليكية</b>
+
+</div>
+
+
+<div class="choice multi"
+data-value="سلة ركنية">
+
+<div class="icon">◫</div>
+
+<b>سلة ركنية</b>
+
+</div>
+
+
+<div class="choice multi"
+data-value="سلة توابل">
+
+<div class="icon">▥</div>
+
+<b>سلة توابل</b>
+
+</div>
+
+
+<div class="choice multi"
+data-value="إضاءة LED">
+
+<div class="icon">💡</div>
+
+<b>إضاءة LED</b>
+
+</div>
+
+
+<div class="choice multi"
+data-value="مقابض مودرن">
+
+<div class="icon">▭</div>
+
+<b>مقابض مودرن</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 7 الصورة -->
+
+<div class="card">
+
+<h2>7️⃣ صورة المكان</h2>
+
+<label class="upload">
+
+<input
+id="photo"
+type="file"
+accept="image/*">
+
+<div style="font-size:42px">
+📷
+</div>
+
+<strong>
+اضغط هنا لاختيار صورة المطبخ
+</strong>
+
+<p class="note">
+الصورة غادي تترفع للموقع باش نقدروا نشوفوها.
+</p>
+
+</label>
+
+
+<div id="uploadStatus" class="upload-status"></div>
+
+
+<div class="preview" id="preview">
+
+<img id="previewImg">
+
+</div>
+
+
+<label style="margin-top:20px">
+
+ملاحظات
+
+<textarea
+id="notes"
+placeholder="مثلاً: بغيت الفرن هنا، الثلاجة هنا..."></textarea>
+
+</label>
+
+</div>
+
+
+<!-- 8 الملخص -->
+
+<div class="card">
+
+<h2>8️⃣ ملخص الطلب</h2>
+
 
 <div class="summary">
 
-<div class="summary-row">
-<span>شكل المطبخ</span>
+<div class="row">
+<span>الشكل</span>
 <b id="sShape">—</b>
 </div>
 
-<div class="summary-row">
-<span>الخزائن العلوية</span>
+
+<div class="row">
+<span>القياسات</span>
+<b id="sMeasure">—</b>
+</div>
+
+
+<div class="row">
+<span>الخزائن</span>
 <b id="sUpper">—</b>
 </div>
 
-<div class="summary-row">
-<span>القياسات</span>
-<b id="sMeasurements">—</b>
-</div>
 
-<div class="summary-row">
-<span>الرخام</span>
+<div class="row">
+<span>السطح</span>
 <b id="sMarble">—</b>
 </div>
 
-<div class="summary-row">
+
+<div class="row">
 <span>الخامة</span>
 <b id="sMaterial">—</b>
 </div>
 
-<div class="summary-row">
+
+<div class="row">
 <span>اللون</span>
 <b id="sColor">—</b>
 </div>
 
-<div class="summary-row">
+
+<div class="row">
 <span>الستايل</span>
 <b id="sStyle">—</b>
 </div>
 
-<div class="summary-row">
+
+<div class="row">
 <span>الإكسسوارات</span>
 <b id="sAccessories">—</b>
 </div>
 
-<div class="summary-row">
+
+<div class="row">
 <span>الصورة</span>
-<b id="sPhoto">لا توجد</b>
+<b id="sPhoto">لم يتم الرفع</b>
 </div>
 
 </div>
 
-<a id="whatsappLink" class="whatsapp" target="_blank">
+
+<a
+id="whatsapp"
+class="whatsapp"
+target="_blank"
+href="#">
+
 💬 صيفط الطلب عبر واتساب
+
 </a>
 
-<button class="save" onclick="saveData()">
-💾 حفظ التصميم
-</button>
-
-<button class="delete" onclick="deleteData()">
-🗑️ مسح التصميم المحفوظ
-</button>
-
-<div class="saved" id="savedMessage"></div>
-
-<div class="buttons">
-<button class="prev" onclick="prevStep()">→ تعديل الاختيارات</button>
 </div>
 
-</div>
-</div>
 
 </div>
-</main>
 
-<footer>
-<strong>صمم ديكورك</strong> © 2026
-<br>
-جميع الحقوق محفوظة — <strong>Hamza Chtaibi</strong>
-</footer>
 
 <script>
 
-let currentStep=1;
+/* =========================
+   CLOUDINARY
+========================= */
 
-let data={
-shape:"",
-upper:"",
-marble:"",
-accessories:[]
+const CLOUD_NAME="rhao0lli";
+
+const UPLOAD_PRESET="samemdecork_images";
+
+let imageURL="";
+
+
+/* =========================
+   DATA
+========================= */
+
+const data={
+ shape:"",
+ upper:"",
+ marble:"",
+ accessories:[]
 };
 
-const KEY="samemdec_kitchen";
+
+/* =========================
+   الاختيارات
+========================= */
+
+document.querySelectorAll(".choice").forEach(el=>{
+
+ el.addEventListener("click",function(){
+
+  const type=this.dataset.type;
 
 
-/* الاختيارات */
+  if(type){
 
-document.querySelectorAll(".option,.marble").forEach(el=>{
+   document
+   .querySelectorAll('[data-type="'+type+'"]')
+   .forEach(x=>{
+    x.classList.remove("active");
+   });
 
-el.addEventListener("click",function(){
+   this.classList.add("active");
 
-let group=this.dataset.group;
+   data[type]=this.dataset.value;
 
-if(group==="accessories"){
+  }
 
-this.classList.toggle("selected");
 
-data.accessories=[
-...document.querySelectorAll('[data-group="accessories"].selected')
-].map(x=>x.dataset.value);
+  if(this.classList.contains("multi")){
 
-}else{
+   this.classList.toggle("active");
+
+   data.accessories=
+   [...document.querySelectorAll(".multi.active")]
+   .map(x=>x.dataset.value);
+
+  }
+
+
+  update();
+
+ });
+
+});
+
+
+/* =========================
+   رفع الصورة
+========================= */
 
 document
-.querySelectorAll('[data-group="'+group+'"]')
-.forEach(x=>x.classList.remove("selected"));
+.getElementById("photo")
+.addEventListener("change",async function(){
 
-this.classList.add("selected");
+ const file=this.files[0];
 
-data[group]=this.dataset.value;
+ if(!file)return;
 
-}
 
-autoSave();
+ const status=document.getElementById("uploadStatus");
 
-});
+ status.className="upload-status";
 
-});
+ status.textContent=
+ "⏳ جاري رفع الصورة...";
 
 
-/* المراحل */
+ const reader=new FileReader();
 
-function showStep(n){
+ reader.onload=function(e){
 
-document.querySelectorAll(".step")
-.forEach(x=>x.classList.remove("active"));
+  document.getElementById("previewImg").src=
+  e.target.result;
 
-document.getElementById("step"+n)
-.classList.add("active");
+  document.getElementById("preview").style.display=
+  "block";
 
-document.querySelectorAll(".progress div")
-.forEach((x,i)=>{
-x.classList.toggle("active",i<n);
-});
+ };
 
-if(n===8) createSummary();
+ reader.readAsDataURL(file);
 
-window.scrollTo({top:0,behavior:"smooth"});
-}
 
+ try{
 
-/* التالي */
+  const formData=new FormData();
 
-function nextStep(){
+  formData.append("file",file);
 
-if(currentStep===1&&!data.shape){
-alert("اختار شكل المطبخ أولا");
-return;
-}
+  formData.append(
+   "upload_preset",
+   UPLOAD_PRESET
+  );
 
-if(currentStep===2&&!data.upper){
-alert("اختار الخزائن العلوية أولا");
-return;
-}
 
-if(currentStep===3){
+  const response=
+  await fetch(
+   `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+   {
+    method:"POST",
+    body:formData
+   }
+  );
 
-if(!length.value||!width.value){
-alert("دخل الطول والعرض أولا");
-return;
-}
 
-}
+  const result=await response.json();
 
-if(currentStep===4&&!data.marble){
-alert("اختار الرخام أولا");
-return;
-}
 
-if(currentStep===5){
+  if(!response.ok){
 
-if(!material.value||!color.value){
-alert("اختار الخامة واللون أولا");
-return;
-}
+   throw new Error(
+    result.error?.message ||
+    "فشل رفع الصورة"
+   );
 
-}
+  }
 
-if(currentStep<8){
 
-currentStep++;
-showStep(currentStep);
+  imageURL=result.secure_url;
 
-}
 
-}
+  status.className=
+  "upload-status success";
 
+  status.textContent=
+  "✅ تم رفع الصورة بنجاح";
 
-/* السابق */
 
-function prevStep(){
+  document.getElementById("sPhoto").textContent=
+  "تم رفع الصورة ✓";
 
-if(currentStep>1){
-currentStep--;
-showStep(currentStep);
-}
 
-}
+  update();
 
+ }catch(error){
 
-/* حفظ */
+  console.error(error);
 
-function getData(){
+  status.className=
+  "upload-status error";
 
-return {
+  status.textContent=
+  "❌ وقع مشكل في رفع الصورة. حاول مرة أخرى.";
 
-data:data,
-
-length:length.value,
-width:width.value,
-height:height.value,
-side:side.value,
-
-material:material.value,
-color:color.value,
-style:style.value,
-notes:notes.value
-
-};
-
-}
-
-function saveData(){
-
-localStorage.setItem(KEY,JSON.stringify(getData()));
-
-let msg=document.getElementById("savedMessage");
-
-msg.textContent="✅ تم حفظ التصميم";
-
-setTimeout(()=>{
-msg.textContent="";
-},2500);
-
-}
-
-function autoSave(){
-
-localStorage.setItem(KEY,JSON.stringify(getData()));
-
-}
-
-
-/* استرجاع */
-
-function loadData(){
-
-let saved=localStorage.getItem(KEY);
-
-if(!saved)return;
-
-try{
-
-let x=JSON.parse(saved);
-
-data=x.data||data;
-
-length.value=x.length||"";
-width.value=x.width||"";
-height.value=x.height||"";
-side.value=x.side||"";
-
-material.value=x.material||"";
-color.value=x.color||"";
-style.value=x.style||"";
-notes.value=x.notes||"";
-
-
-restore("shape",data.shape);
-restore("upper",data.upper);
-restore("marble",data.marble);
-
-
-(data.accessories||[]).forEach(value=>{
-
-let el=document.querySelector(
-'[data-group="accessories"][data-value="'+value+'"]'
-);
-
-if(el)el.classList.add("selected");
+ }
 
 });
 
 
-}catch(e){
+/* =========================
+   تحديث
+========================= */
 
-console.log(e);
+function update(){
 
-}
+ const l=
+ document.getElementById("length").value;
 
-}
+ const w=
+ document.getElementById("width").value;
 
+ const h=
+ document.getElementById("height").value;
 
-function restore(group,value){
-
-if(!value)return;
-
-document.querySelectorAll(
-'[data-group="'+group+'"]'
-).forEach(el=>{
-
-if(el.dataset.value===value)
-el.classList.add("selected");
-
-});
-
-}
+ const side=
+ document.getElementById("side").value;
 
 
-/* حذف */
-
-function deleteData(){
-
-if(!confirm("واش متأكد بغيتي تمسح التصميم؟"))
-return;
-
-localStorage.removeItem(KEY);
-
-location.reload();
-
-}
+ document.getElementById("sShape").textContent=
+ data.shape||"—";
 
 
-/* الصورة */
+ document.getElementById("sMeasure").textContent=
 
-photo.addEventListener("change",function(){
-
-let file=this.files[0];
-
-if(!file)return;
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-previewImg.src=e.target.result;
-preview.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-});
+ `${l||"-"} × ${w||"-"} × ${h||"-"} cm`
+ +
+ (side
+ ?
+ ` | الجهة الثانية ${side} cm`
+ :
+ "");
 
 
-/* الملخص */
+ document.getElementById("sUpper").textContent=
+ data.upper||"—";
 
-function createSummary(){
 
-sShape.textContent=data.shape||"—";
-sUpper.textContent=data.upper||"—";
-sMarble.textContent=data.marble||"—";
+ document.getElementById("sMarble").textContent=
+ data.marble||"—";
 
-sMeasurements.textContent=
-"الطول "+(length.value||"—")+
-"cm | العرض "+(width.value||"—")+
-"cm | الارتفاع "+(height.value||"—")+
-"cm";
 
-sMaterial.textContent=material.value||"—";
-sColor.textContent=color.value||"—";
-sStyle.textContent=style.value||"—";
+ document.getElementById("sMaterial").textContent=
+ document.getElementById("material").value||"—";
 
-sAccessories.textContent=
-data.accessories.length?
-data.accessories.join("، "):
-"بدون";
 
-sPhoto.textContent=
-photo.files.length?
-photo.files[0].name:
-"لا توجد";
+ document.getElementById("sColor").textContent=
+ document.getElementById("color").value||"—";
 
-updateWhatsApp();
+
+ document.getElementById("sStyle").textContent=
+ document.getElementById("style").value||"—";
+
+
+ document.getElementById("sAccessories").textContent=
+
+ data.accessories.length
+ ?
+ data.accessories.join("، ")
+ :
+ "بدون";
+
+
+ createWhatsApp();
 
 }
 
 
-/* واتساب */
+/* =========================
+   واتساب
+========================= */
 
-function updateWhatsApp(){
+function createWhatsApp(){
 
-let message=
-`السلام عليكم، بغيت نصمم مطبخ.
+ const l=
+ document.getElementById("length").value;
+
+ const w=
+ document.getElementById("width").value;
+
+ const h=
+ document.getElementById("height").value;
+
+ const side=
+ document.getElementById("side").value;
+
+ const material=
+ document.getElementById("material").value;
+
+ const color=
+ document.getElementById("color").value;
+
+ const style=
+ document.getElementById("style").value;
+
+ const notes=
+ document.getElementById("notes").value;
+
+
+ const message=
+
+`السلام عليكم، بغيت نصمم مطبخ مع صمم ديكورك.
 
 شكل المطبخ:
-${data.shape||"-"}
-
-الخزائن العلوية:
-${data.upper||"-"}
+${data.shape||"غير محدد"}
 
 القياسات:
-الطول: ${length.value||"-"} cm
-العرض: ${width.value||"-"} cm
-الارتفاع: ${height.value||"-"} cm
-الجهة الثانية: ${side.value||"-"} cm
+الطول: ${l||"-"} cm
+العرض: ${w||"-"} cm
+الارتفاع: ${h||"-"} cm
+الجهة الثانية: ${side||"-"} cm
 
-الرخام:
-${data.marble||"-"}
+الخزائن العلوية:
+${data.upper||"غير محدد"}
+
+الرخام / السطح:
+${data.marble||"غير محدد"}
 
 الخامة:
-${material.value||"-"}
+${material||"-"}
 
 اللون:
-${color.value||"-"}
+${color||"-"}
 
 الستايل:
-${style.value||"-"}
+${style||"-"}
 
 الإكسسوارات:
-${data.accessories.length?
-data.accessories.join("، "):
-"بدون"}
+${data.accessories.length
+ ?
+ data.accessories.join("، ")
+ :
+ "بدون"}
 
 ملاحظات:
-${notes.value||"-"}
+${notes||"-"}
 
-الاسم:
+📷 صورة المكان:
+${imageURL||"لم يتم رفع الصورة"}
+
+صمم ديكورك
 Hamza Chtaibi`;
 
-whatsappLink.href=
-"https://wa.me/212754350706?text="+
-encodeURIComponent(message);
+
+ document.getElementById("whatsapp").href=
+
+ "https://wa.me/212754350706?text="+
+ encodeURIComponent(message);
 
 }
 
 
-/* تحديث تلقائي */
+/* =========================
+   تحديث تلقائي
+========================= */
 
-document.querySelectorAll("input,select,textarea")
+document
+.querySelectorAll("input,select,textarea")
 .forEach(el=>{
 
-el.addEventListener("input",function(){
+ el.addEventListener("input",update);
 
-autoSave();
-updateWhatsApp();
-
-});
-
-el.addEventListener("change",function(){
-
-autoSave();
-updateWhatsApp();
-
-});
+ el.addEventListener("change",update);
 
 });
 
 
-/* البداية */
-
-window.addEventListener("DOMContentLoaded",function(){
-
-loadData();
-updateWhatsApp();
-
-});
+update();
 
 </script>
 

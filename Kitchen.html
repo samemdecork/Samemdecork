@@ -2,8 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#111111">
+
 <title>صمم ديكورك | صمم مطبخك</title>
 
 <style>
@@ -13,16 +14,27 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:#f3f1ed;
+  background:#f4f1ec;
   color:#171717;
   line-height:1.7;
 }
 
-button,input{
+button,
+input{
   font-family:inherit;
 }
+
+button{
+  cursor:pointer;
+}
+
+/* ================= HEADER ================= */
 
 .header{
   background:#111;
@@ -35,11 +47,12 @@ button,input{
 }
 
 .header-inner{
-  width:min(1200px,94%);
+  max-width:1200px;
   margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:20px;
 }
 
 .logo{
@@ -48,50 +61,148 @@ button,input{
 }
 
 .logo span{
-  color:#c9aa78;
+  color:#c8a878;
 }
 
 .header-small{
-  color:#aaa;
+  color:#bbb;
   font-size:13px;
 }
 
+/* ================= WELCOME ================= */
+
+.welcome{
+  position:fixed;
+  inset:0;
+  background:#111d;
+  backdrop-filter:blur(8px);
+  z-index:5000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.welcome.hidden{
+  display:none;
+}
+
+.welcome-box{
+  width:min(500px,100%);
+  background:#fff;
+  border-radius:25px;
+  padding:32px;
+  box-shadow:0 20px 70px #0007;
+  text-align:center;
+}
+
+.welcome-logo{
+  font-size:30px;
+  font-weight:900;
+  margin-bottom:5px;
+}
+
+.welcome-logo span{
+  color:#b29368;
+}
+
+.welcome-box h1{
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.welcome-box p{
+  color:#777;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.welcome-fields{
+  display:grid;
+  gap:13px;
+  text-align:right;
+}
+
+.welcome-fields label{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.welcome-fields input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:13px;
+  outline:none;
+  font-size:16px;
+}
+
+.welcome-fields input:focus{
+  border-color:#b29368;
+}
+
+.start-btn{
+  width:100%;
+  margin-top:18px;
+  border:0;
+  padding:15px;
+  border-radius:14px;
+  background:#111;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.start-btn:hover{
+  background:#292929;
+}
+
+/* ================= HERO ================= */
+
 .hero{
-  min-height:350px;
+  min-height:390px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:45px 20px;
-  color:white;
+  color:#fff;
+  padding:55px 20px;
   background:
     linear-gradient(#0009,#0009),
-    url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85")
+    url("https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=1800&q=90")
     center/cover;
 }
 
 .hero h1{
-  font-size:clamp(30px,6vw,55px);
-  margin-bottom:8px;
+  font-size:clamp(32px,6vw,58px);
+  margin-bottom:10px;
 }
 
 .hero p{
-  max-width:720px;
+  max-width:750px;
   margin:auto;
   color:#ddd;
+  font-size:16px;
 }
+
+/* ================= CONTAINER ================= */
 
 .container{
   width:min(1150px,92%);
-  margin:30px auto 70px;
+  margin:35px auto 70px;
 }
+
+/* ================= PROGRESS ================= */
 
 .progress-wrap{
   background:#fff;
-  padding:15px;
+  padding:16px;
   border-radius:18px;
-  margin-bottom:22px;
-  box-shadow:0 5px 25px #0001;
+  margin-bottom:25px;
+  box-shadow:0 5px 25px #0000000d;
+  position:sticky;
+  top:78px;
+  z-index:50;
 }
 
 .progress{
@@ -105,24 +216,26 @@ button,input{
   width:0%;
   height:100%;
   background:#b29368;
-  transition:.35s;
+  transition:.4s;
 }
 
 .progress-info{
   display:flex;
   justify-content:space-between;
+  margin-top:8px;
+  font-size:13px;
   color:#777;
-  font-size:12px;
-  margin-top:7px;
 }
+
+/* ================= SECTION ================= */
 
 .section{
   background:#fff;
   border-radius:22px;
-  padding:26px;
-  margin-bottom:20px;
-  box-shadow:0 7px 30px #0000000c;
-  scroll-margin-top:100px;
+  padding:28px;
+  margin-bottom:22px;
+  box-shadow:0 7px 30px #0000000b;
+  scroll-margin-top:125px;
 }
 
 .section-head{
@@ -136,7 +249,7 @@ button,input{
 
 .section-head h2{
   font-size:25px;
-  margin:2px 0;
+  margin:3px 0;
 }
 
 .section-head p{
@@ -144,56 +257,59 @@ button,input{
   font-size:14px;
 }
 
+/* ================= OPTIONS ================= */
+
 .options{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
   gap:14px;
 }
 
 .option{
   position:relative;
-  border:2px solid #e8e5df;
-  background:#faf9f7;
-  border-radius:17px;
   overflow:hidden;
-  cursor:pointer;
+  min-height:105px;
+  padding:15px;
+  border:2px solid #eee;
+  border-radius:17px;
+  background:#fafafa;
   text-align:center;
   transition:.2s;
 }
 
 .option:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
   border-color:#c8a878;
 }
 
 .option.selected{
   border-color:#a7865a;
   background:#fbf7ef;
-  box-shadow:0 0 0 3px #c8a87825;
+  box-shadow:0 0 0 4px #c8a87825;
 }
 
-.option.selected::after{
+.option.selected:after{
   content:"✓";
   position:absolute;
   top:8px;
   right:8px;
-  width:27px;
-  height:27px;
-  line-height:27px;
-  background:#a7865a;
-  color:white;
+  width:25px;
+  height:25px;
   border-radius:50%;
+  background:#a7865a;
+  color:#fff;
+  line-height:25px;
   font-weight:bold;
-  z-index:5;
 }
 
 .option-title{
   font-weight:900;
-  font-size:15px;
+  margin-top:7px;
 }
 
-.option-content{
-  padding:13px;
+.option-sub{
+  color:#777;
+  font-size:12px;
 }
 
 .option-price{
@@ -203,510 +319,250 @@ button,input{
   margin-top:3px;
 }
 
+/* ================= REAL IMAGE CARDS ================= */
 
-/* =================================
-   رسومات أشكال المطابخ
-================================= */
-
-.layout-preview{
-  height:160px;
-  background:#f1eee8;
-  position:relative;
-  overflow:hidden;
+.image-option{
+  padding:0;
+  min-height:220px;
 }
 
-.room{
-  position:absolute;
-  inset:15px;
-}
-
-.cab{
-  position:absolute;
-  background:#73583e;
-  border:3px solid #4e3b2a;
-  border-radius:4px;
-  box-shadow:0 3px 7px #0002;
-}
-
-.cab::after{
-  content:"";
-  position:absolute;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:#d8c7a8;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-
-/* L */
-.layout-l .bottom{
-  left:18px;
-  right:18px;
-  bottom:20px;
-  height:30px;
-}
-
-.layout-l .side{
-  right:18px;
-  bottom:20px;
-  width:30px;
-  height:100px;
-}
-
-.layout-l .bottom::after{
-  right:20%;
-}
-
-.layout-l .side::after{
-  top:20%;
-  right:50%;
-}
-
-
-/* U */
-.layout-u .bottom{
-  left:18px;
-  right:18px;
-  bottom:20px;
-  height:30px;
-}
-
-.layout-u .left{
-  left:18px;
-  bottom:20px;
-  width:30px;
-  height:100px;
-}
-
-.layout-u .right{
-  right:18px;
-  bottom:20px;
-  width:30px;
-  height:100px;
-}
-
-
-/* straight */
-.layout-straight .bottom{
-  left:20px;
-  right:20px;
-  bottom:35px;
-  height:32px;
-}
-
-
-/* two */
-.layout-two .one{
-  left:15px;
-  right:15px;
-  bottom:28px;
-  height:27px;
-}
-
-.layout-two .two{
-  left:15px;
-  right:15px;
-  top:30px;
-  height:27px;
-}
-
-
-/* island */
-.layout-island .back{
-  left:20px;
-  right:20px;
-  top:25px;
-  height:28px;
-}
-
-.layout-island .island{
-  width:90px;
-  height:30px;
-  bottom:35px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#b29368;
-  border-color:#755b3c;
-}
-
-
-/* =================================
-   الخامات
-================================= */
-
-.material-preview{
+.image-option .option-img{
+  width:100%;
   height:145px;
-  position:relative;
-  overflow:hidden;
+  background-size:cover;
+  background-position:center;
 }
 
-.material-preview::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,#fff2,transparent 35%,#0001);
+.image-option .option-body{
+  padding:11px;
 }
 
-.mdf{
-  background:
-    repeating-linear-gradient(
-      0deg,
-      #b99369 0,
-      #b99369 5px,
-      #a9825a 6px,
-      #b99369 10px
-    );
-}
+/* ================= SHAPES ================= */
 
-.mdf-water{
-  background:
-    repeating-linear-gradient(
-      0deg,
-      #b8a58e 0,
-      #b8a58e 5px,
-      #8f7d69 6px,
-      #b8a58e 11px
-    );
-}
-
-.melamine{
-  background:
-    linear-gradient(90deg,#d6c8b4,#eee8dc,#cdbda6);
-}
-
-.laque{
-  background:
-    linear-gradient(135deg,#eee,#fff 45%,#bcbcbc 80%,#f8f8f8);
-}
-
-.natural{
-  background:
-    repeating-linear-gradient(
-      12deg,
-      #6b4026 0,
-      #9a6036 5px,
-      #6b3d24 9px,
-      #b47847 13px
-    );
-}
-
-
-/* =================================
-   شكل البيبان
-================================= */
-
-.door-preview{
-  height:145px;
-  padding:18px;
-  background:#eeeae2;
+.shape-box{
+  height:115px;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 }
 
-.door{
-  height:110px;
-  width:75px;
+.shape{
+  position:relative;
+  width:105px;
+  height:80px;
+}
+
+.shape span{
+  position:absolute;
+  background:#292929;
   border-radius:5px;
-  position:relative;
-  background:#d5c3aa;
-  border:6px solid #80684c;
-  box-shadow:0 4px 10px #0002;
 }
 
-.door-modern{
-  background:#ded8ce;
-  border:3px solid #555;
+.shape-l span:nth-child(1){
+  width:78px;
+  height:10px;
+  bottom:5px;
+  right:5px;
 }
 
-.door-modern::before{
-  content:"";
-  position:absolute;
-  inset:10px;
-  border:1px solid #777;
-}
-
-.door-handleless{
-  background:#d1c0a5;
-  border:3px solid #80684c;
-}
-
-.door-push{
-  background:#eeeeeb;
-  border:3px solid #aaa;
-}
-
-.door-push::after{
-  content:"";
-  position:absolute;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#555;
-  left:7px;
-  top:50%;
-}
-
-.door-glass{
-  background:
-    linear-gradient(135deg,#a9c0c8,#e6f1f4,#91aab2);
-  border:6px solid #222;
-}
-
-
-/* =================================
-   العلوية
-================================= */
-
-.upper-preview{
-  height:145px;
-  position:relative;
-  background:#f1eee8;
-}
-
-.upper-cab{
-  position:absolute;
-  height:55px;
-  background:#c3b39d;
-  border:3px solid #665541;
-  border-radius:4px;
-}
-
-.upper-ceiling{
-  left:18px;
-  right:18px;
-  top:10px;
-}
-
-.upper-straight{
-  left:28px;
-  right:28px;
-  top:38px;
-}
-
-.upper-cap{
-  left:18px;
-  right:18px;
-  top:32px;
-  height:48px;
-  transform:skewX(-12deg);
-}
-
-.upper-open{
-  left:25px;
-  right:25px;
-  top:32px;
-  background:transparent;
-  border:5px solid #80684c;
-}
-
-.upper-none{
-  display:none;
-}
-
-.upper-preview.none{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#777;
-  font-size:15px;
-}
-
-
-/* =================================
-   السطح
-================================= */
-
-.counter-preview{
-  height:145px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eee;
-}
-
-.counter-surface{
-  width:85%;
-  height:65px;
-  border-radius:8px;
-  box-shadow:0 5px 12px #0002;
-}
-
-.quartz{
-  background:
-    radial-gradient(circle at 20% 30%,#aaa 0 1px,transparent 2px),
-    radial-gradient(circle at 70% 65%,#888 0 1px,transparent 2px),
-    #e5e1d8;
-}
-
-.granite{
-  background:
-    radial-gradient(circle,#555 0 1px,transparent 2px),
-    radial-gradient(circle,#999 0 1px,transparent 2px),
-    #555;
-  background-size:13px 13px,19px 19px;
-}
-
-.marble{
-  background:
-    linear-gradient(120deg,transparent 40%,#888 41%,transparent 43%),
-    #eee;
-}
-
-.dekton{
-  background:#252525;
-}
-
-.compact{
-  background:#765f4c;
-}
-
-.counter-normal{
-  background:#b89d7c;
-}
-
-
-/* =================================
-   الإكسسوارات
-================================= */
-
-.accessory-preview{
-  height:135px;
-  background:#eeeae2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.drawer-demo{
-  width:105px;
-  height:75px;
-  border:5px solid #777;
-  background:#bbb;
-  position:relative;
-}
-
-.drawer-demo span{
-  position:absolute;
-  left:50%;
-  top:7px;
-  width:30px;
-  height:4px;
-  background:#555;
-  transform:translateX(-50%);
-}
-
-.corner-demo{
-  width:90px;
-  height:90px;
-  border:6px solid #765c40;
-  transform:rotate(45deg);
-}
-
-.spice-demo{
-  width:45px;
-  height:95px;
-  background:#765c40;
-  border:5px solid #4e3b2a;
-}
-
-.bottle-demo{
-  width:105px;
+.shape-l span:nth-child(2){
+  width:10px;
   height:70px;
-  border:5px solid #765c40;
+  bottom:5px;
+  right:5px;
+}
+
+.shape-u span:nth-child(1){
+  width:85px;
+  height:10px;
+  bottom:5px;
+  right:10px;
+}
+
+.shape-u span:nth-child(2){
+  width:10px;
+  height:70px;
+  bottom:5px;
+  right:10px;
+}
+
+.shape-u span:nth-child(3){
+  width:10px;
+  height:70px;
+  bottom:5px;
+  left:10px;
+}
+
+.shape-line span:nth-child(1){
+  width:90px;
+  height:10px;
+  bottom:20px;
+  right:7px;
+}
+
+.shape-two span:nth-child(1){
+  width:75px;
+  height:10px;
+  right:12px;
+  bottom:15px;
+  transform:rotate(-20deg);
+}
+
+.shape-two span:nth-child(2){
+  width:75px;
+  height:10px;
+  right:12px;
+  top:15px;
+  transform:rotate(-20deg);
+}
+
+.shape-island span:nth-child(1){
+  width:80px;
+  height:10px;
+  bottom:8px;
+  right:12px;
+}
+
+.shape-island span:nth-child(2){
+  width:45px;
+  height:10px;
+  top:10px;
+  right:30px;
+  background:#b29368;
+}
+
+/* ================= MATERIALS ================= */
+
+.material-img{
+  width:100%;
+  height:125px;
+  background-size:cover;
+  background-position:center;
+}
+
+.material-body{
+  padding:12px;
+}
+
+/* ================= COLOR ================= */
+
+.color-card{
+  padding:13px;
+}
+
+.swatch{
+  width:65px;
+  height:65px;
+  margin:0 auto 8px;
+  border-radius:14px;
+  box-shadow:inset 0 0 0 1px #0002;
+}
+
+.color-white{
+  background:#eee9dc;
+}
+
+.color-cappuccino{
+  background:#b99c7d;
+}
+
+.color-beige{
+  background:#d8c6ad;
+}
+
+.color-grey{
+  background:#858585;
+}
+
+.color-black{
+  background:#171717;
+}
+
+.color-green{
+  background:#65745e;
+}
+
+.color-navy{
+  background:#293642;
+}
+
+.color-wood{
+  background:
+    repeating-linear-gradient(
+      8deg,
+      #714728 0px,
+      #a86e45 5px,
+      #704426 10px
+    );
+}
+
+/* ================= COUNTER ================= */
+
+.counter-card{
+  min-height:130px;
   display:flex;
-  gap:5px;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.counter{
+  display:flex;
   justify-content:center;
   align-items:center;
+  gap:15px;
+  margin-top:10px;
 }
 
-.bottle-demo i{
-  width:14px;
-  height:42px;
-  background:#333;
-  border-radius:4px;
+.counter button{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:20px;
 }
 
-.led-demo{
-  width:120px;
-  height:45px;
-  border-radius:8px;
-  background:#fff;
-  box-shadow:0 0 25px #fff;
-  border:1px solid #ddd;
+.counter-value{
+  min-width:45px;
+  font-size:23px;
+  font-weight:bold;
 }
 
-
-/* =================================
-   العدد
-================================= */
-
-.number-options .option{
-  min-height:90px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.number{
-  font-size:28px;
-  font-weight:900;
-}
-
-
-/* =================================
-   القياسات
-================================= */
+/* ================= MEASUREMENTS ================= */
 
 .measure-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
 }
 
 .field label{
   display:block;
   font-weight:bold;
-  margin-bottom:6px;
+  margin-bottom:7px;
 }
 
 .field input{
   width:100%;
-  padding:12px;
+  padding:13px 14px;
   border:1px solid #ddd;
   border-radius:12px;
-  font-size:16px;
   outline:none;
+  font-size:16px;
 }
 
 .field input:focus{
   border-color:#b29368;
 }
 
-.notice{
-  margin-top:15px;
-  background:#fff8ea;
-  border-right:4px solid #b29368;
-  border-radius:10px;
-  padding:11px;
-  font-size:13px;
-  color:#666;
-}
-
-
-/* =================================
-   الميزانية
-================================= */
+/* ================= BUDGET ================= */
 
 .budget-box{
   background:#151515;
   color:#fff;
-  padding:22px;
-  border-radius:18px;
+  border-radius:20px;
+  padding:23px;
 }
 
 .budget-top{
@@ -717,79 +573,80 @@ button,input{
 }
 
 .budget-value{
-  font-size:29px;
   color:#d3b483;
+  font-size:29px;
   font-weight:bold;
 }
 
-input[type="range"]{
+input[type=range]{
   width:100%;
-  margin:18px 0 8px;
   accent-color:#b29368;
+  margin:20px 0 5px;
 }
 
 .budget-level{
-  background:#ffffff12;
-  padding:6px 13px;
+  display:inline-block;
+  margin-top:10px;
+  padding:5px 13px;
+  background:#ffffff14;
   border-radius:20px;
+  color:#ddd;
 }
 
-.suggestion{
-  background:#fff;
-  color:#222;
-  padding:13px;
-  border-radius:12px;
-  margin-top:12px;
-  font-size:13px;
-}
+/* ================= UPLOAD ================= */
 
-
-/* =================================
-   رفع الصورة
-================================= */
-
-.upload{
-  display:block;
-  border:2px dashed #c7b494;
+.upload-box{
+  border:2px dashed #d4c4a8;
+  background:#fbf8f2;
   border-radius:18px;
-  padding:30px 15px;
+  padding:28px;
   text-align:center;
+}
+
+.upload-box input{
+  display:none;
+}
+
+.upload-label{
+  display:inline-block;
+  background:#111;
+  color:#fff;
+  padding:13px 22px;
+  border-radius:13px;
   cursor:pointer;
-  background:#fcfaf6;
-}
-
-.upload input{
-  display:none;
-}
-
-.preview{
-  max-width:100%;
-  max-height:350px;
-  display:none;
-  margin:18px auto 0;
-  border-radius:15px;
+  font-weight:bold;
 }
 
 .upload-status{
+  margin-top:12px;
   color:#777;
   font-size:13px;
-  margin-top:10px;
 }
 
+.preview{
+  display:none;
+  margin:20px auto 0;
+  max-width:500px;
+  border-radius:15px;
+  overflow:hidden;
+}
 
-/* =================================
-   SUMMARY
-================================= */
+.preview img{
+  width:100%;
+  display:block;
+}
+
+/* ================= SUMMARY ================= */
 
 .summary{
   background:#111;
   color:#fff;
   border-radius:22px;
-  padding:26px;
+  padding:25px;
 }
 
 .summary h2{
-  margin-bottom:18px;
+  margin-bottom:17px;
 }
 
 .summary-grid{
@@ -799,83 +656,116 @@ input[type="range"]{
 }
 
 .summary-item{
-  background:#ffffff0c;
-  border:1px solid #ffffff15;
+  background:#ffffff0d;
+  border:1px solid #ffffff12;
   padding:11px 13px;
   border-radius:12px;
 }
 
 .summary-item span{
-  color:#aaa;
-  font-size:11px;
   display:block;
+  color:#aaa;
+  font-size:12px;
 }
 
 .summary-item strong{
-  display:block;
-  font-size:14px;
+  color:#fff;
 }
 
 .total{
-  margin-top:18px;
+  margin-top:20px;
   padding:18px;
-  border-radius:16px;
-  background:#c8a878;
+  background:#b29368;
   color:#111;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  border-radius:15px;
+  text-align:center;
+}
+
+.total small{
+  display:block;
 }
 
 .total strong{
-  font-size:24px;
+  font-size:32px;
 }
 
-.whatsapp{
+/* ================= WHATSAPP ================= */
+
+.whatsapp-btn{
   width:100%;
-  border:0;
-  background:#25d366;
-  color:white;
-  padding:17px;
   margin-top:18px;
-  border-radius:14px;
+  border:0;
+  border-radius:15px;
+  padding:17px;
+  background:#25d366;
+  color:#fff;
   font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
+  font-weight:900;
 }
 
-.reset{
-  width:100%;
-  background:transparent;
-  color:white;
-  border:1px solid #555;
-  padding:12px;
+.whatsapp-btn:hover{
+  background:#1fba59;
+}
+
+.note{
+  text-align:center;
+  color:#777;
+  font-size:12px;
   margin-top:10px;
-  border-radius:14px;
 }
 
-.hidden{
-  display:none!important;
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,120px);
+  background:#111;
+  color:#fff;
+  padding:13px 20px;
+  border-radius:12px;
+  z-index:9000;
+  opacity:0;
+  transition:.3s;
 }
+
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:600px){
+
+  .header-small{
+    display:none;
+  }
+
+  .section{
+    padding:20px 15px;
+    border-radius:18px;
+  }
 
   .options{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .section{
-    padding:20px 14px;
+  .image-option{
+    min-height:195px;
   }
 
-  .budget-top{
-    flex-direction:column;
-    align-items:flex-start;
+  .image-option .option-img{
+    height:115px;
   }
 
-  .total{
-    flex-direction:column;
-    align-items:flex-start;
+  .progress-wrap{
+    top:68px;
+  }
+
+  .hero{
+    min-height:330px;
   }
 
 }
@@ -884,976 +774,1888 @@ input[type="range"]{
 
 <body>
 
+<!-- =========================================================
+     WELCOME
+========================================================= -->
+
+<div class="welcome" id="welcome">
+
+  <div class="welcome-box">
+
+    <div class="welcome-logo">
+      صمم <span>ديكورك</span>
+    </div>
+
+    <h1>مرحبا بك 👋</h1>
+
+    <p>
+      قبل ما نبدأو تصميم المطبخ، شرفنا باسمك والمدينة ديالك.
+    </p>
+
+    <div class="welcome-fields">
+
+      <div>
+        <label>الاسم الكامل</label>
+        <input
+          id="customerName"
+          type="text"
+          placeholder="مثلاً: محمد العلوي"
+          autocomplete="name"
+        >
+      </div>
+
+      <div>
+        <label>المدينة</label>
+        <input
+          id="customerCity"
+          type="text"
+          placeholder="مثلاً: الدار البيضاء"
+          autocomplete="address-level2"
+        >
+      </div>
+
+    </div>
+
+    <button class="start-btn" onclick="startConfigurator()">
+      🚀 بدأ تصميم مطبخي
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header class="header">
+
   <div class="header-inner">
+
     <div class="logo">
       صمم <span>ديكورك</span>
     </div>
+
     <div class="header-small">
-      صمم مطبخك
+      صمم مطبخك قطعة بقطعة
     </div>
+
   </div>
+
 </header>
 
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero">
+
   <div>
-    <h1>صمّم مطبخك بنفسك</h1>
+
+    <h1>صمم مطبخك بنفسك</h1>
+
     <p>
-      اختار كل قطعة بوحدها، وشوف الاختيارات ديالك فالملخص النهائي.
+      اختار الشكل، الخامة، البيبان، الصنادق، السطح، اللون والإكسسوارات.
+      كل اختيار كيتحفظ أوتوماتيكياً، وفي الأخير صيفط الطلب مباشرة عبر واتساب.
     </p>
+
   </div>
+
 </section>
 
 
 <main class="container">
 
+<!-- =========================================================
+     PROGRESS
+========================================================= -->
 
 <div class="progress-wrap">
 
   <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
+
+    <div
+      class="progress-bar"
+      id="progressBar">
+    </div>
+
   </div>
 
   <div class="progress-info">
-    <span id="progressText">0 / 12</span>
-    <span>الحفظ تلقائي</span>
+
+    <span id="progressText">
+      0% مكتمل
+    </span>
+
+    <span>
+      تصميم مطبخك
+    </span>
+
   </div>
 
 </div>
 
 
-<!-- ============================
-     01 الشكل
-============================= -->
+<!-- =========================================================
+     1 SHAPE
+========================================================= -->
 
-<section class="section">
+<section class="section" id="sec-shape">
 
-<div class="section-head">
-<small>01</small>
-<h2>شكل المطبخ</h2>
-<p>اختار التوزيع المناسب للمطبخ</p>
-</div>
+  <div class="section-head">
 
-<div class="options">
+    <small>01 — الشكل</small>
 
-<div class="option" data-group="shape" data-value="L">
+    <h2>اختار شكل المطبخ</h2>
 
-<div class="layout-preview layout-l">
-  <div class="room">
-    <div class="cab bottom"></div>
-    <div class="cab side"></div>
+    <p>
+      اختار الشكل اللي مناسب للمكان ديالك.
+    </p>
+
   </div>
-</div>
 
-<div class="option-content">
-<div class="option-title">L</div>
-</div>
+  <div class="options">
 
-</div>
+    <div
+      class="option"
+      data-group="shape"
+      data-value="L"
+      onclick="choose(this,'shape','L')">
+
+      <div class="shape-box">
+
+        <div class="shape shape-l">
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="option-title">L</div>
+      <div class="option-sub">مطبخ زاوية</div>
+
+    </div>
 
 
-<div class="option" data-group="shape" data-value="U">
+    <div
+      class="option"
+      data-group="shape"
+      data-value="U"
+      onclick="choose(this,'shape','U')">
 
-<div class="layout-preview layout-u">
-  <div class="room">
-    <div class="cab bottom"></div>
-    <div class="cab left"></div>
-    <div class="cab right"></div>
+      <div class="shape-box">
+
+        <div class="shape shape-u">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="option-title">U</div>
+      <div class="option-sub">ثلاث جهات</div>
+
+    </div>
+
+
+    <div
+      class="option"
+      data-group="shape"
+      data-value="مستقيم"
+      onclick="choose(this,'shape','مستقيم')">
+
+      <div class="shape-box">
+
+        <div class="shape shape-line">
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="option-title">مستقيم</div>
+      <div class="option-sub">جهة واحدة</div>
+
+    </div>
+
+
+    <div
+      class="option"
+      data-group="shape"
+      data-value="جوج جهات"
+      onclick="choose(this,'shape','جوج جهات')">
+
+      <div class="shape-box">
+
+        <div class="shape shape-two">
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="option-title">جوج جهات</div>
+      <div class="option-sub">Parallel</div>
+
+    </div>
+
+
+    <div
+      class="option"
+      data-group="shape"
+      data-value="مع جزيرة"
+      onclick="choose(this,'shape','مع جزيرة')">
+
+      <div class="shape-box">
+
+        <div class="shape shape-island">
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="option-title">مع جزيرة</div>
+      <div class="option-sub">Kitchen Island</div>
+
+    </div>
+
   </div>
-</div>
 
-<div class="option-content">
-<div class="option-title">U</div>
-</div>
-
-</div>
+</section>
 
 
-<div class="option" data-group="shape" data-value="مستقيم">
+<!-- =========================================================
+     2 CABINET MATERIAL
+========================================================= -->
 
-<div class="layout-preview layout-straight">
-  <div class="room">
-    <div class="cab bottom"></div>
+<section class="section" id="sec-material">
+
+  <div class="section-head">
+
+    <small>02 — الخامة</small>
+
+    <h2>نوع خامة الصنادق</h2>
+
+    <p>
+      الصور هنا كتوضح شكل الخامة داخل المطبخ، ماشي صور عشوائية.
+    </p>
+
   </div>
-</div>
 
-<div class="option-content">
-<div class="option-title">مستقيم</div>
-</div>
+  <div class="options">
 
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'material','MDF')">
+
+      <div
+        class="material-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="material-body">
+
+        <div class="option-title">MDF</div>
+
+        <div class="option-sub">
+          MDF ملبس
+        </div>
+
+      </div>
+
+    </div>
 
 
-<div class="option" data-group="shape" data-value="جوج جهات">
+    <div
+      class="option image-option"
+      onclick="choose(this,'material','MDF مقاوم للرطوبة')">
 
-<div class="layout-preview layout-two">
-  <div class="room">
-    <div class="cab one"></div>
-    <div class="cab two"></div>
+      <div
+        class="material-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="material-body">
+
+        <div class="option-title">
+          MDF مقاوم للرطوبة
+        </div>
+
+        <div class="option-sub">
+          مناسب للمطبخ
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'material','Mélaminé')">
+
+      <div
+        class="material-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="material-body">
+
+        <div class="option-title">
+          Mélaminé
+        </div>
+
+        <div class="option-sub">
+          عملي وسهل التنظيف
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'material','Laqué')">
+
+      <div
+        class="material-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="material-body">
+
+        <div class="option-title">
+          Laqué
+        </div>
+
+        <div class="option-sub">
+          لمعة / مات
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'material','خشب طبيعي')">
+
+      <div
+        class="material-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="material-body">
+
+        <div class="option-title">
+          خشب طبيعي
+        </div>
+
+        <div class="option-sub">
+          مظهر الخشب الطبيعي
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
-</div>
 
-<div class="option-content">
-<div class="option-title">جوج جهات</div>
-</div>
-
-</div>
+</section>
 
 
-<div class="option" data-group="shape" data-value="مع جزيرة">
+<!-- =========================================================
+     3 DOORS
+========================================================= -->
 
-<div class="layout-preview layout-island">
-  <div class="room">
-    <div class="cab back"></div>
-    <div class="cab island"></div>
+<section class="section" id="sec-doors">
+
+  <div class="section-head">
+
+    <small>03 — البيبان</small>
+
+    <h2>اختار نوع البيبان</h2>
+
+    <p>
+      شوف شكل كل اختيار قبل ما تختارو.
+    </p>
+
   </div>
-</div>
 
-<div class="option-content">
-<div class="option-title">مع جزيرة</div>
-</div>
+  <div class="options">
 
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'doors','عادي')">
 
-</div>
-</section>
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85')">
+      </div>
 
+      <div class="option-body">
+        <div class="option-title">عادي</div>
+      </div>
 
-
-<!-- ============================
-     02 الخامة
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>02</small>
-<h2>نوع الصنادق</h2>
-<p>اختار نوع الخامة</p>
-</div>
-
-<div class="options">
-
-<div class="option" data-group="material" data-value="MDF">
-<div class="material-preview mdf"></div>
-<div class="option-content">
-<div class="option-title">MDF</div>
-</div>
-</div>
+    </div>
 
 
-<div class="option" data-group="material" data-value="MDF مقاوم للرطوبة">
-<div class="material-preview mdf-water"></div>
-<div class="option-content">
-<div class="option-title">MDF مقاوم للرطوبة</div>
-</div>
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'doors','مودرن')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">مودرن</div>
+      </div>
+
+    </div>
 
 
-<div class="option" data-group="material" data-value="Mélaminé">
-<div class="material-preview melamine"></div>
-<div class="option-content">
-<div class="option-title">Mélaminé</div>
-</div>
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'doors','بدون مقابض')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">بدون مقابض</div>
+      </div>
+
+    </div>
 
 
-<div class="option" data-group="material" data-value="Laqué">
-<div class="material-preview laque"></div>
-<div class="option-content">
-<div class="option-title">Laqué</div>
-</div>
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'doors','Push')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">Push</div>
+      </div>
+
+    </div>
 
 
-<div class="option" data-group="material" data-value="خشب طبيعي">
-<div class="material-preview natural"></div>
-<div class="option-content">
-<div class="option-title">خشب طبيعي</div>
-</div>
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'doors','إطار ألمنيوم + زجاج')">
 
-</div>
-</section>
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85')">
+      </div>
 
+      <div class="option-body">
+        <div class="option-title">
+          ألمنيوم + زجاج
+        </div>
+      </div>
 
+    </div>
 
-<!-- ============================
-     03 البيبان
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>03</small>
-<h2>نوع البيبان</h2>
-<p>اختار شكل الواجهة</p>
-</div>
-
-<div class="options">
-
-
-<div class="option" data-group="doors" data-value="عادي">
-<div class="door-preview">
-<div class="door"></div>
-</div>
-<div class="option-content">
-<div class="option-title">عادي</div>
-</div>
-</div>
-
-
-<div class="option" data-group="doors" data-value="مودرن">
-<div class="door-preview">
-<div class="door door-modern"></div>
-</div>
-<div class="option-content">
-<div class="option-title">مودرن</div>
-</div>
-</div>
-
-
-<div class="option" data-group="doors" data-value="بدون مقابض">
-<div class="door-preview">
-<div class="door door-handleless"></div>
-</div>
-<div class="option-content">
-<div class="option-title">بدون مقابض</div>
-</div>
-</div>
-
-
-<div class="option" data-group="doors" data-value="Push">
-<div class="door-preview">
-<div class="door door-push"></div>
-</div>
-<div class="option-content">
-<div class="option-title">Push</div>
-</div>
-</div>
-
-
-<div class="option" data-group="doors" data-value="ألمنيوم + زجاج">
-<div class="door-preview">
-<div class="door door-glass"></div>
-</div>
-<div class="option-content">
-<div class="option-title">ألمنيوم + زجاج</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ============================
-     04 العلوية
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>04</small>
-<h2>شكل الصنادق العلوية</h2>
-<p>اختار كيفاش بغيتي الصنادق الفوقانية</p>
-</div>
-
-<div class="options">
-
-
-<div class="option" data-group="upper" data-value="حتى للسقف">
-<div class="upper-preview">
-<div class="upper-cab upper-ceiling"></div>
-</div>
-<div class="option-content">
-<div class="option-title">حتى للسقف</div>
-</div>
-</div>
-
-
-<div class="option" data-group="upper" data-value="مستقيمة">
-<div class="upper-preview">
-<div class="upper-cab upper-straight"></div>
-</div>
-<div class="option-content">
-<div class="option-title">مستقيمة</div>
-</div>
-</div>
-
-
-<div class="option" data-group="upper" data-value="كاسكيط">
-<div class="upper-preview">
-<div class="upper-cab upper-cap"></div>
-</div>
-<div class="option-content">
-<div class="option-title">كاسكيط</div>
-</div>
-</div>
-
-
-<div class="option" data-group="upper" data-value="مفتوحة">
-<div class="upper-preview">
-<div class="upper-cab upper-open"></div>
-</div>
-<div class="option-content">
-<div class="option-title">مفتوحة</div>
-</div>
-</div>
-
-
-<div class="option" data-group="upper" data-value="بدون صنادق علوية">
-<div class="upper-preview none">
-بدون صنادق علوية
-</div>
-<div class="option-content">
-<div class="option-title">بدون علوية</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ============================
-     05 الزجاج
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>05</small>
-<h2>عدد البيبان الزجاج</h2>
-<p><strong>400 DH للباب الزجاج</strong></p>
-</div>
-
-<div class="options number-options" id="glassOptions"></div>
+  </div>
 
 </section>
 
 
+<!-- =========================================================
+     4 UPPER CABINETS
+========================================================= -->
 
-<!-- ============================
-     06 الأدراج
-============================= -->
+<section class="section" id="sec-upper">
 
-<section class="section">
+  <div class="section-head">
 
-<div class="section-head">
-<small>06</small>
-<h2>عدد الأدراج</h2>
-<p><strong>200 DH للدرج</strong></p>
-</div>
+    <small>04 — الصنادق العلوية</small>
 
-<div class="options number-options" id="drawerOptions"></div>
+    <h2>كيفاش بغيتي العلوية؟</h2>
+
+  </div>
+
+  <div class="options">
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'upper','حتى للسقف')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">حتى للسقف</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'upper','مستقيمة')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">مستقيمة</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'upper','كاسكيط')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">كاسكيط</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'upper','مفتوحة')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">مفتوحة</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option"
+      onclick="choose(this,'upper','بدون صنادق علوية')">
+
+      <div style="font-size:45px">🚫</div>
+
+      <div class="option-title">
+        بدون صنادق علوية
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
+<!-- =========================================================
+     5 GLASS DOORS
+========================================================= -->
 
-<!-- ============================
-     07 السطح
-============================= -->
+<section class="section" id="sec-glass">
 
-<section class="section">
+  <div class="section-head">
 
-<div class="section-head">
-<small>07</small>
-<h2>سطح المطبخ</h2>
-<p>اختار نوع السطح</p>
-</div>
+    <small>05 — الزجاج</small>
 
-<div class="options">
+    <h2>عدد البيبان الزجاج</h2>
 
+    <p>
+      كل باب زجاج محسوب بـ <strong>400 DH</strong>.
+    </p>
 
-<div class="option" data-group="counter" data-value="Quartz">
-<div class="counter-preview">
-<div class="counter-surface quartz"></div>
-</div>
-<div class="option-content">
-<div class="option-title">Quartz</div>
-</div>
-</div>
+  </div>
 
+  <div class="options">
 
-<div class="option" data-group="counter" data-value="Granite">
-<div class="counter-preview">
-<div class="counter-surface granite"></div>
-</div>
-<div class="option-content">
-<div class="option-title">Granite</div>
-</div>
-</div>
+    <div class="option counter-card"
+      onclick="setCount('glass',0,this)">
+      <div class="option-title">0</div>
+    </div>
 
+    <div class="option counter-card"
+      onclick="setCount('glass',1,this)">
+      <div class="option-title">1</div>
+    </div>
 
-<div class="option" data-group="counter" data-value="رخام">
-<div class="counter-preview">
-<div class="counter-surface marble"></div>
-</div>
-<div class="option-content">
-<div class="option-title">رخام</div>
-</div>
-</div>
+    <div class="option counter-card"
+      onclick="setCount('glass',2,this)">
+      <div class="option-title">2</div>
+    </div>
 
+    <div class="option counter-card"
+      onclick="setCount('glass',3,this)">
+      <div class="option-title">3</div>
+    </div>
 
-<div class="option" data-group="counter" data-value="Dekton">
-<div class="counter-preview">
-<div class="counter-surface dekton"></div>
-</div>
-<div class="option-content">
-<div class="option-title">Dekton</div>
-</div>
-</div>
+    <div class="option counter-card"
+      onclick="setCount('glass',4,this)">
+      <div class="option-title">4</div>
+    </div>
 
+    <div class="option counter-card"
+      onclick="setCount('glass',5,this)">
+      <div class="option-title">5</div>
+    </div>
 
-<div class="option" data-group="counter" data-value="Compact">
-<div class="counter-preview">
-<div class="counter-surface compact"></div>
-</div>
-<div class="option-content">
-<div class="option-title">Compact</div>
-</div>
-</div>
+    <div class="option counter-card"
+      onclick="setCount('glass','أكثر',this)">
+      <div class="option-title">أكثر</div>
+    </div>
 
-
-<div class="option" data-group="counter" data-value="عادي">
-<div class="counter-preview">
-<div class="counter-surface counter-normal"></div>
-</div>
-<div class="option-content">
-<div class="option-title">عادي</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ============================
-     08 اللون
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>08</small>
-<h2>اللون</h2>
-</div>
-
-<div class="options">
-
-<div class="option" data-group="color" data-value="أبيض">
-<div class="material-preview" style="background:#f2eee4"></div>
-<div class="option-content">
-<div class="option-title">أبيض</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="كابوتشينو">
-<div class="material-preview" style="background:#c7ae91"></div>
-<div class="option-content">
-<div class="option-title">كابوتشينو</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="بيج">
-<div class="material-preview" style="background:#d7c7ad"></div>
-<div class="option-content">
-<div class="option-title">بيج</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="رمادي">
-<div class="material-preview" style="background:#888"></div>
-<div class="option-content">
-<div class="option-title">رمادي</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="أسود">
-<div class="material-preview" style="background:#171717"></div>
-<div class="option-content">
-<div class="option-title">أسود</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="أخضر">
-<div class="material-preview" style="background:#65715d"></div>
-<div class="option-content">
-<div class="option-title">أخضر</div>
-</div>
-</div>
-
-
-<div class="option" data-group="color" data-value="خشبي">
-<div class="material-preview natural"></div>
-<div class="option-content">
-<div class="option-title">خشبي</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ============================
-     09 الإكسسوارات
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>09</small>
-<h2>الإكسسوارات</h2>
-<p>هنا تقدر تختار أكثر من واحد</p>
-</div>
-
-<div class="options">
-
-
-<div class="option" data-group="accessories" data-value="Tiroirs Hydrauliques">
-<div class="accessory-preview">
-<div class="drawer-demo"><span></span></div>
-</div>
-<div class="option-content">
-<div class="option-title">Tiroirs Hydrauliques</div>
-</div>
-</div>
-
-
-<div class="option" data-group="accessories" data-value="سلة ركنية">
-<div class="accessory-preview">
-<div class="corner-demo"></div>
-</div>
-<div class="option-content">
-<div class="option-title">سلة ركنية</div>
-</div>
-</div>
-
-
-<div class="option" data-group="accessories" data-value="سلة توابل">
-<div class="accessory-preview">
-<div class="spice-demo"></div>
-</div>
-<div class="option-content">
-<div class="option-title">سلة توابل</div>
-</div>
-</div>
-
-
-<div class="option" data-group="accessories" data-value="Porte-bouteilles">
-<div class="accessory-preview">
-<div class="bottle-demo">
-<i></i><i></i><i></i><i></i>
-</div>
-</div>
-<div class="option-content">
-<div class="option-title">Porte-bouteilles</div>
-</div>
-</div>
-
-
-<div class="option" data-group="accessories" data-value="إضاءة LED">
-<div class="accessory-preview">
-<div class="led-demo"></div>
-</div>
-<div class="option-content">
-<div class="option-title">إضاءة LED</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ============================
-     10 القياسات
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>10</small>
-<h2>القياسات</h2>
-<p>بالسنتيمتر</p>
-</div>
-
-<div class="measure-grid">
-
-<div class="field">
-<label>الطول</label>
-<input id="length" type="number" placeholder="350">
-</div>
-
-<div class="field">
-<label>العرض</label>
-<input id="width" type="number" placeholder="250">
-</div>
-
-<div class="field">
-<label>الارتفاع</label>
-<input id="height" type="number" placeholder="270">
-</div>
-
-<div class="field hidden" id="sideBox">
-<label>الجهة الثانية</label>
-<input id="side" type="number" placeholder="200">
-</div>
-
-</div>
-
-<div class="notice">
-القياس النهائي خاصو يتأكد من طرف التقني قبل التصنيع.
-</div>
+  </div>
 
 </section>
 
 
+<!-- =========================================================
+     6 DRAWERS
+========================================================= -->
 
-<!-- ============================
-     11 الميزانية
-============================= -->
+<section class="section" id="sec-drawers">
 
-<section class="section">
+  <div class="section-head">
 
-<div class="section-head">
-<small>11</small>
-<h2>الميزانية</h2>
-<p>اختار الميزانية اللي مناسبة ليك</p>
-</div>
+    <small>06 — الأدراج</small>
 
-<div class="budget-box">
+    <h2>عدد المجاور / الأدراج</h2>
 
-<div class="budget-top">
+    <p>
+      الدرْج الهيدروليكي محسوب بـ <strong>200 DH</strong> للوحدة.
+    </p>
 
-<div>
-<div>ميزانيتك</div>
-<div class="budget-value" id="budgetValue">
-15,000 DH
-</div>
-</div>
+  </div>
 
-<div class="budget-level" id="budgetLevel">
-متوسط
-</div>
+  <div class="options">
 
-</div>
+    <div class="option counter-card"
+      onclick="setCount('drawers',0,this)">
+      <div class="option-title">0</div>
+    </div>
 
-<input
-id="budget"
-type="range"
-min="5000"
-max="50000"
-step="500"
-value="15000"
->
+    <div class="option counter-card"
+      onclick="setCount('drawers',2,this)">
+      <div class="option-title">2</div>
+    </div>
 
-<div class="suggestion">
-<strong>اقتراح:</strong>
-<span id="budgetSuggestion"></span>
-</div>
+    <div class="option counter-card"
+      onclick="setCount('drawers',4,this)">
+      <div class="option-title">4</div>
+    </div>
 
-</div>
+    <div class="option counter-card"
+      onclick="setCount('drawers',6,this)">
+      <div class="option-title">6</div>
+    </div>
 
-</section>
+    <div class="option counter-card"
+      onclick="setCount('drawers',8,this)">
+      <div class="option-title">8</div>
+    </div>
 
+    <div class="option counter-card"
+      onclick="setCount('drawers',10,this)">
+      <div class="option-title">10</div>
+    </div>
 
-
-<!-- ============================
-     12 الصورة
-============================= -->
-
-<section class="section">
-
-<div class="section-head">
-<small>12</small>
-<h2>صورة الكوزينة ديالك</h2>
-<p>اختيارية</p>
-</div>
-
-<label class="upload">
-
-📷
-<br>
-<strong>ضغط هنا لرفع صورة الكوزينة</strong>
-<br>
-<small>JPG / PNG</small>
-
-<input
-id="kitchenImage"
-type="file"
-accept="image/*"
->
-
-<img
-id="preview"
-class="preview"
->
-
-<div
-class="upload-status"
-id="uploadStatus"
->
-مازال ما اخترتي صورة
-</div>
-
-</label>
+  </div>
 
 </section>
 
 
+<!-- =========================================================
+     7 COUNTERTOP
+========================================================= -->
 
-<!-- ============================
-     الملخص
-============================= -->
+<section class="section" id="sec-countertop">
 
-<section class="summary">
+  <div class="section-head">
 
-<h2>✅ ملخص مطبخك</h2>
+    <small>07 — سطح المطبخ</small>
 
-<div
-class="summary-grid"
-id="summaryGrid"
-></div>
+    <h2>اختار سطح المطبخ</h2>
 
+  </div>
 
-<div class="total">
+  <div class="options">
 
-<div>
-<div>الإضافات المعروفة</div>
-<strong id="totalPrice">
-0 DH
-</strong>
-</div>
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','Quartz')">
 
-<div>
-<div>الميزانية</div>
-<strong id="summaryBudget">
-15,000 DH
-</strong>
-</div>
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=900&q=85')">
+      </div>
 
-</div>
+      <div class="option-body">
+        <div class="option-title">Quartz</div>
+      </div>
+
+    </div>
 
 
-<button
-class="whatsapp"
-id="whatsappBtn"
->
-📲 صيفط الطلب عبر WhatsApp
-</button>
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','Granite')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">Granite</div>
+      </div>
+
+    </div>
 
 
-<button
-class="reset"
-id="resetBtn"
->
-إعادة الاختيارات
-</button>
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','رخام')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">رخام</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','Dekton')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">Dekton</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','Compact')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">Compact</div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="choose(this,'countertop','عادي')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">عادي</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     8 COLOR
+========================================================= -->
+
+<section class="section" id="sec-color">
+
+  <div class="section-head">
+
+    <small>08 — اللون</small>
+
+    <h2>اختار اللون</h2>
+
+    <p>
+      ألوان مرئية باش تشوف الاختيار ديالك.
+    </p>
+
+  </div>
+
+  <div class="options">
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','أبيض')">
+
+      <div class="swatch color-white"></div>
+      <div class="option-title">أبيض</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','كابوتشينو')">
+
+      <div class="swatch color-cappuccino"></div>
+      <div class="option-title">كابوتشينو</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','بيج')">
+
+      <div class="swatch color-beige"></div>
+      <div class="option-title">بيج</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','رمادي')">
+
+      <div class="swatch color-grey"></div>
+      <div class="option-title">رمادي</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','أسود')">
+
+      <div class="swatch color-black"></div>
+      <div class="option-title">أسود</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','أخضر')">
+
+      <div class="swatch color-green"></div>
+      <div class="option-title">أخضر</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','Navy')">
+
+      <div class="swatch color-navy"></div>
+      <div class="option-title">Navy</div>
+
+    </div>
+
+
+    <div
+      class="option color-card"
+      onclick="choose(this,'color','خشب نوايي')">
+
+      <div class="swatch color-wood"></div>
+      <div class="option-title">خشب نوايي</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     9 ACCESSORIES
+========================================================= -->
+
+<section class="section" id="sec-accessories">
+
+  <div class="section-head">
+
+    <small>09 — الإكسسوارات</small>
+
+    <h2>اختار الإكسسوارات</h2>
+
+    <p>
+      يمكن تختار أكثر من إكسسوار.
+    </p>
+
+  </div>
+
+  <div class="options">
+
+    <div
+      class="option image-option"
+      onclick="toggleAccessory(this,'Tiroirs Hydrauliques')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">
+          Tiroirs Hydrauliques
+        </div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="toggleAccessory(this,'سلة ركنية')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">
+          سلة ركنية
+        </div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="toggleAccessory(this,'سلة توابل')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">
+          سلة توابل
+        </div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="toggleAccessory(this,'Porte-bouteilles')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">
+          Porte-bouteilles
+        </div>
+      </div>
+
+    </div>
+
+
+    <div
+      class="option image-option"
+      onclick="toggleAccessory(this,'إضاءة LED')">
+
+      <div
+        class="option-img"
+        style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85')">
+      </div>
+
+      <div class="option-body">
+        <div class="option-title">
+          إضاءة LED
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     10 MEASUREMENTS
+========================================================= -->
+
+<section class="section" id="sec-measure">
+
+  <div class="section-head">
+
+    <small>10 — القياسات</small>
+
+    <h2>دخل قياسات المطبخ</h2>
+
+    <p>
+      القياسات بالسنتيمتر.
+    </p>
+
+  </div>
+
+  <div class="measure-grid">
+
+    <div class="field">
+
+      <label>
+        الطول
+      </label>
+
+      <input
+        type="number"
+        id="length"
+        placeholder="مثلاً 300"
+        oninput="updateAll()"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        العرض
+      </label>
+
+      <input
+        type="number"
+        id="width"
+        placeholder="مثلاً 250"
+        oninput="updateAll()"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        الارتفاع
+      </label>
+
+      <input
+        type="number"
+        id="height"
+        placeholder="مثلاً 260"
+        oninput="updateAll()"
+      >
+
+    </div>
+
+
+    <div
+      class="field"
+      id="secondSideField"
+      style="display:none">
+
+      <label>
+        الجهة الثانية
+      </label>
+
+      <input
+        type="number"
+        id="secondSide"
+        placeholder="مثلاً 220"
+        oninput="updateAll()"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     11 BUDGET
+========================================================= -->
+
+<section class="section" id="sec-budget">
+
+  <div class="section-head">
+
+    <small>11 — الميزانية</small>
+
+    <h2>حدد الميزانية ديالك</h2>
+
+    <p>
+      الموقع غادي يعطيك مستوى مناسب للميزانية.
+    </p>
+
+  </div>
+
+  <div class="budget-box">
+
+    <div class="budget-top">
+
+      <div>
+        الميزانية
+      </div>
+
+      <div class="budget-value">
+        <span id="budgetValue">
+          15000
+        </span>
+        DH
+      </div>
+
+    </div>
+
+    <input
+      id="budget"
+      type="range"
+      min="5000"
+      max="50000"
+      step="500"
+      value="15000"
+      oninput="updateBudget()"
+    >
+
+    <span
+      class="budget-level"
+      id="budgetLevel">
+      متوسط
+    </span>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     12 IMAGE
+========================================================= -->
+
+<section class="section" id="sec-upload">
+
+  <div class="section-head">
+
+    <small>12 — صورة المطبخ</small>
+
+    <h2>صوّر المطبخ ديالك</h2>
+
+    <p>
+      رفع صورة المطبخ باش نشوفو المكان قبل إعداد التصميم.
+    </p>
+
+  </div>
+
+  <div class="upload-box">
+
+    <input
+      type="file"
+      id="kitchenPhoto"
+      accept="image/*"
+      onchange="uploadKitchenPhoto(event)"
+    >
+
+    <label
+      class="upload-label"
+      for="kitchenPhoto">
+
+      📷 اختيار صورة المطبخ
+
+    </label>
+
+    <div
+      class="upload-status"
+      id="uploadStatus">
+
+      مازال ما اخترتي حتى صورة
+
+    </div>
+
+    <div
+      class="preview"
+      id="preview">
+
+      <img
+        id="previewImg"
+        src=""
+        alt="صورة المطبخ">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SUMMARY
+========================================================= -->
+
+<section class="summary" id="summary">
+
+  <h2>
+    ✅ ملخص مطبخك
+  </h2>
+
+  <div class="summary-grid">
+
+    <div class="summary-item">
+      <span>الاسم</span>
+      <strong id="sName">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>المدينة</span>
+      <strong id="sCity">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الشكل</span>
+      <strong id="sShape">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>خامة الصنادق</span>
+      <strong id="sMaterial">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>نوع البيبان</span>
+      <strong id="sDoors">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الصنادق العلوية</span>
+      <strong id="sUpper">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>أبواب زجاج</span>
+      <strong id="sGlass">0</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الأدراج</span>
+      <strong id="sDrawers">0</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>سطح المطبخ</span>
+      <strong id="sCountertop">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>اللون</span>
+      <strong id="sColor">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الإكسسوارات</span>
+      <strong id="sAccessories">لا يوجد</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>القياسات</span>
+      <strong id="sMeasurements">—</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الميزانية</span>
+      <strong id="sBudget">15,000 DH</strong>
+    </div>
+
+    <div class="summary-item">
+      <span>الصورة</span>
+      <strong id="sPhoto">لم يتم رفعها</strong>
+    </div>
+
+  </div>
+
+
+  <div class="total">
+
+    <small>
+      السعر التقديري حسب الاختيارات
+    </small>
+
+    <strong>
+      <span id="estimatedPrice">
+        0
+      </span>
+      DH
+    </strong>
+
+  </div>
+
+
+  <button
+    class="whatsapp-btn"
+    onclick="sendWhatsApp()">
+
+    📲 صيفط التصميم والطلب عبر واتساب
+
+  </button>
+
+  <div class="note">
+
+    غادي يتفتح WhatsApp برسالة فيها جميع اختياراتك.
+
+  </div>
 
 </section>
 
 </main>
 
 
+<div
+  class="toast"
+  id="toast">
+</div>
+
+
 <script>
 
-/* =====================================
-   الإعدادات
-===================================== */
+/* =========================================================
+   CONFIG
+========================================================= */
 
 const CLOUD_NAME = "rhao0lli";
 const UPLOAD_PRESET = "samemdecork_images";
 
-/* 0754350706 */
-const PHONE = "212754350706";
+/*
+  الرقم اللي عطيتيني:
+  0754350706
+
+  كنحوّلوه أوتوماتيكياً لـ:
+  212754350706
+*/
+
+const WHATSAPP_NUMBER = "212754350706";
 
 
-/* =====================================
-   الحالة
-===================================== */
+/* =========================================================
+   STATE
+========================================================= */
 
 const state = {
+
+  name:"",
+  city:"",
+
   shape:"",
   material:"",
   doors:"",
   upper:"",
-  glass:"",
-  drawers:"",
-  counter:"",
+
+  glass:0,
+  drawers:0,
+
+  countertop:"",
   color:"",
+
   accessories:[],
+
   length:"",
   width:"",
   height:"",
-  side:"",
+  secondSide:"",
+
   budget:15000,
-  imageUrl:""
+
+  photoUrl:"",
+  photoName:""
+
 };
 
 
-/* =====================================
-   إنشاء عدد الزجاج
-   400 DH / الباب
-===================================== */
+/* =========================================================
+   START
+========================================================= */
 
-const glassOptions =
-document.getElementById("glassOptions");
+function startConfigurator(){
 
-for(let i=0;i<=5;i++){
+  const name =
+    document.getElementById("customerName").value.trim();
 
-  const el =
-  document.createElement("div");
-
-  el.className="option";
-
-  el.dataset.group="glass";
-  el.dataset.value=String(i);
-
-  el.innerHTML=`
-    <div class="option-content">
-      <div class="number">${i}</div>
-      <div class="option-title">
-        ${i===0 ? "بدون زجاج" : i+" أبواب"}
-      </div>
-      ${
-        i>0
-        ? `<span class="option-price">${i*400} DH</span>`
-        : ""
-      }
-    </div>
-  `;
-
-  glassOptions.appendChild(el);
-}
+  const city =
+    document.getElementById("customerCity").value.trim();
 
 
-const glassMore =
-document.createElement("div");
+  if(!name){
 
-glassMore.className="option";
-glassMore.dataset.group="glass";
-glassMore.dataset.value="أكثر من 5";
+    showToast("دخل الاسم ديالك أولاً");
 
-glassMore.innerHTML=`
-<div class="option-content">
-<div class="number">+</div>
-<div class="option-title">أكثر من 5</div>
-<span class="option-price">400 DH / باب</span>
-</div>
-`;
-
-glassOptions.appendChild(glassMore);
-
-
-/* =====================================
-   إنشاء عدد الأدراج
-   200 DH / الدرج
-===================================== */
-
-const drawerOptions =
-document.getElementById("drawerOptions");
-
-[0,2,4,6,8,10].forEach(n=>{
-
-  const el =
-  document.createElement("div");
-
-  el.className="option";
-
-  el.dataset.group="drawers";
-  el.dataset.value=String(n);
-
-  el.innerHTML=`
-    <div class="option-content">
-      <div class="number">${n}</div>
-      <div class="option-title">
-        ${n===0 ? "بدون أدراج" : n+" أدراج"}
-      </div>
-      ${
-        n>0
-        ? `<span class="option-price">${n*200} DH</span>`
-        : ""
-      }
-    </div>
-  `;
-
-  drawerOptions.appendChild(el);
-
-});
-
-
-/* =====================================
-   اختيار العناصر
-===================================== */
-
-document.addEventListener("click",function(e){
-
-  const option =
-  e.target.closest(".option");
-
-  if(!option)return;
-
-  const group =
-  option.dataset.group;
-
-  const value =
-  option.dataset.value;
-
-
-  /* الإكسسوارات متعددة */
-
-  if(group==="accessories"){
-
-    option.classList.toggle("selected");
-
-    const index =
-    state.accessories.indexOf(value);
-
-    if(option.classList.contains("selected")){
-
-      if(index===-1){
-        state.accessories.push(value);
-      }
-
-    }else{
-
-      if(index!==-1){
-        state.accessories.splice(index,1);
-      }
-
-    }
-
-    save();
-    updateAll();
+    document.getElementById("customerName").focus();
 
     return;
   }
 
 
-  /* الاختيارات العادية */
+  if(!city){
+
+    showToast("دخل المدينة ديالك أولاً");
+
+    document.getElementById("customerCity").focus();
+
+    return;
+  }
+
+
+  state.name = name;
+  state.city = city;
+
+
+  document.getElementById("sName").textContent = name;
+  document.getElementById("sCity").textContent = city;
+
 
   document
-  .querySelectorAll(
-    `.option[data-group="${group}"]`
-  )
-  .forEach(el=>{
-    el.classList.remove("selected");
-  });
+    .getElementById("welcome")
+    .classList
+    .add("hidden");
 
 
-  option.classList.add("selected");
+  localStorage.setItem(
+    "kitchenCustomer",
+    JSON.stringify({
+      name,
+      city
+    })
+  );
 
 
-  if(group==="glass"){
-    state.gl
+  updateAll();
+
+  document
+    .getElementById("sec-shape")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+
+/* =========================================================
+   RESTORE CUSTOMER
+========================================================= */
+
+(function restoreCustomer(){
+
+  try{
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem("kitchenCustomer")
+      );
+
+    if(saved && saved.name && saved.city){
+
+      state.name = saved.name;
+      state.city = saved.city;
+
+      document.getElementById("customerName").value =
+        saved.name;
+
+      document.getElementById("customerCity").value =
+        saved.city;
+
+    }
+
+  }catch(e){}
+
+})();
+
+
+/* =========================================================
+   CHOOSE OPTION
+========================================================= */
+
+function choose(element,group,value){
+
+  state[group] = value;
+
+
+  /*
+    مهم:
+    غير الاختيار ديال نفس المجموعة
+    هو اللي كيتحيد منو selected.
+  */
+
+  document
+    .querySelectorAll(
+      '[data-group="'+group+'"]'
+    )
+    .forEach(el => {
+
+      el.classList.remove("selected");
+
+    });
+
+
+  /*
+    بالنسبة للكروت اللي ما عندهاش data-group
+    كنستعمل parent section.
+  */
+
+  const section =
+    element.closest(".section");
+
+
+  if(section){
+
+    section
+      .querySelectorAll(".option")
+      .forEach(el => {
+
+        if(el !== element){
+
+          /*
+            فالأقسام single choice
+            نحيد selected من الباقي.
+          */
+
+          el.classList.remove("selected");
+
+        }
+
+      });
+
+  }
+
+
+  element.classList.add("selected");
+
+
+  updateAll();
+
+
+  /*
+    الجهة الثانية كتظهر فقط فـ L/U/جوج جهات
+  */
+
+  updateSecondSide();
+
+
+  /*
+    دوز للقسم اللي من بعد
+  */
+
+  const next =
+    getNextSection(section);
+
+  if(next){
+
+    setTimeout(() => {
+
+      next.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },300);
+
+  }
+
+}
+
+
+/* =========================================================
+   GET NEXT SECTION
+========================================================= */
+
+function getNextSection(section){
+
+  if(!section) return null;
+
+  let next =
+    section.nextElementSibling;
+
+  while(next){
+
+    if(
+      next.classList &&
+      next.classList.contains("section")
+    ){
+
+      return next;
+
+    }
+
+    next =
+      next.nextElementSibling;
+
+  }
+
+  return null;
+
+}
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+function setCount(type,value,element){
+
+  state[type] = value;
+
+
+  const section =
+    element.closest(".section");
+
+
+  if(section){
+
+    section
+      .querySelectorAll(".option")
+      .forEach(el => {
+
+        el.classList.remove("selected");
+
+      });
+
+  }
+
+
+  element.classList.add("selected");
+
+
+  updateAll();
+
+
+  const next =
+    getNextSection(section);
+
+  if(next){
+
+    setTimeout(() => {
+
+      next.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },300);
+
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSORIES
+========================================================= */
+
+function toggleAccessory(element,value){
+
+  const index =
+    state.accessories.indexOf(value);
+
+
+  if(index === -1){
+
+    state.accessories.push(value);
+
+    element.classList.add("selected");
+
+  }else{
+
+    state.accessories.splice(index,1);
+
+    element.classList.remove("selected");
+
+  }
+
+
+  updateAll();
+
+}
+
+
+/* =========================================================
+   SECOND SIDE
+========================================================= */
+
+function updateSecondSide(){
+
+  const field =
+    document.getElementById(
+      "secondSideField"
+    );
+
+
+  if(
+    state.shape === "L" ||
+    state.shape === "U" ||
+    state.shape === "جوج جهات"
+  ){
+
+    field.style.display = "block";
+
+  }else{
+
+    field.style.display = "none";
+
+  }
+
+}
+
+
+/* =========================================================
+   BUDGET
+========================================================= */
+
+function updateBudget(){
+
+  state.budget =
+    Number(
+      document.getElementById("budget").value
+    );
+
+
+  document.getElementById("budgetValue")
+    .textContent =
+    state.budget.toLocaleString("fr-FR");
+
+
+  let level = "اقتصادي";
+
+
+  if(state.budget >= 25000){
+
+    level = "فاخر";
+
+  }else if(state.budget >= 12000){
+
+    level = "متوسط";
+
+  }
+
+
+  document.getElementById("budgetLevel")
+    .textContent =
+    level;
+
+
+  updateAll();
+
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+function readMeasurements(){
+
+  state.length =
+    document.getElementById("length").value;
+
+  state.width =
+    document.getElementById("width").value;
+
+  state.height =
+    document.getElementById("height").value;
+
+  state.secondSide =
+    document.getElementById("secondSide").value;
+
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+function calculatePrice(){
+
+  let price = 0;
+
+
+  /*
+    Base حسب الشكل
+  */
+
+  const shapePrices = {
+
+    "L":9000,
+
+    "U":12000,
+
+    "مستقيم":7000,
+
+    "جوج جهات":10500,
+
+    "مع جزيرة":14000
+
+  };
+
+
+  if(state.shape){
+
+    price +=
+      shapePrices[state.shape] || 0;
+
+  }
+
+
+  /*
+    الخامة
+  */
+
+  const materialPrices = {
+
+    "MDF":0,
+
+    "MDF مقاوم للرطوبة":1500,
+
+    "Mélaminé":700,
+
+    "Laqué":2500,
+
+    "خشب طبيعي":5000
+
+  };
+
+
+  price +=
+    materialPrices[state.material]

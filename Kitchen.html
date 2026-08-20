@@ -2,1117 +2,399 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#17231d">
-<title>صمم مطبخك | صمم ديكورك</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111">
+<title>صمم ديكورك | صمم مطبخك</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
- margin:0;
- font-family:Tahoma,Arial,sans-serif;
- background:#f5f0e8;
- color:#17231d;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f5f3ef;
+  color:#171717;
+  line-height:1.7;
 }
 
-header{
- background:#17231d;
- color:#fff;
- padding:18px;
- position:sticky;
- top:0;
- z-index:10;
+button,input{
+  font-family:inherit;
 }
 
-.nav{
- max-width:850px;
- margin:auto;
- display:flex;
- justify-content:space-between;
- align-items:center;
+.header{
+  background:#111;
+  color:white;
+  padding:18px 5%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 20px #0002;
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
- color:#fff;
- text-decoration:none;
- font-size:22px;
- font-weight:bold;
+  font-size:22px;
+  font-weight:900;
 }
 
-.logo span{color:#c9aa7b}
+.logo span{
+  color:#c8a878;
+}
 
-.back{
- color:#fff;
- text-decoration:none;
+.header-small{
+  color:#bbb;
+  font-size:13px;
+}
+
+.hero{
+  background:
+    linear-gradient(#0009,#0009),
+    url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  min-height:330px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding:50px 20px;
+}
+
+.hero h1{
+  font-size:clamp(30px,5vw,52px);
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#ddd;
+  max-width:700px;
+  margin:auto;
 }
 
 .container{
- max-width:850px;
- margin:auto;
- padding:25px 15px 60px;
+  width:min(1150px,92%);
+  margin:35px auto 70px;
 }
 
-.title{
- text-align:center;
- margin-bottom:25px;
+.progress-wrap{
+  background:white;
+  padding:16px;
+  border-radius:18px;
+  margin-bottom:25px;
+  box-shadow:0 5px 25px #0000000b;
 }
 
-.title small{color:#9a7d58}
-
-.title h1{
- font-size:38px;
- margin:8px;
+.progress{
+  height:7px;
+  background:#eee;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.title p{color:#777}
-
-.card{
- background:#fff;
- border-radius:12px;
- padding:25px;
- margin-bottom:18px;
- box-shadow:0 5px 25px #00000010;
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#b29368;
+  transition:.4s;
 }
 
-h2{margin-top:0}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  margin-top:8px;
+  font-size:13px;
+  color:#777;
 }
 
-.choice{
- border:2px solid #e2d9cc;
- border-radius:9px;
- padding:20px 10px;
- text-align:center;
- cursor:pointer;
- background:white;
- transition:.2s;
+.section{
+  background:white;
+  border-radius:22px;
+  padding:28px;
+  margin-bottom:22px;
+  box-shadow:0 7px 30px #0000000b;
+  scroll-margin-top:100px;
 }
 
-.choice:hover,
-.choice.active{
- border-color:#c9aa7b;
- background:#f8f1e7;
+.section-head{
+  margin-bottom:20px;
 }
 
-.icon{
- font-size:35px;
- margin-bottom:8px;
+.section-head small{
+  color:#b29368;
+  font-weight:bold;
 }
 
-.choice b{
- display:block;
+.section-head h2{
+  font-size:25px;
+  margin:3px 0;
 }
 
-.choice small{
- color:#777;
+.section-head p{
+  color:#777;
+  font-size:14px;
 }
 
-label{
- display:block;
- margin-bottom:15px;
- font-weight:bold;
+.options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:13px;
 }
 
-input,select,textarea{
- width:100%;
- padding:14px;
- margin-top:7px;
- border:1px solid #d5cabb;
- border-radius:7px;
- background:#faf8f4;
- font-family:inherit;
- font-size:16px;
+.option{
+  border:2px solid #eee;
+  background:#fafafa;
+  border-radius:16px;
+  min-height:85px;
+  padding:15px;
+  cursor:pointer;
+  transition:.2s;
+  position:relative;
+  text-align:center;
 }
 
-textarea{
- min-height:110px;
- resize:vertical;
+.option:hover{
+  transform:translateY(-2px);
+  border-color:#c8a878;
 }
 
-.upload{
- border:2px dashed #c9aa7b;
- padding:25px;
- text-align:center;
- border-radius:10px;
- cursor:pointer;
- background:#faf7f1;
+.option.selected{
+  border-color:#a7865a;
+  background:#fbf7ef;
+  box-shadow:0 0 0 3px #c8a87822;
 }
 
-.upload input{
- display:none;
+.option.selected:after{
+  content:"✓";
+  position:absolute;
+  top:7px;
+  right:8px;
+  background:#a7865a;
+  color:white;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  line-height:23px;
+  font-size:13px;
 }
 
-.preview{
- display:none;
- margin-top:15px;
+.option-title{
+  font-weight:800;
 }
 
-.preview img{
- width:100%;
- max-height:300px;
- object-fit:cover;
- border-radius:8px;
+.option-price{
+  display:block;
+  color:#a7865a;
+  font-size:12px;
+  margin-top:4px;
 }
 
-.upload-status{
- text-align:center;
- margin-top:12px;
- font-weight:bold;
+.shape-icon{
+  width:65px;
+  height:50px;
+  margin:0 auto 8px;
+  position:relative;
 }
 
-.success{
- color:#16853d;
+.shape-icon:before,
+.shape-icon:after{
+  content:"";
+  position:absolute;
+  background:#222;
+  border-radius:3px;
 }
 
-.error{
- color:#c62828;
+.shape-l:before{
+  width:50px;
+  height:7px;
+  bottom:8px;
+  right:5px;
 }
 
-.summary{
- background:#17231d;
- color:white;
- border-radius:10px;
- padding:20px;
+.shape-l:after{
+  width:7px;
+  height:42px;
+  bottom:8px;
+  right:5px;
 }
 
-.row{
- display:flex;
- justify-content:space-between;
- gap:15px;
- padding:12px 0;
- border-bottom:1px solid #ffffff18;
+.shape-u:before{
+  width:50px;
+  height:7px;
+  bottom:8px;
+  right:8px;
 }
 
-.row:last-child{
- border:0;
+.shape-u:after{
+  width:7px;
+  height:42px;
+  bottom:8px;
+  right:8px;
+  box-shadow:-43px 0 #222;
 }
 
-.row span{
- color:#ccc;
+.shape-line:before{
+  width:58px;
+  height:7px;
+  bottom:8px;
+  right:3px;
 }
 
-.row b{
- color:#c9aa7b;
- text-align:left;
- max-width:65%;
- word-break:break-word;
+.shape-two:before{
+  width:45px;
+  height:7px;
+  bottom:8px;
+  right:8px;
+  transform:rotate(-20deg);
 }
 
-.whatsapp{
- display:block;
- width:100%;
- background:#25d366;
- color:#06200d;
- padding:16px;
- border-radius:8px;
- margin-top:20px;
- text-align:center;
- text-decoration:none;
- font-weight:bold;
+.shape-two:after{
+  width:45px;
+  height:7px;
+  top:12px;
+  right:10px;
+  transform:rotate(-20deg);
 }
 
-.note{
- color:#777;
- font-size:13px;
- line-height:1.8;
+.shape-island:before{
+  width:52px;
+  height:7px;
+  bottom:8px;
+  right:6px;
 }
 
-button{
- width:100%;
- border:0;
- border-radius:8px;
- padding:16px;
- margin-top:15px;
- background:#c9aa7b;
- color:#17231d;
- font-family:inherit;
- font-size:17px;
- font-weight:bold;
- cursor:pointer;
+.shape-island:after{
+  width:30px;
+  height:7px;
+  bottom:25px;
+  right:18px;
+  background:#a7865a;
 }
 
-button:disabled{
- opacity:.6;
- cursor:not-allowed;
+.material-card{
+  overflow:hidden;
+  padding:0;
 }
 
-@media(max-width:600px){
-
- .grid{
-  grid-template-columns:1fr;
- }
-
- .title h1{
-  font-size:32px;
- }
-
- .card{
-  padding:18px;
- }
-
- .row{
-  flex-direction:column;
-  gap:5px;
- }
-
- .row b{
-  max-width:100%;
-  text-align:right;
- }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-
-<div class="nav">
-
-<a class="logo" href="index.html">
-صمم <span>ديكورك</span>
-</a>
-
-<a class="back" href="index.html">
-← الرئيسية
-</a>
-
-</div>
-
-</header>
-
-
-<div class="container">
-
-
-<div class="title">
-
-<small>CUISINE DESIGN</small>
-
-<h1>صمم مطبخك</h1>
-
-<p>
-اختار التفاصيل ديال المطبخ ديالك وصيفط لينا الطلب.
-</p>
-
-</div>
-
-
-<!-- 1 الشكل -->
-
-<div class="card">
-
-<h2>1️⃣ شكل المطبخ</h2>
-
-<div class="grid">
-
-<div class="choice"
-data-type="shape"
-data-value="مطبخ L">
-
-<div class="icon">⌞</div>
-
-<b>شكل L</b>
-
-<small>جوج جهات</small>
-
-</div>
-
-
-<div class="choice"
-data-type="shape"
-data-value="مطبخ U">
-
-<div class="icon">∪</div>
-
-<b>شكل U</b>
-
-<small>ثلاثة جهات</small>
-
-</div>
-
-
-<div class="choice"
-data-type="shape"
-data-value="مطبخ مستقيم">
-
-<div class="icon">━</div>
-
-<b>مستقيم</b>
-
-<small>حائط واحد</small>
-
-</div>
-
-
-<div class="choice"
-data-type="shape"
-data-value="مطبخ مع جزيرة">
-
-<div class="icon">▣</div>
-
-<b>مع جزيرة</b>
-
-<small>جزيرة وسطية</small>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 2 القياسات -->
-
-<div class="card">
-
-<h2>2️⃣ القياسات</h2>
-
-<label>
-الطول بالسنتيمتر
-<input id="length" type="number" placeholder="مثال: 300">
-</label>
-
-<label>
-العرض بالسنتيمتر
-<input id="width" type="number" placeholder="مثال: 250">
-</label>
-
-<label>
-الارتفاع بالسنتيمتر
-<input id="height" type="number" placeholder="مثال: 260">
-</label>
-
-<label>
-الجهة الثانية
-<input id="side" type="number" placeholder="مثال: 180">
-</label>
-
-</div>
-
-
-<!-- 3 الخزائن -->
-
-<div class="card">
-
-<h2>3️⃣ الخزائن العلوية</h2>
-
-<div class="grid">
-
-<div class="choice"
-data-type="upper"
-data-value="خزائن حتى السقف">
-
-<div class="icon">▤</div>
-
-<b>حتى السقف</b>
-
-</div>
-
-
-<div class="choice"
-data-type="upper"
-data-value="خزائن علوية">
-
-<div class="icon">▥</div>
-
-<b>خزائن علوية</b>
-
-</div>
-
-
-<div class="choice"
-data-type="upper"
-data-value="بدون خزائن علوية">
-
-<div class="icon">—</div>
-
-<b>بدون</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 4 الرخام -->
-
-<div class="card">
-
-<h2>4️⃣ الرخام / السطح</h2>
-
-<div class="grid">
-
-<div class="choice"
-data-type="marble"
-data-value="رخام أبيض">
-
-<div class="icon">⬜</div>
-
-<b>رخام أبيض</b>
-
-</div>
-
-
-<div class="choice"
-data-type="marble"
-data-value="رخام أسود">
-
-<div class="icon">⬛</div>
-
-<b>رخام أسود</b>
-
-</div>
-
-
-<div class="choice"
-data-type="marble"
-data-value="رخام رمادي">
-
-<div class="icon">◻️</div>
-
-<b>رخام رمادي</b>
-
-</div>
-
-
-<div class="choice"
-data-type="marble"
-data-value="Quartz">
-
-<div class="icon">◇</div>
-
-<b>Quartz</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 5 الخامة -->
-
-<div class="card">
-
-<h2>5️⃣ الخامة واللون</h2>
-
-<label>
-
-الخامة
-
-<select id="material">
-
-<option value="">اختار الخامة</option>
-
-<option>MDF</option>
-
-<option>MDF مقاوم للرطوبة</option>
-
-<option>Melamine</option>
-
-<option>Laqué</option>
-
-<option>خشب طبيعي</option>
-
-</select>
-
-</label>
-
-
-<label>
-
-اللون
-
-<select id="color">
-
-<option value="">اختار اللون</option>
-
-<option>أبيض</option>
-
-<option>أسود</option>
-
-<option>رمادي</option>
-
-<option>بيج</option>
-
-<option>كابوتشينو</option>
-
-<option>أخضر</option>
-
-<option>خشبي</option>
-
-</select>
-
-</label>
-
-
-<label>
-
-الستايل
-
-<select id="style">
-
-<option value="">اختار الستايل</option>
-
-<option>مودرن</option>
-
-<option>مودرن فاخر</option>
-
-<option>كلاسيك</option>
-
-<option>بسيط</option>
-
-<option>إيطالي</option>
-
-</select>
-
-</label>
-
-</div>
-
-
-<!-- 6 الاكسسوارات -->
-
-<div class="card">
-
-<h2>6️⃣ الإكسسوارات</h2>
-
-<div class="grid">
-
-<div class="choice multi"
-data-value="أدراج هيدروليكية">
-
-<div class="icon">▤</div>
-
-<b>أدراج هيدروليكية</b>
-
-</div>
-
-
-<div class="choice multi"
-data-value="سلة ركنية">
-
-<div class="icon">◫</div>
-
-<b>سلة ركنية</b>
-
-</div>
-
-
-<div class="choice multi"
-data-value="سلة توابل">
-
-<div class="icon">▥</div>
-
-<b>سلة توابل</b>
-
-</div>
-
-
-<div class="choice multi"
-data-value="إضاءة LED">
-
-<div class="icon">💡</div>
-
-<b>إضاءة LED</b>
-
-</div>
-
-
-<div class="choice multi"
-data-value="مقابض مودرن">
-
-<div class="icon">▭</div>
-
-<b>مقابض مودرن</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- 7 الصورة -->
-
-<div class="card">
-
-<h2>7️⃣ صورة المكان</h2>
-
-<label class="upload">
-
-<input
-id="photo"
-type="file"
-accept="image/*">
-
-<div style="font-size:42px">
-📷
-</div>
-
-<strong>
-اضغط هنا لاختيار صورة المطبخ
-</strong>
-
-<p class="note">
-الصورة غادي تترفع للموقع باش نقدروا نشوفوها.
-</p>
-
-</label>
-
-
-<div id="uploadStatus" class="upload-status"></div>
-
-
-<div class="preview" id="preview">
-
-<img id="previewImg">
-
-</div>
-
-
-<label style="margin-top:20px">
-
-ملاحظات
-
-<textarea
-id="notes"
-placeholder="مثلاً: بغيت الفرن هنا، الثلاجة هنا..."></textarea>
-
-</label>
-
-</div>
-
-
-<!-- 8 الملخص -->
-
-<div class="card">
-
-<h2>8️⃣ ملخص الطلب</h2>
-
-
-<div class="summary">
-
-<div class="row">
-<span>الشكل</span>
-<b id="sShape">—</b>
-</div>
-
-
-<div class="row">
-<span>القياسات</span>
-<b id="sMeasure">—</b>
-</div>
-
-
-<div class="row">
-<span>الخزائن</span>
-<b id="sUpper">—</b>
-</div>
-
-
-<div class="row">
-<span>السطح</span>
-<b id="sMarble">—</b>
-</div>
-
-
-<div class="row">
-<span>الخامة</span>
-<b id="sMaterial">—</b>
-</div>
-
-
-<div class="row">
-<span>اللون</span>
-<b id="sColor">—</b>
-</div>
-
-
-<div class="row">
-<span>الستايل</span>
-<b id="sStyle">—</b>
-</div>
-
-
-<div class="row">
-<span>الإكسسوارات</span>
-<b id="sAccessories">—</b>
-</div>
-
-
-<div class="row">
-<span>الصورة</span>
-<b id="sPhoto">لم يتم الرفع</b>
-</div>
-
-</div>
-
-
-<a
-id="whatsapp"
-class="whatsapp"
-target="_blank"
-href="#">
-
-💬 صيفط الطلب عبر واتساب
-
-</a>
-
-</div>
-
-
-</div>
-
-
-<script>
-
-/* =========================
-   CLOUDINARY
-========================= */
-
-const CLOUD_NAME="rhao0lli";
-
-const UPLOAD_PRESET="samemdecork_images";
-
-let imageURL="";
-
-
-/* =========================
-   DATA
-========================= */
-
-const data={
- shape:"",
- upper:"",
- marble:"",
- accessories:[]
-};
-
-
-/* =========================
-   الاختيارات
-========================= */
-
-document.querySelectorAll(".choice").forEach(el=>{
-
- el.addEventListener("click",function(){
-
-  const type=this.dataset.type;
-
-
-  if(type){
-
-   document
-   .querySelectorAll('[data-type="'+type+'"]')
-   .forEach(x=>{
-    x.classList.remove("active");
-   });
-
-   this.classList.add("active");
-
-   data[type]=this.dataset.value;
-
-  }
-
-
-  if(this.classList.contains("multi")){
-
-   this.classList.toggle("active");
-
-   data.accessories=
-   [...document.querySelectorAll(".multi.active")]
-   .map(x=>x.dataset.value);
-
-  }
-
-
-  update();
-
- });
-
-});
-
-
-/* =========================
-   رفع الصورة
-========================= */
-
-document
-.getElementById("photo")
-.addEventListener("change",async function(){
-
- const file=this.files[0];
-
- if(!file)return;
-
-
- const status=document.getElementById("uploadStatus");
-
- status.className="upload-status";
-
- status.textContent=
- "⏳ جاري رفع الصورة...";
-
-
- const reader=new FileReader();
-
- reader.onload=function(e){
-
-  document.getElementById("previewImg").src=
-  e.target.result;
-
-  document.getElementById("preview").style.display=
-  "block";
-
- };
-
- reader.readAsDataURL(file);
-
-
- try{
-
-  const formData=new FormData();
-
-  formData.append("file",file);
-
-  formData.append(
-   "upload_preset",
-   UPLOAD_PRESET
-  );
-
-
-  const response=
-  await fetch(
-   `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-   {
-    method:"POST",
-    body:formData
-   }
-  );
-
-
-  const result=await response.json();
-
-
-  if(!response.ok){
-
-   throw new Error(
-    result.error?.message ||
-    "فشل رفع الصورة"
-   );
-
-  }
-
-
-  imageURL=result.secure_url;
-
-
-  status.className=
-  "upload-status success";
-
-  status.textContent=
-  "✅ تم رفع الصورة بنجاح";
-
-
-  document.getElementById("sPhoto").textContent=
-  "تم رفع الصورة ✓";
-
-
-  update();
-
- }catch(error){
-
-  console.error(error);
-
-  status.className=
-  "upload-status error";
-
-  status.textContent=
-  "❌ وقع مشكل في رفع الصورة. حاول مرة أخرى.";
-
- }
-
-});
-
-
-/* =========================
-   تحديث
-========================= */
-
-function update(){
-
- const l=
- document.getElementById("length").value;
-
- const w=
- document.getElementById("width").value;
-
- const h=
- document.getElementById("height").value;
-
- const side=
- document.getElementById("side").value;
-
-
- document.getElementById("sShape").textContent=
- data.shape||"—";
-
-
- document.getElementById("sMeasure").textContent=
-
- `${l||"-"} × ${w||"-"} × ${h||"-"} cm`
- +
- (side
- ?
- ` | الجهة الثانية ${side} cm`
- :
- "");
-
-
- document.getElementById("sUpper").textContent=
- data.upper||"—";
-
-
- document.getElementById("sMarble").textContent=
- data.marble||"—";
-
-
- document.getElementById("sMaterial").textContent=
- document.getElementById("material").value||"—";
-
-
- document.getElementById("sColor").textContent=
- document.getElementById("color").value||"—";
-
-
- document.getElementById("sStyle").textContent=
- document.getElementById("style").value||"—";
-
-
- document.getElementById("sAccessories").textContent=
-
- data.accessories.length
- ?
- data.accessories.join("، ")
- :
- "بدون";
-
-
- createWhatsApp();
-
+.material-img{
+  height:105px;
+  width:100%;
+  background-size:cover;
+  background-position:center;
 }
 
-
-/* =========================
-   واتساب
-========================= */
-
-function createWhatsApp(){
-
- const l=
- document.getElementById("length").value;
-
- const w=
- document.getElementById("width").value;
-
- const h=
- document.getElementById("height").value;
-
- const side=
- document.getElementById("side").value;
-
- const material=
- document.getElementById("material").value;
-
- const color=
- document.getElementById("color").value;
-
- const style=
- document.getElementById("style").value;
-
- const notes=
- document.getElementById("notes").value;
-
-
- const message=
-
-`السلام عليكم، بغيت نصمم مطبخ مع صمم ديكورك.
-
-شكل المطبخ:
-${data.shape||"غير محدد"}
-
-القياسات:
-الطول: ${l||"-"} cm
-العرض: ${w||"-"} cm
-الارتفاع: ${h||"-"} cm
-الجهة الثانية: ${side||"-"} cm
-
-الخزائن العلوية:
-${data.upper||"غير محدد"}
-
-الرخام / السطح:
-${data.marble||"غير محدد"}
-
-الخامة:
-${material||"-"}
-
-اللون:
-${color||"-"}
-
-الستايل:
-${style||"-"}
-
-الإكسسوارات:
-${data.accessories.length
- ?
- data.accessories.join("، ")
- :
- "بدون"}
-
-ملاحظات:
-${notes||"-"}
-
-📷 صورة المكان:
-${imageURL||"لم يتم رفع الصورة"}
-
-صمم ديكورك
-Hamza Chtaibi`;
-
-
- document.getElementById("whatsapp").href=
-
- "https://wa.me/212754350706?text="+
- encodeURIComponent(message);
-
+.material-content{
+  padding:12px;
 }
 
+.swatch{
+  width:55px;
+  height:55px;
+  margin:0 auto 8px;
+  border-radius:12px;
+  box-shadow:inset 0 0 0 1px #0002;
+}
 
-/* =========================
-   تحديث تلقائي
-========================= */
+.color-white{background:#f2eee5}
+.color-cappuccino{background:#c6ae91}
+.color-beige{background:#d7c7ad}
+.color-grey{background:#898783}
+.color-black{background:#171717}
+.color-green{background:#65715d}
+.color-navy{background:#29333c}
+.color-wood{background:linear-gradient(135deg,#7a4d2d,#b47a4d,#6d4027)}
 
-document
-.querySelectorAll("input,select,textarea")
-.forEach(el=>{
+.counter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin-top:10px;
+}
 
- el.addEventListener("input",update);
+.counter button{
+  border:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  font-size:20px;
+}
 
- el.addEventListener("change",update);
+.counter-value{
+  font-size:22px;
+  font-weight:bold;
+  min-width:35px;
+  text-align:center;
+}
 
-});
+.measure-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
 
+.field label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
+}
 
-update();
+.field input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
 
-</script>
+.field input:focus{
+  border-color:#b29368;
+}
 
-</body>
-</html>
+.budget-box{
+  background:#151515;
+  color:white;
+  border-radius:18px;
+  padding:22px;
+}
+
+.budget-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.budget-value{
+  color:#d3b483;
+  font-size:28px;
+  font-weight:bold;
+}
+
+input[type=range]{
+  width:100%;
+  accent-color:#b29368;
+}
+
+.budget-level{
+  margin-top:12px;
+  display:inline-block;
+  padding:5px 12px;
+  background:#ffffff12;
+  border-radius:20px;
+  color:#ddd

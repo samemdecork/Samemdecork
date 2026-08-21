@@ -2,984 +2,532 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color"
-      content="#17231d">
-
-<meta name="description"
-      content="صمم ديكورك - صمم الديكور ديالك بسهولة">
-
-<link rel="manifest"
-      href="manifest.json">
-
-<title>صمم ديكورك | تصميم وتنفيذ الديكور</title>
-
-<style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
-
-  background:#f5f0e8;
-  color:#17231d;
-
-  line-height:1.7;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-img{
-  display:block;
-  width:100%;
-}
-
-button,
-input{
-  font-family:inherit;
-}
-
-.wrap{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-
-  position:fixed;
-
-  top:0;
-  left:0;
-  right:0;
-
-  z-index:1000;
-
-  height:72px;
-
-  background:
-    rgba(23,35,29,.97);
-
-  box-shadow:
-    0 5px 25px rgba(0,0,0,.18);
-}
-
-.nav{
-
-  height:72px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:20px;
-}
-
-.logo{
-
-  color:#fff;
-
-  font-size:24px;
-
-  font-weight:900;
-
-  white-space:nowrap;
-}
-
-.logo span{
-  color:#c9aa7b;
-}
-
-.navlinks{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:24px;
-}
-
-.navlinks a{
-
-  color:#fff;
-
-  font-size:14px;
-
-  transition:.2s;
-}
-
-.navlinks a:hover{
-  color:#c9aa7b;
-}
-
-.nav-whatsapp{
-
-  background:#c9aa7b;
-
-  color:#17231d!important;
-
-  padding:
-    9px 17px;
-
-  border-radius:25px;
-
-  font-weight:bold;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-
-  min-height:100vh;
-
-  position:relative;
-
-  display:flex;
-
-  align-items:center;
-
-  overflow:hidden;
-
-  color:#fff;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      rgba(8,15,11,.93),
-      rgba(8,15,11,.48)
-    ),
-
-    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=90")
-
-    center/cover;
-}
-
-.hero-content{
-
-  padding-top:72px;
-
-  max-width:720px;
-}
-
-.kicker{
-
-  color:#c9aa7b;
-
-  font-size:13px;
-
-  letter-spacing:2px;
-
-  margin-bottom:18px;
-
-  font-weight:bold;
-}
-
-.hero h1{
-
-  font-size:
-    clamp(48px,8vw,88px);
-
-  line-height:1.08;
-
-  margin-bottom:22px;
-
-  font-weight:900;
-}
-
-.hero h1 span{
-  color:#c9aa7b;
-}
-
-.hero-text{
-
-  color:#eee;
-
-  font-size:18px;
-
-  line-height:2;
-
-  max-width:650px;
-
-  margin-bottom:28px;
-}
-
-.buttons{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:10px;
-}
-
-.btn{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  min-height:52px;
-
-  padding:
-    13px 27px;
-
-  border-radius:6px;
-
-  font-weight:bold;
-
-  transition:.25s;
-
-  cursor:pointer;
-}
-
-.btn-gold{
-
-  background:#c9aa7b;
-
-  color:#17231d;
-}
-
-.btn-gold:hover{
-
-  transform:translateY(-2px);
-
-  background:#d6bb91;
-}
-
-.btn-outline{
-
-  border:
-    1px solid
-    rgba(255,255,255,.8);
-
-  color:#fff;
-}
-
-.btn-outline:hover{
-
-  background:#fff;
-
-  color:#17231d;
-}
-
-
-/* =====================================================
-   QUICK STEPS
-===================================================== */
-
-.quick{
-
-  background:#fff;
-
-  padding:25px 0;
-
-  border-bottom:
-    1px solid #e5ddd1;
-}
-
-.quick-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:12px;
-}
-
-.quick-item{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  padding:12px;
-}
-
-.quick-number{
-
-  width:38px;
-  height:38px;
-
-  min-width:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:#17231d;
-
-  color:#c9aa7b;
-
-  font-weight:bold;
-}
-
-.quick-item strong{
-
-  display:block;
-
-  font-size:14px;
-}
-
-.quick-item span{
-
-  display:block;
-
-  color:#777;
-
-  font-size:12px;
-}
-
-
-/* =====================================================
-   GENERAL SECTIONS
-===================================================== */
-
-section{
-  padding:85px 0;
-}
-
-.section-title{
-
-  text-align:center;
-
-  margin-bottom:42px;
-}
-
-.section-title small{
-
-  color:#9a7d58;
-
-  font-size:12px;
-
-  letter-spacing:2px;
-
-  font-weight:bold;
-}
-
-.section-title h2{
-
-  font-size:
-    clamp(32px,5vw,52px);
-
-  margin:8px 0;
-
-  line-height:1.2;
-}
-
-.section-title p{
-
-  color:#70736e;
-
-  font-size:15px;
-}
-
-
-/* =====================================================
-   CHOICES
-===================================================== */
-
-.choices{
-
-  background:#17231d;
-
-  color:#fff;
-}
-
-.choices .section-title p{
-  color:#c8cec9;
-}
-
-.choice-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:15px;
-}
-
-
-/* =====================================================
-   CHOICE CARD
-===================================================== */
-
-.choice{
-
-  position:relative;
-
-  height:315px;
-
-  overflow:hidden;
-
-  border-radius:8px;
-
-  background:#111;
-
-  box-shadow:
-    0 8px 25px
-    rgba(0,0,0,.18);
-
-  transition:.25s;
-}
-
-.choice:hover{
-
-  transform:
-    translateY(-4px);
-}
-
-.choice img{
-
-  height:100%;
-
-  object-fit:cover;
-
-  transition:.5s;
-}
-
-.choice:hover img{
-  transform:scale(1.06);
-}
-
-.choice:after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(7,16,11,.96),
-      rgba(7,16,11,.05) 70%
-    );
-}
-
-.choice-info{
-
-  position:absolute;
-
-  right:20px;
-  left:20px;
-  bottom:20px;
-
-  z-index:2;
-}
-
-.choice-info h3{
-
-  font-size:22px;
-
-  margin-bottom:5px;
-}
-
-.choice-info p{
-
-  color:#c9aa7b;
-
-  font-size:13px;
-}
-
-
-/* =====================================================
-   SAVED
-===================================================== */
-
-.saved-box{
-
-  margin-top:30px;
-
-  background:#24342b;
-
-  border:
-    1px solid
-    rgba(201,170,123,.3);
-
-  border-radius:8px;
-
-  padding:22px;
-
-  text-align:center;
-}
-
-.saved-box h3{
-  margin-bottom:7px;
-}
-
-.saved-box p{
-
-  color:#c8cec9;
-
-  font-size:13px;
-
-  margin-bottom:15px;
-}
-
-.saved-btn{
-
-  display:inline-flex;
-
-  padding:
-    12px 22px;
-
-  background:#c9aa7b;
-
-  color:#17231d;
-
-  border-radius:5px;
-
-  font-weight:bold;
-}
-
-
-/* =====================================================
-   WORKS
-===================================================== */
-
-.works-section{
-
-  background:#dfd4c4;
-
-  text-align:center;
-}
-
-.works-btn{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:#17231d;
-
-  color:#fff;
-
-  padding:
-    16px 32px;
-
-  border-radius:6px;
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  transition:.25s;
-}
-
-.works-btn:hover{
-
-  background:#c9aa7b;
-
-  color:#17231d;
-}
-
-
-/* =====================================================
-   SERVICES
-===================================================== */
-
-.services{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:1px;
-
-  background:#c9bdac;
-
-  border-radius:6px;
-
-  overflow:hidden;
-}
-
-.service{
-
-  background:#f5f0e8;
-
-  padding:
-    32px 24px;
-
-  min-height:175px;
-}
-
-.service-number{
-
-  color:#9a7d58;
-
-  font-size:13px;
-
-  font-weight:bold;
-
-  margin-bottom:15px;
-}
-
-.service h3{
-
-  font-size:18px;
-
-  margin-bottom:8px;
-}
-
-.service p{
-
-  color:#70736e;
-
-  line-height:1.8;
-
-  font-size:14px;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact{
-
-  background:#dfd4c4;
-
-  text-align:center;
-}
-
-.contact .section-title{
-  margin-bottom:25px;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-  background:#101a15;
-
-  color:#aaa;
-
-  text-align:center;
-
-  padding:30px 15px;
-
-  line-height:2;
-
-  font-size:13px;
-}
-
-footer strong{
-  color:#c9aa7b;
-}
-
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
-
-.float{
-
-  position:fixed;
-
-  left:16px;
-
-  bottom:16px;
-
-  z-index:2000;
-
-  background:#25d366;
-
-  color:#06200d;
-
-  padding:
-    13px 20px;
-
-  border-radius:30px;
-
-  font-weight:bold;
-
-  box-shadow:
-    0 7px 25px
-    rgba(0,0,0,.25);
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:850px){
-
-  .navlinks{
-    display:none;
-  }
-
-  .hero{
-    text-align:center;
-  }
-
-  .hero-content{
-    margin:auto;
-  }
-
-  .buttons{
-    justify-content:center;
-  }
-
-  .quick-grid{
-
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .choice-grid{
-
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .services{
-
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-}
-
-
-@media(max-width:560px){
-
-  header,
-  .nav{
-    height:64px;
-  }
-
-  .logo{
-    font-size:21px;
-  }
-
-  .hero{
-
-    min-height:92vh;
-  }
-
-  .hero-content{
-
-    padding-top:64px;
-  }
-
-  .kicker{
-    font-size:11px;
-  }
-
-  .hero h1{
-    font-size:45px;
-  }
-
-  .hero-text{
-
-    font-size:15px;
-
-    line-height:1.9;
-  }
-
-  .buttons{
-
-    display:flex;
-
-    flex-direction:column;
-  }
-
-  .btn{
-    width:100%;
-  }
-
-  section{
-    padding:65px 0;
-  }
-
-  .wrap{
-    width:91%;
-  }
-
-  .quick{
-    padding:18px 0;
-  }
-
-  .quick-grid{
-
-    grid-template-columns:
-      1fr 1fr;
-
-    gap:5px;
-  }
-
-  .quick-item{
-    padding:8px 4px;
-  }
-
-  .quick-number{
-
-    width:32px;
-    height:32px;
-
-    min-width:32px;
-
-    font-size:12px;
-  }
-
-  .quick-item strong{
-    font-size:12px;
-  }
-
-  .quick-item span{
-    font-size:10px;
-  }
-
-  .section-title{
-    margin-bottom:30px;
-  }
-
-  .section-title h2{
-    font-size:34px;
-  }
-
-  .choice-grid{
-
-    grid-template-columns:1fr;
-
-    gap:12px;
-  }
-
-  .choice{
-    height:280px;
-  }
-
-  .services{
-
-    grid-template-columns:1fr;
-  }
-
-  .service{
-    min-height:auto;
-  }
-
-  .float{
-
-    left:10px;
-
-    bottom:10px;
-
-    padding:
-      11px 17px;
-
-    font-size:13px;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#17231d">
+  <meta name="description" content="صمم ديكورك - تصميم وتنفيذ الديكور">
+
+  <title>صمم ديكورك | تصميم وتنفيذ الديكور</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f0e8;
+      color: #17231d;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 72px;
+      z-index: 1000;
+      background: #17231d;
+      box-shadow: 0 5px 25px rgba(0,0,0,.2);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: #c9aa7b;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .navlinks a {
+      color: white;
+      font-size: 14px;
+    }
+
+    .navlinks a:hover {
+      color: #c9aa7b;
+    }
+
+    .nav-whatsapp {
+      background: #c9aa7b;
+      color: #17231d !important;
+      padding: 9px 17px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          135deg,
+          #101a15,
+          #24342b
+        );
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .kicker {
+      color: #c9aa7b;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1.08;
+      margin-bottom: 22px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: #c9aa7b;
+    }
+
+    .hero-text {
+      color: #e7e7e7;
+      font-size: 18px;
+      line-height: 2;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 13px 27px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn-gold {
+      background: #c9aa7b;
+      color: #17231d;
+    }
+
+    .btn-outline {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #17231d;
+    }
+
+    /* QUICK */
+
+    .quick {
+      background: white;
+      padding: 25px 0;
+      border-bottom: 1px solid #e5ddd1;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .quick-number {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      background: #17231d;
+      color: #c9aa7b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .quick-item strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .quick-item span {
+      display: block;
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title small {
+      color: #9a7d58;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      margin: 8px 0;
+      line-height: 1.2;
+    }
+
+    .section-title p {
+      color: #70736e;
+      font-size: 15px;
+    }
+
+    /* CHOICES */
+
+    .choices {
+      background: #17231d;
+      color: white;
+    }
+
+    .choices .section-title p {
+      color: #c8cec9;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .choice {
+      min-height: 230px;
+      border-radius: 10px;
+      padding: 28px;
+      background: linear-gradient(
+        145deg,
+        #26382e,
+        #101a15
+      );
+      border: 1px solid rgba(201,170,123,.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: .25s;
+    }
+
+    .choice:hover {
+      transform: translateY(-5px);
+      border-color: #c9aa7b;
+    }
+
+    .choice-icon {
+      font-size: 45px;
+      margin-bottom: auto;
+    }
+
+    .choice h3 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .choice p {
+      color: #c9aa7b;
+      font-size: 13px;
+    }
+
+    /* SAVED */
+
+    .saved-box {
+      margin-top: 30px;
+      background: #24342b;
+      border: 1px solid rgba(201,170,123,.3);
+      border-radius: 8px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .saved-box p {
+      color: #c8cec9;
+      font-size: 13px;
+      margin: 7px 0 15px;
+    }
+
+    .saved-btn {
+      display: inline-flex;
+      padding: 12px 22px;
+      background: #c9aa7b;
+      color: #17231d;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* WORKS */
+
+    .works-section {
+      background: #dfd4c4;
+      text-align: center;
+    }
+
+    .works-btn {
+      display: inline-flex;
+      background: #17231d;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* SERVICES */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #c9bdac;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .service {
+      background: #f5f0e8;
+      padding: 32px 24px;
+      min-height: 175px;
+    }
+
+    .service-number {
+      color: #9a7d58;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .service h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: #70736e;
+      font-size: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #dfd4c4;
+      text-align: center;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #101a15;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #c9aa7b;
+    }
+
+    /* WHATSAPP */
+
+    .float {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 2000;
+      background: #25d366;
+      color: #06200d;
+      padding: 13px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 7px 25px rgba(0,0,0,.25);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:850px) {
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-content {
+        margin: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .services {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:560px) {
+
+      header,
+      .nav {
+        height: 64px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .choice {
+        min-height: 210px;
+      }
+
+      .float {
+        left: 10px;
+        bottom: 10px;
+        padding: 11px 17px;
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header>
-
   <div class="wrap nav">
 
-    <a
-      href="index.html"
-      class="logo">
-
-      صمم
-      <span>ديكورك</span>
-
+    <a href="index.html" class="logo">
+      صمم <span>ديكورك</span>
     </a>
 
-
     <nav class="navlinks">
-
-      <a href="#choices">
-        صمم دابا
-      </a>
-
-      <a href="#works">
-        أعمالنا
-      </a>
-
-      <a href="#services">
-        الخدمات
-      </a>
+      <a href="#choices">صمم دابا</a>
+      <a href="#works">أعمالنا</a>
+      <a href="#services">الخدمات</a>
 
       <a
         class="nav-whatsapp"
         target="_blank"
         href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور">
-
         واتساب
-
       </a>
-
     </nav>
 
   </div>
-
 </header>
 
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
 
 <section class="hero">
 
@@ -989,48 +537,30 @@ footer strong{
       تصميم • ديكور • تنفيذ
     </div>
 
-
     <h1>
-
       دار عليك
-
       <br>
-
-      <span>
-        وديكور علينا
-      </span>
-
+      <span>وديكور علينا</span>
     </h1>
 
-
     <p class="hero-text">
-
       اختار شنو بغيتي تصمم،
       دخل القياسات ديالك،
       اختار الشكل والخامة والألوان،
       ومن بعد صيفط لينا طلبك بسهولة.
-
     </p>
-
 
     <div class="buttons">
 
-      <a
-        class="btn btn-gold"
-        href="#choices">
-
+      <a class="btn btn-gold" href="#choices">
         ✨ ابدأ التصميم
-
       </a>
-
 
       <a
         class="btn btn-outline"
         target="_blank"
         href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور">
-
         💬 تواصل معنا
-
       </a>
 
     </div>
@@ -1039,11 +569,6 @@ footer strong{
 
 </section>
 
-
-
-<!-- =====================================================
-     QUICK STEPS
-===================================================== -->
 
 <section class="quick">
 
@@ -1051,88 +576,36 @@ footer strong{
 
     <div class="quick-grid">
 
-
       <div class="quick-item">
-
-        <div class="quick-number">
-          1
-        </div>
-
+        <div class="quick-number">1</div>
         <div>
-
-          <strong>
-            اختار
-          </strong>
-
-          <span>
-            القسم ديالك
-          </span>
-
+          <strong>اختار</strong>
+          <span>القسم ديالك</span>
         </div>
-
       </div>
 
-
       <div class="quick-item">
-
-        <div class="quick-number">
-          2
-        </div>
-
+        <div class="quick-number">2</div>
         <div>
-
-          <strong>
-            قيس
-          </strong>
-
-          <span>
-            دخل القياسات
-          </span>
-
+          <strong>قيس</strong>
+          <span>دخل القياسات</span>
         </div>
-
       </div>
 
-
       <div class="quick-item">
-
-        <div class="quick-number">
-          3
-        </div>
-
+        <div class="quick-number">3</div>
         <div>
-
-          <strong>
-            صمم
-          </strong>
-
-          <span>
-            اختار الشكل والخامة
-          </span>
-
+          <strong>صمم</strong>
+          <span>اختار الشكل والخامة</span>
         </div>
-
       </div>
 
-
       <div class="quick-item">
-
-        <div class="quick-number">
-          4
-        </div>
-
+        <div class="quick-number">4</div>
         <div>
-
-          <strong>
-            صيفط
-          </strong>
-
-          <span>
-            الطلب عبر واتساب
-          </span>
-
+          <strong>صيفط</strong>
+          <span>الطلب عبر واتساب</span>
         </div>
-
       </div>
 
     </div>
@@ -1142,27 +615,15 @@ footer strong{
 </section>
 
 
-
-<!-- =====================================================
-     CHOICES
-===================================================== -->
-
-<section
-  class="choices"
-  id="choices">
+<section class="choices" id="choices">
 
   <div class="wrap">
 
-
     <div class="section-title">
 
-      <small>
-        صمم ديكورك
-      </small>
+      <small>صمم ديكورك</small>
 
-      <h2>
-        شنو بغيتي تصمم؟
-      </h2>
+      <h2>شنو بغيتي تصمم؟</h2>
 
       <p>
         اختار القسم ديالك وغادي تدخل مباشرة للمختارات ديالو.
@@ -1171,229 +632,63 @@ footer strong{
     </div>
 
 
-
     <div class="choice-grid">
 
-
-      <!-- =================================================
-           KITCHEN
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=kitchen">
-
-        <img
-          src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90"
-          alt="المطبخ">
-
-        <div class="choice-info">
-
-          <h3>
-            🍳 المطبخ
-          </h3>
-
-          <p>
-            L • U • مستقيم • جزيرة
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=kitchen">
+        <div class="choice-icon">🍳</div>
+        <h3>المطبخ</h3>
+        <p>L • U • مستقيم • جزيرة</p>
       </a>
 
-
-
-      <!-- =================================================
-           BEDROOM
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=bedroom">
-
-        <img
-          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90"
-          alt="غرفة النوم">
-
-        <div class="choice-info">
-
-          <h3>
-            🛏️ غرفة النوم
-          </h3>
-
-          <p>
-            سرير • خزانات • تسريحة
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=bedroom">
+        <div class="choice-icon">🛏️</div>
+        <h3>غرفة النوم</h3>
+        <p>سرير • خزانات • تسريحة</p>
       </a>
 
-
-
-      <!-- =================================================
-           SALON
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=salon">
-
-        <img
-          src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90"
-          alt="الصالون">
-
-        <div class="choice-info">
-
-          <h3>
-            🛋️ الصالون
-          </h3>
-
-          <p>
-            جلسة • حيط • طاولات
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=salon">
+        <div class="choice-icon">🛋️</div>
+        <h3>الصالون</h3>
+        <p>جلسة • حيط • طاولات</p>
       </a>
 
-
-
-      <!-- =================================================
-           DRESSING
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=dressing">
-
-        <img
-          src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90"
-          alt="Dressing و Placard">
-
-        <div class="choice-info">
-
-          <h3>
-            👔 Dressing & Placard
-          </h3>
-
-          <p>
-            بيبان • زجاج • تقسيم داخلي
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=dressing">
+        <div class="choice-icon">👔</div>
+        <h3>Dressing & Placard</h3>
+        <p>بيبان • زجاج • تقسيم داخلي</p>
       </a>
 
-
-
-      <!-- =================================================
-           TV
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=tv">
-
-        <img
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90"
-          alt="Meuble TV">
-
-        <div class="choice-info">
-
-          <h3>
-            📺 Meuble TV
-          </h3>
-
-          <p>
-            حيط TV • رفوف • نيش
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=tv">
+        <div class="choice-icon">📺</div>
+        <h3>Meuble TV</h3>
+        <p>حيط TV • رفوف • نيش</p>
       </a>
 
-
-
-      <!-- =================================================
-           TAPISSERIE
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=tapisserie">
-
-        <img
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90"
-          alt="الطابيسري والستور">
-
-        <div class="choice-info">
-
-          <h3>
-            🪟 الطابيسري والستور
-          </h3>
-
-          <p>
-            ستور • سدادر • ثوب • قياسات
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=tapisserie">
+        <div class="choice-icon">🪟</div>
+        <h3>الطابيسري والستور</h3>
+        <p>ستور • سدادر • ثوب • قياسات</p>
       </a>
 
-
-
-      <!-- =================================================
-           ACCESSORIES
-      ================================================== -->
-
-      <a
-        class="choice"
-        href="configurateur.html?type=accessories">
-
-        <img
-          src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=1200&q=90"
-          alt="إكسسوارات الديكور">
-
-        <div class="choice-info">
-
-          <h3>
-            🔧 الإكسسوارات
-          </h3>
-
-          <p>
-            مقابض • LED • تجهيزات
-          </p>
-
-        </div>
-
+      <a class="choice" href="configurateur.html?type=accessories">
+        <div class="choice-icon">🔧</div>
+        <h3>الإكسسوارات</h3>
+        <p>مقابض • LED • تجهيزات</p>
       </a>
-
 
     </div>
 
 
-
-    <!-- =================================================
-         SAVED
-    ================================================== -->
-
     <div class="saved-box">
 
-      <h3>
-        💾 عندك طلب محفوظ؟
-      </h3>
+      <h3>💾 عندك طلب محفوظ؟</h3>
 
       <p>
-        نقدر نضيفو حفظ الطلب باش ترجع تكمل التصميم ديالك منين وقفتي.
+        تقدر ترجع تكمل التصميم ديالك منين وقفتي.
       </p>
 
-      <a
-        class="saved-btn"
-        href="#choices">
-
+      <a class="saved-btn" href="#choices">
         متابعة التصميم
-
       </a>
 
     </div>
@@ -1403,27 +698,15 @@ footer strong{
 </section>
 
 
-
-<!-- =====================================================
-     WORKS
-===================================================== -->
-
-<section
-  class="works-section"
-  id="works">
+<section class="works-section" id="works">
 
   <div class="wrap">
 
-
     <div class="section-title">
 
-      <small>
-        REAL PROJECTS
-      </small>
+      <small>REAL PROJECTS</small>
 
-      <h2>
-        أعمالنا
-      </h2>
+      <h2>أعمالنا</h2>
 
       <p>
         شوف الصور الحقيقية ديال الأعمال والمشاريع ديالنا.
@@ -1431,13 +714,8 @@ footer strong{
 
     </div>
 
-
-    <a
-      class="works-btn"
-      href="works.html">
-
+    <a class="works-btn" href="works.html">
       📷 شوف أعمالنا
-
     </a>
 
   </div>
@@ -1445,25 +723,15 @@ footer strong{
 </section>
 
 
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
 <section id="services">
 
   <div class="wrap">
 
-
     <div class="section-title">
 
-      <small>
-        SERVICES
-      </small>
+      <small>SERVICES</small>
 
-      <h2>
-        الخدمات
-      </h2>
+      <h2>الخدمات</h2>
 
       <p>
         من اختيار الفكرة حتى التنفيذ والتركيب.
@@ -1472,111 +740,55 @@ footer strong{
     </div>
 
 
-
     <div class="services">
 
-
       <div class="service">
-
-        <div class="service-number">
-          01
-        </div>
-
-        <h3>
-          التصميم
-        </h3>
-
+        <div class="service-number">01</div>
+        <h3>التصميم</h3>
         <p>
           نعاونك تختار الشكل المناسب للمساحة ديالك.
         </p>
-
       </div>
 
-
       <div class="service">
-
-        <div class="service-number">
-          02
-        </div>
-
-        <h3>
-          القياسات
-        </h3>
-
+        <div class="service-number">02</div>
+        <h3>القياسات</h3>
         <p>
           دخل الطول والعرض والارتفاع حسب المشروع.
         </p>
-
       </div>
 
-
       <div class="service">
-
-        <div class="service-number">
-          03
-        </div>
-
-        <h3>
-          الخامات
-        </h3>
-
+        <div class="service-number">03</div>
+        <h3>الخامات</h3>
         <p>
           MDF، Mélaminé، خشب، زجاج، رخام وغيرها.
         </p>
-
       </div>
 
-
       <div class="service">
-
-        <div class="service-number">
-          04
-        </div>
-
-        <h3>
-          الألوان
-        </h3>
-
+        <div class="service-number">04</div>
+        <h3>الألوان</h3>
         <p>
           اختار اللون والتشطيب والستايل اللي مناسب ليك.
         </p>
-
       </div>
 
-
       <div class="service">
-
-        <div class="service-number">
-          05
-        </div>
-
-        <h3>
-          الإكسسوارات
-        </h3>
-
+        <div class="service-number">05</div>
+        <h3>الإكسسوارات</h3>
         <p>
           LED، مقابض، سلال، tiroirs وتجهيزات مختلفة.
         </p>
-
       </div>
 
-
       <div class="service">
-
-        <div class="service-number">
-          06
-        </div>
-
-        <h3>
-          التنفيذ
-        </h3>
-
+        <div class="service-number">06</div>
+        <h3>التنفيذ</h3>
         <p>
           من التصميم حتى التركيب النهائي.
         </p>
-
       </div>
-
 
     </div>
 
@@ -1585,25 +797,15 @@ footer strong{
 </section>
 
 
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
 <section class="contact">
 
   <div class="wrap">
 
-
     <div class="section-title">
 
-      <small>
-        HAMZA CHTAIBI
-      </small>
+      <small>HAMZA CHTAIBI</small>
 
-      <h2>
-        عندك مشروع؟
-      </h2>
+      <h2>عندك مشروع؟</h2>
 
       <p>
         صيفط لينا الصور والقياسات وشرح لينا شنو بغيتي.
@@ -1611,14 +813,11 @@ footer strong{
 
     </div>
 
-
     <a
       class="btn btn-gold"
       target="_blank"
       href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور">
-
       💬 تواصل معنا عبر واتساب
-
     </a>
 
   </div>
@@ -1626,44 +825,25 @@ footer strong{
 </section>
 
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
 
-  <strong>
-    صمم ديكورك
-  </strong>
-
+  <strong>صمم ديكورك</strong>
   © 2026
 
   <br>
 
   جميع الحقوق محفوظة —
-
-  <strong>
-    Hamza Chtaibi
-  </strong>
+  <strong>Hamza Chtaibi</strong>
 
 </footer>
 
-
-
-<!-- =====================================================
-     FLOATING WHATSAPP
-===================================================== -->
 
 <a
   class="float"
   target="_blank"
   href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20التصميم">
-
   💬 واتساب
-
 </a>
-
 
 </body>
 </html>

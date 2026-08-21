@@ -13,588 +13,466 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   font-family:Tahoma,Arial,sans-serif;
   background:#f5f0e8;
   color:#17231d;
 }
 
-/* HEADER */
-
 header{
-  height:82px;
-  background:#101f18;
-  color:#fff;
-  display:flex;
-  align-items:center;
+  background:#17231d;
+  color:white;
+  padding:18px 0;
   position:sticky;
   top:0;
-  z-index:100;
-  box-shadow:0 5px 20px #0003;
+  z-index:50;
 }
 
-.header-inner{
+.wrap{
   width:min(1200px,92%);
   margin:auto;
+}
+
+.nav{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
 }
 
 .logo{
-  font-size:28px;
+  font-size:25px;
   font-weight:900;
-  color:#fff;
-  text-decoration:none;
 }
 
 .logo span{
   color:#c9aa7b;
 }
 
-/* HOME BUTTON */
-
-.home-btn{
-  text-decoration:none;
-  color:#fff;
-  border:1px solid #c9aa7b;
-  padding:12px 22px;
-  border-radius:30px;
-  font-size:16px;
-  transition:.25s;
-}
-
-.home-btn:hover{
-  background:#c9aa7b;
+.home{
+  background:white;
   color:#17231d;
+  padding:10px 18px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
 }
-
-/* HERO */
 
 .hero{
   text-align:center;
-  padding:75px 20px 45px;
+  padding:55px 15px 35px;
 }
 
-.eyebrow{
-  color:#9a7d58;
-  letter-spacing:3px;
-  font-size:14px;
-  margin-bottom:15px;
-}
-
-h1{
-  font-size:clamp(42px,7vw,70px);
-  margin-bottom:18px;
+.hero h1{
+  font-size:38px;
+  margin-bottom:12px;
 }
 
 .hero p{
   color:#777;
-  font-size:17px;
-  line-height:1.9;
+  line-height:1.8;
 }
 
-/* FILTERS */
-
 .filters{
-  width:min(1200px,92%);
-  margin:0 auto 45px;
-
   display:flex;
   justify-content:center;
-  gap:10px;
   flex-wrap:wrap;
+  gap:9px;
+  margin:20px auto 35px;
 }
 
 .filter{
-  border:1px solid #c9aa7b;
-  background:transparent;
+  border:1px solid #d8cbb9;
+  background:white;
   color:#17231d;
-  padding:12px 20px;
-  border-radius:30px;
+  padding:10px 17px;
+  border-radius:25px;
   cursor:pointer;
   font-family:inherit;
-  font-size:15px;
-  transition:.25s;
+  font-weight:bold;
 }
 
-.filter:hover,
-.filter.active{
+.filter.active,
+.filter:hover{
   background:#17231d;
-  color:#fff;
+  color:white;
 }
-
-/* GALLERY */
 
 .gallery{
-  width:min(1200px,92%);
-  margin:auto;
-
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
   gap:18px;
+  padding-bottom:70px;
 }
 
 .card{
-  background:#fff;
-  border-radius:8px;
+  background:white;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 5px 20px #00000012;
-  animation:show .4s ease;
+  box-shadow:0 5px 20px #0001;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px #0002;
 }
 
 .card img{
-  display:block;
   width:100%;
-  height:300px;
+  height:260px;
   object-fit:cover;
-  transition:.4s;
-}
-
-.card:hover img{
-  transform:scale(1.04);
+  display:block;
 }
 
 .card-info{
   padding:15px;
-  background:#fff;
 }
 
-.card-category{
-  color:#9a7d58;
-  font-size:13px;
+.card-info h3{
+  margin-bottom:6px;
 }
 
-/* EMPTY / ERROR */
+.card-info p{
+  color:#888;
+  font-size:14px;
+}
 
-.message{
-  width:min(700px,90%);
-  margin:40px auto;
+.empty{
+  display:none;
   text-align:center;
-  padding:35px 20px;
+  padding:50px 20px;
   color:#777;
-  font-size:18px;
-  line-height:2;
 }
 
-.loading{
-  color:#9a7d58;
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
 }
 
-.error{
-  color:#9b3939;
+.modal.show{
+  display:flex;
 }
 
-.hidden{
-  display:none!important;
+.modal-box{
+  width:min(700px,100%);
+  max-height:95vh;
+  overflow:auto;
+  background:white;
+  border-radius:20px;
+  position:relative;
+  padding:12px;
 }
 
-/* FOOTER */
+.close{
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#17231d;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+  z-index:5;
+}
 
-footer{
-  margin-top:80px;
-  background:#101a15;
-  color:#aaa;
+.modal-img{
+  width:100%;
+  max-height:65vh;
+  object-fit:contain;
+  border-radius:14px;
+  background:#eee;
+}
+
+.modal-info{
+  padding:18px 8px 8px;
+}
+
+.modal-info h2{
+  margin-bottom:7px;
+}
+
+.modal-info p{
+  color:#777;
+  margin-bottom:15px;
+}
+
+.whatsapp{
+  display:block;
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  background:#25D366;
+  color:white;
   text-align:center;
-  padding:30px 15px;
-  line-height:2;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:17px;
 }
 
-footer strong{
-  color:#c9aa7b;
+.whatsapp:hover{
+  opacity:.9;
 }
 
-/* ANIMATION */
+@media(max-width:600px){
 
-@keyframes show{
-  from{
-    opacity:0;
-    transform:translateY(10px);
+  .nav{
+    flex-direction:column;
   }
-  to{
-    opacity:1;
-    transform:translateY(0);
+
+  .hero h1{
+    font-size:30px;
   }
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
 
   .gallery{
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:10px;
   }
 
   .card img{
-    height:230px;
+    height:180px;
   }
 
-  .logo{
-    font-size:23px;
+  .card-info{
+    padding:10px;
   }
 
-  .home-btn{
-    padding:10px 17px;
-    font-size:14px;
-  }
-}
-
-@media(max-width:550px){
-
-  header{
-    height:72px;
+  .card-info h3{
+    font-size:15px;
   }
 
-  .gallery{
-    grid-template-columns:1fr;
-  }
-
-  .card img{
-    height:280px;
-  }
-
-  .hero{
-    padding-top:55px;
-  }
-
-  .filters{
-    justify-content:flex-start;
-    overflow-x:auto;
-    flex-wrap:nowrap;
-    padding-bottom:8px;
-  }
-
-  .filter{
-    white-space:nowrap;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
-  <div class="header-inner">
-
-    <a href="index.html" class="logo">
+  <div class="wrap nav">
+    <div class="logo">
       صمم <span>ديكورك</span>
-    </a>
+    </div>
 
-    <a href="index.html" class="home-btn">
-      ← الرئيسية
+    <a href="index.html" class="home">
+      الرئيسية
     </a>
-
   </div>
-
 </header>
 
-
-<!-- HERO -->
-
 <section class="hero">
-
-  <div class="eyebrow">
-    REAL PROJECTS
-  </div>
-
-  <h1>
-    أعمالنا
-  </h1>
-
+  <h1>أعمالنا وموديلاتنا</h1>
   <p>
-    صور حقيقية من أعمال ومشاريع صمم ديكورك
+    شوف الموديلات واختار التصميم اللي عجبك،
+    ومن بعد صيفطو لينا مباشرة عبر WhatsApp.
   </p>
-
 </section>
 
+<div class="wrap">
 
-<!-- FILTERS -->
+  <div class="filters">
+    <button class="filter active" data-filter="all">الكل</button>
+    <button class="filter" data-filter="kitchen">المطابخ</button>
+    <button class="filter" data-filter="salon">الصالونات</button>
+    <button class="filter" data-filter="bedroom">غرف النوم</button>
+    <button class="filter" data-filter="dressing">Dressing</button>
+    <button class="filter" data-filter="meuble-tv">Meuble TV</button>
+    <button class="filter" data-filter="tapisserie">طابيسري</button>
+  </div>
 
-<div class="filters">
+  <div id="gallery" class="gallery"></div>
 
-  <button class="filter active" data-category="all">
-    الكل
-  </button>
-
-  <button class="filter" data-category="kitchen">
-    🍳 المطابخ
-  </button>
-
-  <button class="filter" data-category="salon">
-    🛋️ الصالونات
-  </button>
-
-  <button class="filter" data-category="bedroom">
-    🛏️ غرف النوم
-  </button>
-
-  <button class="filter" data-category="tapisserie">
-    🧵 الطابيسري والستور
-  </button>
-
-  <button class="filter" data-category="dressing">
-    🚪 Dressing
-  </button>
-
-  <button class="filter" data-category="mobil-tv">
-    📺 Meuble TV
-  </button>
-
-  <button class="filter" data-category="accessories">
-    ✨ الإكسسوارات
-  </button>
+  <div id="empty" class="empty">
+    ما كايناش صور فهاد القسم حالياً.
+  </div>
 
 </div>
 
 
-<!-- GALLERY -->
+<!-- MODAL -->
 
-<div id="gallery" class="gallery"></div>
+<div id="modal" class="modal">
 
+  <div class="modal-box">
 
-<div id="loading" class="message loading">
-  ⏳ جاري تحميل الصور...
+    <button class="close" onclick="closeModal()">×</button>
+
+    <img id="modalImg" class="modal-img" src="" alt="موديل">
+
+    <div class="modal-info">
+
+      <h2 id="modalTitle"></h2>
+
+      <p>
+        عجبك هاد الموديل؟
+        ضغط على الزر وصيفطو لينا عبر WhatsApp.
+      </p>
+
+      <a id="whatsappBtn"
+         class="whatsapp"
+         href="#"
+         target="_blank">
+        💬 اختيار هذا الموديل وإرسال WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
 </div>
-
-
-<div id="error" class="message error hidden">
-  وقع مشكل في تحميل الصور.<br>
-  حاول تعاود تحديث الصفحة.
-</div>
-
-
-<div id="empty" class="message hidden">
-  ما كايناش صور فهاد القسم دابا.
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <strong>صمم ديكورك</strong> © 2026
-
-  <br>
-
-  جميع الحقوق محفوظة —
-  <strong>Hamza Chtaibi</strong>
-
-</footer>
 
 
 <script>
 
-let allImages = [];
-let currentCategory = "all";
+/* ============================
+   رقم WhatsApp ديالك
+   بدل الرقم فقط
+   ============================ */
+
+const WHATSAPP_NUMBER = "212600000000";
+
+
+/* ============================
+   الصور
+   ============================ */
+
+const projects = [
+
+  {
+    image:"work-001.webp",
+    category:"kitchen",
+    title:"مطبخ مودرن"
+  },
+
+  {
+    image:"work-002.webp",
+    category:"kitchen",
+    title:"مطبخ عصري"
+  },
+
+  {
+    image:"work-003.webp",
+    category:"salon",
+    title:"صالون مودرن"
+  },
+
+  {
+    image:"work-004.webp",
+    category:"salon",
+    title:"صالون مغربي عصري"
+  },
+
+  {
+    image:"work-005.webp",
+    category:"bedroom",
+    title:"غرفة نوم"
+  },
+
+  {
+    image:"work-006.webp",
+    category:"bedroom",
+    title:"غرفة نوم مودرن"
+  },
+
+  {
+    image:"work-007.webp",
+    category:"dressing",
+    title:"Dressing"
+  },
+
+  {
+    image:"work-008.webp",
+    category:"meuble-tv",
+    title:"Meuble TV"
+  },
+
+  {
+    image:"work-009.webp",
+    category:"tapisserie",
+    title:"طابيسري"
+  },
+
+  {
+    image:"work-010.webp",
+    category:"tapisserie",
+    title:"ستور وطابيسري"
+  }
+
+];
+
+
+/* ============================
+   عرض الصور
+   ============================ */
 
 const gallery =
   document.getElementById("gallery");
 
-const loading =
-  document.getElementById("loading");
-
-const errorBox =
-  document.getElementById("error");
-
-const emptyBox =
+const empty =
   document.getElementById("empty");
 
 
-/* تحويل أسماء الأقسام */
+function render(filter="all"){
 
-function normalizeCategory(category){
+  gallery.innerHTML="";
 
-  if(!category){
-    return "general";
-  }
-
-  category =
-    category.toLowerCase().trim();
-
-  const map = {
-
-    "kitchen":"kitchen",
-    "kitchens":"kitchen",
-    "مطبخ":"kitchen",
-    "المطبخ":"kitchen",
-    "المطابخ":"kitchen",
-
-    "salon":"salon",
-    "صالون":"salon",
-    "الصالون":"salon",
-    "الصالونات":"salon",
-
-    "bedroom":"bedroom",
-    "غرفة النوم":"bedroom",
-    "غرف النوم":"bedroom",
-
-    "tapisserie":"tapisserie",
-    "tapiserie":"tapisserie",
-    "طابيسري":"tapisserie",
-    "الطابيسري":"tapisserie",
-    "الطابيسري والستور":"tapisserie",
-    "tapisserie et store":"tapisserie",
-    "stores":"tapisserie",
-    "store":"tapisserie",
-
-    "dressing":"dressing",
-    "placard":"dressing",
-
-    "mobil-tv":"mobil-tv",
-    "meuble-tv":"mobil-tv",
-    "meuble tv":"mobil-tv",
-
-    "accessories":"accessories",
-    "accessoire":"accessories",
-    "accessoires":"accessories",
-    "الإكسسوارات":"accessories"
-
-  };
-
-  return map[category] || category;
-}
-
-
-/* تحميل الصور */
-
-async function loadImages(){
-
-  loading.classList.remove("hidden");
-  errorBox.classList.add("hidden");
-  emptyBox.classList.add("hidden");
-
-  try{
-
-    const response =
-      await fetch("/api/images",{
-        cache:"no-store"
-      });
-
-    if(!response.ok){
-
-      throw new Error(
-        "API error: " + response.status
+  const list =
+    filter === "all"
+    ? projects
+    : projects.filter(
+        item => item.category === filter
       );
 
-    }
+  if(list.length === 0){
 
-    const data =
-      await response.json();
-
-    if(!data.images){
-
-      throw new Error(
-        "No images returned"
-      );
-
-    }
-
-    allImages =
-      data.images.map(img => ({
-
-        ...img,
-
-        category:
-          normalizeCategory(img.category)
-
-      }));
-
-    loading.classList.add("hidden");
-
-    renderGallery();
-
-  }catch(err){
-
-    console.error(err);
-
-    loading.classList.add("hidden");
-
-    errorBox.classList.remove("hidden");
-
-  }
-
-}
-
-
-/* عرض الصور */
-
-function renderGallery(){
-
-  gallery.innerHTML = "";
-
-  let images = allImages;
-
-  if(currentCategory !== "all"){
-
-    images =
-      allImages.filter(
-        img =>
-          img.category === currentCategory
-      );
-
-  }
-
-  if(images.length === 0){
-
-    emptyBox.classList.remove("hidden");
-
+    empty.style.display="block";
     return;
 
   }
 
-  emptyBox.classList.add("hidden");
+  empty.style.display="none";
 
-  images.forEach(img => {
+  list.forEach(item => {
 
     const card =
       document.createElement("div");
 
-    card.className = "card";
+    card.className="card";
 
-    const image =
-      document.createElement("img");
+    card.innerHTML=`
 
-    image.src = img.url;
+      <img
+        src="${item.image}"
+        alt="${item.title}"
+        loading="lazy"
+      >
 
-    image.alt =
-      "مشروع صمم ديكورك";
+      <div class="card-info">
 
-    image.loading = "lazy";
+        <h3>${item.title}</h3>
 
-    image.onerror = function(){
+        <p>
+          اضغط على الصورة لاختيار الموديل
+        </p>
 
-      card.remove();
+      </div>
 
-    };
+    `;
 
-    const info =
-      document.createElement("div");
-
-    info.className = "card-info";
-
-    const category =
-      document.createElement("div");
-
-    category.className =
-      "card-category";
-
-    category.textContent =
-      getCategoryName(img.category);
-
-    info.appendChild(category);
-
-    card.appendChild(image);
-
-    card.appendChild(info);
+    card.onclick =
+      () => openModal(item);
 
     gallery.appendChild(card);
 
@@ -603,77 +481,139 @@ function renderGallery(){
 }
 
 
-/* اسم القسم بالعربية */
+/* ============================
+   الفلاتر
+   ============================ */
 
-function getCategoryName(category){
+document
+.querySelectorAll(".filter")
+.forEach(button => {
 
-  const names = {
+  button.addEventListener(
+    "click",
+    function(){
 
-    kitchen:"المطابخ",
+      document
+      .querySelectorAll(".filter")
+      .forEach(
+        b => b.classList.remove("active")
+      );
 
-    salon:"الصالونات",
+      this.classList.add("active");
 
-    bedroom:"غرف النوم",
+      render(
+        this.dataset.filter
+      );
 
-    tapisseries:"الطابيسري والستور",
+    }
+  );
 
-    tapisserie:"الطابيسري والستور",
+});
 
-    dressing:"Dressing & Placard",
 
-    "mobil-tv":"Meuble TV",
+/* ============================
+   فتح الصورة
+   ============================ */
 
-    accessories:"الإكسسوارات",
+function openModal(item){
 
-    general:"مشاريع صمم ديكورك"
+  const modal =
+    document.getElementById("modal");
 
-  };
+  const modalImg =
+    document.getElementById("modalImg");
 
-  return names[category] ||
-         "مشاريع صمم ديكورك";
+  const modalTitle =
+    document.getElementById("modalTitle");
+
+  const whatsappBtn =
+    document.getElementById("whatsappBtn");
+
+
+  modalImg.src =
+    item.image;
+
+  modalTitle.textContent =
+    item.title;
+
+
+  /*
+    رابط الصورة الحالي
+  */
+
+  const imageUrl =
+    new URL(
+      item.image,
+      window.location.href
+    ).href;
+
+
+  const message =
+    `السلام عليكم، عجبني هاد الموديل: ${item.title}
+
+رابط الصورة:
+${imageUrl}
+
+بغيت نعرف الثمن والتفاصيل.`;
+
+
+  whatsappBtn.href =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+
+  modal.classList.add("show");
 
 }
 
 
-/* الفلاتر */
+/* ============================
+   إغلاق
+   ============================ */
+
+function closeModal(){
+
+  document
+  .getElementById("modal")
+  .classList.remove("show");
+
+}
+
 
 document
-  .querySelectorAll(".filter")
-  .forEach(button => {
+.getElementById("modal")
+.addEventListener(
+  "click",
+  function(e){
 
-    button.addEventListener(
-      "click",
-      function(){
+    if(e.target === this){
 
-        document
-          .querySelectorAll(".filter")
-          .forEach(btn =>
-            btn.classList.remove("active")
-          );
+      closeModal();
 
-        this.classList.add("active");
+    }
 
-        currentCategory =
-          this.dataset.category;
-
-        renderGallery();
-
-        window.scrollTo({
-          top:
-            document.querySelector(".filters")
-              .offsetTop - 90,
-          behavior:"smooth"
-        });
-
-      }
-    );
-
-  });
+  }
+);
 
 
-/* البداية */
+/* ESC */
 
-loadImages();
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key === "Escape"){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* تشغيل */
+
+render();
 
 </script>
 

@@ -2,10 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#17231d">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>صمم ديكورك | configurateur</title>
+<title>صمم ديكورك | تصميم المطبخ</title>
 
 <style>
 *{
@@ -14,48 +13,51 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:#f5f1ea;
+  background:#f5f0e8;
   color:#17231d;
   line-height:1.7;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
   font-family:inherit;
 }
 
-button{
-  cursor:pointer;
+a{
+  text-decoration:none;
+  color:inherit;
 }
 
-.header{
-  position:sticky;
-  top:0;
-  z-index:999;
+.wrap{
+  width:min(900px,92%);
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  height:70px;
   background:#17231d;
-  color:white;
-  box-shadow:0 4px 20px #0003;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
 }
 
 .header-inner{
-  width:min(1180px,92%);
+  width:min(1100px,92%);
   margin:auto;
-  min-height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
 }
 
 .logo{
-  color:white;
-  text-decoration:none;
-  font-size:22px;
+  font-size:23px;
   font-weight:900;
 }
 
@@ -63,541 +65,438 @@ button{
   color:#c9aa7b;
 }
 
-.home-btn{
-  text-decoration:none;
-  color:#17231d;
-  background:#c9aa7b;
-  padding:9px 16px;
-  border-radius:22px;
-  font-weight:bold;
-  font-size:13px;
-}
-
-/* HERO */
-
-.hero{
-  min-height:300px;
+.lang{
   display:flex;
-  align-items:center;
-  text-align:center;
-  color:white;
-
-  background:
-  linear-gradient(#0b1710d9,#0b1710d9),
-  url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85")
-  center/cover;
+  gap:6px;
 }
 
-.hero-content{
-  width:min(900px,92%);
-  margin:auto;
-  padding:55px 0;
-}
-
-.hero small{
-  color:#c9aa7b;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
-.hero h1{
-  font-size:clamp(34px,6vw,58px);
-  margin:8px 0;
-}
-
-.hero p{
-  color:#ddd;
-  max-width:700px;
-  margin:auto;
-}
-
-/* MAIN */
-
-.container{
-  width:min(1100px,92%);
-  margin:35px auto 70px;
-}
-
-/* CLIENT */
-
-.client-box{
-  background:white;
-  padding:24px;
+.lang button{
+  border:1px solid rgba(255,255,255,.3);
+  background:transparent;
+  color:#fff;
+  padding:6px 11px;
   border-radius:20px;
-  margin-bottom:22px;
-  box-shadow:0 6px 25px #0000000b;
+  cursor:pointer;
 }
 
-.client-box h2{
-  font-size:21px;
-  margin-bottom:5px;
+.lang button.active{
+  background:#c9aa7b;
+  color:#17231d;
 }
 
-.client-box p{
-  color:#777;
-  font-size:13px;
-  margin-bottom:18px;
+/* TOP */
+
+.top{
+  padding:45px 0 25px;
+  text-align:center;
 }
 
-.client-grid{
+.badge{
+  display:inline-block;
+  color:#9a7d58;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.top h1{
+  font-size:clamp(30px,6vw,48px);
+  line-height:1.25;
+  margin-bottom:8px;
+}
+
+.top p{
+  color:#70736e;
+  font-size:15px;
+}
+
+/* MODE */
+
+.mode-box{
+  background:#fff;
+  border:1px solid #e1d8ca;
+  border-radius:12px;
+  padding:8px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:8px;
+  margin-bottom:25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
 }
 
-.field label{
+.mode{
+  border:0;
+  background:transparent;
+  padding:17px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  color:#17231d;
+}
+
+.mode strong{
   display:block;
+  font-size:16px;
+  margin-bottom:3px;
+}
+
+.mode small{
+  color:#777;
+}
+
+.mode.active{
+  background:#17231d;
+  color:#fff;
+}
+
+.mode.active small{
+  color:#d7ddd9;
+}
+
+/* CARD */
+
+.card{
+  background:#fff;
+  border:1px solid #e1d8ca;
+  border-radius:12px;
+  padding:25px;
+  margin-bottom:18px;
+  box-shadow:0 5px 22px rgba(0,0,0,.04);
+}
+
+.card-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+  border-bottom:1px solid #eee7dc;
+  padding-bottom:13px;
+}
+
+.number{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#17231d;
+  color:#c9aa7b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-weight:bold;
-  font-size:14px;
+}
+
+.card-title h2{
+  font-size:19px;
+}
+
+/* FORM */
+
+label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
   margin-bottom:6px;
 }
 
-.field input,
-.field textarea{
+input,
+select,
+textarea{
   width:100%;
-  border:1px solid #ddd;
-  border-radius:12px;
+  border:1px solid #d9d0c3;
+  background:#faf8f4;
+  color:#17231d;
   padding:13px;
+  border-radius:7px;
   outline:none;
-  background:#fafafa;
+  font-size:14px;
 }
 
-.field input:focus,
-.field textarea:focus{
-  border-color:#b29368;
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#9a7d58;
+  background:#fff;
 }
 
-/* PROGRESS */
-
-.progress-box{
-  background:white;
-  padding:16px;
-  border-radius:18px;
-  margin-bottom:22px;
+textarea{
+  min-height:105px;
+  resize:vertical;
 }
 
-.progress{
-  height:7px;
-  background:#eee;
-  border-radius:20px;
-  overflow:hidden;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-.progress-bar{
-  width:0%;
-  height:100%;
-  background:#b29368;
-  transition:.3s;
+.field{
+  margin-bottom:15px;
 }
 
-.progress-text{
+.full{
+  grid-column:1/-1;
+}
+
+/* IMAGE */
+
+.upload{
+  border:2px dashed #c9bdac;
+  background:#faf8f4;
+  min-height:180px;
+  border-radius:9px;
   display:flex;
-  justify-content:space-between;
-  margin-top:8px;
-  color:#777;
-  font-size:12px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  cursor:pointer;
+  padding:20px;
+  transition:.2s;
 }
 
-/* SECTION */
+.upload:hover{
+  border-color:#9a7d58;
+}
 
-.config-section{
-  background:white;
-  padding:25px;
+.upload input{
+  display:none;
+}
+
+.upload-icon{
+  font-size:35px;
+  margin-bottom:5px;
+}
+
+.upload strong{
+  display:block;
+}
+
+.upload small{
+  color:#777;
+}
+
+.preview{
+  display:none;
+  margin-top:12px;
+  position:relative;
+}
+
+.preview img{
+  width:100%;
+  max-height:320px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.remove-img{
+  position:absolute;
+  top:8px;
+  left:8px;
+  border:0;
+  background:#17231d;
+  color:#fff;
   border-radius:20px;
-  margin-bottom:20px;
-  box-shadow:0 6px 25px #0000000b;
-  scroll-margin-top:90px;
-}
-
-.section-title{
-  margin-bottom:18px;
-}
-
-.section-title small{
-  color:#a1835b;
-  font-weight:bold;
-}
-
-.section-title h2{
-  font-size:24px;
-  margin:3px 0;
-}
-
-.section-title p{
-  color:#777;
-  font-size:13px;
+  padding:6px 11px;
+  cursor:pointer;
 }
 
 /* OPTIONS */
 
-.options{
+.option-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
 .option{
-  position:relative;
-  min-height:95px;
-  padding:15px;
-  border:2px solid #eee;
-  background:#fafafa;
-  border-radius:16px;
+  border:1px solid #ddd4c7;
+  background:#faf8f4;
+  border-radius:8px;
+  padding:14px 10px;
   text-align:center;
+  cursor:pointer;
   transition:.2s;
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .option:hover{
-  transform:translateY(-2px);
-  border-color:#c9aa7b;
+  border-color:#9a7d58;
 }
 
 .option.selected{
-  border-color:#a7865a;
-  background:#fbf7ef;
-  box-shadow:0 0 0 3px #c9aa7b22;
+  border-color:#17231d;
+  background:#17231d;
+  color:#fff;
 }
 
-.option.selected:after{
-  content:"✓";
-  position:absolute;
-  top:7px;
-  right:7px;
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  background:#a7865a;
-  color:white;
-  font-size:12px;
-  line-height:22px;
-}
-
-.option-icon{
-  font-size:30px;
-  height:38px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:5px;
-}
-
-.option-title{
-  font-weight:900;
-  font-size:14px;
-}
-
-.option-desc{
-  color:#777;
+.option small{
+  display:block;
+  opacity:.7;
   font-size:11px;
 }
 
-/* SHAPES */
+/* COLORS */
 
-.shape{
-  height:90px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.shape-box{
-  position:relative;
-  width:75px;
-  height:65px;
-}
-
-.shape-box i{
-  position:absolute;
-  display:block;
-  background:#26342c;
-  border-radius:4px;
-}
-
-.shape-l i:nth-child(1){
-  width:58px;
-  height:8px;
-  right:4px;
-  bottom:8px;
-}
-
-.shape-l i:nth-child(2){
-  width:8px;
-  height:50px;
-  right:4px;
-  bottom:8px;
-}
-
-.shape-u i:nth-child(1){
-  width:58px;
-  height:8px;
-  right:8px;
-  bottom:8px;
-}
-
-.shape-u i:nth-child(2){
-  width:8px;
-  height:50px;
-  right:8px;
-  bottom:8px;
-}
-
-.shape-u i:nth-child(3){
-  width:8px;
-  height:50px;
-  left:8px;
-  bottom:8px;
-}
-
-.shape-line i:nth-child(1){
-  width:65px;
-  height:8px;
-  right:5px;
-  bottom:8px;
-}
-
-.shape-two i:nth-child(1){
-  width:52px;
-  height:8px;
-  right:5px;
-  bottom:13px;
-  transform:rotate(-20deg);
-}
-
-.shape-two i:nth-child(2){
-  width:52px;
-  height:8px;
-  right:10px;
-  top:15px;
-  transform:rotate(-20deg);
-}
-
-.shape-island i:nth-child(1){
-  width:60px;
-  height:8px;
-  right:7px;
-  bottom:8px;
-}
-
-.shape-island i:nth-child(2){
-  width:38px;
-  height:8px;
-  right:18px;
-  bottom:28px;
-  background:#b29368;
-}
-
-/* COUNTER */
-
-.counter{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:18px;
-}
-
-.counter button{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:#17231d;
-  color:white;
-  font-size:22px;
-}
-
-.counter-value{
-  min-width:45px;
-  text-align:center;
-  font-size:24px;
-  font-weight:bold;
-}
-
-/* MEASURE */
-
-.measure-grid{
+.color-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.color-option{
+  border:1px solid #ddd4c7;
+  background:#fff;
+  border-radius:8px;
+  padding:9px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.color-circle{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  margin:0 auto 5px;
+  border:1px solid #ccc;
+}
+
+.color-option.selected{
+  border:2px solid #17231d;
 }
 
 /* BUDGET */
 
 .budget{
-  background:#17231d;
-  color:white;
-  border-radius:18px;
-  padding:22px;
-}
-
-.budget-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.budget-value{
-  color:#d5b786;
-  font-size:27px;
-  font-weight:bold;
-}
-
-.budget input[type=range]{
-  width:100%;
-  margin-top:20px;
-  accent-color:#c9aa7b;
-}
-
-.budget-level{
-  display:inline-block;
-  margin-top:12px;
-  padding:5px 13px;
-  border-radius:20px;
-  background:#ffffff12;
-  color:#ddd;
-  font-size:13px;
-}
-
-/* UPLOAD */
-
-.upload{
-  border:2px dashed #cdbb9d;
-  background:#fcfaf6;
-  border-radius:16px;
-  padding:25px;
-  text-align:center;
-}
-
-.upload input{
-  margin-top:12px;
-}
-
-.preview{
-  display:none;
-  margin-top:15px;
-}
-
-.preview img{
-  max-height:250px;
-  width:auto;
-  max-width:100%;
-  margin:auto;
-  border-radius:14px;
-}
-
-/* SUMMARY */
-
-.summary{
-  background:#17231d;
-  color:white;
-  padding:25px;
-  border-radius:20px;
-  margin-top:25px;
-}
-
-.summary h2{
-  margin-bottom:15px;
-}
-
-.summary-list{
   display:grid;
-  gap:8px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
-.summary-row{
-  padding:9px 0;
-  border-bottom:1px solid #ffffff15;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
+.budget button{
+  border:1px solid #ddd4c7;
+  background:#faf8f4;
+  padding:13px 8px;
+  border-radius:7px;
+  cursor:pointer;
 }
 
-.summary-row span:first-child{
-  color:#aaa;
+.budget button.selected{
+  background:#17231d;
+  color:#fff;
+  border-color:#17231d;
 }
 
-.summary-row span:last-child{
-  font-weight:bold;
-  color:#d8bd91;
+/* QUICK MESSAGE */
+
+.help{
+  background:#f1eadf;
+  border-right:4px solid #c9aa7b;
+  padding:15px;
+  margin-bottom:18px;
+  border-radius:6px;
+  font-size:14px;
+}
+
+.help strong{
+  display:block;
+  margin-bottom:3px;
 }
 
 /* SEND */
 
 .send-box{
+  background:#17231d;
+  color:#fff;
+  border-radius:12px;
+  padding:25px;
   text-align:center;
-  margin-top:20px;
+  margin:25px 0 50px;
 }
 
-.send-btn{
+.send-box h2{
+  margin-bottom:6px;
+}
+
+.send-box p{
+  color:#cbd2cd;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.send{
   display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  max-width:600px;
-  padding:17px;
   border:0;
-  border-radius:14px;
-  background:#25d366;
-  color:#06200d;
-  font-size:17px;
-  font-weight:900;
+  background:#c9aa7b;
+  color:#17231d;
+  padding:14px 30px;
+  border-radius:7px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.note{
-  color:#777;
-  font-size:12px;
-  margin-top:10px;
+.back{
+  display:block;
+  margin-top:14px;
+  color:#c9aa7b;
+  font-size:13px;
+}
+
+/* HIDDEN */
+
+.hidden{
+  display:none!important;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:650px){
 
-  .header-inner{
-    min-height:62px;
+  header{
+    height:64px;
   }
 
   .logo{
-    font-size:19px;
+    font-size:20px;
   }
 
-  .home-btn{
-    font-size:11px;
-    padding:8px 12px;
+  .top{
+    padding-top:32px;
   }
 
-  .hero{
-    min-height:270px;
+  .top h1{
+    font-size:31px;
   }
 
-  .hero-content{
-    padding:40px 0;
+  .card{
+    padding:18px;
   }
 
-  .client-grid{
+  .grid{
     grid-template-columns:1fr;
+    gap:5px;
   }
 
-  .config-section{
-    padding:20px 15px;
+  .option-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .options{
+  .color-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .option{
-    min-height:88px;
+  .budget{
+    grid-template-columns:1fr;
   }
 
-  .budget-top{
-    flex-direction:column;
-    align-items:flex-start;
+  .mode-box{
+    grid-template-columns:1fr;
   }
 
-  .summary-row{
-    flex-direction:column;
-    gap:2px;
+  .mode{
+    padding:14px;
   }
 }
 </style>
@@ -605,1711 +504,1180 @@ button{
 
 <body>
 
-<header class="header">
+<header>
   <div class="header-inner">
 
     <a href="index.html" class="logo">
       صمم <span>ديكورك</span>
     </a>
 
-    <a href="index.html" class="home-btn">
-      ← الصفحة الرئيسية
-    </a>
+    <div class="lang">
+      <button id="arBtn" class="active" onclick="setLang('ar')">دارجة</button>
+      <button id="frBtn" onclick="setLang('fr')">Français</button>
+    </div>
 
   </div>
 </header>
 
-<div id="app"></div>
+
+<main class="wrap">
+
+  <div class="top">
+
+    <span class="badge" id="badge">
+      CUISINE • DESIGN • SUR MESURE
+    </span>
+
+    <h1 id="title">
+      صمم المطبخ ديالك
+    </h1>
+
+    <p id="intro">
+      اختار الطريقة اللي سهلة عليك، وإحنا نكملو معاك الباقي.
+    </p>
+
+  </div>
+
+
+  <!-- MODE -->
+
+  <div class="mode-box">
+
+    <button class="mode active" id="quickMode" onclick="changeMode('quick')">
+
+      <strong id="quickTitle">
+        🚀 طلب سريع
+      </strong>
+
+      <small id="quickText">
+        صورة + قياسات + ميزانية، وخلي علينا التصميم
+      </small>
+
+    </button>
+
+
+    <button class="mode" id="detailMode" onclick="changeMode('detail')">
+
+      <strong id="detailTitle">
+        🎨 اختيار دقيق
+      </strong>
+
+      <small id="detailText">
+        اختار الشكل واللون والخامة والتجهيزات
+      </small>
+
+    </button>
+
+  </div>
+
+
+  <!-- QUICK -->
+
+  <div id="quickForm">
+
+    <div class="help">
+
+      <strong>
+        💡 خليه علينا
+      </strong>
+
+      إلا ما كنتيش عارف شنو تختار، غير صيفط لينا صورة المكان والقياسات والميزانية، وإحنا نقترحو عليك الشكل المناسب.
+
+    </div>
+
+
+    <!-- PERSONAL -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">1</div>
+
+        <h2>معلوماتك</h2>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>الاسم</label>
+
+          <input
+            id="name"
+            type="text"
+            placeholder="مثلاً: محمد">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>المدينة</label>
+
+          <input
+            id="city"
+            type="text"
+            placeholder="مثلاً: الدار البيضاء">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- IMAGE -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">2</div>
+
+        <h2>📸 صورة المكان</h2>
+
+      </div>
+
+      <label class="upload">
+
+        <input
+          id="photo"
+          type="file"
+          accept="image/*"
+          onchange="previewImage(event)">
+
+        <div>
+
+          <div class="upload-icon">📷</div>
+
+          <strong>
+            ضغط هنا وصيفط صورة المكان
+          </strong>
+
+          <small>
+            صورة وحدة واضحة كافية
+          </small>
+
+        </div>
+
+      </label>
+
+      <div class="preview" id="preview">
+
+        <img id="previewImg">
+
+        <button
+          class="remove-img"
+          onclick="removeImage()"
+          type="button">
+
+          حذف
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- MEASUREMENTS -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">3</div>
+
+        <h2>📏 القياسات</h2>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>العرض — cm</label>
+
+          <input
+            id="width"
+            type="number"
+            min="0"
+            placeholder="مثلاً 300">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>الطول — cm</label>
+
+          <input
+            id="length"
+            type="number"
+            min="0"
+            placeholder="مثلاً 400">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>العلو — cm</label>
+
+          <input
+            id="height"
+            type="number"
+            min="0"
+            placeholder="مثلاً 260">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BUDGET -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">4</div>
+
+        <h2>💰 شحال بغيتي تخصص تقريباً؟</h2>
+
+      </div>
+
+      <div class="budget">
+
+        <button onclick="selectBudget(this,'أقل من 20.000 DH')">
+          أقل من 20.000 DH
+        </button>
+
+        <button onclick="selectBudget(this,'20.000 - 35.000 DH')">
+          20.000 - 35.000 DH
+        </button>
+
+        <button onclick="selectBudget(this,'35.000 - 50.000 DH')">
+          35.000 - 50.000 DH
+        </button>
+
+        <button onclick="selectBudget(this,'50.000 - 70.000 DH')">
+          50.000 - 70.000 DH
+        </button>
+
+        <button onclick="selectBudget(this,'أكثر من 70.000 DH')">
+          أكثر من 70.000 DH
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- NOTE -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">5</div>
+
+        <h2>📝 ملاحظة</h2>
+
+      </div>
+
+      <textarea
+        id="note"
+        placeholder="مثلاً: بغيت الثلاجة هنا، وبغيت بلاصة للفران..."></textarea>
+
+    </div>
+
+  </div>
+
+
+  <!-- DETAIL -->
+
+  <div id="detailForm" class="hidden">
+
+    <div class="help">
+
+      <strong>
+        🎨 اختار غير الحوايج اللي عارفهم
+      </strong>
+
+      ماشي ضروري تعمر كلشي. أي اختيار ما عرفتيهش خليه علينا.
+
+    </div>
+
+
+    <!-- BASIC -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">1</div>
+
+        <h2>معلوماتك</h2>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>الاسم</label>
+
+          <input
+            id="dname"
+            type="text"
+            placeholder="الاسم">
+
+        </div>
+
+        <div class="field">
+
+          <label>المدينة</label>
+
+          <input
+            id="dcity"
+            type="text"
+            placeholder="المدينة">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- IMAGE -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">2</div>
+
+        <h2>📸 صورة المكان</h2>
+
+      </div>
+
+      <label class="upload">
+
+        <input
+          id="dphoto"
+          type="file"
+          accept="image/*"
+          onchange="previewDetailImage(event)">
+
+        <div>
+
+          <div class="upload-icon">📷</div>
+
+          <strong>
+            صيفط صورة المكان
+          </strong>
+
+          <small>
+            كتعاوننا نفهم المساحة
+          </small>
+
+        </div>
+
+      </label>
+
+      <div class="preview" id="dpreview">
+
+        <img id="dpreviewImg">
+
+      </div>
+
+    </div>
+
+
+    <!-- MEASUREMENTS -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">3</div>
+
+        <h2>📏 القياسات</h2>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+
+          <label>العرض — cm</label>
+
+          <input id="dwidth" type="number" placeholder="العرض">
+
+        </div>
+
+        <div class="field">
+
+          <label>الطول — cm</label>
+
+          <input id="dlength" type="number" placeholder="الطول">
+
+        </div>
+
+        <div class="field full">
+
+          <label>العلو — cm</label>
+
+          <input id="dheight" type="number" placeholder="العلو">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SHAPE -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">4</div>
+
+        <h2>شكل المطبخ</h2>
+
+      </div>
+
+      <div class="option-grid">
+
+        <div class="option" onclick="choose(this,'shape','مستقيم')">
+          مستقيم
+          <small>LINEAIRE</small>
+        </div>
+
+        <div class="option" onclick="choose(this,'shape','L')">
+          L
+          <small>EN L</small>
+        </div>
+
+        <div class="option" onclick="choose(this,'shape','U')">
+          U
+          <small>EN U</small>
+        </div>
+
+        <div class="option" onclick="choose(this,'shape','مع جزيرة')">
+          جزيرة
+          <small>ÎLOT</small>
+        </div>
+
+        <div class="option" onclick="choose(this,'shape','جوج جهات')">
+          جوج جهات
+          <small>DOUBLE LIGNE</small>
+        </div>
+
+        <div class="option" onclick="choose(this,'shape','مازال ما عرفت')">
+          خليه علينا
+          <small>À PROPOSER</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- COLOR -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">5</div>
+
+        <h2>لون المطبخ</h2>
+
+      </div>
+
+      <div class="color-grid">
+
+        <div class="color-option" onclick="chooseColor(this,'أبيض')">
+          <div class="color-circle" style="background:#f5f5f2"></div>
+          أبيض
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'بيج / كريمي')">
+          <div class="color-circle" style="background:#d8c6a8"></div>
+          بيج
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'رمادي')">
+          <div class="color-circle" style="background:#8b8b86"></div>
+          رمادي
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'أخضر')">
+          <div class="color-circle" style="background:#4d6653"></div>
+          أخضر
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'خشبي')">
+          <div class="color-circle" style="background:#8b6344"></div>
+          خشبي
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'أسود')">
+          <div class="color-circle" style="background:#20221f"></div>
+          أسود
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'أبيض وخشبي')">
+          <div class="color-circle" style="background:linear-gradient(90deg,#f5f5f2 50%,#8b6344 50%)"></div>
+          أبيض + خشبي
+        </div>
+
+        <div class="color-option" onclick="chooseColor(this,'اقتراح منكم')">
+          <div class="color-circle" style="background:#c9aa7b"></div>
+          اقترحو عليا
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MATERIAL -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">6</div>
+
+        <h2>الخامة</h2>
+
+      </div>
+
+      <div class="option-grid">
+
+        <div class="option" onclick="choose(this,'material','Mélaminé')">
+          Mélaminé
+        </div>
+
+        <div class="option" onclick="choose(this,'material','MDF')">
+          MDF
+        </div>
+
+        <div class="option" onclick="choose(this,'material','MDF Laqué')">
+          MDF Laqué
+        </div>
+
+        <div class="option" onclick="choose(this,'material','خشب')">
+          خشب
+        </div>
+
+        <div class="option" onclick="choose(this,'material','مازال ما عرفت')">
+          مازال ما عرفت
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- WORKTOP -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">7</div>
+
+        <h2>سطح العمل</h2>
+
+      </div>
+
+      <div class="option-grid">
+
+        <div class="option" onclick="choose(this,'worktop','Quartz')">
+          Quartz
+        </div>
+
+        <div class="option" onclick="choose(this,'worktop','Granite')">
+          Granite
+        </div>
+
+        <div class="option" onclick="choose(this,'worktop','Marbre')">
+          Marbre
+        </div>
+
+        <div class="option" onclick="choose(this,'worktop','اقتراح منكم')">
+          اقترحو عليا
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXTRAS -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">8</div>
+
+        <h2>إضافات اختيارية</h2>
+
+      </div>
+
+      <div class="option-grid">
+
+        <div class="option" onclick="toggleExtra(this,'LED')">
+          💡 LED
+        </div>
+
+        <div class="option" onclick="toggleExtra(this,'زجاج')">
+          🪟 زجاج
+        </div>
+
+        <div class="option" onclick="toggleExtra(this,'Tiroirs')">
+          Tiroirs
+        </div>
+
+        <div class="option" onclick="toggleExtra(this,'مقابض')">
+          مقابض
+        </div>
+
+        <div class="option" onclick="toggleExtra(this,'أجهزة مدمجة')">
+          أجهزة مدمجة
+        </div>
+
+        <div class="option" onclick="toggleExtra(this,'حسب اقتراحكم')">
+          حسب اقتراحكم
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DETAIL BUDGET -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">9</div>
+
+        <h2>💰 الميزانية</h2>
+
+      </div>
+
+      <div class="budget">
+
+        <button onclick="selectDetailBudget(this,'أقل من 20.000 DH')">
+          أقل من 20.000 DH
+        </button>
+
+        <button onclick="selectDetailBudget(this,'20.000 - 35.000 DH')">
+          20.000 - 35.000 DH
+        </button>
+
+        <button onclick="selectDetailBudget(this,'35.000 - 50.000 DH')">
+          35.000 - 50.000 DH
+        </button>
+
+        <button onclick="selectDetailBudget(this,'50.000 - 70.000 DH')">
+          50.000 - 70.000 DH
+        </button>
+
+        <button onclick="selectDetailBudget(this,'أكثر من 70.000 DH')">
+          أكثر من 70.000 DH
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- NOTE -->
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div class="number">10</div>
+
+        <h2>📝 ملاحظات إضافية</h2>
+
+      </div>
+
+      <textarea
+        id="dnote"
+        placeholder="مثلاً: بغيت بلاصة للثلاجة، فرن مدمج، جزيرة..."></textarea>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEND -->
+
+  <div class="send-box">
+
+    <h2 id="sendTitle">
+      واجد؟ صيفط لينا الطلب
+    </h2>
+
+    <p id="sendText">
+      غادي يتحل واتساب وتكون المعلومات ديالك واجدة.
+    </p>
+
+    <button class="send" onclick="sendRequest()">
+      💬 صيفط الطلب عبر واتساب
+    </button>
+
+    <a class="back" href="index.html">
+      ← رجوع للموقع الرئيسي
+    </a>
+
+  </div>
+
+</main>
+
 
 <script>
 
-/* =====================================================
-   الإعدادات
-===================================================== */
+/* ==============================
+   DATA
+============================== */
 
-const PHONE = "212754350706";
+let currentMode = "quick";
 
-const params = new URLSearchParams(location.search);
-const TYPE = params.get("type") || "kitchen";
+let selectedBudget = "";
 
+let detailBudget = "";
 
-/* =====================================================
-   بيانات الأقسام
-===================================================== */
-
-const DATA = {
-
-kitchen:{
-  title:"صمم مطبخك",
-  subtitle:"اختار المطبخ ديالك قطعة بقطعة وبسهولة.",
-
-  sections:[
-
-    {
-      id:"shape",
-      title:"شكل المطبخ",
-      question:"شنو هو الشكل المناسب للمساحة ديالك؟",
-      type:"shape",
-      options:[
-        ["L","مطبخ L","زاوية واحدة"],
-        ["U","مطبخ U","جوج زوايا"],
-        ["line","مستقيم","حائط واحد"],
-        ["two","جوج جهات","مقابلين"],
-        ["island","مع جزيرة","مطبخ + جزيرة"]
-      ]
-    },
-
-    {
-      id:"material",
-      title:"نوع الصنادق",
-      question:"اختار الخامة اللي بغيتي للصنادق.",
-      options:[
-        ["MDF","MDF","اقتصادي ومناسب"],
-        ["MDF RH","MDF مقاوم للرطوبة","مناسب للمطبخ"],
-        ["Mélaminé","Mélaminé","عملي وسهل التنظيف"],
-        ["Laqué","Laqué","تشطيب لامع أو مطفي"],
-        ["خشب طبيعي","خشب طبيعي","مظهر فاخر"]
-      ]
-    },
-
-    {
-      id:"doors",
-      title:"نوع البيبان",
-      question:"اختار شكل باب الصندوق.",
-      options:[
-        ["عادي","باب عادي","تصميم بسيط"],
-        ["مودرن","باب مودرن","خطوط حديثة"],
-        ["Push","Push","بلا مقابض"],
-        ["إطار ألمنيوم","ألمنيوم + زجاج","مظهر عصري"]
-      ]
-    },
-
-    {
-      id:"upper",
-      title:"الصنادق العلوية",
-      question:"كيفاش بغيتي الصنادق الفوقانية؟",
-      options:[
-        ["للسقف","حتى للسقف","استغلال كامل للعلو"],
-        ["مستقيمة","مستقيمة","شكل كلاسيكي مرتب"],
-        ["كاسكيط","كاسكيط","شكل ديكوري"],
-        ["مفتوحة","مفتوحة","رفوف مفتوحة"],
-        ["بدون","بدون صنادق علوية","مساحة مفتوحة"]
-      ]
-    },
-
-    {
-      id:"glass",
-      title:"أبواب الزجاج",
-      question:"شحال من باب زجاج بغيتي؟",
-      type:"counter",
-      min:0,
-      max:10,
-      unit:"باب"
-    },
-
-    {
-      id:"drawers",
-      title:"الأدراج",
-      question:"شحال من درج بغيتي؟",
-      type:"counter",
-      min:0,
-      max:20,
-      unit:"درج"
-    },
-
-    {
-      id:"counter",
-      title:"سطح المطبخ",
-      question:"اختار نوع السطح.",
-      options:[
-        ["Quartz","Quartz","متين وسهل التنظيف"],
-        ["Granite","Granite","قوي وطبيعي"],
-        ["رخام","رخام","مظهر فاخر"],
-        ["Dekton","Dekton","مقاوم للحرارة"],
-        ["Compact","Compact","عملي وحديث"],
-        ["عادي","سطح عادي","اختيار اقتصادي"]
-      ]
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون اللي قريب للذوق ديالك.",
-      options:[
-        ["أبيض","أبيض","فاتح"],
-        ["كابوتشينو","كابوتشينو","دافئ"],
-        ["بيج","بيج","هادئ"],
-        ["رمادي","رمادي","مودرن"],
-        ["أسود","أسود","فاخر"],
-        ["أخضر","أخضر","طبيعي"],
-        ["خشب","لون خشب","دافئ"]
-      ]
-    },
-
-    {
-      id:"accessories",
-      title:"الإكسسوارات",
-      question:"اختار الإكسسوارات اللي محتاج.",
-      multi:true,
-      options:[
-        ["Tiroirs Hydrauliques","أدراج هيدروليكية"],
-        ["سلة ركنية","سلة ركنية"],
-        ["سلة توابل","سلة توابل"],
-        ["Porte-bouteilles","Porte-bouteilles"],
-        ["LED","إضاءة LED"],
-        ["سلة مهملات","سلة مهملات"],
-        ["منظم أدوات","منظم أدوات"]
-      ]
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل القياسات التقريبية بالسنتيمتر.",
-      type:"measure",
-      fields:[
-        ["الطول","length"],
-        ["العرض","width"],
-        ["الارتفاع","height"],
-        ["الجهة الثانية","side2"]
-      ]
-    }
-
-  ]
-},
-
-bedroom:{
-  title:"صمم غرفة نومك",
-  subtitle:"اختار السرير والـDressing والخامات والتفاصيل.",
-
-  sections:[
-
-    {
-      id:"bedtype",
-      title:"شنو بغيتي تصمم؟",
-      question:"اختار العناصر اللي محتاج.",
-      multi:true,
-      options:[
-        ["غرفة كاملة","غرفة نوم كاملة"],
-        ["سرير","سرير"],
-        ["Dressing","Dressing"],
-        ["كومود","كومود"],
-        ["Meuble TV","Meuble TV"]
-      ]
-    },
-
-    {
-      id:"bed",
-      title:"شكل السرير",
-      question:"اختار شكل السرير.",
-      options:[
-        ["عادي","سرير عادي"],
-        ["مبطن","سرير مبطن"],
-        ["تخزين","سرير مع تخزين"],
-        ["King","King Size"]
-      ]
-    },
-
-    {
-      id:"dressing",
-      title:"نوع Dressing",
-      question:"اختار شكل الأبواب.",
-      options:[
-        ["عادي","أبواب عادية"],
-        ["Coulissant","أبواب Coulissant"],
-        ["زجاج","زجاج"],
-        ["ألمنيوم","ألمنيوم + زجاج"]
-      ]
-    },
-
-    {
-      id:"material",
-      title:"الخامة",
-      question:"اختار خامة الأثاث.",
-      options:[
-        ["Mélaminé","Mélaminé"],
-        ["MDF","MDF"],
-        ["MDF RH","MDF مقاوم للرطوبة"],
-        ["Laqué","Laqué"],
-        ["خشب","خشب طبيعي"]
-      ]
-    },
-
-    {
-      id:"drawers",
-      title:"عدد الأدراج",
-      question:"شحال من درج بغيتي؟",
-      type:"counter",
-      min:0,
-      max:20,
-      unit:"درج"
-    },
-
-    {
-      id:"doors",
-      title:"عدد أبواب Dressing",
-      question:"شحال من باب؟",
-      type:"counter",
-      min:1,
-      max:12,
-      unit:"باب"
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون.",
-      options:[
-        ["أبيض","أبيض"],
-        ["كابوتشينو","كابوتشينو"],
-        ["بيج","بيج"],
-        ["رمادي","رمادي"],
-        ["أسود","أسود"],
-        ["خشب","خشب"]
-      ]
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل القياسات التقريبية.",
-      type:"measure",
-      fields:[
-        ["العرض","width"],
-        ["الارتفاع","height"],
-        ["العمق","depth"]
-      ]
-    }
-
-  ]
-},
-
-salon:{
-  title:"صمم الصالون ديالك",
-  subtitle:"اختار الشكل والقماش واللون والتفاصيل.",
-
-  sections:[
-
-    {
-      id:"items",
-      title:"شنو بغيتي؟",
-      question:"اختار العناصر.",
-      multi:true,
-      options:[
-        ["صالون كامل","صالون كامل"],
-        ["كنبة","كنبة"],
-        ["كراسي","كراسي"],
-        ["طاولة","طاولة"],
-        ["Meuble TV","Meuble TV"]
-      ]
-    },
-
-    {
-      id:"shape",
-      title:"شكل الصالون",
-      question:"اختار الشكل.",
-      options:[
-        ["L","L"],
-        ["مستقيم","مستقيم"],
-        ["U","U"],
-        ["منفصل","قطع منفصلة"]
-      ]
-    },
-
-    {
-      id:"back",
-      title:"الظهر",
-      question:"كيفاش بغيتي الظهر؟",
-      options:[
-        ["بظهر","بظهر"],
-        ["بدون ظهر","بدون ظهر"],
-        ["متحرك","ظهر متحرك"]
-      ]
-    },
-
-    {
-      id:"fabric",
-      title:"نوع القماش",
-      question:"اختار القماش.",
-      options:[
-        ["Velours","Velours"],
-        ["Lin","Lin"],
-        ["Tissu","Tissu"],
-        ["Bouclé","Bouclé"],
-        ["قماش سهل التنظيف","قماش عملي"]
-      ]
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون.",
-      options:[
-        ["بيج","بيج"],
-        ["كابوتشينو","كابوتشينو"],
-        ["رمادي","رمادي"],
-        ["أخضر","أخضر"],
-        ["كحلي","كحلي"],
-        ["أسود","أسود"]
-      ]
-    },
-
-    {
-      id:"seats",
-      title:"عدد المقاعد",
-      question:"تقريباً شحال من مقعد؟",
-      type:"counter",
-      min:1,
-      max:15,
-      unit:"مقعد"
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل القياسات التقريبية.",
-      type:"measure",
-      fields:[
-        ["الطول","length"],
-        ["العرض","width"]
-      ]
-    }
-
-  ]
-},
-
-dressing:{
-  title:"صمم Dressing & Placard",
-  subtitle:"قسم الداخل والأبواب والخامة حسب الحاجة ديالك.",
-
-  sections:[
-
-    {
-      id:"type",
-      title:"نوع Dressing",
-      question:"اختار النوع.",
-      options:[
-        ["مفتوح","Dressing مفتوح"],
-        ["عادي","أبواب عادية"],
-        ["Coulissant","Coulissant"],
-        ["زجاج","زجاج"],
-        ["ألمنيوم","ألمنيوم + زجاج"]
-      ]
-    },
-
-    {
-      id:"material",
-      title:"الخامة",
-      question:"اختار الخامة.",
-      options:[
-        ["Mélaminé","Mélaminé"],
-        ["MDF","MDF"],
-        ["MDF RH","MDF مقاوم للرطوبة"],
-        ["Laqué","Laqué"],
-        ["خشب","خشب طبيعي"]
-      ]
-    },
-
-    {
-      id:"inside",
-      title:"التقسيم الداخلي",
-      question:"شنو محتاج فالداخل؟",
-      multi:true,
-      options:[
-        ["رفوف","رفوف"],
-        ["تعليق","تعليق الملابس"],
-        ["أدراج","أدراج"],
-        ["أحذية","مكان الأحذية"],
-        ["إكسسوارات","إكسسوارات"]
-      ]
-    },
-
-    {
-      id:"doors",
-      title:"عدد الأبواب",
-      question:"شحال من باب؟",
-      type:"counter",
-      min:1,
-      max:15,
-      unit:"باب"
-    },
-
-    {
-      id:"drawers",
-      title:"عدد الأدراج",
-      question:"شحال من درج؟",
-      type:"counter",
-      min:0,
-      max:20,
-      unit:"درج"
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون.",
-      options:[
-        ["أبيض","أبيض"],
-        ["بيج","بيج"],
-        ["كابوتشينو","كابوتشينو"],
-        ["رمادي","رمادي"],
-        ["أسود","أسود"],
-        ["خشب","خشب"]
-      ]
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل القياسات.",
-      type:"measure",
-      fields:[
-        ["العرض","width"],
-        ["الارتفاع","height"],
-        ["العمق","depth"]
-      ]
-    }
-
-  ]
-},
-
-tv:{
-  title:"صمم Meuble TV",
-  subtitle:"اختار الشكل والخلفية والرفوف والإضاءة.",
-
-  sections:[
-
-    {
-      id:"shape",
-      title:"شكل Meuble TV",
-      question:"اختار الشكل.",
-      options:[
-        ["مستقيم","مستقيم"],
-        ["قوس","قوس كبير"],
-        ["دائري","دائرة"],
-        ["نيش","مع نيش"],
-        ["رفوف","مع رفوف"]
-      ]
-    },
-
-    {
-      id:"background",
-      title:"الخلفية",
-      question:"شنو بغيتي وراء التلفاز؟",
-      options:[
-        ["خشب","خشب"],
-        ["رخام","رخام"],
-        ["Microcement","Microcement"],
-        ["لون","لون موحد"],
-        ["نيش","نيش مضاء"]
-      ]
-    },
-
-    {
-      id:"doors",
-      title:"نوع البيبان",
-      question:"اختار نوع الخزانات.",
-      options:[
-        ["عادي","عادي"],
-        ["Push","Push"],
-        ["زجاج","زجاج"],
-        ["بدون","مفتوح"]
-      ]
-    },
-
-    {
-      id:"shelves",
-      title:"عدد الرفوف",
-      question:"شحال من رف؟",
-      type:"counter",
-      min:0,
-      max:15,
-      unit:"رف"
-    },
-
-    {
-      id:"led",
-      title:"الإضاءة",
-      question:"بغيتي LED؟",
-      options:[
-        ["نعم","نعم LED"],
-        ["لا","بدون LED"]
-      ]
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون.",
-      options:[
-        ["خشب","خشب"],
-        ["أسود","أسود"],
-        ["بيج","بيج"],
-        ["أبيض","أبيض"],
-        ["رمادي","رمادي"]
-      ]
-    },
-
-    {
-      id:"tvsize",
-      title:"قياس التلفاز",
-      question:"شنو قياس التلفاز؟",
-      options:[
-        ["43","43 بوصة"],
-        ["50","50 بوصة"],
-        ["55","55 بوصة"],
-        ["65","65 بوصة"],
-        ["75","75 بوصة"],
-        ["أخرى","قياس آخر"]
-      ]
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل قياسات Meuble TV.",
-      type:"measure",
-      fields:[
-        ["العرض","width"],
-        ["الارتفاع","height"],
-        ["العمق","depth"]
-      ]
-    }
-
-  ]
-},
-
-tapisserie:{
-  title:"صمم الطابيسري والستور",
-  subtitle:"اختار القماش والستايل والقياسات.",
-
-  sections:[
-
-    {
-      id:"type",
-      title:"شنو بغيتي؟",
-      question:"اختار الخدمة.",
-      multi:true,
-      options:[
-        ["ستور","ستور"],
-        ["Rideaux","Rideaux"],
-        ["رأس السرير","رأس السرير"],
-        ["بانكيت","بانكيت"],
-        ["تنجيد","تنجيد"]
-      ]
-    },
-
-    {
-      id:"fabric",
-      title:"نوع القماش",
-      question:"اختار القماش.",
-      options:[
-        ["Velours","Velours"],
-        ["Lin","Lin"],
-        ["Tissu","Tissu"],
-        ["Bouclé","Bouclé"],
-        ["Blackout","Blackout"]
-      ]
-    },
-
-    {
-      id:"style",
-      title:"الستايل",
-      question:"شنو الستايل اللي بغيتي؟",
-      options:[
-        ["مودرن","مودرن"],
-        ["كلاسيك","كلاسيك"],
-        ["فاخر","فاخر"],
-        ["بسيط","بسيط"]
-      ]
-    },
-
-    {
-      id:"color",
-      title:"اللون",
-      question:"اختار اللون.",
-      options:[
-        ["بيج","بيج"],
-        ["كابوتشينو","كابوتشينو"],
-        ["رمادي","رمادي"],
-        ["أخضر","أخضر"],
-        ["كحلي","كحلي"],
-        ["أبيض","أبيض"]
-      ]
-    },
-
-    {
-      id:"quantity",
-      title:"الكمية",
-      question:"شحال من قطعة؟",
-      type:"counter",
-      min:1,
-      max:20,
-      unit:"قطعة"
-    },
-
-    {
-      id:"measure",
-      title:"القياسات",
-      question:"دخل القياسات.",
-      type:"measure",
-      fields:[
-        ["العرض","width"],
-        ["الارتفاع","height"]
-      ]
-    }
-
-  ]
-},
-
-accessories:{
-  title:"اختار الإكسسوارات",
-  subtitle:"حدد الإكسسوارات اللي محتاجها والكمية.",
-
-  sections:[
-
-    {
-      id:"place",
-      title:"فين غادي تستعملها؟",
-      question:"اختار المكان.",
-      options:[
-        ["مطبخ","مطبخ"],
-        ["Dressing","Dressing"],
-        ["صالون","صالون"],
-        ["غرفة نوم","غرفة نوم"],
-        ["Meuble TV","Meuble TV"]
-      ]
-    },
-
-    {
-      id:"items",
-      title:"شنو بغيتي؟",
-      question:"يمكنك اختيار أكثر من عنصر.",
-      multi:true,
-      options:[
-        ["LED","إضاءة LED"],
-        ["مقابض","مقابض"],
-        ["سلال","سلال"],
-        ["Porte-bouteilles","Porte-bouteilles"],
-        ["Hydraulique","Tiroirs Hydrauliques"],
-        ["سلة ركنية","سلة ركنية"],
-        ["منظم","منظم أدوات"]
-      ]
-    },
-
-    {
-      id:"quantity",
-      title:"الكمية",
-      question:"حدد الكمية التقريبية.",
-      type:"counter",
-      min:1,
-      max:50,
-      unit:"قطعة"
-    },
-
-    {
-      id:"color",
-      title:"الخامة / اللون",
-      question:"اختار الشكل المناسب.",
-      options:[
-        ["أسود","أسود"],
-        ["أبيض","أبيض"],
-        ["كروم","كروم"],
-        ["ذهبي","ذهبي"],
-        ["ألمنيوم","ألمنيوم"]
-      ]
-    }
-
-  ]
-}
-
+let choices = {
+  shape:"",
+  color:"",
+  material:"",
+  worktop:""
 };
 
+let extras = [];
 
-/* =====================================================
-   تحديد القسم
-===================================================== */
 
-const config = DATA[TYPE] || DATA.kitchen;
+/* ==============================
+   MODE
+============================== */
 
-const answers = {};
+function changeMode(mode){
 
+  currentMode = mode;
 
-/* =====================================================
-   أسماء الأقسام
-===================================================== */
+  document
+    .getElementById("quickForm")
+    .classList.toggle("hidden", mode !== "quick");
 
-const app = document.getElementById("app");
+  document
+    .getElementById("detailForm")
+    .classList.toggle("hidden", mode !== "detail");
 
-app.innerHTML = `
+  document
+    .getElementById("quickMode")
+    .classList.toggle("active", mode === "quick");
 
-<section class="hero">
+  document
+    .getElementById("detailMode")
+    .classList.toggle("active", mode === "detail");
 
-  <div class="hero-content">
-
-    <small>صمم ديكورك • CONFIGURATEUR</small>
-
-    <h1>${config.title}</h1>
-
-    <p>${config.subtitle}</p>
-
-  </div>
-
-</section>
-
-<main class="container">
-
-  <div class="client-box">
-
-    <h2>مرحبا بك 👋</h2>
-
-    <p>
-      باش نعرفو الطلب ديالك مزيان، عافاك دخل الاسم والمدينة.
-      ومن بعد اختار التفاصيل اللي بغيتي.
-    </p>
-
-    <div class="client-grid">
-
-      <div class="field">
-        <label>الاسم</label>
-        <input id="clientName" placeholder="مثلاً: محمد">
-      </div>
-
-      <div class="field">
-        <label>المدينة</label>
-        <input id="clientCity" placeholder="مثلاً: الدار البيضاء">
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="progress-box">
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <div class="progress-text">
-      <span>تقدم التصميم</span>
-      <span id="progressText">0%</span>
-    </div>
-
-  </div>
-
-
-  <div id="sections"></div>
-
-
-  <section class="config-section">
-
-    <div class="section-title">
-
-      <small>PHOTO</small>
-
-      <h2>📷 صورة المكان</h2>
-
-      <p>
-        صوّر المكان ديالك أو اختار صورة من الهاتف.
-      </p>
-
-    </div>
-
-    <div class="upload">
-
-      <strong>
-        أضف صورة باش نفهمو المساحة والتصميم
-      </strong>
-
-      <br>
-
-      <input
-        id="photoInput"
-        type="file"
-        accept="image/*">
-
-      <div class="preview" id="preview">
-        <img id="previewImg" alt="صورة المكان">
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="config-section">
-
-    <div class="section-title">
-
-      <small>BUDGET</small>
-
-      <h2>💰 الميزانية</h2>
-
-      <p>
-        حدد الميزانية التقريبية باش نعرفو المستوى المناسب.
-      </p>
-
-    </div>
-
-    <div class="budget">
-
-      <div class="budget-top">
-
-        <div>
-          الميزانية التقريبية
-        </div>
-
-        <div class="budget-value" id="budgetValue">
-          15,000 DH
-        </div>
-
-      </div>
-
-      <input
-        id="budget"
-        type="range"
-        min="3000"
-        max="100000"
-        step="500"
-        value="15000">
-
-      <div class="budget-level" id="budgetLevel">
-        متوسط
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="summary">
-
-    <h2>
-      ✅ ملخص طلبك
-    </h2>
-
-    <div class="summary-list" id="summaryList"></div>
-
-    <div class="send-box">
-
-      <button
-        class="send-btn"
-        id="sendWhatsApp">
-
-        📲 صيفط التصميم والطلب عبر واتساب
-
-      </button>
-
-      <div class="note">
-        غادي يتحل واتساب بالرسالة ديالك جاهزة للإرسال.
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-`;
-
-
-/* =====================================================
-   بناء الاختيارات
-===================================================== */
-
-function renderSections(){
-
-  const container = document.getElementById("sections");
-
-  container.innerHTML = "";
-
-  config.sections.forEach((section,index)=>{
-
-    const wrapper = document.createElement("section");
-
-    wrapper.className = "config-section";
-
-    wrapper.id = "section-" + section.id;
-
-    let html = `
-
-      <div class="section-title">
-
-        <small>${String(index+1).padStart(2,"0")}</small>
-
-        <h2>${section.title}</h2>
-
-        <p>${section.question}</p>
-
-      </div>
-
-    `;
-
-
-    /* OPTIONS */
-
-    if(section.options){
-
-      html += `<div class="options">`;
-
-      section.options.forEach((option,i)=>{
-
-        const value = option[0];
-        const title = option[1];
-        const desc = option[2] || "";
-
-        let icon = "◆";
-
-        if(section.type === "shape"){
-
-          icon = `
-            <div class="shape">
-              <div class="shape-box shape-${value}">
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-            </div>
-          `;
-
-        }else{
-
-          const icons = [
-            "▣","◇","●","◆","▤","◈","○","□"
-          ];
-
-          icon = `<div class="option-icon">${icons[i % icons.length]}</div>`;
-
-        }
-
-        html += `
-
-          <button
-            type="button"
-            class="option"
-            data-section="${section.id}"
-            data-value="${escapeHtml(value)}"
-            data-title="${escapeHtml(title)}"
-            data-multi="${section.multi ? "1":"0"}">
-
-            ${icon}
-
-            <div class="option-title">
-              ${title}
-            </div>
-
-            ${
-              desc
-              ? `<div class="option-desc">${desc}</div>`
-              : ""
-            }
-
-          </button>
-
-        `;
-
-      });
-
-      html += `</div>`;
-
-    }
-
-
-    /* COUNTER */
-
-    if(section.type === "counter"){
-
-      html += `
-
-        <div class="counter">
-
-          <button
-            type="button"
-            data-counter-minus="${section.id}">
-            −
-          </button>
-
-          <div
-            class="counter-value"
-            id="counter-${section.id}">
-            0
-          </div>
-
-          <button
-            type="button"
-            data-counter-plus="${section.id}">
-            +
-          </button>
-
-        </div>
-
-        <div style="text-align:center;color:#777;font-size:12px;margin-top:8px">
-          ${section.min} إلى ${section.max} ${section.unit}
-        </div>
-
-      `;
-
-      answers[section.id] = section.min;
-
-    }
-
-
-    /* MEASURE */
-
-    if(section.type === "measure"){
-
-      html += `<div class="measure-grid">`;
-
-      section.fields.forEach(field=>{
-
-        html += `
-
-          <div class="field">
-
-            <label>${field[0]} (cm)</label>
-
-            <input
-              type="number"
-              min="0"
-              placeholder="مثلاً 300"
-              data-measure="${field[1]}">
-
-          </div>
-
-        `;
-
-      });
-
-      html += `</div>`;
-
-    }
-
-
-    wrapper.innerHTML = html;
-
-    container.appendChild(wrapper);
-
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
-
 }
 
-renderSections();
 
+/* ==============================
+   IMAGE PREVIEW
+============================== */
 
-/* =====================================================
-   اختيار العناصر
-===================================================== */
+function previewImage(event){
 
-document.addEventListener("click",function(e){
-
-  const button = e.target.closest(".option");
-
-  if(!button) return;
-
-  const sectionId = button.dataset.section;
-
-  const isMulti = button.dataset.multi === "1";
-
-  const value = button.dataset.value;
-
-  const title = button.dataset.title;
-
-
-  if(isMulti){
-
-    if(!answers[sectionId]){
-      answers[sectionId] = [];
-    }
-
-    const index = answers[sectionId].findIndex(
-      x => x.value === value
-    );
-
-    if(index >= 0){
-
-      answers[sectionId].splice(index,1);
-
-      button.classList.remove("selected");
-
-    }else{
-
-      answers[sectionId].push({
-        value:value,
-        title:title
-      });
-
-      button.classList.add("selected");
-
-    }
-
-  }else{
-
-    answers[sectionId] = {
-      value:value,
-      title:title
-    };
-
-    document
-      .querySelectorAll(
-        `.option[data-section="${sectionId}"]`
-      )
-      .forEach(el=>{
-        el.classList.remove("selected");
-      });
-
-    button.classList.add("selected");
-
-    /* انتقال تلقائي للاختيار الموالي */
-
-    setTimeout(()=>{
-
-      const current =
-        document.getElementById("section-"+sectionId);
-
-      if(!current) return;
-
-      let next = current.nextElementSibling;
-
-      while(next && !next.classList.contains("config-section")){
-        next = next.nextElementSibling;
-      }
-
-      if(next){
-
-        next.scrollIntoView({
-          behavior:"smooth",
-          block:"center"
-        });
-
-      }
-
-    },220);
-
-  }
-
-  updateSummary();
-  updateProgress();
-
-});
-
-
-/* =====================================================
-   COUNTERS
-===================================================== */
-
-document.addEventListener("click",function(e){
-
-  const plus = e.target.closest("[data-counter-plus]");
-  const minus = e.target.closest("[data-counter-minus]");
-
-  if(!plus && !minus) return;
-
-  const id =
-    plus
-    ? plus.dataset.counterPlus
-    : minus.dataset.counterMinus;
-
-  const section =
-    config.sections.find(x=>x.id===id);
-
-  let value =
-    typeof answers[id] === "number"
-    ? answers[id]
-    : section.min;
-
-  if(plus){
-    value++;
-  }else{
-    value--;
-  }
-
-  value =
-    Math.max(
-      section.min,
-      Math.min(section.max,value)
-    );
-
-  answers[id] = value;
-
-  document.getElementById(
-    "counter-"+id
-  ).textContent = value;
-
-  updateSummary();
-  updateProgress();
-
-});
-
-
-/* =====================================================
-   MEASUREMENTS
-===================================================== */
-
-document.addEventListener("input",function(e){
-
-  if(!e.target.matches("[data-measure]")) return;
-
-  const key = e.target.dataset.measure;
-
-  if(!answers.measure){
-    answers.measure = {};
-  }
-
-  answers.measure[key] = e.target.value;
-
-  updateSummary();
-  updateProgress();
-
-});
-
-
-/* =====================================================
-   CLIENT INFO
-===================================================== */
-
-document.getElementById("clientName")
-.addEventListener("input",updateSummary);
-
-document.getElementById("clientCity")
-.addEventListener("input",updateSummary);
-
-
-/* =====================================================
-   PHOTO
-===================================================== */
-
-document
-.getElementById("photoInput")
-.addEventListener("change",function(){
-
-  const file = this.files[0];
+  const file = event.target.files[0];
 
   if(!file) return;
 
-  const preview =
-    document.getElementById("preview");
-
-  const img =
-    document.getElementById("previewImg");
-
   const reader = new FileReader();
 
-  reader.onload=function(e){
+  reader.onload = function(e){
 
-    img.src = e.target.result;
+    document.getElementById("previewImg").src = e.target.result;
 
-    preview.style.display = "block";
+    document.getElementById("preview").style.display = "block";
 
   };
 
   reader.readAsDataURL(file);
+}
 
-});
+
+function removeImage(){
+
+  document.getElementById("photo").value = "";
+
+  document.getElementById("preview").style.display = "none";
+
+  document.getElementById("previewImg").src = "";
+}
 
 
-/* =====================================================
+function previewDetailImage(event){
+
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    document.getElementById("dpreviewImg").src = e.target.result;
+
+    document.getElementById("dpreview").style.display = "block";
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
+/* ==============================
+   OPTIONS
+============================== */
+
+function choose(el,type,value){
+
+  const parent = el.parentElement;
+
+  parent
+    .querySelectorAll(".option")
+    .forEach(x => x.classList.remove("selected"));
+
+  el.classList.add("selected");
+
+  choices[type] = value;
+}
+
+
+function chooseColor(el,value){
+
+  document
+    .querySelectorAll(".color-option")
+    .forEach(x => x.classList.remove("selected"));
+
+  el.classList.add("selected");
+
+  choices.color = value;
+}
+
+
+function toggleExtra(el,value){
+
+  el.classList.toggle("selected");
+
+  if(extras.includes(value)){
+
+    extras = extras.filter(x => x !== value);
+
+  }else{
+
+    extras.push(value);
+
+  }
+}
+
+
+/* ==============================
    BUDGET
-===================================================== */
+============================== */
 
-const budget =
-document.getElementById("budget");
+function selectBudget(el,value){
 
-budget.addEventListener("input",updateBudget);
+  document
+    .querySelectorAll("#quickForm .budget button")
+    .forEach(x => x.classList.remove("selected"));
 
-function updateBudget(){
+  el.classList.add("selected");
 
-  const value =
-    Number(budget.value);
-
-  document.getElementById(
-    "budgetValue"
-  ).textContent =
-    value.toLocaleString("fr-FR")+" DH";
-
-  let level = "اقتصادي";
-
-  if(value >= 10000 && value < 25000){
-    level = "متوسط";
-  }
-
-  if(value >= 25000){
-    level = "فاخر";
-  }
-
-  document.getElementById(
-    "budgetLevel"
-  ).textContent = level;
-
-  answers.budget = value;
-  answers.budgetLevel = level;
-
-  updateSummary();
-  updateProgress();
-
-}
-
-updateBudget();
-
-
-/* =====================================================
-   SUMMARY
-===================================================== */
-
-function updateSummary(){
-
-  const list =
-    document.getElementById("summaryList");
-
-  let rows = "";
-
-  const name =
-    document.getElementById("clientName")?.value || "—";
-
-  const city =
-    document.getElementById("clientCity")?.value || "—";
-
-
-  rows += row("الاسم",name);
-  rows += row("المدينة",city);
-
-
-  config.sections.forEach(section=>{
-
-    const answer = answers[section.id];
-
-    if(answer === undefined) return;
-
-
-    if(Array.isArray(answer)){
-
-      if(!answer.length) return;
-
-      rows += row(
-        section.title,
-        answer.map(x=>x.title).join("، ")
-      );
-
-    }
-
-    else if(
-      typeof answer === "object" &&
-      answer !== null &&
-      section.type !== "measure"
-    ){
-
-      rows += row(
-        section.title,
-        answer.title
-      );
-
-    }
-
-    else if(
-      typeof answer === "number"
-    ){
-
-      rows += row(
-        section.title,
-        answer+" "+(section.unit || "")
-      );
-
-    }
-
-    else if(section.type === "measure"){
-
-      const values = [];
-
-      section.fields.forEach(field=>{
-
-        const value =
-          answer[field[1]];
-
-        if(value){
-          values.push(
-            field[0]+": "+value+" cm"
-          );
-        }
-
-      });
-
-      if(values.length){
-
-        rows += row(
-          section.title,
-          values.join(" • ")
-        );
-
-      }
-
-    }
-
-  });
-
-
-  rows += row(
-    "الميزانية",
-    (answers.budget || 15000)
-      .toLocaleString("fr-FR")+" DH"
-    +" • "
-    +(answers.budgetLevel || "متوسط")
-  );
-
-
-  list.innerHTML = rows;
-
+  selectedBudget = value;
 }
 
 
-function row(title,value){
+function selectDetailBudget(el,value){
 
-  return `
+  document
+    .querySelectorAll("#detailForm .budget button")
+    .forEach(x => x.classList.remove("selected"));
 
-    <div class="summary-row">
+  el.classList.add("selected");
 
-      <span>${escapeHtml(title)}</span>
-
-      <span>${escapeHtml(String(value))}</span>
-
-    </div>
-
-  `;
-
+  detailBudget = value;
 }
 
 
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function updateProgress(){
-
-  let total = config.sections.length + 2;
-  let done = 0;
-
-
-  config.sections.forEach(section=>{
-
-    const answer = answers[section.id];
-
-    if(section.type === "measure"){
-
-      if(
-        answer &&
-        Object.values(answer).some(v=>v)
-      ){
-        done++;
-      }
-
-    }else if(Array.isArray(answer)){
-
-      if(answer.length) done++;
-
-    }else if(
-      answer !== undefined &&
-      answer !== null
-    ){
-
-      done++;
-
-    }
-
-  });
-
-
-  const name =
-    document.getElementById("clientName")?.value;
-
-  const city =
-    document.getElementById("clientCity")?.value;
-
-  if(name && city) done++;
-
-  if(answers.budget) done++;
-
-
-  const percent =
-    Math.min(
-      100,
-      Math.round(done / total * 100)
-    );
-
-
-  document.getElementById(
-    "progressBar"
-  ).style.width = percent+"%";
-
-  document.getElementById(
-    "progressText"
-  ).textContent = percent+"%";
-
-}
-
-
-/* =====================================================
+/* ==============================
    WHATSAPP
-===================================================== */
+============================== */
 
-document
-.getElementById("sendWhatsApp")
-.addEventListener("click",function(){
+function sendRequest(){
 
-  const name =
-    document.getElementById("clientName").value.trim();
+  let message = "";
 
-  const city =
-    document.getElementById("clientCity").value.trim();
+  if(currentMode === "quick"){
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const city =
+      document.getElementById("city").value.trim();
+
+    const width =
+      document.getElementById("width").value.trim();
+
+    const length =
+      document.getElementById("length").value.trim();
+
+    const height =
+      document.getElementById("height").value.trim();
+
+    const note =
+      document.getElementById("note").value.trim();
 
 
-  if(!name || !city){
+    if(!name){
 
-    alert(
-      "عافاك دخل الاسم والمدينة قبل إرسال الطلب."
-    );
+      alert("دخل الاسم من فضلك");
 
-    document
-      .getElementById("clientName")
-      .scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
+      return;
+    }
 
-    return;
+
+    if(!city){
+
+      alert("دخل المدينة من فضلك");
+
+      return;
+    }
+
+
+    if(!width || !length || !height){
+
+      alert("دخل العرض والطول والعلو");
+
+      return;
+    }
+
+
+    message =
+`السلام عليكم، بغيت طلب سريع لتصميم المطبخ.
+
+👤 الاسم: ${name}
+
+📍 المدينة: ${city}
+
+📏 القياسات:
+العرض: ${width} cm
+الطول: ${length} cm
+العلو: ${height} cm
+
+💰 الميزانية:
+${selectedBudget || "ما تحدداتش"}
+
+📝 الملاحظة:
+${note || "ما كايناش"}
+
+📸 عندي صورة للمكان وغادي نرسلها مع الطلب.
+
+بغيت منكم تقترحو عليا الشكل المناسب للمساحة والميزانية.`;
+
+  }else{
+
+    const name =
+      document.getElementById("dname").value.trim();
+
+    const city =
+      document.getElementById("dcity").value.trim();
+
+    const width =
+      document.getElementById("dwidth").value.trim();
+
+    const length =
+      document.getElementById("dlength").value.trim();
+
+    const height =
+      document.getElementById("dheight").value.trim();
+
+    const note =
+      document.getElementById("dnote").value.trim();
+
+
+    if(!name){
+
+      alert("دخل الاسم من فضلك");
+
+      return;
+    }
+
+
+    if(!city){
+
+      alert("دخل المدينة من فضلك");
+
+      return;
+    }
+
+
+    if(!width || !length || !height){
+
+      alert("دخل العرض والطول والعلو");
+
+      return;
+    }
+
+
+    message =
+`السلام عليكم، بغيت تصميم دقيق للمطبخ.
+
+👤 الاسم: ${name}
+
+📍 المدينة: ${city}
+
+📏 القياسات:
+العرض: ${width} cm
+الطول: ${length} cm
+العلو: ${height} cm
+
+📐 شكل المطبخ:
+${choices.shape || "ما تحددش"}
+
+🎨 اللون:
+${choices.color || "ما تحددش"}
+
+🪵 الخامة:
+${choices.material || "ما تحدداتش"}
+
+⬜ سطح العمل:
+${choices.worktop || "ما تحددش"}
+
+➕ الإضافات:
+${extras.length ? extras.join("، ") : "ما كايناش"}
+
+💰 الميزانية:
+${detailBudget || "ما تحدداتش"}
+
+📝 الملاحظات:
+${note || "ما كايناش"}
+
+📸 عندي صورة للمكان وغادي نرسلها مع الطلب.`;
 
   }
 
 
-  let message =
-`السلام عليكم، بغيت نطلب تصميم من "صمم ديكورك"
-
-━━━━━━━━━━━━━━
-📋 معلومات الزبون
-━━━━━━━━━━━━━━
-الاسم: ${name}
-المدينة: ${city}
-
-━━━━━━━━━━━━━━
-🏠 ${config.title}
-━━━━━━━━━━━━━━
-`;
-
-
-  config.sections.forEach(section=>{
-
-    const answer =
-      answers[section.id];
-
-    if(answer === undefined) return;
-
-
-    if(Array.isArray(answer)){
-
-      if(answer.length){
-
-        message +=
-`${section.title}: ${
-answer.map(x=>x.title).join("، ")
-}\n`;
-
-      }
-
-    }
-
-    else if(
-      typeof answer === "object" &&
-      answer !== null &&
-      section.type !== "measure"
-    ){
-
-      message +=
-`${section.title}: ${answer.title}\n`;
-
-    }
-
-    else if(typeof answer === "number"){
-
-      message +=
-`${section.title}: ${answer} ${section.unit || ""}\n`;
-
-    }
-
-    else if(section.type === "measure"){
-
-      const values = [];
-
-      section.fields.forEach(field=>{
-
-        if(answer[field[1]]){
-
-          values.push(
-            `${field[0]}: ${answer[field[1]]} cm`
-          );
-
-        }
-
-      });
-
-      if(values.length){
-
-        message +=
-`${section.title}: ${values.join(" | ")}\n`;
-
-      }
-
-    }
-
-  });
-
-
-  message +=
-`
-━━━━━━━━━━━━━━
-💰 الميزانية
-━━━━━━━━━━━━━━
-${Number(answers.budget || 15000).toLocaleString("fr-FR")} DH
-المستوى: ${answers.budgetLevel || "متوسط"}
-
-━━━━━━━━━━━━━━
-📷 الصورة
-━━━━━━━━━━━━━━
-${document.getElementById("photoInput").files.length
-? "تم اختيار صورة في النموذج"
-: "لا توجد صورة"}
-
-شكراً لكم.
-`;
-
+  const phone = "212754350706";
 
   const url =
-    "https://wa.me/"+PHONE+
-    "?text="+encodeURIComponent(message);
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
 
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-});
-
-
-/* =====================================================
-   ESCAPE
-===================================================== */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  window.open(url,"_blank");
 
 }
 
 
-updateSummary();
-updateProgress();
+/* ==============================
+   LANGUAGE
+============================== */
+
+function setLang(lang){
+
+  if(lang === "fr"){
+
+    document.documentElement.lang = "fr";
+    document.documentElement.dir = "ltr";
+
+    document.getElementById("arBtn").classList.remove("active");
+    document.getElementById("frBtn").classList.add("active");
+
+    document.getElementById("title").textContent =
+      "Concevez votre cuisine";
+
+    document.getElementById("intro").textContent =
+      "Choisissez la méthode qui vous convient et nous nous occupons du reste.";
+
+    document.getElementById("quickTitle").textContent =
+      "🚀 Demande rapide";
+
+    document.getElementById("quickText").textContent =
+      "Photo + dimensions + budget, nous proposons le design";
+
+    document.getElementById("detailTitle").textContent =
+      "🎨 Choix détaillé";
+
+    document.getElementById("detailText").textContent =
+      "Choisissez la forme, la couleur, le matériau et les équipements";
+
+    document.getElementById("sendTitle").textContent =
+      "Prêt ? Envoyez votre demande";
+
+    document.getElementById("sendText").textContent =
+      "WhatsApp va s'ouvrir avec toutes vos informations.";
+
+  }else{
+
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+
+    document.getElementById("arBtn").classList.add("active");
+    document.getElementById("frBtn").classList.remove("active");
+
+    document.getElementById("title").textContent =
+      "صمم المطبخ ديالك";
+
+    document.getElementById("intro").textContent =
+      "اختار الطريقة اللي سهلة عليك، وإحنا نكملو معاك الباقي.";
+
+    document.getElementById("quickTitle").textContent =
+      "🚀 طلب سريع";
+
+    document.getElementById("quickText").textContent =
+      "صورة + قياسات + ميزانية، وخلي علينا التصميم";
+
+    document.getElementById("detailTitle").textContent =
+      "🎨 اختيار دقيق";
+
+    document.getElementById("detailText").textContent =
+      "اختار الشكل واللون والخامة والتجهيزات";
+
+    document.getElementById("sendTitle").textContent =
+      "واجد؟ صيفط لينا الطلب";
+
+    document.getElementById("sendText").textContent =
+      "غادي يتحل واتساب وتكون المعلومات ديالك واجدة.";
+
+  }
+
+}
 
 </script>
 

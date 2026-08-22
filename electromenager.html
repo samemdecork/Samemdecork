@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Electroménager | صمم ديكورك</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;background:#f5f5f3;color:#17211c}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1180px,92%);margin:auto}
+
+header{height:72px;background:#0c120f;position:sticky;top:0;z-index:1000}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;color:#fff}
+.logo span{color:#cfd2d4}
+.back{background:#cfd2d4;color:#17211c;padding:9px 18px;border-radius:6px;font-weight:bold}
+
+.hero{
+background:linear-gradient(90deg,rgba(5,10,7,.94),rgba(5,10,7,.65)),
+url("images/electromenager.jpg") center/cover;
+color:#fff;text-align:center;padding:75px 0
+}
+.hero small{color:#cfd2d4;letter-spacing:3px}
+.hero h1{font-size:clamp(38px,6vw,60px);margin:10px 0}
+.hero p{color:#d5dbd7}
+
+.gallery{padding:70px 0 90px}
+.title{text-align:center;margin-bottom:40px}
+.title small{color:#68716c;letter-spacing:2px;font-weight:bold}
+.title h2{font-size:clamp(30px,5vw,48px);margin:5px 0}
+.title p{color:#777}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+.card{
+background:#fff;border-radius:10px;overflow:hidden;
+border:1px solid #ddd;box-shadow:0 7px 25px #0001
+}
+
+.card-image{height:300px;background:#ddd}
+.card-image img{width:100%;height:100%;object-fit:cover}
+
+.info{padding:18px}
+.info small{color:#777}
+.info h3{font-size:21px;margin:4px 0}
+.price{font-size:20px;font-weight:900;margin:8px 0 15px}
+
+.btn{
+display:block;background:#25d366;color:#fff;
+text-align:center;padding:11px;border-radius:6px;font-weight:bold
+}
+
+footer{background:#0e1511;color:#999;text-align:center;padding:30px}
+footer strong{color:#cfd2d4}
+
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap nav">
+<a href="index.html" class="logo">صمم <span>ديكورك</span></a>
+<a href="index.html" class="back">الرئيسية</a>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap">
+<small>ELECTROMÉNAGER</small>
+<h1>Electroménager</h1>
+<p>أجهزة وتجهيزات كهرومنزلية للمطابخ والمشاريع.</p>
+</div>
+</section>
+
+<section class="gallery">
+<div class="wrap">
+
+<div class="title">
+<small>NOS PRODUITS</small>
+<h2>معرض الأجهزة</h2>
+<p>اختار الجهاز اللي بغيتي وتواصل معنا.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-image">
+<img src="images/electro-001.webp" alt="جهاز 1">
+</div>
+<div class="info">
+<small>Electroménager</small>
+<h3>جهاز رقم 1</h3>
+<div class="price">الثمن عند الطلب</div>
+<a class="btn" target="_blank"
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20الجهاز%20رقم%201">
+📱 سول على الثمن
+</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-image">
+<img src="images/electro-002.webp" alt="جهاز 2">
+</div>
+<div class="info">
+<small>Electroménager</small>
+<h3>جهاز رقم 2</h3>
+<div class="price">الثمن عند الطلب</div>
+<a class="btn" target="_blank"
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20الجهاز%20رقم%202">
+📱 سول على الثمن
+</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-image">
+<img src="images/electro-003.webp" alt="جهاز 3">
+</div>
+<div class="info">
+<small>Electroménager</small>
+<h3>جهاز رقم 3</h3>
+<div class="price">الثمن عند الطلب</div>
+<a class="btn" target="_blank"
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20الجهاز%20رقم%203">
+📱 سول على الثمن
+</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer>
+<strong>صمم ديكورك</strong> © 2026
+<br>
+جميع الحقوق محفوظة — Hamza Chtaibi
+</footer>
+
+</body>
+</html>

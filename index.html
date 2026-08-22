@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>صمم ديكورك | Samem Decor</title>
+<title>صمم ديكورك | Samemdec</title>
 
 <meta name="description"
-content="صمم ديكورك — تصميم، تصنيع وتركيب المطابخ والديكور الداخلي.">
-
-<meta name="theme-color" content="#151713">
-
-<!-- WhatsApp / Facebook / Messenger -->
-<meta property="og:title" content="صمم ديكورك | Samem Decor">
-<meta property="og:description"
-content="من الفكرة حتى التنفيذ — صمم ديكورك مع فريق متخصص.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://samemdec.ma/">
-<meta property="og:image" content="https://samemdec.ma/share.jpg">
+content="صمم ديكورك — Cuisine, Chambre, Salon, Dressing, Meuble TV, Tapisserie et Accessoires.">
 
 <style>
 
@@ -27,48 +16,71 @@ content="من الفكرة حتى التنفيذ — صمم ديكورك مع ف
 ===================================================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:
-        "Segoe UI",
-        Tahoma,
-        Arial,
-        sans-serif;
+  font-family:
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
 
-    background:#f6f4ef;
-    color:#191b17;
+  background:#f7f3ec;
+  color:#292824;
 
-    line-height:1.7;
+  line-height:1.6;
 }
 
 a{
-    color:inherit;
-    text-decoration:none;
+  color:inherit;
+  text-decoration:none;
 }
 
 button,
 input,
 textarea,
 select{
-    font:inherit;
+  font:inherit;
 }
 
 img{
-    max-width:100%;
-    display:block;
+  max-width:100%;
+  display:block;
 }
 
 .container{
-    width:min(1180px,92%);
-    margin:auto;
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+:root{
+
+  --cream:#f7f3ec;
+  --white:#fffdf9;
+
+  --olive:#65705a;
+  --olive-dark:#424b3b;
+
+  --terracotta:#bd6d4e;
+  --terracotta-dark:#98543b;
+
+  --wood:#8b654b;
+
+  --ink:#292824;
+  --muted:#77736b;
+
+  --line:#e5ddd0;
 }
 
 
@@ -76,128 +88,104 @@ img{
    HEADER
 ===================================================== */
 
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
 
-    z-index:1000;
+  background:rgba(247,243,236,.96);
 
-    background:
-        rgba(20,22,18,.94);
-
-    backdrop-filter:blur(12px);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid var(--line);
 }
 
 .nav{
-    height:76px;
+  min-height:74px;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    gap:25px;
+  gap:20px;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:11px;
 
-    color:#fff;
+/* LOGO */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.brand-mark{
-    width:38px;
-    height:38px;
+.logo-mark{
+  width:45px;
+  height:45px;
 
-    border:1px solid #bca276;
+  border:2px solid var(--terracotta);
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  border-radius:50%;
 
-    font-size:15px;
-    font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    color:#bca276;
+  color:var(--terracotta);
+
+  font-size:23px;
+
+  transform:rotate(-8deg);
 }
 
-.brand-text{
-    line-height:1.15;
+.logo-text{
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
+
+  font-size:20px;
+  font-weight:bold;
+
+  color:var(--olive-dark);
+
+  transform:rotate(-2deg);
 }
 
-.brand-text strong{
-    display:block;
-    font-size:19px;
-    font-weight:700;
+.logo-text span{
+  color:var(--terracotta);
 }
 
-.brand-text span{
-    display:block;
 
-    color:#a9aaa4;
+/* NAV */
 
-    font-size:9px;
-    letter-spacing:2px;
-
-    margin-top:3px;
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
 
-.nav-menu{
-    display:flex;
-    align-items:center;
-    gap:28px;
+.nav-links a{
+  font-size:14px;
+  color:#55524b;
 }
 
-.nav-menu a{
-    color:#e9e9e5;
-
-    font-size:13px;
-
-    transition:.2s;
+.nav-links a:hover{
+  color:var(--terracotta);
 }
 
-.nav-menu a:hover{
-    color:#c6a878;
-}
+.lang{
+  border:1px solid var(--line);
 
-.nav-actions{
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
+  background:var(--white);
 
-.language{
-    border:1px solid #777;
-    background:transparent;
+  padding:8px 13px;
 
-    color:white;
+  border-radius:20px;
 
-    padding:7px 12px;
+  cursor:pointer;
 
-    cursor:pointer;
+  color:var(--olive-dark);
 
-    font-size:12px;
-
-    border-radius:3px;
-}
-
-.nav-contact{
-    background:#c6a878;
-    color:#181914;
-
-    padding:9px 17px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    border-radius:3px;
+  font-weight:bold;
 }
 
 
@@ -206,204 +194,309 @@ img{
 ===================================================== */
 
 .hero{
-    min-height:100vh;
+  padding:70px 0 80px;
 
-    padding-top:76px;
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(189,109,78,.12),
+      transparent 30%
+    );
 
-    display:flex;
-    align-items:center;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #111410 0%,
-            #181b16 58%,
-            #20251e 100%
-        );
-
-    color:white;
-
-    position:relative;
-    overflow:hidden;
+  border-bottom:1px solid var(--line);
 }
 
-.hero:after{
-    content:"";
+.hero-grid{
+  display:grid;
 
-    position:absolute;
+  grid-template-columns:
+    1.1fr .9fr;
 
-    width:500px;
-    height:500px;
+  align-items:center;
 
-    border-radius:50%;
-
-    border:1px solid rgba(198,168,120,.16);
-
-    left:-180px;
-    top:50%;
-
-    transform:translateY(-50%);
+  gap:60px;
 }
 
-.hero-inner{
-    position:relative;
-    z-index:2;
 
-    max-width:760px;
+/* HAND WRITTEN TITLE */
 
-    padding:80px 0;
-}
+.hand{
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
 
-.eyebrow{
-    display:flex;
-    align-items:center;
-    gap:12px;
+  color:var(--terracotta);
 
-    color:#c6a878;
+  font-size:18px;
 
-    font-size:11px;
+  transform:rotate(-2deg);
 
-    letter-spacing:2px;
-
-    margin-bottom:25px;
-}
-
-.eyebrow:before{
-    content:"";
-
-    width:35px;
-    height:1px;
-
-    background:#c6a878;
+  margin-bottom:15px;
 }
 
 .hero h1{
-    font-size:
-        clamp(44px,7vw,82px);
+  font-size:
+    clamp(42px,6vw,76px);
 
-    font-weight:600;
+  line-height:1.08;
 
-    line-height:1.08;
+  font-weight:900;
 
-    letter-spacing:-2px;
+  color:var(--olive-dark);
 
-    margin-bottom:25px;
+  margin-bottom:22px;
 }
 
 .hero h1 span{
-    color:#c6a878;
+  color:var(--terracotta);
+
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
 }
 
-.hero-description{
-    max-width:650px;
+.hero p{
+  max-width:600px;
 
-    color:#c9cbc5;
+  color:var(--muted);
 
-    font-size:16px;
+  font-size:18px;
 
-    line-height:2;
-
-    margin-bottom:32px;
+  margin-bottom:28px;
 }
 
 .hero-buttons{
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    flex-wrap:wrap;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.button{
-    min-height:50px;
+.btn{
+  display:inline-flex;
 
-    padding:12px 24px;
+  align-items:center;
+  justify-content:center;
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+  min-height:50px;
 
-    border-radius:3px;
+  padding:0 25px;
 
-    font-size:13px;
+  border-radius:8px;
 
-    font-weight:600;
+  font-weight:bold;
 
-    transition:.25s;
+  border:1px solid transparent;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.button-primary{
-    background:#c6a878;
-    color:#171914;
+.btn-main{
+  background:var(--terracotta);
+  color:white;
 }
 
-.button-primary:hover{
-    background:#d5bc94;
-    transform:translateY(-2px);
+.btn-main:hover{
+  background:var(--terracotta-dark);
 }
 
-.button-outline{
-    border:1px solid #747871;
-    color:white;
+.btn-light{
+  background:var(--white);
+
+  border-color:var(--line);
+
+  color:var(--olive-dark);
 }
 
-.button-outline:hover{
-    border-color:#c6a878;
-    color:#c6a878;
+.btn-light:hover{
+  border-color:var(--terracotta);
+}
+
+
+/* HERO DRAWING */
+
+.hero-drawing{
+  min-height:390px;
+
+  background:var(--white);
+
+  border:1px solid var(--line);
+
+  border-radius:25px;
+
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+}
+
+.hero-drawing:before{
+  content:"";
+
+  width:250px;
+  height:250px;
+
+  border:4px solid var(--olive);
+
+  border-radius:50%;
+
+  position:absolute;
+
+  opacity:.9;
+}
+
+.hero-drawing:after{
+  content:"✦";
+
+  position:absolute;
+
+  top:35px;
+  right:50px;
+
+  color:var(--terracotta);
+
+  font-size:35px;
+
+  transform:rotate(15deg);
+}
+
+.house{
+  position:relative;
+
+  width:250px;
+  height:190px;
+
+  border:5px solid var(--olive-dark);
+
+  border-top:0;
+
+  background:#efe6d7;
+
+  z-index:2;
+}
+
+.house-roof{
+  position:absolute;
+
+  width:190px;
+  height:190px;
+
+  border-top:5px solid var(--olive-dark);
+  border-left:5px solid var(--olive-dark);
+
+  transform:rotate(45deg);
+
+  top:-97px;
+  left:25px;
+
+  background:#efe6d7;
+}
+
+.house-door{
+  position:absolute;
+
+  bottom:0;
+  left:95px;
+
+  width:60px;
+  height:100px;
+
+  border:4px solid var(--wood);
+
+  background:#d7c1a6;
+}
+
+.house-window{
+  position:absolute;
+
+  bottom:75px;
+
+  width:55px;
+  height:50px;
+
+  border:4px solid var(--olive-dark);
+
+  background:#dce2d8;
+}
+
+.house-window.one{
+  left:20px;
+}
+
+.house-window.two{
+  right:20px;
+}
+
+.drawing-note{
+  position:absolute;
+
+  bottom:20px;
+  left:25px;
+
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
+
+  color:var(--terracotta);
+
+  transform:rotate(-5deg);
 }
 
 
 /* =====================================================
-   INTRO STRIP
+   SIMPLE STEPS
 ===================================================== */
 
-.intro-strip{
-    background:#fff;
+.steps{
+  padding:25px 0;
 
-    border-bottom:
-        1px solid #e4e1d9;
+  background:var(--olive-dark);
+
+  color:white;
 }
 
-.intro-grid{
-    display:grid;
+.steps-grid{
+  display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
 }
 
-.intro-item{
-    padding:25px 20px;
+.step{
+  display:flex;
+  align-items:center;
 
-    border-left:
-        1px solid #e5e2da;
+  gap:12px;
 }
 
-.intro-item:last-child{
-    border-left:0;
+.step-number{
+  width:38px;
+  height:38px;
+
+  border-radius:50%;
+
+  background:var(--terracotta);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:bold;
 }
 
-.intro-number{
-    color:#b29365;
+.step small{
+  display:block;
 
-    font-size:11px;
-
-    letter-spacing:2px;
-
-    margin-bottom:6px;
-}
-
-.intro-item h3{
-    font-size:15px;
-
-    margin-bottom:3px;
-}
-
-.intro-item p{
-    color:#7a7c76;
-
-    font-size:12px;
+  color:#d9ddd5;
 }
 
 
@@ -411,290 +504,154 @@ img{
    SECTION
 ===================================================== */
 
-.section{
-    padding:95px 0;
+section{
+  padding:80px 0;
 }
 
 .section-head{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-
-    gap:30px;
-
-    margin-bottom:42px;
+  margin-bottom:40px;
 }
 
-.section-label{
-    color:#a2865e;
+.section-head small{
+  color:var(--terracotta);
 
-    font-size:10px;
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
 
-    letter-spacing:2px;
-
-    font-weight:700;
-
-    margin-bottom:8px;
+  font-size:16px;
 }
 
 .section-head h2{
-    font-size:
-        clamp(30px,5vw,48px);
+  font-size:
+    clamp(32px,5vw,50px);
 
-    font-weight:500;
+  color:var(--olive-dark);
 
-    line-height:1.2;
+  line-height:1.2;
+
+  margin:6px 0;
 }
 
 .section-head p{
-    color:#777a73;
-
-    font-size:13px;
-
-    max-width:420px;
-
-    line-height:1.9;
+  color:var(--muted);
 }
 
 
 /* =====================================================
-   PROJECTS
+   DESIGN CARDS
 ===================================================== */
 
-.projects{
-    background:#f6f4ef;
+.design-section{
+  background:#eee7db;
 }
 
-.project-grid{
-    display:grid;
+.design-grid{
+  display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+  grid-template-columns:
+    repeat(3,1fr);
 
-    gap:14px;
+  gap:18px;
 }
 
-.project{
-    background:#fff;
+.design-card{
+  background:var(--white);
 
-    border:1px solid #e2ded5;
+  border:1px solid var(--line);
 
-    min-height:230px;
+  border-radius:15px;
 
-    padding:28px;
+  overflow:hidden;
 
-    position:relative;
-
-    transition:.25s;
+  transition:.2s;
 }
 
-.project:hover{
-    transform:translateY(-4px);
+.design-card:hover{
+  transform:translateY(-4px);
 
-    border-color:#c6a878;
-
-    box-shadow:
-        0 14px 35px rgba(25,28,22,.08);
+  border-color:#d0bba6;
 }
 
-.project-index{
-    color:#b29365;
+.design-picture{
+  height:190px;
 
-    font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    letter-spacing:2px;
+  background:
+    linear-gradient(
+      135deg,
+      #ddd2c0,
+      #f4eee5
+    );
 
-    margin-bottom:35px;
+  font-size:65px;
 }
 
-.project h3{
-    font-size:21px;
-
-    font-weight:600;
-
-    margin-bottom:7px;
+.design-content{
+  padding:20px;
 }
 
-.project p{
-    color:#777a74;
+.design-content h3{
+  color:var(--olive-dark);
 
-    font-size:13px;
+  font-size:21px;
 
-    margin-bottom:25px;
+  margin-bottom:5px;
 }
 
-.project-link{
-    display:inline-flex;
+.design-content p{
+  color:var(--muted);
 
-    color:#20231d;
+  font-size:14px;
 
-    border-bottom:
-        1px solid #c6a878;
+  margin-bottom:17px;
+}
 
-    padding-bottom:3px;
+.design-link{
+  color:var(--terracotta);
 
-    font-size:12px;
+  font-weight:bold;
 
-    font-weight:700;
+  font-size:14px;
 }
 
 
 /* =====================================================
-   ORDER
+   ORDER BOX
 ===================================================== */
 
 .order{
-    background:#191c17;
-    color:white;
+  margin-top:35px;
+
+  background:var(--olive-dark);
+
+  color:white;
+
+  border-radius:18px;
+
+  padding:30px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
 }
 
-.order .section-head p{
-    color:#aaaFA9;
+.order h3{
+  font-size:24px;
 }
 
-.order-layout{
-    display:grid;
+.order p{
+  color:#d8ddd7;
 
-    grid-template-columns:
-        .8fr 1.2fr;
-
-    gap:45px;
-
-    align-items:start;
-}
-
-.order-info{
-    padding-top:15px;
-}
-
-.order-info h3{
-    font-size:28px;
-
-    font-weight:500;
-
-    margin-bottom:15px;
-}
-
-.order-info p{
-    color:#b7bbb5;
-
-    font-size:14px;
-
-    line-height:2;
-}
-
-.order-note{
-    margin-top:25px;
-
-    border-right:
-        2px solid #c6a878;
-
-    padding-right:15px;
-
-    color:#d2d4cf;
-
-    font-size:12px;
-}
-
-.form{
-    background:#fff;
-
-    color:#191b17;
-
-    padding:30px;
-
-    border-radius:3px;
-}
-
-.form-row{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:12px;
-}
-
-.field{
-    margin-bottom:15px;
-}
-
-.field label{
-    display:block;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-}
-
-.field input,
-.field textarea,
-.field select{
-    width:100%;
-
-    border:
-        1px solid #ddd8ce;
-
-    background:#faf9f6;
-
-    padding:12px;
-
-    outline:none;
-
-    border-radius:2px;
-
-    color:#222;
-}
-
-.field textarea{
-    min-height:110px;
-
-    resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-    border-color:#b99b6d;
-}
-
-.upload{
-    border:
-        1px dashed #c6a878;
-
-    padding:16px;
-
-    background:#faf9f6;
-
-    text-align:center;
-
-    color:#777;
-
-    font-size:12px;
-}
-
-.upload input{
-    margin-top:8px;
-}
-
-.form-submit{
-    width:100%;
-
-    border:0;
-
-    background:#c6a878;
-
-    color:#181914;
-
-    padding:14px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    border-radius:2px;
+  font-size:14px;
 }
 
 
@@ -703,50 +660,46 @@ img{
 ===================================================== */
 
 .sales{
-    background:#e8e1d6;
+  background:var(--white);
 }
 
 .sales-grid{
-    display:grid;
+  display:grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+  grid-template-columns:
+    repeat(4,1fr);
 
-    gap:1px;
-
-    background:#cfc5b6;
-
-    border:1px solid #cfc5b6;
+  gap:15px;
 }
 
-.sale{
-    background:#f6f4ef;
+.sales-card{
+  padding:25px 18px;
 
-    padding:28px 22px;
+  border:1px solid var(--line);
 
-    min-height:170px;
+  border-radius:13px;
+
+  background:#faf7f1;
+
+  text-align:center;
 }
 
-.sale-number{
-    color:#a2865e;
+.sales-icon{
+  font-size:36px;
 
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    margin-bottom:25px;
+  margin-bottom:10px;
 }
 
-.sale h3{
-    font-size:17px;
+.sales-card h3{
+  color:var(--olive-dark);
 
-    margin-bottom:6px;
+  margin-bottom:5px;
 }
 
-.sale p{
-    color:#777a73;
+.sales-card p{
+  color:var(--muted);
 
-    font-size:12px;
+  font-size:13px;
 }
 
 
@@ -755,68 +708,55 @@ img{
 ===================================================== */
 
 .works{
-    background:#fff;
+  background:#eee7db;
 }
 
-.works-banner{
-    background:#191c17;
+.works-grid{
+  display:grid;
 
-    min-height:300px;
+  grid-template-columns:
+    repeat(3,1fr);
 
-    display:flex;
-    align-items:center;
-
-    padding:50px;
-
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
+  gap:15px;
 }
 
-.works-banner:before{
-    content:"";
+.work{
+  height:270px;
 
-    position:absolute;
+  border-radius:15px;
 
-    width:300px;
-    height:300px;
+  overflow:hidden;
 
-    border:1px solid rgba(198,168,120,.25);
+  background:#d8d0c4;
 
-    border-radius:50%;
-
-    left:-70px;
-    top:-70px;
+  position:relative;
 }
 
-.works-content{
-    position:relative;
-    z-index:2;
+.work img{
+  width:100%;
+  height:100%;
 
-    max-width:650px;
+  object-fit:cover;
 }
 
-.works-content .section-label{
-    color:#c6a878;
-}
+.work-label{
+  position:absolute;
 
-.works-content h2{
-    font-size:
-        clamp(30px,5vw,48px);
+  bottom:0;
+  right:0;
+  left:0;
 
-    font-weight:500;
+  padding:15px;
 
-    margin-bottom:10px;
-}
+  background:
+    linear-gradient(
+      transparent,
+      rgba(30,30,25,.75)
+    );
 
-.works-content p{
-    color:#bfc3bd;
+  color:white;
 
-    font-size:13px;
-
-    margin-bottom:22px;
+  font-weight:bold;
 }
 
 
@@ -825,28 +765,35 @@ img{
 ===================================================== */
 
 .contact{
-    background:#f6f4ef;
+  background:var(--terracotta);
 
-    text-align:center;
+  color:white;
 
-    padding:90px 0;
+  text-align:center;
 }
 
 .contact h2{
-    font-size:
-        clamp(30px,5vw,48px);
+  font-size:
+    clamp(35px,5vw,55px);
 
-    font-weight:500;
+  font-family:
+    "Segoe Print",
+    "Comic Sans MS",
+    cursive;
 
-    margin-bottom:10px;
+  margin-bottom:10px;
 }
 
 .contact p{
-    color:#777;
+  margin-bottom:25px;
 
-    font-size:14px;
+  color:#fff2eb;
+}
 
-    margin-bottom:25px;
+.contact .btn{
+  background:white;
+
+  color:var(--terracotta-dark);
 }
 
 
@@ -854,61 +801,47 @@ img{
    FOOTER
 ===================================================== */
 
-.footer{
-    background:#11130f;
+footer{
+  background:#353b31;
 
-    color:#999d96;
+  color:#d8dbd4;
 
-    padding:30px 0;
+  padding:28px 15px;
 
-    font-size:11px;
+  text-align:center;
+
+  font-size:13px;
 }
 
-.footer-inner{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    align-items:center;
-}
-
-.footer strong{
-    color:#c6a878;
+footer strong{
+  color:#e5b99f;
 }
 
 
 /* =====================================================
-   FLOATING WHATSAPP
+   WHATSAPP
 ===================================================== */
 
-.float-whatsapp{
-    position:fixed;
+.whatsapp{
+  position:fixed;
 
-    left:18px;
-    bottom:18px;
+  bottom:18px;
+  left:18px;
 
-    z-index:2000;
+  z-index:2000;
 
-    width:50px;
-    height:50px;
+  background:#25d366;
 
-    border-radius:50%;
+  color:#06200d;
 
-    background:#25d366;
+  padding:12px 18px;
 
-    color:#073016;
+  border-radius:25px;
 
-    display:flex;
+  font-weight:bold;
 
-    align-items:center;
-    justify-content:center;
-
-    font-size:21px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.25);
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.2);
 }
 
 
@@ -918,126 +851,131 @@ img{
 
 @media(max-width:850px){
 
-    .nav-menu{
-        display:none;
-    }
+  .nav-links a{
+    display:none;
+  }
 
-    .project-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+  .hero-grid{
+    grid-template-columns:1fr;
 
-    .sales-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+    gap:35px;
+  }
 
-    .order-layout{
-        grid-template-columns:1fr;
-    }
+  .hero{
+    padding-top:45px;
+  }
 
+  .hero-drawing{
+    min-height:300px;
+  }
+
+  .steps-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .design-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .sales-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .works-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .order{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
 }
+
 
 @media(max-width:560px){
 
-    .nav{
-        height:66px;
-    }
+  .nav{
+    min-height:65px;
+  }
 
-    .brand-text strong{
-        font-size:17px;
-    }
+  .logo-text{
+    font-size:17px;
+  }
 
-    .nav-contact{
-        display:none;
-    }
+  .logo-mark{
+    width:38px;
+    height:38px;
+  }
 
-    .hero{
-        min-height:88vh;
-    }
+  .hero{
+    padding:50px 0;
+  }
 
-    .hero-inner{
-        padding:60px 0;
-    }
+  .hero h1{
+    font-size:45px;
+  }
 
-    .hero h1{
-        font-size:46px;
-        letter-spacing:-1px;
-    }
+  .hero p{
+    font-size:15px;
+  }
 
-    .hero-description{
-        font-size:14px;
-    }
+  .hero-buttons{
+    flex-direction:column;
+  }
 
-    .hero-buttons{
-        flex-direction:column;
-    }
+  .btn{
+    width:100%;
+  }
 
-    .button{
-        width:100%;
-    }
+  section{
+    padding:60px 0;
+  }
 
-    .intro-grid{
-        grid-template-columns:1fr;
-    }
+  .steps-grid{
+    grid-template-columns:1fr 1fr;
 
-    .intro-item{
-        border-left:0;
-        border-bottom:
-            1px solid #e5e2da;
-    }
+    gap:10px;
+  }
 
-    .intro-item:last-child{
-        border-bottom:0;
-    }
+  .step{
+    font-size:12px;
+  }
 
-    .section{
-        padding:65px 0;
-    }
+  .step-number{
+    width:32px;
+    height:32px;
+    min-width:32px;
+  }
 
-    .section-head{
-        display:block;
-    }
+  .design-grid{
+    grid-template-columns:1fr;
+  }
 
-    .section-head p{
-        margin-top:12px;
-    }
+  .design-picture{
+    height:170px;
+  }
 
-    .project-grid{
-        grid-template-columns:1fr;
-    }
+  .sales-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .project{
-        min-height:205px;
-    }
+  .works-grid{
+    grid-template-columns:1fr;
+  }
 
-    .sales-grid{
-        grid-template-columns:
-            1fr 1fr;
-    }
+  .work{
+    height:240px;
+  }
 
-    .sale{
-        min-height:150px;
-        padding:22px 15px;
-    }
-
-    .form{
-        padding:20px;
-    }
-
-    .form-row{
-        grid-template-columns:1fr;
-    }
-
-    .works-banner{
-        padding:35px 25px;
-    }
-
-    .footer-inner{
-        flex-direction:column;
-        text-align:center;
-    }
-
+  .whatsapp{
+    left:10px;
+    bottom:10px;
+  }
 }
 
 </style>
@@ -1048,606 +986,470 @@ img{
 
 
 <!-- =====================================================
-HEADER
+     HEADER
 ===================================================== -->
 
-<header class="header">
+<header>
 
-<div class="container nav">
+  <div class="container nav">
 
-<a href="index.html" class="brand">
+    <a href="index.html" class="logo">
 
-    <div class="brand-mark">
-        SD
-    </div>
+      <div class="logo-mark">
+        ✎
+      </div>
 
-    <div class="brand-text">
+      <div class="logo-text">
+        صمم <span>ديكورك</span>
+      </div>
 
-        <strong>صمم ديكورك</strong>
-
-        <span>SAMEM DECOR</span>
-
-    </div>
-
-</a>
-
-
-<nav class="nav-menu">
-
-    <a href="#projects" data-fr="Projets">
-        المشاريع
     </a>
 
-    <a href="works.html" data-fr="Réalisations">
-        أعمالنا
-    </a>
 
-    <a href="#sales" data-fr="Boutique">
+    <nav class="nav-links">
+
+      <a href="#design">
+        صمم
+      </a>
+
+      <a href="#sales">
         المبيعات
-    </a>
+      </a>
 
-    <a href="#contact" data-fr="Contact">
-        تواصل معنا
-    </a>
+      <a href="#works">
+        أعمالنا
+      </a>
 
-</nav>
+      <a href="#contact">
+        تواصل
+      </a>
 
-
-<div class="nav-actions">
-
-    <button
-        class="language"
-        onclick="changeLanguage()"
+      <button
+        class="lang"
+        onclick="toggleLanguage()"
         id="languageButton">
+
         FR
-    </button>
 
-    <a
-        class="nav-contact"
-        target="_blank"
-        href="https://wa.me/212754350706">
-        واتساب
-    </a>
+      </button>
 
-</div>
+    </nav>
 
-</div>
+  </div>
 
 </header>
 
 
+
 <!-- =====================================================
-HERO
+     HERO
 ===================================================== -->
+
+<main>
 
 <section class="hero">
 
-<div class="container hero-inner">
-
-    <div
-        class="eyebrow"
-        data-fr="DESIGN • FABRICATION • INSTALLATION">
-        تصميم • تصنيع • تركيب
-    </div>
+  <div class="container hero-grid">
 
 
-    <h1 id="heroTitle">
+    <div>
 
-        من الفكرة
+      <div class="hand">
+        Design avec passion
+      </div>
 
+      <h1>
+
+        دار عليك
         <br>
 
-        <span>حتى التنفيذ.</span>
+        <span>والديكور علينا</span>
 
-    </h1>
+      </h1>
 
+      <p id="heroText">
 
-    <p
-        class="hero-description"
-        id="heroDescription">
+        اختار شنو بغيتي تصمم،
+        صيفط لينا صورة المكان والقياسات،
+        وشرح لينا شنو باغي.
+        حنا نكملو معاك الباقي.
 
-        صمم المساحة ديالك بطريقة بسيطة.
-        اختار المشروع، صيفط لينا صورة المكان والقياسات،
-        وشرح لينا شنو بغيتي. حنا نتكلفو بالباقي.
-
-    </p>
+      </p>
 
 
-    <div class="hero-buttons">
+      <div class="hero-buttons">
 
         <a
-            href="#projects"
-            class="button button-primary"
-            id="startButton">
+          href="#design"
+          class="btn btn-main"
+          id="startButton">
 
-            ابدأ مشروعك
+          ✦ بدا التصميم
 
         </a>
 
-
         <a
-            href="works.html"
-            class="button button-outline"
-            id="worksButton">
+          href="works.html"
+          class="btn btn-light">
 
-            اكتشف أعمالنا
+          شوف أعمالنا
 
         </a>
 
+      </div>
+
     </div>
 
-</div>
+
+    <!-- SIMPLE HAND DRAWING -->
+
+    <div class="hero-drawing">
+
+      <div class="house">
+
+        <div class="house-roof"></div>
+
+        <div class="house-window one"></div>
+
+        <div class="house-window two"></div>
+
+        <div class="house-door"></div>
+
+      </div>
+
+      <div class="drawing-note">
+        votre espace...
+      </div>
+
+    </div>
+
+
+  </div>
 
 </section>
 
 
+
 <!-- =====================================================
-INTRO
+     STEPS
 ===================================================== -->
 
-<section class="intro-strip">
+<div class="steps">
 
-<div class="container intro-grid">
+  <div class="container steps-grid">
 
+    <div class="step">
 
-    <div class="intro-item">
+      <div class="step-number">1</div>
 
-        <div class="intro-number">
-            01
-        </div>
-
-        <h3 id="intro1Title">
-            فكرة واضحة
-        </h3>
-
-        <p id="intro1Text">
-            نعاونك تحدد المشروع المناسب.
-        </p>
+      <div>
+        اختار القسم
+        <small>Choisissez votre projet</small>
+      </div>
 
     </div>
 
 
-    <div class="intro-item">
+    <div class="step">
 
-        <div class="intro-number">
-            02
-        </div>
+      <div class="step-number">2</div>
 
-        <h3 id="intro2Title">
-            دراسة المشروع
-        </h3>
-
-        <p id="intro2Text">
-            الصورة والقياسات والملاحظات.
-        </p>
+      <div>
+        صيفط الصورة
+        <small>Photo de l'espace</small>
+      </div>
 
     </div>
 
 
-    <div class="intro-item">
+    <div class="step">
 
-        <div class="intro-number">
-            03
-        </div>
+      <div class="step-number">3</div>
 
-        <h3 id="intro3Title">
-            تنفيذ وتركيب
-        </h3>
-
-        <p id="intro3Text">
-            من التصميم حتى النتيجة النهائية.
-        </p>
+      <div>
+        دخل القياسات
+        <small>Dimensions</small>
+      </div>
 
     </div>
 
+
+    <div class="step">
+
+      <div class="step-number">4</div>
+
+      <div>
+        شرح طلبك
+        <small>Vos remarques</small>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
-</section>
 
 
 <!-- =====================================================
-PROJECTS
-===================================================== -->
-
-<section
-    class="section projects"
-    id="projects">
-
-<div class="container">
-
-
-    <div class="section-head">
-
-        <div>
-
-            <div
-                class="section-label"
-                data-fr="VOTRE PROJET">
-                مشروعك
-            </div>
-
-            <h2 id="projectsTitle">
-                شنو بغيتي تصايب؟
-            </h2>
-
-        </div>
-
-        <p id="projectsDescription">
-            اختار نوع المشروع وغادي نطلبو منك غير المعلومات المهمة.
-        </p>
-
-    </div>
-
-
-    <div class="project-grid">
-
-
-        <div class="project">
-
-            <div class="project-index">
-                01 / CUISINE
-            </div>
-
-            <h3 id="p1Title">
-                المطبخ
-            </h3>
-
-            <p id="p1Text">
-                مطبخ على القياس حسب المساحة والاحتياجات ديالك.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('المطبخ')"
-                id="p1Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-index">
-                02 / CHAMBRE
-            </div>
-
-            <h3 id="p2Title">
-                غرفة النوم
-            </h3>
-
-            <p id="p2Text">
-                سرير، خزانات، Dressing وتسريحة.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('غرفة النوم')"
-                id="p2Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-index">
-                03 / SALON
-            </div>
-
-            <h3 id="p3Title">
-                الصالون
-            </h3>
-
-            <p id="p3Text">
-                جلسة، حائط، طاولات ووحدات ديكور.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('الصالون')"
-                id="p3Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-index">
-                04 / DRESSING
-            </div>
-
-            <h3 id="p4Title">
-                Dressing & Placard
-            </h3>
-
-            <p id="p4Text">
-                تقسيم داخلي، بيبان، زجاج وتجهيزات.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('Dressing و Placard')"
-                id="p4Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-index">
-                05 / TV
-            </div>
-
-            <h3 id="p5Title">
-                Meuble TV
-            </h3>
-
-            <p id="p5Text">
-                حائط TV، رفوف، نيش وإضاءة.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('Meuble TV')"
-                id="p5Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-index">
-                06 / TAPISSERIE
-            </div>
-
-            <h3 id="p6Title">
-                الطابيسري والستور
-            </h3>
-
-            <p id="p6Text">
-                ستور، سدادر، ثوب وقياسات.
-            </p>
-
-            <a
-                href="#order"
-                class="project-link"
-                onclick="selectProject('الطابيسري والستور')"
-                id="p6Button">
-                ابدأ الطلب
-            </a>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-ORDER
+     DESIGN
 ===================================================== -->
 
 <section
-    class="section order"
-    id="order">
+  class="design-section"
+  id="design">
 
-<div class="container">
-
+  <div class="container">
 
     <div class="section-head">
 
-        <div>
+      <small>
+        صمم المساحة ديالك
+      </small>
 
-            <div
-                class="section-label"
-                data-fr="DEMANDE">
-                الطلب
-            </div>
+      <h2>
+        شنو بغيتي نديرو ليك؟
+      </h2>
 
-            <h2 id="orderTitle">
-                خلينا نعرفو المشروع ديالك
-            </h2>
+      <p>
+        اختار الخدمة، ومن بعد غادي نعطيوك غير الأسئلة اللي محتاجينها.
+      </p>
+
+    </div>
+
+
+    <div class="design-grid">
+
+
+      <!-- KITCHEN -->
+
+      <a
+        href="configurateur.html?type=kitchen"
+        class="design-card">
+
+        <div class="design-picture">
+          🍳
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            المطبخ
+          </h3>
+
+          <p>
+            Cuisine • L • U • مستقيم • جزيرة
+          </p>
+
+          <span class="design-link">
+            بدا طلب المطبخ →
+          </span>
 
         </div>
 
-        <p id="orderDescription">
-            ما تحتاجش تعرف التفاصيل التقنية.
-            غير صيفط لينا اللي عندك.
+      </a>
+
+
+      <!-- BEDROOM -->
+
+      <a
+        href="configurateur.html?type=bedroom"
+        class="design-card">
+
+        <div class="design-picture">
+          🛏️
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            غرفة النوم
+          </h3>
+
+          <p>
+            Chambre • lit • placard • dressing
+          </p>
+
+          <span class="design-link">
+            بدا الطلب →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- SALON -->
+
+      <a
+        href="configurateur.html?type=salon"
+        class="design-card">
+
+        <div class="design-picture">
+          🛋️
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            الصالون
+          </h3>
+
+          <p>
+            Salon • meuble • décoration
+          </p>
+
+          <span class="design-link">
+            بدا الطلب →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- DRESSING -->
+
+      <a
+        href="configurateur.html?type=dressing"
+        class="design-card">
+
+        <div class="design-picture">
+          👔
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            Dressing & Placard
+          </h3>
+
+          <p>
+            Portes • verre • rangement
+          </p>
+
+          <span class="design-link">
+            بدا الطلب →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- TV -->
+
+      <a
+        href="configurateur.html?type=tv"
+        class="design-card">
+
+        <div class="design-picture">
+          📺
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            Meuble TV
+          </h3>
+
+          <p>
+            TV • niches • étagères • bois
+          </p>
+
+          <span class="design-link">
+            بدا الطلب →
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- TAPISSERIE -->
+
+      <a
+        href="configurateur.html?type=tapisserie"
+        class="design-card">
+
+        <div class="design-picture">
+          🪟
+        </div>
+
+        <div class="design-content">
+
+          <h3>
+            الطابيسري والستور
+          </h3>
+
+          <p>
+            Tapisserie • rideaux • coussins
+          </p>
+
+          <span class="design-link">
+            بدا الطلب →
+          </span>
+
+        </div>
+
+      </a>
+
+    </div>
+
+
+    <div class="order">
+
+      <div>
+
+        <h3>
+          عندك فكرة خاصة؟
+        </h3>
+
+        <p>
+          صيفط لينا الصورة وشرح لينا شنو بغيتي.
         </p>
 
-    </div>
+      </div>
 
+      <a
+        class="btn btn-main"
+        href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور">
 
-    <div class="order-layout">
+        واتساب
 
-
-        <div class="order-info">
-
-            <h3 id="orderInfoTitle">
-                بسيط وواضح.
-            </h3>
-
-            <p id="orderInfoText">
-                صورة المكان، القياسات، والملاحظات ديالك.
-                بهاد المعلومات نقدروا نفهمو المشروع
-                ونتواصلو معاك باش نكملو التفاصيل.
-            </p>
-
-            <div
-                class="order-note"
-                id="orderNote">
-                الصورة تقدر تكون من الهاتف ديالك.
-            </div>
-
-        </div>
-
-
-        <div class="form">
-
-
-            <div class="field">
-
-                <label id="projectLabel">
-                    نوع المشروع
-                </label>
-
-                <input
-                    id="selectedProject"
-                    type="text"
-                    value="مازال ما اخترتيش"
-                    readonly>
-
-            </div>
-
-
-            <div class="form-row">
-
-                <div class="field">
-
-                    <label id="nameLabel">
-                        الاسم
-                    </label>
-
-                    <input
-                        id="clientName"
-                        type="text"
-                        placeholder="الاسم ديالك">
-
-                </div>
-
-
-                <div class="field">
-
-                    <label id="phoneLabel">
-                        الهاتف
-                    </label>
-
-                    <input
-                        id="clientPhone"
-                        type="tel"
-                        placeholder="06XXXXXXXX">
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label id="photoLabel">
-                    صورة المكان
-                </label>
-
-                <div class="upload">
-
-                    <span id="uploadText">
-                        اختار صورة من الهاتف
-                    </span>
-
-                    <br>
-
-                    <input
-                        id="photo"
-                        type="file"
-                        accept="image/*">
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label id="measureLabel">
-                    القياسات
-                </label>
-
-                <input
-                    id="measurements"
-                    type="text"
-                    placeholder="مثال: 3.60m × 2.80m × 2.60m">
-
-            </div>
-
-
-            <div class="field">
-
-                <label id="notesLabel">
-                    الملاحظات
-                </label>
-
-                <textarea
-                    id="notes"
-                    placeholder="شرح لينا شنو بغيتي فالمشروع..."></textarea>
-
-            </div>
-
-
-            <button
-                class="form-submit"
-                onclick="sendWhatsApp()"
-                id="sendButton">
-
-                إرسال الطلب عبر واتساب
-
-            </button>
-
-        </div>
+      </a>
 
     </div>
 
-</div>
+  </div>
 
 </section>
 
 
+
 <!-- =====================================================
-SALES
+     SALES / ACCESSORIES
 ===================================================== -->
 
 <section
-    class="section sales"
-    id="sales">
+  class="sales"
+  id="sales">
 
-<div class="container">
-
+  <div class="container">
 
     <div class="section-head">
 
-        <div>
+      <small>
+        VENTE & ACCESSOIRES
+      </small>
 
-            <div
-                class="section-label"
-                data-fr="BOUTIQUE">
-                المبيعات
-            </div>
+      <h2>
+        حاجيات الديكور
+      </h2>
 
-            <h2 id="salesTitle">
-                إكسسوارات وتجهيزات
-            </h2>
-
-        </div>
-
-        <p id="salesDescription">
-            منتجات مكملة لمشاريع الديكور ديالك.
-        </p>
+      <p>
+        ماشي غير التصميم والتنفيذ — نوفرو حتى الإكسسوارات والتجهيزات.
+      </p>
 
     </div>
 
@@ -1655,736 +1457,293 @@ SALES
     <div class="sales-grid">
 
 
-        <div class="sale">
+      <div class="sales-card">
 
-            <div class="sale-number">
-                01
-            </div>
-
-            <h3 id="s1Title">
-                LED والإضاءة
-            </h3>
-
-            <p id="s1Text">
-                حلول إضاءة للمطابخ والخزانات والديكور.
-            </p>
-
+        <div class="sales-icon">
+          💡
         </div>
 
+        <h3>
+          LED
+        </h3>
 
-        <div class="sale">
+        <p>
+          Éclairage et rubans LED
+        </p>
 
-            <div class="sale-number">
-                02
-            </div>
+      </div>
 
-            <h3 id="s2Title">
-                المقابض
-            </h3>
 
-            <p id="s2Text">
-                موديلات مختلفة للمطابخ والخزانات.
-            </p>
+      <div class="sales-card">
 
+        <div class="sales-icon">
+          🔘
         </div>
 
+        <h3>
+          مقابض
+        </h3>
 
-        <div class="sale">
+        <p>
+          Poignées modernes
+        </p>
 
-            <div class="sale-number">
-                03
-            </div>
+      </div>
 
-            <h3 id="s3Title">
-                التجهيزات الداخلية
-            </h3>
 
-            <p id="s3Text">
-                سلال، tiroirs وتجهيزات عملية.
-            </p>
+      <div class="sales-card">
 
+        <div class="sales-icon">
+          🧺
         </div>
 
+        <h3>
+          تجهيزات
+        </h3>
 
-        <div class="sale">
+        <p>
+          Accessoires de rangement
+        </p>
 
-            <div class="sale-number">
-                04
-            </div>
+      </div>
 
-            <h3 id="s4Title">
-                مواد الديكور
-            </h3>
 
-            <p id="s4Text">
-                MDF، Mélaminé، خشب ومواد أخرى.
-            </p>
+      <div class="sales-card">
 
+        <div class="sales-icon">
+          🪵
         </div>
+
+        <h3>
+          خامات
+        </h3>
+
+        <p>
+          MDF • Mélaminé • bois
+        </p>
+
+      </div>
 
 
     </div>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-WORKS
-===================================================== -->
-
-<section class="section works">
-
-<div class="container">
-
-
-    <div class="works-banner">
-
-        <div class="works-content">
-
-            <div
-                class="section-label"
-                data-fr="REAL PROJECTS">
-                أعمال حقيقية
-            </div>
-
-            <h2 id="worksTitle">
-                مشاريعنا كتتكلم علينا.
-            </h2>
-
-            <p id="worksText">
-                شوف الأعمال والمشاريع اللي تنفذات من قبل.
-            </p>
-
-            <a
-                href="works.html"
-                class="button button-primary"
-                id="worksLink">
-
-                مشاهدة الأعمال
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
 
 <!-- =====================================================
-CONTACT
+     WORKS
 ===================================================== -->
 
 <section
-    class="contact"
-    id="contact">
+  class="works"
+  id="works">
 
-<div class="container">
+  <div class="container">
 
-    <div
-        class="section-label"
-        data-fr="CONTACT">
-        تواصل معنا
+    <div class="section-head">
+
+      <small>
+        NOS RÉALISATIONS
+      </small>
+
+      <h2>
+        أعمالنا
+      </h2>
+
+      <p>
+        صور حقيقية من المشاريع ديالنا.
+      </p>
+
     </div>
 
-    <h2 id="contactTitle">
-        عندك مشروع؟
-    </h2>
 
-    <p id="contactText">
-        تواصل معنا وخلي لينا التفاصيل.
-    </p>
+    <div class="works-grid">
 
-    <a
-        href="https://wa.me/212754350706"
-        target="_blank"
-        class="button button-primary"
-        id="contactButton">
+      <!--
+        هنا استعمل الصور اللي عندك أصلا.
+        بدل غير أسماء الملفات إذا كانت مختلفة.
+      -->
 
-        تواصل عبر واتساب
+      <div class="work">
 
-    </a>
+        <img
+          src="images/work1.jpg"
+          alt="مشروع ديكور">
 
-</div>
+        <div class="work-label">
+          Cuisine
+        </div>
+
+      </div>
+
+
+      <div class="work">
+
+        <img
+          src="images/work2.jpg"
+          alt="مشروع ديكور">
+
+        <div class="work-label">
+          Chambre
+        </div>
+
+      </div>
+
+
+      <div class="work">
+
+        <img
+          src="images/work3.jpg"
+          alt="مشروع ديكور">
+
+        <div class="work-label">
+          Salon
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div style="text-align:center;margin-top:30px">
+
+      <a
+        href="works.html"
+        class="btn btn-light">
+
+        📷 شوف جميع الأعمال
+
+      </a>
+
+    </div>
+
+  </div>
 
 </section>
 
 
+
 <!-- =====================================================
-FOOTER
+     CONTACT
 ===================================================== -->
 
-<footer class="footer">
+<section
+  class="contact"
+  id="contact">
 
-<div class="container footer-inner">
+  <div class="container">
 
-    <div>
-        <strong>صمم ديكورك</strong>
-        — SAMEM DECOR
-    </div>
+    <h2>
+      عندك مشروع؟
+    </h2>
 
-    <div>
-        © 2026 Hamza Chtaibi
-    </div>
+    <p>
+      صيفط لينا الصورة والقياسات وشرح لينا الفكرة ديالك.
+    </p>
 
-</div>
+    <a
+      class="btn"
+      href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20نبدأ%20مشروع%20ديكور">
+
+      💬 تواصل معنا
+
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <strong>
+    صمم ديكورك
+  </strong>
+
+  © 2026
+
+  <br>
+
+  Design & Décoration —
+  <strong>
+    Hamza Chtaibi
+  </strong>
 
 </footer>
 
 
+
 <!-- =====================================================
-WHATSAPP
+     WHATSAPP
 ===================================================== -->
 
 <a
-    href="https://wa.me/212754350706"
-    target="_blank"
-    class="float-whatsapp"
-    aria-label="WhatsApp">
+  class="whatsapp"
+  href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20الديكور">
 
-    ☎
+  💬 واتساب
 
 </a>
 
 
+
+<!-- =====================================================
+     LANGUAGE
+===================================================== -->
+
 <script>
-
-/* =====================================================
-PROJECT
-===================================================== */
-
-let currentProject = "";
-
-
-function selectProject(name){
-
-    currentProject = name;
-
-    document.getElementById(
-        "selectedProject"
-    ).value = name;
-
-}
-
-
-/* =====================================================
-WHATSAPP ORDER
-===================================================== */
-
-function sendWhatsApp(){
-
-    const name =
-        document.getElementById(
-            "clientName"
-        ).value.trim();
-
-    const phone =
-        document.getElementById(
-            "clientPhone"
-        ).value.trim();
-
-    const measurements =
-        document.getElementById(
-            "measurements"
-        ).value.trim();
-
-    const notes =
-        document.getElementById(
-            "notes"
-        ).value.trim();
-
-
-    if(!currentProject){
-
-        alert(
-            french
-            ? "Veuillez choisir un projet."
-            : "اختار المشروع ديالك أولا."
-        );
-
-        return;
-    }
-
-
-    let message;
-
-
-    if(french){
-
-        message =
-`Bonjour, je souhaite demander un projet de décoration.
-
-Projet : ${currentProject}
-
-Nom : ${name || "Non renseigné"}
-
-Téléphone : ${phone || "Non renseigné"}
-
-Dimensions : ${measurements || "Non renseignées"}
-
-Remarques :
-${notes || "Aucune remarque"}`;
-
-    }else{
-
-        message =
-`السلام عليكم، بغيت نطلب مشروع ديكور.
-
-المشروع: ${currentProject}
-
-الاسم: ${name || "ما تحددش"}
-
-الهاتف: ${phone || "ما تحددش"}
-
-القياسات: ${measurements || "ما تحددتش"}
-
-الملاحظات:
-${notes || "ما كايناش"}`;
-
-    }
-
-
-    window.open(
-        "https://wa.me/212754350706?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-LANGUAGE
-===================================================== */
 
 let french = false;
 
+function toggleLanguage(){
 
-const translations = {
+  french = !french;
 
-    fr:{
+  const button =
+    document.getElementById("languageButton");
 
-        navProjects:"Projets",
-        navWorks:"Réalisations",
-        navSales:"Boutique",
-        navContact:"Contact",
+  const heroText =
+    document.getElementById("heroText");
 
-        eyebrow:
-        "DESIGN • FABRICATION • INSTALLATION",
-
-        heroTitle:
-        "De l'idée<br><span>à la réalisation.</span>",
-
-        heroDescription:
-        "Présentez-nous votre projet simplement. Choisissez le type de projet, envoyez une photo de l'espace, les dimensions et vos remarques. Nous nous occupons du reste.",
-
-        start:
-        "Démarrer mon projet",
-
-        works:
-        "Découvrir nos réalisations",
-
-        intro1Title:
-        "Une idée claire",
-
-        intro1Text:
-        "Nous vous aidons à définir votre projet.",
-
-        intro2Title:
-        "Étude du projet",
-
-        intro2Text:
-        "Photo, dimensions et remarques.",
-
-        intro3Title:
-        "Fabrication & pose",
-
-        intro3Text:
-        "Du projet jusqu'au résultat final.",
-
-        projectsTitle:
-        "Quel projet souhaitez-vous réaliser ?",
-
-        projectsDescription:
-        "Choisissez votre projet. Nous vous demanderons uniquement les informations nécessaires.",
-
-        p1Title:"Cuisine",
-        p1Text:"Cuisine sur mesure adaptée à votre espace.",
-        p2Title:"Chambre",
-        p2Text:"Lit, placard, dressing et coiffeuse.",
-        p3Title:"Salon",
-        p3Text:"Salon, mur TV, tables et mobilier.",
-        p4Title:"Dressing & Placard",
-        p4Text:"Portes, verre, aménagement intérieur.",
-        p5Title:"Meuble TV",
-        p5Text:"Mur TV, niches, étagères et éclairage.",
-        p6Title:"Tapisserie & Rideaux",
-        p6Text:"Rideaux, coussins, tissus et dimensions.",
-
-        startOrder:
-        "Démarrer",
-
-        orderTitle:
-        "Parlons de votre projet",
-
-        orderDescription:
-        "Vous n'avez pas besoin de connaître les détails techniques. Envoyez simplement ce que vous avez.",
-
-        orderInfoTitle:
-        "Simple et clair.",
-
-        orderInfoText:
-        "Une photo de l'espace, les dimensions et vos remarques nous permettent de comprendre votre besoin et de vous contacter pour compléter les détails.",
-
-        orderNote:
-        "La photo peut être prise directement avec votre téléphone.",
-
-        projectLabel:
-        "Type de projet",
-
-        nameLabel:
-        "Nom",
-
-        phoneLabel:
-        "Téléphone",
-
-        photoLabel:
-        "Photo de l'espace",
-
-        uploadText:
-        "Choisissez une photo depuis votre téléphone",
-
-        measureLabel:
-        "Dimensions",
-
-        notesLabel:
-        "Remarques",
-
-        sendButton:
-        "Envoyer la demande sur WhatsApp",
-
-        salesTitle:
-        "Accessoires & équipements",
-
-        salesDescription:
-        "Des produits complémentaires pour vos projets.",
-
-        s1Title:"LED & éclairage",
-        s1Text:"Solutions d'éclairage pour cuisines, placards et décoration.",
-
-        s2Title:"Poignées",
-        s2Text:"Différents modèles pour cuisines et rangements.",
-
-        s3Title:"Aménagement intérieur",
-        s3Text:"Paniers, tiroirs et accessoires pratiques.",
-
-        s4Title:"Matériaux",
-        s4Text:"MDF, mélaminé, bois et autres matériaux.",
-
-        worksTitle:
-        "Nos projets parlent pour nous.",
-
-        worksText:
-        "Découvrez nos réalisations et projets réalisés.",
-
-        worksLink:
-        "Voir les réalisations",
-
-        contactTitle:
-        "Vous avez un projet ?",
-
-        contactText:
-        "Contactez-nous et partagez-nous les détails de votre projet.",
-
-        contactButton:
-        "Nous contacter sur WhatsApp"
-
-    }
-
-};
+  const startButton =
+    document.getElementById("startButton");
 
 
-function changeLanguage(){
-
-    french = !french;
-
-
-    if(!french){
-
-        location.reload();
-
-        return;
-
-    }
-
-
-    const t = translations.fr;
-
+  if(french){
 
     document.documentElement.lang = "fr";
-    document.documentElement.dir = "ltr";
 
+    button.textContent = "دارجة";
 
-    document.getElementById(
-        "languageButton"
-    ).textContent = "AR";
+    heroText.textContent =
+      "Choisissez votre projet, envoyez-nous une photo de l'espace, les dimensions et vos remarques. Nous nous occupons du reste.";
 
+    startButton.textContent =
+      "✦ Commencer";
 
-    /* NAV */
+  }else{
 
-    document.querySelector(
-        '[data-fr="Projets"]'
-    ).textContent = t.navProjects;
+    document.documentElement.lang = "ar";
 
-    document.querySelector(
-        '[data-fr="Réalisations"]'
-    ).textContent = t.navWorks;
+    button.textContent = "FR";
 
-    document.querySelector(
-        '[data-fr="Boutique"]'
-    ).textContent = t.navSales;
+    heroText.textContent =
+      "اختار شنو بغيتي تصمم، صيفط لينا صورة المكان والقياسات، وشرح لينا شنو باغي. حنا نكملو معاك الباقي.";
 
-    document.querySelector(
-        '[data-fr="Contact"]'
-    ).textContent = t.navContact;
+    startButton.textContent =
+      "✦ بدا التصميم";
 
-
-    /* HERO */
-
-    document.querySelector(
-        ".eyebrow"
-    ).textContent = t.eyebrow;
-
-    document.getElementById(
-        "heroTitle"
-    ).innerHTML = t.heroTitle;
-
-    document.getElementById(
-        "heroDescription"
-    ).textContent = t.heroDescription;
-
-    document.getElementById(
-        "startButton"
-    ).textContent = t.start;
-
-    document.getElementById(
-        "worksButton"
-    ).textContent = t.works;
-
-
-    /* INTRO */
-
-    document.getElementById(
-        "intro1Title"
-    ).textContent = t.intro1Title;
-
-    document.getElementById(
-        "intro1Text"
-    ).textContent = t.intro1Text;
-
-    document.getElementById(
-        "intro2Title"
-    ).textContent = t.intro2Title;
-
-    document.getElementById(
-        "intro2Text"
-    ).textContent = t.intro2Text;
-
-    document.getElementById(
-        "intro3Title"
-    ).textContent = t.intro3Title;
-
-    document.getElementById(
-        "intro3Text"
-    ).textContent = t.intro3Text;
-
-
-    /* PROJECTS */
-
-    document.getElementById(
-        "projectsTitle"
-    ).textContent = t.projectsTitle;
-
-    document.getElementById(
-        "projectsDescription"
-    ).textContent = t.projectsDescription;
-
-
-    document.getElementById("p1Title").textContent=t.p1Title;
-    document.getElementById("p1Text").textContent=t.p1Text;
-
-    document.getElementById("p2Title").textContent=t.p2Title;
-    document.getElementById("p2Text").textContent=t.p2Text;
-
-    document.getElementById("p3Title").textContent=t.p3Title;
-    document.getElementById("p3Text").textContent=t.p3Text;
-
-    document.getElementById("p4Title").textContent=t.p4Title;
-    document.getElementById("p4Text").textContent=t.p4Text;
-
-    document.getElementById("p5Title").textContent=t.p5Title;
-    document.getElementById("p5Text").textContent=t.p5Text;
-
-    document.getElementById("p6Title").textContent=t.p6Title;
-    document.getElementById("p6Text").textContent=t.p6Text;
-
-
-    document.querySelectorAll(
-        ".project-link"
-    ).forEach(
-        el => el.textContent=t.startOrder
-    );
-
-
-    /* ORDER */
-
-    document.getElementById(
-        "orderTitle"
-    ).textContent=t.orderTitle;
-
-    document.getElementById(
-        "orderDescription"
-    ).textContent=t.orderDescription;
-
-    document.getElementById(
-        "orderInfoTitle"
-    ).textContent=t.orderInfoTitle;
-
-    document.getElementById(
-        "orderInfoText"
-    ).textContent=t.orderInfoText;
-
-    document.getElementById(
-        "orderNote"
-    ).textContent=t.orderNote;
-
-    document.getElementById(
-        "projectLabel"
-    ).textContent=t.projectLabel;
-
-    document.getElementById(
-        "nameLabel"
-    ).textContent=t.nameLabel;
-
-    document.getElementById(
-        "phoneLabel"
-    ).textContent=t.phoneLabel;
-
-    document.getElementById(
-        "photoLabel"
-    ).textContent=t.photoLabel;
-
-    document.getElementById(
-        "uploadText"
-    ).textContent=t.uploadText;
-
-    document.getElementById(
-        "measureLabel"
-    ).textContent=t.measureLabel;
-
-    document.getElementById(
-        "notesLabel"
-    ).textContent=t.notesLabel;
-
-    document.getElementById(
-        "sendButton"
-    ).textContent=t.sendButton;
-
-
-    document.getElementById(
-        "clientName"
-    ).placeholder="Votre nom";
-
-    document.getElementById(
-        "clientPhone"
-    ).placeholder="06XXXXXXXX";
-
-    document.getElementById(
-        "measurements"
-    ).placeholder=
-        "Exemple : 3.60m × 2.80m × 2.60m";
-
-    document.getElementById(
-        "notes"
-    ).placeholder=
-        "Décrivez votre projet et vos besoins...";
-
-
-    /* SALES */
-
-    document.getElementById(
-        "salesTitle"
-    ).textContent=t.salesTitle;
-
-    document.getElementById(
-        "salesDescription"
-    ).textContent=t.salesDescription;
-
-    document.getElementById(
-        "s1Title"
-    ).textContent=t.s1Title;
-
-    document.getElementById(
-        "s1Text"
-    ).textContent=t.s1Text;
-
-    document.getElementById(
-        "s2Title"
-    ).textContent=t.s2Title;
-
-    document.getElementById(
-        "s2Text"
-    ).textContent=t.s2Text;
-
-    document.getElementById(
-        "s3Title"
-    ).textContent=t.s3Title;
-
-    document.getElementById(
-        "s3Text"
-    ).textContent=t.s3Text;
-
-    document.getElementById(
-        "s4Title"
-    ).textContent=t.s4Title;
-
-    document.getElementById(
-        "s4Text"
-    ).textContent=t.s4Text;
-
-
-    /* WORKS */
-
-    document.getElementById(
-        "worksTitle"
-    ).textContent=t.worksTitle;
-
-    document.getElementById(
-        "worksText"
-    ).textContent=t.worksText;
-
-    document.getElementById(
-        "worksLink"
-    ).textContent=t.worksLink;
-
-
-    /* CONTACT */
-
-    document.getElementById(
-        "contactTitle"
-    ).textContent=t.contactTitle;
-
-    document.getElementById(
-        "contactText"
-    ).textContent=t.contactText;
-
-    document.getElementById(
-        "contactButton"
-    ).textContent=t.contactButton;
+  }
 
 }
 

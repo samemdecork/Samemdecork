@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>صمم ديكورك | تصميم المطبخ</title>
+<title>صمم ديكورك | Configurateur</title>
 
 <style>
 *{
@@ -20,16 +20,8 @@ body{
   line-height:1.7;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,textarea,select{
   font-family:inherit;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
 }
 
 .wrap{
@@ -38,25 +30,26 @@ a{
 }
 
 /* HEADER */
-
 header{
-  height:70px;
   background:#17231d;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
+  color:white;
+  padding:18px 0;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 20px #0002;
 }
 
-.header-inner{
-  width:min(1100px,92%);
-  margin:auto;
+.head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  gap:15px;
 }
 
 .logo{
+  color:white;
+  text-decoration:none;
   font-size:23px;
   font-weight:900;
 }
@@ -71,10 +64,10 @@ header{
 }
 
 .lang button{
-  border:1px solid rgba(255,255,255,.3);
+  border:1px solid #c9aa7b;
   background:transparent;
-  color:#fff;
-  padding:6px 11px;
+  color:white;
+  padding:6px 12px;
   border-radius:20px;
   cursor:pointer;
 }
@@ -84,419 +77,283 @@ header{
   color:#17231d;
 }
 
-/* TOP */
-
-.top{
-  padding:45px 0 25px;
-  text-align:center;
+/* PAGE */
+.page{
+  padding:45px 0 80px;
 }
 
-.badge{
-  display:inline-block;
+.intro{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.intro small{
   color:#9a7d58;
-  font-size:12px;
   font-weight:bold;
   letter-spacing:1px;
-  margin-bottom:8px;
 }
 
-.top h1{
+.intro h1{
   font-size:clamp(30px,6vw,48px);
-  line-height:1.25;
-  margin-bottom:8px;
+  margin:7px 0;
 }
 
-.top p{
+.intro p{
   color:#70736e;
-  font-size:15px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:14px;
+  padding:25px;
+  margin-bottom:18px;
+  box-shadow:0 8px 30px #17231d12;
+  border:1px solid #e5ddd1;
+}
+
+.card h2{
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.card-desc{
+  color:#777;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+/* PROJECT */
+.project-types{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.project-type{
+  border:1px solid #ddd3c4;
+  background:#faf8f4;
+  border-radius:9px;
+  padding:15px 8px;
+  cursor:pointer;
+  text-align:center;
+  transition:.2s;
+}
+
+.project-type:hover{
+  border-color:#c9aa7b;
+  transform:translateY(-2px);
+}
+
+.project-type.selected{
+  background:#17231d;
+  color:white;
+  border-color:#17231d;
+}
+
+.project-icon{
+  font-size:25px;
+  display:block;
+  margin-bottom:4px;
 }
 
 /* MODE */
-
-.mode-box{
-  background:#fff;
-  border:1px solid #e1d8ca;
-  border-radius:12px;
-  padding:8px;
+.modes{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-bottom:25px;
-  box-shadow:0 5px 20px rgba(0,0,0,.04);
+  gap:12px;
 }
 
 .mode{
-  border:0;
-  background:transparent;
-  padding:17px 12px;
-  border-radius:8px;
+  border:1px solid #ddd3c4;
+  border-radius:10px;
+  padding:18px;
   cursor:pointer;
-  color:#17231d;
+  background:#faf8f4;
+}
+
+.mode.selected{
+  border:2px solid #c9aa7b;
+  background:#fffaf2;
 }
 
 .mode strong{
   display:block;
-  font-size:16px;
-  margin-bottom:3px;
+  margin-bottom:5px;
 }
 
-.mode small{
+.mode span{
+  font-size:13px;
   color:#777;
 }
 
-.mode.active{
-  background:#17231d;
-  color:#fff;
-}
-
-.mode.active small{
-  color:#d7ddd9;
-}
-
-/* CARD */
-
-.card{
-  background:#fff;
-  border:1px solid #e1d8ca;
-  border-radius:12px;
-  padding:25px;
+/* FIELDS */
+.field{
   margin-bottom:18px;
-  box-shadow:0 5px 22px rgba(0,0,0,.04);
 }
 
-.card-title{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:20px;
-  border-bottom:1px solid #eee7dc;
-  padding-bottom:13px;
+.field:last-child{
+  margin-bottom:0;
 }
-
-.number{
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:#17231d;
-  color:#c9aa7b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
-
-.card-title h2{
-  font-size:19px;
-}
-
-/* FORM */
 
 label{
   display:block;
-  font-size:13px;
   font-weight:bold;
-  margin-bottom:6px;
-}
-
-input,
-select,
-textarea{
-  width:100%;
-  border:1px solid #d9d0c3;
-  background:#faf8f4;
-  color:#17231d;
-  padding:13px;
-  border-radius:7px;
-  outline:none;
+  margin-bottom:7px;
   font-size:14px;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#9a7d58;
+input,
+textarea,
+select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #d8d0c4;
+  border-radius:8px;
   background:#fff;
+  outline:none;
+  color:#17231d;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:#b59466;
 }
 
 textarea{
-  min-height:105px;
+  min-height:100px;
   resize:vertical;
 }
 
-.grid{
+/* MEASUREMENTS */
+.measurements{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
 
-.field{
-  margin-bottom:15px;
+.measurements div{
+  position:relative;
 }
 
-.full{
-  grid-column:1/-1;
+.measurements span{
+  position:absolute;
+  left:12px;
+  top:39px;
+  color:#999;
+  font-size:12px;
 }
 
-/* IMAGE */
-
-.upload{
-  border:2px dashed #c9bdac;
-  background:#faf8f4;
-  min-height:180px;
-  border-radius:9px;
+/* OPTIONS */
+.options{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  cursor:pointer;
-  padding:20px;
-  transition:.2s;
+  flex-wrap:wrap;
+  gap:9px;
 }
 
-.upload:hover{
-  border-color:#9a7d58;
+.option{
+  border:1px solid #d8d0c4;
+  background:#fff;
+  border-radius:8px;
+  padding:10px 15px;
+  cursor:pointer;
+}
+
+.option.selected{
+  background:#17231d;
+  color:white;
+  border-color:#17231d;
+}
+
+/* UPLOAD */
+.upload{
+  border:2px dashed #c9aa7b;
+  border-radius:10px;
+  padding:25px 15px;
+  text-align:center;
+  background:#fffaf3;
+  cursor:pointer;
 }
 
 .upload input{
   display:none;
 }
 
-.upload-icon{
-  font-size:35px;
-  margin-bottom:5px;
-}
-
 .upload strong{
   display:block;
-}
-
-.upload small{
-  color:#777;
+  margin-bottom:4px;
 }
 
 .preview{
   display:none;
-  margin-top:12px;
-  position:relative;
-}
-
-.preview img{
-  width:100%;
-  max-height:320px;
+  margin-top:15px;
+  max-height:220px;
+  border-radius:8px;
   object-fit:cover;
-  border-radius:8px;
 }
 
-.remove-img{
-  position:absolute;
-  top:8px;
-  left:8px;
+/* DYNAMIC */
+#details{
+  display:none;
+}
+
+/* BUTTON */
+.submit{
+  width:100%;
   border:0;
   background:#17231d;
-  color:#fff;
-  border-radius:20px;
-  padding:6px 11px;
-  cursor:pointer;
-}
-
-/* OPTIONS */
-
-.option-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.option{
-  border:1px solid #ddd4c7;
-  background:#faf8f4;
-  border-radius:8px;
-  padding:14px 10px;
-  text-align:center;
-  cursor:pointer;
-  transition:.2s;
-  min-height:68px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.option:hover{
-  border-color:#9a7d58;
-}
-
-.option.selected{
-  border-color:#17231d;
-  background:#17231d;
-  color:#fff;
-}
-
-.option small{
-  display:block;
-  opacity:.7;
-  font-size:11px;
-}
-
-/* COLORS */
-
-.color-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.color-option{
-  border:1px solid #ddd4c7;
-  background:#fff;
-  border-radius:8px;
-  padding:9px;
-  cursor:pointer;
-  text-align:center;
-}
-
-.color-circle{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  margin:0 auto 5px;
-  border:1px solid #ccc;
-}
-
-.color-option.selected{
-  border:2px solid #17231d;
-}
-
-/* BUDGET */
-
-.budget{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.budget button{
-  border:1px solid #ddd4c7;
-  background:#faf8f4;
-  padding:13px 8px;
-  border-radius:7px;
-  cursor:pointer;
-}
-
-.budget button.selected{
-  background:#17231d;
-  color:#fff;
-  border-color:#17231d;
-}
-
-/* QUICK MESSAGE */
-
-.help{
-  background:#f1eadf;
-  border-right:4px solid #c9aa7b;
-  padding:15px;
-  margin-bottom:18px;
-  border-radius:6px;
-  font-size:14px;
-}
-
-.help strong{
-  display:block;
-  margin-bottom:3px;
-}
-
-/* SEND */
-
-.send-box{
-  background:#17231d;
-  color:#fff;
-  border-radius:12px;
-  padding:25px;
-  text-align:center;
-  margin:25px 0 50px;
-}
-
-.send-box h2{
-  margin-bottom:6px;
-}
-
-.send-box p{
-  color:#cbd2cd;
-  font-size:13px;
-  margin-bottom:18px;
-}
-
-.send{
-  display:inline-flex;
-  border:0;
-  background:#c9aa7b;
-  color:#17231d;
-  padding:14px 30px;
-  border-radius:7px;
-  font-size:16px;
+  color:white;
+  padding:17px;
+  border-radius:9px;
+  font-size:17px;
   font-weight:bold;
   cursor:pointer;
+  transition:.2s;
 }
 
-.back{
-  display:block;
-  margin-top:14px;
-  color:#c9aa7b;
-  font-size:13px;
+.submit:hover{
+  background:#263a30;
 }
 
-/* HIDDEN */
+.note{
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  margin-top:10px;
+}
 
-.hidden{
-  display:none!important;
+/* RTL */
+body.rtl{
+  direction:rtl;
+}
+
+body.rtl .head,
+body.rtl .field{
+  direction:rtl;
 }
 
 /* MOBILE */
-
 @media(max-width:650px){
 
-  header{
-    height:64px;
+  .project-types{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .logo{
-    font-size:20px;
+  .modes{
+    grid-template-columns:1fr;
   }
 
-  .top{
-    padding-top:32px;
-  }
-
-  .top h1{
-    font-size:31px;
+  .measurements{
+    grid-template-columns:1fr;
   }
 
   .card{
     padding:18px;
   }
 
-  .grid{
-    grid-template-columns:1fr;
-    gap:5px;
-  }
-
-  .option-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .color-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .budget{
-    grid-template-columns:1fr;
-  }
-
-  .mode-box{
-    grid-template-columns:1fr;
-  }
-
-  .mode{
-    padding:14px;
+  .page{
+    padding-top:30px;
   }
 }
 </style>
@@ -505,7 +362,7 @@ textarea{
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="wrap head">
 
     <a href="index.html" class="logo">
       صمم <span>ديكورك</span>
@@ -520,1166 +377,860 @@ textarea{
 </header>
 
 
-<main class="wrap">
+<main class="page">
 
-  <div class="top">
+<div class="wrap">
 
-    <span class="badge" id="badge">
-      CUISINE • DESIGN • SUR MESURE
-    </span>
+  <div class="intro">
+
+    <small id="introSmall">
+      صمم ديكورك
+    </small>
 
     <h1 id="title">
-      صمم المطبخ ديالك
+      خلينا نعرفو شنو محتاج
     </h1>
 
-    <p id="intro">
-      اختار الطريقة اللي سهلة عليك، وإحنا نكملو معاك الباقي.
+    <p id="introText">
+      جاوب غير على الأسئلة اللي مهمة بالنسبة ليك.
+      إلا بغيتي، صيفط غير الصورة والقياسات وحنا نقترحو عليك الحل المناسب.
     </p>
 
   </div>
 
 
-  <!-- MODE -->
+  <!-- 01 PERSONAL -->
+  <div class="card">
 
-  <div class="mode-box">
+    <h2 id="personalTitle">
+      شرفنا بمعلوماتك
+    </h2>
 
-    <button class="mode active" id="quickMode" onclick="changeMode('quick')">
+    <p class="card-desc" id="personalDesc">
+      باش نقدروا نتواصلو معاك بخصوص المشروع.
+    </p>
 
-      <strong id="quickTitle">
-        🚀 طلب سريع
-      </strong>
+    <div class="field">
 
-      <small id="quickText">
-        صورة + قياسات + ميزانية، وخلي علينا التصميم
-      </small>
-
-    </button>
-
-
-    <button class="mode" id="detailMode" onclick="changeMode('detail')">
-
-      <strong id="detailTitle">
-        🎨 اختيار دقيق
-      </strong>
-
-      <small id="detailText">
-        اختار الشكل واللون والخامة والتجهيزات
-      </small>
-
-    </button>
-
-  </div>
-
-
-  <!-- QUICK -->
-
-  <div id="quickForm">
-
-    <div class="help">
-
-      <strong>
-        💡 خليه علينا
-      </strong>
-
-      إلا ما كنتيش عارف شنو تختار، غير صيفط لينا صورة المكان والقياسات والميزانية، وإحنا نقترحو عليك الشكل المناسب.
-
-    </div>
-
-
-    <!-- PERSONAL -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">1</div>
-
-        <h2>معلوماتك</h2>
-
-      </div>
-
-      <div class="grid">
-
-        <div class="field">
-
-          <label>الاسم</label>
-
-          <input
-            id="name"
-            type="text"
-            placeholder="مثلاً: محمد">
-
-        </div>
-
-
-        <div class="field">
-
-          <label>المدينة</label>
-
-          <input
-            id="city"
-            type="text"
-            placeholder="مثلاً: الدار البيضاء">
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- IMAGE -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">2</div>
-
-        <h2>📸 صورة المكان</h2>
-
-      </div>
-
-      <label class="upload">
-
-        <input
-          id="photo"
-          type="file"
-          accept="image/*"
-          onchange="previewImage(event)">
-
-        <div>
-
-          <div class="upload-icon">📷</div>
-
-          <strong>
-            ضغط هنا وصيفط صورة المكان
-          </strong>
-
-          <small>
-            صورة وحدة واضحة كافية
-          </small>
-
-        </div>
-
+      <label id="nameLabel">
+        الاسم
       </label>
 
-      <div class="preview" id="preview">
-
-        <img id="previewImg">
-
-        <button
-          class="remove-img"
-          onclick="removeImage()"
-          type="button">
-
-          حذف
-
-        </button>
-
-      </div>
+      <input
+        id="clientName"
+        type="text"
+        placeholder="مثلاً: محمد"
+      >
 
     </div>
 
 
-    <!-- MEASUREMENTS -->
+    <div class="field">
 
-    <div class="card">
+      <label id="cityLabel">
+        المدينة
+      </label>
 
-      <div class="card-title">
-
-        <div class="number">3</div>
-
-        <h2>📏 القياسات</h2>
-
-      </div>
-
-      <div class="grid">
-
-        <div class="field">
-
-          <label>العرض — cm</label>
-
-          <input
-            id="width"
-            type="number"
-            min="0"
-            placeholder="مثلاً 300">
-
-        </div>
-
-
-        <div class="field">
-
-          <label>الطول — cm</label>
-
-          <input
-            id="length"
-            type="number"
-            min="0"
-            placeholder="مثلاً 400">
-
-        </div>
-
-
-        <div class="field full">
-
-          <label>العلو — cm</label>
-
-          <input
-            id="height"
-            type="number"
-            min="0"
-            placeholder="مثلاً 260">
-
-        </div>
-
-      </div>
+      <input
+        id="city"
+        type="text"
+        placeholder="مثلاً: الدار البيضاء"
+      >
 
     </div>
 
 
-    <!-- BUDGET -->
+    <div class="field">
 
-    <div class="card">
+      <label id="phoneLabel">
+        رقم الهاتف / WhatsApp
+      </label>
 
-      <div class="card-title">
-
-        <div class="number">4</div>
-
-        <h2>💰 شحال بغيتي تخصص تقريباً؟</h2>
-
-      </div>
-
-      <div class="budget">
-
-        <button onclick="selectBudget(this,'أقل من 20.000 DH')">
-          أقل من 20.000 DH
-        </button>
-
-        <button onclick="selectBudget(this,'20.000 - 35.000 DH')">
-          20.000 - 35.000 DH
-        </button>
-
-        <button onclick="selectBudget(this,'35.000 - 50.000 DH')">
-          35.000 - 50.000 DH
-        </button>
-
-        <button onclick="selectBudget(this,'50.000 - 70.000 DH')">
-          50.000 - 70.000 DH
-        </button>
-
-        <button onclick="selectBudget(this,'أكثر من 70.000 DH')">
-          أكثر من 70.000 DH
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- NOTE -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">5</div>
-
-        <h2>📝 ملاحظة</h2>
-
-      </div>
-
-      <textarea
-        id="note"
-        placeholder="مثلاً: بغيت الثلاجة هنا، وبغيت بلاصة للفران..."></textarea>
+      <input
+        id="phone"
+        type="tel"
+        placeholder="06XXXXXXXX"
+      >
 
     </div>
 
   </div>
 
 
-  <!-- DETAIL -->
+  <!-- 02 PROJECT -->
+  <div class="card">
 
-  <div id="detailForm" class="hidden">
+    <h2 id="projectTitle">
+      شنو محتاج؟
+    </h2>
 
-    <div class="help">
+    <p class="card-desc" id="projectDesc">
+      اختار القسم اللي باغي تخدم عليه.
+    </p>
 
-      <strong>
-        🎨 اختار غير الحوايج اللي عارفهم
+    <div class="project-types">
+
+      <div class="project-type" data-type="kitchen" onclick="chooseType(this)">
+        <span class="project-icon">🍳</span>
+        <span class="ar">المطبخ</span>
+        <span class="fr">Cuisine</span>
+      </div>
+
+      <div class="project-type" data-type="bedroom" onclick="chooseType(this)">
+        <span class="project-icon">🛏️</span>
+        <span class="ar">غرفة النوم</span>
+        <span class="fr">Chambre</span>
+      </div>
+
+      <div class="project-type" data-type="salon" onclick="chooseType(this)">
+        <span class="project-icon">🛋️</span>
+        <span class="ar">الصالون</span>
+        <span class="fr">Salon</span>
+      </div>
+
+      <div class="project-type" data-type="dressing" onclick="chooseType(this)">
+        <span class="project-icon">👔</span>
+        <span class="ar">Dressing</span>
+        <span class="fr">Dressing</span>
+      </div>
+
+      <div class="project-type" data-type="tv" onclick="chooseType(this)">
+        <span class="project-icon">📺</span>
+        <span class="ar">موبل TV</span>
+        <span class="fr">Meuble TV</span>
+      </div>
+
+      <div class="project-type" data-type="tapisserie" onclick="chooseType(this)">
+        <span class="project-icon">🪟</span>
+        <span class="ar">الطابيسري والستور</span>
+        <span class="fr">Tapisserie & Rideaux</span>
+      </div>
+
+      <div class="project-type" data-type="accessories" onclick="chooseType(this)">
+        <span class="project-icon">🛒</span>
+        <span class="ar">المبيعات والإكسسوارات</span>
+        <span class="fr">Vente & Accessoires</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- 03 MODE -->
+  <div class="card">
+
+    <h2 id="modeTitle">
+      كيفاش بغيتي تدير الطلب؟
+    </h2>
+
+    <p class="card-desc" id="modeDesc">
+      اختار الطريقة اللي أسهل ليك.
+    </p>
+
+    <div class="modes">
+
+      <div class="mode" onclick="chooseMode('quick',this)">
+
+        <strong id="quickTitle">
+          ⚡ طلب مختصر
+        </strong>
+
+        <span id="quickDesc">
+          صيفط الصورة + القياسات + الميزانية، وحنا نقترحو عليك الشكل والثمن المناسب.
+        </span>
+
+      </div>
+
+
+      <div class="mode" onclick="chooseMode('detail',this)">
+
+        <strong id="detailTitle">
+          ✨ اختيار دقيق
+        </strong>
+
+        <span id="detailDesc">
+          اختار الشكل واللون والخامة والتفاصيل بنفسك.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DYNAMIC DETAILS -->
+  <div id="details"></div>
+
+
+  <!-- IMAGE -->
+  <div class="card">
+
+    <h2 id="imageTitle">
+      صورة المكان
+    </h2>
+
+    <p class="card-desc" id="imageDesc">
+      صيفط لينا صورة واضحة للمكان اللي غادي يكون فيه المشروع.
+    </p>
+
+    <label class="upload">
+
+      <input
+        type="file"
+        id="photo"
+        accept="image/*"
+        onchange="previewImage(event)"
+      >
+
+      <strong id="uploadText">
+        📷 اضغط هنا لاختيار صورة
       </strong>
 
-      ماشي ضروري تعمر كلشي. أي اختيار ما عرفتيهش خليه علينا.
+      <span id="uploadSub">
+        يمكنك اختيار صورة من الهاتف
+      </span>
 
-    </div>
+      <img id="preview" class="preview">
 
+    </label>
 
-    <!-- BASIC -->
+  </div>
 
-    <div class="card">
 
-      <div class="card-title">
+  <!-- NOTES -->
+  <div class="card">
 
-        <div class="number">1</div>
+    <h2 id="notesTitle">
+      عندك شي ملاحظة؟
+    </h2>
 
-        <h2>معلوماتك</h2>
+    <p class="card-desc" id="notesDesc">
+      كتب لينا أي حاجة مهمة بغيتي ناخدوها بعين الاعتبار.
+    </p>
 
-      </div>
-
-      <div class="grid">
-
-        <div class="field">
-
-          <label>الاسم</label>
-
-          <input
-            id="dname"
-            type="text"
-            placeholder="الاسم">
-
-        </div>
-
-        <div class="field">
-
-          <label>المدينة</label>
-
-          <input
-            id="dcity"
-            type="text"
-            placeholder="المدينة">
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- IMAGE -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">2</div>
-
-        <h2>📸 صورة المكان</h2>
-
-      </div>
-
-      <label class="upload">
-
-        <input
-          id="dphoto"
-          type="file"
-          accept="image/*"
-          onchange="previewDetailImage(event)">
-
-        <div>
-
-          <div class="upload-icon">📷</div>
-
-          <strong>
-            صيفط صورة المكان
-          </strong>
-
-          <small>
-            كتعاوننا نفهم المساحة
-          </small>
-
-        </div>
-
-      </label>
-
-      <div class="preview" id="dpreview">
-
-        <img id="dpreviewImg">
-
-      </div>
-
-    </div>
-
-
-    <!-- MEASUREMENTS -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">3</div>
-
-        <h2>📏 القياسات</h2>
-
-      </div>
-
-      <div class="grid">
-
-        <div class="field">
-
-          <label>العرض — cm</label>
-
-          <input id="dwidth" type="number" placeholder="العرض">
-
-        </div>
-
-        <div class="field">
-
-          <label>الطول — cm</label>
-
-          <input id="dlength" type="number" placeholder="الطول">
-
-        </div>
-
-        <div class="field full">
-
-          <label>العلو — cm</label>
-
-          <input id="dheight" type="number" placeholder="العلو">
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- SHAPE -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">4</div>
-
-        <h2>شكل المطبخ</h2>
-
-      </div>
-
-      <div class="option-grid">
-
-        <div class="option" onclick="choose(this,'shape','مستقيم')">
-          مستقيم
-          <small>LINEAIRE</small>
-        </div>
-
-        <div class="option" onclick="choose(this,'shape','L')">
-          L
-          <small>EN L</small>
-        </div>
-
-        <div class="option" onclick="choose(this,'shape','U')">
-          U
-          <small>EN U</small>
-        </div>
-
-        <div class="option" onclick="choose(this,'shape','مع جزيرة')">
-          جزيرة
-          <small>ÎLOT</small>
-        </div>
-
-        <div class="option" onclick="choose(this,'shape','جوج جهات')">
-          جوج جهات
-          <small>DOUBLE LIGNE</small>
-        </div>
-
-        <div class="option" onclick="choose(this,'shape','مازال ما عرفت')">
-          خليه علينا
-          <small>À PROPOSER</small>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- COLOR -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">5</div>
-
-        <h2>لون المطبخ</h2>
-
-      </div>
-
-      <div class="color-grid">
-
-        <div class="color-option" onclick="chooseColor(this,'أبيض')">
-          <div class="color-circle" style="background:#f5f5f2"></div>
-          أبيض
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'بيج / كريمي')">
-          <div class="color-circle" style="background:#d8c6a8"></div>
-          بيج
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'رمادي')">
-          <div class="color-circle" style="background:#8b8b86"></div>
-          رمادي
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'أخضر')">
-          <div class="color-circle" style="background:#4d6653"></div>
-          أخضر
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'خشبي')">
-          <div class="color-circle" style="background:#8b6344"></div>
-          خشبي
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'أسود')">
-          <div class="color-circle" style="background:#20221f"></div>
-          أسود
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'أبيض وخشبي')">
-          <div class="color-circle" style="background:linear-gradient(90deg,#f5f5f2 50%,#8b6344 50%)"></div>
-          أبيض + خشبي
-        </div>
-
-        <div class="color-option" onclick="chooseColor(this,'اقتراح منكم')">
-          <div class="color-circle" style="background:#c9aa7b"></div>
-          اقترحو عليا
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- MATERIAL -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">6</div>
-
-        <h2>الخامة</h2>
-
-      </div>
-
-      <div class="option-grid">
-
-        <div class="option" onclick="choose(this,'material','Mélaminé')">
-          Mélaminé
-        </div>
-
-        <div class="option" onclick="choose(this,'material','MDF')">
-          MDF
-        </div>
-
-        <div class="option" onclick="choose(this,'material','MDF Laqué')">
-          MDF Laqué
-        </div>
-
-        <div class="option" onclick="choose(this,'material','خشب')">
-          خشب
-        </div>
-
-        <div class="option" onclick="choose(this,'material','مازال ما عرفت')">
-          مازال ما عرفت
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- WORKTOP -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">7</div>
-
-        <h2>سطح العمل</h2>
-
-      </div>
-
-      <div class="option-grid">
-
-        <div class="option" onclick="choose(this,'worktop','Quartz')">
-          Quartz
-        </div>
-
-        <div class="option" onclick="choose(this,'worktop','Granite')">
-          Granite
-        </div>
-
-        <div class="option" onclick="choose(this,'worktop','Marbre')">
-          Marbre
-        </div>
-
-        <div class="option" onclick="choose(this,'worktop','اقتراح منكم')">
-          اقترحو عليا
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- EXTRAS -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">8</div>
-
-        <h2>إضافات اختيارية</h2>
-
-      </div>
-
-      <div class="option-grid">
-
-        <div class="option" onclick="toggleExtra(this,'LED')">
-          💡 LED
-        </div>
-
-        <div class="option" onclick="toggleExtra(this,'زجاج')">
-          🪟 زجاج
-        </div>
-
-        <div class="option" onclick="toggleExtra(this,'Tiroirs')">
-          Tiroirs
-        </div>
-
-        <div class="option" onclick="toggleExtra(this,'مقابض')">
-          مقابض
-        </div>
-
-        <div class="option" onclick="toggleExtra(this,'أجهزة مدمجة')">
-          أجهزة مدمجة
-        </div>
-
-        <div class="option" onclick="toggleExtra(this,'حسب اقتراحكم')">
-          حسب اقتراحكم
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- DETAIL BUDGET -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">9</div>
-
-        <h2>💰 الميزانية</h2>
-
-      </div>
-
-      <div class="budget">
-
-        <button onclick="selectDetailBudget(this,'أقل من 20.000 DH')">
-          أقل من 20.000 DH
-        </button>
-
-        <button onclick="selectDetailBudget(this,'20.000 - 35.000 DH')">
-          20.000 - 35.000 DH
-        </button>
-
-        <button onclick="selectDetailBudget(this,'35.000 - 50.000 DH')">
-          35.000 - 50.000 DH
-        </button>
-
-        <button onclick="selectDetailBudget(this,'50.000 - 70.000 DH')">
-          50.000 - 70.000 DH
-        </button>
-
-        <button onclick="selectDetailBudget(this,'أكثر من 70.000 DH')">
-          أكثر من 70.000 DH
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- NOTE -->
-
-    <div class="card">
-
-      <div class="card-title">
-
-        <div class="number">10</div>
-
-        <h2>📝 ملاحظات إضافية</h2>
-
-      </div>
-
-      <textarea
-        id="dnote"
-        placeholder="مثلاً: بغيت بلاصة للثلاجة، فرن مدمج، جزيرة..."></textarea>
-
-    </div>
+    <textarea
+      id="notes"
+      placeholder="مثلاً: بغيت اللون أبيض، خاصني بلاصة للفران..."
+    ></textarea>
 
   </div>
 
 
   <!-- SEND -->
+  <div class="card">
 
-  <div class="send-box">
-
-    <h2 id="sendTitle">
-      واجد؟ صيفط لينا الطلب
-    </h2>
-
-    <p id="sendText">
-      غادي يتحل واتساب وتكون المعلومات ديالك واجدة.
-    </p>
-
-    <button class="send" onclick="sendRequest()">
-      💬 صيفط الطلب عبر واتساب
+    <button class="submit" onclick="sendRequest()" id="sendBtn">
+      إرسال الطلب عبر WhatsApp
     </button>
 
-    <a class="back" href="index.html">
-      ← رجوع للموقع الرئيسي
-    </a>
+    <div class="note" id="sendNote">
+      غادي يتفتح WhatsApp بالطلب ديالك جاهز للإرسال.
+    </div>
 
   </div>
+
+</div>
 
 </main>
 
 
 <script>
 
-/* ==============================
-   DATA
-============================== */
+/* =====================================================
+   LANGUAGE
+===================================================== */
 
-let currentMode = "quick";
+let lang = "ar";
 
-let selectedBudget = "";
+function setLang(newLang){
 
-let detailBudget = "";
+  lang = newLang;
 
-let choices = {
-  shape:"",
-  color:"",
-  material:"",
-  worktop:""
-};
+  document.getElementById("arBtn").classList.toggle(
+    "active",
+    lang === "ar"
+  );
 
-let extras = [];
+  document.getElementById("frBtn").classList.toggle(
+    "active",
+    lang === "fr"
+  );
 
+  document.body.classList.toggle(
+    "rtl",
+    lang === "ar"
+  );
 
-/* ==============================
-   MODE
-============================== */
+  document.documentElement.lang =
+    lang === "ar" ? "ar" : "fr";
 
-function changeMode(mode){
+  document.documentElement.dir =
+    lang === "ar" ? "rtl" : "ltr";
 
-  currentMode = mode;
+  updateTexts();
 
-  document
-    .getElementById("quickForm")
-    .classList.toggle("hidden", mode !== "quick");
-
-  document
-    .getElementById("detailForm")
-    .classList.toggle("hidden", mode !== "detail");
-
-  document
-    .getElementById("quickMode")
-    .classList.toggle("active", mode === "quick");
-
-  document
-    .getElementById("detailMode")
-    .classList.toggle("active", mode === "detail");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  if(selectedType){
+    renderDetails(selectedType);
+  }
 }
 
 
-/* ==============================
-   IMAGE PREVIEW
-============================== */
+/* =====================================================
+   TEXTS
+===================================================== */
+
+const texts = {
+
+ar:{
+  introSmall:"صمم ديكورك",
+  title:"خلينا نعرفو شنو محتاج",
+  introText:"جاوب غير على الأسئلة اللي مهمة بالنسبة ليك. إلا بغيتي، صيفط غير الصورة والقياسات وحنا نقترحو عليك الحل المناسب.",
+  personalTitle:"شرفنا بمعلوماتك",
+  personalDesc:"باش نقدروا نتواصلو معاك بخصوص المشروع.",
+  name:"الاسم",
+  city:"المدينة",
+  phone:"رقم الهاتف / WhatsApp",
+  projectTitle:"شنو محتاج؟",
+  projectDesc:"اختار القسم اللي باغي تخدم عليه.",
+  modeTitle:"كيفاش بغيتي تدير الطلب؟",
+  modeDesc:"اختار الطريقة اللي أسهل ليك.",
+  quickTitle:"⚡ طلب مختصر",
+  quickDesc:"صيفط الصورة + القياسات + الميزانية، وحنا نقترحو عليك الشكل والثمن المناسب.",
+  detailTitle:"✨ اختيار دقيق",
+  detailDesc:"اختار الشكل واللون والخامة والتفاصيل بنفسك.",
+  imageTitle:"صورة المكان",
+  imageDesc:"صيفط لينا صورة واضحة للمكان اللي غادي يكون فيه المشروع.",
+  uploadText:"📷 اضغط هنا لاختيار صورة",
+  uploadSub:"يمكنك اختيار صورة من الهاتف",
+  notesTitle:"عندك شي ملاحظة؟",
+  notesDesc:"كتب لينا أي حاجة مهمة بغيتي ناخدوها بعين الاعتبار.",
+  send:"إرسال الطلب عبر WhatsApp",
+  sendNote:"غادي يتفتح WhatsApp بالطلب ديالك جاهز للإرسال."
+},
+
+fr:{
+  introSmall:"SAMEM DECOR",
+  title:"Dites-nous ce dont vous avez besoin",
+  introText:"Répondez uniquement aux questions importantes. Vous pouvez aussi envoyer simplement une photo, les mesures et votre budget.",
+  personalTitle:"Vos informations",
+  personalDesc:"Pour pouvoir vous contacter concernant votre projet.",
+  name:"Nom",
+  city:"Ville",
+  phone:"Téléphone / WhatsApp",
+  projectTitle:"De quoi avez-vous besoin ?",
+  projectDesc:"Choisissez le type de projet.",
+  modeTitle:"Comment souhaitez-vous commander ?",
+  modeDesc:"Choisissez la méthode qui vous convient.",
+  quickTitle:"⚡ Demande rapide",
+  quickDesc:"Photo + mesures + budget. Nous vous proposons une idée et un prix adapté.",
+  detailTitle:"✨ Choix détaillé",
+  detailDesc:"Choisissez vous-même la forme, la couleur, la matière et les détails.",
+  imageTitle:"Photo de l'espace",
+  imageDesc:"Envoyez une photo claire de l'endroit où le projet sera réalisé.",
+  uploadText:"📷 Cliquez pour choisir une photo",
+  uploadSub:"Choisissez une photo depuis votre téléphone",
+  notesTitle:"Une remarque ?",
+  notesDesc:"Ajoutez toute information importante pour votre projet.",
+  send:"Envoyer la demande par WhatsApp",
+  sendNote:"WhatsApp s'ouvrira avec votre demande prête à envoyer."
+}
+
+};
+
+
+function updateTexts(){
+
+  const t = texts[lang];
+
+  document.getElementById("introSmall").textContent=t.introSmall;
+  document.getElementById("title").textContent=t.title;
+  document.getElementById("introText").textContent=t.introText;
+
+  document.getElementById("personalTitle").textContent=t.personalTitle;
+  document.getElementById("personalDesc").textContent=t.personalDesc;
+
+  document.getElementById("nameLabel").textContent=t.name;
+  document.getElementById("cityLabel").textContent=t.city;
+  document.getElementById("phoneLabel").textContent=t.phone;
+
+  document.getElementById("projectTitle").textContent=t.projectTitle;
+  document.getElementById("projectDesc").textContent=t.projectDesc;
+
+  document.getElementById("modeTitle").textContent=t.modeTitle;
+  document.getElementById("modeDesc").textContent=t.modeDesc;
+
+  document.getElementById("quickTitle").textContent=t.quickTitle;
+  document.getElementById("quickDesc").textContent=t.quickDesc;
+
+  document.getElementById("detailTitle").textContent=t.detailTitle;
+  document.getElementById("detailDesc").textContent=t.detailDesc;
+
+  document.getElementById("imageTitle").textContent=t.imageTitle;
+  document.getElementById("imageDesc").textContent=t.imageDesc;
+
+  document.getElementById("uploadText").textContent=t.uploadText;
+  document.getElementById("uploadSub").textContent=t.uploadSub;
+
+  document.getElementById("notesTitle").textContent=t.notesTitle;
+  document.getElementById("notesDesc").textContent=t.notesDesc;
+
+  document.getElementById("sendBtn").textContent=t.send;
+  document.getElementById("sendNote").textContent=t.sendNote;
+}
+
+
+/* =====================================================
+   TYPE
+===================================================== */
+
+let selectedType = "";
+
+function chooseType(el){
+
+  document.querySelectorAll(".project-type")
+    .forEach(x=>x.classList.remove("selected"));
+
+  el.classList.add("selected");
+
+  selectedType = el.dataset.type;
+
+  document.getElementById("details").style.display="block";
+
+  renderDetails(selectedType);
+
+}
+
+
+/* =====================================================
+   MODE
+===================================================== */
+
+let selectedMode = "quick";
+
+function chooseMode(mode,el){
+
+  selectedMode=mode;
+
+  document.querySelectorAll(".mode")
+    .forEach(x=>x.classList.remove("selected"));
+
+  el.classList.add("selected");
+
+  if(selectedType){
+    renderDetails(selectedType);
+  }
+}
+
+
+/* =====================================================
+   DETAIL BUILDER
+===================================================== */
+
+function renderDetails(type){
+
+  const d=document.getElementById("details");
+
+  if(selectedMode==="quick"){
+
+    d.innerHTML=`
+
+      <div class="card">
+
+        <h2>
+          ${lang==="ar" ? "القياسات والميزانية" : "Mesures et budget"}
+        </h2>
+
+        <p class="card-desc">
+          ${lang==="ar"
+          ? "عطينا غير القياسات الأساسية باش نقدروا نعطيوك فكرة أولية."
+          : "Donnez-nous simplement les mesures principales pour une première estimation."}
+        </p>
+
+        <div class="measurements">
+
+          <div>
+            <label>${lang==="ar"?"العرض":"Largeur"}</label>
+            <input id="width" type="number" placeholder="مثلاً 300">
+            <span>cm</span>
+          </div>
+
+          <div>
+            <label>${lang==="ar"?"الطول":"Longueur"}</label>
+            <input id="length" type="number" placeholder="مثلاً 400">
+            <span>cm</span>
+          </div>
+
+          <div>
+            <label>${lang==="ar"?"العلو":"Hauteur"}</label>
+            <input id="height" type="number" placeholder="مثلاً 260">
+            <span>cm</span>
+          </div>
+
+        </div>
+
+        <br>
+
+        <div class="field">
+
+          <label>
+            ${lang==="ar"?"الميزانية التقريبية":"Budget approximatif"}
+          </label>
+
+          <select id="budget">
+
+            <option value="">
+              ${lang==="ar"?"اختار الميزانية":"Choisir le budget"}
+            </option>
+
+            <option>أقل من 10,000 DH</option>
+            <option>10,000 - 20,000 DH</option>
+            <option>20,000 - 30,000 DH</option>
+            <option>30,000 - 50,000 DH</option>
+            <option>أكثر من 50,000 DH</option>
+
+          </select>
+
+        </div>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const data={
+
+    kitchen:{
+      title:["اختيارات المطبخ","Choix de la cuisine"],
+      fields:[
+
+        ["الشكل / Forme",
+        ["L","U","مستقيم / Linéaire","جزيرة / Îlot"]],
+
+        ["اللون / Couleur",
+        ["أبيض","بيج","رمادي","أخضر","خشب","أسود"]],
+
+        ["الخامة / Matière",
+        ["MDF","Mélaminé","خشب","حسب الاقتراح / Sur conseil"]]
+
+      ]
+    },
+
+    bedroom:{
+      title:["اختيارات غرفة النوم","Choix de la chambre"],
+      fields:[
+
+        ["شنو بغيتي؟ / Besoin",
+        ["سرير","Dressing","تسريحة","مكتبة","طقم كامل"]],
+
+        ["نوع السرير / Type de lit",
+        ["عادي","مع تخزين","مبطن","حسب المساحة"]],
+
+        ["لون الأثاث / Couleur",
+        ["أبيض","بيج","خشب","رمادي","أسود"]]
+
+      ]
+    },
+
+    salon:{
+      title:["اختيارات الصالون","Choix du salon"],
+      fields:[
+
+        ["شنو بغيتي؟ / Besoin",
+        ["موبل TV","مكتبة","حيط ديكور","طاولات","طقم كامل"]],
+
+        ["الستايل / Style",
+        ["مودرن","راقي","بسيط","خشب","حسب الاقتراح"]],
+
+        ["اللون / Couleur",
+        ["بيج","أبيض","خشب","رمادي","أسود"]]
+
+      ]
+    },
+
+    dressing:{
+      title:["اختيارات Dressing","Choix du Dressing"],
+      fields:[
+
+        ["نوع البيبان / Portes",
+        ["مفصلية","كوليس","زجاج","مرايا"]],
+
+        ["التقسيم الداخلي / Intérieur",
+        ["رفوف","ملابس معلقة","أدراج","أحذية","تقسيم كامل"]],
+
+        ["اللون / Couleur",
+        ["أبيض","بيج","خشب","رمادي","أسود"]]
+
+      ]
+    },
+
+    tv:{
+      title:["اختيارات Meuble TV","Choix du meuble TV"],
+      fields:[
+
+        ["الشكل / Forme",
+        ["بسيط","مع رفوف","مع نيش","حائط كامل","حسب الاقتراح"]],
+
+        ["التفاصيل / Détails",
+        ["LED","نيش","رفوف","أدراج","بدون"]],
+
+        ["اللون / Couleur",
+        ["خشب","أسود","أبيض","بيج","مزيج"]]
+
+      ]
+    },
+
+    tapisserie:{
+      title:["اختيارات الطابيسري والستور","Choix Tapisserie & Rideaux"],
+      fields:[
+
+        ["شنو محتاج؟ / Besoin",
+        ["ستور","سدادر","ظهر سرير","بانكيت","طابيسري كامل"]],
+
+        ["نوع الثوب / Tissu",
+        ["مخمل","كتان","بوكل","ثوب عادي","حسب الاقتراح"]],
+
+        ["اللون / Couleur",
+        ["بيج","رمادي","أخضر","بني","أبيض","حسب الديكور"]]
+
+      ]
+    },
+
+    accessories:{
+      title:["المبيعات والإكسسوارات","Vente & Accessoires"],
+      fields:[
+
+        ["شنو باغي؟ / Produit",
+        ["مقابض","LED","سلال","Tiroirs","إكسسوارات مطبخ","إكسسوارات Dressing"]],
+
+        ["الكمية / Quantité",
+        ["1","2","5","10","أكثر"]]
+
+      ]
+    }
+
+  };
+
+
+  const current=data[type];
+
+  let html=`
+
+    <div class="card">
+
+      <h2>
+        ${lang==="ar" ? current.title[0] : current.title[1]}
+      </h2>
+
+      <p class="card-desc">
+        ${lang==="ar"
+        ? "اختار غير التفاصيل اللي بغيتي. ماشي ضروري تعمر كلشي."
+        : "Choisissez uniquement les détails souhaités. Tout n'est pas obligatoire."}
+      </p>
+  `;
+
+
+  current.fields.forEach((field,index)=>{
+
+    html+=`
+
+      <div class="field">
+
+        <label>
+          ${field[0]}
+        </label>
+
+        <div class="options">
+
+    `;
+
+    field[1].forEach(value=>{
+
+      html+=`
+
+        <button
+          type="button"
+          class="option"
+          onclick="selectOption(this)"
+          data-value="${value}">
+
+          ${value}
+
+        </button>
+
+      `;
+
+    });
+
+    html+=`
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  html+=`
+
+      <div class="field">
+
+        <label>
+          ${lang==="ar"
+          ? "القياسات"
+          : "Mesures"}
+        </label>
+
+        <div class="measurements">
+
+          <div>
+            <label>${lang==="ar"?"العرض":"Largeur"}</label>
+            <input id="width" type="number">
+            <span>cm</span>
+          </div>
+
+          <div>
+            <label>${lang==="ar"?"الطول":"Longueur"}</label>
+            <input id="length" type="number">
+            <span>cm</span>
+          </div>
+
+          <div>
+            <label>${lang==="ar"?"العلو":"Hauteur"}</label>
+            <input id="height" type="number">
+            <span>cm</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          ${lang==="ar"
+          ? "الميزانية"
+          : "Budget"}
+        </label>
+
+        <select id="budget">
+
+          <option value="">
+            ${lang==="ar"
+            ?"اختار الميزانية"
+            :"Choisir le budget"}
+          </option>
+
+          <option>أقل من 10,000 DH</option>
+          <option>10,000 - 20,000 DH</option>
+          <option>20,000 - 30,000 DH</option>
+          <option>30,000 - 50,000 DH</option>
+          <option>أكثر من 50,000 DH</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  `;
+
+  d.innerHTML=html;
+
+}
+
+
+/* =====================================================
+   OPTION
+===================================================== */
+
+function selectOption(btn){
+
+  const parent=btn.parentElement;
+
+  parent.querySelectorAll(".option")
+    .forEach(x=>x.classList.remove("selected"));
+
+  btn.classList.add("selected");
+
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
 
 function previewImage(event){
 
-  const file = event.target.files[0];
+  const file=event.target.files[0];
 
   if(!file) return;
 
-  const reader = new FileReader();
+  const preview=document.getElementById("preview");
 
-  reader.onload = function(e){
+  preview.src=URL.createObjectURL(file);
 
-    document.getElementById("previewImg").src = e.target.result;
+  preview.style.display="block";
 
-    document.getElementById("preview").style.display = "block";
-
-  };
-
-  reader.readAsDataURL(file);
 }
 
 
-function removeImage(){
-
-  document.getElementById("photo").value = "";
-
-  document.getElementById("preview").style.display = "none";
-
-  document.getElementById("previewImg").src = "";
-}
-
-
-function previewDetailImage(event){
-
-  const file = event.target.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    document.getElementById("dpreviewImg").src = e.target.result;
-
-    document.getElementById("dpreview").style.display = "block";
-
-  };
-
-  reader.readAsDataURL(file);
-}
-
-
-/* ==============================
-   OPTIONS
-============================== */
-
-function choose(el,type,value){
-
-  const parent = el.parentElement;
-
-  parent
-    .querySelectorAll(".option")
-    .forEach(x => x.classList.remove("selected"));
-
-  el.classList.add("selected");
-
-  choices[type] = value;
-}
-
-
-function chooseColor(el,value){
-
-  document
-    .querySelectorAll(".color-option")
-    .forEach(x => x.classList.remove("selected"));
-
-  el.classList.add("selected");
-
-  choices.color = value;
-}
-
-
-function toggleExtra(el,value){
-
-  el.classList.toggle("selected");
-
-  if(extras.includes(value)){
-
-    extras = extras.filter(x => x !== value);
-
-  }else{
-
-    extras.push(value);
-
-  }
-}
-
-
-/* ==============================
-   BUDGET
-============================== */
-
-function selectBudget(el,value){
-
-  document
-    .querySelectorAll("#quickForm .budget button")
-    .forEach(x => x.classList.remove("selected"));
-
-  el.classList.add("selected");
-
-  selectedBudget = value;
-}
-
-
-function selectDetailBudget(el,value){
-
-  document
-    .querySelectorAll("#detailForm .budget button")
-    .forEach(x => x.classList.remove("selected"));
-
-  el.classList.add("selected");
-
-  detailBudget = value;
-}
-
-
-/* ==============================
-   WHATSAPP
-============================== */
+/* =====================================================
+   SEND WHATSAPP
+===================================================== */
 
 function sendRequest(){
 
-  let message = "";
+  const name=document.getElementById("clientName").value.trim();
+  const city=document.getElementById("city").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const notes=document.getElementById("notes").value.trim();
 
-  if(currentMode === "quick"){
+  const typeName={
+    kitchen:"المطبخ / Cuisine",
+    bedroom:"غرفة النوم / Chambre",
+    salon:"الصالون / Salon",
+    dressing:"Dressing",
+    tv:"Meuble TV",
+    tapisserie:"الطابيسري والستور / Tapisserie & Rideaux",
+    accessories:"المبيعات والإكسسوارات / Vente & Accessoires"
+  };
 
-    const name =
-      document.getElementById("name").value.trim();
+  let message="";
 
-    const city =
-      document.getElementById("city").value.trim();
+  if(lang==="ar"){
 
-    const width =
-      document.getElementById("width").value.trim();
+    message=
+`سلام، بغيت ندير طلب ديكور من صمم ديكورك.
 
-    const length =
-      document.getElementById("length").value.trim();
+👤 الاسم: ${name || "غير محدد"}
+📍 المدينة: ${city || "غير محددة"}
+📱 الهاتف: ${phone || "غير محدد"}
 
-    const height =
-      document.getElementById("height").value.trim();
+🏠 القسم:
+${typeName[selectedType] || "غير محدد"}
 
-    const note =
-      document.getElementById("note").value.trim();
+📋 الطريقة:
+${selectedMode==="quick" ? "طلب مختصر" : "اختيار دقيق"}
 
-
-    if(!name){
-
-      alert("دخل الاسم من فضلك");
-
-      return;
-    }
-
-
-    if(!city){
-
-      alert("دخل المدينة من فضلك");
-
-      return;
-    }
-
-
-    if(!width || !length || !height){
-
-      alert("دخل العرض والطول والعلو");
-
-      return;
-    }
-
-
-    message =
-`السلام عليكم، بغيت طلب سريع لتصميم المطبخ.
-
-👤 الاسم: ${name}
-
-📍 المدينة: ${city}
-
-📏 القياسات:
-العرض: ${width} cm
-الطول: ${length} cm
-العلو: ${height} cm
-
-💰 الميزانية:
-${selectedBudget || "ما تحدداتش"}
-
-📝 الملاحظة:
-${note || "ما كايناش"}
-
-📸 عندي صورة للمكان وغادي نرسلها مع الطلب.
-
-بغيت منكم تقترحو عليا الشكل المناسب للمساحة والميزانية.`;
+`;
 
   }else{
 
-    const name =
-      document.getElementById("dname").value.trim();
+    message=
+`Bonjour, je souhaite faire une demande de décoration avec Samem Decor.
 
-    const city =
-      document.getElementById("dcity").value.trim();
+👤 Nom : ${name || "Non renseigné"}
+📍 Ville : ${city || "Non renseignée"}
+📱 Téléphone : ${phone || "Non renseigné"}
 
-    const width =
-      document.getElementById("dwidth").value.trim();
+🏠 Projet :
+${typeName[selectedType] || "Non renseigné"}
 
-    const length =
-      document.getElementById("dlength").value.trim();
-
-    const height =
-      document.getElementById("dheight").value.trim();
-
-    const note =
-      document.getElementById("dnote").value.trim();
-
-
-    if(!name){
-
-      alert("دخل الاسم من فضلك");
-
-      return;
-    }
-
-
-    if(!city){
-
-      alert("دخل المدينة من فضلك");
-
-      return;
-    }
-
-
-    if(!width || !length || !height){
-
-      alert("دخل العرض والطول والعلو");
-
-      return;
-    }
-
-
-    message =
-`السلام عليكم، بغيت تصميم دقيق للمطبخ.
-
-👤 الاسم: ${name}
-
-📍 المدينة: ${city}
-
-📏 القياسات:
-العرض: ${width} cm
-الطول: ${length} cm
-العلو: ${height} cm
-
-📐 شكل المطبخ:
-${choices.shape || "ما تحددش"}
-
-🎨 اللون:
-${choices.color || "ما تحددش"}
-
-🪵 الخامة:
-${choices.material || "ما تحدداتش"}
-
-⬜ سطح العمل:
-${choices.worktop || "ما تحددش"}
-
-➕ الإضافات:
-${extras.length ? extras.join("، ") : "ما كايناش"}
-
-💰 الميزانية:
-${detailBudget || "ما تحدداتش"}
-
-📝 الملاحظات:
-${note || "ما كايناش"}
-
-📸 عندي صورة للمكان وغادي نرسلها مع الطلب.`;
-
-  }
-
-
-  const phone = "212754350706";
-
-  const url =
-    "https://wa.me/" +
-    phone +
-    "?text=" +
-    encodeURIComponent(message);
-
-  window.open(url,"_blank");
-
-}
-
-
-/* ==============================
-   LANGUAGE
-============================== */
-
-function setLang(lang){
-
-  if(lang === "fr"){
-
-    document.documentElement.lang = "fr";
-    document.documentElement.dir = "ltr";
-
-    document.getElementById("arBtn").classList.remove("active");
-    document.getElementById("frBtn").classList.add("active");
-
-    document.getElementById("title").textContent =
-      "Concevez votre cuisine";
-
-    document.getElementById("intro").textContent =
-      "Choisissez la méthode qui vous convient et nous nous occupons du reste.";
-
-    document.getElementById("quickTitle").textContent =
-      "🚀 Demande rapide";
-
-    document.getElementById("quickText").textContent =
-      "Photo + dimensions + budget, nous proposons le design";
-
-    document.getElementById("detailTitle").textContent =
-      "🎨 Choix détaillé";
-
-    document.getElementById("detailText").textContent =
-      "Choisissez la forme, la couleur, le matériau et les équipements";
-
-    document.getElementById("sendTitle").textContent =
-      "Prêt ? Envoyez votre demande";
-
-    document.getElementById("sendText").textContent =
-      "WhatsApp va s'ouvrir avec toutes vos informations.";
-
-  }else{
-
-    document.documentElement.lang = "ar";
-    document.documentElement.dir = "rtl";
-
-    document.getElementById("arBtn").classList.add("active");
-    document.getElementById("frBtn").classList.remove("active");
-
-    document.getElementById("title").textContent =
-      "صمم المطبخ ديالك";
-
-    document.getElementById("intro").textContent =
-      "اختار الطريقة اللي سهلة عليك، وإحنا نكملو معاك الباقي.";
-
-    document.getElementById("quickTitle").textContent =
-      "🚀 طلب سريع";
-
-    document.getElementById("quickText").textContent =
-      "صورة + قياسات + ميزانية، وخلي علينا التصميم";
-
-    document.getElementById("detailTitle").textContent =
-      "🎨 اختيار دقيق";
-
-    document.getElementById("detailText").textContent =
-      "اختار الشكل واللون والخامة والتجهيزات";
-
-    document.getElementById("sendTitle").textContent =
-      "واجد؟ صيفط لينا الطلب";
-
-    document.getElementById("sendText").textContent =
-      "غادي يتحل واتساب وتكون المعلومات ديالك واجدة.";
-
-  }
-
-}
-
-</script>
-
-</body>
-</html>
+📋 Méthode :
+${selectedMode==="quick" ? "Demande rapide" : "Cho

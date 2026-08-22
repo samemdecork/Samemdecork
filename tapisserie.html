@@ -1,649 +1,935 @@
-<!DOCTYPE html>  <html lang="ar" dir="rtl">  <head>  <meta charset="UTF-8">  <meta name="viewport"  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
 content="width=device-width,initial-scale=1.0">
 
-<title>الطابيسري والستور | صمم ديكورك</title>  <style>  
-  
-*{  
-box-sizing:border-box;  
-margin:0;  
-padding:0;  
-}  
-  
-html{  
-scroll-behavior:smooth;  
-}  
-  
-body{  
-font-family:Tahoma,Arial,sans-serif;  
-background:#f5f5f3;  
-color:#17211c;  
-line-height:1.7;  
-}  
-  
-a{  
-text-decoration:none;  
-color:inherit;  
-}  
-  
-img{  
-display:block;  
-width:100%;  
-}  
-  
-.wrap{  
-width:min(1180px,92%);  
-margin:auto;  
-}  
-  
-  
-/* HEADER */  
-  
-header{  
-height:72px;  
-background:rgba(12,18,15,.97);  
-position:sticky;  
-top:0;  
-z-index:1000;  
-box-shadow:0 4px 20px #0004;  
-}  
-  
-.nav{  
-height:72px;  
-display:flex;  
-align-items:center;  
-justify-content:space-between;  
-}  
-  
-.logo{  
-font-size:25px;  
-font-weight:900;  
-color:#fff;  
-}  
-  
-.logo span{  
-color:#cfd2d4;  
-}  
-  
-.back{  
-background:#cfd2d4;  
-color:#17211c;  
-padding:9px 18px;  
-border-radius:6px;  
-font-weight:bold;  
-}  
-  
-  
-/* HERO */  
-  
-.hero{  
-min-height:430px;  
-  
-display:flex;  
-align-items:center;  
-  
-text-align:center;  
-  
-color:#fff;  
-  
-background:  
-linear-gradient(  
-90deg,  
-rgba(5,10,7,.92),  
-rgba(5,10,7,.55)  
-),  
-url("images/tapisery.jpg")  
-center/cover;  
-}  
-  
-.hero-content{  
-width:100%;  
-}  
-  
-.hero small{  
-color:#cfd2d4;  
-font-weight:bold;  
-letter-spacing:3px;  
-}  
-  
-.hero h1{  
-font-size:clamp(38px,6vw,65px);  
-margin:10px 0;  
-}  
-  
-.hero p{  
-font-size:17px;  
-color:#e5e7e6;  
-max-width:650px;  
-margin:0 auto 25px;  
-}  
-  
-  
-/* BUTTONS */  
-  
-.buttons{  
-display:flex;  
-justify-content:center;  
-gap:12px;  
-flex-wrap:wrap;  
-}  
-  
-.btn{  
-display:inline-flex;  
-align-items:center;  
-justify-content:center;  
-min-height:48px;  
-padding:11px 22px;  
-border-radius:6px;  
-font-weight:bold;  
-transition:.25s;  
-}  
-  
-.btn:hover{  
-transform:translateY(-2px);  
-}  
-  
-.btn-light{  
-background:#cfd2d4;  
-color:#17211c;  
-}  
-  
-.btn-dark{  
-background:#17211c;  
-color:#fff;  
-}  
-  
-.btn-whatsapp{  
-background:#25d366;  
-color:#fff;  
-}  
-  
-  
-/* SERVICES */  
-  
-.services{  
-padding:70px 0 30px;  
-}  
-  
-.section-title{  
-text-align:center;  
-margin-bottom:40px;  
-}  
-  
-.section-title small{  
-color:#68716c;  
-letter-spacing:2px;  
-font-weight:bold;  
-}  
-  
-.section-title h2{  
-font-size:clamp(30px,5vw,45px);  
-margin:5px 0;  
-}  
-  
-.section-title p{  
-color:#777;  
-}  
-  
-  
-/* SERVICE CARDS */  
-  
-.service-grid{  
-display:grid;  
-grid-template-columns:repeat(4,1fr);  
-gap:15px;  
-}  
-  
-.service{  
-background:#fff;  
-border:1px solid #ddd;  
-border-radius:8px;  
-padding:25px 15px;  
-text-align:center;  
-font-weight:bold;  
-box-shadow:0 5px 20px #0001;  
-}  
-  
-.service-icon{  
-font-size:35px;  
-margin-bottom:8px;  
-}  
-  
-  
-/* GALLERY */  
-  
-.gallery{  
-padding:60px 0 90px;  
-}  
-  
-.gallery-grid{  
-display:grid;  
-grid-template-columns:repeat(3,1fr);  
-gap:18px;  
-}  
-  
-.card{  
-background:#fff;  
-border-radius:9px;  
-overflow:hidden;  
-box-shadow:0 7px 25px #0001;  
-border:1px solid #ddd;  
-}  
-  
-.card-image{  
-height:290px;  
-overflow:hidden;  
-background:#ddd;  
-}  
-  
-.card-image img{  
-width:100%;  
-height:100%;  
-object-fit:cover;  
-transition:.5s;  
-}  
-  
-.card:hover .card-image img{  
-transform:scale(1.06);  
-}  
-  
-.card-info{  
-padding:18px;  
-}  
-  
-.card-info h3{  
-font-size:21px;  
-margin-bottom:5px;  
-}  
-  
-.card-info p{  
-font-size:14px;  
-color:#777;  
-margin-bottom:15px;  
-}  
-  
-.card-buttons{  
-display:grid;  
-grid-template-columns:1fr 1fr;  
-gap:8px;  
-}  
-  
-.card-btn{  
-text-align:center;  
-padding:10px 5px;  
-border-radius:5px;  
-font-weight:bold;  
-font-size:13px;  
-}  
-  
-.order-btn{  
-background:#17211c;  
-color:#fff;  
-}  
-  
-.whatsapp-btn{  
-background:#25d366;  
-color:#fff;  
-}  
-  
-  
-/* REQUEST */  
-  
-.request{  
-background:#17211c;  
-color:#fff;  
-padding:70px 0;  
-}  
-  
-.request-box{  
-max-width:800px;  
-margin:auto;  
-text-align:center;  
-}  
-  
-.request h2{  
-font-size:clamp(30px,5vw,48px);  
-margin-bottom:10px;  
-}  
-  
-.request p{  
-color:#cbd1ce;  
-margin-bottom:25px;  
-}  
-  
-.request-buttons{  
-display:flex;  
-justify-content:center;  
-gap:12px;  
-flex-wrap:wrap;  
-}  
-  
-  
-/* EMPTY */  
-  
-.empty{  
-background:#fff;  
-border-radius:9px;  
-padding:50px 20px;  
-text-align:center;  
-color:#777;  
-}  
-  
-  
-/* FOOTER */  
-  
-footer{  
-background:#0e1511;  
-color:#999;  
-text-align:center;  
-padding:30px;  
-}  
-  
-footer strong{  
-color:#cfd2d4;  
-}  
-  
-  
-/* WHATSAPP FLOAT */  
-  
-.whatsapp{  
-position:fixed;  
-left:18px;  
-bottom:18px;  
-  
-width:56px;  
-height:56px;  
-  
-border-radius:50%;  
-  
-background:#25d366;  
-  
-display:flex;  
-align-items:center;  
-justify-content:center;  
-  
-z-index:3000;  
-  
-box-shadow:0 5px 20px #0005;  
-}  
-  
-.whatsapp svg{  
-width:30px;  
-height:30px;  
-fill:#fff;  
-}  
-  
-  
-/* MOBILE */  
-  
-@media(max-width:900px){  
-  
-.service-grid{  
-grid-template-columns:repeat(2,1fr);  
-}  
-  
-.gallery-grid{  
-grid-template-columns:repeat(2,1fr);  
-}  
-  
-}  
-  
-@media(max-width:550px){  
-  
-.hero{  
-min-height:500px;  
-}  
-  
-.service-grid{  
-grid-template-columns:1fr 1fr;  
-}  
-  
-.gallery-grid{  
-grid-template-columns:1fr;  
-}  
-  
-.card-image{  
-height:300px;  
-}  
-  
-.card-buttons{  
-grid-template-columns:1fr;  
-}  
-  
-}  
-  
-</style>  </head>  <body>  <!-- HEADER -->  <header>  <div class="wrap nav">  <a  
-href="index.html"  
+<title>الطابيسري والستور | صمم ديكورك</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f5f5f3;
+color:#17211c;
+line-height:1.7;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+img{
+display:block;
+width:100%;
+}
+
+.wrap{
+width:min(1180px,92%);
+margin:auto;
+}
+
+
+/* HEADER */
+
+header{
+height:72px;
+background:rgba(12,18,15,.97);
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 20px #0004;
+}
+
+.nav{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+color:#fff;
+}
+
+.logo span{
+color:#cfd2d4;
+}
+
+.back{
+background:#cfd2d4;
+color:#17211c;
+padding:9px 18px;
+border-radius:6px;
+font-weight:bold;
+}
+
+
+/* HERO */
+
+.hero{
+min-height:430px;
+display:flex;
+align-items:center;
+text-align:center;
+color:#fff;
+
+background:
+linear-gradient(
+90deg,
+rgba(5,10,7,.92),
+rgba(5,10,7,.55)
+),
+url("images/tapisery.jpg")
+center/cover;
+}
+
+.hero-content{
+width:100%;
+}
+
+.hero small{
+color:#cfd2d4;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+.hero h1{
+font-size:clamp(38px,6vw,65px);
+margin:10px 0;
+}
+
+.hero p{
+font-size:17px;
+color:#e5e7e6;
+max-width:650px;
+margin:0 auto 25px;
+}
+
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:48px;
+padding:11px 22px;
+border-radius:6px;
+font-weight:bold;
+transition:.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.btn-light{
+background:#cfd2d4;
+color:#17211c;
+}
+
+.btn-dark{
+background:#17211c;
+color:#fff;
+}
+
+.btn-whatsapp{
+background:#25d366;
+color:#fff;
+}
+
+
+/* SERVICES */
+
+.services{
+padding:70px 0 30px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.section-title small{
+color:#68716c;
+letter-spacing:2px;
+font-weight:bold;
+}
+
+.section-title h2{
+font-size:clamp(30px,5vw,45px);
+margin:5px 0;
+}
+
+.section-title p{
+color:#777;
+}
+
+
+/* SERVICE CARDS */
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.service{
+background:#fff;
+border:1px solid #ddd;
+border-radius:8px;
+padding:25px 15px;
+text-align:center;
+font-weight:bold;
+box-shadow:0 5px 20px #0001;
+}
+
+.service-icon{
+font-size:35px;
+margin-bottom:8px;
+}
+
+
+/* GALLERY */
+
+.gallery{
+padding:60px 0 90px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+background:#fff;
+border-radius:9px;
+overflow:hidden;
+box-shadow:0 7px 25px #0001;
+border:1px solid #ddd;
+}
+
+.card-image{
+height:290px;
+overflow:hidden;
+background:#ddd;
+}
+
+.card-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.card:hover .card-image img{
+transform:scale(1.06);
+}
+
+.card-info{
+padding:18px;
+}
+
+.card-info h3{
+font-size:21px;
+margin-bottom:5px;
+}
+
+.card-info p{
+font-size:14px;
+color:#777;
+margin-bottom:15px;
+}
+
+.card-buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+}
+
+.card-btn{
+text-align:center;
+padding:10px 5px;
+border-radius:5px;
+font-weight:bold;
+font-size:13px;
+}
+
+.order-btn{
+background:#17211c;
+color:#fff;
+}
+
+.whatsapp-btn{
+background:#25d366;
+color:#fff;
+}
+
+
+/* REQUEST */
+
+.request{
+background:#17211c;
+color:#fff;
+padding:70px 0;
+}
+
+.request-box{
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.request h2{
+font-size:clamp(30px,5vw,48px);
+margin-bottom:10px;
+}
+
+.request p{
+color:#cbd1ce;
+margin-bottom:25px;
+}
+
+.request-buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+
+/* EMPTY */
+
+.empty{
+background:#fff;
+border-radius:9px;
+padding:50px 20px;
+text-align:center;
+color:#777;
+}
+
+
+/* FOOTER */
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px;
+}
+
+footer strong{
+color:#cfd2d4;
+}
+
+
+/* WHATSAPP FLOAT */
+
+.whatsapp{
+position:fixed;
+left:18px;
+bottom:18px;
+
+width:56px;
+height:56px;
+
+border-radius:50%;
+
+background:#25d366;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:3000;
+
+box-shadow:0 5px 20px #0005;
+}
+
+.whatsapp svg{
+width:30px;
+height:30px;
+fill:#fff;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.service-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.gallery-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:550px){
+
+.hero{
+min-height:500px;
+}
+
+.service-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.card-image{
+height:300px;
+}
+
+.card-buttons{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="wrap nav">
+
+<a
+href="index.html"
 class="logo">
 
 صمم <span>ديكورك</span>
 
-</a>  <a  
-href="index.html"  
+</a>
+
+<a
+href="index.html"
 class="back">
 
 الرئيسية
 
-</a>  </div>  </header>  <!-- HERO -->  <section class="hero">  <div class="wrap hero-content">  <small>  
-TAPISSERIE • RIDEAUX  
-</small>  <h1>  
-الطابيسري والستور  
-</h1>  <p>  
-ستور، ستائر، سدادر وطابيسري حسب القياس  
-والديكور ديال المكان ديالك.  
-</p>  <div class="buttons">  <a  
-href="#gallery"  
+</a>
+
+</div>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="wrap hero-content">
+
+<small>
+TAPISSERIE • RIDEAUX
+</small>
+
+<h1>
+الطابيسري والستور
+</h1>
+
+<p>
+ستور، ستائر، سدادر وطابيسري حسب القياس
+والديكور ديال المكان ديالك.
+</p>
+
+<div class="buttons">
+
+<a
+href="#gallery"
 class="btn btn-light">
 
 شوف الموديلات
 
-</a>  <a  
-href="https://wa.me/21238967822?text=سلام،%20بغيت%20معلومات%20على%20الطابيسري%20والستور"  
-target="_blank"  
+</a>
+
+<a
+href="https://wa.me/212638967822?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20الطابيسري%20والستور"
+target="_blank"
 class="btn btn-whatsapp">
 
 تواصل معنا WhatsApp
 
-</a>  </div>  </div>  </section>  <!-- SERVICES -->  <section class="services">  <div class="wrap">  <div class="section-title">  <small>  
-NOS SERVICES  
-</small>  <h2>  
-شنو كنخدمو؟  
-</h2>  <p>  
-اختار الخدمة اللي محتاجها.  
-</p>  </div>  <div class="service-grid">  <div class="service">  <div class="service-icon">  
-🪟  
-</div>  ستور
+</a>
 
-</div>  <div class="service">  <div class="service-icon">  
-🪟  
-</div>  ستائر
+</div>
 
-</div>  <div class="service">  <div class="service-icon">  
-🛋️  
-</div>  سدادر
+</div>
 
-</div>  <div class="service">  <div class="service-icon">  
-🏠  
-</div>  طابيسري حسب الطلب
+</section>
 
-</div>  </div>  </div>  </section>  <!-- GALLERY -->  <section  
-class="gallery"  
-id="gallery">  <div class="wrap">  <div class="section-title">  <small>  
-NOS RÉALISATIONS  
-</small>  <h2>  
-موديلات الطابيسري  
-</h2>  <p>  
-شوف بعض النماذج واختار اللي عجبك.  
-</p>  </div>  <div  
-id="galleryGrid"  
-class="gallery-grid">  </div>  <div  
-id="empty"  
-class="empty"  
-style="display:none">  مازال ما تزادت حتى صورة.
 
-<br>  يمكنك التواصل معنا وإرسال صورة المكان ديالك.
 
-</div>  </div>  </section>  <!-- REQUEST -->  <section class="request">  <div class="wrap">  <div class="request-box">  <h2>  
-بغيتي طابيسري للمكان ديالك؟  
-</h2>  <p>  
-صيفط لينا صورة المكان والقياسات، ونعاونك تختار النوع المناسب.  
-</p>  <div class="request-buttons">  <a  
-href="https://wa.me/21238967822?text=سلام،%20بغيت%20نطلب%20خدمة%20الطابيسري.%20غادي%20نصيفط%20ليكم%20صورة%20المكان."  
-target="_blank"  
+<!-- SERVICES -->
+
+<section class="services">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small>
+NOS SERVICES
+</small>
+
+<h2>
+شنو كنخدمو؟
+</h2>
+
+<p>
+اختار الخدمة اللي محتاجها.
+</p>
+
+</div>
+
+
+<div class="service-grid">
+
+
+<div class="service">
+
+<div class="service-icon">
+🪟
+</div>
+
+ستور
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+🪟
+</div>
+
+ستائر
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+🛋️
+</div>
+
+سدادر
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+🏠
+</div>
+
+طابيسري حسب الطلب
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- GALLERY -->
+
+<section
+class="gallery"
+id="gallery">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small>
+NOS RÉALISATIONS
+</small>
+
+<h2>
+موديلات الطابيسري
+</h2>
+
+<p>
+شوف بعض النماذج واختار اللي عجبك.
+</p>
+
+</div>
+
+
+<div
+id="galleryGrid"
+class="gallery-grid">
+
+</div>
+
+
+<div
+id="empty"
+class="empty"
+style="display:none">
+
+مازال ما تزادت حتى صورة.
+
+<br>
+
+يمكنك التواصل معنا وإرسال صورة المكان ديالك.
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- REQUEST -->
+
+<section class="request">
+
+<div class="wrap">
+
+<div class="request-box">
+
+<h2>
+بغيتي طابيسري للمكان ديالك؟
+</h2>
+
+<p>
+صيفط لينا صورة المكان والقياسات، ونعاونك تختار النوع المناسب.
+</p>
+
+<div class="request-buttons">
+
+<a
+href="https://wa.me/212638967822?text=السلام%20عليكم،%20بغيت%20نطلب%20خدمة%20الطابيسري.%20غادي%20نصيفط%20ليكم%20صورة%20المكان."
+target="_blank"
 class="btn btn-whatsapp">
 
 📱 أرسل صورة المكان عبر WhatsApp
 
-</a>  <a  
-href="https://wa.me/21238967822?text=سلام،%20بغيت%20نطلب%20الطابيسري%20والستور."  
-target="_blank"  
+</a>
+
+<a
+href="https://wa.me/212638967822?text=السلام%20عليكم،%20بغيت%20نطلب%20الطابيسري%20والستور."
+target="_blank"
 class="btn btn-light">
 
 طلب الخدمة
 
-</a>  </div>  </div>  </div>  </section>  <!-- FOOTER -->  <footer>  <strong>  
-صمم ديكورك  
-</strong>  © 2026
+</a>
 
-<br>  جميع الحقوق محفوظة — Hamza Chtaibi
+</div>
 
-</footer>  <!-- FLOAT WHATSAPP -->  <a  
-class="whatsapp"  
-href="https://wa.me/21238967822"  
-target="_blank"  
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<strong>
+صمم ديكورك
+</strong>
+
+© 2026
+
+<br>
+
+جميع الحقوق محفوظة — Hamza Chtaibi
+
+</footer>
+
+
+
+<!-- FLOAT WHATSAPP -->
+
+<a
+class="whatsapp"
+href="https://wa.me/212638967822"
+target="_blank"
 aria-label="WhatsApp">
 
-<svg viewBox="0 0 32 32">  <path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>  </svg>  </a>  <script>  
-  
-async function loadTapisserie(){  
-  
-const grid=  
-document.getElementById("galleryGrid");  
-  
-const empty=  
-document.getElementById("empty");  
-  
-try{  
-  
-const response=  
-await fetch("/api/gallery?type=tapis");  
-  
-if(!response.ok){  
-  
-throw new Error("API error");  
-  
-}  
-  
-const data=  
-await response.json();  
-  
-if(  
-!data.images ||  
-data.images.length===0  
-){  
-  
-empty.style.display="block";  
-  
-return;  
-  
-}  
-  
-  
-data.images.forEach(  
-(image,index)=>{  
-  
-const card=  
-document.createElement("div");  
-  
-card.className="card";  
-  
-  
-const message=  
-encodeURIComponent(  
-"سلام، عجبني موديل الطابيسري رقم "  
-+(index+1)  
-+" وبغيت نعرف الثمن والتفاصيل."  
-);  
-  
-  
-card.innerHTML=`  
-  
-<div class="card-image">  
-  
-<img  
-src="${image.url}"  
-alt="موديل طابيسري"  
-loading="lazy"  
->  
-  
-</div>  
-  
-<div class="card-info">  
-  
-<h3>  
-موديل طابيسري ${index+1}  
-</h3>  
-  
-<p>  
-يمكن تنفيذ الموديل حسب القياس واللون اللي بغيتي.  
-</p>  
-  
-<div class="card-buttons">  
-  
-<a  
-href="https://wa.me/21238967822?text=${message}"  
-target="_blank"  
-class="card-btn order-btn">  
-  
-طلب هاد الموديل  
-  
-</a>  
-  
-<a  
-href="https://wa.me/21238967822?text=${encodeURIComponent("سلام، بغيت نسول على موديل الطابيسري رقم "+(index+1))}"  
-target="_blank"  
-class="card-btn whatsapp-btn">  
-  
-WhatsApp  
-  
-</a>  
-  
-</div>  
-  
-</div>  
-  
-`;  
-  
-grid.appendChild(card);  
-  
-});  
-  
-}catch(error){  
-  
-console.error(error);  
-  
-empty.style.display="block";  
-  
-empty.innerHTML=`  
-  
-ما قدرناش نحملو الصور دابا.  
-  
-<br><br>  
-  
-<a  
-href="https://wa.me/21238967822?text=سلام،%20بغيت%20معلومات%20على%20الطابيسري"  
-target="_blank"  
-class="btn btn-whatsapp">  
-  
-تواصل معنا عبر WhatsApp  
-  
-</a>  
-  
-`;  
-  
-}  
-  
-}  
-  
-loadTapisserie();  
-  
-</script>  </body>  </html>
+<svg viewBox="0 0 32 32">
+
+<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+
+</svg>
+
+</a>
+
+
+
+<script>
+
+/* =========================================
+   إعدادات WhatsApp
+========================================= */
+
+const WHATSAPP_NUMBER = "212638967822";
+
+const TAPISSERIE_LINK =
+"https://samemdecork.vercel.app/tapisserie.html";
+
+
+/* =========================================
+   تحميل صور الطابيسري
+========================================= */
+
+async function loadTapisserie(){
+
+const grid =
+document.getElementById("galleryGrid");
+
+const empty =
+document.getElementById("empty");
+
+try{
+
+const response =
+await fetch("/api/gallery?type=tapis");
+
+if(!response.ok){
+
+throw new Error("API error");
+
+}
+
+const data =
+await response.json();
+
+
+if(
+!data.images ||
+data.images.length === 0
+){
+
+empty.style.display = "block";
+
+return;
+
+}
+
+
+/* =========================================
+   إنشاء موديلات الصور
+========================================= */
+
+data.images.forEach(
+(image,index)=>{
+
+
+const modelNumber =
+index + 1;
+
+
+/* الرسالة الرئيسية */
+
+const message =
+encodeURIComponent(
+
+"السلام عليكم، عجبني موديل الطابيسري رقم "
++
+modelNumber
++
+" وبغيت نعرف الثمن والتفاصيل."
++
+"\n\n"
++
+"رابط قسم الطابيسري:"
++
+"\n"
++
+TAPISSERIE_LINK
+
+);
+
+
+/* رسالة WhatsApp الثانية */
+
+const shortMessage =
+encodeURIComponent(
+
+"السلام عليكم، بغيت نسول على موديل الطابيسري رقم "
++
+modelNumber
++
+"."
++
+"\n\n"
++
+"رابط قسم الطابيسري:"
++
+"\n"
++
+TAPISSERIE_LINK
+
+);
+
+
+/* إنشاء البطاقة */
+
+const card =
+document.createElement("div");
+
+card.className = "card";
+
+
+card.innerHTML = `
+
+<div class="card-image">
+
+<img
+src="${image.url}"
+alt="موديل طابيسري رقم ${modelNumber}"
+loading="lazy"
+>
+
+</div>
+
+
+<div class="card-info">
+
+<h3>
+موديل طابيسري ${modelNumber}
+</h3>
+
+
+<p>
+يمكن تنفيذ الموديل حسب القياس واللون اللي بغيتي.
+</p>
+
+
+<div class="card-buttons">
+
+
+<a
+href="https://wa.me/${WHATSAPP_NUMBER}?text=${message}"
+target="_blank"
+class="card-btn order-btn">
+
+طلب هاد الموديل
+
+</a>
+
+
+<a
+href="https://wa.me/${WHATSAPP_NUMBER}?text=${shortMessage}"
+target="_blank"
+class="card-btn whatsapp-btn">
+
+WhatsApp
+
+</a>
+
+
+</div>
+
+</div>
+
+`;
+
+
+grid.appendChild(card);
+
+});
+
+
+}catch(error){
+
+console.error(
+"Erreur chargement images:",
+error
+);
+
+
+empty.style.display = "block";
+
+
+empty.innerHTML = `
+
+ما قدرناش نحملو الصور دابا.
+
+<br><br>
+
+<a
+href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+"السلام عليكم، بغيت معلومات على الطابيسري.\n\nرابط قسم الطابيسري:\n" +
+TAPISSERIE_LINK
+)}"
+target="_blank"
+class="btn btn-whatsapp">
+
+تواصل معنا عبر WhatsApp
+
+</a>
+
+`;
+
+}
+
+}
+
+
+/* تشغيل تحميل الصور */
+
+loadTapisserie();
+
+</script>
+
+
+</body>
+
+</html>

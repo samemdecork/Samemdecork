@@ -5,247 +5,693 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width,initial-scale=1.0">
 
-<title>إدارة | صمم ديكورك</title>
+<title>صمم ديكورك | Hamza Chtaibi</title>
 
 <style>
 
 *{
 box-sizing:border-box;
 margin:0;
-padding:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
 }
 
 body{
 font-family:Tahoma,Arial,sans-serif;
-background:#0b110e;
-color:#fff;
-min-height:100vh;
+background:#f5f5f3;
+color:#17211c;
+line-height:1.7
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+img{
+display:block;
+width:100%
 }
 
 .wrap{
-width:min(1150px,92%);
-margin:auto;
+width:min(1180px,92%);
+margin:auto
 }
 
+
+/* =========================
+HEADER
+========================= */
+
 header{
-background:#111a15;
-border-bottom:1px solid #303936;
-padding:18px 0;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:72px;
+background:rgba(12,18,15,.94);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(207,210,212,.15);
 }
 
 .nav{
+height:72px;
 display:flex;
 align-items:center;
 justify-content:space-between;
+gap:20px
 }
 
 .logo{
 font-size:25px;
 font-weight:900;
+color:#fff;
+white-space:nowrap
 }
 
 .logo span{
-color:#cfd2d4;
+color:#cfd2d4
 }
 
-.back{
-color:#cfd2d4;
-text-decoration:none;
+.navlinks{
+display:flex;
+align-items:center;
+gap:25px
 }
 
-main{
-padding:35px 0 70px;
-}
-
-h1{
-font-size:34px;
-margin-bottom:7px;
-}
-
-.subtitle{
-color:#929b96;
-margin-bottom:30px;
-}
-
-.panel{
-background:#121b16;
-border:1px solid #29332e;
-border-radius:12px;
-padding:25px;
-margin-bottom:22px;
-}
-
-.field{
-margin-bottom:18px;
-}
-
-label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
-}
-
-input,
-select{
-width:100%;
-padding:13px;
-background:#0b110e;
+.navlinks a{
 color:#fff;
-border:1px solid #3b4641;
-border-radius:7px;
-font-family:inherit;
+font-size:14px;
+transition:.25s
+}
+
+.navlinks a:hover{
+color:#cfd2d4
+}
+
+.lang{
+display:flex;
+gap:4px;
+background:#27332d;
+padding:4px;
+border-radius:20px
+}
+
+.lang button{
+border:0;
+background:transparent;
+color:#fff;
+padding:6px 10px;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold
+}
+
+.lang button.active{
+background:#cfd2d4;
+color:#17211c
+}
+
+
+/* =========================
+HERO SLIDER
+========================= */
+
+.hero{
+height:100vh;
+min-height:650px;
+position:relative;
+overflow:hidden;
+color:#fff;
+padding-top:72px;
+display:flex;
+align-items:center;
+}
+
+.hero-slides{
+position:absolute;
+inset:0;
+z-index:0
+}
+
+.hero-slide{
+position:absolute;
+inset:0;
+opacity:0;
+background-position:center;
+background-size:cover;
+background-repeat:no-repeat;
+transform:scale(1.05);
+transition:
+opacity 1.2s ease,
+transform 6s ease;
+}
+
+.hero-slide.active{
+opacity:1;
+transform:scale(1)
+}
+
+.hero-slide:nth-child(1){
+background-image:
+url("images/hero-2.webp")
+}
+
+.hero-slide:nth-child(2){
+background-image:
+url("images/hero-3.webp")
+}
+
+.hero-slide:nth-child(3){
+background-image:
+url("images/kitchen.jpg")
+}
+
+.hero-slide:nth-child(4){
+background-image:
+url("images/dressing.jpg")
+}
+
+.hero-slide:nth-child(5){
+background-image:
+url("images/salon.jpg")
+}
+
+.hero-slide:nth-child(6){
+background-image:
+url("images/bedroom.jpg")
+}
+
+.hero-slide:nth-child(7){
+background-image:
+url("images/tv.jpg")
+}
+
+
+/* DARK OVERLAY */
+
+.hero-overlay{
+position:absolute;
+inset:0;
+z-index:1;
+
+background:
+linear-gradient(
+90deg,
+rgba(5,10,7,.94),
+rgba(5,10,7,.68),
+rgba(5,10,7,.18)
+);
+}
+
+
+/* CONTENT */
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:720px
+}
+
+.kicker{
+font-size:12px;
+letter-spacing:3px;
+color:#cfd2d4;
+font-weight:bold;
+margin-bottom:15px
+}
+
+.hero h1{
+font-size:
+clamp(44px,7vw,82px);
+line-height:1.05;
+margin-bottom:22px;
+font-weight:900
+}
+
+.hero h1 span{
+color:#cfd2d4
+}
+
+.hero p{
+font-size:18px;
+color:#f0f0f0;
+max-width:650px;
+margin-bottom:30px
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap
 }
 
 .btn{
-border:0;
-padding:13px 22px;
-border-radius:7px;
-font-family:inherit;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:13px 25px;
+min-height:50px;
+border-radius:6px;
 font-weight:bold;
 cursor:pointer;
+transition:.25s
 }
 
-.btn-main{
+.btn:hover{
+transform:translateY(-2px)
+}
+
+.btn-light{
 background:#cfd2d4;
-color:#17211c;
+color:#17211c
 }
 
-.btn-danger{
-background:#8c2929;
+.btn-dark{
+background:#17211c;
+color:#fff
+}
+
+.btn-outline{
+border:1px solid #fff;
 color:#fff;
+background:rgba(0,0,0,.12)
 }
 
-.btn:disabled{
-opacity:.5;
+.btn-outline:hover{
+background:#fff;
+color:#17211c
 }
 
-.drop{
-border:2px dashed #46524c;
-padding:35px 20px;
-border-radius:10px;
-text-align:center;
+
+/* SLIDER DOTS */
+
+.slider-dots{
+position:absolute;
+z-index:3;
+bottom:28px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:7px
+}
+
+.slider-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#ffffff66;
 cursor:pointer;
+transition:.3s
 }
 
-.drop:hover{
-border-color:#cfd2d4;
+.slider-dot.active{
+width:28px;
+border-radius:10px;
+background:#cfd2d4
 }
 
-.drop strong{
-display:block;
-font-size:18px;
-margin-bottom:7px;
+
+/* =========================
+QUICK
+========================= */
+
+.quick{
+background:#fff;
+padding:24px 0;
+border-bottom:1px solid #ddd
 }
 
-.drop span{
-color:#8e9792;
+.quick-grid{
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+gap:15px
+}
+
+.quick-item{
+display:flex;
+align-items:center;
+gap:11px
+}
+
+.quick-number{
+width:40px;
+height:40px;
+min-width:40px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#17211c;
+color:#cfd2d4;
+font-weight:bold
+}
+
+
+/* =========================
+SECTIONS
+========================= */
+
+section{
+padding:85px 0
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px
+}
+
+.section-title small{
+color:#68716c;
+letter-spacing:2px;
+font-weight:bold
+}
+
+.section-title h2{
+font-size:
+clamp(30px,5vw,50px);
+margin:5px 0
+}
+
+.section-title p{
+color:#707873
+}
+
+
+/* =========================
+CHOICES
+========================= */
+
+.choices{
+background:#17211c;
+color:#fff
+}
+
+.choices .section-title small{
+color:#cfd2d4
+}
+
+.choices .section-title p{
+color:#c4ccc7
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:
+repeat(3,1fr);
+gap:17px
+}
+
+.choice{
+height:310px;
+position:relative;
+overflow:hidden;
+border-radius:8px;
+background:#111
+}
+
+.choice img{
+height:100%;
+object-fit:cover;
+transition:.5s
+}
+
+.choice:hover img{
+transform:scale(1.07)
+}
+
+.choice:after{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(4,8,6,.95),
+rgba(4,8,6,.02)
+)
+}
+
+.choice-info{
+position:absolute;
+bottom:18px;
+right:18px;
+left:18px;
+z-index:2
+}
+
+.choice-info h3{
+font-size:23px
+}
+
+.choice-info p{
 font-size:13px;
+color:#d0d5d2
 }
 
-#fileInput{
-display:none;
+
+/* =========================
+SPECIAL
+========================= */
+
+.special{
+background:#e7e8e6
 }
 
-.preview{
+.special-grid{
+display:grid;
+grid-template-columns:
+1fr 1fr;
+gap:18px
+}
+
+.special-card{
+background:#fff;
+padding:35px;
+border-radius:8px;
+border:1px solid #d8dad8
+}
+
+.special-card h3{
+font-size:25px;
+margin-bottom:8px
+}
+
+.special-card p{
+color:#707873;
+margin-bottom:20px
+}
+
+
+/* =========================
+WORKS
+========================= */
+
+.works{
+background:#fff;
+text-align:center
+}
+
+.works-preview{
 display:grid;
 grid-template-columns:
 repeat(4,1fr);
 gap:12px;
-margin:20px 0;
+margin-bottom:30px
 }
 
-.preview img{
-width:100%;
-height:150px;
+.work-image{
+height:210px;
+overflow:hidden;
+border-radius:7px
+}
+
+.work-image img{
+height:100%;
 object-fit:cover;
-border-radius:7px;
+transition:.4s
 }
 
-.progress{
-color:#cfd2d4;
-margin:12px 0;
+.work-image:hover img{
+transform:scale(1.06)
 }
 
-.message{
-padding:12px;
-border-radius:7px;
-margin-top:15px;
-display:none;
+.works-btn{
+display:inline-flex;
+padding:14px 30px;
+background:#17211c;
+color:#fff;
+border-radius:6px;
+font-weight:bold
 }
 
-.success{
-display:block;
-background:#12351f;
-color:#a9e6bb;
+
+/* =========================
+PARTNERS
+========================= */
+
+.partners{
+background:#eeeeec
 }
 
-.error{
-display:block;
-background:#401717;
-color:#ffb4b4;
-}
-
-.works{
+.partner-grid{
 display:grid;
 grid-template-columns:
 repeat(4,1fr);
-gap:15px;
+gap:14px
 }
 
-.work{
-background:#0b110e;
-border:1px solid #29332e;
-border-radius:9px;
-overflow:hidden;
+.partner{
+background:#fff;
+min-height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid #ddd;
+font-weight:bold;
+color:#626b66
 }
 
-.work img{
-width:100%;
-height:180px;
-object-fit:cover;
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px
 }
 
-.info{
-padding:12px;
+footer strong{
+color:#cfd2d4
 }
 
-.info strong{
-display:block;
-margin-bottom:5px;
+
+/* =========================
+WHATSAPP
+========================= */
+
+.whatsapp{
+position:fixed;
+left:18px;
+bottom:18px;
+width:56px;
+height:56px;
+border-radius:50%;
+background:#25d366;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3000;
+box-shadow:0 5px 20px #0005
 }
 
-.info small{
-color:#8f9893;
+.whatsapp svg{
+width:30px;
+height:30px;
+fill:#fff
 }
 
-.delete{
-width:100%;
-margin-top:10px;
-}
+
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:850px){
 
-.preview,
-.works{
+.navlinks{
+display:none
+}
+
+.quick-grid{
 grid-template-columns:
-repeat(2,1fr);
+1fr 1fr
+}
+
+.choice-grid{
+grid-template-columns:
+1fr 1fr
+}
+
+.works-preview{
+grid-template-columns:
+1fr 1fr
+}
+
+.partner-grid{
+grid-template-columns:
+1fr 1fr
+}
+
+.special-grid{
+grid-template-columns:1fr
 }
 
 }
 
-@media(max-width:500px){
+@media(max-width:550px){
 
-.preview,
-.works{
-grid-template-columns:1fr;
+.hero{
+min-height:650px;
+text-align:center
 }
 
-h1{
-font-size:28px;
+.hero-content{
+margin:auto
+}
+
+.hero p{
+font-size:16px
+}
+
+.buttons{
+flex-direction:column
+}
+
+.btn{
+width:100%
+}
+
+.choice-grid{
+grid-template-columns:1fr
+}
+
+.works-preview{
+grid-template-columns:1fr 1fr
+}
+
+.work-image{
+height:170px
+}
+
+}
+
+
+/* =========================
+REDUCE MOTION
+========================= */
+
+@media(
+prefers-reduced-motion:reduce
+){
+
+.hero-slide{
+transition:none
+}
+
+.choice img,
+.work-image img{
+transition:none
 }
 
 }
@@ -254,698 +700,1129 @@ font-size:28px;
 
 </head>
 
+
 <body>
+
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header>
 
 <div class="wrap nav">
 
-<div class="logo">
-صمم <span>ديكورك</span>
-</div>
-
 <a
 href="index.html"
-class="back">
+class="logo">
 
-← الموقع
+صمم <span>ديكورك</span>
 
 </a>
+
+
+<nav class="navlinks">
+
+<a
+href="#choices"
+data-i18n="design">
+
+صمم دابا
+
+</a>
+
+<a
+href="works.html"
+data-i18n="works">
+
+أعمالنا
+
+</a>
+
+<a
+href="#special"
+data-i18n="special">
+
+الخدمات الخاصة
+
+</a>
+
+</nav>
+
+
+<div class="lang">
+
+<button
+id="arBtn"
+class="active"
+onclick="setLang('ar')">
+
+دارجة
+
+</button>
+
+<button
+id="frBtn"
+onclick="setLang('fr')">
+
+FR
+
+</button>
+
+</div>
 
 </div>
 
 </header>
 
 
-<main>
 
-<div class="wrap">
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+
+<div class="hero-slides">
+
+<div class="hero-slide active"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+</div>
+
+
+<div class="hero-overlay"></div>
+
+
+<div class="wrap hero-content">
+
+<div class="kicker"
+data-i18n="kicker">
+
+تصميم • ديكور • تنفيذ
+
+</div>
+
 
 <h1>
-لوحة الإدارة
+
+<span data-i18n="hero1">
+دار عليك
+</span>
+
+<br>
+
+<span data-i18n="hero2">
+وديكور علينا
+</span>
+
 </h1>
 
-<p class="subtitle">
-إدارة أعمال صمم ديكورك
+
+<p data-i18n="heroText">
+
+اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
+وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
+
 </p>
 
 
-<!-- LOGIN -->
+<div class="buttons">
+
+<a
+href="#choices"
+class="btn btn-light"
+data-i18n="start">
+
+ابدأ التصميم
+
+</a>
+
+
+<a
+href="https://wa.me/212000000000"
+target="_blank"
+class="btn btn-outline"
+data-i18n="contact">
+
+تواصل معنا
+
+</a>
+
+</div>
+
+</div>
+
 
 <div
-class="panel"
-id="loginBox">
+class="slider-dots"
+id="sliderDots">
 
-<h2>
-🔐 دخول الإدارة
-</h2>
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+QUICK
+========================= -->
+
+<section class="quick">
+
+<div class="wrap">
+
+<div class="quick-grid">
+
+
+<div class="quick-item">
+
+<div class="quick-number">
+1
+</div>
+
+<div>
+<b data-i18n="q1">
+اختار
+</b>
 
 <br>
 
-<div class="field">
-
-<label>
-كلمة السر
-</label>
-
-<input
-type="password"
-id="password"
-placeholder="كلمة سر الإدارة">
-
-</div>
-
-<button
-class="btn btn-main"
-onclick="login()">
-
-دخول
-
-</button>
-
-<div
-id="loginMessage"
-class="message">
-</div>
-
-</div>
-
-
-<!-- ADMIN -->
-
-<div
-id="admin"
-style="display:none;">
-
-
-<!-- UPLOAD -->
-
-<div class="panel">
-
-<h2>
-📸 إضافة أعمال جديدة
-</h2>
-
-<br>
-
-
-<div class="field">
-
-<label>
+<span data-i18n="q1s">
 القسم
-</label>
+</span>
+</div>
 
-<select id="category">
+</div>
 
-<option value="kitchen">
-المطابخ
-</option>
 
-<option value="dressing">
+<div class="quick-item">
+
+<div class="quick-number">
+2
+</div>
+
+<div>
+<b data-i18n="q2">
+صورة
+</b>
+
+<br>
+
+<span data-i18n="q2s">
+ديال المكان
+</span>
+</div>
+
+</div>
+
+
+<div class="quick-item">
+
+<div class="quick-number">
+3
+</div>
+
+<div>
+<b data-i18n="q3">
+قياسات
+</b>
+
+<br>
+
+<span data-i18n="q3s">
+العرض والطول والعلو
+</span>
+</div>
+
+</div>
+
+
+<div class="quick-item">
+
+<div class="quick-number">
+4
+</div>
+
+<div>
+<b data-i18n="q4">
+إرسال
+</b>
+
+<br>
+
+<span data-i18n="q4s">
+الطلب
+</span>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+CHOICES
+========================= -->
+
+<section
+class="choices"
+id="choices">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small data-i18n="chooseSmall">
+صمم ديكورك
+</small>
+
+<h2 data-i18n="chooseTitle">
+شنو بغيتي تصمم؟
+</h2>
+
+<p data-i18n="chooseText">
+اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.
+</p>
+
+</div>
+
+
+<div class="choice-grid">
+
+
+<a
+class="choice"
+href="configurateur.html?type=kitchen">
+
+<img
+src="images/kitchen.jpg"
+alt="المطبخ"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="kitchen">
+المطبخ
+</h3>
+
+<p data-i18n="kitchenSub">
+L • U • I • Îlot
+</p>
+
+</div>
+
+</a>
+
+
+
+<a
+class="choice"
+href="configurateur.html?type=bedroom">
+
+<img
+src="images/bedroom.jpg"
+alt="غرفة النوم"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="bedroom">
+غرفة النوم
+</h3>
+
+<p data-i18n="bedroomSub">
+سرير • خزانات • تسريحة
+</p>
+
+</div>
+
+</a>
+
+
+
+<a
+class="choice"
+href="configurateur.html?type=salon">
+
+<img
+src="images/salon.jpg"
+alt="الصالون"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="salon">
+الصالون
+</h3>
+
+<p data-i18n="salonSub">
+جلسة • حائط • ديكور
+</p>
+
+</div>
+
+</a>
+
+
+
+<a
+class="choice"
+href="configurateur.html?type=dressing">
+
+<img
+src="images/dressing.jpg"
+alt="Dressing"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>
 Dressing
-</option>
+</h3>
 
-<option value="wardrobes">
-البلاكرات
-</option>
+<p data-i18n="dressingSub">
+Placard • بيبان • rangement
+</p>
 
-<option value="salon">
-الصالونات
-</option>
+</div>
 
-<option value="bedroom">
-غرف النوم
-</option>
+</a>
 
-<option value="tv">
+
+
+<a
+class="choice"
+href="configurateur.html?type=tv">
+
+<img
+src="images/tv.jpg"
+alt="Meuble TV"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>
 Meuble TV
-</option>
+</h3>
 
-<option value="tapisserie">
-طابيسري
-</option>
+<p data-i18n="tvSub">
+TV • niches • étagères
+</p>
 
-</select>
+</div>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+SPECIAL
+========================= -->
+
+<section
+class="special"
+id="special">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small data-i18n="specialSmall">
+SERVICES SPÉCIAUX
+</small>
+
+<h2 data-i18n="specialTitle">
+خدمات مستقلة
+</h2>
+
+<p data-i18n="specialText">
+أقسام عندها اختصاصها الخاص.
+</p>
 
 </div>
 
 
-<div class="field">
+<div class="special-grid">
 
-<label>
-اسم المشروع
-</label>
 
-<input
-id="title"
-placeholder="مثلاً: مطبخ مودرن">
+<div class="special-card">
+
+<h3 data-i18n="tapisTitle">
+الطابيسري والستور
+</h3>
+
+<p data-i18n="tapisText">
+ستور، سدادر، ستائر وتابيسري حسب الطلب.
+</p>
+
+<a
+href="tapisserie.html"
+class="btn btn-dark"
+data-i18n="discover">
+
+شوف القسم
+
+</a>
 
 </div>
 
 
-<div
-class="drop"
-onclick="
-document.getElementById('fileInput').click()
-">
+
+<div class="special-card">
+
+<h3 data-i18n="accessTitle">
+الإكسسوارات و Electroménager
+</h3>
+
+<p data-i18n="accessText">
+بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
+</p>
+
+<a
+href="accessoires.html"
+class="btn btn-dark"
+data-i18n="shop">
+
+شوف المنتجات
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+WORKS PREVIEW
+========================= -->
+
+<section class="works">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small>
+REAL PROJECTS
+</small>
+
+<h2 data-i18n="worksTitle">
+أعمالنا
+</h2>
+
+<p data-i18n="worksText">
+شوف المشاريع الحقيقية اللي خدمناها.
+</p>
+
+</div>
+
+
+<div class="works-preview">
+
+
+<div class="work-image">
+
+<img
+src="images/work-003.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-004.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-007.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-010.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+</div>
+
+
+<a
+href="works.html"
+class="works-btn"
+data-i18n="seeWorks">
+
+شوف أعمالنا
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+PARTNERS
+========================= -->
+
+<section class="partners">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small>
+PARTNERS
+</small>
+
+<h2 data-i18n="partnersTitle">
+شركاؤنا
+</h2>
+
+<p data-i18n="partnersText">
+شركاء وماركات كنخدمو معاهم.
+</p>
+
+</div>
+
+
+<div class="partner-grid">
+
+<div class="partner">
+MDF / MÉLAMINÉ
+</div>
+
+<div class="partner">
+QUARTZ
+</div>
+
+<div class="partner">
+BLUM
+</div>
+
+<div class="partner">
+HETTICH
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
 
 <strong>
-📷 اختار الصور
+صمم ديكورك
 </strong>
 
-<span>
-تقدر تختار عدة صور مرة وحدة
-</span>
-
-</div>
-
-
-<input
-id="fileInput"
-type="file"
-accept="image/*"
-multiple
-onchange="preview()">
-
-
-<div
-id="preview"
-class="preview">
-</div>
-
-
-<div
-id="progress"
-class="progress">
-</div>
-
-
-<button
-id="uploadBtn"
-class="btn btn-main"
-onclick="upload()">
-
-📤 نشر الأعمال
-
-</button>
-
-
-<div
-id="message"
-class="message">
-</div>
-
-</div>
-
-
-<!-- WORKS -->
-
-<div class="panel">
-
-<h2>
-🖼️ الأعمال الحالية
-</h2>
+© 2026
 
 <br>
 
-<div
-id="works"
-class="works">
+<span data-i18n="rights">
+جميع الحقوق محفوظة — Hamza Chtaibi
+</span>
 
-جاري التحميل...
-
-</div>
-
-</div>
+</footer>
 
 
-</div>
 
-</div>
+<!-- =========================
+WHATSAPP
+========================= -->
 
-</main>
+<a
+class="whatsapp"
+href="https://wa.me/212000000000"
+target="_blank"
+aria-label="WhatsApp">
+
+<svg
+viewBox="0 0 32 32">
+
+<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+
+</svg>
+
+</a>
+
 
 
 <script>
 
-const CLOUD_NAME =
-"rhao0lli";
+/* =========================
+HERO SLIDER
+========================= */
 
-const UPLOAD_PRESET =
-"samemdecork_images";
+const slides =
+document.querySelectorAll(".hero-slide");
 
-let password = "";
+const dotsContainer =
+document.getElementById("sliderDots");
 
-let files = [];
+let currentSlide=0;
 
+let sliderTimer;
 
-/* LOGIN */
 
-async function login(){
+/* DOTS */
 
-const value =
-document
-.getElementById("password")
-.value;
+slides.forEach(
+(slide,index)=>{
 
-const msg =
-document.getElementById("loginMessage");
-
-
-if(!value){
-
-msg.className=
-"message error";
-
-msg.textContent=
-"دخل كلمة السر.";
-
-return;
-
-}
-
-
-try{
-
-const response =
-await fetch(
-"/api/admin-check",
-{
-method:"POST",
-headers:{
-"Content-Type":
-"application/json"
-},
-body:JSON.stringify({
-password:value
-})
-});
-
-
-const data =
-await response.json();
-
-
-if(!response.ok || !data.ok){
-
-msg.className=
-"message error";
-
-msg.textContent=
-"كلمة السر غير صحيحة.";
-
-return;
-
-}
-
-
-password=value;
-
-document
-.getElementById("loginBox")
-.style.display="none";
-
-document
-.getElementById("admin")
-.style.display="block";
-
-loadWorks();
-
-
-}catch(error){
-
-msg.className=
-"message error";
-
-msg.textContent=
-"تعذر الاتصال بالسيرفر.";
-
-}
-
-}
-
-
-/* PREVIEW */
-
-function preview(){
-
-const input =
-document.getElementById("fileInput");
-
-files =
-Array.from(input.files);
-
-const box =
-document.getElementById("preview");
-
-box.innerHTML="";
-
-
-files.forEach(file=>{
-
-const img =
-document.createElement("img");
-
-img.src =
-URL.createObjectURL(file);
-
-box.appendChild(img);
-
-});
-
-}
-
-
-/* UPLOAD */
-
-async function upload(){
-
-const category =
-document.getElementById("category")
-.value;
-
-const title =
-document.getElementById("title")
-.value.trim();
-
-const btn =
-document.getElementById("uploadBtn");
-
-const progress =
-document.getElementById("progress");
-
-const message =
-document.getElementById("message");
-
-
-if(!files.length){
-
-showMessage(
-message,
-"اختار الصور أولاً.",
-false
-);
-
-return;
-
-}
-
-
-if(!title){
-
-showMessage(
-message,
-"دخل اسم المشروع.",
-false
-);
-
-return;
-
-}
-
-
-btn.disabled=true;
-
-
-try{
-
-for(
-let i=0;
-i<files.length;
-i++
-){
-
-progress.textContent=
-`جاري رفع الصورة ${i+1} من ${files.length}...`;
-
-
-const form =
-new FormData();
-
-
-form.append(
-"file",
-files[i]
-);
-
-form.append(
-"upload_preset",
-UPLOAD_PRESET
-);
-
-form.append(
-"folder",
-`chtaibi2026/${category}`
-);
-
-
-const response =
-await fetch(
-
-`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-
-{
-method:"POST",
-body:form
-}
-
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Cloudinary upload error"
-);
-
-}
-
-}
-
-
-progress.textContent=
-"تم رفع الصور بنجاح ✅";
-
-
-showMessage(
-message,
-"الصور دابا منشورة في أعمالنا.",
-true
-);
-
-
-document
-.getElementById("fileInput")
-.value="";
-
-document
-.getElementById("title")
-.value="";
-
-document
-.getElementById("preview")
-.innerHTML="";
-
-files=[];
-
-loadWorks();
-
-
-}catch(error){
-
-console.error(error);
-
-showMessage(
-message,
-"وقع مشكل في رفع الصور.",
-false
-);
-
-}finally{
-
-btn.disabled=false;
-
-}
-
-}
-
-
-/* LOAD */
-
-async function loadWorks(){
-
-const box =
-document.getElementById("works");
-
-box.innerHTML=
-"جاري التحميل...";
-
-
-try{
-
-const response =
-await fetch("/api/works");
-
-const data =
-await response.json();
-
-
-if(!data.length){
-
-box.innerHTML=
-"مازال ما كاين حتى عمل.";
-
-return;
-
-}
-
-
-box.innerHTML="";
-
-
-data.forEach(work=>{
-
-const div =
+const dot =
 document.createElement("div");
 
-div.className="work";
+dot.className=
+"slider-dot";
 
+if(index===0){
+dot.classList.add("active");
+}
 
-div.innerHTML=`
+dot.onclick=()=>{
+goToSlide(index);
+};
 
-<img
-src="${safe(work.image)}"
-alt="عمل صمم ديكورك">
-
-<div class="info">
-
-<strong>
-${safe(work.title)}
-</strong>
-
-<small>
-${safe(work.category)}
-</small>
-
-<button
-class="btn btn-danger delete"
-onclick="deleteWork(${JSON.stringify(work.public_id)})">
-
-🗑️ حذف
-
-</button>
-
-</div>
-
-`;
-
-box.appendChild(div);
+dotsContainer.appendChild(dot);
 
 });
 
 
-}catch(error){
+const dots =
+document.querySelectorAll(".slider-dot");
 
-console.error(error);
 
-box.innerHTML=
-"تعذر تحميل الأعمال.";
+function goToSlide(index){
+
+slides[currentSlide]
+.classList.remove("active");
+
+dots[currentSlide]
+.classList.remove("active");
+
+currentSlide=index;
+
+slides[currentSlide]
+.classList.add("active");
+
+dots[currentSlide]
+.classList.add("active");
+
+clearInterval(sliderTimer);
+
+startSlider();
 
 }
 
-}
 
+function nextSlide(){
 
-/* DELETE */
+let next=
+(currentSlide+1)%slides.length;
 
-async function deleteWork(publicId){
-
-if(
-!confirm(
-"واش متأكد بغيتي تحذف هاد الصورة؟"
-)
-){
-
-return;
+goToSlide(next);
 
 }
 
 
-try{
+function startSlider(){
 
-const response =
-await fetch(
-"/api/delete-work",
-{
-method:"POST",
-headers:{
-"Content-Type":
-"application/json"
+sliderTimer=
+setInterval(
+nextSlide,
+5000
+);
+
+}
+
+
+startSlider();
+
+
+
+/* =========================
+LANGUAGES
+========================= */
+
+const T={
+
+ar:{
+
+design:"صمم دابا",
+
+works:"أعمالنا",
+
+special:"الخدمات الخاصة",
+
+kicker:
+"تصميم • ديكور • تنفيذ",
+
+hero1:
+"دار عليك",
+
+hero2:
+"وديكور علينا",
+
+heroText:
+"اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
+
+start:
+"ابدأ التصميم",
+
+contact:
+"تواصل معنا",
+
+q1:"اختار",
+q1s:"القسم",
+
+q2:"صورة",
+q2s:"ديال المكان",
+
+q3:"قياسات",
+q3s:"العرض والطول والعلو",
+
+q4:"إرسال",
+q4s:"الطلب",
+
+chooseSmall:
+"صمم ديكورك",
+
+chooseTitle:
+"شنو بغيتي تصمم؟",
+
+chooseText:
+"اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
+
+kitchen:
+"المطبخ",
+
+kitchenSub:
+"L • U • I • Îlot",
+
+bedroom:
+"غرفة النوم",
+
+bedroomSub:
+"سرير • خزانات • تسريحة",
+
+salon:
+"الصالون",
+
+salonSub:
+"جلسة • حائط • ديكور",
+
+dressingSub:
+"Placard • بيبان • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIAUX",
+
+specialTitle:
+"خدمات مستقلة",
+
+specialText:
+"أقسام عندها اختصاصها الخاص.",
+
+tapisTitle:
+"الطابيسري والستور",
+
+tapisText:
+"ستور، سدادر، ستائر وتابيسري حسب الطلب.",
+
+accessTitle:
+"الإكسسوارات و Electroménager",
+
+accessText:
+"بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
+
+discover:
+"شوف القسم",
+
+shop:
+"شوف المنتجات",
+
+worksTitle:
+"أعمالنا",
+
+worksText:
+"شوف المشاريع الحقيقية اللي خدمناها.",
+
+seeWorks:
+"شوف أعمالنا",
+
+partnersTitle:
+"شركاؤنا",
+
+partnersText:
+"شركاء وماركات كنخدمو معاهم.",
+
+rights:
+"جميع الحقوق محفوظة — Hamza Chtaibi"
+
 },
-body:JSON.stringify({
-password:password,
-public_id:publicId
-})
+
+
+fr:{
+
+design:
+"Créer mon projet",
+
+works:
+"Nos réalisations",
+
+special:
+"Services spécialisés",
+
+kicker:
+"DESIGN • DÉCORATION • RÉALISATION",
+
+hero1:
+"Votre projet",
+
+hero2:
+"Notre savoir-faire",
+
+heroText:
+"Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
+
+start:
+"Commencer",
+
+contact:
+"Nous contacter",
+
+q1:
+"Choisir",
+
+q1s:
+"la catégorie",
+
+q2:
+"Photo",
+
+q2s:
+"de l'espace",
+
+q3:
+"Dimensions",
+
+q3s:
+"largeur • longueur • hauteur",
+
+q4:
+"Envoyer",
+
+q4s:
+"la demande",
+
+chooseSmall:
+"VOTRE PROJET",
+
+chooseTitle:
+"Que souhaitez-vous réaliser ?",
+
+chooseText:
+"Choisissez une catégorie pour passer directement à l'étape suivante.",
+
+kitchen:
+"Cuisine",
+
+kitchenSub:
+"L • U • I • Îlot",
+
+bedroom:
+"Chambre",
+
+bedroomSub:
+"Lit • placards • coiffeuse",
+
+salon:
+"Salon",
+
+salonSub:
+"Séjour • mur • décoration",
+
+dressingSub:
+"Placard • portes • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIALISÉS",
+
+specialTitle:
+"Services indépendants",
+
+specialText:
+"Des services avec leurs propres spécialistes.",
+
+tapisTitle:
+"Tapisserie & Rideaux",
+
+tapisText:
+"Rideaux, coussins, tissus et tapisserie sur mesure.",
+
+accessTitle:
+"Accessoires & Electroménager",
+
+accessText:
+"Vente d'accessoires et d'appareils électroménagers.",
+
+discover:
+"Découvrir",
+
+shop:
+"Voir les produits",
+
+worksTitle:
+"Nos réalisations",
+
+worksText:
+"Découvrez nos vrais projets réalisés.",
+
+seeWorks:
+"Voir nos réalisations",
+
+partnersTitle:
+"Nos partenaires",
+
+partnersText:
+"Les marques et partenaires avec lesquels nous travaillons.",
+
+rights:
+"Tous droits réservés — Hamza Chtaibi"
+
+}
+
+};
+
+
+function setLang(lang){
+
+localStorage.setItem(
+"siteLang",
+lang
+);
+
+document.documentElement.lang=
+lang==="fr"
+?"fr"
+:"ar";
+
+document.documentElement.dir=
+lang==="fr"
+?"ltr"
+:"rtl";
+
+
+document
+.querySelectorAll("[data-i18n]")
+.forEach(el=>{
+
+const key=
+el.dataset.i18n;
+
+if(T[lang][key]){
+el.textContent=
+T[lang][key];
+}
+
 });
 
 
-if(!response.ok){
-
-throw new Error();
-
-}
-
-
-alert(
-"تم حذف الصورة بنجاح ✅"
+document
+.getElementById("arBtn")
+.classList
+.toggle(
+"active",
+lang==="ar"
 );
 
-loadWorks();
 
-
-}catch(error){
-
-alert(
-"تعذر حذف الصورة."
+document
+.getElementById("frBtn")
+.classList
+.toggle(
+"active",
+lang==="fr"
 );
 
 }
 
-}
 
-
-/* MESSAGE */
-
-function showMessage(
-element,
-text,
-success
-){
-
-element.className=
-success
-? "message success"
-: "message error";
-
-element.textContent=text;
-
-}
-
-
-/* SAFE */
-
-function safe(value){
-
-return String(value || "")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
+setLang(
+localStorage.getItem("siteLang")
+||"ar"
+);
 
 </script>
+
 
 </body>
 

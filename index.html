@@ -1,689 +1,997 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>صمم ديكورك | Hamza Chtaibi</title>
 
 <style>
+
+/* ==================================================
+   RESET
+================================================== */
+
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:#f5f0e8;
+  background:#f1f2f2;
   color:#17211c;
-  line-height:1.7
+  line-height:1.7;
 }
 
 a{
   text-decoration:none;
-  color:inherit
+  color:inherit;
 }
 
 img{
   display:block;
-  width:100%
+  width:100%;
+}
+
+button{
+  font-family:inherit;
 }
 
 .wrap{
   width:min(1180px,92%);
-  margin:auto
+  margin:auto;
 }
 
-/* =========================
+
+/* ==================================================
    HEADER
-========================= */
+================================================== */
 
 header{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  height:74px;
-  background:rgba(8,13,11,.88);
+  height:72px;
+
+  background:rgba(8,12,10,.94);
+
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,.10);
+
   z-index:1000;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  box-shadow:0 5px 25px #0005
+
+  box-shadow:0 5px 25px rgba(0,0,0,.30);
 }
 
 .nav{
-  height:74px;
+  height:72px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px
+
+  gap:15px;
 }
+
+
+/* LOGO */
 
 .logo{
   display:flex;
   align-items:center;
   gap:10px;
+
   color:#fff;
+
   font-size:23px;
   font-weight:900;
-  white-space:nowrap
+
+  white-space:nowrap;
 }
 
 .logo-mark{
-  width:42px;
-  height:42px;
-  border:1px solid #c9a878;
-  border-radius:50%;
+  width:40px;
+  height:40px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#c9a878;
+
+  border:1px solid #cfd2d4;
+  border-radius:50%;
+
+  color:#cfd2d4;
+
   font-size:20px;
-  box-shadow:inset 0 0 15px #c9a87822
 }
 
 .logo span{
-  color:#c9a878
+  color:#cfd2d4;
 }
+
+
+/* NAV LINKS */
 
 .navlinks{
   display:flex;
+  align-items:center;
   gap:25px;
-  align-items:center
 }
 
 .navlinks a{
   color:#fff;
   font-size:14px;
-  transition:.25s
+  transition:.25s;
 }
 
 .navlinks a:hover{
-  color:#c9a878
+  color:#cfd2d4;
 }
+
+
+/* LANGUAGE */
 
 .lang{
   display:flex;
+  align-items:center;
   gap:4px;
-  background:#18231e;
+
   padding:4px;
-  border-radius:20px
+
+  background:#202a25;
+
+  border-radius:20px;
 }
 
 .lang button{
   border:0;
+
   background:transparent;
+
   color:#fff;
+
   padding:6px 10px;
+
   border-radius:15px;
+
   cursor:pointer;
-  font-weight:bold
+
+  font-weight:bold;
 }
 
 .lang button.active{
-  background:#c9a878;
-  color:#17211c
+  background:#cfd2d4;
+  color:#17211c;
 }
 
-/* =========================
-   HERO SLIDER
-========================= */
+
+/* ==================================================
+   HERO
+================================================== */
 
 .hero{
-  min-height:100vh;
-  padding-top:74px;
+
   position:relative;
-  overflow:hidden;
-  color:#fff;
+
+  min-height:100vh;
+
+  padding-top:72px;
+
   display:flex;
   align-items:center;
-  background:#0a100d
+
+  overflow:hidden;
+
+  background:#080c0a;
+
+  color:#fff;
 }
+
+
+/* SLIDER CONTAINER */
 
 .hero-slides{
+
   position:absolute;
+
   inset:0;
-  z-index:0
+
+  z-index:0;
 }
+
+
+/* EACH SLIDE */
 
 .hero-slide{
+
   position:absolute;
+
   inset:0;
+
   opacity:0;
+
   visibility:hidden;
-  transform:scale(1.08);
+
+  transform:scale(1.06);
+
   transition:
-    opacity 1.2s ease,
+    opacity 1.1s ease,
     transform 6s ease,
-    visibility 1.2s
+    visibility 1.1s;
 }
+
+
+/* ACTIVE SLIDE */
 
 .hero-slide.active{
+
   opacity:1;
+
   visibility:visible;
-  transform:scale(1)
+
+  transform:scale(1);
 }
+
+
+/* IMAGE */
 
 .hero-slide img{
+
   width:100%;
   height:100%;
-  object-fit:cover
+
+  object-fit:cover;
+
 }
 
-.hero-slide:after{
+
+/* DARK OVERLAY */
+
+.hero-slide::after{
+
   content:"";
+
   position:absolute;
+
   inset:0;
+
   background:
     linear-gradient(
       90deg,
-      rgba(4,9,7,.94) 0%,
-      rgba(4,9,7,.72) 38%,
-      rgba(4,9,7,.25) 75%,
-      rgba(4,9,7,.45) 100%
-    )
+      rgba(3,7,5,.94) 0%,
+      rgba(3,7,5,.78) 35%,
+      rgba(3,7,5,.35) 70%,
+      rgba(3,7,5,.58) 100%
+    );
 }
+
+
+/* HERO CONTENT */
 
 .hero-content{
+
   position:relative;
+
   z-index:5;
+
   max-width:760px;
-  padding:80px 0
+
+  padding:80px 0;
 }
+
 
 .kicker{
+
   display:inline-block;
+
+  margin-bottom:17px;
+
+  color:#cfd2d4;
+
   font-size:12px;
+
+  font-weight:bold;
+
   letter-spacing:3px;
-  color:#c9a878;
-  margin-bottom:18px;
-  font-weight:bold
 }
 
+
 .hero h1{
-  font-size:clamp(44px,7vw,82px);
-  line-height:1.05;
+
+  font-size:clamp(44px,7vw,80px);
+
+  line-height:1.06;
+
   margin-bottom:22px;
-  text-shadow:0 5px 30px #0008
+
+  text-shadow:0 5px 30px rgba(0,0,0,.65);
 }
 
 .hero h1 span{
-  color:#fff
+  color:#fff;
 }
 
-.hero h1 .gold{
-  color:#c9a878
+.hero h1 .silver{
+  color:#cfd2d4;
 }
+
 
 .hero p{
-  font-size:17px;
-  color:#f1f1ef;
+
+  max-width:650px;
+
   margin-bottom:30px;
-  max-width:650px
+
+  color:#eeeeee;
+
+  font-size:17px;
 }
 
+
+/* HERO BUTTONS */
+
 .buttons{
+
   display:flex;
+
+  align-items:center;
+
   gap:12px;
-  flex-wrap:wrap
+
+  flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 26px;
+
   min-height:50px;
+
+  padding:13px 26px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
   border-radius:5px;
+
   font-weight:bold;
+
   cursor:pointer;
-  transition:.3s
+
+  transition:.3s;
 }
 
 .btn:hover{
-  transform:translateY(-2px)
+  transform:translateY(-2px);
 }
+
+
+/* SILVER BUTTON */
 
 .btn-light{
-  background:#c9a878;
+
+  background:#cfd2d4;
+
   color:#17211c;
-  box-shadow:0 8px 25px #0004
+
+  box-shadow:0 8px 25px rgba(0,0,0,.30);
 }
+
+
+/* DARK BUTTON */
 
 .btn-dark{
+
   background:#17211c;
-  color:#fff
+
+  color:#fff;
 }
 
+
+/* OUTLINE */
+
 .btn-outline{
-  border:1px solid rgba(255,255,255,.8);
+
   color:#fff;
-  background:#0002
+
+  border:1px solid rgba(255,255,255,.85);
+
+  background:rgba(0,0,0,.15);
 }
 
 .btn-outline:hover{
-  background:#fff;
-  color:#17211c
+
+  background:#cfd2d4;
+
+  color:#17211c;
+
+  border-color:#cfd2d4;
 }
 
-/* HERO CONTROLS */
+
+/* ==================================================
+   HERO DOTS
+================================================== */
 
 .hero-controls{
+
   position:absolute;
-  left:5%;
-  bottom:35px;
+
   z-index:10;
+
+  left:5%;
+
+  bottom:32px;
+
   display:flex;
+
   align-items:center;
-  gap:9px
+
+  gap:8px;
 }
 
 .hero-dot{
+
   width:9px;
   height:9px;
-  border-radius:50%;
+
+  padding:0;
+
   border:0;
-  background:#ffffff66;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.45);
+
   cursor:pointer;
-  transition:.3s
+
+  transition:.3s;
 }
 
 .hero-dot.active{
+
   width:30px;
+
   border-radius:10px;
-  background:#c9a878
+
+  background:#cfd2d4;
 }
+
+
+/* LABEL */
 
 .hero-label{
+
   position:absolute;
-  right:5%;
-  bottom:35px;
+
   z-index:10;
+
+  right:5%;
+
+  bottom:32px;
+
   color:#fff;
-  font-size:12px;
-  letter-spacing:2px;
-  opacity:.8
+
+  font-size:11px;
+
+  letter-spacing:3px;
+
+  opacity:.75;
 }
 
-/* =========================
-   QUICK
-========================= */
+
+/* ==================================================
+   QUICK STEPS
+================================================== */
 
 .quick{
-  background:#fff;
+
   padding:24px 0;
-  border-bottom:1px solid #ded7ca
+
+  background:#fff;
+
+  border-bottom:1px solid #ddd;
 }
 
 .quick-grid{
+
   display:grid;
+
   grid-template-columns:repeat(4,1fr);
-  gap:15px
+
+  gap:15px;
 }
 
 .quick-item{
+
   display:flex;
+
   align-items:center;
-  gap:10px
+
+  gap:10px;
 }
 
 .quick-number{
+
   width:40px;
   height:40px;
+
   min-width:40px;
-  border-radius:50%;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
+  border-radius:50%;
+
   background:#17211c;
-  color:#c9a878;
-  font-weight:bold
+
+  color:#cfd2d4;
+
+  font-weight:bold;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+
+/* ==================================================
+   GENERAL SECTIONS
+================================================== */
 
 section{
-  padding:80px 0
+  padding:80px 0;
 }
 
 .section-title{
+
   text-align:center;
-  margin-bottom:38px
+
+  margin-bottom:38px;
 }
 
 .section-title small{
-  color:#a17d4c;
+
+  color:#72777a;
+
   letter-spacing:2px;
-  font-weight:bold
+
+  font-weight:bold;
 }
 
 .section-title h2{
+
+  margin:5px 0;
+
   font-size:clamp(30px,5vw,50px);
-  margin:5px 0
 }
 
 .section-title p{
-  color:#777
+  color:#777;
 }
 
-/* =========================
+
+/* ==================================================
    CHOICES
-========================= */
+================================================== */
 
 .choices{
+
   background:
-    linear-gradient(135deg,#101914,#17251e);
-  color:#fff
+    linear-gradient(
+      135deg,
+      #0d1410,
+      #17211c
+    );
+
+  color:#fff;
 }
 
 .choices .section-title p{
-  color:#c7ceca
+  color:#c7ceca;
 }
 
 .choice-grid{
+
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
-  gap:16px
+
+  gap:16px;
 }
 
 .choice{
-  height:300px;
+
   position:relative;
+
+  height:300px;
+
   overflow:hidden;
+
   border-radius:8px;
+
   background:#111;
-  border:1px solid #ffffff12
+
+  border:1px solid rgba(255,255,255,.08);
 }
 
 .choice img{
+
+  width:100%;
   height:100%;
+
   object-fit:cover;
-  transition:.5s
+
+  transition:.5s;
 }
 
 .choice:hover img{
-  transform:scale(1.07)
+  transform:scale(1.07);
 }
 
-.choice:after{
+.choice::after{
+
   content:"";
+
   position:absolute;
+
   inset:0;
+
   background:
     linear-gradient(
       to top,
-      #07100bf5,
-      #07100b08 70%
-    )
+      rgba(3,8,5,.95),
+      rgba(3,8,5,.05) 72%
+    );
 }
 
 .choice-info{
+
   position:absolute;
-  bottom:18px;
+
+  z-index:2;
+
   right:18px;
+
   left:18px;
-  z-index:2
+
+  bottom:18px;
 }
 
 .choice-info h3{
-  font-size:21px
+  font-size:21px;
 }
 
 .choice-info p{
+
+  color:#d2d5d5;
+
   font-size:12px;
-  color:#d2d5d5
 }
 
-/* =========================
-   SPECIAL
-========================= */
+
+/* ==================================================
+   SPECIAL SERVICES
+================================================== */
 
 .special{
-  background:#eee5d7
+
+  background:#e7e8e7;
 }
 
 .special-grid{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
-  gap:18px
+
+  gap:18px;
 }
 
 .special-card{
-  background:#fff;
+
   padding:35px;
+
+  background:#fff;
+
+  border:1px solid #d7d8d8;
+
   border-radius:8px;
-  border:1px solid #ddd2c1;
-  box-shadow:0 8px 30px #0000000b
+
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
 }
 
 .special-card h3{
+
+  margin-bottom:8px;
+
   font-size:25px;
-  margin-bottom:8px
 }
 
 .special-card p{
+
+  margin-bottom:20px;
+
   color:#777;
-  margin-bottom:20px
 }
 
-/* =========================
+
+/* ==================================================
    WORKS
-========================= */
+================================================== */
 
 .works{
+
+  background:#fff;
+
   text-align:center;
-  background:#fff
 }
 
 .works-btn{
+
   display:inline-flex;
+
   padding:14px 30px;
-  background:#17211c;
-  color:#fff;
+
   border-radius:5px;
-  transition:.3s
+
+  background:#17211c;
+
+  color:#fff;
+
+  transition:.3s;
 }
 
 .works-btn:hover{
-  background:#c9a878;
-  color:#17211c
+
+  background:#cfd2d4;
+
+  color:#17211c;
 }
 
-/* =========================
+
+/* ==================================================
    PARTNERS
-========================= */
+================================================== */
 
 .partners{
-  background:#e9e0d2
+
+  background:#e9eaea;
 }
 
 .partner-grid{
+
   display:grid;
+
   grid-template-columns:repeat(4,1fr);
-  gap:14px
+
+  gap:14px;
 }
 
 .partner{
-  background:#fff;
+
   min-height:110px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
-  border:1px solid #ddd2c1;
-  font-weight:bold;
+
+  background:#fff;
+
+  border:1px solid #d5d6d6;
+
+  border-radius:6px;
+
   color:#666;
-  border-radius:6px
+
+  font-weight:bold;
 }
 
-/* =========================
+
+/* ==================================================
    FOOTER
-========================= */
+================================================== */
 
 footer{
+
+  padding:30px;
+
   background:#0b110e;
+
   color:#aaa;
+
   text-align:center;
-  padding:30px
 }
 
 footer strong{
-  color:#c9a878
+  color:#cfd2d4;
 }
 
-/* =========================
+
+/* ==================================================
    WHATSAPP
-========================= */
+================================================== */
 
 .whatsapp{
+
   position:fixed;
+
   left:18px;
+
   bottom:18px;
+
+  z-index:3000;
+
   width:54px;
   height:54px;
-  border-radius:50%;
-  background:#25d366;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
-  z-index:3000;
-  box-shadow:0 5px 20px #0004;
-  transition:.3s
+
+  border-radius:50%;
+
+  background:#25d366;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.30);
+
+  transition:.3s;
 }
 
 .whatsapp:hover{
-  transform:scale(1.08)
+  transform:scale(1.08);
 }
 
 .whatsapp svg{
+
   width:29px;
   height:29px;
-  fill:#fff
+
+  fill:#fff;
 }
 
-/* =========================
+
+/* ==================================================
    MOBILE
-========================= */
+================================================== */
 
 @media(max-width:850px){
 
   .navlinks{
-    display:none
+    display:none;
   }
 
   .quick-grid{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   .choice-grid{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   .partner-grid{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   .hero-content{
-    padding:60px 0
+    padding:60px 0;
   }
 
   .hero-label{
-    display:none
+    display:none;
   }
 }
+
 
 @media(max-width:550px){
 
   header,
   .nav{
-    height:65px
+    height:65px;
   }
 
   .logo{
-    font-size:19px
+    font-size:19px;
   }
 
   .logo-mark{
     width:36px;
-    height:36px
+    height:36px;
   }
 
   .hero{
+
+    min-height:92vh;
+
     padding-top:65px;
-    min-height:92vh
+
+    text-align:center;
   }
 
-  .hero-slide:after{
+  .hero-slide::after{
+
     background:
       linear-gradient(
         180deg,
-        rgba(4,9,7,.48),
-        rgba(4,9,7,.9)
-      )
-  }
-
-  .hero{
-    text-align:center
+        rgba(3,7,5,.45),
+        rgba(3,7,5,.92)
+      );
   }
 
   .hero-content{
+
     margin:auto;
-    padding:50px 0
+
+    padding:50px 0;
   }
 
   .hero p{
-    font-size:15px
+    font-size:15px;
   }
 
   .buttons{
-    flex-direction:column
+    flex-direction:column;
   }
 
   .btn{
-    width:100%
+    width:100%;
   }
 
   .hero-controls{
+
     left:50%;
+
+    bottom:20px;
+
     transform:translateX(-50%);
-    bottom:20px
   }
 
   .quick-grid{
     grid-template-columns:1fr 1fr;
-    gap:18px
+    gap:18px;
   }
 
   .choice-grid{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .special-grid{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .partner-grid{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   section{
-    padding:60px 0
+    padding:60px 0;
   }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- ==================================================
      HEADER
-========================= -->
+================================================== -->
 
 <header>
 
@@ -698,6 +1006,7 @@ footer strong{
 </div>
 
 </a>
+
 
 <nav class="navlinks">
 
@@ -715,15 +1024,18 @@ footer strong{
 
 </nav>
 
+
 <div class="lang">
 
-<button id="arBtn"
+<button
+id="arBtn"
 class="active"
 onclick="setLang('ar')">
 دارجة
 </button>
 
-<button id="frBtn"
+<button
+id="frBtn"
 onclick="setLang('fr')">
 FR
 </button>
@@ -735,53 +1047,108 @@ FR
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+
+<!-- ==================================================
+     HERO SLIDER
+================================================== -->
 
 <section class="hero">
 
+
 <div class="hero-slides">
 
+
+<!-- 1 -->
+
 <div class="hero-slide active">
-<img src="images/hero/kitchen-1.jpg"
-alt="مطبخ مودرن">
+
+<img
+src="images/hero-2.webp"
+alt="مشروع ديكور">
+
 </div>
 
-<div class="hero-slide">
-<img src="images/hero/kitchen-2.jpg"
-alt="مطبخ فاخر">
-</div>
+
+<!-- 2 -->
 
 <div class="hero-slide">
-<img src="images/hero/dressing-1.jpg"
+
+<img
+src="images/hero-3.webp"
+alt="تصميم داخلي">
+
+</div>
+
+
+<!-- 3 -->
+
+<div class="hero-slide">
+
+<img
+src="images/kitchen.jpg"
+alt="مطبخ">
+
+</div>
+
+
+<!-- 4 -->
+
+<div class="hero-slide">
+
+<img
+src="images/dressing.jpg"
 alt="Dressing">
+
 </div>
 
-<div class="hero-slide">
-<img src="images/hero/salon-1.jpg"
-alt="صالون مودرن">
-</div>
+
+<!-- 5 -->
 
 <div class="hero-slide">
-<img src="images/hero/bedroom-1.jpg"
-alt="غرفة نوم">
+
+<img
+src="images/salon.jpg"
+alt="صالون">
+
 </div>
 
+
+<!-- 6 -->
+
 <div class="hero-slide">
-<img src="images/hero/tv-1.jpg"
+
+<img
+src="images/bedroom.jpg"
+alt="غرفة النوم">
+
+</div>
+
+
+<!-- 7 -->
+
+<div class="hero-slide">
+
+<img
+src="images/tv.jpg"
 alt="Meuble TV">
+
 </div>
+
 
 </div>
 
 
 <div class="wrap hero-content">
 
-<div class="kicker"
+
+<div
+class="kicker"
 data-i18n="kicker">
+
 تصميم • ديكور • تنفيذ
+
 </div>
+
 
 <h1>
 
@@ -791,77 +1158,116 @@ data-i18n="kicker">
 
 <br>
 
-<span class="gold"
+<span
+class="silver"
 data-i18n="hero2">
 وديكور علينا
 </span>
 
 </h1>
 
+
 <p data-i18n="heroText">
+
 اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
 وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
+
 </p>
+
 
 <div class="buttons">
 
-<a href="#choices"
+
+<a
+href="#choices"
 class="btn btn-light"
 data-i18n="start">
+
 ابدأ التصميم
+
 </a>
 
-<a href="https://wa.me/212000000000"
+
+<a
+href="https://wa.me/212000000000"
 target="_blank"
 class="btn btn-outline"
 data-i18n="contact">
+
 تواصل معنا
+
 </a>
 
+
 </div>
+
+
+</div>
+
+
+<!-- SLIDER DOTS -->
+
+<div class="hero-controls">
+
+<button
+class="hero-dot active"
+onclick="goSlide(0)"
+aria-label="الصورة 1">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(1)"
+aria-label="الصورة 2">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(2)"
+aria-label="الصورة 3">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(3)"
+aria-label="الصورة 4">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(4)"
+aria-label="الصورة 5">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(5)"
+aria-label="الصورة 6">
+</button>
+
+<button
+class="hero-dot"
+onclick="goSlide(6)"
+aria-label="الصورة 7">
+</button>
 
 </div>
 
 
 <div class="hero-label">
+
 SAMEM DECOR • DESIGN
-</div>
-
-
-<div class="hero-controls">
-
-<button class="hero-dot active"
-onclick="goSlide(0)">
-</button>
-
-<button class="hero-dot"
-onclick="goSlide(1)">
-</button>
-
-<button class="hero-dot"
-onclick="goSlide(2)">
-</button>
-
-<button class="hero-dot"
-onclick="goSlide(3)">
-</button>
-
-<button class="hero-dot"
-onclick="goSlide(4)">
-</button>
-
-<button class="hero-dot"
-onclick="goSlide(5)">
-</button>
 
 </div>
+
 
 </section>
 
 
-<!-- =========================
-     QUICK
-========================= -->
+
+<!-- ==================================================
+     QUICK STEPS
+================================================== -->
 
 <section class="quick">
 
@@ -869,39 +1275,63 @@ onclick="goSlide(5)">
 
 <div class="quick-grid">
 
+
 <div class="quick-item">
 
-<div class="quick-number">1</div>
+<div class="quick-number">
+1
+</div>
 
 <div>
-<b data-i18n="q1">اختار</b>
+
+<b data-i18n="q1">
+اختار
+</b>
+
 <br>
-<span data-i18n="q1s">القسم</span>
+
+<span data-i18n="q1s">
+القسم
+</span>
+
 </div>
 
 </div>
 
 
+
 <div class="quick-item">
 
-<div class="quick-number">2</div>
+<div class="quick-number">
+2
+</div>
 
 <div>
-<b data-i18n="q2">صورة</b>
+
+<b data-i18n="q2">
+صورة
+</b>
+
 <br>
+
 <span data-i18n="q2s">
 ديال المكان
 </span>
+
 </div>
 
 </div>
+
 
 
 <div class="quick-item">
 
-<div class="quick-number">3</div>
+<div class="quick-number">
+3
+</div>
 
 <div>
+
 <b data-i18n="q3">
 قياسات
 </b>
@@ -917,9 +1347,12 @@ onclick="goSlide(5)">
 </div>
 
 
+
 <div class="quick-item">
 
-<div class="quick-number">4</div>
+<div class="quick-number">
+4
+</div>
 
 <div>
 
@@ -937,6 +1370,7 @@ onclick="goSlide(5)">
 
 </div>
 
+
 </div>
 
 </div>
@@ -944,14 +1378,17 @@ onclick="goSlide(5)">
 </section>
 
 
-<!-- =========================
-     CHOICES
-========================= -->
 
-<section class="choices"
+<!-- ==================================================
+     CHOICES
+================================================== -->
+
+<section
+class="choices"
 id="choices">
 
 <div class="wrap">
+
 
 <div class="section-title">
 
@@ -970,13 +1407,16 @@ id="choices">
 </div>
 
 
+
 <div class="choice-grid">
 
 
-<a class="choice"
+<a
+class="choice"
 href="configurateur.html?type=kitchen">
 
-<img src="images/kitchen.jpg"
+<img
+src="images/kitchen.jpg"
 alt="المطبخ">
 
 <div class="choice-info">
@@ -994,10 +1434,13 @@ L • U • I • Îlot
 </a>
 
 
-<a class="choice"
+
+<a
+class="choice"
 href="configurateur.html?type=bedroom">
 
-<img src="images/bedroom.jpg"
+<img
+src="images/bedroom.jpg"
 alt="غرفة النوم">
 
 <div class="choice-info">
@@ -1015,10 +1458,13 @@ alt="غرفة النوم">
 </a>
 
 
-<a class="choice"
+
+<a
+class="choice"
 href="configurateur.html?type=salon">
 
-<img src="images/salon.jpg"
+<img
+src="images/salon.jpg"
 alt="الصالون">
 
 <div class="choice-info">
@@ -1036,10 +1482,13 @@ alt="الصالون">
 </a>
 
 
-<a class="choice"
+
+<a
+class="choice"
 href="configurateur.html?type=dressing">
 
-<img src="images/dressing.jpg"
+<img
+src="images/dressing.jpg"
 alt="Dressing">
 
 <div class="choice-info">
@@ -1057,10 +1506,13 @@ Placard • بيبان • rangement
 </a>
 
 
-<a class="choice"
+
+<a
+class="choice"
 href="configurateur.html?type=tv">
 
-<img src="images/tv.jpg"
+<img
+src="images/tv.jpg"
 alt="Meuble TV">
 
 <div class="choice-info">
@@ -1085,14 +1537,17 @@ TV • niches • étagères
 </section>
 
 
-<!-- =========================
-     SPECIAL
-========================= -->
 
-<section class="special"
+<!-- ==================================================
+     SPECIAL SERVICES
+================================================== -->
+
+<section
+class="special"
 id="special">
 
 <div class="wrap">
+
 
 <div class="section-title">
 
@@ -1111,6 +1566,7 @@ SERVICES SPÉCIAUX
 </div>
 
 
+
 <div class="special-grid">
 
 
@@ -1124,13 +1580,17 @@ SERVICES SPÉCIAUX
 ستور، سدادر، ستائر وتابيسري حسب الطلب.
 </p>
 
-<a href="tapisserie.html"
+<a
+href="tapisserie.html"
 class="btn btn-dark"
 data-i18n="discover">
+
 شوف القسم
+
 </a>
 
 </div>
+
 
 
 <div class="special-card">
@@ -1143,10 +1603,13 @@ data-i18n="discover">
 بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
 </p>
 
-<a href="accessoires.html"
+<a
+href="accessoires.html"
 class="btn btn-dark"
 data-i18n="shop">
+
 شوف المنتجات
+
 </a>
 
 </div>
@@ -1159,13 +1622,15 @@ data-i18n="shop">
 </section>
 
 
-<!-- =========================
+
+<!-- ==================================================
      WORKS
-========================= -->
+================================================== -->
 
 <section class="works">
 
 <div class="wrap">
+
 
 <div class="section-title">
 
@@ -1183,24 +1648,31 @@ REAL PROJECTS
 
 </div>
 
-<a href="works.html"
+
+<a
+href="works.html"
 class="works-btn"
 data-i18n="seeWorks">
+
 شوف أعمالنا
+
 </a>
+
 
 </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- ==================================================
      PARTNERS
-========================= -->
+================================================== -->
 
 <section class="partners">
 
 <div class="wrap">
+
 
 <div class="section-title">
 
@@ -1239,14 +1711,16 @@ HETTICH
 
 </div>
 
+
 </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- ==================================================
      FOOTER
-========================= -->
+================================================== -->
 
 <footer>
 
@@ -1265,12 +1739,14 @@ HETTICH
 </footer>
 
 
-<!-- =========================
-     WHATSAPP
-========================= -->
 
-<a class="whatsapp"
-href="https://wa.me/212755350706"
+<!-- ==================================================
+     WHATSAPP
+================================================== -->
+
+<a
+class="whatsapp"
+href="https://wa.me/212000000000"
 target="_blank"
 aria-label="WhatsApp">
 
@@ -1283,11 +1759,12 @@ aria-label="WhatsApp">
 </a>
 
 
+
 <script>
 
-/* =========================
+/* ==================================================
    HERO SLIDER
-========================= */
+================================================== */
 
 const slides =
 document.querySelectorAll(".hero-slide");
@@ -1297,11 +1774,76 @@ document.querySelectorAll(".hero-dot");
 
 let currentSlide = 0;
 
+let sliderTimer;
+
+
+/* GO TO SLIDE */
+
 function goSlide(index){
+
+  if(!slides.length){
+    return;
+  }
 
   currentSlide = index;
 
-  slides.forEach((slide,i)=>{
+  slides.forEach(function(slide,i){
+
+    if(i === index){
+
+      slide.classList.add("active");
+
+    }else{
+
+      slide.classList.remove("active");
+
+    }
+
+  });
+
+
+  dots.forEach(function(dot,i){
+
+    if(i === index){
+
+      dot.classList.add("active");
+
+    }else{
+
+      dot.classList.remove("active");
+
+    }
+
+  });
+
+
+  restartSlider();
+}
+
+
+/* NEXT */
+
+function nextSlide(){
+
+  currentSlide++;
+
+  if(currentSlide >= slides.length){
+
+    currentSlide = 0;
+
+  }
+
+  goSlideWithoutRestart(currentSlide);
+}
+
+
+/* WITHOUT RESETTING TIMER */
+
+function goSlideWithoutRestart(index){
+
+  currentSlide = index;
+
+  slides.forEach(function(slide,i){
 
     slide.classList.toggle(
       "active",
@@ -1310,7 +1852,7 @@ function goSlide(index){
 
   });
 
-  dots.forEach((dot,i)=>{
+  dots.forEach(function(dot,i){
 
     dot.classList.toggle(
       "active",
@@ -1321,75 +1863,106 @@ function goSlide(index){
 
 }
 
-function nextSlide(){
 
-  currentSlide++;
+/* RESTART */
 
-  if(currentSlide >= slides.length){
-    currentSlide = 0;
-  }
+function restartSlider(){
 
-  goSlide(currentSlide);
+  clearInterval(sliderTimer);
 
+  sliderTimer =
+    setInterval(
+      nextSlide,
+      5000
+    );
 }
 
-setInterval(nextSlide,5000);
+
+/* START */
+
+restartSlider();
 
 
-/* =========================
+
+/* ==================================================
    LANGUAGE
-========================= */
+================================================== */
 
-const T={
+const T = {
 
 ar:{
 
 design:"صمم دابا",
+
 works:"أعمالنا",
+
 special:"الخدمات الخاصة",
 
-kicker:"تصميم • ديكور • تنفيذ",
+kicker:
+"تصميم • ديكور • تنفيذ",
 
-hero1:"دار عليك",
-hero2:"وديكور علينا",
+hero1:
+"دار عليك",
+
+hero2:
+"وديكور علينا",
 
 heroText:
 "اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
 
-start:"ابدأ التصميم",
+start:
+"ابدأ التصميم",
 
-contact:"تواصل معنا",
+contact:
+"تواصل معنا",
 
-q1:"اختار",
-q1s:"القسم",
+q1:
+"اختار",
 
-q2:"صورة",
-q2s:"ديال المكان",
+q1s:
+"القسم",
 
-q3:"قياسات",
-q3s:"العرض والطول والعلو",
+q2:
+"صورة",
 
-q4:"إرسال",
-q4s:"الطلب",
+q2s:
+"ديال المكان",
 
-chooseSmall:"صمم ديكورك",
+q3:
+"قياسات",
 
-chooseTitle:"شنو بغيتي تصمم؟",
+q3s:
+"العرض والطول والعلو",
+
+q4:
+"إرسال",
+
+q4s:
+"الطلب",
+
+chooseSmall:
+"صمم ديكورك",
+
+chooseTitle:
+"شنو بغيتي تصمم؟",
 
 chooseText:
 "اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
 
-kitchen:"المطبخ",
+kitchen:
+"المطبخ",
 
 kitchenSub:
 "L • U • I • Îlot",
 
-bedroom:"غرفة النوم",
+bedroom:
+"غرفة النوم",
 
 bedroomSub:
 "سرير • خزانات • تسريحة",
 
-salon:"الصالون",
+salon:
+"الصالون",
 
 salonSub:
 "جلسة • حائط • ديكور",
@@ -1421,11 +1994,14 @@ accessTitle:
 accessText:
 "بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
 
-discover:"شوف القسم",
+discover:
+"شوف القسم",
 
-shop:"شوف المنتجات",
+shop:
+"شوف المنتجات",
 
-worksTitle:"أعمالنا",
+worksTitle:
+"أعمالنا",
 
 worksText:
 "شوف المشاريع الحقيقية اللي خدمناها.",
@@ -1444,39 +2020,59 @@ rights:
 
 },
 
+
 fr:{
 
-design:"Créer mon projet",
+design:
+"Créer mon projet",
 
-works:"Nos réalisations",
+works:
+"Nos réalisations",
 
-special:"Services spécialisés",
+special:
+"Services spécialisés",
 
 kicker:
 "DESIGN • DÉCORATION • RÉALISATION",
 
-hero1:"Votre projet",
+hero1:
+"Votre projet",
 
-hero2:"Notre savoir-faire",
+hero2:
+"Notre savoir-faire",
 
 heroText:
 "Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
 
-start:"Commencer",
+start:
+"Commencer",
 
-contact:"Nous contacter",
+contact:
+"Nous contacter",
 
-q1:"Choisir",
-q1s:"la catégorie",
+q1:
+"Choisir",
 
-q2:"Photo",
-q2s:"de l'espace",
+q1s:
+"la catégorie",
 
-q3:"Dimensions",
-q3s:"largeur • longueur • hauteur",
+q2:
+"Photo",
 
-q4:"Envoyer",
-q4s:"la demande",
+q2s:
+"de l'espace",
+
+q3:
+"Dimensions",
+
+q3s:
+"largeur • longueur • hauteur",
+
+q4:
+"Envoyer",
+
+q4s:
+"la demande",
 
 chooseSmall:
 "VOTRE PROJET",
@@ -1487,17 +2083,20 @@ chooseTitle:
 chooseText:
 "Choisissez une catégorie pour passer directement à l'étape suivante.",
 
-kitchen:"Cuisine",
+kitchen:
+"Cuisine",
 
 kitchenSub:
 "L • U • I • Îlot",
 
-bedroom:"Chambre",
+bedroom:
+"Chambre",
 
 bedroomSub:
 "Lit • placards • coiffeuse",
 
-salon:"Salon",
+salon:
+"Salon",
 
 salonSub:
 "Séjour • mur • décoration",
@@ -1558,6 +2157,8 @@ rights:
 };
 
 
+/* CHANGE LANGUAGE */
+
 function setLang(lang){
 
   localStorage.setItem(
@@ -1565,47 +2166,65 @@ function setLang(lang){
     lang
   );
 
+
   document.documentElement.lang =
-    lang === "fr" ? "fr" : "ar";
+    lang === "fr"
+    ? "fr"
+    : "ar";
+
 
   document.documentElement.dir =
-    lang === "fr" ? "ltr" : "rtl";
-
-  document.querySelectorAll(
-    "[data-i18n]"
-  ).forEach(el=>{
-
-    const key =
-      el.dataset.i18n;
-
-    if(T[lang][key]){
-      el.textContent =
-        T[lang][key];
-    }
-
-  });
-
-  document.getElementById(
-    "arBtn"
-  ).classList.toggle(
-    "active",
-    lang === "ar"
-  );
-
-  document.getElementById(
-    "frBtn"
-  ).classList.toggle(
-    "active",
     lang === "fr"
-  );
+    ? "ltr"
+    : "rtl";
+
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(function(el){
+
+      const key =
+        el.dataset.i18n;
+
+      if(
+        T[lang] &&
+        T[lang][key]
+      ){
+
+        el.textContent =
+          T[lang][key];
+
+      }
+
+    });
+
+
+  document
+    .getElementById("arBtn")
+    .classList.toggle(
+      "active",
+      lang === "ar"
+    );
+
+
+  document
+    .getElementById("frBtn")
+    .classList.toggle(
+      "active",
+      lang === "fr"
+    );
 
 }
+
+
+/* LOAD LANGUAGE */
 
 setLang(
   localStorage.getItem("siteLang") || "ar"
 );
 
 </script>
+
 
 </body>
 </html>

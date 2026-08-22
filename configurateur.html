@@ -1,546 +1,258 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#17231d">
-
-<title>صمم ديكورك | Configurateur</title>
+<title>صمم ديكورك | طلب تصميم</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f4f5f3;
-  color:#17231d;
-  line-height:1.7;
-}
-
-button,
-input,
-select,
-textarea{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f1eb;
+color:#17231d;
+line-height:1.7
 }
 
 .wrap{
-  width:min(1100px,92%);
-  margin:auto;
+width:min(900px,92%);
+margin:auto
 }
-
-/* HEADER */
 
 header{
-  height:72px;
-  background:#17231d;
-  color:white;
-  display:flex;
-  align-items:center;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
+background:#17231d;
+color:white;
+padding:16px 0;
+position:sticky;
+top:0;
+z-index:20;
+box-shadow:0 4px 20px #0003
 }
 
-.header-inner{
-  width:min(1100px,92%);
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center
 }
 
 .logo{
-  color:white;
-  text-decoration:none;
-  font-size:24px;
-  font-weight:900;
+font-size:22px;
+font-weight:900
 }
 
-.logo span{
-  color:#c7ccd0;
-}
-
-.lang{
-  display:flex;
-  gap:5px;
-}
+.logo span{color:#c7cbd0}
 
 .lang button{
-  border:1px solid #697174;
-  background:transparent;
-  color:white;
-  padding:6px 10px;
-  border-radius:5px;
+border:1px solid #aaa;
+background:transparent;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+cursor:pointer
 }
 
-.lang button.active{
-  background:#c7ccd0;
-  color:#17231d;
+main{padding:45px 0 80px}
+
+.top{
+text-align:center;
+margin-bottom:35px
 }
 
-/* MAIN */
-
-main{
-  padding:40px 0 80px;
+.top small{
+color:#7d8388;
+font-weight:bold;
+letter-spacing:2px
 }
 
-.page-title{
-  text-align:center;
-  margin-bottom:30px;
+.top h1{
+font-size:38px;
+margin:7px 0
 }
 
-.page-title small{
-  color:#737b7e;
-  letter-spacing:2px;
-  font-weight:bold;
-}
-
-.page-title h1{
-  font-size:clamp(30px,5vw,48px);
-  margin:5px 0;
-}
-
-.page-title p{
-  color:#68706d;
-}
-
-/* PROGRESS */
+.top p{color:#777}
 
 .progress{
-  display:flex;
-  justify-content:center;
-  gap:7px;
-  margin:25px auto 35px;
-  flex-wrap:wrap;
+display:flex;
+gap:6px;
+margin-bottom:30px
 }
 
-.progress-item{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  color:#8b9294;
-  font-size:12px;
+.progress div{
+height:5px;
+flex:1;
+background:#d5d5d5;
+border-radius:5px
 }
 
-.progress-number{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  border:1px solid #aeb5b7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.progress .active{background:#70767b}
+
+.card{
+background:white;
+border-radius:12px;
+padding:28px;
+box-shadow:0 8px 30px #0000000d;
+margin-bottom:18px
 }
 
-.progress-item.active{
-  color:#17231d;
-  font-weight:bold;
+.card h2{
+font-size:23px;
+margin-bottom:8px
 }
 
-.progress-item.active .progress-number{
-  background:#17231d;
-  color:#fff;
-  border-color:#17231d;
-}
-
-/* CARD */
-
-.config-card{
-  background:white;
-  border:1px solid #dfe2df;
-  border-radius:14px;
-  box-shadow:0 10px 35px rgba(0,0,0,.06);
-  padding:30px;
-}
-
-.step{
-  display:none;
-}
-
-.step.active{
-  display:block;
-}
-
-.step-title{
-  margin-bottom:22px;
-}
-
-.step-title h2{
-  font-size:27px;
-  margin-bottom:5px;
-}
-
-.step-title p{
-  color:#737a77;
-}
-
-/* DEPARTMENTS */
-
-.department-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.department{
-  border:1px solid #dfe2df;
-  background:#fafbfa;
-  border-radius:10px;
-  padding:22px;
-  min-height:125px;
-  text-align:left;
-  transition:.2s;
-}
-
-.department:hover{
-  border-color:#879094;
-  transform:translateY(-2px);
-}
-
-.department.selected{
-  background:#17231d;
-  color:white;
-  border-color:#17231d;
-}
-
-.department-icon{
-  font-size:25px;
-  margin-bottom:8px;
-}
-
-.department h3{
-  font-size:17px;
-  margin-bottom:3px;
-}
-
-.department p{
-  color:#737b78;
-  font-size:12px;
-}
-
-.department.selected p{
-  color:#cdd2d3;
-}
-
-/* OPTIONS */
-
-.option-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.option{
-  border:1px solid #dfe2df;
-  background:#fafbfa;
-  border-radius:9px;
-  padding:17px;
-  min-height:72px;
-  text-align:left;
-  transition:.2s;
-}
-
-.option:hover{
-  border-color:#899195;
-}
-
-.option.selected{
-  border-color:#17231d;
-  background:#edf0ee;
-  box-shadow:inset 0 0 0 1px #17231d;
-}
-
-.option strong{
-  display:block;
-  font-size:15px;
-}
-
-.option span{
-  color:#747c79;
-  font-size:12px;
-}
-
-/* INPUTS */
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.card-desc{
+color:#777;
+font-size:14px;
+margin-bottom:20px
 }
 
 .field{
-  margin-bottom:18px;
+margin-bottom:18px
 }
 
-.field label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:7px;
-  font-size:14px;
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px
 }
 
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  border:1px solid #d7dcda;
-  background:#fafbfa;
-  border-radius:7px;
-  padding:13px;
-  outline:none;
+input,textarea,select{
+width:100%;
+border:1px solid #d6d6d6;
+background:#fafafa;
+border-radius:7px;
+padding:13px;
+font-family:inherit;
+font-size:15px;
+outline:none
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:#687276;
-  background:white;
+input:focus,textarea:focus,select:focus{
+border-color:#73797e;
+background:#fff
 }
 
-.field textarea{
-  min-height:120px;
-  resize:vertical;
+textarea{
+min-height:110px;
+resize:vertical
 }
 
-/* PHOTO */
-
-.photo-box{
-  border:2px dashed #c5cbca;
-  border-radius:10px;
-  padding:30px 20px;
-  text-align:center;
-  background:#fafbfa;
-  margin-bottom:20px;
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
 }
 
-.photo-box strong{
-  display:block;
-  margin-bottom:5px;
+.option{
+border:1px solid #ddd;
+background:#fafafa;
+padding:17px;
+border-radius:9px;
+cursor:pointer;
+text-align:center;
+transition:.2s;
+font-weight:bold
 }
 
-.photo-box span{
-  color:#777;
-  font-size:13px;
+.option:hover{
+border-color:#8b9196;
+transform:translateY(-2px)
 }
 
-.photo-box input{
-  margin-top:15px;
+.option.selected{
+background:#17231d;
+color:white;
+border-color:#17231d
 }
 
-/* MODE */
-
-.mode-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+.option small{
+display:block;
+font-weight:normal;
+color:#888;
+margin-top:4px
 }
 
-.mode{
-  border:1px solid #d9dddb;
-  border-radius:10px;
-  padding:25px;
-  background:#fafbfa;
-  text-align:left;
-}
+.option.selected small{color:#c7cbd0}
 
-.mode.selected{
-  border-color:#17231d;
-  background:#eef1ef;
-}
+.choice-section{display:none}
+.choice-section.active{display:block}
 
-.mode h3{
-  margin-bottom:6px;
-}
-
-.mode p{
-  color:#737a77;
-  font-size:13px;
-}
-
-/* BUDGET */
-
-.budget-box{
-  background:#f1f3f2;
-  border-radius:10px;
-  padding:25px;
-}
-
-.budget-value{
-  font-size:30px;
-  font-weight:bold;
-  margin:10px 0;
-}
-
-input[type=range]{
-  width:100%;
-}
-
-/* SUMMARY */
-
-.summary{
-  background:#f3f5f4;
-  border-radius:10px;
-  padding:20px;
-}
-
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:10px 0;
-  border-bottom:1px solid #dce0de;
-}
-
-.summary-row:last-child{
-  border-bottom:0;
-}
-
-.summary-row span:first-child{
-  color:#747b78;
-}
-
-.summary-row strong{
-  text-align:right;
-}
-
-/* BUTTONS */
-
-.actions{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:30px;
-  padding-top:20px;
-  border-top:1px solid #e1e4e2;
+.buttons{
+display:flex;
+justify-content:space-between;
+gap:12px;
+margin-top:25px
 }
 
 .btn{
-  border:0;
-  padding:13px 25px;
-  border-radius:7px;
-  font-weight:bold;
-  font-size:15px;
+border:0;
+padding:14px 24px;
+border-radius:7px;
+font-family:inherit;
+font-weight:bold;
+cursor:pointer;
+font-size:15px
 }
 
-.btn-back{
-  background:#e8ebea;
-  color:#17231d;
+.back{
+background:#e4e4e4;
+color:#333
 }
 
-.btn-next{
-  background:#17231d;
-  color:white;
+.next{
+background:#17231d;
+color:white;
+flex:1
 }
 
-.btn-next:hover{
-  background:#273b31;
+.send{
+background:#25d366;
+color:#06200d;
+width:100%
 }
 
-.btn-send{
-  background:#252b2d;
-  color:white;
+.photo{
+border:2px dashed #c7cbd0;
+border-radius:10px;
+padding:25px;
+text-align:center;
+cursor:pointer;
+background:#fafafa
 }
 
-/* SUCCESS */
+.photo input{display:none}
 
-.success{
-  display:none;
-  text-align:center;
-  padding:50px 20px;
+.photo strong{
+display:block;
+font-size:17px;
+margin-bottom:5px
 }
 
-.success.show{
-  display:block;
+.preview{
+display:none;
+margin-top:15px;
+max-height:240px;
+object-fit:cover;
+border-radius:8px
 }
 
-.success-icon{
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  background:#17231d;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 20px;
-  font-size:25px;
+.summary{
+background:#f0efed;
+border-radius:8px;
+padding:18px;
+line-height:2
 }
 
-.success h2{
-  margin-bottom:10px;
-}
+.summary strong{color:#555}
 
-.success p{
-  color:#707774;
-  margin-bottom:25px;
-}
+.hidden{display:none!important}
 
-/* MOBILE */
-
-@media(max-width:750px){
-
-  .department-grid,
-  .option-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .config-card{
-    padding:20px;
-  }
-}
-
-@media(max-width:520px){
-
-  header{
-    height:64px;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  main{
-    padding:25px 0 60px;
-  }
-
-  .department-grid,
-  .option-grid,
-  .mode-grid{
-    grid-template-columns:1fr;
-  }
-
-  .department{
-    min-height:auto;
-  }
-
-  .step-title h2{
-    font-size:23px;
-  }
-
-  .actions{
-    position:sticky;
-    bottom:0;
-    background:white;
-    margin-left:-20px;
-    margin-right:-20px;
-    padding:15px 20px;
-    z-index:20;
-  }
-
-  .btn{
-    flex:1;
-  }
+@media(max-width:650px){
+.grid{grid-template-columns:repeat(2,1fr)}
+.card{padding:20px}
+.top h1{font-size:31px}
+.buttons{flex-direction:column}
 }
 </style>
 </head>
@@ -548,175 +260,533 @@ input[type=range]{
 <body>
 
 <header>
-  <div class="header-inner">
+<div class="wrap nav">
+<div class="logo">صمم <span>ديكورك</span></div>
 
-    <a href="index.html" class="logo">
-      صمم <span>ديكورك</span>
-    </a>
-
-    <div class="lang">
-      <button id="darijaBtn" class="active" onclick="setLanguage('darija')">
-        الدارجة
-      </button>
-      <button id="frBtn" onclick="setLanguage('fr')">
-        FR
-      </button>
-    </div>
-
-  </div>
+<div class="lang">
+<button onclick="setLanguage('ar')">دارجة</button>
+<button onclick="setLanguage('fr')">FR</button>
+</div>
+</div>
 </header>
 
 <main>
-
 <div class="wrap">
 
-  <div class="page-title">
-    <small>CONCEPTION • DESIGN • RÉALISATION</small>
-    <h1 id="mainTitle">صمم ديكورك</h1>
-    <p id="mainSubtitle">
-      جاوب غير على الأسئلة المهمة، وحنا نكملو عليك الباقي.
-    </p>
-  </div>
+<div class="top">
+<small id="eyebrow">DESIGN • CHTAIBI HAMZA</small>
+<h1 id="title">طلب تصميم</h1>
+<p id="subtitle">جاوب غير على المعلومات المهمة، وحنا نتكلفو بالباقي.</p>
+</div>
 
+<div class="progress">
+<div id="p1" class="active"></div>
+<div id="p2"></div>
+<div id="p3"></div>
+<div id="p4"></div>
+</div>
 
-  <!-- PROGRESS -->
+<!-- STEP 1 -->
+<section id="step1" class="choice-section active">
 
-  <div class="progress">
+<div class="card">
 
-    <div class="progress-item active" id="p1">
-      <div class="progress-number">1</div>
-      <span data-d="القسم" data-f="Projet">القسم</span>
-    </div>
+<h2 id="welcomeTitle">شرفنا باسمك والمدينة</h2>
 
-    <div class="progress-item" id="p2">
-      <div class="progress-number">2</div>
-      <span data-d="الاختيارات" data-f="Choix">الاختيارات</span>
-    </div>
+<p class="card-desc" id="welcomeDesc">
+باش نعرفو مع من غادي نتواصلو وفين غادي يكون المشروع.
+</p>
 
-    <div class="progress-item" id="p3">
-      <div class="progress-number">3</div>
-      <span data-d="المكان" data-f="Espace">المكان</span>
-    </div>
+<div class="field">
+<label id="nameLabel">الاسم الكامل</label>
+<input id="name" placeholder="مثلاً: حمزة شتيبي">
+</div>
 
-    <div class="progress-item" id="p4">
-      <div class="progress-number">4</div>
-      <span data-d="الميزانية" data-f="Budget">الميزانية</span>
-    </div>
+<div class="field">
+<label id="cityLabel">المدينة</label>
+<input id="city" placeholder="مثلاً: الدار البيضاء">
+</div>
 
-    <div class="progress-item" id="p5">
-      <div class="progress-number">5</div>
-      <span data-d="الإرسال" data-f="Envoi">الإرسال</span>
-    </div>
+</div>
 
-  </div>
+<div class="card">
 
+<h2 id="serviceTitle">شنو محتاج؟</h2>
 
-  <div class="config-card">
+<div class="grid" id="serviceOptions"></div>
 
+</div>
 
-    <!-- STEP 1 -->
+<div class="buttons">
+<button class="btn next" onclick="goStep(2)" id="next1">التالي</button>
+</div>
 
-    <div class="step active" id="step1">
+</section>
 
-      <div class="step-title">
-        <h2 data-d="شنو محتاج؟" data-f="Quel projet souhaitez-vous réaliser ?">
-          شنو محتاج؟
-        </h2>
+<!-- STEP 2 -->
+<section id="step2" class="choice-section">
 
-        <p data-d="اختار القسم اللي بغيتي تصمم."
-           data-f="Choisissez le projet que vous souhaitez concevoir.">
-          اختار القسم اللي بغيتي تصمم.
-        </p>
-      </div>
+<div class="card">
 
-      <div class="department-grid" id="departments"></div>
+<h2 id="methodTitle">كيفاش بغيتي الطلب؟</h2>
 
-      <div class="actions">
-        <div></div>
-        <button class="btn btn-next" onclick="nextStep()">
-          التالي →
-        </button>
-      </div>
+<p class="card-desc" id="methodDesc">
+تقدر تخلي الاختيار علينا أو تدخل التفاصيل بنفسك.
+</p>
 
-    </div>
+<div class="grid">
 
+<div class="option" id="quickOption" onclick="chooseMethod('quick',this)">
+⚡ طلب مختصر
+<small>صورة + قياسات + ملاحظات</small>
+</div>
 
-    <!-- STEP 2 -->
+<div class="option" id="detailOption" onclick="chooseMethod('detail',this)">
+🎨 اختيار دقيق
+<small>الشكل + اللون + الخامة + التفاصيل</small>
+</div>
 
-    <div class="step" id="step2">
+</div>
 
-      <div class="step-title">
-        <h2 id="optionsTitle">اختيارات المشروع</h2>
-        <p id="optionsSubtitle">
-          اختار غير الحوايج اللي مهمين ليك، والباقي نقدروا نعاونك فيه.
-        </p>
-      </div>
+</div>
 
-      <div id="dynamicOptions"></div>
+<div class="card">
 
-      <div class="actions">
-        <button class="btn btn-back" onclick="prevStep()">← رجوع</button>
-        <button class="btn btn-next" onclick="nextStep()">التالي →</button>
-      </div>
+<h2 id="photoTitle">صورة المكان</h2>
 
-    </div>
+<p class="card-desc" id="photoDesc">
+صورة وحدة على الأقل كتعاوننا نفهمو المكان.
+</p>
 
+<label class="photo">
+<input type="file" id="photo" accept="image/*" onchange="previewPhoto(this)">
+<strong id="photoButton">📷 اختار صورة المكان</strong>
+<span id="photoHint">اضغط هنا باش تختار الصورة من الهاتف</span>
+</label>
 
-    <!-- STEP 3 -->
+<img id="preview" class="preview">
 
-    <div class="step" id="step3">
+</div>
 
-      <div class="step-title">
-        <h2 data-d="المكان والقياسات" data-f="Espace et dimensions">
-          المكان والقياسات
-        </h2>
+<div class="buttons">
+<button class="btn back" onclick="goStep(1)" id="back2">رجوع</button>
+<button class="btn next" onclick="goStep(3)" id="next2">التالي</button>
+</div>
 
-        <p data-d="إلا عندك صورة للمكان، حطها هنا. القياسات تقدر تدخل غير اللي عندك."
-           data-f="Ajoutez une photo de l'espace et les dimensions que vous connaissez.">
-          إلا عندك صورة للمكان، حطها هنا. القياسات تقدر تدخل غير اللي عندك.
-        </p>
-      </div>
+</section>
 
-      <div class="photo-box">
+<!-- STEP 3 -->
+<section id="step3" class="choice-section">
 
-        <strong data-d="📷 صورة المكان" data-f="📷 Photo de l'espace">
-          📷 صورة المكان
-        </strong>
+<div class="card">
 
-        <span data-d="الصورة كتعاوننا نفهمو المكان بشكل أفضل."
-              data-f="La photo nous aide à mieux comprendre l'espace.">
-          الصورة كتعاوننا نفهمو المكان بشكل أفضل.
-        </span>
+<h2 id="measureTitle">القياسات</h2>
 
-        <input
-          type="file"
-          id="photo"
-          accept="image/*">
+<p class="card-desc" id="measureDesc">
+إلا ماعرفتيش القياسات كاملة، دخل غير اللي عندك وخلي الباقي علينا.
+</p>
 
-      </div>
+<div class="grid">
 
+<div class="field">
+<label id="widthLabel">العرض cm</label>
+<input id="width" type="number" placeholder="مثلاً 300">
+</div>
 
-      <div class="form-grid">
+<div class="field">
+<label id="lengthLabel">الطول cm</label>
+<input id="length" type="number" placeholder="مثلاً 400">
+</div>
 
-        <div class="field">
-          <label data-d="العرض (سم)" data-f="Largeur (cm)">
-            العرض (سم)
-          </label>
-          <input type="number" id="width" placeholder="مثلا 300">
-        </div>
+<div class="field">
+<label id="heightLabel">العلو cm</label>
+<input id="height" type="number" placeholder="مثلاً 260">
+</div>
 
-        <div class="field">
-          <label data-d="الطول (سم)" data-f="Longueur (cm)">
-            الطول (سم)
-          </label>
-          <input type="number" id="length" placeholder="مثلا 400">
-        </div>
+</div>
 
-        <div class="field">
-          <label data-d="العلو (سم)" data-f="Hauteur (cm)">
-            العلو (سم)
-          </label>
-          <input type="number" id="height" placeholder="مثلا 260">
-        </div>
+</div>
 
-      </div>
+<div class="card" id="specificCard">
+
+<h2 id="specificTitle">اختيارات المشروع</h2>
+
+<div id="specificOptions" class="grid"></div>
+
+</div>
+
+<div class="card">
+
+<h2 id="budgetTitle">الميزانية</h2>
+
+<div class="grid" id="budgetOptions"></div>
+
+</div>
+
+<div class="buttons">
+<button class="btn back" onclick="goStep(2)" id="back3">رجوع</button>
+<button class="btn next" onclick="goStep(4)" id="next3">التالي</button>
+</div>
+
+</section>
+
+<!-- STEP 4 -->
+<section id="step4" class="choice-section">
+
+<div class="card">
+
+<h2 id="noteTitle">ملاحظاتك</h2>
+
+<p class="card-desc" id="noteDesc">
+كتب لينا أي حاجة مهمة بغيتيها فالمشروع.
+</p>
+
+<textarea id="notes" placeholder="مثلاً: بغيت لون فاتح، LED، بلاصة للفران..."></textarea>
+
+</div>
+
+<div class="card">
+
+<h2 id="summaryTitle">ملخص الطلب</h2>
+
+<div class="summary" id="summary"></div>
+
+</div>
+
+<div class="buttons">
+<button class="btn back" onclick="goStep(3)" id="back4">رجوع</button>
+<button class="btn send" onclick="sendWhatsApp()" id="sendButton">
+💬 صيفط الطلب عبر واتساب
+</button>
+</div>
+
+</section>
+
+</div>
+</main>
+
+<script>
+
+const data={
+kitchen:{
+ar:"المطبخ",
+fr:"Cuisine",
+optionsAr:["L","U","مستقيم","جزيرة","على شكل G"],
+optionsFr:["L","U","Linéaire","Îlot","G"]
+},
+bedroom:{
+ar:"غرفة النوم",
+fr:"Chambre",
+optionsAr:["سرير مزدوج","سرير مع تخزين","Placard","Dressing","تسريحة"],
+optionsFr:["Lit double","Lit avec rangement","Placard","Dressing","Coiffeuse"]
+},
+salon:{
+ar:"الصالون",
+fr:"Salon",
+optionsAr:["صالون مغربي","صالون عصري","TV + حيط","جلسة زاوية","مكتبة"],
+optionsFr:["Salon marocain","Salon moderne","TV + mur","Canapé d'angle","Bibliothèque"]
+},
+dressing:{
+ar:"Dressing & Placard",
+fr:"Dressing & Placard",
+optionsAr:["بيبان عادية","بيبان كوليس","وسط زجاج","زجاج كامل","تقسيم داخلي"],
+optionsFr:["Portes battantes","Portes coulissantes","Milieu vitré","Tout vitré","Aménagement intérieur"]
+},
+tv:{
+ar:"Meuble TV",
+fr:"Meuble TV",
+optionsAr:["حيط كامل","قوس كبير","نيش","رفوف","خشب + أسود"],
+optionsFr:["Mur complet","Grand arc","Niche","Étagères","Bois + noir"]
+},
+tapisserie:{
+ar:"الطابيسري والستور",
+fr:"Tapisserie & Rideaux",
+optionsAr:["ستور","سدادر","بانكيطة","ناموسية","كوفـر"],
+optionsFr:["Rideaux","Coussins","Banquette","Moustiquaire","Couvre-lit"]
+},
+accessories:{
+ar:"الإكسسوارات",
+fr:"Accessoires",
+optionsAr:["LED","مقابض","سلال","Tiroirs","إكسسوارات أخرى"],
+optionsFr:["LED","Poignées","Paniers","Tiroirs","Autres accessoires"]
+}
+};
+
+let currentType=new URLSearchParams(location.search).get("type")||"kitchen";
+let method="";
+let selected=[];
+let lang="ar";
+
+const budgetsAr=["أقل من 10,000 DH","10,000 – 20,000 DH","20,000 – 35,000 DH","أكثر من 35,000 DH"];
+const budgetsFr=["Moins de 10 000 DH","10 000 – 20 000 DH","20 000 – 35 000 DH","Plus de 35 000 DH"];
+
+function render(){
+
+const d=data[currentType];
+
+document.getElementById("title").textContent=
+lang==="ar"?"طلب تصميم "+d.ar:"Demande de design — "+d.fr;
+
+const box=document.getElementById("serviceOptions");
+box.innerHTML="";
+
+data && Object.keys(data).forEach(k=>{
+const o=document.createElement("div");
+o.className="option";
+o.textContent=lang==="ar"?data[k].ar:data[k].fr;
+o.onclick=()=>{
+currentType=k;
+selected=[];
+render();
+document.querySelectorAll("#serviceOptions .option").forEach(x=>x.classList.remove("selected"));
+o.classList.add("selected");
+};
+box.appendChild(o);
+});
+
+const specific=document.getElementById("specificOptions");
+specific.innerHTML="";
+
+const arr=lang==="ar"?d.optionsAr:d.optionsFr;
+
+arr.forEach((x,i)=>{
+const o=document.createElement("div");
+o.className="option";
+o.textContent=x;
+o.onclick=()=>{
+o.classList.toggle("selected");
+if(o.classList.contains("selected")) selected.push(x);
+else selected=selected.filter(v=>v!==x);
+};
+specific.appendChild(o);
+});
+
+const budgets=document.getElementById("budgetOptions");
+budgets.innerHTML="";
+
+const b=lang==="ar"?budgetsAr:budgetsFr;
+
+b.forEach(x=>{
+const o=document.createElement("div");
+o.className="option";
+o.textContent=x;
+o.onclick=()=>{
+budgets.querySelectorAll(".option").forEach(a=>a.classList.remove("selected"));
+o.classList.add("selected");
+o.dataset.value=x;
+};
+budgets.appendChild(o);
+});
+
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+}
+
+function chooseMethod(value,el){
+method=value;
+document.querySelectorAll("#quickOption,#detailOption")
+.forEach(x=>x.classList.remove("selected"));
+el.classList.add("selected");
+
+if(value==="quick"){
+document.getElementById("specificCard").classList.add("hidden");
+}else{
+document.getElementById("specificCard").classList.remove("hidden");
+}
+}
+
+function previewPhoto(input){
+if(!input.files[0])return;
+const p=document.getElementById("preview");
+p.src=URL.createObjectURL(input.files[0]);
+p.style.display="block";
+}
+
+function goStep(n){
+
+if(n===2){
+if(!document.getElementById("name").value.trim()){
+alert(lang==="ar"?"دخل الاسم ديالك من فضلك":"Veuillez saisir votre nom");
+return;
+}
+if(!document.getElementById("city").value.trim()){
+alert(lang==="ar"?"دخل المدينة ديالك من فضلك":"Veuillez saisir votre ville");
+return;
+}
+}
+
+if(n===3 && !method){
+alert(lang==="ar"?"اختار طريقة الطلب":"Choisissez le type de demande");
+return;
+}
+
+for(let i=1;i<=4;i++){
+document.getElementById("step"+i).classList.remove("active");
+document.getElementById("p"+i).classList.remove("active");
+}
+
+document.getElementById("step"+n).classList.add("active");
+
+for(let i=1;i<=n;i++)
+document.getElementById("p"+i).classList.add("active");
+
+if(n===4)buildSummary();
+
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function buildSummary(){
+
+const d=data[currentType];
+const budgetEl=document.querySelector("#budgetOptions .selected");
+const budget=budgetEl?budgetEl.textContent:"غير محددة";
+
+document.getElementById("summary").innerHTML=`
+<strong>${lang==="ar"?"الاسم":"Nom"}:</strong>
+${escapeHtml(document.getElementById("name").value)}<br>
+
+<strong>${lang==="ar"?"المدينة":"Ville"}:</strong>
+${escapeHtml(document.getElementById("city").value)}<br>
+
+<strong>${lang==="ar"?"المشروع":"Projet"}:</strong>
+${lang==="ar"?d.ar:d.fr}<br>
+
+<strong>${lang==="ar"?"طريقة الطلب":"Méthode"}:</strong>
+${method==="quick"?
+(lang==="ar"?"مختصر":"Rapide"):
+(lang==="ar"?"اختيار دقيق":"Détaillé")}<br>
+
+<strong>${lang==="ar"?"القياسات":"Dimensions"}:</strong>
+${document.getElementById("width").value||"-"} ×
+${document.getElementById("length").value||"-"} ×
+${document.getElementById("height").value||"-"} cm<br>
+
+<strong>${lang==="ar"?"الاختيارات":"Options"}:</strong>
+${selected.length?escapeHtml(selected.join("، ")):"-" }<br>
+
+<strong>${lang==="ar"?"الميزانية":"Budget"}:</strong>
+${escapeHtml(budget)}
+`;
+}
+
+function escapeHtml(str){
+return String(str).replace(/[&<>"']/g,m=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#039;"
+}[m]));
+}
+
+function sendWhatsApp(){
+
+buildSummary();
+
+const d=data[currentType];
+const budgetEl=document.querySelector("#budgetOptions .selected");
+
+const message=
+`طلب جديد - صمم ديكورك
+
+الاسم: ${document.getElementById("name").value}
+المدينة: ${document.getElementById("city").value}
+
+المشروع: ${lang==="ar"?d.ar:d.fr}
+
+طريقة الطلب:
+${method==="quick"?"طلب مختصر":"اختيار دقيق"}
+
+القياسات:
+العرض: ${document.getElementById("width").value||"-"} cm
+الطول: ${document.getElementById("length").value||"-"} cm
+العلو: ${document.getElementById("height").value||"-"} cm
+
+الاختيارات:
+${selected.join("، ")||"-"}
+
+الميزانية:
+${budgetEl?budgetEl.textContent:"غير محددة"}
+
+الملاحظات:
+${document.getElementById("notes").value||"-"}
+
+الصورة:
+الزبون غادي يرسل الصورة مباشرة فواتساب.`;
+
+window.open(
+"https://wa.me/212754350706?text="+encodeURIComponent(message),
+"_blank"
+);
+}
+
+function setLanguage(l){
+lang=l;
+render();
+
+if(lang==="ar"){
+document.getElementById("subtitle").textContent="جاوب غير على المعلومات المهمة، وحنا نتكلفو بالباقي.";
+document.getElementById("welcomeTitle").textContent="شرفنا باسمك والمدينة";
+document.getElementById("welcomeDesc").textContent="باش نعرفو مع من غادي نتواصلو وفين غادي يكون المشروع.";
+document.getElementById("nameLabel").textContent="الاسم الكامل";
+document.getElementById("cityLabel").textContent="المدينة";
+document.getElementById("serviceTitle").textContent="شنو محتاج؟";
+document.getElementById("methodTitle").textContent="كيفاش بغيتي الطلب؟";
+document.getElementById("methodDesc").textContent="تقدر تخلي الاختيار علينا أو تدخل التفاصيل بنفسك.";
+document.getElementById("photoTitle").textContent="صورة المكان";
+document.getElementById("photoDesc").textContent="صورة وحدة على الأقل كتعاوننا نفهمو المكان.";
+document.getElementById("photoButton").textContent="📷 اختار صورة المكان";
+document.getElementById("photoHint").textContent="اضغط هنا باش تختار الصورة من الهاتف";
+document.getElementById("measureTitle").textContent="القياسات";
+document.getElementById("measureDesc").textContent="إلا ماعرفتيش القياسات كاملة، دخل غير اللي عندك وخلي الباقي علينا.";
+document.getElementById("widthLabel").textContent="العرض cm";
+document.getElementById("lengthLabel").textContent="الطول cm";
+document.getElementById("heightLabel").textContent="العلو cm";
+document.getElementById("specificTitle").textContent="اختيارات المشروع";
+document.getElementById("budgetTitle").textContent="الميزانية";
+document.getElementById("noteTitle").textContent="ملاحظاتك";
+document.getElementById("noteDesc").textContent="كتب لينا أي حاجة مهمة بغيتيها فالمشروع.";
+document.getElementById("summaryTitle").textContent="ملخص الطلب";
+document.getElementById("next1").textContent="التالي";
+document.getElementById("next2").textContent="التالي";
+document.getElementById("next3").textContent="التالي";
+document.getElementById("back2").textContent="رجوع";
+document.getElementById("back3").textContent="رجوع";
+document.getElementById("back4").textContent="رجوع";
+document.getElementById("sendButton").textContent="💬 صيفط الطلب عبر واتساب";
+}else{
+document.getElementById("subtitle").textContent="Répondez uniquement aux informations importantes, nous nous occupons du reste.";
+document.getElementById("welcomeTitle").textContent="Votre nom et votre ville";
+document.getElementById("welcomeDesc").textContent="Pour savoir avec qui nous allons communiquer et où se trouve le projet.";
+document.getElementById("nameLabel").textContent="Nom complet";
+document.getElementById("cityLabel").textContent="Ville";
+document.getElementById("serviceTitle").textContent="De quoi avez-vous besoin ?";
+document.getElementById("methodTitle").textContent="Comment souhaitez-vous faire ?";
+document.getElementById("methodDesc").textContent="Vous pouvez nous laisser proposer les idées ou choisir les détails.";
+document.getElementById("photoTitle").textContent="Photo du lieu";
+document.getElementById("photoDesc").textContent="Une photo nous aide à mieux comprendre votre espace.";
+document.getElementById("photoButton").textContent="📷 Choisir une photo";
+document.getElementById("photoHint").textContent="Appuyez ici pour choisir une photo";
+document.getElementById("measureTitle").textContent="Dimensions";
+document.getElementById("measureDesc").textContent="Si vous ne connaissez pas toutes les dimensions, indiquez seulement celles que vous avez.";
+document.getElementById("widthLabel").textContent="Largeur cm";
+document.getElementById("lengthLabel").textContent="Longueur cm";
+document.getElementById("heightLabel").textContent="Hauteur cm";
+document.getElementById("specificTitle").textContent="Options du projet";
+document.getElementById("budgetTitle").textContent="Budget";
+document.getElementById("noteTitle").textContent="Vos remarques";
+document.getElementById("noteDesc").textContent="Ajoutez toute information importante pour votre projet.";
+document.getElementById("summaryTitle").textContent="Résumé de la demande";
+document.getElementById("next1").textContent="Suivant";
+document.getElementById("next2").textContent="Suivant";
+document.getElementById("next3").textContent="Suivant";
+document.getElementById("back2").textContent="Retour";
+document.getElementById("back3").textContent="Retour";
+document.getElementById("back4").textContent="Retour";
+document.getElementById("sendButton").textContent="💬 Envoyer via WhatsApp";
+}
+}
+
+render();
+
+</script>
+
+</body>
+</html>

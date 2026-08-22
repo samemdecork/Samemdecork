@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,627 +8,1274 @@
 <title>صمم ديكورك | Samem Decor</title>
 
 <meta name="description"
-content="صمم ديكورك بسهولة. اختار المشروع، صيفط الصورة والقياسات، وخلي علينا الباقي.">
+content="صمم ديكورك — تصميم، تصنيع وتركيب المطابخ والديكور الداخلي.">
 
-<meta name="theme-color" content="#17231d">
+<meta name="theme-color" content="#151713">
 
-<!-- صورة الموقع اللي كتبان عند مشاركة الرابط -->
+<!-- WhatsApp / Facebook / Messenger -->
 <meta property="og:title" content="صمم ديكورك | Samem Decor">
-<meta property="og:description" content="صمم ديكورك بسهولة — اختار المشروع وصيفط لينا القياسات والصورة.">
+<meta property="og:description"
+content="من الفكرة حتى التنفيذ — صمم ديكورك مع فريق متخصص.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://samemdec.ma/">
-
-<!-- إذا عندك صورة اسمها share.jpg حطها فـ GitHub حد index.html -->
 <meta property="og:image" content="https://samemdec.ma/share.jpg">
 
 <style>
 
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f5f1e9;
-  color:#17231d;
-  line-height:1.7;
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:#f6f4ef;
+    color:#191b17;
+
+    line-height:1.7;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    color:inherit;
+    text-decoration:none;
 }
 
 button,
 input,
-textarea{
-  font-family:inherit;
+textarea,
+select{
+    font:inherit;
 }
 
-.wrap{
-  width:min(1150px,92%);
-  margin:auto;
+img{
+    max-width:100%;
+    display:block;
 }
 
-/* =========================
-HEADER
-========================= */
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
 
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#17231d;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    background:
+        rgba(20,22,18,.94);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 }
 
 .nav{
-  min-height:68px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:25px;
 }
 
-.logo{
-  color:white;
-  font-size:23px;
-  font-weight:900;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    color:#fff;
 }
 
-.logo span{
-  color:#c9aa7b;
+.brand-mark{
+    width:38px;
+    height:38px;
+
+    border:1px solid #bca276;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:700;
+
+    color:#bca276;
 }
 
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.brand-text{
+    line-height:1.15;
 }
 
-.lang-btn{
-  border:1px solid #c9aa7b;
-  background:transparent;
-  color:#fff;
-  padding:7px 13px;
-  border-radius:20px;
-  cursor:pointer;
-  font-weight:bold;
+.brand-text strong{
+    display:block;
+    font-size:19px;
+    font-weight:700;
 }
 
-.whatsapp{
-  background:#25d366;
-  color:#06200d;
-  padding:9px 15px;
-  border-radius:22px;
-  font-weight:bold;
+.brand-text span{
+    display:block;
+
+    color:#a9aaa4;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    margin-top:3px;
 }
 
-/* =========================
-HERO
-========================= */
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-menu a{
+    color:#e9e9e5;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.nav-menu a:hover{
+    color:#c6a878;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.language{
+    border:1px solid #777;
+    background:transparent;
+
+    color:white;
+
+    padding:7px 12px;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    border-radius:3px;
+}
+
+.nav-contact{
+    background:#c6a878;
+    color:#181914;
+
+    padding:9px 17px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    border-radius:3px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
-  background:
-    radial-gradient(circle at 80% 20%,rgba(201,170,123,.20),transparent 35%),
-    linear-gradient(135deg,#17231d,#26382d);
-  color:white;
-  padding:85px 0 75px;
+    min-height:100vh;
+
+    padding-top:76px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #111410 0%,
+            #181b16 58%,
+            #20251e 100%
+        );
+
+    color:white;
+
+    position:relative;
+    overflow:hidden;
 }
 
-.hero-content{
-  max-width:800px;
+.hero:after{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(198,168,120,.16);
+
+    left:-180px;
+    top:50%;
+
+    transform:translateY(-50%);
 }
 
-.kicker{
-  color:#c9aa7b;
-  font-size:13px;
-  font-weight:bold;
-  letter-spacing:1px;
-  margin-bottom:12px;
+.hero-inner{
+    position:relative;
+    z-index:2;
+
+    max-width:760px;
+
+    padding:80px 0;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:#c6a878;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+}
+
+.eyebrow:before{
+    content:"";
+
+    width:35px;
+    height:1px;
+
+    background:#c6a878;
 }
 
 .hero h1{
-  font-size:clamp(42px,7vw,72px);
-  line-height:1.15;
-  margin-bottom:18px;
+    font-size:
+        clamp(44px,7vw,82px);
+
+    font-weight:600;
+
+    line-height:1.08;
+
+    letter-spacing:-2px;
+
+    margin-bottom:25px;
 }
 
 .hero h1 span{
-  color:#c9aa7b;
+    color:#c6a878;
 }
 
-.hero p{
-  color:#dfe5e0;
-  font-size:17px;
-  max-width:680px;
-  margin-bottom:28px;
+.hero-description{
+    max-width:650px;
+
+    color:#c9cbc5;
+
+    font-size:16px;
+
+    line-height:2;
+
+    margin-bottom:32px;
 }
 
 .hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
 }
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:50px;
-  padding:12px 24px;
-  border-radius:7px;
-  font-weight:bold;
+.button{
+    min-height:50px;
+
+    padding:12px 24px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:3px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.25s;
 }
 
-.btn-main{
-  background:#c9aa7b;
-  color:#17231d;
+.button-primary{
+    background:#c6a878;
+    color:#171914;
 }
 
-.btn-light{
-  border:1px solid rgba(255,255,255,.6);
-  color:white;
+.button-primary:hover{
+    background:#d5bc94;
+    transform:translateY(-2px);
 }
 
-/* =========================
-TITLE
-========================= */
-
-section{
-  padding:65px 0;
+.button-outline{
+    border:1px solid #747871;
+    color:white;
 }
 
-.title{
-  text-align:center;
-  margin-bottom:35px;
+.button-outline:hover{
+    border-color:#c6a878;
+    color:#c6a878;
 }
 
-.title small{
-  color:#9a7d58;
-  font-weight:bold;
-  letter-spacing:1px;
+
+/* =====================================================
+   INTRO STRIP
+===================================================== */
+
+.intro-strip{
+    background:#fff;
+
+    border-bottom:
+        1px solid #e4e1d9;
 }
 
-.title h2{
-  font-size:clamp(30px,5vw,45px);
-  margin:5px 0;
+.intro-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
 }
 
-.title p{
-  color:#73766f;
-  font-size:14px;
+.intro-item{
+    padding:25px 20px;
+
+    border-left:
+        1px solid #e5e2da;
 }
 
-/* =========================
-PROJECTS
-========================= */
+.intro-item:last-child{
+    border-left:0;
+}
+
+.intro-number{
+    color:#b29365;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+}
+
+.intro-item h3{
+    font-size:15px;
+
+    margin-bottom:3px;
+}
+
+.intro-item p{
+    color:#7a7c76;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:95px 0;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:42px;
+}
+
+.section-label{
+    color:#a2865e;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.section-head h2{
+    font-size:
+        clamp(30px,5vw,48px);
+
+    font-weight:500;
+
+    line-height:1.2;
+}
+
+.section-head p{
+    color:#777a73;
+
+    font-size:13px;
+
+    max-width:420px;
+
+    line-height:1.9;
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
 
 .projects{
-  background:#17231d;
-  color:white;
-}
-
-.projects .title p{
-  color:#c9d0ca;
+    background:#f6f4ef;
 }
 
 .project-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
 }
 
-.project-card{
-  background:#223229;
-  border:1px solid rgba(201,170,123,.18);
-  border-radius:12px;
-  padding:25px 20px;
-  transition:.2s;
+.project{
+    background:#fff;
+
+    border:1px solid #e2ded5;
+
+    min-height:230px;
+
+    padding:28px;
+
+    position:relative;
+
+    transition:.25s;
 }
 
-.project-card:hover{
-  transform:translateY(-3px);
-  border-color:#c9aa7b;
+.project:hover{
+    transform:translateY(-4px);
+
+    border-color:#c6a878;
+
+    box-shadow:
+        0 14px 35px rgba(25,28,22,.08);
 }
 
-.project-icon{
-  font-size:38px;
-  margin-bottom:12px;
+.project-index{
+    color:#b29365;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:35px;
 }
 
-.project-card h3{
-  font-size:20px;
-  margin-bottom:7px;
+.project h3{
+    font-size:21px;
+
+    font-weight:600;
+
+    margin-bottom:7px;
 }
 
-.project-card p{
-  color:#cbd2cc;
-  font-size:13px;
-  margin-bottom:18px;
+.project p{
+    color:#777a74;
+
+    font-size:13px;
+
+    margin-bottom:25px;
 }
 
-.project-btn{
-  display:block;
-  background:#c9aa7b;
-  color:#17231d;
-  text-align:center;
-  padding:10px;
-  border-radius:6px;
-  font-weight:bold;
+.project-link{
+    display:inline-flex;
+
+    color:#20231d;
+
+    border-bottom:
+        1px solid #c6a878;
+
+    padding-bottom:3px;
+
+    font-size:12px;
+
+    font-weight:700;
 }
 
-/* =========================
-FORM
-========================= */
 
-.order-section{
-  background:#fff;
+/* =====================================================
+   ORDER
+===================================================== */
+
+.order{
+    background:#191c17;
+    color:white;
 }
 
-.order-box{
-  max-width:800px;
-  margin:auto;
-  background:#f7f3ec;
-  border:1px solid #e3d9ca;
-  border-radius:14px;
-  padding:25px;
+.order .section-head p{
+    color:#aaaFA9;
 }
 
-.order-box h3{
-  font-size:24px;
-  margin-bottom:8px;
+.order-layout{
+    display:grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap:45px;
+
+    align-items:start;
 }
 
-.order-box > p{
-  color:#70736e;
-  margin-bottom:20px;
+.order-info{
+    padding-top:15px;
+}
+
+.order-info h3{
+    font-size:28px;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+}
+
+.order-info p{
+    color:#b7bbb5;
+
+    font-size:14px;
+
+    line-height:2;
+}
+
+.order-note{
+    margin-top:25px;
+
+    border-right:
+        2px solid #c6a878;
+
+    padding-right:15px;
+
+    color:#d2d4cf;
+
+    font-size:12px;
+}
+
+.form{
+    background:#fff;
+
+    color:#191b17;
+
+    padding:30px;
+
+    border-radius:3px;
+}
+
+.form-row{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
 }
 
 .field{
-  margin-bottom:17px;
+    margin-bottom:15px;
 }
 
 .field label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:6px;
+    display:block;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
 }
 
 .field input,
-.field textarea{
-  width:100%;
-  border:1px solid #d5cbbb;
-  background:#fff;
-  border-radius:7px;
-  padding:13px;
-  outline:none;
+.field textarea,
+.field select{
+    width:100%;
+
+    border:
+        1px solid #ddd8ce;
+
+    background:#faf9f6;
+
+    padding:12px;
+
+    outline:none;
+
+    border-radius:2px;
+
+    color:#222;
 }
 
 .field textarea{
-  min-height:120px;
-  resize:vertical;
+    min-height:110px;
+
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:#b99b6d;
 }
 
 .upload{
-  border:2px dashed #c9aa7b;
-  background:#fff;
-  padding:20px;
-  text-align:center;
-  border-radius:9px;
+    border:
+        1px dashed #c6a878;
+
+    padding:16px;
+
+    background:#faf9f6;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:12px;
 }
 
 .upload input{
-  margin-top:10px;
+    margin-top:8px;
 }
 
-.send{
-  width:100%;
-  border:0;
-  background:#25d366;
-  color:#06200d;
-  padding:15px;
-  border-radius:8px;
-  font-weight:bold;
-  font-size:16px;
-  cursor:pointer;
+.form-submit{
+    width:100%;
+
+    border:0;
+
+    background:#c6a878;
+
+    color:#181914;
+
+    padding:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    border-radius:2px;
 }
 
-/* =========================
-SALES
-========================= */
+
+/* =====================================================
+   SALES
+===================================================== */
 
 .sales{
-  background:#dfd4c4;
+    background:#e8e1d6;
 }
 
 .sales-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:1px;
+
+    background:#cfc5b6;
+
+    border:1px solid #cfc5b6;
 }
 
 .sale{
-  background:#fff;
-  padding:22px;
-  border-radius:10px;
-  text-align:center;
+    background:#f6f4ef;
+
+    padding:28px 22px;
+
+    min-height:170px;
 }
 
-.sale-icon{
-  font-size:35px;
-  margin-bottom:8px;
+.sale-number{
+    color:#a2865e;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
 }
 
 .sale h3{
-  font-size:17px;
-  margin-bottom:5px;
+    font-size:17px;
+
+    margin-bottom:6px;
 }
 
 .sale p{
-  color:#777;
-  font-size:13px;
+    color:#777a73;
+
+    font-size:12px;
 }
 
-/* =========================
-WORKS
-========================= */
+
+/* =====================================================
+   WORKS
+===================================================== */
 
 .works{
-  text-align:center;
+    background:#fff;
 }
 
-.works-box{
-  background:#17231d;
-  color:white;
-  border-radius:14px;
-  padding:45px 25px;
+.works-banner{
+    background:#191c17;
+
+    min-height:300px;
+
+    display:flex;
+    align-items:center;
+
+    padding:50px;
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-.works-box p{
-  color:#ccd2cd;
-  margin:10px auto 20px;
-  max-width:600px;
+.works-banner:before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:1px solid rgba(198,168,120,.25);
+
+    border-radius:50%;
+
+    left:-70px;
+    top:-70px;
 }
 
-.works-btn{
-  display:inline-block;
-  background:#c9aa7b;
-  color:#17231d;
-  padding:13px 25px;
-  border-radius:7px;
-  font-weight:bold;
+.works-content{
+    position:relative;
+    z-index:2;
+
+    max-width:650px;
 }
 
-/* =========================
-CONTACT
-========================= */
+.works-content .section-label{
+    color:#c6a878;
+}
+
+.works-content h2{
+    font-size:
+        clamp(30px,5vw,48px);
+
+    font-weight:500;
+
+    margin-bottom:10px;
+}
+
+.works-content p{
+    color:#bfc3bd;
+
+    font-size:13px;
+
+    margin-bottom:22px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
 
 .contact{
-  background:#26382d;
-  color:white;
-  text-align:center;
+    background:#f6f4ef;
+
+    text-align:center;
+
+    padding:90px 0;
+}
+
+.contact h2{
+    font-size:
+        clamp(30px,5vw,48px);
+
+    font-weight:500;
+
+    margin-bottom:10px;
 }
 
 .contact p{
-  color:#d0d7d1;
-  margin:10px 0 20px;
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:25px;
 }
 
-/* =========================
-FOOTER
-========================= */
 
-footer{
-  background:#101713;
-  color:#aaa;
-  text-align:center;
-  padding:25px 15px;
-  font-size:13px;
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:#11130f;
+
+    color:#999d96;
+
+    padding:30px 0;
+
+    font-size:11px;
 }
 
-footer strong{
-  color:#c9aa7b;
+.footer-inner{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    align-items:center;
 }
 
-/* =========================
-FLOAT WHATSAPP
-========================= */
-
-.float-wa{
-  position:fixed;
-  left:15px;
-  bottom:15px;
-  z-index:2000;
-  background:#25d366;
-  color:#06200d;
-  padding:12px 18px;
-  border-radius:30px;
-  font-weight:bold;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
+.footer strong{
+    color:#c6a878;
 }
 
-/* =========================
-MOBILE
-========================= */
 
-@media(max-width:800px){
+/* =====================================================
+   FLOATING WHATSAPP
+===================================================== */
 
-  .project-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+.float-whatsapp{
+    position:fixed;
 
-  .sales-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    left:18px;
+    bottom:18px;
+
+    z-index:2000;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    background:#25d366;
+
+    color:#073016;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:850px){
+
+    .nav-menu{
+        display:none;
+    }
+
+    .project-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .sales-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .order-layout{
+        grid-template-columns:1fr;
+    }
 
 }
 
 @media(max-width:560px){
 
-  .nav{
-    min-height:62px;
-  }
+    .nav{
+        height:66px;
+    }
 
-  .logo{
-    font-size:19px;
-  }
+    .brand-text strong{
+        font-size:17px;
+    }
 
-  .whatsapp{
-    display:none;
-  }
+    .nav-contact{
+        display:none;
+    }
 
-  .hero{
-    padding:65px 0;
-    text-align:center;
-  }
+    .hero{
+        min-height:88vh;
+    }
 
-  .hero p{
-    font-size:15px;
-  }
+    .hero-inner{
+        padding:60px 0;
+    }
 
-  .hero-buttons{
-    flex-direction:column;
-  }
+    .hero h1{
+        font-size:46px;
+        letter-spacing:-1px;
+    }
 
-  .btn{
-    width:100%;
-  }
+    .hero-description{
+        font-size:14px;
+    }
 
-  section{
-    padding:50px 0;
-  }
+    .hero-buttons{
+        flex-direction:column;
+    }
 
-  .project-grid{
-    grid-template-columns:1fr;
-  }
+    .button{
+        width:100%;
+    }
 
-  .sales-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .intro-grid{
+        grid-template-columns:1fr;
+    }
 
-  .order-box{
-    padding:18px;
-  }
+    .intro-item{
+        border-left:0;
+        border-bottom:
+            1px solid #e5e2da;
+    }
 
-  .float-wa{
-    left:10px;
-    bottom:10px;
-    font-size:13px;
-  }
+    .intro-item:last-child{
+        border-bottom:0;
+    }
+
+    .section{
+        padding:65px 0;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-head p{
+        margin-top:12px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project{
+        min-height:205px;
+    }
+
+    .sales-grid{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .sale{
+        min-height:150px;
+        padding:22px 15px;
+    }
+
+    .form{
+        padding:20px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .works-banner{
+        padding:35px 25px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
+    }
 
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
 HEADER
-========================= -->
+===================================================== -->
 
-<header>
+<header class="header">
 
-  <div class="wrap nav">
+<div class="container nav">
 
-    <a href="index.html" class="logo">
-      صمم <span>ديكورك</span>
-    </a>
+<a href="index.html" class="brand">
 
-    <div class="nav-right">
+    <div class="brand-mark">
+        SD
+    </div>
 
-      <button
-        class="lang-btn"
-        onclick="toggleLanguage()"
-        id="langButton">
-        FR
-      </button>
+    <div class="brand-text">
 
-      <a
-        class="whatsapp"
-        target="_blank"
-        href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور">
-        واتساب
-      </a>
+        <strong>صمم ديكورك</strong>
+
+        <span>SAMEM DECOR</span>
 
     </div>
 
-  </div>
+</a>
+
+
+<nav class="nav-menu">
+
+    <a href="#projects" data-fr="Projets">
+        المشاريع
+    </a>
+
+    <a href="works.html" data-fr="Réalisations">
+        أعمالنا
+    </a>
+
+    <a href="#sales" data-fr="Boutique">
+        المبيعات
+    </a>
+
+    <a href="#contact" data-fr="Contact">
+        تواصل معنا
+    </a>
+
+</nav>
+
+
+<div class="nav-actions">
+
+    <button
+        class="language"
+        onclick="changeLanguage()"
+        id="languageButton">
+        FR
+    </button>
+
+    <a
+        class="nav-contact"
+        target="_blank"
+        href="https://wa.me/212754350706">
+        واتساب
+    </a>
+
+</div>
+
+</div>
 
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
 HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
-  <div class="wrap hero-content">
+<div class="container hero-inner">
 
-    <div class="kicker">
-      تصميم • ديكور • تنفيذ
+    <div
+        class="eyebrow"
+        data-fr="DESIGN • FABRICATION • INSTALLATION">
+        تصميم • تصنيع • تركيب
     </div>
 
-    <h1>
-      دار عليك
-      <br>
-      <span>وديكور علينا</span>
+
+    <h1 id="heroTitle">
+
+        من الفكرة
+
+        <br>
+
+        <span>حتى التنفيذ.</span>
+
     </h1>
 
-    <p>
-      اختار المشروع ديالك، صيفط صورة المكان،
-      دخل القياسات والملاحظات ديالك،
-      وحنا نتكلفو بالباقي.
+
+    <p
+        class="hero-description"
+        id="heroDescription">
+
+        صمم المساحة ديالك بطريقة بسيطة.
+        اختار المشروع، صيفط لينا صورة المكان والقياسات،
+        وشرح لينا شنو بغيتي. حنا نتكلفو بالباقي.
+
     </p>
+
 
     <div class="hero-buttons">
 
-      <a
-        class="btn btn-main"
-        href="#projects">
-        ✨ ابدأ الطلب
-      </a>
+        <a
+            href="#projects"
+            class="button button-primary"
+            id="startButton">
 
-      <a
-        class="btn btn-light"
-        href="#works">
-        📸 شوف أعمالنا
-      </a>
+            ابدأ مشروعك
+
+        </a>
+
+
+        <a
+            href="works.html"
+            class="button button-outline"
+            id="worksButton">
+
+            اكتشف أعمالنا
+
+        </a>
 
     </div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+INTRO
+===================================================== -->
+
+<section class="intro-strip">
+
+<div class="container intro-grid">
+
+
+    <div class="intro-item">
+
+        <div class="intro-number">
+            01
+        </div>
+
+        <h3 id="intro1Title">
+            فكرة واضحة
+        </h3>
+
+        <p id="intro1Text">
+            نعاونك تحدد المشروع المناسب.
+        </p>
+
+    </div>
+
+
+    <div class="intro-item">
+
+        <div class="intro-number">
+            02
+        </div>
+
+        <h3 id="intro2Title">
+            دراسة المشروع
+        </h3>
+
+        <p id="intro2Text">
+            الصورة والقياسات والملاحظات.
+        </p>
+
+    </div>
+
+
+    <div class="intro-item">
+
+        <div class="intro-number">
+            03
+        </div>
+
+        <h3 id="intro3Title">
+            تنفيذ وتركيب
+        </h3>
+
+        <p id="intro3Text">
+            من التصميم حتى النتيجة النهائية.
+        </p>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
 PROJECTS
-========================= -->
+===================================================== -->
 
 <section
-  class="projects"
-  id="projects">
+    class="section projects"
+    id="projects">
 
-  <div class="wrap">
+<div class="container">
 
-    <div class="title">
 
-      <small>صمم ديكورك</small>
+    <div class="section-head">
 
-      <h2>شنو بغيتي تدير؟</h2>
+        <div>
 
-      <p>
-        اختار المشروع ديالك وغادي نعطيوك المعلومات اللي خاصنا.
-      </p>
+            <div
+                class="section-label"
+                data-fr="VOTRE PROJET">
+                مشروعك
+            </div>
+
+            <h2 id="projectsTitle">
+                شنو بغيتي تصايب؟
+            </h2>
+
+        </div>
+
+        <p id="projectsDescription">
+            اختار نوع المشروع وغادي نطلبو منك غير المعلومات المهمة.
+        </p>
 
     </div>
 
@@ -635,540 +1283,1108 @@ PROJECTS
     <div class="project-grid">
 
 
-      <div class="project-card">
-
-        <div class="project-icon">🍳</div>
-
-        <h3>المطبخ</h3>
-
-        <p>
-          صورة المكان • القياسات • الملاحظات • الطلبات
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('المطبخ')">
-          صمم المطبخ
-        </a>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-icon">🛏️</div>
-
-        <h3>غرفة النوم</h3>
-
-        <p>
-          سرير • Placard • Dressing • تسريحة
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('غرفة النوم')">
-          صمم غرفة النوم
-        </a>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-icon">🛋️</div>
-
-        <h3>الصالون</h3>
-
-        <p>
-          جلسة • حائط • طاولات • ديكور
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('الصالون')">
-          صمم الصالون
-        </a>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-icon">👔</div>
-
-        <h3>Dressing & Placard</h3>
-
-        <p>
-          البيبان • الزجاج • التقسيم الداخلي
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('Dressing و Placard')">
-          ابدأ الطلب
-        </a>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-icon">📺</div>
-
-        <h3>Meuble TV</h3>
-
-        <p>
-          حائط TV • رفوف • نيش • إضاءة
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('Meuble TV')">
-          ابدأ الطلب
-        </a>
-
-      </div>
-
-
-      <div class="project-card">
-
-        <div class="project-icon">🪟</div>
-
-        <h3>الطابيسري والستور</h3>
-
-        <p>
-          ستور • سدادر • ثوب • قياسات
-        </p>
-
-        <a
-          class="project-btn"
-          href="#order"
-          onclick="selectProject('الطابيسري والستور')">
-          ابدأ الطلب
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-ORDER
-========================= -->
-
-<section
-  class="order-section"
-  id="order">
-
-  <div class="wrap">
-
-    <div class="title">
-
-      <small>DEMANDE</small>
-
-      <h2>صيفط لينا معلومات المشروع</h2>
-
-      <p>
-        ما محتاجش تعرف كلشي، غير عطينا المعلومات اللي عندك.
-      </p>
-
-    </div>
-
-
-    <div class="order-box">
-
-      <h3 id="selectedProject">
-        المشروع: ما تختارش باقي
-      </h3>
-
-      <p>
-        الصورة والقياسات والملاحظات غادي يعاونونا نفهمو المشروع مزيان.
-      </p>
-
-
-      <div class="field">
-
-        <label>
-          الاسم
-        </label>
-
-        <input
-          id="clientName"
-          type="text"
-          placeholder="كتب الاسم ديالك">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          صورة المكان
-        </label>
-
-        <div class="upload">
-
-          📷 اختار صورة من الهاتف
-
-          <br>
-
-          <input
-            id="photo"
-            type="file"
-            accept="image/*">
+        <div class="project">
+
+            <div class="project-index">
+                01 / CUISINE
+            </div>
+
+            <h3 id="p1Title">
+                المطبخ
+            </h3>
+
+            <p id="p1Text">
+                مطبخ على القياس حسب المساحة والاحتياجات ديالك.
+            </p>
+
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('المطبخ')"
+                id="p1Button">
+                ابدأ الطلب
+            </a>
 
         </div>
 
-      </div>
+
+        <div class="project">
+
+            <div class="project-index">
+                02 / CHAMBRE
+            </div>
+
+            <h3 id="p2Title">
+                غرفة النوم
+            </h3>
+
+            <p id="p2Text">
+                سرير، خزانات، Dressing وتسريحة.
+            </p>
+
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('غرفة النوم')"
+                id="p2Button">
+                ابدأ الطلب
+            </a>
+
+        </div>
 
 
-      <div class="field">
+        <div class="project">
 
-        <label>
-          القياسات
-        </label>
+            <div class="project-index">
+                03 / SALON
+            </div>
 
-        <input
-          id="measurements"
-          type="text"
-          placeholder="مثال: الطول 3.60m — العرض 2.80m — الارتفاع 2.60m">
+            <h3 id="p3Title">
+                الصالون
+            </h3>
 
-      </div>
+            <p id="p3Text">
+                جلسة، حائط، طاولات ووحدات ديكور.
+            </p>
 
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('الصالون')"
+                id="p3Button">
+                ابدأ الطلب
+            </a>
 
-      <div class="field">
-
-        <label>
-          الملاحظات والطلبات
-        </label>
-
-        <textarea
-          id="notes"
-          placeholder="شرح لينا شنو بغيتي، اللون، الشكل، عدد الخزانات، أي ملاحظة..."></textarea>
-
-      </div>
+        </div>
 
 
-      <button
-        class="send"
-        onclick="sendWhatsApp()">
+        <div class="project">
 
-        💬 صيفط الطلب عبر واتساب
+            <div class="project-index">
+                04 / DRESSING
+            </div>
 
-      </button>
+            <h3 id="p4Title">
+                Dressing & Placard
+            </h3>
+
+            <p id="p4Text">
+                تقسيم داخلي، بيبان، زجاج وتجهيزات.
+            </p>
+
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('Dressing و Placard')"
+                id="p4Button">
+                ابدأ الطلب
+            </a>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-index">
+                05 / TV
+            </div>
+
+            <h3 id="p5Title">
+                Meuble TV
+            </h3>
+
+            <p id="p5Text">
+                حائط TV، رفوف، نيش وإضاءة.
+            </p>
+
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('Meuble TV')"
+                id="p5Button">
+                ابدأ الطلب
+            </a>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-index">
+                06 / TAPISSERIE
+            </div>
+
+            <h3 id="p6Title">
+                الطابيسري والستور
+            </h3>
+
+            <p id="p6Text">
+                ستور، سدادر، ثوب وقياسات.
+            </p>
+
+            <a
+                href="#order"
+                class="project-link"
+                onclick="selectProject('الطابيسري والستور')"
+                id="p6Button">
+                ابدأ الطلب
+            </a>
+
+        </div>
+
 
     </div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+ORDER
+===================================================== -->
+
+<section
+    class="section order"
+    id="order">
+
+<div class="container">
+
+
+    <div class="section-head">
+
+        <div>
+
+            <div
+                class="section-label"
+                data-fr="DEMANDE">
+                الطلب
+            </div>
+
+            <h2 id="orderTitle">
+                خلينا نعرفو المشروع ديالك
+            </h2>
+
+        </div>
+
+        <p id="orderDescription">
+            ما تحتاجش تعرف التفاصيل التقنية.
+            غير صيفط لينا اللي عندك.
+        </p>
+
+    </div>
+
+
+    <div class="order-layout">
+
+
+        <div class="order-info">
+
+            <h3 id="orderInfoTitle">
+                بسيط وواضح.
+            </h3>
+
+            <p id="orderInfoText">
+                صورة المكان، القياسات، والملاحظات ديالك.
+                بهاد المعلومات نقدروا نفهمو المشروع
+                ونتواصلو معاك باش نكملو التفاصيل.
+            </p>
+
+            <div
+                class="order-note"
+                id="orderNote">
+                الصورة تقدر تكون من الهاتف ديالك.
+            </div>
+
+        </div>
+
+
+        <div class="form">
+
+
+            <div class="field">
+
+                <label id="projectLabel">
+                    نوع المشروع
+                </label>
+
+                <input
+                    id="selectedProject"
+                    type="text"
+                    value="مازال ما اخترتيش"
+                    readonly>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="field">
+
+                    <label id="nameLabel">
+                        الاسم
+                    </label>
+
+                    <input
+                        id="clientName"
+                        type="text"
+                        placeholder="الاسم ديالك">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label id="phoneLabel">
+                        الهاتف
+                    </label>
+
+                    <input
+                        id="clientPhone"
+                        type="tel"
+                        placeholder="06XXXXXXXX">
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label id="photoLabel">
+                    صورة المكان
+                </label>
+
+                <div class="upload">
+
+                    <span id="uploadText">
+                        اختار صورة من الهاتف
+                    </span>
+
+                    <br>
+
+                    <input
+                        id="photo"
+                        type="file"
+                        accept="image/*">
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label id="measureLabel">
+                    القياسات
+                </label>
+
+                <input
+                    id="measurements"
+                    type="text"
+                    placeholder="مثال: 3.60m × 2.80m × 2.60m">
+
+            </div>
+
+
+            <div class="field">
+
+                <label id="notesLabel">
+                    الملاحظات
+                </label>
+
+                <textarea
+                    id="notes"
+                    placeholder="شرح لينا شنو بغيتي فالمشروع..."></textarea>
+
+            </div>
+
+
+            <button
+                class="form-submit"
+                onclick="sendWhatsApp()"
+                id="sendButton">
+
+                إرسال الطلب عبر واتساب
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
 SALES
-========================= -->
+===================================================== -->
 
-<section class="sales">
+<section
+    class="section sales"
+    id="sales">
 
-  <div class="wrap">
+<div class="container">
 
-    <div class="title">
 
-      <small>SHOP</small>
+    <div class="section-head">
 
-      <h2>المبيعات والإكسسوارات</h2>
+        <div>
 
-      <p>
-        كل ما تحتاجو باش تكمل الديكور ديالك.
-      </p>
+            <div
+                class="section-label"
+                data-fr="BOUTIQUE">
+                المبيعات
+            </div>
+
+            <h2 id="salesTitle">
+                إكسسوارات وتجهيزات
+            </h2>
+
+        </div>
+
+        <p id="salesDescription">
+            منتجات مكملة لمشاريع الديكور ديالك.
+        </p>
 
     </div>
 
 
     <div class="sales-grid">
 
-      <div class="sale">
-        <div class="sale-icon">💡</div>
-        <h3>LED</h3>
-        <p>إضاءة وإكسسوارات LED</p>
-      </div>
 
-      <div class="sale">
-        <div class="sale-icon">🔘</div>
-        <h3>مقابض</h3>
-        <p>مقابض مودرن وكلاسيك</p>
-      </div>
+        <div class="sale">
 
-      <div class="sale">
-        <div class="sale-icon">🧺</div>
-        <h3>تجهيزات</h3>
-        <p>سلال وتجهيزات داخلية</p>
-      </div>
+            <div class="sale-number">
+                01
+            </div>
 
-      <div class="sale">
-        <div class="sale-icon">🪵</div>
-        <h3>مواد الديكور</h3>
-        <p>MDF • Mélaminé • خشب</p>
-      </div>
+            <h3 id="s1Title">
+                LED والإضاءة
+            </h3>
+
+            <p id="s1Text">
+                حلول إضاءة للمطابخ والخزانات والديكور.
+            </p>
+
+        </div>
+
+
+        <div class="sale">
+
+            <div class="sale-number">
+                02
+            </div>
+
+            <h3 id="s2Title">
+                المقابض
+            </h3>
+
+            <p id="s2Text">
+                موديلات مختلفة للمطابخ والخزانات.
+            </p>
+
+        </div>
+
+
+        <div class="sale">
+
+            <div class="sale-number">
+                03
+            </div>
+
+            <h3 id="s3Title">
+                التجهيزات الداخلية
+            </h3>
+
+            <p id="s3Text">
+                سلال، tiroirs وتجهيزات عملية.
+            </p>
+
+        </div>
+
+
+        <div class="sale">
+
+            <div class="sale-number">
+                04
+            </div>
+
+            <h3 id="s4Title">
+                مواد الديكور
+            </h3>
+
+            <p id="s4Text">
+                MDF، Mélaminé، خشب ومواد أخرى.
+            </p>
+
+        </div>
+
 
     </div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 WORKS
-========================= -->
+===================================================== -->
+
+<section class="section works">
+
+<div class="container">
+
+
+    <div class="works-banner">
+
+        <div class="works-content">
+
+            <div
+                class="section-label"
+                data-fr="REAL PROJECTS">
+                أعمال حقيقية
+            </div>
+
+            <h2 id="worksTitle">
+                مشاريعنا كتتكلم علينا.
+            </h2>
+
+            <p id="worksText">
+                شوف الأعمال والمشاريع اللي تنفذات من قبل.
+            </p>
+
+            <a
+                href="works.html"
+                class="button button-primary"
+                id="worksLink">
+
+                مشاهدة الأعمال
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CONTACT
+===================================================== -->
 
 <section
-  class="works"
-  id="works">
+    class="contact"
+    id="contact">
 
-  <div class="wrap">
+<div class="container">
 
-    <div class="title">
-
-      <small>REAL PROJECTS</small>
-
-      <h2>أعمالنا</h2>
-
-      <p>
-        شوف المشاريع والصور الحقيقية ديال الخدمة ديالنا.
-      </p>
-
+    <div
+        class="section-label"
+        data-fr="CONTACT">
+        تواصل معنا
     </div>
 
-
-    <div class="works-box">
-
-      <h2>
-        📸 مشاريع صمم ديكورك
-      </h2>
-
-      <p>
-        الصور ديال أعمالنا كتبقى فالموقع وما خاصكش تعاود ترفعها
-        كل مرة.
-      </p>
-
-      <a
-        class="works-btn"
-        href="works.html">
-        شوف جميع الأعمال
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-CONTACT
-========================= -->
-
-<section class="contact">
-
-  <div class="wrap">
-
-    <h2>
-      عندك مشروع خاص؟
+    <h2 id="contactTitle">
+        عندك مشروع؟
     </h2>
 
-    <p>
-      تواصل معنا مباشرة وخلي لينا التفاصيل.
+    <p id="contactText">
+        تواصل معنا وخلي لينا التفاصيل.
     </p>
 
     <a
-      class="btn btn-main"
-      target="_blank"
-      href="https://wa.me/212754350706?text=السلام%20عليكم،%20عندي%20مشروع%20ديكور">
-      💬 تواصل معنا
+        href="https://wa.me/212754350706"
+        target="_blank"
+        class="button button-primary"
+        id="contactButton">
+
+        تواصل عبر واتساب
+
     </a>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
 FOOTER
-========================= -->
+===================================================== -->
 
-<footer>
+<footer class="footer">
 
-  <strong>صمم ديكورك</strong>
+<div class="container footer-inner">
 
-  © 2026
+    <div>
+        <strong>صمم ديكورك</strong>
+        — SAMEM DECOR
+    </div>
 
-  <br>
+    <div>
+        © 2026 Hamza Chtaibi
+    </div>
 
-  جميع الحقوق محفوظة —
-
-  <strong>Hamza Chtaibi</strong>
+</div>
 
 </footer>
 
 
-<!-- =========================
-FLOAT WHATSAPP
-========================= -->
+<!-- =====================================================
+WHATSAPP
+===================================================== -->
 
 <a
-  class="float-wa"
-  target="_blank"
-  href="https://wa.me/212754350706?text=السلام%20عليكم،%20بغيت%20معلومات%20على%20مشروع%20الديكور">
-  💬 واتساب
+    href="https://wa.me/212754350706"
+    target="_blank"
+    class="float-whatsapp"
+    aria-label="WhatsApp">
+
+    ☎
+
 </a>
 
 
 <script>
 
-/* =========================
-PROJECT SELECTION
-========================= */
+/* =====================================================
+PROJECT
+===================================================== */
 
-let selectedProject = "";
+let currentProject = "";
 
-function selectProject(project){
 
-  selectedProject = project;
+function selectProject(name){
 
-  document.getElementById("selectedProject").textContent =
-    "المشروع: " + project;
+    currentProject = name;
+
+    document.getElementById(
+        "selectedProject"
+    ).value = name;
 
 }
 
 
-/* =========================
-WHATSAPP
-========================= */
+/* =====================================================
+WHATSAPP ORDER
+===================================================== */
 
 function sendWhatsApp(){
 
-  const name =
-    document.getElementById("clientName").value.trim();
+    const name =
+        document.getElementById(
+            "clientName"
+        ).value.trim();
 
-  const measurements =
-    document.getElementById("measurements").value.trim();
+    const phone =
+        document.getElementById(
+            "clientPhone"
+        ).value.trim();
 
-  const notes =
-    document.getElementById("notes").value.trim();
+    const measurements =
+        document.getElementById(
+            "measurements"
+        ).value.trim();
 
-  if(!selectedProject){
+    const notes =
+        document.getElementById(
+            "notes"
+        ).value.trim();
 
-    alert("اختار المشروع ديالك أولا.");
 
-    return;
-  }
+    if(!currentProject){
 
-  let message =
-    "السلام عليكم، بغيت ندير طلب ديكور.%0A%0A" +
+        alert(
+            french
+            ? "Veuillez choisir un projet."
+            : "اختار المشروع ديالك أولا."
+        );
 
-    "المشروع: " +
-    encodeURIComponent(selectedProject) +
+        return;
+    }
 
-    "%0A" +
 
-    "الاسم: " +
-    encodeURIComponent(name || "ما تحددش") +
+    let message;
 
-    "%0A" +
 
-    "القياسات: " +
-    encodeURIComponent(measurements || "ما تحددوش") +
+    if(french){
 
-    "%0A" +
+        message =
+`Bonjour, je souhaite demander un projet de décoration.
 
-    "الملاحظات: " +
-    encodeURIComponent(notes || "ما كايناش");
+Projet : ${currentProject}
 
-  window.open(
-    "https://wa.me/212754350706?text=" + message,
-    "_blank"
-  );
+Nom : ${name || "Non renseigné"}
+
+Téléphone : ${phone || "Non renseigné"}
+
+Dimensions : ${measurements || "Non renseignées"}
+
+Remarques :
+${notes || "Aucune remarque"}`;
+
+    }else{
+
+        message =
+`السلام عليكم، بغيت نطلب مشروع ديكور.
+
+المشروع: ${currentProject}
+
+الاسم: ${name || "ما تحددش"}
+
+الهاتف: ${phone || "ما تحددش"}
+
+القياسات: ${measurements || "ما تحددتش"}
+
+الملاحظات:
+${notes || "ما كايناش"}`;
+
+    }
+
+
+    window.open(
+        "https://wa.me/212754350706?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
 LANGUAGE
-========================= */
+===================================================== */
 
 let french = false;
 
-function toggleLanguage(){
 
-  french = !french;
+const translations = {
 
-  const button =
-    document.getElementById("langButton");
+    fr:{
 
-  if(french){
+        navProjects:"Projets",
+        navWorks:"Réalisations",
+        navSales:"Boutique",
+        navContact:"Contact",
+
+        eyebrow:
+        "DESIGN • FABRICATION • INSTALLATION",
+
+        heroTitle:
+        "De l'idée<br><span>à la réalisation.</span>",
+
+        heroDescription:
+        "Présentez-nous votre projet simplement. Choisissez le type de projet, envoyez une photo de l'espace, les dimensions et vos remarques. Nous nous occupons du reste.",
+
+        start:
+        "Démarrer mon projet",
+
+        works:
+        "Découvrir nos réalisations",
+
+        intro1Title:
+        "Une idée claire",
+
+        intro1Text:
+        "Nous vous aidons à définir votre projet.",
+
+        intro2Title:
+        "Étude du projet",
+
+        intro2Text:
+        "Photo, dimensions et remarques.",
+
+        intro3Title:
+        "Fabrication & pose",
+
+        intro3Text:
+        "Du projet jusqu'au résultat final.",
+
+        projectsTitle:
+        "Quel projet souhaitez-vous réaliser ?",
+
+        projectsDescription:
+        "Choisissez votre projet. Nous vous demanderons uniquement les informations nécessaires.",
+
+        p1Title:"Cuisine",
+        p1Text:"Cuisine sur mesure adaptée à votre espace.",
+        p2Title:"Chambre",
+        p2Text:"Lit, placard, dressing et coiffeuse.",
+        p3Title:"Salon",
+        p3Text:"Salon, mur TV, tables et mobilier.",
+        p4Title:"Dressing & Placard",
+        p4Text:"Portes, verre, aménagement intérieur.",
+        p5Title:"Meuble TV",
+        p5Text:"Mur TV, niches, étagères et éclairage.",
+        p6Title:"Tapisserie & Rideaux",
+        p6Text:"Rideaux, coussins, tissus et dimensions.",
+
+        startOrder:
+        "Démarrer",
+
+        orderTitle:
+        "Parlons de votre projet",
+
+        orderDescription:
+        "Vous n'avez pas besoin de connaître les détails techniques. Envoyez simplement ce que vous avez.",
+
+        orderInfoTitle:
+        "Simple et clair.",
+
+        orderInfoText:
+        "Une photo de l'espace, les dimensions et vos remarques nous permettent de comprendre votre besoin et de vous contacter pour compléter les détails.",
+
+        orderNote:
+        "La photo peut être prise directement avec votre téléphone.",
+
+        projectLabel:
+        "Type de projet",
+
+        nameLabel:
+        "Nom",
+
+        phoneLabel:
+        "Téléphone",
+
+        photoLabel:
+        "Photo de l'espace",
+
+        uploadText:
+        "Choisissez une photo depuis votre téléphone",
+
+        measureLabel:
+        "Dimensions",
+
+        notesLabel:
+        "Remarques",
+
+        sendButton:
+        "Envoyer la demande sur WhatsApp",
+
+        salesTitle:
+        "Accessoires & équipements",
+
+        salesDescription:
+        "Des produits complémentaires pour vos projets.",
+
+        s1Title:"LED & éclairage",
+        s1Text:"Solutions d'éclairage pour cuisines, placards et décoration.",
+
+        s2Title:"Poignées",
+        s2Text:"Différents modèles pour cuisines et rangements.",
+
+        s3Title:"Aménagement intérieur",
+        s3Text:"Paniers, tiroirs et accessoires pratiques.",
+
+        s4Title:"Matériaux",
+        s4Text:"MDF, mélaminé, bois et autres matériaux.",
+
+        worksTitle:
+        "Nos projets parlent pour nous.",
+
+        worksText:
+        "Découvrez nos réalisations et projets réalisés.",
+
+        worksLink:
+        "Voir les réalisations",
+
+        contactTitle:
+        "Vous avez un projet ?",
+
+        contactText:
+        "Contactez-nous et partagez-nous les détails de votre projet.",
+
+        contactButton:
+        "Nous contacter sur WhatsApp"
+
+    }
+
+};
+
+
+function changeLanguage(){
+
+    french = !french;
+
+
+    if(!french){
+
+        location.reload();
+
+        return;
+
+    }
+
+
+    const t = translations.fr;
+
 
     document.documentElement.lang = "fr";
     document.documentElement.dir = "ltr";
 
-    button.textContent = "AR";
 
-    document.querySelector(".kicker").textContent =
-      "DESIGN • DÉCORATION • RÉALISATION";
+    document.getElementById(
+        "languageButton"
+    ).textContent = "AR";
 
-    document.querySelector(".hero h1").innerHTML =
-      "Votre espace<br><span>notre décoration</span>";
 
-    document.querySelector(".hero p").textContent =
-      "Choisissez votre projet, envoyez une photo de l'espace, ajoutez les dimensions et vos remarques.";
+    /* NAV */
 
-    document.querySelector(".hero-buttons .btn-main").textContent =
-      "✨ Commencer";
+    document.querySelector(
+        '[data-fr="Projets"]'
+    ).textContent = t.navProjects;
 
-    document.querySelector(".hero-buttons .btn-light").textContent =
-      "📸 Nos réalisations";
+    document.querySelector(
+        '[data-fr="Réalisations"]'
+    ).textContent = t.navWorks;
 
-    document.querySelector(".projects .title h2").textContent =
-      "Que souhaitez-vous réaliser ?";
+    document.querySelector(
+        '[data-fr="Boutique"]'
+    ).textContent = t.navSales;
 
-    document.querySelector(".projects .title p").textContent =
-      "Choisissez votre projet et envoyez-nous les informations nécessaires.";
+    document.querySelector(
+        '[data-fr="Contact"]'
+    ).textContent = t.navContact;
 
-    document.querySelector(".order-section .title h2").textContent =
-      "Envoyez les informations du projet";
 
-    document.querySelector(".order-section .title p").textContent =
-      "Photo, dimensions et remarques — c'est suffisant pour commencer.";
+    /* HERO */
 
-    document.querySelector(".sales .title h2").textContent =
-      "Vente & accessoires";
+    document.querySelector(
+        ".eyebrow"
+    ).textContent = t.eyebrow;
 
-    document.querySelector(".sales .title p").textContent =
-      "Tout ce qu'il faut pour compléter votre décoration.";
+    document.getElementById(
+        "heroTitle"
+    ).innerHTML = t.heroTitle;
 
-    document.querySelector(".works .title h2").textContent =
-      "Nos réalisations";
+    document.getElementById(
+        "heroDescription"
+    ).textContent = t.heroDescription;
 
-  }else{
+    document.getElementById(
+        "startButton"
+    ).textContent = t.start;
 
-    document.documentElement.lang = "ar";
-    document.documentElement.dir = "rtl";
+    document.getElementById(
+        "worksButton"
+    ).textContent = t.works;
 
-    button.textContent = "FR";
 
-    location.reload();
+    /* INTRO */
 
-  }
+    document.getElementById(
+        "intro1Title"
+    ).textContent = t.intro1Title;
+
+    document.getElementById(
+        "intro1Text"
+    ).textContent = t.intro1Text;
+
+    document.getElementById(
+        "intro2Title"
+    ).textContent = t.intro2Title;
+
+    document.getElementById(
+        "intro2Text"
+    ).textContent = t.intro2Text;
+
+    document.getElementById(
+        "intro3Title"
+    ).textContent = t.intro3Title;
+
+    document.getElementById(
+        "intro3Text"
+    ).textContent = t.intro3Text;
+
+
+    /* PROJECTS */
+
+    document.getElementById(
+        "projectsTitle"
+    ).textContent = t.projectsTitle;
+
+    document.getElementById(
+        "projectsDescription"
+    ).textContent = t.projectsDescription;
+
+
+    document.getElementById("p1Title").textContent=t.p1Title;
+    document.getElementById("p1Text").textContent=t.p1Text;
+
+    document.getElementById("p2Title").textContent=t.p2Title;
+    document.getElementById("p2Text").textContent=t.p2Text;
+
+    document.getElementById("p3Title").textContent=t.p3Title;
+    document.getElementById("p3Text").textContent=t.p3Text;
+
+    document.getElementById("p4Title").textContent=t.p4Title;
+    document.getElementById("p4Text").textContent=t.p4Text;
+
+    document.getElementById("p5Title").textContent=t.p5Title;
+    document.getElementById("p5Text").textContent=t.p5Text;
+
+    document.getElementById("p6Title").textContent=t.p6Title;
+    document.getElementById("p6Text").textContent=t.p6Text;
+
+
+    document.querySelectorAll(
+        ".project-link"
+    ).forEach(
+        el => el.textContent=t.startOrder
+    );
+
+
+    /* ORDER */
+
+    document.getElementById(
+        "orderTitle"
+    ).textContent=t.orderTitle;
+
+    document.getElementById(
+        "orderDescription"
+    ).textContent=t.orderDescription;
+
+    document.getElementById(
+        "orderInfoTitle"
+    ).textContent=t.orderInfoTitle;
+
+    document.getElementById(
+        "orderInfoText"
+    ).textContent=t.orderInfoText;
+
+    document.getElementById(
+        "orderNote"
+    ).textContent=t.orderNote;
+
+    document.getElementById(
+        "projectLabel"
+    ).textContent=t.projectLabel;
+
+    document.getElementById(
+        "nameLabel"
+    ).textContent=t.nameLabel;
+
+    document.getElementById(
+        "phoneLabel"
+    ).textContent=t.phoneLabel;
+
+    document.getElementById(
+        "photoLabel"
+    ).textContent=t.photoLabel;
+
+    document.getElementById(
+        "uploadText"
+    ).textContent=t.uploadText;
+
+    document.getElementById(
+        "measureLabel"
+    ).textContent=t.measureLabel;
+
+    document.getElementById(
+        "notesLabel"
+    ).textContent=t.notesLabel;
+
+    document.getElementById(
+        "sendButton"
+    ).textContent=t.sendButton;
+
+
+    document.getElementById(
+        "clientName"
+    ).placeholder="Votre nom";
+
+    document.getElementById(
+        "clientPhone"
+    ).placeholder="06XXXXXXXX";
+
+    document.getElementById(
+        "measurements"
+    ).placeholder=
+        "Exemple : 3.60m × 2.80m × 2.60m";
+
+    document.getElementById(
+        "notes"
+    ).placeholder=
+        "Décrivez votre projet et vos besoins...";
+
+
+    /* SALES */
+
+    document.getElementById(
+        "salesTitle"
+    ).textContent=t.salesTitle;
+
+    document.getElementById(
+        "salesDescription"
+    ).textContent=t.salesDescription;
+
+    document.getElementById(
+        "s1Title"
+    ).textContent=t.s1Title;
+
+    document.getElementById(
+        "s1Text"
+    ).textContent=t.s1Text;
+
+    document.getElementById(
+        "s2Title"
+    ).textContent=t.s2Title;
+
+    document.getElementById(
+        "s2Text"
+    ).textContent=t.s2Text;
+
+    document.getElementById(
+        "s3Title"
+    ).textContent=t.s3Title;
+
+    document.getElementById(
+        "s3Text"
+    ).textContent=t.s3Text;
+
+    document.getElementById(
+        "s4Title"
+    ).textContent=t.s4Title;
+
+    document.getElementById(
+        "s4Text"
+    ).textContent=t.s4Text;
+
+
+    /* WORKS */
+
+    document.getElementById(
+        "worksTitle"
+    ).textContent=t.worksTitle;
+
+    document.getElementById(
+        "worksText"
+    ).textContent=t.worksText;
+
+    document.getElementById(
+        "worksLink"
+    ).textContent=t.worksLink;
+
+
+    /* CONTACT */
+
+    document.getElementById(
+        "contactTitle"
+    ).textContent=t.contactTitle;
+
+    document.getElementById(
+        "contactText"
+    ).textContent=t.contactText;
+
+    document.getElementById(
+        "contactButton"
+    ).textContent=t.contactButton;
 
 }
 

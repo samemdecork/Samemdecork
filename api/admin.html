@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>إدارة الصور | صمم ديكورك</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f3f4f2;
+color:#17211c;
+padding:25px;
+}
+
+.container{
+width:min(800px,100%);
+margin:auto;
+}
+
+.header{
+background:#17211c;
+color:white;
+padding:25px;
+border-radius:12px;
+margin-bottom:20px;
+text-align:center;
+}
+
+.header h1{
+margin-bottom:5px;
+}
+
+.panel{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 25px #0001;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+select,
+input[type="file"]{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:7px;
+margin-bottom:20px;
+background:white;
+}
+
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:7px;
+background:#17211c;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:disabled{
+opacity:.5;
+}
+
+.progress{
+margin-top:20px;
+background:#eee;
+height:10px;
+border-radius:20px;
+overflow:hidden;
+display:none;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#25d366;
+transition:.2s;
+}
+
+.status{
+margin-top:20px;
+padding:15px;
+border-radius:7px;
+background:#f5f5f5;
+text-align:center;
+}
+
+.success{
+background:#e8f8ee;
+color:#176b37;
+}
+
+.error{
+background:#ffeaea;
+color:#a40000;
+}
+
+.note{
+margin-top:15px;
+font-size:13px;
+color:#777;
+line-height:1.8;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:20px;
+color:#17211c;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h1>صمم ديكورك</h1>
+
+<p>إضافة الصور إلى أعمالنا</p>
+
+</div>
+
+
+<div class="panel">
+
+<label>
+اختار القسم
+</label>
+
+<select id="type">
+
+<option value="works">
+أعمالنا
+</option>
+
+<option value="tapis">
+الطابيسري والستور
+</option>
+
+<option value="products">
+الإكسسوارات والمنتجات
+</option>
+
+</select>
+
+
+<label>
+اختار الصور
+</label>
+
+<input
+type="file"
+id="files"
+accept="image/*"
+multiple
+>
+
+
+<button
+id="uploadBtn"
+onclick="uploadImages()">
+
+⬆️ رفع الصور
+
+</button>
+
+
+<div
+id="progress"
+class="progress">
+
+<div
+id="progressBar"
+class="progress-bar">
+</div>
+
+</div>
+
+
+<div
+id="status"
+class="status">
+
+اختار الصور ثم اضغط على رفع الصور.
+
+</div>
+
+
+<div class="note">
+
+يمكنك اختيار عدة صور مرة واحدة من الهاتف.
+<br>
+الصور غادي تتحط تلقائياً في القسم اللي اخترتي.
+
+</div>
+
+</div>
+
+
+<a
+href="index.html"
+class="back">
+
+← الرجوع للموقع
+
+</a>
+
+</div>
+
+
+<script>
+
+async function getSignature(type){
+
+const response =
+await fetch(
+"/api/sign-upload?type=" +
+encodeURIComponent(type)
+);
+
+if(!response.ok){
+
+throw new Error(
+"تعذر الحصول على إعدادات الرفع"
+);
+
+}
+
+return await response.json();
+
+}
+
+
+function setStatus(text, type=""){
+
+const status =
+document.getElementById("status");
+
+status.textContent = text;
+
+status.className =
+"status " + type;
+
+}
+
+
+async function uploadOne(file, config){
+
+return new Promise((resolve,reject)=>{
+
+const formData =
+new FormData();
+
+formData.append(
+"file",
+file
+);
+
+formData.append(
+"api_key",
+config.apiKey
+);
+
+formData.append(
+"timestamp",
+config.timestamp
+);
+
+formData.append(
+"folder",
+config.folder
+);
+
+formData.append(
+"signature",
+config.signature
+);
+
+
+const xhr =
+new XMLHttpRequest();
+
+
+xhr.open(
+"POST",
+`https://api.cloudinary.com/v1_1/${config.cloudName}/image/upload`
+);
+
+
+xhr.upload.onprogress =
+function(event){
+
+if(event.lengthComputable){
+
+const percent =
+(event.loaded / event.total) * 100;
+
+document.getElementById(
+"progressBar"
+).style.width =
+percent + "%";
+
+}
+
+};
+
+
+xhr.onload =
+function(){
+
+if(
+xhr.status >= 200 &&
+xhr.status < 300
+){
+
+resolve(
+JSON.parse(xhr.responseText)
+);
+
+}else{
+
+reject(
+new Error(
+"فشل رفع الصورة"
+)
+);
+
+}
+
+};
+
+
+xhr.onerror =
+function(){
+
+reject(
+new Error(
+"مشكل في الاتصال"
+)
+);
+
+};
+
+
+xhr.send(formData);
+
+});
+
+}
+
+
+async function uploadImages(){
+
+const input =
+document.getElementById("files");
+
+const button =
+document.getElementById("uploadBtn");
+
+const progress =
+document.getElementById("progress");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const type =
+document.getElementById("type").value;
+
+
+if(!input.files.length){
+
+setStatus(
+"اختار صورة أو أكثر أولاً.",
+"error"
+);
+
+return;
+
+}
+
+
+button.disabled = true;
+
+progress.style.display = "block";
+
+progressBar.style.width = "0%";
+
+
+try{
+
+setStatus(
+"جاري تجهيز الرفع..."
+);
+
+
+const config =
+await getSignature(type);
+
+
+let success = 0;
+
+const total =
+input.files.length;
+
+
+for(
+let i = 0;
+i < total;
+i++
+){
+
+setStatus(
+`جاري رفع الصورة ${i + 1} من ${total}...`
+);
+
+
+progressBar.style.width =
+"0%";
+
+
+await uploadOne(
+input.files[i],
+config
+);
+
+
+success++;
+
+}
+
+
+progressBar.style.width =
+"100%";
+
+
+setStatus(
+`تم رفع ${success} صورة بنجاح ✅`,
+"success"
+);
+
+
+input.value = "";
+
+
+}catch(error){
+
+console.error(error);
+
+setStatus(
+"وقع مشكل أثناء الرفع: " +
+error.message,
+"error"
+);
+
+}finally{
+
+button.disabled = false;
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

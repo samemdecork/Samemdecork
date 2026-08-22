@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>الإكسسوارات والمبيعات | صمم ديكورك</title>
+<title>المتجر | الإكسسوارات و Electroménager | صمم ديكورك</title>
 
 <style>
 
@@ -16,10 +16,15 @@ margin:0;
 padding:0;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Tahoma,Arial,sans-serif;
-background:#f4f4f2;
+background:#f5f5f3;
 color:#17211c;
+line-height:1.7;
 }
 
 a{
@@ -27,28 +32,42 @@ text-decoration:none;
 color:inherit;
 }
 
+img{
+display:block;
+width:100%;
+}
+
 .wrap{
 width:min(1200px,92%);
 margin:auto;
 }
 
+
+/* =========================
+HEADER
+========================= */
+
 header{
 height:72px;
-background:#0c120f;
-display:flex;
-align-items:center;
+background:rgba(12,18,15,.97);
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 20px #0004;
 }
 
 .nav{
+height:72px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .logo{
 font-size:25px;
 font-weight:900;
-color:white;
+color:#fff;
 }
 
 .logo span{
@@ -57,94 +76,291 @@ color:#cfd2d4;
 
 .back{
 background:#cfd2d4;
-padding:10px 20px;
+color:#17211c;
+padding:9px 18px;
 border-radius:6px;
 font-weight:bold;
 }
 
+
+/* =========================
+HERO
+========================= */
+
 .hero{
-background:#17211c;
-color:white;
-padding:65px 0;
+background:
+linear-gradient(
+90deg,
+rgba(5,10,7,.96),
+rgba(5,10,7,.78)
+),
+url("images/shop.jpg")
+center/cover;
+
+color:#fff;
+padding:80px 0;
 text-align:center;
 }
 
 .hero small{
 color:#cfd2d4;
+font-weight:bold;
 letter-spacing:3px;
 }
 
 .hero h1{
-font-size:clamp(35px,6vw,58px);
-margin:8px 0;
+font-size:clamp(36px,6vw,62px);
+margin:8px 0 10px;
 }
 
 .hero p{
-color:#cbd1ce;
+color:#d5dbd7;
+font-size:17px;
+max-width:700px;
+margin:auto;
 }
+
+.hero-buttons{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:48px;
+padding:11px 24px;
+border-radius:6px;
+font-weight:bold;
+transition:.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.btn-light{
+background:#cfd2d4;
+color:#17211c;
+}
+
+.btn-whatsapp{
+background:#25d366;
+color:#fff;
+}
+
+
+/* =========================
+CATEGORIES
+========================= */
+
+.categories{
+background:#fff;
+padding:30px 0;
+border-bottom:1px solid #ddd;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.category{
+border:1px solid #ddd;
+background:#f7f7f5;
+padding:15px;
+border-radius:7px;
+text-align:center;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
+}
+
+.category:hover,
+.category.active{
+background:#17211c;
+color:#fff;
+}
+
+
+/* =========================
+PRODUCTS
+========================= */
 
 .products{
-padding:60px 0 90px;
+padding:70px 0 90px;
 }
 
-.grid{
+.section-title{
+text-align:center;
+margin-bottom:40px;
+}
+
+.section-title small{
+color:#68716c;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.section-title h2{
+font-size:clamp(30px,5vw,48px);
+margin:5px 0;
+}
+
+.section-title p{
+color:#777;
+}
+
+.product-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:18px;
 }
 
+
+/* PRODUCT */
+
 .product{
-background:white;
+background:#fff;
 border-radius:10px;
 overflow:hidden;
-box-shadow:0 8px 25px #0001;
+border:1px solid #ddd;
+box-shadow:0 7px 25px #0001;
+transition:.25s;
 }
 
-.product img{
-width:100%;
-height:240px;
+.product:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px #0002;
+}
+
+.product-image{
+height:250px;
+background:#e5e5e3;
+overflow:hidden;
+}
+
+.product-image img{
+height:100%;
 object-fit:cover;
+transition:.4s;
 }
 
-.info{
+.product:hover .product-image img{
+transform:scale(1.05);
+}
+
+.product-info{
 padding:18px;
 }
 
-.info h3{
+.product-category{
+font-size:11px;
+color:#777;
+font-weight:bold;
+margin-bottom:4px;
+}
+
+.product-info h3{
 font-size:20px;
 margin-bottom:5px;
 }
 
 .description{
-font-size:14px;
+font-size:13px;
 color:#777;
 margin-bottom:10px;
 }
 
 .price{
-font-size:22px;
+font-size:21px;
 font-weight:900;
-margin-bottom:15px;
+margin-bottom:14px;
 }
 
-.order{
-display:block;
-background:#17211c;
-color:white;
+.price span{
+font-size:13px;
+font-weight:normal;
+color:#777;
+}
+
+.product-buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+}
+
+.product-btn{
 text-align:center;
-padding:11px;
-border-radius:6px;
+padding:10px 5px;
+border-radius:5px;
+font-size:13px;
 font-weight:bold;
 }
 
-.loading,
-.empty{
-text-align:center;
-background:white;
-padding:50px;
-border-radius:10px;
-color:#777;
+.details-btn{
+background:#17211c;
+color:#fff;
 }
+
+.whatsapp-btn{
+background:#25d366;
+color:#fff;
+}
+
+
+/* =========================
+NO PRODUCTS
+========================= */
+
+.empty{
+display:none;
+background:#fff;
+padding:55px 20px;
+border-radius:10px;
+text-align:center;
+color:#777;
+border:1px solid #ddd;
+}
+
+
+/* =========================
+REQUEST
+========================= */
+
+.request{
+background:#17211c;
+color:#fff;
+padding:70px 0;
+text-align:center;
+}
+
+.request h2{
+font-size:clamp(30px,5vw,45px);
+margin-bottom:10px;
+}
+
+.request p{
+color:#cbd1ce;
+margin-bottom:25px;
+}
+
+.request-buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+
+/* =========================
+FOOTER
+========================= */
 
 footer{
 background:#0e1511;
@@ -157,23 +373,88 @@ footer strong{
 color:#cfd2d4;
 }
 
-@media(max-width:900px){
-.grid{
+
+/* =========================
+WHATSAPP FLOAT
+========================= */
+
+.whatsapp{
+position:fixed;
+left:18px;
+bottom:18px;
+
+width:56px;
+height:56px;
+
+border-radius:50%;
+background:#25d366;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:3000;
+box-shadow:0 5px 20px #0005;
+}
+
+.whatsapp svg{
+width:30px;
+height:30px;
+fill:#fff;
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:950px){
+
+.product-grid{
 grid-template-columns:repeat(2,1fr);
 }
+
+.category-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 @media(max-width:550px){
-.grid{
+
+.product-grid{
 grid-template-columns:1fr;
 }
+
+.category-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.product-image{
+height:280px;
+}
+
+.product-buttons{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding:65px 0;
+}
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header>
 
@@ -191,110 +472,167 @@ grid-template-columns:1fr;
 
 </header>
 
+
+
+<!-- =========================
+HERO
+========================= -->
+
 <section class="hero">
 
 <div class="wrap">
 
-<small>SHOP</small>
+<small>
+SHOP • ACCESSOIRES • ELECTROMÉNAGER
+</small>
 
-<h1>الإكسسوارات والمبيعات</h1>
+<h1>
+المتجر
+</h1>
 
 <p>
-منتجات وتجهيزات للمشاريع والديكور
+إكسسوارات، تجهيزات، أجهزة كهرومنزلية وأثاث
+مناسب لمشاريع الديكور ديالك.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#products" class="btn btn-light">
+شوف المنتجات
+</a>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20معلومات%20على%20المنتجات%20الموجودة%20فالمتجر."
+target="_blank"
+class="btn btn-whatsapp">
+
+📱 تواصل معنا WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+CATEGORIES
+========================= -->
+
+<section class="categories">
+
+<div class="wrap">
+
+<div class="category-grid">
+
+<div class="category active" onclick="filterProducts('all',this)">
+الكل
+</div>
+
+<div class="category" onclick="filterProducts('accessoires',this)">
+الإكسسوارات
+</div>
+
+<div class="category" onclick="filterProducts('electromenager',this)">
+Electroménager
+</div>
+
+<div class="category" onclick="filterProducts('meubles',this)">
+الأثاث
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+PRODUCTS
+========================= -->
+
+<section
+class="products"
+id="products">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small>
+NOS PRODUITS
+</small>
+
+<h2>
+المنتجات والمبيعات
+</h2>
+
+<p>
+اختار المنتج اللي عجبك وتواصل معنا مباشرة عبر WhatsApp.
 </p>
 
 </div>
 
-</section>
 
-<section class="products">
+<div
+id="productGrid"
+class="product-grid">
 
-<div class="wrap">
 
-<div id="loading" class="loading">
-جاري تحميل المنتجات...
-</div>
+<!-- المنتج 1 -->
 
-<div id="grid" class="grid"></div>
+<div
+class="product"
+data-category="accessoires">
 
-<div id="empty" class="empty" style="display:none">
-مازال ما تزاد حتى منتج.
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<strong>صمم ديكورك</strong> © 2026
-
-<br>
-
-جميع الحقوق محفوظة — Hamza Chtaibi
-
-</footer>
-
-<script>
-
-async function loadProducts(){
-
-const loading=document.getElementById("loading");
-const grid=document.getElementById("grid");
-const empty=document.getElementById("empty");
-
-try{
-
-const response=
-await fetch("/api/gallery?type=products");
-
-const data=await response.json();
-
-loading.style.display="none";
-
-if(!data.images || data.images.length===0){
-
-empty.style.display="block";
-return;
-
-}
-
-data.images.forEach(image=>{
-
-const name=
-image.public_id
-.split("/")
-.pop()
-.replace(/[-_]/g," ");
-
-const card=document.createElement("div");
-
-card.className="product";
-
-card.innerHTML=`
+<div class="product-image">
 
 <img
-src="${image.url}"
-alt="${name}"
-loading="lazy"
+src="images/product-001.webp"
+alt="إكسسوار ديكور"
+onerror="this.src='images/product-placeholder.jpg'"
 >
 
-<div class="info">
+</div>
 
-<h3>${name}</h3>
+<div class="product-info">
+
+<div class="product-category">
+الإكسسوارات
+</div>
+
+<h3>
+إكسسوار ديكور 01
+</h3>
 
 <div class="description">
-منتج متوفر حسب الطلب
+إكسسوار مناسب للمشاريع والديكور.
 </div>
 
 <div class="price">
 الثمن عند الطلب
 </div>
 
+<div class="product-buttons">
+
 <a
-class="order"
-href="https://wa.me/212000000000?text=${encodeURIComponent("سلام، بغيت نسول على المنتج: "+name)}"
-target="_blank">
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20نسول%20على%20إكسسوار%20ديكور%2001"
+target="_blank"
+class="product-btn whatsapp-btn">
+
+WhatsApp
+
+</a>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20إكسسوار%20ديكور%2001"
+target="_blank"
+class="product-btn details-btn">
 
 سول على الثمن
 
@@ -302,29 +640,353 @@ target="_blank">
 
 </div>
 
-`;
+</div>
 
-grid.appendChild(card);
+</div>
+
+
+
+<!-- المنتج 2 -->
+
+<div
+class="product"
+data-category="electromenager">
+
+<div class="product-image">
+
+<img
+src="images/product-002.webp"
+alt="Electroménager"
+onerror="this.src='images/product-placeholder.jpg'"
+>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+Electroménager
+</div>
+
+<h3>
+جهاز كهرومنزلي 01
+</h3>
+
+<div class="description">
+تجهيزات وأجهزة للمطبخ والمشاريع.
+</div>
+
+<div class="price">
+الثمن عند الطلب
+</div>
+
+<div class="product-buttons">
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20نسول%20على%20جهاز%20كهرومنزلي%2001"
+target="_blank"
+class="product-btn whatsapp-btn">
+
+WhatsApp
+
+</a>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20جهاز%20كهرومنزلي%2001"
+target="_blank"
+class="product-btn details-btn">
+
+سول على الثمن
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- المنتج 3 -->
+
+<div
+class="product"
+data-category="meubles">
+
+<div class="product-image">
+
+<img
+src="images/product-003.webp"
+alt="أثاث"
+onerror="this.src='images/product-placeholder.jpg'"
+>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+الأثاث
+</div>
+
+<h3>
+قطعة أثاث 01
+</h3>
+
+<div class="description">
+أثاث وقطع مناسبة للديكور الداخلي.
+</div>
+
+<div class="price">
+الثمن عند الطلب
+</div>
+
+<div class="product-buttons">
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20نسول%20على%20قطعة%20الأثاث%2001"
+target="_blank"
+class="product-btn whatsapp-btn">
+
+WhatsApp
+
+</a>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20قطعة%20الأثاث%2001"
+target="_blank"
+class="product-btn details-btn">
+
+سول على الثمن
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- المنتج 4 -->
+
+<div
+class="product"
+data-category="accessoires">
+
+<div class="product-image">
+
+<img
+src="images/product-004.webp"
+alt="إكسسوار"
+onerror="this.src='images/product-placeholder.jpg'"
+>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">
+الإكسسوارات
+</div>
+
+<h3>
+إكسسوار ديكور 02
+</h3>
+
+<div class="description">
+منتج مناسب لتكملة المشروع والديكور.
+</div>
+
+<div class="price">
+الثمن عند الطلب
+</div>
+
+<div class="product-buttons">
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20نسول%20على%20إكسسوار%20ديكور%2002"
+target="_blank"
+class="product-btn whatsapp-btn">
+
+WhatsApp
+
+</a>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20ثمن%20إكسسوار%20ديكور%2002"
+target="_blank"
+class="product-btn details-btn">
+
+سول على الثمن
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div id="empty" class="empty">
+
+مازال ما تزاد حتى منتج في هاد القسم.
+
+<br><br>
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20معلومات%20على%20المنتجات."
+target="_blank"
+class="btn btn-whatsapp">
+
+تواصل معنا عبر WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+REQUEST
+========================= -->
+
+<section class="request">
+
+<div class="wrap">
+
+<h2>
+ما لقيتيش اللي كتقلب عليه؟
+</h2>
+
+<p>
+صيفط لينا صورة المنتج أو الموديل اللي بغيتي، ونشوفو ليك الثمن والتوفر.
+</p>
+
+<div class="request-buttons">
+
+<a
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20نسول%20على%20منتج%20ما%20لقيتوش%20فالمتجر."
+target="_blank"
+class="btn btn-whatsapp">
+
+📱 سولنا عبر WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+<strong>
+صمم ديكورك
+</strong>
+
+© 2026
+
+<br>
+
+جميع الحقوق محفوظة — Hamza Chtaibi
+
+</footer>
+
+
+
+<!-- =========================
+FLOAT WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/212754350706?text=سلام%20عليكم،%20بغيت%20معلومات%20على%20المتجر."
+target="_blank"
+aria-label="WhatsApp">
+
+<svg viewBox="0 0 32 32">
+
+<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+
+</svg>
+
+</a>
+
+
+
+<script>
+
+/* =========================
+FILTER
+========================= */
+
+function filterProducts(category,button){
+
+const products =
+document.querySelectorAll(".product");
+
+const buttons =
+document.querySelectorAll(".category");
+
+let visible=0;
+
+buttons.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+products.forEach(product=>{
+
+const productCategory =
+product.dataset.category;
+
+if(
+category==="all" ||
+productCategory===category
+){
+
+product.style.display="block";
+visible++;
+
+}else{
+
+product.style.display="none";
+
+}
 
 });
 
-}catch(error){
+const empty =
+document.getElementById("empty");
 
-loading.style.display="none";
-
-empty.style.display="block";
-
-empty.textContent=
-"وقع مشكل في تحميل المنتجات.";
-
-}
+empty.style.display =
+visible===0
+?"block"
+:"none";
 
 }
-
-loadProducts();
 
 </script>
 
-</body>
 
+</body>
 </html>

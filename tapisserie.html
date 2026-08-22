@@ -1,298 +1,96 @@
-<!-- ================================
-     الاختصاصات
-================================ -->
-
-<section class="departments" id="choices">
-
-  <div class="wrap">
-
-    <div class="section-title">
-      <small>صمم ديكورك</small>
-      <h2>اختار الاختصاص</h2>
-      <p>
-        كل خدمة عندها قسم خاص بها باش نسهلو عليك الاختيار والطلب.
-      </p>
-    </div>
-
-    <div class="department-grid">
-
-      <!-- الصالون -->
-      <a class="department" href="salon.html">
-        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>01</span>
-          <h3>الصالون</h3>
-          <p>صالونات • سدادر • كنب • صالونجي</p>
-        </div>
-      </a>
-
-
-      <!-- غرفة الطعام -->
-      <a class="department" href="salle-a-manger.html">
-        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>02</span>
-          <h3>غرفة الطعام</h3>
-          <p>طاولات • كراسي • Banquette • طابيسري</p>
-        </div>
-      </a>
-
-
-      <!-- الطابيسري -->
-      <a class="department featured" href="tapisserie.html">
-        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>03</span>
-          <h3>الطابيسري</h3>
-          <p>سدادر • كراسي • كليك كلاك • كوفر • ناموسية</p>
-        </div>
-      </a>
-
-
-      <!-- الستور والردوات -->
-      <a class="department" href="rideaux.html">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>04</span>
-          <h3>الستور والردوات</h3>
-          <p>ستور • ريدوات • Blackout • ستور رول</p>
-        </div>
-      </a>
-
-
-      <!-- غرفة النوم -->
-      <a class="department" href="bedroom.html">
-        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>05</span>
-          <h3>غرفة النوم</h3>
-          <p>سرير • Dressing • Placard • كوفر • ناموسية</p>
-        </div>
-      </a>
-
-
-      <!-- المطبخ -->
-      <a class="department" href="Kitchen.html">
-        <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>06</span>
-          <h3>المطبخ</h3>
-          <p>مطبخ L • U • جزيرة • خامات • ألوان</p>
-        </div>
-      </a>
-
-
-      <!-- Dressing -->
-      <a class="department" href="dressing.html">
-        <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>07</span>
-          <h3>Dressing & Placard</h3>
-          <p>أبواب • زجاج • تقسيمات • إكسسوارات</p>
-        </div>
-      </a>
-
-
-      <!-- Meuble TV -->
-      <a class="department" href="mobil-tv.html">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
-        <div class="department-overlay"></div>
-
-        <div class="department-info">
-          <span>08</span>
-          <h3>Meuble TV</h3>
-          <p>موديلات • خشب • إضاءة • تخزين</p>
-        </div>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الطابيسري والستور | صمم ديكورك</title>
 
 <style>
-
-/* =================================
-   الأقسام الرئيسية
-================================= */
-
-.departments{
-  background:#17231d;
-  color:#fff;
-  padding:100px 0;
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:#f3f3f1;
+color:#18221d
 }
-
-.departments .section-title{
-  text-align:center;
-  margin-bottom:50px;
+.wrap{
+width:min(800px,92%);
+margin:auto
 }
-
-.departments .section-title small{
-  color:#c9aa7b;
-  letter-spacing:3px;
-  font-size:13px;
+header{
+background:#17211c;
+color:#fff;
+padding:20px
 }
-
-.departments .section-title h2{
-  font-size:clamp(38px,5vw,58px);
-  margin:12px 0;
+main{padding:70px 0}
+.box{
+background:#fff;
+padding:35px;
+border-radius:8px;
+box-shadow:0 5px 25px #0001;
+text-align:center
 }
-
-.departments .section-title p{
-  color:#bfc6c1;
-  font-size:16px;
+h1{font-size:36px}
+p{color:#777}
+.whatsapp{
+display:inline-flex;
+background:#25d366;
+color:#fff;
+padding:14px 25px;
+border-radius:5px;
+font-weight:bold;
+margin-top:15px
 }
-
-
-/* GRID */
-
-.department-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
+.back{
+display:inline-block;
+margin-top:20px;
+color:#555
 }
-
-
-/* CARD */
-
-.department{
-  position:relative;
-  height:370px;
-  overflow:hidden;
-  border-radius:5px;
-  background:#101612;
-  display:block;
-  isolation:isolate;
-}
-
-.department img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .6s ease;
-}
-
-.department:hover img{
-  transform:scale(1.08);
-}
-
-
-/* DARK OVERLAY */
-
-.department-overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,10,7,.95),
-      rgba(5,10,7,.35) 55%,
-      rgba(5,10,7,.05)
-    );
-}
-
-
-/* INFO */
-
-.department-info{
-  position:absolute;
-  right:28px;
-  left:28px;
-  bottom:25px;
-  z-index:2;
-}
-
-.department-info span{
-  color:#c9aa7b;
-  font-size:13px;
-  letter-spacing:2px;
-}
-
-.department-info h3{
-  font-size:30px;
-  margin:7px 0;
-  color:#fff;
-}
-
-.department-info p{
-  color:#d5c09e;
-  font-size:14px;
-  line-height:1.7;
-}
-
-
-/* TAPISSERIE FEATURE */
-
-.department.featured{
-  border:1px solid #c9aa7b;
-}
-
-.department.featured:before{
-  content:"اختصاص";
-  position:absolute;
-  top:20px;
-  right:20px;
-  z-index:3;
-
-  background:#c9aa7b;
-  color:#17231d;
-
-  padding:7px 14px;
-  border-radius:20px;
-
-  font-size:12px;
-  font-weight:bold;
-}
-
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  .departments{
-    padding:70px 0;
-  }
-
-  .department-grid{
-    grid-template-columns:1fr;
-  }
-
-  .department{
-    height:300px;
-  }
-
-  .department-info{
-    right:20px;
-    left:20px;
-    bottom:20px;
-  }
-
-  .department-info h3{
-    font-size:25px;
-  }
-
-  .department-info p{
-    font-size:13px;
-  }
-
-}
-
 </style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap">
+<strong>صمم ديكورك</strong>
+</div>
+</header>
+
+<main>
+<div class="wrap">
+
+<div class="box">
+
+<h1>الطابيسري والستور</h1>
+
+<p>
+قسم متخصص في الطابيسري، الستائر، الستور،
+السدادر والأثواب حسب الطلب.
+</p>
+
+<p>
+للاستفسار والطلبات تواصل مباشرة مع المختص.
+</p>
+
+<a
+class="whatsapp"
+href="https://wa.me/212638967822"
+target="_blank">
+
+WhatsApp — 0638 96 78 22
+
+</a>
+
+<br>
+
+<a href="index.html" class="back">
+← الرجوع للموقع
+</a>
+
+</div>
+
+</div>
+</main>
+
+</body>
+</html>

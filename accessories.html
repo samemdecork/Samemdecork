@@ -1,101 +1,330 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>الإكسسوارات و Electroménager</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>الإكسسوارات والمبيعات | صمم ديكورك</title>
 
 <style>
-body{
+
+*{
+box-sizing:border-box;
 margin:0;
-font-family:Tahoma,Arial;
-background:#f3f3f1;
-color:#17211c
+padding:0;
 }
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f4f2;
+color:#17211c;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.wrap{
+width:min(1200px,92%);
+margin:auto;
+}
+
 header{
+height:72px;
+background:#0c120f;
+display:flex;
+align-items:center;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+color:white;
+}
+
+.logo span{
+color:#cfd2d4;
+}
+
+.back{
+background:#cfd2d4;
+padding:10px 20px;
+border-radius:6px;
+font-weight:bold;
+}
+
+.hero{
 background:#17211c;
 color:white;
-padding:20px
+padding:65px 0;
+text-align:center;
 }
-.wrap{
-width:min(1100px,92%);
-margin:auto
+
+.hero small{
+color:#cfd2d4;
+letter-spacing:3px;
 }
-main{padding:60px 0}
-.title{text-align:center;margin-bottom:40px}
+
+.hero h1{
+font-size:clamp(35px,6vw,58px);
+margin:8px 0;
+}
+
+.hero p{
+color:#cbd1ce;
+}
+
+.products{
+padding:60px 0 90px;
+}
+
 .grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px
+grid-template-columns:repeat(4,1fr);
+gap:18px;
 }
-.card{
+
+.product{
 background:white;
-border:1px solid #ddd;
-padding:20px;
-border-radius:6px
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 8px 25px #0001;
 }
-.card h3{margin-top:0}
-.card p{color:#777}
-.btn{
-display:inline-block;
-padding:10px 18px;
+
+.product img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.info{
+padding:18px;
+}
+
+.info h3{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.description{
+font-size:14px;
+color:#777;
+margin-bottom:10px;
+}
+
+.price{
+font-size:22px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.order{
+display:block;
 background:#17211c;
 color:white;
-border-radius:4px
+text-align:center;
+padding:11px;
+border-radius:6px;
+font-weight:bold;
 }
-@media(max-width:700px){
-.grid{grid-template-columns:1fr 1fr}
+
+.loading,
+.empty{
+text-align:center;
+background:white;
+padding:50px;
+border-radius:10px;
+color:#777;
 }
-@media(max-width:450px){
-.grid{grid-template-columns:1fr}
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px;
 }
+
+footer strong{
+color:#cfd2d4;
+}
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:550px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-<div class="wrap">
-<strong>صمم ديكورك</strong>
+
+<div class="wrap nav">
+
+<a href="index.html" class="logo">
+صمم <span>ديكورك</span>
+</a>
+
+<a href="index.html" class="back">
+الرئيسية
+</a>
+
 </div>
+
 </header>
 
-<main>
+<section class="hero">
 
 <div class="wrap">
 
-<div class="title">
-<h1>الإكسسوارات و Electroménager</h1>
+<small>SHOP</small>
+
+<h1>الإكسسوارات والمبيعات</h1>
+
 <p>
-منتجات وتجهيزات للبيع للمطابخ والديكور.
+منتجات وتجهيزات للمشاريع والديكور
 </p>
+
 </div>
 
-<div class="grid">
+</section>
 
-<div class="card">
-<h3>إكسسوارات المطابخ</h3>
-<p>سلال، tiroirs، تجهيزات داخلية...</p>
-<a class="btn" href="#">المنتجات</a>
+<section class="products">
+
+<div class="wrap">
+
+<div id="loading" class="loading">
+جاري تحميل المنتجات...
 </div>
 
-<div class="card">
-<h3>LED والإضاءة</h3>
-<p>إضاءة وتجهيزات LED.</p>
-<a class="btn" href="#">المنتجات</a>
-</div>
+<div id="grid" class="grid"></div>
 
-<div class="card">
-<h3>Electroménager</h3>
-<p>أفران، plaques، hottes، micro-ondes...</p>
-<a class="btn" href="#">المنتجات</a>
+<div id="empty" class="empty" style="display:none">
+مازال ما تزاد حتى منتج.
 </div>
 
 </div>
 
+</section>
+
+<footer>
+
+<strong>صمم ديكورك</strong> © 2026
+
+<br>
+
+جميع الحقوق محفوظة — Hamza Chtaibi
+
+</footer>
+
+<script>
+
+async function loadProducts(){
+
+const loading=document.getElementById("loading");
+const grid=document.getElementById("grid");
+const empty=document.getElementById("empty");
+
+try{
+
+const response=
+await fetch("/api/gallery?type=products");
+
+const data=await response.json();
+
+loading.style.display="none";
+
+if(!data.images || data.images.length===0){
+
+empty.style.display="block";
+return;
+
+}
+
+data.images.forEach(image=>{
+
+const name=
+image.public_id
+.split("/")
+.pop()
+.replace(/[-_]/g," ");
+
+const card=document.createElement("div");
+
+card.className="product";
+
+card.innerHTML=`
+
+<img
+src="${image.url}"
+alt="${name}"
+loading="lazy"
+>
+
+<div class="info">
+
+<h3>${name}</h3>
+
+<div class="description">
+منتج متوفر حسب الطلب
 </div>
 
-</main>
+<div class="price">
+الثمن عند الطلب
+</div>
+
+<a
+class="order"
+href="https://wa.me/212000000000?text=${encodeURIComponent("سلام، بغيت نسول على المنتج: "+name)}"
+target="_blank">
+
+سول على الثمن
+
+</a>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+}catch(error){
+
+loading.style.display="none";
+
+empty.style.display="block";
+
+empty.textContent=
+"وقع مشكل في تحميل المنتجات.";
+
+}
+
+}
+
+loadProducts();
+
+</script>
 
 </body>
+
 </html>

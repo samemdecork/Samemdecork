@@ -1,96 +1,291 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>الطابيسري والستور | صمم ديكورك</title>
 
 <style>
-body{
+
+*{
+box-sizing:border-box;
 margin:0;
-font-family:Tahoma,Arial;
-background:#f3f3f1;
-color:#18221d
+padding:0;
 }
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f4f2;
+color:#17211c;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
 .wrap{
-width:min(800px,92%);
-margin:auto
+width:min(1200px,92%);
+margin:auto;
 }
+
 header{
-background:#17211c;
+height:72px;
+background:#0c120f;
+display:flex;
+align-items:center;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
 color:#fff;
-padding:20px
 }
-main{padding:70px 0}
-.box{
-background:#fff;
-padding:35px;
-border-radius:8px;
-box-shadow:0 5px 25px #0001;
-text-align:center
+
+.logo span{
+color:#cfd2d4;
 }
-h1{font-size:36px}
-p{color:#777}
-.whatsapp{
-display:inline-flex;
-background:#25d366;
-color:#fff;
-padding:14px 25px;
-border-radius:5px;
-font-weight:bold;
-margin-top:15px
-}
+
 .back{
-display:inline-block;
-margin-top:20px;
-color:#555
+background:#cfd2d4;
+padding:10px 20px;
+border-radius:6px;
+font-weight:bold;
 }
+
+.hero{
+background:#17211c;
+color:white;
+padding:65px 0;
+text-align:center;
+}
+
+.hero small{
+color:#cfd2d4;
+letter-spacing:3px;
+}
+
+.hero h1{
+font-size:clamp(35px,6vw,58px);
+margin:8px 0;
+}
+
+.hero p{
+color:#cbd1ce;
+}
+
+.section{
+padding:60px 0 90px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 8px 25px #0001;
+}
+
+.card img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.info{
+padding:18px;
+}
+
+.info h3{
+font-size:21px;
+margin-bottom:5px;
+}
+
+.info p{
+color:#777;
+}
+
+.loading,
+.empty{
+text-align:center;
+background:white;
+padding:50px;
+border-radius:10px;
+color:#777;
+}
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px;
+}
+
+footer strong{
+color:#cfd2d4;
+}
+
+@media(max-width:800px){
+.grid{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:550px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-<div class="wrap">
-<strong>صمم ديكورك</strong>
+
+<div class="wrap nav">
+
+<a href="index.html" class="logo">
+صمم <span>ديكورك</span>
+</a>
+
+<a href="index.html" class="back">
+الرئيسية
+</a>
+
 </div>
+
 </header>
 
-<main>
+<section class="hero">
+
 <div class="wrap">
 
-<div class="box">
+<small>TAPISSERIE & RIDEAUX</small>
 
 <h1>الطابيسري والستور</h1>
 
 <p>
-قسم متخصص في الطابيسري، الستائر، الستور،
-السدادر والأثواب حسب الطلب.
+ستور • سدادر • ستائر • تابيسري حسب الطلب
 </p>
 
-<p>
-للاستفسار والطلبات تواصل مباشرة مع المختص.
-</p>
+</div>
 
-<a
-class="whatsapp"
-href="https://wa.me/212638967822"
-target="_blank">
+</section>
 
-WhatsApp — 0638 96 78 22
+<section class="section">
 
-</a>
+<div class="wrap">
+
+<div id="loading" class="loading">
+جاري تحميل الصور...
+</div>
+
+<div id="grid" class="grid"></div>
+
+<div id="empty" class="empty" style="display:none">
+مازال ما تزادت حتى صورة.
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<strong>صمم ديكورك</strong> © 2026
 
 <br>
 
-<a href="index.html" class="back">
-← الرجوع للموقع
-</a>
+جميع الحقوق محفوظة — Hamza Chtaibi
+
+</footer>
+
+<script>
+
+async function loadTapis(){
+
+const loading=document.getElementById("loading");
+const grid=document.getElementById("grid");
+const empty=document.getElementById("empty");
+
+try{
+
+const response=await fetch("/api/gallery?type=tapis");
+
+const data=await response.json();
+
+loading.style.display="none";
+
+if(!data.images || data.images.length===0){
+
+empty.style.display="block";
+return;
+
+}
+
+data.images.forEach((image,index)=>{
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<img
+src="${image.url}"
+alt="طابيسري وستائر"
+loading="lazy"
+>
+
+<div class="info">
+
+<h3>طابيسري حسب الطلب</h3>
+
+<p>
+تصميم وتنفيذ حسب المقاس
+</p>
 
 </div>
 
-</div>
-</main>
+`;
+
+grid.appendChild(card);
+
+});
+
+}catch(error){
+
+loading.style.display="none";
+
+empty.style.display="block";
+
+empty.textContent=
+"وقع مشكل في تحميل الصور.";
+
+}
+
+}
+
+loadTapis();
+
+</script>
 
 </body>
 </html>

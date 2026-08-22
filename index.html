@@ -1,1066 +1,1829 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>إدارة صمم ديكورك</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>صمم ديكورك | Hamza Chtaibi</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
 }
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f3f4f2;
-  color:#17211c;
-  line-height:1.7;
+font-family:Tahoma,Arial,sans-serif;
+background:#f5f5f3;
+color:#17211c;
+line-height:1.7
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+img{
+display:block;
+width:100%
 }
 
 .wrap{
-  width:min(1150px,92%);
-  margin:auto;
+width:min(1180px,92%);
+margin:auto
 }
+
+
+/* =========================
+HEADER
+========================= */
 
 header{
-  background:#101814;
-  color:#fff;
-  padding:18px 0;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 4px 20px #0003;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:72px;
+background:rgba(12,18,15,.94);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(207,210,212,.15);
 }
 
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+.nav{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
 }
 
 .logo{
-  font-size:24px;
-  font-weight:900;
+font-size:25px;
+font-weight:900;
+color:#fff;
+white-space:nowrap
 }
 
 .logo span{
-  color:#cfd3d4;
+color:#cfd2d4
 }
 
-.back{
-  color:#fff;
-  border:1px solid #777;
-  padding:8px 15px;
-  border-radius:6px;
+.navlinks{
+display:flex;
+align-items:center;
+gap:25px
 }
 
-main{
-  padding:40px 0 80px;
+.navlinks a{
+color:#fff;
+font-size:14px;
+transition:.25s
 }
 
-h1{
-  font-size:36px;
-  margin-bottom:8px;
+.navlinks a:hover{
+color:#cfd2d4
 }
 
-.subtitle{
-  color:#777;
-  margin-bottom:30px;
+.lang{
+display:flex;
+gap:4px;
+background:#27332d;
+padding:4px;
+border-radius:20px
 }
 
-.card{
-  background:#fff;
-  border-radius:12px;
-  padding:25px;
-  margin-bottom:25px;
-  box-shadow:0 5px 25px #0000000d;
-  border:1px solid #ddd;
+.lang button{
+border:0;
+background:transparent;
+color:#fff;
+padding:6px 10px;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold
 }
 
-.card h2{
-  margin-bottom:20px;
-  font-size:25px;
+.lang button.active{
+background:#cfd2d4;
+color:#17211c
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
+
+/* =========================
+HERO SLIDER
+========================= */
+
+.hero{
+height:100vh;
+min-height:650px;
+position:relative;
+overflow:hidden;
+color:#fff;
+padding-top:72px;
+display:flex;
+align-items:center;
 }
 
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
+.hero-slides{
+position:absolute;
+inset:0;
+z-index:0
 }
 
-.field.full{
-  grid-column:1/-1;
+.hero-slide{
+position:absolute;
+inset:0;
+opacity:0;
+background-position:center;
+background-size:cover;
+background-repeat:no-repeat;
+transform:scale(1.05);
+transition:
+opacity 1.2s ease,
+transform 6s ease;
 }
 
-label{
-  font-weight:bold;
+.hero-slide.active{
+opacity:1;
+transform:scale(1)
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:7px;
-  font-family:inherit;
-  font-size:15px;
-  background:#fff;
+.hero-slide:nth-child(1){
+background-image:
+url("images/hero-2.webp")
 }
 
-textarea{
-  min-height:100px;
-  resize:vertical;
+.hero-slide:nth-child(2){
+background-image:
+url("images/hero-3.webp")
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-  outline:none;
-  border-color:#17211c;
+.hero-slide:nth-child(3){
+background-image:
+url("images/kitchen.jpg")
 }
 
-.file{
-  padding:10px;
-  background:#f7f7f5;
+.hero-slide:nth-child(4){
+background-image:
+url("images/dressing.jpg")
+}
+
+.hero-slide:nth-child(5){
+background-image:
+url("images/salon.jpg")
+}
+
+.hero-slide:nth-child(6){
+background-image:
+url("images/bedroom.jpg")
+}
+
+.hero-slide:nth-child(7){
+background-image:
+url("images/tv.jpg")
+}
+
+
+/* DARK OVERLAY */
+
+.hero-overlay{
+position:absolute;
+inset:0;
+z-index:1;
+
+background:
+linear-gradient(
+90deg,
+rgba(5,10,7,.94),
+rgba(5,10,7,.68),
+rgba(5,10,7,.18)
+);
+}
+
+
+/* CONTENT */
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:720px
+}
+
+.kicker{
+font-size:12px;
+letter-spacing:3px;
+color:#cfd2d4;
+font-weight:bold;
+margin-bottom:15px
+}
+
+.hero h1{
+font-size:
+clamp(44px,7vw,82px);
+line-height:1.05;
+margin-bottom:22px;
+font-weight:900
+}
+
+.hero h1 span{
+color:#cfd2d4
+}
+
+.hero p{
+font-size:18px;
+color:#f0f0f0;
+max-width:650px;
+margin-bottom:30px
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap
 }
 
 .btn{
-  border:0;
-  padding:13px 22px;
-  border-radius:7px;
-  font-family:inherit;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:10px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:13px 25px;
+min-height:50px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s
+}
+
+.btn:hover{
+transform:translateY(-2px)
+}
+
+.btn-light{
+background:#cfd2d4;
+color:#17211c
 }
 
 .btn-dark{
-  background:#17211c;
-  color:#fff;
+background:#17211c;
+color:#fff
 }
 
-.btn-dark:hover{
-  background:#26362e;
+.btn-outline{
+border:1px solid #fff;
+color:#fff;
+background:rgba(0,0,0,.12)
 }
 
-.btn-silver{
-  background:#cfd3d4;
-  color:#17211c;
+.btn-outline:hover{
+background:#fff;
+color:#17211c
 }
 
-.status{
-  margin-top:15px;
-  padding:12px;
-  border-radius:7px;
-  display:none;
+
+/* SLIDER DOTS */
+
+.slider-dots{
+position:absolute;
+z-index:3;
+bottom:28px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:7px
 }
 
-.status.ok{
-  display:block;
-  background:#e4f6e9;
-  color:#176b31;
+.slider-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#ffffff66;
+cursor:pointer;
+transition:.3s
 }
 
-.status.error{
-  display:block;
-  background:#ffe6e6;
-  color:#9b1c1c;
+.slider-dot.active{
+width:28px;
+border-radius:10px;
+background:#cfd2d4
 }
 
-.preview{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:20px;
+
+/* =========================
+QUICK
+========================= */
+
+.quick{
+background:#fff;
+padding:24px 0;
+border-bottom:1px solid #ddd
 }
 
-.preview-item{
-  position:relative;
-  border-radius:8px;
-  overflow:hidden;
-  background:#eee;
-  aspect-ratio:1;
+.quick-grid{
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+gap:15px
 }
 
-.preview-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.quick-item{
+display:flex;
+align-items:center;
+gap:11px
 }
 
-.preview-item .loading{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#0008;
-  color:#fff;
-  font-weight:bold;
+.quick-number{
+width:40px;
+height:40px;
+min-width:40px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#17211c;
+color:#cfd2d4;
+font-weight:bold
 }
 
-.note{
-  background:#f0f2f0;
-  border-right:4px solid #17211c;
-  padding:12px 15px;
-  margin-bottom:20px;
-  color:#555;
+
+/* =========================
+SECTIONS
+========================= */
+
+section{
+padding:85px 0
 }
 
-@media(max-width:700px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .preview{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  h1{
-    font-size:28px;
-  }
+.section-title{
+text-align:center;
+margin-bottom:40px
 }
+
+.section-title small{
+color:#68716c;
+letter-spacing:2px;
+font-weight:bold
+}
+
+.section-title h2{
+font-size:
+clamp(30px,5vw,50px);
+margin:5px 0
+}
+
+.section-title p{
+color:#707873
+}
+
+
+/* =========================
+CHOICES
+========================= */
+
+.choices{
+background:#17211c;
+color:#fff
+}
+
+.choices .section-title small{
+color:#cfd2d4
+}
+
+.choices .section-title p{
+color:#c4ccc7
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:
+repeat(3,1fr);
+gap:17px
+}
+
+.choice{
+height:310px;
+position:relative;
+overflow:hidden;
+border-radius:8px;
+background:#111
+}
+
+.choice img{
+height:100%;
+object-fit:cover;
+transition:.5s
+}
+
+.choice:hover img{
+transform:scale(1.07)
+}
+
+.choice:after{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(4,8,6,.95),
+rgba(4,8,6,.02)
+)
+}
+
+.choice-info{
+position:absolute;
+bottom:18px;
+right:18px;
+left:18px;
+z-index:2
+}
+
+.choice-info h3{
+font-size:23px
+}
+
+.choice-info p{
+font-size:13px;
+color:#d0d5d2
+}
+
+
+/* =========================
+SPECIAL
+========================= */
+
+.special{
+background:#e7e8e6
+}
+
+.special-grid{
+display:grid;
+grid-template-columns:
+1fr 1fr;
+gap:18px
+}
+
+.special-card{
+background:#fff;
+padding:35px;
+border-radius:8px;
+border:1px solid #d8dad8
+}
+
+.special-card h3{
+font-size:25px;
+margin-bottom:8px
+}
+
+.special-card p{
+color:#707873;
+margin-bottom:20px
+}
+
+
+/* =========================
+WORKS
+========================= */
+
+.works{
+background:#fff;
+text-align:center
+}
+
+.works-preview{
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+gap:12px;
+margin-bottom:30px
+}
+
+.work-image{
+height:210px;
+overflow:hidden;
+border-radius:7px
+}
+
+.work-image img{
+height:100%;
+object-fit:cover;
+transition:.4s
+}
+
+.work-image:hover img{
+transform:scale(1.06)
+}
+
+.works-btn{
+display:inline-flex;
+padding:14px 30px;
+background:#17211c;
+color:#fff;
+border-radius:6px;
+font-weight:bold
+}
+
+
+/* =========================
+PARTNERS
+========================= */
+
+.partners{
+background:#eeeeec
+}
+
+.partner-grid{
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+gap:14px
+}
+
+.partner{
+background:#fff;
+min-height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid #ddd;
+font-weight:bold;
+color:#626b66
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px
+}
+
+footer strong{
+color:#cfd2d4
+}
+
+
+/* =========================
+WHATSAPP
+========================= */
+
+.whatsapp{
+position:fixed;
+left:18px;
+bottom:18px;
+width:56px;
+height:56px;
+border-radius:50%;
+background:#25d366;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3000;
+box-shadow:0 5px 20px #0005
+}
+
+.whatsapp svg{
+width:30px;
+height:30px;
+fill:#fff
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:850px){
+
+.navlinks{
+display:none
+}
+
+.quick-grid{
+grid-template-columns:
+1fr 1fr
+}
+
+.choice-grid{
+grid-template-columns:
+1fr 1fr
+}
+
+.works-preview{
+grid-template-columns:
+1fr 1fr
+}
+
+.partner-grid{
+grid-template-columns:
+1fr 1fr
+}
+
+.special-grid{
+grid-template-columns:1fr
+}
+
+}
+
+@media(max-width:550px){
+
+.hero{
+min-height:650px;
+text-align:center
+}
+
+.hero-content{
+margin:auto
+}
+
+.hero p{
+font-size:16px
+}
+
+.buttons{
+flex-direction:column
+}
+
+.btn{
+width:100%
+}
+
+.choice-grid{
+grid-template-columns:1fr
+}
+
+.works-preview{
+grid-template-columns:1fr 1fr
+}
+
+.work-image{
+height:170px
+}
+
+}
+
+
+/* =========================
+REDUCE MOTION
+========================= */
+
+@media(
+prefers-reduced-motion:reduce
+){
+
+.hero-slide{
+transition:none
+}
+
+.choice img,
+.work-image img{
+transition:none
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+HEADER
+========================= -->
+
 <header>
-<div class="wrap header">
 
-<div class="logo">
+<div class="wrap nav">
+
+<a
+href="index.html"
+class="logo">
+
 صمم <span>ديكورك</span>
-</div>
 
-<a href="index.html" class="back">
-← الموقع
 </a>
 
+
+<nav class="navlinks">
+
+<a
+href="#choices"
+data-i18n="design">
+
+صمم دابا
+
+</a>
+
+<a
+href="works.html"
+data-i18n="works">
+
+أعمالنا
+
+</a>
+
+<a
+href="#special"
+data-i18n="special">
+
+الخدمات الخاصة
+
+</a>
+
+</nav>
+
+
+<div class="lang">
+
+<button
+id="arBtn"
+class="active"
+onclick="setLang('ar')">
+
+دارجة
+
+</button>
+
+<button
+id="frBtn"
+onclick="setLang('fr')">
+
+FR
+
+</button>
+
 </div>
+
+</div>
+
 </header>
 
 
-<main>
 
-<div class="wrap">
+<!-- =========================
+HERO
+========================= -->
 
-<h1>لوحة إدارة صمم ديكورك</h1>
+<section class="hero">
 
-<p class="subtitle">
-من هنا تقدر تضيف الأعمال والمنتجات مباشرة من الموقع.
+
+<div class="hero-slides">
+
+<div class="hero-slide active"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+<div class="hero-slide"></div>
+
+</div>
+
+
+<div class="hero-overlay"></div>
+
+
+<div class="wrap hero-content">
+
+<div class="kicker"
+data-i18n="kicker">
+
+تصميم • ديكور • تنفيذ
+
+</div>
+
+
+<h1>
+
+<span data-i18n="hero1">
+دار عليك
+</span>
+
+<br>
+
+<span data-i18n="hero2">
+وديكور علينا
+</span>
+
+</h1>
+
+
+<p data-i18n="heroText">
+
+اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
+وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
+
 </p>
 
 
-<!-- =========================
-     أعمالنا
-========================= -->
+<div class="buttons">
 
-<div class="card">
+<a
+href="#choices"
+class="btn btn-light"
+data-i18n="start">
 
-<h2>📸 إضافة عمل جديد</h2>
+ابدأ التصميم
 
-<div class="note">
-اختار الصورة، القسم، واسم المشروع. الصورة غادي تترفع مباشرة إلى Cloudinary.
-</div>
-
-<div class="grid">
-
-<div class="field">
-<label>الصورة</label>
-
-<input
-type="file"
-id="workImage"
-class="file"
-accept="image/*"
-multiple
->
-
-</div>
+</a>
 
 
-<div class="field">
+<a
+href="https://wa.me/212000000000"
+target="_blank"
+class="btn btn-outline"
+data-i18n="contact">
 
-<label>القسم</label>
+تواصل معنا
 
-<select id="workCategory">
-
-<option value="kitchen">المطابخ</option>
-<option value="dressing">Dressing</option>
-<option value="bedroom">غرف النوم</option>
-<option value="salon">الصالونات</option>
-<option value="tv">Meuble TV</option>
-<option value="other">أعمال أخرى</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>اسم المشروع</label>
-
-<input
-type="text"
-id="workTitle"
-placeholder="مثال: مطبخ مودرن"
-/>
-
-</div>
-
-
-<div class="field">
-
-<label>الوصف</label>
-
-<input
-type="text"
-id="workDescription"
-placeholder="مثال: مطبخ MDF مع Quartz"
-/>
+</a>
 
 </div>
 
 </div>
 
-<button
-class="btn btn-dark"
-onclick="uploadWorks()"
->
-⬆️ رفع العمل
-</button>
 
-<div id="workStatus" class="status"></div>
-
-<div id="workPreview" class="preview"></div>
+<div
+class="slider-dots"
+id="sliderDots">
 
 </div>
+
+
+</section>
 
 
 
 <!-- =========================
-     التابيسري
+QUICK
 ========================= -->
 
-<div class="card">
+<section class="quick">
 
-<h2>🪟 إضافة منتج تابيسري</h2>
+<div class="wrap">
 
-<div class="grid">
+<div class="quick-grid">
 
-<div class="field">
 
-<label>صورة المنتج</label>
+<div class="quick-item">
 
-<input
-type="file"
-id="tapisImage"
-class="file"
-accept="image/*"
-multiple
->
-
+<div class="quick-number">
+1
 </div>
 
+<div>
+<b data-i18n="q1">
+اختار
+</b>
 
-<div class="field">
+<br>
 
-<label>نوع المنتج</label>
-
-<select id="tapisType">
-
-<option>ستور</option>
-<option>Rideau</option>
-<option>سدادر</option>
-<option>كوسان</option>
-<option>تابيسري</option>
-<option>ناموسية</option>
-<option>أخرى</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>اسم المنتج</label>
-
-<input
-type="text"
-id="tapisName"
-placeholder="مثال: ستور مودرن"
-/>
-
-</div>
-
-
-<div class="field">
-
-<label>الثمن بالدرهم</label>
-
-<input
-type="number"
-id="tapisPrice"
-placeholder="850"
-/>
-
-</div>
-
-
-<div class="field full">
-
-<label>الوصف</label>
-
-<textarea
-id="tapisDescription"
-placeholder="وصف المنتج..."
-></textarea>
-
+<span data-i18n="q1s">
+القسم
+</span>
 </div>
 
 </div>
 
-<button
-class="btn btn-dark"
-onclick="uploadTapis()"
->
-⬆️ إضافة المنتج
-</button>
 
-<div id="tapisStatus" class="status"></div>
+<div class="quick-item">
 
-<div id="tapisPreview" class="preview"></div>
+<div class="quick-number">
+2
+</div>
+
+<div>
+<b data-i18n="q2">
+صورة
+</b>
+
+<br>
+
+<span data-i18n="q2s">
+ديال المكان
+</span>
+</div>
 
 </div>
+
+
+<div class="quick-item">
+
+<div class="quick-number">
+3
+</div>
+
+<div>
+<b data-i18n="q3">
+قياسات
+</b>
+
+<br>
+
+<span data-i18n="q3s">
+العرض والطول والعلو
+</span>
+</div>
+
+</div>
+
+
+<div class="quick-item">
+
+<div class="quick-number">
+4
+</div>
+
+<div>
+<b data-i18n="q4">
+إرسال
+</b>
+
+<br>
+
+<span data-i18n="q4s">
+الطلب
+</span>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
 
 
 
 <!-- =========================
-     المبيعات
+CHOICES
 ========================= -->
 
-<div class="card">
+<section
+class="choices"
+id="choices">
 
-<h2>🛒 إضافة منتج للبيع</h2>
-
-<div class="grid">
-
-<div class="field">
-
-<label>صور المنتج</label>
-
-<input
-type="file"
-id="productImage"
-class="file"
-accept="image/*"
-multiple
->
-
-</div>
+<div class="wrap">
 
 
-<div class="field">
+<div class="section-title">
 
-<label>التصنيف</label>
+<small data-i18n="chooseSmall">
+صمم ديكورك
+</small>
 
-<select id="productCategory">
+<h2 data-i18n="chooseTitle">
+شنو بغيتي تصمم؟
+</h2>
 
-<option>إكسسوارات</option>
-<option>Electroménager</option>
-<option>مستلزمات المطبخ</option>
-<option>مستلزمات المنزل</option>
-<option>أخرى</option>
-
-</select>
+<p data-i18n="chooseText">
+اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.
+</p>
 
 </div>
 
 
-<div class="field">
-
-<label>اسم المنتج</label>
-
-<input
-type="text"
-id="productName"
-placeholder="مثال: Poignée moderne"
-/>
-
-</div>
+<div class="choice-grid">
 
 
-<div class="field">
+<a
+class="choice"
+href="configurateur.html?type=kitchen">
 
-<label>الثمن</label>
+<img
+src="images/kitchen.jpg"
+alt="المطبخ"
+loading="lazy">
 
-<input
-type="number"
-id="productPrice"
-placeholder="150"
-/>
+<div class="choice-info">
 
-</div>
+<h3 data-i18n="kitchen">
+المطبخ
+</h3>
 
-
-<div class="field">
-
-<label>الثمن القديم - اختياري</label>
-
-<input
-type="number"
-id="productOldPrice"
-placeholder="200"
-/>
+<p data-i18n="kitchenSub">
+L • U • I • Îlot
+</p>
 
 </div>
 
-
-<div class="field">
-
-<label>الحالة</label>
-
-<select id="productStock">
-
-<option value="available">متوفر</option>
-<option value="unavailable">غير متوفر</option>
-
-</select>
-
-</div>
+</a>
 
 
-<div class="field full">
 
-<label>الوصف</label>
+<a
+class="choice"
+href="configurateur.html?type=bedroom">
 
-<textarea
-id="productDescription"
-placeholder="وصف المنتج..."
-></textarea>
+<img
+src="images/bedroom.jpg"
+alt="غرفة النوم"
+loading="lazy">
 
-</div>
+<div class="choice-info">
+
+<h3 data-i18n="bedroom">
+غرفة النوم
+</h3>
+
+<p data-i18n="bedroomSub">
+سرير • خزانات • تسريحة
+</p>
 
 </div>
 
-<button
-class="btn btn-dark"
-onclick="uploadProduct()"
->
-⬆️ إضافة المنتج
-</button>
+</a>
 
-<div id="productStatus" class="status"></div>
 
-<div id="productPreview" class="preview"></div>
+
+<a
+class="choice"
+href="configurateur.html?type=salon">
+
+<img
+src="images/salon.jpg"
+alt="الصالون"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="salon">
+الصالون
+</h3>
+
+<p data-i18n="salonSub">
+جلسة • حائط • ديكور
+</p>
 
 </div>
+
+</a>
+
+
+
+<a
+class="choice"
+href="configurateur.html?type=dressing">
+
+<img
+src="images/dressing.jpg"
+alt="Dressing"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>
+Dressing
+</h3>
+
+<p data-i18n="dressingSub">
+Placard • بيبان • rangement
+</p>
+
+</div>
+
+</a>
+
+
+
+<a
+class="choice"
+href="configurateur.html?type=tv">
+
+<img
+src="images/tv.jpg"
+alt="Meuble TV"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>
+Meuble TV
+</h3>
+
+<p data-i18n="tvSub">
+TV • niches • étagères
+</p>
+
+</div>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
 
 
 
 <!-- =========================
-     الشركاء
+SPECIAL
 ========================= -->
 
-<div class="card">
+<section
+class="special"
+id="special">
 
-<h2>🏢 إضافة شريك</h2>
-
-<div class="grid">
-
-<div class="field">
-
-<label>اسم الشركة</label>
-
-<input
-type="text"
-id="partnerName"
-placeholder="مثال: شركة ABC"
-/>
-
-</div>
+<div class="wrap">
 
 
-<div class="field">
+<div class="section-title">
 
-<label>رابط الشركة - اختياري</label>
+<small data-i18n="specialSmall">
+SERVICES SPÉCIAUX
+</small>
 
-<input
-type="url"
-id="partnerUrl"
-placeholder="https://..."
-/>
+<h2 data-i18n="specialTitle">
+خدمات مستقلة
+</h2>
+
+<p data-i18n="specialText">
+أقسام عندها اختصاصها الخاص.
+</p>
 
 </div>
 
 
-<div class="field full">
+<div class="special-grid">
 
-<label>Logo الشركة</label>
 
-<input
-type="file"
-id="partnerLogo"
-class="file"
-accept="image/*"
->
+<div class="special-card">
 
-</div>
+<h3 data-i18n="tapisTitle">
+الطابيسري والستور
+</h3>
 
-</div>
+<p data-i18n="tapisText">
+ستور، سدادر، ستائر وتابيسري حسب الطلب.
+</p>
 
-<button
+<a
+href="tapisserie.html"
 class="btn btn-dark"
-onclick="uploadPartner()"
->
-⬆️ إضافة الشريك
-</button>
+data-i18n="discover">
 
-<div id="partnerStatus" class="status"></div>
+شوف القسم
 
-<div id="partnerPreview" class="preview"></div>
+</a>
+
+</div>
+
+
+
+<div class="special-card">
+
+<h3 data-i18n="accessTitle">
+الإكسسوارات و Electroménager
+</h3>
+
+<p data-i18n="accessText">
+بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
+</p>
+
+<a
+href="accessoires.html"
+class="btn btn-dark"
+data-i18n="shop">
+
+شوف المنتجات
+
+</a>
+
+</div>
+
 
 </div>
 
 </div>
 
-</main>
+</section>
+
+
+
+<!-- =========================
+WORKS PREVIEW
+========================= -->
+
+<section class="works">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small>
+REAL PROJECTS
+</small>
+
+<h2 data-i18n="worksTitle">
+أعمالنا
+</h2>
+
+<p data-i18n="worksText">
+شوف المشاريع الحقيقية اللي خدمناها.
+</p>
+
+</div>
+
+
+<div class="works-preview">
+
+
+<div class="work-image">
+
+<img
+src="images/work-003.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-004.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-007.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+<div class="work-image">
+
+<img
+src="images/work-010.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+
+</div>
+
+
+<a
+href="works.html"
+class="works-btn"
+data-i18n="seeWorks">
+
+شوف أعمالنا
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+PARTNERS
+========================= -->
+
+<section class="partners">
+
+<div class="wrap">
+
+
+<div class="section-title">
+
+<small>
+PARTNERS
+</small>
+
+<h2 data-i18n="partnersTitle">
+شركاؤنا
+</h2>
+
+<p data-i18n="partnersText">
+شركاء وماركات كنخدمو معاهم.
+</p>
+
+</div>
+
+
+<div class="partner-grid">
+
+<div class="partner">
+MDF / MÉLAMINÉ
+</div>
+
+<div class="partner">
+QUARTZ
+</div>
+
+<div class="partner">
+BLUM
+</div>
+
+<div class="partner">
+HETTICH
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+<strong>
+صمم ديكورك
+</strong>
+
+© 2026
+
+<br>
+
+<span data-i18n="rights">
+جميع الحقوق محفوظة — Hamza Chtaibi
+</span>
+
+</footer>
+
+
+
+<!-- =========================
+WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/212000000000"
+target="_blank"
+aria-label="WhatsApp">
+
+<svg
+viewBox="0 0 32 32">
+
+<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+
+</svg>
+
+</a>
+
 
 
 <script>
 
-/* =====================================
-   CLOUDINARY
-===================================== */
+/* =========================
+HERO SLIDER
+========================= */
 
-const CLOUD_NAME = "c-9026c93655b3994f1c3149a1c721ee";
+const slides =
+document.querySelectorAll(".hero-slide");
 
-const UPLOAD_PRESET = "samemdecork_images";
+const dotsContainer =
+document.getElementById("sliderDots");
+
+let currentSlide=0;
+
+let sliderTimer;
 
 
-/*
-   ملاحظة:
-   بدّل CLOUD_NAME بالقيمة الحقيقية
-   ديال Cloudinary ديالك إذا كانت مختلفة.
-*/
+/* DOTS */
 
+slides.forEach(
+(slide,index)=>{
 
-/* =====================================
-   رفع صورة واحدة
-===================================== */
+const dot =
+document.createElement("div");
 
-async function uploadImage(file, folder, context={}){
+dot.className=
+"slider-dot";
 
-  const url =
-  `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
-
-  const form = new FormData();
-
-  form.append("file",file);
-
-  form.append("upload_preset",UPLOAD_PRESET);
-
-  form.append("folder",folder);
-
-  if(context.category)
-    form.append(
-      "context",
-      `category=${context.category}|title=${context.title||""}|description=${context.description||""}|price=${context.price||""}|old_price=${context.old_price||""}|stock=${context.stock||""}|type=${context.type||""}`
-    );
-
-  const response = await fetch(url,{
-    method:"POST",
-    body:form
-  });
-
-  const data = await response.json();
-
-  if(!response.ok || !data.secure_url){
-
-    throw new Error(
-      data.error?.message ||
-      "فشل رفع الصورة"
-    );
-
-  }
-
-  return data;
+if(index===0){
+dot.classList.add("active");
 }
 
+dot.onclick=()=>{
+goToSlide(index);
+};
 
-/* =====================================
-   عرض الحالة
-===================================== */
+dotsContainer.appendChild(dot);
 
-function status(id,message,type="ok"){
-
-  const el=document.getElementById(id);
-
-  el.textContent=message;
-
-  el.className="status "+type;
-}
+});
 
 
-/* =====================================
-   عرض الصور
-===================================== */
-
-function showPreview(containerId,url){
-
-  const box=document.getElementById(containerId);
-
-  const div=document.createElement("div");
-
-  div.className="preview-item";
-
-  div.innerHTML=`
-    <img src="${url}" alt="">
-  `;
-
-  box.prepend(div);
-}
+const dots =
+document.querySelectorAll(".slider-dot");
 
 
-/* =====================================
-   أعمالنا
-===================================== */
+function goToSlide(index){
 
-async function uploadWorks(){
+slides[currentSlide]
+.classList.remove("active");
 
-  const files=
-    document.getElementById("workImage").files;
+dots[currentSlide]
+.classList.remove("active");
 
-  const category=
-    document.getElementById("workCategory").value;
+currentSlide=index;
 
-  const title=
-    document.getElementById("workTitle").value.trim();
+slides[currentSlide]
+.classList.add("active");
 
-  const description=
-    document.getElementById("workDescription").value.trim();
+dots[currentSlide]
+.classList.add("active");
 
+clearInterval(sliderTimer);
 
-  if(!files.length){
-
-    status(
-      "workStatus",
-      "اختار صورة أولاً",
-      "error"
-    );
-
-    return;
-  }
-
-
-  status(
-    "workStatus",
-    "جاري رفع الصور..."
-  );
-
-
-  try{
-
-    for(const file of files){
-
-      const data=
-      await uploadImage(
-        file,
-        "samemdecork/works/"+category,
-        {
-          category,
-          title,
-          description
-        }
-      );
-
-      showPreview(
-        "workPreview",
-        data.secure_url
-      );
-    }
-
-
-    status(
-      "workStatus",
-      "✅ تم رفع الصور بنجاح"
-    );
-
-  }catch(error){
-
-    status(
-      "workStatus",
-      "❌ "+error.message,
-      "error"
-    );
-
-  }
+startSlider();
 
 }
 
 
-/* =====================================
-   تابيسري
-===================================== */
+function nextSlide(){
 
-async function uploadTapis(){
+let next=
+(currentSlide+1)%slides.length;
 
-  const files=
-    document.getElementById("tapisImage").files;
-
-  const type=
-    document.getElementById("tapisType").value;
-
-  const name=
-    document.getElementById("tapisName").value.trim();
-
-  const price=
-    document.getElementById("tapisPrice").value;
-
-  const description=
-    document.getElementById("tapisDescription").value.trim();
-
-
-  if(!files.length || !name || !price){
-
-    status(
-      "tapisStatus",
-      "دخل الصورة والاسم والثمن",
-      "error"
-    );
-
-    return;
-  }
-
-
-  status(
-    "tapisStatus",
-    "جاري رفع المنتج..."
-  );
-
-
-  try{
-
-    for(const file of files){
-
-      const data=
-      await uploadImage(
-        file,
-        "samemdecork/tapisserie",
-        {
-          category:"tapisserie",
-          type,
-          title:name,
-          price,
-          description
-        }
-      );
-
-      showPreview(
-        "tapisPreview",
-        data.secure_url
-      );
-    }
-
-
-    status(
-      "tapisStatus",
-      "✅ تمت إضافة المنتج"
-    );
-
-  }catch(error){
-
-    status(
-      "tapisStatus",
-      "❌ "+error.message,
-      "error"
-    );
-
-  }
+goToSlide(next);
 
 }
 
 
-/* =====================================
-   المنتجات
-===================================== */
+function startSlider(){
 
-async function uploadProduct(){
-
-  const files=
-    document.getElementById("productImage").files;
-
-  const category=
-    document.getElementById("productCategory").value;
-
-  const name=
-    document.getElementById("productName").value.trim();
-
-  const price=
-    document.getElementById("productPrice").value;
-
-  const oldPrice=
-    document.getElementById("productOldPrice").value;
-
-  const stock=
-    document.getElementById("productStock").value;
-
-  const description=
-    document.getElementById("productDescription").value.trim();
-
-
-  if(!files.length || !name || !price){
-
-    status(
-      "productStatus",
-      "دخل الصورة والاسم والثمن",
-      "error"
-    );
-
-    return;
-  }
-
-
-  status(
-    "productStatus",
-    "جاري رفع المنتج..."
-  );
-
-
-  try{
-
-    for(const file of files){
-
-      const data=
-      await uploadImage(
-        file,
-        "samemdecork/products/"+category,
-        {
-          category,
-          title:name,
-          price,
-          old_price:oldPrice,
-          stock,
-          description
-        }
-      );
-
-      showPreview(
-        "productPreview",
-        data.secure_url
-      );
-    }
-
-
-    status(
-      "productStatus",
-      "✅ تمت إضافة المنتج"
-    );
-
-  }catch(error){
-
-    status(
-      "productStatus",
-      "❌ "+error.message,
-      "error"
-    );
-
-  }
+sliderTimer=
+setInterval(
+nextSlide,
+5000
+);
 
 }
 
 
-/* =====================================
-   الشركاء
-===================================== */
-
-async function uploadPartner(){
-
-  const file=
-    document.getElementById("partnerLogo").files[0];
-
-  const name=
-    document.getElementById("partnerName").value.trim();
-
-  const url=
-    document.getElementById("partnerUrl").value.trim();
+startSlider();
 
 
-  if(!file || !name){
 
-    status(
-      "partnerStatus",
-      "دخل اسم الشركة والـ Logo",
-      "error"
-    );
+/* =========================
+LANGUAGES
+========================= */
 
-    return;
-  }
+const T={
+
+ar:{
+
+design:"صمم دابا",
+
+works:"أعمالنا",
+
+special:"الخدمات الخاصة",
+
+kicker:
+"تصميم • ديكور • تنفيذ",
+
+hero1:
+"دار عليك",
+
+hero2:
+"وديكور علينا",
+
+heroText:
+"اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
+
+start:
+"ابدأ التصميم",
+
+contact:
+"تواصل معنا",
+
+q1:"اختار",
+q1s:"القسم",
+
+q2:"صورة",
+q2s:"ديال المكان",
+
+q3:"قياسات",
+q3s:"العرض والطول والعلو",
+
+q4:"إرسال",
+q4s:"الطلب",
+
+chooseSmall:
+"صمم ديكورك",
+
+chooseTitle:
+"شنو بغيتي تصمم؟",
+
+chooseText:
+"اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
+
+kitchen:
+"المطبخ",
+
+kitchenSub:
+"L • U • I • Îlot",
+
+bedroom:
+"غرفة النوم",
+
+bedroomSub:
+"سرير • خزانات • تسريحة",
+
+salon:
+"الصالون",
+
+salonSub:
+"جلسة • حائط • ديكور",
+
+dressingSub:
+"Placard • بيبان • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIAUX",
+
+specialTitle:
+"خدمات مستقلة",
+
+specialText:
+"أقسام عندها اختصاصها الخاص.",
+
+tapisTitle:
+"الطابيسري والستور",
+
+tapisText:
+"ستور، سدادر، ستائر وتابيسري حسب الطلب.",
+
+accessTitle:
+"الإكسسوارات و Electroménager",
+
+accessText:
+"بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
+
+discover:
+"شوف القسم",
+
+shop:
+"شوف المنتجات",
+
+worksTitle:
+"أعمالنا",
+
+worksText:
+"شوف المشاريع الحقيقية اللي خدمناها.",
+
+seeWorks:
+"شوف أعمالنا",
+
+partnersTitle:
+"شركاؤنا",
+
+partnersText:
+"شركاء وماركات كنخدمو معاهم.",
+
+rights:
+"جميع الحقوق محفوظة — Hamza Chtaibi"
+
+},
 
 
-  status(
-    "partnerStatus",
-    "جاري رفع Logo..."
-  );
+fr:{
 
+design:
+"Créer mon projet",
 
-  try{
+works:
+"Nos réalisations",
 
-    const data=
-    await uploadImage(
-      file,
-      "samemdecork/partners",
-      {
-        category:"partner",
-        title:name,
-        description:url
-      }
-    );
+special:
+"Services spécialisés",
 
+kicker:
+"DESIGN • DÉCORATION • RÉALISATION",
 
-    showPreview(
-      "partnerPreview",
-      data.secure_url
-    );
+hero1:
+"Votre projet",
 
+hero2:
+"Notre savoir-faire",
 
-    status(
-      "partnerStatus",
-      "✅ تمت إضافة الشريك"
-    );
+heroText:
+"Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
 
+start:
+"Commencer",
 
-  }catch(error){
+contact:
+"Nous contacter",
 
-    status(
-      "partnerStatus",
-      "❌ "+error.message,
-      "error"
-    );
+q1:
+"Choisir",
 
-  }
+q1s:
+"la catégorie",
+
+q2:
+"Photo",
+
+q2s:
+"de l'espace",
+
+q3:
+"Dimensions",
+
+q3s:
+"largeur • longueur • hauteur",
+
+q4:
+"Envoyer",
+
+q4s:
+"la demande",
+
+chooseSmall:
+"VOTRE PROJET",
+
+chooseTitle:
+"Que souhaitez-vous réaliser ?",
+
+chooseText:
+"Choisissez une catégorie pour passer directement à l'étape suivante.",
+
+kitchen:
+"Cuisine",
+
+kitchenSub:
+"L • U • I • Îlot",
+
+bedroom:
+"Chambre",
+
+bedroomSub:
+"Lit • placards • coiffeuse",
+
+salon:
+"Salon",
+
+salonSub:
+"Séjour • mur • décoration",
+
+dressingSub:
+"Placard • portes • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIALISÉS",
+
+specialTitle:
+"Services indépendants",
+
+specialText:
+"Des services avec leurs propres spécialistes.",
+
+tapisTitle:
+"Tapisserie & Rideaux",
+
+tapisText:
+"Rideaux, coussins, tissus et tapisserie sur mesure.",
+
+accessTitle:
+"Accessoires & Electroménager",
+
+accessText:
+"Vente d'accessoires et d'appareils électroménagers.",
+
+discover:
+"Découvrir",
+
+shop:
+"Voir les produits",
+
+worksTitle:
+"Nos réalisations",
+
+worksText:
+"Découvrez nos vrais projets réalisés.",
+
+seeWorks:
+"Voir nos réalisations",
+
+partnersTitle:
+"Nos partenaires",
+
+partnersText:
+"Les marques et partenaires avec lesquels nous travaillons.",
+
+rights:
+"Tous droits réservés — Hamza Chtaibi"
 
 }
+
+};
+
+
+function setLang(lang){
+
+localStorage.setItem(
+"siteLang",
+lang
+);
+
+document.documentElement.lang=
+lang==="fr"
+?"fr"
+:"ar";
+
+document.documentElement.dir=
+lang==="fr"
+?"ltr"
+:"rtl";
+
+
+document
+.querySelectorAll("[data-i18n]")
+.forEach(el=>{
+
+const key=
+el.dataset.i18n;
+
+if(T[lang][key]){
+el.textContent=
+T[lang][key];
+}
+
+});
+
+
+document
+.getElementById("arBtn")
+.classList
+.toggle(
+"active",
+lang==="ar"
+);
+
+
+document
+.getElementById("frBtn")
+.classList
+.toggle(
+"active",
+lang==="fr"
+);
+
+}
+
+
+setLang(
+localStorage.getItem("siteLang")
+||"ar"
+);
 
 </script>
 
+
 </body>
+
 </html>

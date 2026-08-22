@@ -3,25 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#315b48">
-<meta name="description" content="صمم ديكورك - تصميم وتنفيذ الديكور">
-<title>صمم ديكورك</title>
+
+<title>صمم ديكورك | Samem Decor</title>
+
+<meta name="description"
+content="صمم ديكورك بسهولة: اختار المشروع، صيفط صورة المكان، القياسات والميزانية، وخلي علينا التصميم والثمن.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --green:#315b48;
-  --green2:#42745d;
-  --cream:#f8f5ef;
-  --white:#fff;
-  --gold:#c69b5b;
-  --text:#26332d;
-  --muted:#7b837e;
-  --line:#e6e0d6;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html{scroll-behavior:smooth}
+:root{
+  --green:#263b31;
+  --green2:#304b3e;
+  --cream:#f6f1e8;
+  --cream2:#ebe2d4;
+  --gold:#b89462;
+  --text:#26332d;
+  --muted:#727873;
+  --white:#fff;
+  --border:#ded5c7;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Tahoma,Arial,sans-serif;
@@ -30,561 +39,669 @@ body{
   line-height:1.7;
 }
 
-button,input,textarea,select{font-family:inherit}
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-button,a{cursor:pointer}
-
-a{text-decoration:none;color:inherit}
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
 
 .wrap{
   width:min(1120px,92%);
   margin:auto;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(10px);
+  background:rgba(38,59,49,.98);
+  box-shadow:0 4px 18px rgba(0,0,0,.12);
 }
 
 .nav{
-  min-height:72px;
+  min-height:70px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:15px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  color:var(--green);
-}
-
 .logo{
-  width:43px;
-  height:43px;
-  border:2px solid var(--green);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:20px;
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
 }
 
-.brand span{
-  font-size:21px;
+.logo span{
+  color:var(--gold);
 }
 
-.nav-right{
+.navlinks{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:22px;
+}
+
+.navlinks a{
+  color:#fff;
+  font-size:14px;
+}
+
+.navlinks a:hover{
+  color:#d8bd91;
 }
 
 .lang{
-  border:1px solid var(--line);
-  background:white;
+  border:1px solid rgba(255,255,255,.3);
+  padding:6px 12px;
   border-radius:20px;
-  padding:8px 13px;
-  color:var(--green);
 }
 
-.store-btn{
-  background:var(--green);
-  color:#fff;
-  border:0;
-  border-radius:22px;
-  padding:9px 16px;
-  font-weight:bold;
-}
-
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
-  padding:75px 0 60px;
   background:
-    radial-gradient(circle at 10% 20%,rgba(198,155,91,.15),transparent 30%),
-    linear-gradient(135deg,#f8f5ef,#eef2ed);
+    linear-gradient(90deg,
+      rgba(38,59,49,.98),
+      rgba(38,59,49,.91));
+  color:#fff;
+  padding:90px 0 85px;
 }
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:45px;
+  grid-template-columns:1.25fr .75fr;
+  gap:50px;
   align-items:center;
 }
 
-.badge{
-  display:inline-block;
-  color:var(--green);
-  background:#e5eee8;
-  padding:7px 14px;
-  border-radius:20px;
+.kicker{
+  color:#d2b17c;
   font-size:13px;
   font-weight:bold;
-  margin-bottom:18px;
+  letter-spacing:1px;
+  margin-bottom:12px;
 }
 
 .hero h1{
-  font-size:clamp(38px,6vw,68px);
-  line-height:1.12;
-  margin-bottom:18px;
-  color:var(--green);
+  font-size:clamp(42px,6vw,70px);
+  line-height:1.15;
+  margin-bottom:20px;
 }
 
 .hero h1 span{
-  color:var(--gold);
+  color:#d2b17c;
 }
 
 .hero p{
-  color:var(--muted);
-  max-width:580px;
+  color:#e3e7e4;
   font-size:17px;
-  margin-bottom:25px;
+  max-width:650px;
+  margin-bottom:28px;
 }
 
-.start-btn{
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--green);
-  color:white;
-  padding:14px 25px;
-  border-radius:8px;
-  font-weight:bold;
+  min-height:50px;
+  padding:12px 25px;
+  border-radius:5px;
   border:0;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#fff;
+}
+
+.btn-light{
+  border:1px solid rgba(255,255,255,.5);
+  color:#fff;
+  background:transparent;
 }
 
 .hero-card{
-  background:white;
-  border-radius:20px;
-  padding:12px;
-  box-shadow:0 18px 50px rgba(35,55,45,.12);
+  background:#fff;
+  color:var(--text);
+  padding:28px;
+  border-radius:8px;
+  box-shadow:0 20px 45px rgba(0,0,0,.2);
 }
 
-.hero-card img{
-  width:100%;
-  height:390px;
-  object-fit:cover;
-  border-radius:14px;
-}
-
-/* CONFIGURATEUR */
-
-.config{
-  padding:75px 0;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.title small{
+.hero-card small{
   color:var(--gold);
   font-weight:bold;
 }
 
-.title h2{
-  color:var(--green);
+.hero-card h3{
+  font-size:25px;
+  margin:7px 0 10px;
+}
+
+.hero-card p{
+  color:var(--muted);
+  font-size:14px;
+  margin:0;
+}
+
+.steps{
+  margin-top:22px;
+  display:grid;
+  gap:10px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:10px;
+}
+
+.step:last-child{
+  border:0;
+}
+
+.step-num{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:75px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-title small{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.section-title h2{
   font-size:38px;
   margin:5px 0;
 }
 
-.title p{
+.section-title p{
   color:var(--muted);
+  font-size:14px;
 }
 
-.form-card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:28px;
-  box-shadow:0 10px 35px rgba(0,0,0,.05);
+/* ================= PROJECT FORM ================= */
+
+.builder{
+  background:#fff;
 }
 
-.step{
-  margin-bottom:30px;
+.form-box{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:30px;
+  box-shadow:0 10px 35px rgba(40,35,25,.06);
 }
 
-.step:last-child{
+.form-section{
+  margin-bottom:28px;
+}
+
+.form-section:last-child{
   margin-bottom:0;
 }
 
-.step-head{
+.form-title{
   display:flex;
   align-items:center;
   gap:10px;
   margin-bottom:15px;
 }
 
-.num{
-  width:31px;
-  height:31px;
+.form-title-number{
+  width:30px;
+  height:30px;
+  border-radius:50%;
   background:var(--green);
   color:#fff;
-  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+}
+
+.form-title h3{
+  font-size:18px;
+}
+
+.grid{
   display:grid;
-  place-items:center;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  font-size:13px;
   font-weight:bold;
 }
 
-.step h3{
-  font-size:19px;
-  color:var(--green);
-}
-
-input,textarea,select{
+.field input,
+.field select,
+.field textarea{
   width:100%;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:13px 14px;
-  background:#fff;
-  color:var(--text);
+  border:1px solid var(--border);
+  background:#faf8f4;
+  padding:13px;
+  border-radius:5px;
   outline:none;
+  color:var(--text);
 }
 
-input:focus,textarea:focus,select:focus{
-  border-color:var(--green2);
+.field textarea{
+  min-height:95px;
+  resize:vertical;
 }
 
-.two{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--gold);
 }
 
-.three{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
+/* ================= PROJECT TYPES ================= */
 
-.label{
-  display:block;
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:5px;
-}
-
-/* CHOICES */
-
-.choices{
+.type-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:10px;
 }
 
-.choice{
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:10px;
-  padding:15px 8px;
+.type{
+  position:relative;
+}
+
+.type input{
+  position:absolute;
+  opacity:0;
+}
+
+.type label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:60px;
   text-align:center;
-  color:var(--text);
-  transition:.2s;
-}
-
-.choice:hover,
-.choice.active{
-  border-color:var(--green);
-  background:#edf4ef;
-  color:var(--green);
-}
-
-.choice .icon{
-  font-size:25px;
-  display:block;
-  margin-bottom:5px;
-}
-
-.choice strong{
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#faf8f4;
+  cursor:pointer;
   font-size:13px;
+  font-weight:bold;
 }
 
-/* PHOTO */
-
-.upload{
-  border:2px dashed #cbd5ce;
-  border-radius:12px;
-  padding:25px;
-  text-align:center;
-  background:#fafcf9;
-}
-
-.upload label{
-  display:inline-flex;
+.type input:checked + label{
   background:var(--green);
   color:#fff;
-  padding:11px 18px;
+  border-color:var(--green);
+}
+
+/* ================= UPLOAD ================= */
+
+.upload{
+  border:2px dashed #cfc4b3;
+  background:#faf8f4;
   border-radius:7px;
-  font-weight:bold;
+  padding:25px;
+  text-align:center;
   cursor:pointer;
 }
 
-.upload input{
-  display:none;
+.upload:hover{
+  border-color:var(--gold);
 }
 
-#preview{
-  max-width:230px;
-  max-height:180px;
-  margin:15px auto 0;
-  border-radius:10px;
-  display:none;
-  object-fit:cover;
-}
-
-/* BUDGET */
-
-.budget{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-}
-
-.budget button{
-  border:1px solid var(--line);
-  background:#fff;
-  padding:12px 7px;
-  border-radius:9px;
-}
-
-.budget button.active{
-  background:var(--green);
-  color:white;
-  border-color:var(--green);
-}
-
-/* SEND */
-
-.send{
-  margin-top:30px;
-  padding-top:25px;
-  border-top:1px solid var(--line);
-  text-align:center;
-}
-
-.send button{
-  width:100%;
-  max-width:500px;
-  border:0;
-  border-radius:9px;
-  background:#25d366;
-  color:#06200d;
-  padding:15px;
-  font-size:16px;
-  font-weight:bold;
-}
-
-/* STORE */
-
-.store{
-  padding:75px 0;
-  background:#315b48;
-  color:#fff;
-}
-
-.store .title h2{
-  color:white;
-}
-
-.store .title p{
-  color:#d7e1dc;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-
-.product{
-  background:#fff;
-  color:var(--text);
-  border-radius:12px;
-  overflow:hidden;
-}
-
-.product img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-}
-
-.product-info{
-  padding:15px;
-}
-
-.product-info h3{
+.upload strong{
+  display:block;
   margin-bottom:4px;
 }
 
-.product-info p{
+.upload span{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
 }
 
-.product-info button{
+.preview{
   margin-top:12px;
-  width:100%;
-  border:0;
-  background:var(--green);
-  color:#fff;
-  padding:9px;
-  border-radius:7px;
+  display:none;
 }
 
-/* WORKS */
-
-.works{
-  padding:75px 0;
+.preview img{
+  width:150px;
+  height:110px;
+  object-fit:cover;
+  border-radius:5px;
 }
 
-.works-grid{
+/* ================= DIMENSIONS ================= */
+
+.dimensions{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
-.work{
-  height:260px;
-  overflow:hidden;
-  border-radius:12px;
-  background:#ddd;
-}
-
-.work img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s;
-}
-
-.work:hover img{
-  transform:scale(1.04);
-}
-
-.more{
+.dimension{
   text-align:center;
-  margin-top:25px;
 }
 
-.more a{
-  display:inline-block;
-  background:var(--green);
-  color:#fff;
-  padding:12px 22px;
-  border-radius:7px;
+.dimension label{
+  display:block;
+  font-size:12px;
+  margin-bottom:5px;
+  color:var(--muted);
 }
 
-/* FOOTER */
-
-footer{
-  background:#1f3028;
-  color:#dbe3de;
+.dimension input{
   text-align:center;
-  padding:28px 15px;
+}
+
+/* ================= BUDGET ================= */
+
+.budget-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.budget{
+  position:relative;
+}
+
+.budget input{
+  position:absolute;
+  opacity:0;
+}
+
+.budget label{
+  display:block;
+  padding:13px 8px;
+  border:1px solid var(--border);
+  border-radius:5px;
+  text-align:center;
+  background:#faf8f4;
+  cursor:pointer;
   font-size:13px;
 }
 
-footer strong{
-  color:#d5ae70;
+.budget input:checked + label{
+  background:var(--green);
+  color:#fff;
 }
 
-/* MOBILE */
+/* ================= SUBMIT ================= */
 
-@media(max-width:800px){
+.submit-area{
+  margin-top:30px;
+  padding-top:25px;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
 
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
+.submit{
+  width:100%;
+  background:var(--green);
+  color:#fff;
+  border:0;
+  padding:16px;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
 
-  .hero{
-    padding-top:45px;
-  }
+.submit:hover{
+  background:var(--green2);
+}
 
-  .hero-card{
+.note{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:9px;
+}
+
+/* ================= SHOP ================= */
+
+.shop{
+  background:var(--cream2);
+}
+
+.shop-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.shop-card{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:23px 17px;
+  border-radius:7px;
+  transition:.2s;
+}
+
+.shop-card:hover{
+  transform:translateY(-3px);
+}
+
+.shop-icon{
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.shop-card h3{
+  font-size:16px;
+  margin-bottom:5px;
+}
+
+.shop-card p{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ================= WORKS ================= */
+
+.works{
+  background:#fff;
+}
+
+.works-box{
+  background:var(--green);
+  color:#fff;
+  padding:45px 25px;
+  border-radius:8px;
+  text-align:center;
+}
+
+.works-box h2{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.works-box p{
+  color:#d9e0dc;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.works-btn{
+  display:inline-flex;
+  padding:13px 25px;
+  background:var(--gold);
+  border-radius:5px;
+  font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#17251f;
+  color:#aeb7b1;
+  text-align:center;
+  padding:28px 15px;
+  font-size:12px;
+}
+
+footer strong{
+  color:#d0ad78;
+}
+
+/* ================= LANGUAGE ================= */
+
+.fr{
+  display:none;
+}
+
+body.french .ar{
+  display:none;
+}
+
+body.french .fr{
+  display:inline;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+  .navlinks a:not(.lang){
     display:none;
   }
 
-  .choices{
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .hero{
+    padding:65px 0;
+  }
+
+  .type-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .products{
+  .shop-grid{
     grid-template-columns:repeat(2,1fr);
-  }
-
-  .works-grid{
-    grid-template-columns:1fr 1fr;
   }
 }
 
-@media(max-width:520px){
+@media(max-width:560px){
 
   .nav{
     min-height:62px;
   }
 
-  .brand span{
-    font-size:18px;
+  .logo{
+    font-size:20px;
   }
 
-  .store-btn{
-    display:none;
+  .hero{
+    padding:55px 0;
   }
 
   .hero h1{
-    font-size:42px;
+    font-size:43px;
   }
 
   .hero p{
     font-size:15px;
   }
 
-  .form-card{
+  section{
+    padding:55px 0;
+  }
+
+  .section-title h2{
+    font-size:31px;
+  }
+
+  .form-box{
     padding:18px;
   }
 
-  .two,
-  .three{
+  .grid{
     grid-template-columns:1fr;
   }
 
-  .choices{
+  .field.full{
+    grid-column:auto;
+  }
+
+  .dimensions{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .budget-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .budget{
+  .shop-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .products{
+  .type-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .product img{
-    height:130px;
+  .hero-buttons{
+    flex-direction:column;
   }
 
-  .works-grid{
-    grid-template-columns:1fr;
-  }
-
-  .work{
-    height:230px;
-  }
-
-  .title h2{
-    font-size:31px;
+  .hero-buttons .btn{
+    width:100%;
   }
 }
 </style>
@@ -592,543 +709,624 @@ footer strong{
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
   <div class="wrap nav">
 
-    <a href="index.html" class="brand">
-      <div class="logo">ص</div>
-      <span>صمم ديكورك</span>
+    <a href="index.html" class="logo">
+      صمم <span>ديكورك</span>
     </a>
 
-    <div class="nav-right">
-      <button class="lang" onclick="toggleLanguage()" id="langBtn">
-        Français
-      </button>
+    <nav class="navlinks">
 
-      <button class="store-btn" onclick="document.getElementById('store').scrollIntoView()">
-        🛍️ المتجر
-      </button>
-    </div>
+      <a href="#builder">
+        <span class="ar">صمم دابا</span>
+        <span class="fr">Créer</span>
+      </a>
+
+      <a href="#shop">
+        <span class="ar">المتجر</span>
+        <span class="fr">Boutique</span>
+      </a>
+
+      <a href="#works">
+        <span class="ar">أعمالنا</span>
+        <span class="fr">Nos réalisations</span>
+      </a>
+
+      <a href="#" onclick="toggleLanguage();return false;" class="lang">
+        FR / AR
+      </a>
+
+    </nav>
 
   </div>
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
+
   <div class="wrap hero-grid">
 
     <div>
 
-      <div class="badge" data-ar="تصميم • تصنيع • تركيب"
-           data-fr="Design • Fabrication • Installation">
-        تصميم • تصنيع • تركيب
+      <div class="kicker">
+        SAMEM DECOR
       </div>
 
-      <h1 data-ar="دار عليك<br><span>والديكور علينا</span>"
-          data-fr="Votre maison<br><span>notre décoration</span>">
-        دار عليك<br>
-        <span>والديكور علينا</span>
+      <h1>
+        <span class="ar">
+          دار عليك<br>والديكور علينا
+        </span>
+
+        <span class="fr">
+          Votre maison,<br>notre savoir-faire
+        </span>
       </h1>
 
-      <p data-ar="عطينا غير المعلومات الأساسية ديال المشروع ديالك، وحنا نعطيوك اقتراح مناسب للمساحة والميزانية ديالك."
-         data-fr="Donnez-nous simplement les informations essentielles de votre projet et nous vous proposerons une solution adaptée à votre espace et votre budget.">
-        عطينا غير المعلومات الأساسية ديال المشروع ديالك، وحنا نعطيوك اقتراح مناسب للمساحة والميزانية ديالك.
+      <p>
+        <span class="ar">
+          عطينا غير المعلومات الأساسية على المشروع ديالك،
+          وحنا نعاونك نلقاو ليك الشكل والثمن المناسب.
+        </span>
+
+        <span class="fr">
+          Donnez-nous simplement les informations essentielles
+          de votre projet et nous vous proposerons une solution adaptée.
+        </span>
       </p>
 
-      <a href="#config" class="start-btn"
-         data-ar="ابدأ الطلب ديالك"
-         data-fr="Commencer ma demande">
-        ابدأ الطلب ديالك
+      <div class="hero-buttons">
+
+        <a href="#builder" class="btn btn-gold">
+          <span class="ar">ابدأ المشروع</span>
+          <span class="fr">Commencer</span>
+        </a>
+
+        <a href="https://wa.me/212754350706"
+           target="_blank"
+           class="btn btn-light">
+          WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <small>
+        <span class="ar">بسيط وسريع</span>
+        <span class="fr">Simple & rapide</span>
+      </small>
+
+      <h3>
+        <span class="ar">كيفاش نخدمو؟</span>
+        <span class="fr">Comment ça marche ?</span>
+      </h3>
+
+      <p>
+        <span class="ar">
+          غير 4 خطوات باش توصلنا فكرة واضحة على المشروع.
+        </span>
+
+        <span class="fr">
+          Seulement 4 étapes pour comprendre votre projet.
+        </span>
+      </p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <span class="ar">اختار شنو محتاج</span>
+          <span class="fr">Choisissez votre projet</span>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <span class="ar">صيفط صورة المكان</span>
+          <span class="fr">Ajoutez une photo</span>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <span class="ar">دخل القياسات والميزانية</span>
+          <span class="fr">Dimensions et budget</span>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <span class="ar">حنا نتواصلو معاك</span>
+          <span class="fr">Nous vous contactons</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= BUILDER ================= -->
+
+<section class="builder" id="builder">
+
+  <div class="wrap">
+
+    <div class="section-title">
+
+      <small>VOTRE PROJET</small>
+
+      <h2>
+        <span class="ar">خلينا نعرفو المشروع ديالك</span>
+        <span class="fr">Parlez-nous de votre projet</span>
+      </h2>
+
+      <p>
+        <span class="ar">
+          غير المعلومات المهمة، بلا أسئلة كثيرة.
+        </span>
+
+        <span class="fr">
+          Seulement les informations essentielles.
+        </span>
+      </p>
+
+    </div>
+
+
+    <form class="form-box" id="projectForm">
+
+      <!-- 01 -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">1</div>
+
+          <h3>
+            <span class="ar">شرفنا باسمك والمدينة</span>
+            <span class="fr">Votre nom et votre ville</span>
+          </h3>
+
+        </div>
+
+
+        <div class="grid">
+
+          <div class="field">
+
+            <label>
+              <span class="ar">الاسم</span>
+              <span class="fr">Nom</span>
+            </label>
+
+            <input
+              id="name"
+              required
+              placeholder="مثلا: حمزة">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              <span class="ar">المدينة</span>
+              <span class="fr">Ville</span>
+            </label>
+
+            <input
+              id="city"
+              required
+              placeholder="مثلا: الدار البيضاء">
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 02 -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">2</div>
+
+          <h3>
+            <span class="ar">شنو محتاج؟</span>
+            <span class="fr">Quel projet ?</span>
+          </h3>
+
+        </div>
+
+
+        <div class="type-grid">
+
+          <div class="type">
+            <input type="radio" name="project" value="المطبخ" id="kitchen" required>
+            <label for="kitchen">🍳 <span class="ar">مطبخ</span><span class="fr">Cuisine</span></label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="غرفة النوم" id="bedroom">
+            <label for="bedroom">🛏️ <span class="ar">غرفة النوم</span><span class="fr">Chambre</span></label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="الصالون" id="salon">
+            <label for="salon">🛋️ <span class="ar">صالون</span><span class="fr">Salon</span></label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="Dressing" id="dressing">
+            <label for="dressing">👔 Dressing</label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="Meuble TV" id="tv">
+            <label for="tv">📺 Meuble TV</label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="Tapisserie" id="tapisserie">
+            <label for="tapisserie">🪟 Tapisserie</label>
+          </div>
+
+          <div class="type">
+            <input type="radio" name="project" value="Autre" id="other">
+            <label for="other">＋ <span class="ar">آخر</span><span class="fr">Autre</span></label>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 03 PHOTO -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">3</div>
+
+          <h3>
+            <span class="ar">عطينا صورة للمكان</span>
+            <span class="fr">Photo de l'espace</span>
+          </h3>
+
+        </div>
+
+
+        <label class="upload">
+
+          <input
+            type="file"
+            id="photo"
+            accept="image/*"
+            hidden>
+
+          <strong>
+            📷
+            <span class="ar">ضغط هنا واختار الصورة</span>
+            <span class="fr">Cliquez pour choisir une photo</span>
+          </strong>
+
+          <span>
+            <span class="ar">صورة وحدة كافية</span>
+            <span class="fr">Une seule photo suffit</span>
+          </span>
+
+          <div class="preview" id="preview">
+            <img id="previewImg" alt="preview">
+          </div>
+
+        </label>
+
+      </div>
+
+
+      <!-- 04 DIMENSIONS -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">4</div>
+
+          <h3>
+            <span class="ar">القياسات</span>
+            <span class="fr">Dimensions</span>
+          </h3>
+
+        </div>
+
+
+        <div class="dimensions">
+
+          <div class="field dimension">
+
+            <label>
+              <span class="ar">العرض cm</span>
+              <span class="fr">Largeur cm</span>
+            </label>
+
+            <input
+              id="width"
+              type="number"
+              min="0"
+              placeholder="مثلا 300">
+
+          </div>
+
+
+          <div class="field dimension">
+
+            <label>
+              <span class="ar">الطول cm</span>
+              <span class="fr">Longueur cm</span>
+            </label>
+
+            <input
+              id="length"
+              type="number"
+              min="0"
+              placeholder="مثلا 400">
+
+          </div>
+
+
+          <div class="field dimension">
+
+            <label>
+              <span class="ar">العلو cm</span>
+              <span class="fr">Hauteur cm</span>
+            </label>
+
+            <input
+              id="height"
+              type="number"
+              min="0"
+              placeholder="مثلا 260">
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 05 BUDGET -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">5</div>
+
+          <h3>
+            <span class="ar">شحال الميزانية ديالك؟</span>
+            <span class="fr">Quel est votre budget ?</span>
+          </h3>
+
+        </div>
+
+
+        <div class="budget-grid">
+
+          <div class="budget">
+            <input type="radio" name="budget" value="أقل من 10000 DH" id="b1" required>
+            <label for="b1">&lt; 10.000 DH</label>
+          </div>
+
+          <div class="budget">
+            <input type="radio" name="budget" value="10000 - 20000 DH" id="b2">
+            <label for="b2">10.000 - 20.000</label>
+          </div>
+
+          <div class="budget">
+            <input type="radio" name="budget" value="20000 - 40000 DH" id="b3">
+            <label for="b3">20.000 - 40.000</label>
+          </div>
+
+          <div class="budget">
+            <input type="radio" name="budget" value="أكثر من 40000 DH" id="b4">
+            <label for="b4">&gt; 40.000 DH</label>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 06 NOTES -->
+
+      <div class="form-section">
+
+        <div class="form-title">
+
+          <div class="form-title-number">6</div>
+
+          <h3>
+            <span class="ar">ملاحظة إضافية</span>
+            <span class="fr">Remarque</span>
+          </h3>
+
+        </div>
+
+
+        <div class="field">
+
+          <textarea
+            id="notes"
+            placeholder="مثلا: بغيت اللون الأخضر، بلاكار فوق الثلاجة، LED..."></textarea>
+
+        </div>
+
+      </div>
+
+
+      <div class="submit-area">
+
+        <button class="submit" type="submit">
+
+          💬
+          <span class="ar">صيفط المشروع عبر واتساب</span>
+          <span class="fr">Envoyer le projet sur WhatsApp</span>
+
+        </button>
+
+        <div class="note">
+          <span class="ar">
+            منين تضغط غادي يتحل واتساب بالمعلومات ديالك.
+          </span>
+
+          <span class="fr">
+            WhatsApp s'ouvrira avec les informations du projet.
+          </span>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SHOP ================= -->
+
+<section class="shop" id="shop">
+
+  <div class="wrap">
+
+    <div class="section-title">
+
+      <small>BOUTIQUE</small>
+
+      <h2>
+        <span class="ar">المبيعات والإكسسوارات</span>
+        <span class="fr">Boutique & accessoires</span>
+      </h2>
+
+      <p>
+        <span class="ar">
+          تجهيزات وإكسسوارات تقدر تزيدها للمشروع ديالك.
+        </span>
+
+        <span class="fr">
+          Équipements et accessoires pour votre projet.
+        </span>
+      </p>
+
+    </div>
+
+
+    <div class="shop-grid">
+
+      <div class="shop-card">
+        <div class="shop-icon">💡</div>
+        <h3>LED</h3>
+        <p>
+          <span class="ar">إضاءة داخلية وديكور.</span>
+          <span class="fr">Éclairage intérieur.</span>
+        </p>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-icon">🚪</div>
+        <h3>
+          <span class="ar">مقابض</span>
+          <span class="fr">Poignées</span>
+        </h3>
+        <p>
+          <span class="ar">موديلات وتشطيبات مختلفة.</span>
+          <span class="fr">Différents modèles.</span>
+        </p>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-icon">🧺</div>
+        <h3>
+          <span class="ar">تجهيزات المطبخ</span>
+          <span class="fr">Équipements cuisine</span>
+        </h3>
+        <p>
+          <span class="ar">سلال، tiroirs وتجهيزات.</span>
+          <span class="fr">Paniers, tiroirs et accessoires.</span>
+        </p>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-icon">🪞</div>
+        <h3>
+          <span class="ar">زجاج ومرايا</span>
+          <span class="fr">Verre & miroirs</span>
+        </h3>
+        <p>
+          <span class="ar">حلول للديكور والتجهيز.</span>
+          <span class="fr">Solutions déco et aménagement.</span>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= WORKS ================= -->
+
+<section class="works" id="works">
+
+  <div class="wrap">
+
+    <div class="works-box">
+
+      <h2>
+        <span class="ar">أعمالنا</span>
+        <span class="fr">Nos réalisations</span>
+      </h2>
+
+      <p>
+        <span class="ar">
+          شوف المشاريع الحقيقية اللي خدمنا.
+        </span>
+
+        <span class="fr">
+          Découvrez nos projets réalisés.
+        </span>
+      </p>
+
+      <!-- نفس works.html القديم، ما محتاجش تعاود ترفع الصور -->
+
+      <a href="works.html" class="works-btn">
+        <span class="ar">شوف أعمالنا</span>
+        <span class="fr">Voir nos réalisations</span>
       </a>
 
     </div>
 
-    <div class="hero-card">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
-           alt="Interior">
-    </div>
-
   </div>
-</section>
-
-
-<!-- CONFIGURATEUR -->
-
-<section class="config" id="config">
-
-<div class="wrap">
-
-  <div class="title">
-    <small data-ar="بسيط وساهل" data-fr="SIMPLE ET RAPIDE">
-      بسيط وساهل
-    </small>
-
-    <h2 data-ar="خلي لينا معلومات مشروعك"
-        data-fr="Parlez-nous de votre projet">
-      خلي لينا معلومات مشروعك
-    </h2>
-
-    <p data-ar="غير شوية ديال المعلومات باش نفهمو شنو محتاج"
-       data-fr="Quelques informations pour comprendre votre besoin">
-      غير شوية ديال المعلومات باش نفهمو شنو محتاج
-    </p>
-  </div>
-
-
-  <div class="form-card">
-
-    <!-- 1 -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">1</div>
-        <h3 data-ar="شرفنا باسمك" data-fr="Présentez-vous">
-          شرفنا باسمك
-        </h3>
-      </div>
-
-      <div class="two">
-
-        <div>
-          <label class="label" data-ar="الاسم" data-fr="Nom">
-            الاسم
-          </label>
-
-          <input id="name"
-                 placeholder="مثال: حمزة"
-                 data-placeholder-ar="مثال: حمزة"
-                 data-placeholder-fr="Exemple : Hamza">
-        </div>
-
-        <div>
-          <label class="label" data-ar="المدينة" data-fr="Ville">
-            المدينة
-          </label>
-
-          <input id="city"
-                 placeholder="مثال: الدار البيضاء"
-                 data-placeholder-ar="مثال: الدار البيضاء"
-                 data-placeholder-fr="Exemple : Casablanca">
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- 2 -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">2</div>
-
-        <h3 data-ar="شنو محتاج؟" data-fr="De quoi avez-vous besoin ?">
-          شنو محتاج؟
-        </h3>
-      </div>
-
-
-      <div class="choices">
-
-        <button class="choice" data-type="كوزينة | Cuisine">
-          <span class="icon">🍳</span>
-          <strong data-ar="كوزينة" data-fr="Cuisine">كوزينة</strong>
-        </button>
-
-        <button class="choice" data-type="غرفة النوم | Chambre">
-          <span class="icon">🛏️</span>
-          <strong data-ar="غرفة النوم" data-fr="Chambre">غرفة النوم</strong>
-        </button>
-
-        <button class="choice" data-type="صالون | Salon">
-          <span class="icon">🛋️</span>
-          <strong data-ar="صالون" data-fr="Salon">صالون</strong>
-        </button>
-
-        <button class="choice" data-type="Dressing">
-          <span class="icon">👔</span>
-          <strong>Dressing</strong>
-        </button>
-
-        <button class="choice" data-type="Meuble TV">
-          <span class="icon">📺</span>
-          <strong>Meuble TV</strong>
-        </button>
-
-        <button class="choice" data-type="طابيسري | Tapisserie">
-          <span class="icon">🪟</span>
-          <strong data-ar="طابيسري" data-fr="Tapisserie">طابيسري</strong>
-        </button>
-
-        <button class="choice" data-type="متجر | Boutique">
-          <span class="icon">🛍️</span>
-          <strong data-ar="إكسسوارات" data-fr="Accessoires">إكسسوارات</strong>
-        </button>
-
-        <button class="choice" data-type="آخر | Autre">
-          <span class="icon">＋</span>
-          <strong data-ar="شي حاجة أخرى" data-fr="Autre">شي حاجة أخرى</strong>
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- 3 PHOTO -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">3</div>
-
-        <h3 data-ar="عطينا صورة للبلاصة"
-            data-fr="Ajoutez une photo de l'espace">
-          عطينا صورة للبلاصة
-        </h3>
-      </div>
-
-      <div class="upload">
-
-        <p data-ar="صورة وحدة كافية باش ناخدو فكرة على المكان"
-           data-fr="Une seule photo suffit pour avoir une idée de l'espace">
-          صورة وحدة كافية باش ناخدو فكرة على المكان
-        </p>
-
-        <br>
-
-        <label for="photo">
-          📷 <span data-ar="اختار صورة" data-fr="Choisir une photo">
-            اختار صورة
-          </span>
-        </label>
-
-        <input type="file"
-               id="photo"
-               accept="image/*">
-
-        <img id="preview" alt="preview">
-
-      </div>
-
-    </div>
-
-
-    <!-- 4 MEASUREMENTS -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">4</div>
-
-        <h3 data-ar="القياسات" data-fr="Dimensions">
-          القياسات
-        </h3>
-      </div>
-
-      <div class="three">
-
-        <div>
-          <label class="label"
-                 data-ar="العرض بالسنتيمتر"
-                 data-fr="Largeur en cm">
-            العرض بالسنتيمتر
-          </label>
-
-          <input id="width"
-                 type="number"
-                 placeholder="مثال: 300">
-        </div>
-
-        <div>
-          <label class="label"
-                 data-ar="الطول بالسنتيمتر"
-                 data-fr="Longueur en cm">
-            الطول بالسنتيمتر
-          </label>
-
-          <input id="length"
-                 type="number"
-                 placeholder="مثال: 400">
-        </div>
-
-        <div>
-          <label class="label"
-                 data-ar="العلو بالسنتيمتر"
-                 data-fr="Hauteur en cm">
-            العلو بالسنتيمتر
-          </label>
-
-          <input id="height"
-                 type="number"
-                 placeholder="مثال: 260">
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- 5 -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">5</div>
-
-        <h3 data-ar="شنو بغيتي؟"
-            data-fr="Une remarque ?">
-          شنو بغيتي؟
-        </h3>
-      </div>
-
-      <textarea id="note"
-                rows="4"
-                placeholder="مثال: بغيت اللون أبيض وخشب، وبغيت بلاصة للفران..."
-                data-placeholder-ar="مثال: بغيت اللون أبيض وخشب، وبغيت بلاصة للفران..."
-                data-placeholder-fr="Exemple : Je veux du blanc et du bois, avec une place pour le four..."></textarea>
-
-    </div>
-
-
-    <!-- 6 BUDGET -->
-
-    <div class="step">
-
-      <div class="step-head">
-        <div class="num">6</div>
-
-        <h3 data-ar="شحال الميزانية ديالك؟"
-            data-fr="Quel est votre budget ?">
-          شحال الميزانية ديالك؟
-        </h3>
-      </div>
-
-
-      <div class="budget">
-
-        <button data-budget="< 5.000 DH"
-                data-ar="أقل من 5.000 DH"
-                data-fr="Moins de 5.000 DH">
-          أقل من 5.000 DH
-        </button>
-
-        <button data-budget="5.000 - 10.000 DH"
-                data-ar="5.000 - 10.000 DH"
-                data-fr="5.000 - 10.000 DH">
-          5.000 - 10.000 DH
-        </button>
-
-        <button data-budget="10.000 - 20.000 DH"
-                data-ar="10.000 - 20.000 DH"
-                data-fr="10.000 - 20.000 DH">
-          10.000 - 20.000 DH
-        </button>
-
-        <button data-budget="> 20.000 DH"
-                data-ar="أكثر من 20.000 DH"
-                data-fr="Plus de 20.000 DH">
-          أكثر من 20.000 DH
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="send">
-
-      <button onclick="sendWhatsApp()"
-              data-ar="💬 صيفط لينا الطلب عبر واتساب"
-              data-fr="💬 Envoyer ma demande sur WhatsApp">
-        💬 صيفط لينا الطلب عبر واتساب
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
 
 </section>
 
 
-<!-- STORE -->
-
-<section class="store" id="store">
-
-<div class="wrap">
-
-  <div class="title">
-
-    <small>SHOP</small>
-
-    <h2 data-ar="المتجر" data-fr="Boutique">
-      المتجر
-    </h2>
-
-    <p data-ar="إكسسوارات وتجهيزات للديكور"
-       data-fr="Accessoires et équipements pour votre décoration">
-      إكسسوارات وتجهيزات للديكور
-    </p>
-
-  </div>
-
-
-  <div class="products">
-
-    <div class="product">
-
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80">
-
-      <div class="product-info">
-        <h3 data-ar="مقابض" data-fr="Poignées">مقابض</h3>
-        <p data-ar="موديلات مختلفة"
-           data-fr="Différents modèles">
-          موديلات مختلفة
-        </p>
-
-        <button onclick="shopWhatsApp('مقابض / Poignées')">
-          اطلب
-        </button>
-      </div>
-
-    </div>
-
-
-    <div class="product">
-
-      <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800&q=80">
-
-      <div class="product-info">
-        <h3>LED</h3>
-        <p data-ar="إضاءة للديكور"
-           data-fr="Éclairage décoratif">
-          إضاءة للديكور
-        </p>
-
-        <button onclick="shopWhatsApp('LED')">
-          اطلب
-        </button>
-      </div>
-
-    </div>
-
-
-    <div class="product">
-
-      <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=800&q=80">
-
-      <div class="product-info">
-        <h3 data-ar="إكسسوارات المطبخ"
-            data-fr="Accessoires cuisine">
-          إكسسوارات المطبخ
-        </h3>
-
-        <p data-ar="تجهيزات عملية"
-           data-fr="Équipements pratiques">
-          تجهيزات عملية
-        </p>
-
-        <button onclick="shopWhatsApp('إكسسوارات المطبخ')">
-          اطلب
-        </button>
-      </div>
-
-    </div>
-
-
-    <div class="product">
-
-      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80">
-
-      <div class="product-info">
-        <h3 data-ar="طابيسري"
-            data-fr="Tapisserie">
-          طابيسري
-        </h3>
-
-        <p data-ar="ثوب وستور"
-           data-fr="Tissus et rideaux">
-          ثوب وستور
-        </p>
-
-        <button onclick="shopWhatsApp('طابيسري / Tapisserie')">
-          اطلب
-        </button>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- WORKS -->
-
-<section class="works" id="works">
-
-<div class="wrap">
-
-  <div class="title">
-
-    <small>REAL PROJECTS</small>
-
-    <h2 data-ar="أعمالنا" data-fr="Nos réalisations">
-      أعمالنا
-    </h2>
-
-    <p data-ar="شوف بعض الأعمال والمشاريع ديالنا"
-       data-fr="Découvrez quelques-unes de nos réalisations">
-      شوف بعض الأعمال والمشاريع ديالنا
-    </p>
-
-  </div>
-
-
-  <!--
-    الصور هنا ثابتة.
-    إلا كان عندك works.html ديالك، الزر غادي يفتح نفس الصفحة.
-  -->
-
-  <div class="works-grid">
-
-    <div class="work">
-      <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1000&q=85">
-    </div>
-
-    <div class="work">
-      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85">
-    </div>
-
-    <div class="work">
-      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85">
-    </div>
-
-  </div>
-
-
-  <div class="more">
-
-    <a href="works.html"
-       data-ar="📷 شوف جميع الأعمال"
-       data-fr="📷 Voir toutes les réalisations">
-      📷 شوف جميع الأعمال
-    </a>
-
-  </div>
-
-</div>
-
-</section>
-
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1138,9 +1336,12 @@ footer strong{
 
   <br>
 
-  <span data-ar="جميع الحقوق محفوظة — Hamza Chtaibi"
-        data-fr="Tous droits réservés — Hamza Chtaibi">
+  <span class="ar">
     جميع الحقوق محفوظة — Hamza Chtaibi
+  </span>
+
+  <span class="fr">
+    Tous droits réservés — Hamza Chtaibi
   </span>
 
 </footer>
@@ -1148,164 +1349,120 @@ footer strong{
 
 <script>
 
-let language="ar";
-let selectedType="";
-let selectedBudget="";
-
-const langBtn=document.getElementById("langBtn");
+/* ================= LANGUAGE ================= */
 
 function toggleLanguage(){
 
-  language=language==="ar"?"fr":"ar";
+  document.body.classList.toggle("french");
 
-  document.documentElement.lang=language;
-  document.documentElement.dir=language==="ar"?"rtl":"ltr";
-
-  document.querySelectorAll("[data-ar]").forEach(el=>{
-    el.innerHTML=el.getAttribute("data-"+language);
-  });
-
-  document.querySelectorAll("[data-placeholder-ar]").forEach(el=>{
-    el.placeholder=el.getAttribute("data-placeholder-"+language);
-  });
-
-  langBtn.textContent=language==="ar"?"Français":"الدارجة";
+  localStorage.setItem(
+    "language",
+    document.body.classList.contains("french")
+      ? "fr"
+      : "ar"
+  );
 }
 
 
-/* TYPE */
+/* حفظ اللغة */
 
-document.querySelectorAll(".choice").forEach(btn=>{
-
-  btn.addEventListener("click",()=>{
-
-    document.querySelectorAll(".choice")
-      .forEach(x=>x.classList.remove("active"));
-
-    btn.classList.add("active");
-
-    selectedType=btn.dataset.type;
-
-  });
-
-});
+if(localStorage.getItem("language")==="fr"){
+  document.body.classList.add("french");
+}
 
 
-/* BUDGET */
+/* ================= PHOTO PREVIEW ================= */
 
-document.querySelectorAll(".budget button").forEach(btn=>{
+const photo =
+  document.getElementById("photo");
 
-  btn.addEventListener("click",()=>{
+const preview =
+  document.getElementById("preview");
 
-    document.querySelectorAll(".budget button")
-      .forEach(x=>x.classList.remove("active"));
-
-    btn.classList.add("active");
-
-    selectedBudget=btn.dataset.budget;
-
-  });
-
-});
+const previewImg =
+  document.getElementById("previewImg");
 
 
-/* PHOTO */
-
-document.getElementById("photo").addEventListener("change",function(){
+photo.addEventListener("change",function(){
 
   const file=this.files[0];
 
-  if(!file)return;
+  if(!file) return;
 
-  const preview=document.getElementById("preview");
-
-  preview.src=URL.createObjectURL(file);
+  previewImg.src=
+    URL.createObjectURL(file);
 
   preview.style.display="block";
 
 });
 
 
-/* WHATSAPP */
+/* ================= WHATSAPP ================= */
 
-function sendWhatsApp(){
+document
+.getElementById("projectForm")
+.addEventListener("submit",function(e){
 
-  const name=document.getElementById("name").value.trim();
-  const city=document.getElementById("city").value.trim();
-  const width=document.getElementById("width").value.trim();
-  const length=document.getElementById("length").value.trim();
-  const height=document.getElementById("height").value.trim();
-  const note=document.getElementById("note").value.trim();
-
-  if(!name || !city){
-
-    alert(
-      language==="ar"
-      ?"دخل الاسم والمدينة من فضلك."
-      :"Veuillez entrer votre nom et votre ville."
-    );
-
-    return;
-  }
-
-  if(!selectedType){
-
-    alert(
-      language==="ar"
-      ?"اختار شنو محتاج."
-      :"Choisissez votre projet."
-    );
-
-    return;
-  }
-
-  const message =
-`صمم ديكورك
-----------------
-${language==="ar"?"طلب جديد":"Nouvelle demande"}
-
-${language==="ar"?"الاسم":"Nom"}: ${name}
-${language==="ar"?"المدينة":"Ville"}: ${city}
-
-${language==="ar"?"المشروع":"Projet"}: ${selectedType}
-
-${language==="ar"?"القياسات":"Dimensions"}:
-${language==="ar"?"العرض":"Largeur"}: ${width || "-"} cm
-${language==="ar"?"الطول":"Longueur"}: ${length || "-"} cm
-${language==="ar"?"العلو":"Hauteur"}: ${height || "-"} cm
-
-${language==="ar"?"الميزانية":"Budget"}: ${selectedBudget || "-"}
-
-${language==="ar"?"الملاحظة":"Remarque"}:
-${note || "-"}
-
-${language==="ar"
-?"الصورة غادي نرسلها من واتساب."
-:"La photo sera envoyée sur WhatsApp."}`;
-
-  window.open(
-    "https://wa.me/212754350706?text="+encodeURIComponent(message),
-    "_blank"
-  );
-
-}
+  e.preventDefault();
 
 
-/* STORE */
+  const name =
+    document.getElementById("name").value.trim();
 
-function shopWhatsApp(product){
+  const city =
+    document.getElementById("city").value.trim();
 
-  const message=
-    language==="ar"
-    ?`السلام عليكم، بغيت معلومات على ${product}`
-    :`Bonjour, je voudrais des informations sur ${product}`;
+  const project =
+    document.querySelector(
+      'input[name="project"]:checked'
+    )?.value || "";
 
-  window.open(
-    "https://wa.me/212754350706?text="+encodeURIComponent(message),
-    "_blank"
-  );
+  const width =
+    document.getElementById("width").value;
 
-}
+  const length =
+    document.getElementById("length").value;
+
+  const height =
+    document.getElementById("height").value;
+
+  const budget =
+    document.querySelector(
+      'input[name="budget"]:checked'
+    )?.value || "";
+
+  const notes =
+    document.getElementById("notes").value.trim();
+
+
+  let message =
+`السلام عليكم، بغيت ندير مشروع مع صمم ديكورك.
+
+الاسم: ${name}
+المدينة: ${city}
+
+المشروع: ${project}
+
+القياسات:
+العرض: ${width || "-"} cm
+الطول: ${length || "-"} cm
+العلو: ${height || "-"} cm
+
+الميزانية: ${budget}
+
+الملاحظات:
+${notes || "ماكايناش ملاحظات إضافية."}
+
+شكراً.`;
+
+  const url =
+    "https://wa.me/212754350706?text="
+    + encodeURIComponent(message);
+
+  window.open(url,"_blank");
+
+});
+
 
 </script>
 

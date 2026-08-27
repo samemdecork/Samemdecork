@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
   try {
-
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
     const apiKey = process.env.CLOUDINARY_API_KEY;
     const apiSecret = process.env.CLOUDINARY_API_SECRET;
@@ -12,17 +11,8 @@ export default async function handler(req, res) {
       });
     }
 
-    // الأقسام الموجودة في الموقع
-    const folders = {
-      works: "samemdecork/works",
-      tapis: "samemdecork/tapis",
-      products: "samemdecork/products"
-    };
-
-    const type = req.query.type || "works";
-
-    // إذا القسم غير معروف نرجعو works
-    const prefix = folders[type] || folders.works;
+    // جميع الصور داخل samemdecork
+    const prefix = "samemdecork/";
 
     const auth = Buffer
       .from(`${apiKey}:${apiSecret}`)
@@ -58,8 +48,7 @@ export default async function handler(req, res) {
 
     const images = resources.map((item, index) => {
 
-      const publicId =
-        item.public_id || "";
+      const publicId = item.public_id || "";
 
       const fileName =
         publicId
@@ -77,8 +66,6 @@ export default async function handler(req, res) {
         height: item.height,
         format: item.format,
         created_at: item.created_at,
-
-        // رقم الصورة داخل القسم
         number: index + 1
       };
 
@@ -86,7 +73,6 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      type: type,
       folder: prefix,
       count: images.length,
       images: images

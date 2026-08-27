@@ -97,7 +97,7 @@ grid-template-columns:repeat(4,1fr);
 gap:16px;
 }
 
-/* IMAGE CARD */
+/* CARD */
 
 .card{
 height:280px;
@@ -110,10 +110,10 @@ box-shadow:0 8px 25px #0001;
 
 .card img,
 .card video{
+display:block;
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
 }
 
 .card img{
@@ -157,16 +157,27 @@ padding:50px;
 font-weight:bold;
 }
 
+/* EMPTY */
+
+.empty{
+display:none;
+text-align:center;
+padding:60px 20px;
+background:white;
+border-radius:10px;
+color:#777;
+}
+
 /* ERROR */
 
 .error{
+display:none;
 text-align:center;
-padding:25px;
+padding:25px 20px;
 background:white;
 border-radius:10px;
 color:#a33;
-display:none;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 /* MOBILE */
@@ -202,44 +213,63 @@ height:220px;
 شوف المشاريع الحقيقية ديال صمم ديكورك
 </p></div></section><!-- GALLERY --><section class="gallery"><div class="wrap"><div id="loading" class="loading">
 جاري تحميل الأعمال...
-</div><div id="error" class="error">
-وقع مشكل في تحميل الفيديوهات.
-</div><div id="gallery" class="grid"><!-- الصور الأصلية --><div class="card">
-<img
-src="images/work-003.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-</div><div class="card">
-<img
-src="images/work-004.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-</div><div class="card">
-<img
-src="images/work-007.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-</div><div class="card">
-<img
-src="images/work-010.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-</div></div></div></section><footer><strong>صمم ديكورك</strong> © 2026
+</div><div id="error" class="error"></div><div id="empty" class="empty">
+مازال ما تزادت حتى صورة أو فيديو.
+</div><div id="gallery" class="grid"></div></div></section><footer><strong>صمم ديكورك</strong> © 2026
 
 <br>جميع الحقوق محفوظة — Hamza Chtaibi
 
 </footer><script>
 
+/* ==========================================
+   تحميل الصور من Cloudinary
+   Folder:
+   samemdecork/works
+========================================== */
+
+async function loadImages(){
+
+try{
+
+const response =
+await fetch("/api/gallery?type=works");
+
+if(!response.ok){
+throw new Error("Gallery API error");
+}
+
+const data =
+await response.json();
+
+if(!data.success){
+throw new Error(
+data.error || "Cloudinary error"
+);
+}
+
+return data.images || [];
+
+}catch(error){
+
+console.error(
+"Images loading error:",
+error
+);
+
+return [];
+
+}
+
+}
+
+
+/* ==========================================
+   تحميل الفيديوهات من Cloudinary
+   Folder:
+   samemdecork/works-videos
+========================================== */
+
 async function loadVideos(){
-
-const gallery =
-document.getElementById("gallery");
-
-const loading =
-document.getElementById("loading");
-
-const error =
-document.getElementById("error");
 
 try{
 
@@ -247,45 +277,117 @@ const response =
 await fetch("/api/videos");
 
 if(!response.ok){
-throw new Error("API error");
+throw new Error("Videos API error");
 }
 
 const data =
 await response.json();
 
-loading.style.display="none";
-
 if(!data.success){
-throw new Error(data.error || "API error");
+throw new Error(
+data.error || "Cloudinary error"
+);
 }
 
-/*
-الفيديوهات فقط من:
-samemdecork/works-videos
+return data.videos || [];
 
-الصور الموجودة فـ Cloudinary
-ما عندها حتى علاقة بهذا الجزء.
-*/
+}catch(error){
 
-if(!data.videos || data.videos.length===0){
+console.error(
+"Videos loading error:",
+error
+);
+
+return [];
+
+}
+
+}
+
+
+/* ==========================================
+   عرض الأعمال
+========================================== */
+
+async function loadWorks(){
+
+const loading =
+document.getElementById("loading");
+
+const gallery =
+document.getElementById("gallery");
+
+const empty =
+document.getElementById("empty");
+
+const errorBox =
+document.getElementById("error");
+
+try{
+
+const [images,videos] =
+await Promise.all([
+loadImages(),
+loadVideos()
+]);
+
+loading.style.display="none";
+
+
+/* إذا ماكاين لا صور لا فيديو */
+
+if(
+images.length===0 &&
+videos.length===0
+){
+
+empty.style.display="block";
 
 return;
 
 }
 
-data.videos.forEach((video,index)=>{
+
+/* ==========================================
+   عرض الصور
+========================================== */
+
+images.forEach((image)=>{
 
 const card =
 document.createElement("div");
 
-card.className="card video-card";
+card.className="card";
 
-const label =
+const img =
+document.createElement("img");
+
+img.src=image.url;
+
+img.alt=
+"مشروع من أعمال صمم ديكورك";
+
+img.loading="lazy";
+
+card.appendChild(img);
+
+gallery.appendChild(card);
+
+});
+
+
+/* ==========================================
+   عرض الفيديوهات
+========================================== */
+
+videos.forEach((video)=>{
+
+const card =
 document.createElement("div");
 
-label.className="video-label";
+card.className=
+"card video-card";
 
-label.textContent="VIDEO";
 
 const player =
 document.createElement("video");
@@ -303,29 +405,45 @@ player.setAttribute(
 "فيديو من أعمال صمم ديكورك"
 );
 
+
+const label =
+document.createElement("div");
+
+label.className="video-label";
+
+label.textContent="VIDEO";
+
+
 card.appendChild(player);
+
 card.appendChild(label);
 
 gallery.appendChild(card);
 
 });
 
-}catch(err){
 
-console.error("Video loading error:",err);
+}catch(error){
+
+console.error(
+"Works loading error:",
+error
+);
 
 loading.style.display="none";
 
-/*
-ما نظهروش Error للزائر.
-الفيديو إضافة فقط، والصور تبقى خدامة.
-*/
+errorBox.textContent=
+"وقع مشكل في تحميل الأعمال.";
+
+errorBox.style.display="block";
 
 }
 
 }
 
-loadVideos();
 
-</script></body>
-</html>
+/* START */
+
+loadWorks();
+
+</script></body></html>

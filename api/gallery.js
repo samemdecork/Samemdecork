@@ -11,8 +11,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // جميع الصور داخل samemdecork
-    const prefix = "samemdecork/";
+    const prefix = "samemdecork/works";
 
     const auth = Buffer
       .from(`${apiKey}:${apiSecret}`)
@@ -25,7 +24,6 @@ export default async function handler(req, res) {
       `&max_results=500`;
 
     const response = await fetch(url, {
-      method: "GET",
       headers: {
         Authorization: `Basic ${auth}`
       }
@@ -40,47 +38,34 @@ export default async function handler(req, res) {
       });
     }
 
-    // ترتيب الصور من الأحدث إلى الأقدم
-    const resources = (data.resources || []).sort(
-      (a, b) =>
-        new Date(b.created_at) - new Date(a.created_at)
-    );
-
-    const images = resources.map((item, index) => {
-
-      const publicId = item.public_id || "";
-
-      const fileName =
-        publicId
-          .split("/")
-          .pop()
-          .replace(/\.[^/.]+$/, "")
-          .replace(/[-_]/g, " ");
-
-      return {
-        id: item.asset_id || publicId,
-        public_id: publicId,
-        name: fileName,
+    const images = (data.resources || [])
+      .sort(
+        (a, b) =>
+          new Date(b.created_at) -
+          new Date(a.created_at)
+      )
+      .map((item, index) => ({
+        id: item.asset_id || item.public_id,
+        public_id: item.public_id,
+        name: item.public_id.split("/").pop(),
         url: item.secure_url,
         width: item.width,
         height: item.height,
         format: item.format,
         created_at: item.created_at,
         number: index + 1
-      };
-
-    });
+      }));
 
     return res.status(200).json({
       success: true,
       folder: prefix,
       count: images.length,
-      images: images
+      images
     });
 
   } catch (error) {
 
-    console.error("Gallery API Error:", error);
+    console.error(error);
 
     return res.status(500).json({
       success: false,

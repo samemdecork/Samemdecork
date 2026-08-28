@@ -1,1 +1,1023 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>أعمالنا | صمم ديكورك</title><style>
 
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f4f2;
+color:#17211c;
+line-height:1.7;
+}
+
+body.no-scroll{
+overflow:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.wrap{
+width:min(1200px,92%);
+margin:auto;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+header{
+height:72px;
+background:#0c120f;
+display:flex;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 20px #0004;
+}
+
+.nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+color:#fff;
+}
+
+.logo span{
+color:#cfd2d4;
+}
+
+.back{
+background:#cfd2d4;
+color:#17211c;
+padding:10px 20px;
+border-radius:6px;
+font-weight:bold;
+transition:.2s;
+}
+
+.back:hover{
+transform:translateY(-2px);
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+padding:70px 0 45px;
+text-align:center;
+background:#17211c;
+color:#fff;
+}
+
+.hero small{
+color:#cfd2d4;
+letter-spacing:3px;
+font-weight:bold;
+}
+
+.hero h1{
+font-size:clamp(35px,6vw,60px);
+margin:8px 0;
+}
+
+.hero p{
+color:#cbd1ce;
+}
+
+/* ================================
+   GALLERY
+================================ */
+
+.gallery{
+padding:60px 0 90px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+}
+
+.card{
+height:280px;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+box-shadow:0 8px 25px #0001;
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:.5s;
+}
+
+.card:hover img{
+transform:scale(1.06);
+}
+
+.loading{
+text-align:center;
+padding:60px 20px;
+font-weight:bold;
+}
+
+.empty{
+display:none;
+text-align:center;
+padding:60px 20px;
+background:#fff;
+border-radius:10px;
+color:#777;
+}
+
+.error{
+display:none;
+text-align:center;
+padding:30px 20px;
+background:#fff;
+border-radius:10px;
+color:#a33;
+}
+
+/* ================================
+   FULLSCREEN VIEWER
+================================ */
+
+.viewer{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+z-index:5000;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.viewer.show{
+display:flex;
+}
+
+.viewer img{
+max-width:92%;
+max-height:88vh;
+object-fit:contain;
+border-radius:8px;
+box-shadow:0 10px 50px #000;
+user-select:none;
+}
+
+/* CLOSE */
+
+.close{
+position:absolute;
+top:18px;
+right:22px;
+width:48px;
+height:48px;
+border:0;
+border-radius:50%;
+background:#fff;
+color:#17211c;
+font-size:30px;
+line-height:1;
+cursor:pointer;
+z-index:3;
+}
+
+/* ARROWS */
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:52px;
+height:52px;
+border:0;
+border-radius:50%;
+background:rgba(255,255,255,.92);
+color:#17211c;
+font-size:34px;
+font-weight:bold;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3;
+transition:.2s;
+}
+
+.arrow:hover{
+background:#cfd2d4;
+transform:translateY(-50%) scale(1.08);
+}
+
+.arrow-prev{
+left:25px;
+}
+
+.arrow-next{
+right:25px;
+}
+
+/* COUNTER */
+
+.counter{
+position:absolute;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.65);
+color:#fff;
+padding:6px 15px;
+border-radius:20px;
+font-size:14px;
+z-index:3;
+}
+
+/* ================================
+   WELCOME VOICE
+================================ */
+
+.welcome-voice{
+position:fixed;
+inset:0;
+background:rgba(8,13,10,.90);
+backdrop-filter:blur(8px);
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.welcome-box{
+width:min(450px,100%);
+background:#fff;
+border-radius:18px;
+padding:35px 25px;
+text-align:center;
+box-shadow:0 20px 70px #0008;
+animation:welcomeIn .5s ease;
+}
+
+.welcome-icon{
+width:65px;
+height:65px;
+margin:0 auto 15px;
+border-radius:50%;
+background:#17211c;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+}
+
+.welcome-box h2{
+font-size:25px;
+color:#17211c;
+margin-bottom:15px;
+}
+
+.welcome-box p{
+color:#606862;
+font-size:15px;
+line-height:2;
+margin-bottom:25px;
+}
+
+.welcome-box button{
+width:100%;
+border:0;
+padding:14px;
+border-radius:8px;
+background:#17211c;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
+}
+
+.welcome-box button:hover{
+transform:translateY(-2px);
+}
+
+.welcome-box .skip{
+margin-top:10px;
+background:#e7e8e6;
+color:#17211c;
+font-size:14px;
+}
+
+.welcome-voice.hide{
+animation:welcomeOut .4s ease forwards;
+pointer-events:none;
+}
+
+@keyframes welcomeIn{
+
+from{
+opacity:0;
+transform:scale(.95);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+@keyframes welcomeOut{
+
+from{
+opacity:1;
+}
+
+to{
+opacity:0;
+visibility:hidden;
+}
+
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+background:#0e1511;
+color:#999;
+padding:30px;
+text-align:center;
+}
+
+footer strong{
+color:#cfd2d4;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:550px){
+
+.gallery{
+padding:40px 0 70px;
+}
+
+.grid{
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.card{
+height:210px;
+}
+
+.hero{
+padding:55px 0 35px;
+}
+
+.viewer{
+padding:10px;
+}
+
+.viewer img{
+max-width:96%;
+max-height:82vh;
+}
+
+.arrow{
+width:44px;
+height:44px;
+font-size:27px;
+}
+
+.arrow-prev{
+left:8px;
+}
+
+.arrow-next{
+right:8px;
+}
+
+.close{
+top:10px;
+right:10px;
+width:42px;
+height:42px;
+font-size:26px;
+}
+
+.welcome-box{
+padding:30px 20px;
+}
+
+.welcome-box h2{
+font-size:22px;
+}
+
+.welcome-box p{
+font-size:14px;
+}
+
+}
+
+</style></head><body><!-- ================================
+     HEADER
+================================ --><header><div class="wrap nav"><a href="index.html" class="logo">
+صمم <span>ديكورك</span>
+</a><a href="index.html" class="back">
+الرئيسية
+</a></div></header><!-- ================================
+     HERO
+================================ --><section class="hero"><div class="wrap"><small>REAL PROJECTS</small>
+
+<h1>أعمالنا</h1><p>
+شوف المشاريع الحقيقية ديال صمم ديكورك
+</p></div></section><!-- ================================
+     GALLERY
+================================ --><section class="gallery"><div class="wrap"><div id="loading" class="loading">
+جاري تحميل الصور...
+</div><div id="error" class="error"></div><div id="empty" class="empty">مازال ما تزادت حتى صورة.
+
+</div><div id="gallery" class="grid"></div></div></section><!-- ================================
+     FULLSCREEN VIEWER
+================================ --><div id="viewer" class="viewer"><button
+class="close"
+id="closeBtn"
+aria-label="إغلاق">
+×
+</button>
+
+<button
+class="arrow arrow-prev"
+id="prevBtn"
+aria-label="الصورة السابقة">
+‹
+</button>
+
+<img
+id="viewerImage"
+src=""
+alt="صورة من أعمال صمم ديكورك">
+
+<button
+class="arrow arrow-next"
+id="nextBtn"
+aria-label="الصورة التالية">
+›
+</button>
+
+<div
+id="counter"
+class="counter">
+</div></div><!-- ================================
+     WELCOME VOICE
+================================ --><div id="welcomeVoice" class="welcome-voice"><div class="welcome-box"><div class="welcome-icon">
+🎧
+</div><h2>
+مرحبا بك في صمم ديكورك
+</h2><p>
+بسم الله، نتوكل على الله.
+<br>
+كنتمنى تستافد من الموقع وتلقى شنو بغيتي،
+<br>
+حنا في الخدمة ديالك.
+</p><button id="playWelcome">
+▶️ استمع للترحيب
+</button><button id="skipWelcome" class="skip">
+دخول للموقع
+</button></div></div><!-- ================================
+     AUDIO
+================================ --><audio id="welcomeAudio" preload="auto"><source
+src="audio/welcome.mp3"
+type="audio/mpeg">
+
+</audio><!-- ================================
+     FOOTER
+================================ --><footer><strong>صمم ديكورك</strong> © 2026
+
+<br>جميع الحقوق محفوظة — Hamza Chtaibi
+
+</footer><script>
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let worksImages = [];
+
+let currentIndex = 0;
+
+
+/* =========================================
+   LOAD CLOUDINARY IMAGES
+========================================= */
+
+async function loadWorks(){
+
+const loading =
+document.getElementById("loading");
+
+const gallery =
+document.getElementById("gallery");
+
+const empty =
+document.getElementById("empty");
+
+const errorBox =
+document.getElementById("error");
+
+try{
+
+const response =
+await fetch(
+"/api/gallery",
+{
+cache:"no-store"
+}
+);
+
+if(!response.ok){
+
+throw new Error(
+"API Error: " + response.status
+);
+
+}
+
+const data =
+await response.json();
+
+console.log(
+"Cloudinary Works:",
+data
+);
+
+loading.style.display="none";
+
+
+if(
+!data.success ||
+!Array.isArray(data.images) ||
+data.images.length===0
+){
+
+empty.style.display="block";
+
+return;
+
+}
+
+
+worksImages =
+data.images.filter(
+image => image.url
+);
+
+
+/* عرض الصور */
+
+worksImages.forEach(
+(image,index)=>{
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+
+const img =
+document.createElement("img");
+
+img.src=image.url;
+
+img.alt=
+"مشروع من أعمال صمم ديكورك";
+
+img.loading="lazy";
+
+
+img.onerror=()=>{
+
+card.remove();
+
+};
+
+
+card.addEventListener(
+"click",
+()=>{
+
+openViewer(index);
+
+});
+
+
+card.appendChild(img);
+
+gallery.appendChild(card);
+
+});
+
+
+if(worksImages.length===0){
+
+empty.style.display="block";
+
+}
+
+}catch(error){
+
+console.error(
+"Works loading error:",
+error
+);
+
+loading.style.display="none";
+
+errorBox.style.display="block";
+
+errorBox.textContent=
+"وقع مشكل في تحميل الصور. حاول مرة أخرى.";
+
+}
+
+}
+
+
+/* =========================================
+   OPEN VIEWER
+========================================= */
+
+function openViewer(index){
+
+if(!worksImages.length)
+return;
+
+currentIndex=index;
+
+updateViewer();
+
+document
+.getElementById("viewer")
+.classList.add("show");
+
+document.body.classList.add("no-scroll");
+
+}
+
+
+/* =========================================
+   UPDATE VIEWER
+========================================= */
+
+function updateViewer(){
+
+const viewerImage =
+document.getElementById("viewerImage");
+
+const counter =
+document.getElementById("counter");
+
+viewerImage.src =
+worksImages[currentIndex].url;
+
+counter.textContent =
+`${currentIndex + 1} / ${worksImages.length}`;
+
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+function nextImage(){
+
+if(!worksImages.length)
+return;
+
+currentIndex =
+(currentIndex + 1)
+% worksImages.length;
+
+updateViewer();
+
+}
+
+
+/* =========================================
+   PREVIOUS
+========================================= */
+
+function previousImage(){
+
+if(!worksImages.length)
+return;
+
+currentIndex =
+(currentIndex - 1 + worksImages.length)
+% worksImages.length;
+
+updateViewer();
+
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+function closeViewer(){
+
+document
+.getElementById("viewer")
+.classList.remove("show");
+
+document.body.classList.remove("no-scroll");
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+document
+.getElementById("nextBtn")
+.addEventListener(
+"click",
+function(event){
+
+event.stopPropagation();
+
+nextImage();
+
+});
+
+
+document
+.getElementById("prevBtn")
+.addEventListener(
+"click",
+function(event){
+
+event.stopPropagation();
+
+previousImage();
+
+});
+
+
+document
+.getElementById("closeBtn")
+.addEventListener(
+"click",
+function(){
+
+closeViewer();
+
+});
+
+
+/* =========================================
+   CLICK OUTSIDE
+========================================= */
+
+document
+.getElementById("viewer")
+.addEventListener(
+"click",
+function(event){
+
+if(event.target===this){
+
+closeViewer();
+
+}
+
+});
+
+
+/* =========================================
+   KEYBOARD
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+const viewer =
+document.getElementById("viewer");
+
+if(
+!viewer.classList.contains("show")
+)
+return;
+
+
+if(event.key==="Escape"){
+
+closeViewer();
+
+}
+
+if(event.key==="ArrowRight"){
+
+nextImage();
+
+}
+
+if(event.key==="ArrowLeft"){
+
+previousImage();
+
+}
+
+});
+
+
+/* =========================================
+   TOUCH SWIPE
+========================================= */
+
+let touchStartX=0;
+
+let touchEndX=0;
+
+
+document
+.getElementById("viewer")
+.addEventListener(
+"touchstart",
+function(event){
+
+touchStartX =
+event.changedTouches[0].screenX;
+
+},
+{passive:true}
+);
+
+
+document
+.getElementById("viewer")
+.addEventListener(
+"touchend",
+function(event){
+
+touchEndX =
+event.changedTouches[0].screenX;
+
+handleSwipe();
+
+},
+{passive:true}
+);
+
+
+function handleSwipe(){
+
+const difference =
+touchEndX - touchStartX;
+
+if(Math.abs(difference)<50)
+return;
+
+
+if(difference<0){
+
+nextImage();
+
+}else{
+
+previousImage();
+
+}
+
+}
+
+
+/* =========================================
+   WELCOME VOICE
+========================================= */
+
+const welcomeVoice =
+document.getElementById("welcomeVoice");
+
+const welcomeAudio =
+document.getElementById("welcomeAudio");
+
+const playWelcome =
+document.getElementById("playWelcome");
+
+const skipWelcome =
+document.getElementById("skipWelcome");
+
+
+/* تشغيل الصوت */
+
+playWelcome.addEventListener(
+"click",
+async function(){
+
+try{
+
+await welcomeAudio.play();
+
+playWelcome.textContent =
+"🔊 كيتشغل الترحيب...";
+
+welcomeAudio.onended =
+function(){
+
+closeWelcome();
+
+};
+
+}catch(error){
+
+console.error(
+"Audio error:",
+error
+);
+
+closeWelcome();
+
+}
+
+});
+
+
+/* دخول بدون صوت */
+
+skipWelcome.addEventListener(
+"click",
+function(){
+
+welcomeAudio.pause();
+
+welcomeAudio.currentTime=0;
+
+closeWelcome();
+
+});
+
+
+/* إغلاق الترحيب */
+
+function closeWelcome(){
+
+welcomeVoice.classList.add("hide");
+
+setTimeout(
+function(){
+
+welcomeVoice.style.display="none";
+
+},
+450
+);
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+loadWorks();
+
+</script></body></html>

@@ -11,11 +11,35 @@ export default async function handler(req, res) {
       });
     }
 
-    const folder = "samemdecork/general";
+    // =========================================
+    // تحديد القسم المطلوب
+    // =========================================
+
+    const type = req.query.type || "general";
+
+    const folders = {
+      general: "samemdecork/general",
+      kitchen: "samemdecork/kitchen",
+      cuisine: "samemdecork/kitchen",
+      dressinge: "samemdecork/dressinge",
+      dressing: "samemdecork/dressinge",
+      tapis: "samemdecork/tapisserie",
+      tapisserie: "samemdecork/tapisserie"
+    };
+
+    const folder = folders[type] || folders.general;
+
+    // =========================================
+    // Cloudinary Authentication
+    // =========================================
 
     const auth = Buffer
       .from(`${apiKey}:${apiSecret}`)
       .toString("base64");
+
+    // =========================================
+    // جلب الصور من Cloudinary
+    // =========================================
 
     const url =
       `https://api.cloudinary.com/v1_1/${cloudName}` +
@@ -39,6 +63,10 @@ export default async function handler(req, res) {
       });
     }
 
+    // =========================================
+    // ترتيب الصور من الأحدث إلى الأقدم
+    // =========================================
+
     const images = (data.resources || [])
       .sort(
         (a, b) =>
@@ -47,30 +75,54 @@ export default async function handler(req, res) {
       )
       .map((item, index) => ({
         id: item.asset_id || item.public_id,
+
         public_id: item.public_id,
-        name: item.public_id.split("/").pop(),
+
+        name: item.public_id
+          .split("/")
+          .pop(),
+
         url: item.secure_url,
+
         width: item.width,
+
         height: item.height,
+
         format: item.format,
+
         created_at: item.created_at,
+
         number: index + 1
       }));
 
+    // =========================================
+    // النتيجة
+    // =========================================
+
     return res.status(200).json({
       success: true,
+
+      type: type,
+
       folder: folder,
+
       count: images.length,
+
       images: images
     });
 
   } catch (error) {
 
-    console.error("Gallery API Error:", error);
+    console.error(
+      "Gallery API Error:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
-      error: error.message || "Server error"
+      error:
+        error.message ||
+        "Server error"
     });
   }
 }

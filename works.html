@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>أعمالنا | صمم ديكورك</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>أعمالنا | صمم ديكورك</title><style>
 
 *{
 box-sizing:border-box;
@@ -34,6 +24,8 @@ color:inherit;
 width:min(1200px,92%);
 margin:auto;
 }
+
+/* HEADER */
 
 header{
 height:72px;
@@ -68,10 +60,17 @@ color:#17211c;
 padding:10px 20px;
 border-radius:6px;
 font-weight:bold;
+transition:.2s;
 }
 
+.back:hover{
+transform:translateY(-2px);
+}
+
+/* HERO */
+
 .hero{
-padding:70px 0 40px;
+padding:70px 0 45px;
 text-align:center;
 background:#17211c;
 color:#fff;
@@ -80,6 +79,7 @@ color:#fff;
 .hero small{
 color:#cfd2d4;
 letter-spacing:3px;
+font-weight:bold;
 }
 
 .hero h1{
@@ -89,7 +89,10 @@ margin:8px 0;
 
 .hero p{
 color:#cbd1ce;
+font-size:16px;
 }
+
+/* GALLERY */
 
 .gallery{
 padding:60px 0 90px;
@@ -101,6 +104,8 @@ grid-template-columns:repeat(4,1fr);
 gap:16px;
 }
 
+/* CARD */
+
 .card{
 height:280px;
 background:#ddd;
@@ -108,17 +113,14 @@ border-radius:10px;
 overflow:hidden;
 position:relative;
 box-shadow:0 8px 25px #0001;
+cursor:pointer;
 }
 
-.card img,
-.card video{
+.card img{
 width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-}
-
-.card img{
 transition:.5s;
 }
 
@@ -126,23 +128,16 @@ transition:.5s;
 transform:scale(1.06);
 }
 
-.video-label{
-position:absolute;
-top:12px;
-right:12px;
-background:#17211c;
-color:#fff;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
-}
+/* LOADING */
 
 .loading{
 text-align:center;
-padding:50px;
+padding:60px 20px;
 font-weight:bold;
+font-size:16px;
 }
+
+/* EMPTY */
 
 .empty{
 display:none;
@@ -153,14 +148,18 @@ border-radius:10px;
 color:#777;
 }
 
+/* ERROR */
+
 .error{
 display:none;
 text-align:center;
-padding:25px;
+padding:30px 20px;
 background:#fff;
 border-radius:10px;
-color:#b33;
+color:#a33;
 }
+
+/* FOOTER */
 
 footer{
 background:#0e1511;
@@ -173,6 +172,42 @@ footer strong{
 color:#cfd2d4;
 }
 
+/* IMAGE VIEWER */
+
+.viewer{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+z-index:5000;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.viewer img{
+max-width:95%;
+max-height:90vh;
+object-fit:contain;
+border-radius:8px;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:25px;
+width:45px;
+height:45px;
+border:0;
+border-radius:50%;
+background:#fff;
+color:#17211c;
+font-size:28px;
+cursor:pointer;
+}
+
+/* MOBILE */
+
 @media(max-width:900px){
 
 .grid{
@@ -183,6 +218,10 @@ grid-template-columns:repeat(2,1fr);
 
 @media(max-width:550px){
 
+.gallery{
+padding:40px 0 70px;
+}
+
 .grid{
 grid-template-columns:1fr 1fr;
 gap:10px;
@@ -192,101 +231,45 @@ gap:10px;
 height:220px;
 }
 
+.hero{
+padding:55px 0 35px;
 }
 
-</style>
+}
 
-</head>
-
-<body>
-
-<header>
-
-<div class="wrap nav">
-
-<a href="index.html"
-class="logo">
-
+</style></head><body><!-- HEADER --><header><div class="wrap nav"><a href="index.html" class="logo">
 صمم <span>ديكورك</span>
-
-</a>
-
-<a href="index.html"
-class="back">
-
+</a><a href="index.html" class="back">
 الرئيسية
+</a></div></header><!-- HERO --><section class="hero"><div class="wrap"><small>REAL PROJECTS</small>
 
-</a>
-
-</div>
-
-</header>
-
-
-<section class="hero">
-
-<div class="wrap">
-
-<small>REAL PROJECTS</small>
-
-<h1>أعمالنا</h1>
-
-<p>
+<h1>أعمالنا</h1><p>
 شوف المشاريع الحقيقية ديال صمم ديكورك
-</p>
+</p></div></section><!-- GALLERY --><section class="gallery"><div class="wrap"><div id="loading" class="loading">
+جاري تحميل الصور...
+</div><div id="error" class="error"></div><div id="empty" class="empty">مازال ما تزادت حتى صورة.
 
-</div>
+</div><div id="gallery" class="grid"></div></div></section><!-- IMAGE VIEWER --><div id="viewer" class="viewer"><button
+class="close"
+onclick="closeViewer()">
+×
+</button>
 
-</section>
+<img
+id="viewerImage"
+src=""
+alt="صورة من أعمال صمم ديكورك">
 
+</div><!-- FOOTER --><footer><strong>صمم ديكورك</strong> © 2026
 
-<section class="gallery">
+<br>جميع الحقوق محفوظة — Hamza Chtaibi
 
-<div class="wrap">
+</footer><script>
 
-<div id="loading"
-class="loading">
-
-جاري تحميل الأعمال...
-
-</div>
-
-<div id="error"
-class="error">
-</div>
-
-<div id="empty"
-class="empty">
-
-مازال ما تزادت حتى صورة أو فيديو.
-
-</div>
-
-<div id="gallery"
-class="grid">
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<strong>
-صمم ديكورك
-</strong>
-
-© 2026
-
-<br>
-
-جميع الحقوق محفوظة — Hamza Chtaibi
-
-</footer>
-
-
-<script>
+/* ==========================================
+   تحميل الصور من Cloudinary
+   عن طريق API
+========================================== */
 
 async function loadWorks(){
 
@@ -304,41 +287,34 @@ document.getElementById("error");
 
 try{
 
-const [imageResponse,videoResponse] =
-await Promise.all([
+const response =
+await fetch("/api/gallery",{
+cache:"no-store"
+});
 
-fetch("/api/gallery"),
+if(!response.ok){
 
-fetch("/api/videos")
+throw new Error(
+"API returned " + response.status
+);
 
-]);
+}
 
+const data =
+await response.json();
 
-const imageData =
-await imageResponse.json();
-
-const videoData =
-await videoResponse.json();
-
+console.log(
+"Cloudinary Gallery:",
+data
+);
 
 loading.style.display="none";
 
 
-const images =
-imageData.success
-? imageData.images || []
-: [];
-
-
-const videos =
-videoData.success
-? videoData.videos || []
-: [];
-
-
 if(
-images.length===0 &&
-videos.length===0
+!data.success ||
+!Array.isArray(data.images) ||
+data.images.length===0
 ){
 
 empty.style.display="block";
@@ -348,9 +324,12 @@ return;
 }
 
 
-/* الصور */
+/* عرض الصور */
 
-images.forEach(image=>{
+data.images.forEach(image=>{
+
+if(!image.url) return;
+
 
 const card =
 document.createElement("div");
@@ -364,76 +343,130 @@ document.createElement("img");
 img.src=image.url;
 
 img.alt=
-"مشروع صمم ديكورك";
+"مشروع من أعمال صمم ديكورك";
 
 img.loading="lazy";
 
 
+img.onerror=()=>{
+
+card.remove();
+
+};
+
+
 card.appendChild(img);
 
+
+/* فتح الصورة بالحجم الكبير */
+
+card.onclick=()=>{
+
+openViewer(image.url);
+
+};
+
+
 gallery.appendChild(card);
 
 });
 
 
-/* الفيديوهات */
+/* إذا تحيدات جميع الصور بسبب خطأ */
 
-videos.forEach(video=>{
+if(gallery.children.length===0){
 
-const card =
-document.createElement("div");
+empty.style.display="block";
 
-card.className="card";
-
-
-const player =
-document.createElement("video");
-
-player.src=video.url;
-
-player.controls=true;
-
-player.playsInline=true;
-
-player.preload="metadata";
-
-
-const label =
-document.createElement("div");
-
-label.className=
-"video-label";
-
-label.textContent="VIDEO";
-
-
-card.appendChild(player);
-
-card.appendChild(label);
-
-gallery.appendChild(card);
-
-});
+}
 
 }catch(error){
 
-console.error(error);
+console.error(
+"Works loading error:",
+error
+);
 
 loading.style.display="none";
 
 errorBox.style.display="block";
 
 errorBox.textContent=
-"وقع مشكل في تحميل الأعمال.";
+"وقع مشكل في تحميل الصور. حاول مرة أخرى.";
 
 }
 
 }
+
+
+/* ==========================================
+   IMAGE VIEWER
+========================================== */
+
+function openViewer(url){
+
+const viewer =
+document.getElementById("viewer");
+
+const viewerImage =
+document.getElementById("viewerImage");
+
+viewerImage.src=url;
+
+viewer.style.display="flex";
+
+}
+
+
+function closeViewer(){
+
+const viewer =
+document.getElementById("viewer");
+
+const viewerImage =
+document.getElementById("viewerImage");
+
+viewer.style.display="none";
+
+viewerImage.src="";
+
+}
+
+
+/* إغلاق بالضغط خارج الصورة */
+
+document
+.getElementById("viewer")
+.addEventListener(
+"click",
+function(event){
+
+if(event.target===this){
+
+closeViewer();
+
+}
+
+});
+
+
+/* إغلاق بزر ESC */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Escape"){
+
+closeViewer();
+
+}
+
+});
+
+
+/* START */
 
 loadWorks();
 
-</script>
-
-</body>
-
-</html>
+</script></body></html>

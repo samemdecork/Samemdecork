@@ -11,8 +11,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // الصور اللي بغيتي تبان للزوار
-    const folder = "samemdecork/works";
+    const folder = "samemdecork/general";
 
     const auth = Buffer
       .from(`${apiKey}:${apiSecret}`)
@@ -25,6 +24,7 @@ export default async function handler(req, res) {
       `&max_results=500`;
 
     const response = await fetch(url, {
+      method: "GET",
       headers: {
         Authorization: `Basic ${auth}`
       }
@@ -45,26 +45,28 @@ export default async function handler(req, res) {
           new Date(b.created_at) -
           new Date(a.created_at)
       )
-      .map((item) => ({
+      .map((item, index) => ({
         id: item.asset_id || item.public_id,
         public_id: item.public_id,
+        name: item.public_id.split("/").pop(),
         url: item.secure_url,
         width: item.width,
         height: item.height,
         format: item.format,
-        created_at: item.created_at
+        created_at: item.created_at,
+        number: index + 1
       }));
 
     return res.status(200).json({
       success: true,
-      folder,
+      folder: folder,
       count: images.length,
-      images
+      images: images
     });
 
   } catch (error) {
 
-    console.error("Gallery Error:", error);
+    console.error("Gallery API Error:", error);
 
     return res.status(500).json({
       success: false,

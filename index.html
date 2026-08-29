@@ -26,6 +26,59 @@ width:min(1180px,92%);
 margin:auto
 }
 
+/* =========================
+   INTRO VIDEO
+========================= */
+
+#introVideo{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+background:#000;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+transition:opacity .7s ease,visibility .7s ease
+}
+
+#introVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
+
+#introVideo.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none
+}
+
+#skipIntro{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+z-index:2;
+background:rgba(0,0,0,.55);
+border:1px solid rgba(255,255,255,.6);
+color:#fff;
+padding:10px 24px;
+border-radius:25px;
+font-size:14px;
+cursor:pointer;
+backdrop-filter:blur(8px);
+transition:.25s
+}
+
+#skipIntro:hover{
+background:#fff;
+color:#17211c
+}
+
 /* HEADER */
 
 header{
@@ -595,6 +648,12 @@ grid-template-columns:1fr 1fr
 height:170px
 }
 
+#skipIntro{
+bottom:25px;
+font-size:13px;
+padding:9px 20px
+}
+
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -613,6 +672,29 @@ transition:none
 </head>
 
 <body>
+
+<!-- =========================
+     INTRO VIDEO
+========================= -->
+
+<div id="introVideo">
+
+<video
+id="introVideoPlayer"
+autoplay
+muted
+playsinline
+preload="auto">
+
+<source src="videos/intro.mp4" type="video/mp4">
+
+</video>
+
+<button id="skipIntro">
+تخطي
+</button>
+
+</div>
 
 <header>
 
@@ -707,7 +789,7 @@ data-i18n="start">
 ابدأ التصميم
 </a>
 
-<a href="https://wa.me/212000000000"
+<a href="https://wa.me/212754350706"
 target="_blank"
 class="btn btn-outline"
 data-i18n="contact">
@@ -1103,7 +1185,7 @@ HETTICH
 <!-- WHATSAPP -->
 
 <a class="whatsapp"
-href="https://wa.me/212000000000"
+href="https://wa.me/212754350706"
 target="_blank"
 aria-label="WhatsApp">
 
@@ -1116,6 +1198,57 @@ aria-label="WhatsApp">
 </a>
 
 <script>
+
+/* =========================
+   INTRO VIDEO
+========================= */
+
+const intro=document.getElementById("introVideo");
+const introPlayer=document.getElementById("introVideoPlayer");
+const skipIntro=document.getElementById("skipIntro");
+
+function closeIntro(){
+
+if(intro.classList.contains("hide")) return;
+
+intro.classList.add("hide");
+
+setTimeout(()=>{
+intro.style.display="none";
+},700);
+
+}
+
+/* يبدأ الفيديو */
+
+window.addEventListener("load",()=>{
+
+introPlayer.play().catch(()=>{
+
+/*
+إذا منع المتصفح التشغيل التلقائي،
+يبقى الفيديو ظاهر ويمكن للزائر تخطيه.
+*/
+
+});
+
+});
+
+/* عندما يسالي الفيديو */
+
+introPlayer.addEventListener("ended",closeIntro);
+
+/* تخطي */
+
+skipIntro.addEventListener("click",closeIntro);
+
+/* حماية إضافية:
+   حتى إذا الفيديو ما عطاش ended
+   يتم الانتقال بعد 4.5 ثواني
+*/
+
+setTimeout(closeIntro,4500);
+
 
 /* HERO SLIDER */
 
@@ -1182,6 +1315,7 @@ setInterval(nextSlide,5000);
 }
 
 startSlider();
+
 
 /* LANGUAGES */
 

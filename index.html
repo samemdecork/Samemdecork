@@ -26,9 +26,9 @@ width:min(1180px,92%);
 margin:auto
 }
 
-/* =========================
+/* ================================
    INTRO VIDEO
-========================= */
+================================ */
 
 #introVideo{
 position:fixed;
@@ -43,20 +43,21 @@ justify-content:center;
 overflow:hidden;
 opacity:1;
 visibility:visible;
-transition:opacity .7s ease,visibility .7s ease
+transition:opacity .7s ease,visibility .7s ease;
 }
 
 #introVideo.hide{
 opacity:0;
 visibility:hidden;
-pointer-events:none
+pointer-events:none;
 }
 
 #introVideo video{
 width:100%;
 height:100%;
 object-fit:cover;
-display:block
+display:block;
+background:#000;
 }
 
 #skipIntro{
@@ -64,21 +65,46 @@ position:absolute;
 bottom:30px;
 left:50%;
 transform:translateX(-50%);
-z-index:2;
+z-index:10;
+border:1px solid rgba(255,255,255,.8);
 background:rgba(0,0,0,.55);
-border:1px solid rgba(255,255,255,.7);
 color:#fff;
-padding:10px 24px;
+padding:10px 25px;
 border-radius:25px;
 font-size:14px;
+font-weight:bold;
 cursor:pointer;
 backdrop-filter:blur(8px);
-transition:.25s
 }
 
 #skipIntro:hover{
 background:#fff;
-color:#17211c
+color:#17211c;
+}
+
+#videoError{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:#fff;
+text-align:center;
+display:none;
+z-index:5;
+}
+
+#videoError p{
+margin-bottom:15px;
+}
+
+#playIntro{
+border:1px solid #fff;
+background:#fff;
+color:#17211c;
+padding:11px 25px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* HEADER */
@@ -675,9 +701,9 @@ transition:none
 
 <body>
 
-<!-- =========================
+<!-- ================================
      INTRO VIDEO
-========================= -->
+================================ -->
 
 <div id="introVideo">
 
@@ -686,11 +712,28 @@ id="introVideoPlayer"
 autoplay
 muted
 playsinline
-preload="auto">
+preload="auto"
+controlslist="nodownload">
 
-<source src="videos/intro.mp4" type="video/mp4">
+<source
+src="videos/MindVideo_20260830002849_522.mp4"
+type="video/mp4">
+
+المتصفح ديالك ما كيدعمش الفيديو.
 
 </video>
+
+<div id="videoError">
+
+<p>
+تعذر تشغيل الفيديو تلقائياً.
+</p>
+
+<button id="playIntro">
+تشغيل الفيديو
+</button>
+
+</div>
 
 <button id="skipIntro">
 تخطي
@@ -1081,27 +1124,35 @@ REAL PROJECTS
 <div class="works-preview">
 
 <div class="work-image">
+
 <img src="images/work-003.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
+
 </div>
 
 <div class="work-image">
+
 <img src="images/work-004.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
+
 </div>
 
 <div class="work-image">
+
 <img src="images/work-007.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
+
 </div>
 
 <div class="work-image">
+
 <img src="images/work-010.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
+
 </div>
 
 </div>
@@ -1195,26 +1246,37 @@ aria-label="WhatsApp">
 
 <script>
 
-/* =========================
+/* ================================
    INTRO VIDEO
-========================= */
+================================ */
 
 const intro =
 document.getElementById("introVideo");
 
-const introPlayer =
+const video =
 document.getElementById("introVideoPlayer");
 
-const skipIntro =
+const skip =
 document.getElementById("skipIntro");
 
+const videoError =
+document.getElementById("videoError");
+
+const playIntro =
+document.getElementById("playIntro");
+
 let introClosed=false;
+
+
+/* إغلاق الافتتاحية */
 
 function closeIntro(){
 
 if(introClosed) return;
 
 introClosed=true;
+
+video.pause();
 
 intro.classList.add("hide");
 
@@ -1226,49 +1288,101 @@ intro.style.display="none";
 
 }
 
+
 /* تشغيل الفيديو */
 
-window.addEventListener("load",function(){
+function startIntroVideo(){
 
-introPlayer.currentTime=0;
+video.muted=true;
 
-const playPromise=introPlayer.play();
+const promise=video.play();
 
-if(playPromise!==undefined){
+if(promise!==undefined){
 
-playPromise.catch(function(){
+promise.catch(function(){
 
 /*
-إذا منع المتصفح التشغيل التلقائي،
-يبقى الفيديو ظاهر ويمكن استعمال زر تخطي.
+إذا الهاتف منع autoplay،
+نظهر زر التشغيل.
 */
+
+videoError.style.display="block";
 
 });
 
 }
 
+}
+
+
+/* منين الصفحة تحمل */
+
+window.addEventListener("load",function(){
+
+video.currentTime=0;
+
+startIntroVideo();
+
 });
 
-/* الانتقال فقط منين يكمل الفيديو كامل */
 
-introPlayer.addEventListener("ended",function(){
+/*
+الفيديو كيسالي →
+ندخل للموقع.
+ما كاين حتى timer.
+*/
+
+video.addEventListener("ended",function(){
 
 closeIntro();
 
 });
 
-/* زر التخطي */
 
-skipIntro.addEventListener("click",function(){
+/*
+زر تشغيل الفيديو
+*/
+
+playIntro.addEventListener("click",function(){
+
+videoError.style.display="none";
+
+video.muted=true;
+
+video.play().catch(function(){
+
+videoError.style.display="block";
+
+});
+
+});
+
+
+/*
+زر تخطي
+*/
+
+skip.addEventListener("click",function(){
 
 closeIntro();
 
 });
 
 
-/* =========================
+/*
+إذا وقع خطأ فالفيديو
+*/
+
+video.addEventListener("error",function(){
+
+videoError.style.display="block";
+
+});
+
+
+/* ================================
    HERO SLIDER
-========================= */
+================================ */
 
 const slides =
 document.querySelectorAll(".hero-slide");
@@ -1291,7 +1405,9 @@ dot.classList.add("active");
 }
 
 dot.onclick=function(){
+
 goToSlide(index);
+
 };
 
 dotsContainer.appendChild(dot);
@@ -1300,6 +1416,7 @@ dotsContainer.appendChild(dot);
 
 const dots=
 document.querySelectorAll(".slider-dot");
+
 
 function goToSlide(index){
 
@@ -1319,6 +1436,7 @@ startSlider();
 
 }
 
+
 function nextSlide(){
 
 let next=
@@ -1327,6 +1445,7 @@ let next=
 goToSlide(next);
 
 }
+
 
 function startSlider(){
 
@@ -1338,9 +1457,9 @@ setInterval(nextSlide,5000);
 startSlider();
 
 
-/* =========================
+/* ================================
    LANGUAGES
-========================= */
+================================ */
 
 const T={
 
@@ -1417,6 +1536,7 @@ accessText:
 "بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
 
 discover:"شوف القسم",
+
 shop:"شوف المنتجات",
 
 worksTitle:"أعمالنا",
@@ -1556,6 +1676,7 @@ rights:
 
 };
 
+
 function setLang(lang){
 
 localStorage.setItem("siteLang",lang);
@@ -1572,16 +1693,20 @@ document.querySelectorAll("[data-i18n]")
 const key=el.dataset.i18n;
 
 if(T[lang][key]){
+
 el.textContent=T[lang][key];
+
 }
 
 });
+
 
 document.getElementById("arBtn")
 .classList.toggle(
 "active",
 lang==="ar"
 );
+
 
 document.getElementById("frBtn")
 .classList.toggle(
@@ -1590,6 +1715,7 @@ lang==="fr"
 );
 
 }
+
 
 setLang(
 localStorage.getItem("siteLang")||"ar"

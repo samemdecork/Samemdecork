@@ -41,7 +41,15 @@ display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
+opacity:1;
+visibility:visible;
 transition:opacity .7s ease,visibility .7s ease
+}
+
+#introVideo.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none
 }
 
 #introVideo video{
@@ -51,12 +59,6 @@ object-fit:cover;
 display:block
 }
 
-#introVideo.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none
-}
-
 #skipIntro{
 position:absolute;
 bottom:30px;
@@ -64,7 +66,7 @@ left:50%;
 transform:translateX(-50%);
 z-index:2;
 background:rgba(0,0,0,.55);
-border:1px solid rgba(255,255,255,.6);
+border:1px solid rgba(255,255,255,.7);
 color:#fff;
 padding:10px 24px;
 border-radius:25px;
@@ -686,7 +688,7 @@ muted
 playsinline
 preload="auto">
 
-<source src="videos/MindVideo_20260830002849_522.mp4" type="video/mp4">
+<source src="videos/intro.mp4" type="video/mp4">
 
 </video>
 
@@ -695,6 +697,8 @@ preload="auto">
 </button>
 
 </div>
+
+<!-- HEADER -->
 
 <header>
 
@@ -765,13 +769,13 @@ FR
 <h1>
 
 <span data-i18n="hero1">
-الدار عليك
+دار عليك
 </span>
 
 <br>
 
 <span data-i18n="hero2">
-والديكور علينا
+وديكور علينا
 </span>
 
 </h1>
@@ -1077,35 +1081,27 @@ REAL PROJECTS
 <div class="works-preview">
 
 <div class="work-image">
-
 <img src="images/work-003.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
-
 </div>
 
 <div class="work-image">
-
 <img src="images/work-004.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
-
 </div>
 
 <div class="work-image">
-
 <img src="images/work-007.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
-
 </div>
 
 <div class="work-image">
-
 <img src="images/work-010.webp"
 alt="مشروع صمم ديكورك"
 loading="lazy">
-
 </div>
 
 </div>
@@ -1203,54 +1199,76 @@ aria-label="WhatsApp">
    INTRO VIDEO
 ========================= */
 
-const intro=document.getElementById("introVideo");
-const introPlayer=document.getElementById("introVideoPlayer");
-const skipIntro=document.getElementById("skipIntro");
+const intro =
+document.getElementById("introVideo");
+
+const introPlayer =
+document.getElementById("introVideoPlayer");
+
+const skipIntro =
+document.getElementById("skipIntro");
+
+let introClosed=false;
 
 function closeIntro(){
 
-if(intro.classList.contains("hide")) return;
+if(introClosed) return;
+
+introClosed=true;
 
 intro.classList.add("hide");
 
-setTimeout(()=>{
+setTimeout(function(){
+
 intro.style.display="none";
+
 },700);
 
 }
 
-/* يبدأ الفيديو */
+/* تشغيل الفيديو */
 
-window.addEventListener("load",()=>{
+window.addEventListener("load",function(){
 
-introPlayer.play().catch(()=>{
+introPlayer.currentTime=0;
+
+const playPromise=introPlayer.play();
+
+if(playPromise!==undefined){
+
+playPromise.catch(function(){
 
 /*
 إذا منع المتصفح التشغيل التلقائي،
-يبقى الفيديو ظاهر ويمكن للزائر تخطيه.
+يبقى الفيديو ظاهر ويمكن استعمال زر تخطي.
 */
 
 });
 
+}
+
 });
 
-/* عندما يسالي الفيديو */
+/* الانتقال فقط منين يكمل الفيديو كامل */
 
-introPlayer.addEventListener("ended",closeIntro);
+introPlayer.addEventListener("ended",function(){
 
-/* تخطي */
+closeIntro();
 
-skipIntro.addEventListener("click",closeIntro);
+});
 
-/* حماية إضافية:
-   حتى إذا الفيديو ما عطاش ended
-   يتم الانتقال بعد 4.5 ثواني
-*/
+/* زر التخطي */
 
-setTimeout(closeIntro,4500);
+skipIntro.addEventListener("click",function(){
+
+closeIntro();
+
+});
 
 
-/* HERO SLIDER */
+/* =========================
+   HERO SLIDER
+========================= */
 
 const slides =
 document.querySelectorAll(".hero-slide");
@@ -1261,7 +1279,7 @@ document.getElementById("sliderDots");
 let currentSlide=0;
 let sliderTimer;
 
-slides.forEach((slide,index)=>{
+slides.forEach(function(slide,index){
 
 const dot=
 document.createElement("div");
@@ -1272,7 +1290,7 @@ if(index===0){
 dot.classList.add("active");
 }
 
-dot.onclick=()=>{
+dot.onclick=function(){
 goToSlide(index);
 };
 
@@ -1286,14 +1304,17 @@ document.querySelectorAll(".slider-dot");
 function goToSlide(index){
 
 slides[currentSlide].classList.remove("active");
+
 dots[currentSlide].classList.remove("active");
 
 currentSlide=index;
 
 slides[currentSlide].classList.add("active");
+
 dots[currentSlide].classList.add("active");
 
 clearInterval(sliderTimer);
+
 startSlider();
 
 }
@@ -1317,7 +1338,9 @@ setInterval(nextSlide,5000);
 startSlider();
 
 
-/* LANGUAGES */
+/* =========================
+   LANGUAGES
+========================= */
 
 const T={
 
@@ -1544,7 +1567,7 @@ document.documentElement.dir=
 lang==="fr"?"ltr":"rtl";
 
 document.querySelectorAll("[data-i18n]")
-.forEach(el=>{
+.forEach(function(el){
 
 const key=el.dataset.i18n;
 

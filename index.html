@@ -1,16 +1,14 @@
 <script>
 /* ================================
-   نظام القراءة الصوتية المدمج
+   نظام القراءة الصوتية المدمج (النسخة المصححة)
 ================================ */
-(function() {
-    // 1. إنشاء واجهة التحكم في الصوت (بتصميم متناسق مع الموقع)
+window.addEventListener('DOMContentLoaded', function() {
+    // 1. إنشاء واجهة التحكم في الصوت بأمان
     const voiceWidget = document.createElement('div');
     voiceWidget.innerHTML = `
-        <div id="voice-panel" style="position:fixed; bottom:90px; left:18px; background:rgba(12,18,15,0.95); backdrop-filter:blur(8px); color:#fff; padding:8px 15px; border-radius:25px; display:flex; align-items:center; gap:12px; z-index:9999; border:1px solid rgba(207,210,212,0.2); box-shadow:0 5px 20px rgba(0,0,0,0.4); direction:ltr; transition:0.3s;">
+        <div id="voice-panel" style="position:fixed; bottom:90px; left:18px; background:rgba(12,18,15,0.95); backdrop-filter:blur(8px); color:#fff; padding:8px 15px; border-radius:25px; display:flex; align-items:center; gap:12px; z-index:999999; border:1px solid rgba(207,210,212,0.2); box-shadow:0 5px 20px rgba(0,0,0,0.4); direction:ltr; transition:0.3s;">
             <button id="voice-toggle" title="تفعيل/تعطيل الصوت" style="background:none; border:none; color:#cfd2d4; cursor:pointer; font-size:20px; padding:0; display:flex;">🔊</button>
-            
             <input type="range" id="voice-volume" min="0" max="1" step="0.1" value="1" title="مستوى الصوت" style="width:70px; cursor:pointer; accent-color:#cfd2d4;">
-            
             <button id="voice-stop" title="حبس الصوت" style="background:#cfd2d4; border:none; color:#17211c; cursor:pointer; font-size:13px; font-weight:bold; padding:4px 10px; border-radius:15px; transition:0.2s;">قف 🛑</button>
         </div>
     `;
@@ -19,7 +17,7 @@
     // 2. المتغيرات الأساسية
     let isVoiceActive = true;
     let currentVolume = 1;
-    let currentAudioObj = null; // للاحتفاظ بملف الصوت إلى كان شغال
+    let currentAudioObj = null;
 
     const toggleBtn = document.getElementById('voice-toggle');
     const volumeSlider = document.getElementById('voice-volume');
@@ -34,27 +32,18 @@
         }
     }
 
-    // زر الحبس
     stopBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         stopAllAudio();
     });
 
-    // التحكم في قوة الصوت
     volumeSlider.addEventListener('input', function(e) {
         e.stopPropagation();
         currentVolume = parseFloat(this.value);
-        if(currentAudioObj) {
-            currentAudioObj.volume = currentVolume;
-        }
-        if(currentVolume === 0) {
-            toggleBtn.innerHTML = '🔇';
-        } else {
-            toggleBtn.innerHTML = '🔊';
-        }
+        if(currentAudioObj) currentAudioObj.volume = currentVolume;
+        toggleBtn.innerHTML = currentVolume === 0 ? '🔇' : '🔊';
     });
 
-    // تفعيل/إلغاء الميزة كاملة
     toggleBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         isVoiceActive = !isVoiceActive;
@@ -63,40 +52,32 @@
         if(!isVoiceActive) stopAllAudio();
     });
 
-    // 4. دالة القراءة (تقرأ النص أو تشغل ملف صوتي إذا وجد)
+    // 4. دالة القراءة
     function playVoice(element) {
         if(!isVoiceActive || currentVolume === 0) return;
-        stopAllAudio(); // حبس أي صوت قديم قبل ما يبدا الجديد
+        stopAllAudio(); 
 
         const audioFile = element.getAttribute('data-audio');
-        
         if (audioFile) {
-            // إذا كاين ملف صوتي مسجل (مزيان للدارجة)
             currentAudioObj = new Audio(audioFile);
             currentAudioObj.volume = currentVolume;
-            currentAudioObj.play().catch(e => console.log("تعذر تشغيل الملف الصوتي", e));
+            currentAudioObj.play().catch(e => console.log("تعذر تشغيل الصوت", e));
         } else {
-            // القراءة الآلية للنص (TTS)
             const text = element.innerText || element.textContent;
             if(!text.trim()) return;
-
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.volume = currentVolume;
             utterance.lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'ar-SA';
-            
             window.speechSynthesis.speak(utterance);
         }
     }
 
     // 5. ربط الخاصية بالعناصر المطلوبة
-    // يكفي تزيد كلاس 'read-aloud' لأي عنصر بغيتيه يتقرا
     document.addEventListener('click', function(e) {
-        // التحقق واش العنصر اللي تكليكا عليه (أو الأب ديالو) فيه كلاس read-aloud
         const readableElement = e.target.closest('.read-aloud');
         if (readableElement) {
             playVoice(readableElement);
         }
     });
-
-})();
+});
 </script>

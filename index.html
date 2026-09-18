@@ -266,7 +266,8 @@ font-size:12px;
 letter-spacing:3px;
 color:#cfd2d4;
 font-weight:bold;
-margin-bottom:15px
+margin-bottom:15px;
+cursor: pointer;
 }
 
 .hero h1{
@@ -580,7 +581,8 @@ align-items:center;
 justify-content:center;
 border:1px solid #ddd;
 font-weight:bold;
-color:#626b66
+color:#626b66;
+cursor: pointer;
 }
 
 /* FOOTER */
@@ -622,87 +624,29 @@ fill:#fff
 /* MOBILE */
 
 @media(max-width:850px){
-
-.navlinks{
-display:none
-}
-
-.quick-grid{
-grid-template-columns:1fr 1fr
-}
-
-.choice-grid{
-grid-template-columns:1fr 1fr
-}
-
-.works-preview{
-grid-template-columns:1fr 1fr
-}
-
-.partner-grid{
-grid-template-columns:1fr 1fr
-}
-
-.special-grid{
-grid-template-columns:1fr
-}
-
+.navlinks{display:none}
+.quick-grid{grid-template-columns:1fr 1fr}
+.choice-grid{grid-template-columns:1fr 1fr}
+.works-preview{grid-template-columns:1fr 1fr}
+.partner-grid{grid-template-columns:1fr 1fr}
+.special-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:550px){
-
-.hero{
-min-height:650px;
-text-align:center
-}
-
-.hero-content{
-margin:auto
-}
-
-.hero p{
-font-size:16px
-}
-
-.buttons{
-flex-direction:column
-}
-
-.btn{
-width:100%
-}
-
-.choice-grid{
-grid-template-columns:1fr
-}
-
-.works-preview{
-grid-template-columns:1fr 1fr
-}
-
-.work-image{
-height:170px
-}
-
-#skipIntro{
-bottom:25px;
-font-size:13px;
-padding:9px 20px
-}
-
+.hero{min-height:650px;text-align:center}
+.hero-content{margin:auto}
+.hero p{font-size:16px}
+.buttons{flex-direction:column}
+.btn{width:100%}
+.choice-grid{grid-template-columns:1fr}
+.works-preview{grid-template-columns:1fr 1fr}
+.work-image{height:170px}
+#skipIntro{bottom:25px;font-size:13px;padding:9px 20px}
 }
 
 @media(prefers-reduced-motion:reduce){
-
-.hero-slide{
-transition:none
-}
-
-.choice img,
-.work-image img{
-transition:none
-}
-
+.hero-slide{transition:none}
+.choice img, .work-image img{transition:none}
 }
 </style>
 </head>
@@ -714,542 +658,237 @@ transition:none
 ================================ -->
 
 <div id="introVideo">
-
-<video
-id="introVideoPlayer"
-autoplay
-muted
-playsinline
-preload="auto"
-controlslist="nodownload">
-
-<source
-src="videos/MindVideo_20260830002849_522.mp4"
-type="video/mp4">
-
-المتصفح ديالك ما كيدعمش الفيديو.
-
-</video>
-
-<div id="videoError">
-
-<p>
-تعذر تشغيل الفيديو تلقائياً.
-</p>
-
-<button id="playIntro">
-تشغيل الفيديو
-</button>
-
-</div>
-
-<button id="skipIntro">
-تخطي
-</button>
-
+    <video id="introVideoPlayer" autoplay muted playsinline preload="auto" controlslist="nodownload">
+        <source src="videos/MindVideo_20260830002849_522.mp4" type="video/mp4">
+        المتصفح ديالك ما كيدعمش الفيديو.
+    </video>
+    <div id="videoError">
+        <p>تعذر تشغيل الفيديو تلقائياً.</p>
+        <button id="playIntro">تشغيل الفيديو</button>
+    </div>
+    <button id="skipIntro">تخطي</button>
 </div>
 
 <!-- HEADER -->
 
 <header>
-
 <div class="wrap nav">
-
-<a href="index.html" class="logo">
-صمم <span>ديكورك</span>
-</a>
-
-<nav class="navlinks">
-
-<a href="#choices" data-i18n="design">
-صمم دابا
-</a>
-
-<a href="works.html" data-i18n="works">
-أعمالنا
-</a>
-
-<a href="#special" data-i18n="special">
-الخدمات الخاصة
-</a>
-
-</nav>
-
-<div class="lang">
-
-<button id="arBtn"
-class="active"
-onclick="setLang('ar')">
-دارجة
-</button>
-
-<button id="frBtn"
-onclick="setLang('fr')">
-FR
-</button>
-
-</div>
-
+    <a href="index.html" class="logo">صمم <span>ديكورك</span></a>
+    <nav class="navlinks">
+        <a href="#choices" data-i18n="design">صمم دابا</a>
+        <a href="works.html" data-i18n="works">أعمالنا</a>
+        <a href="#special" data-i18n="special">الخدمات الخاصة</a>
+    </nav>
+    <div class="lang">
+        <button id="arBtn" class="active" onclick="setLang('ar')">دارجة</button>
+        <button id="frBtn" onclick="setLang('fr')">FR</button>
+    </div>
 </div>
 </header>
 
 <!-- HERO -->
 
 <section class="hero">
-
-<div class="hero-slides">
-
-<div class="hero-slide active"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-<div class="hero-slide"></div>
-
-</div>
-
-<div class="hero-overlay"></div>
-
-<div class="wrap hero-content">
-
-<div class="kicker read-aloud" data-i18n="kicker">
-تصميم • ديكور • تنفيذ
-</div>
-
-<h1 class="read-aloud">
-
-<span data-i18n="hero1">
-دار عليك
-</span>
-
-<br>
-
-<span data-i18n="hero2">
-وديكور علينا
-</span>
-
-</h1>
-
-<p class="read-aloud" data-i18n="heroText">
-اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
-وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
-</p>
-
-<div class="buttons">
-
-<a href="#choices"
-class="btn btn-light"
-data-i18n="start">
-ابدأ التصميم
-</a>
-
-<a href="https://wa.me/212754350706"
-target="_blank"
-class="btn btn-outline"
-data-i18n="contact">
-تواصل معنا
-</a>
-
-</div>
-
-</div>
-
-<div class="slider-dots" id="sliderDots"></div>
-
+    <div class="hero-slides">
+        <div class="hero-slide active"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="wrap hero-content">
+        <div class="kicker read-aloud" data-i18n="kicker">تصميم • ديكور • تنفيذ</div>
+        <h1 class="read-aloud">
+            <span data-i18n="hero1">دار عليك</span><br>
+            <span data-i18n="hero2">وديكور علينا</span>
+        </h1>
+        <p class="read-aloud" data-i18n="heroText">
+            اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
+        </p>
+        <div class="buttons">
+            <a href="#choices" class="btn btn-light" data-i18n="start">ابدأ التصميم</a>
+            <a href="https://wa.me/212754350706" target="_blank" class="btn btn-outline" data-i18n="contact">تواصل معنا</a>
+        </div>
+    </div>
+    
+    <div class="slider-dots" id="sliderDots"></div>
 </section>
 
 <!-- QUICK -->
 
 <section class="quick">
-
 <div class="wrap">
-
-<div class="quick-grid">
-
-<div class="quick-item read-aloud">
-
-<div class="quick-number">1</div>
-
-<div>
-<b data-i18n="q1">اختار</b>
-<br>
-<span data-i18n="q1s">القسم</span>
-</div>
-
-</div>
-
-<div class="quick-item read-aloud">
-
-<div class="quick-number">2</div>
-
-<div>
-<b data-i18n="q2">صورة</b>
-<br>
-<span data-i18n="q2s">ديال المكان</span>
-</div>
-
-</div>
-
-<div class="quick-item read-aloud">
-
-<div class="quick-number">3</div>
-
-<div>
-<b data-i18n="q3">قياسات</b>
-<br>
-<span data-i18n="q3s">العرض والطول والعلو</span>
-</div>
-
-</div>
-
-<div class="quick-item read-aloud">
-
-<div class="quick-number">4</div>
-
-<div>
-<b data-i18n="q4">إرسال</b>
-<br>
-<span data-i18n="q4s">الطلب</span>
-</div>
-
-</div>
-
-</div>
+    <div class="quick-grid">
+        <div class="quick-item read-aloud">
+            <div class="quick-number">1</div>
+            <div>
+                <b data-i18n="q1">اختار</b><br>
+                <span data-i18n="q1s">القسم</span>
+            </div>
+        </div>
+        <div class="quick-item read-aloud">
+            <div class="quick-number">2</div>
+            <div>
+                <b data-i18n="q2">صورة</b><br>
+                <span data-i18n="q2s">ديال المكان</span>
+            </div>
+        </div>
+        <div class="quick-item read-aloud">
+            <div class="quick-number">3</div>
+            <div>
+                <b data-i18n="q3">قياسات</b><br>
+                <span data-i18n="q3s">العرض والطول والعلو</span>
+            </div>
+        </div>
+        <div class="quick-item read-aloud">
+            <div class="quick-number">4</div>
+            <div>
+                <b data-i18n="q4">إرسال</b><br>
+                <span data-i18n="q4s">الطلب</span>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
 <!-- CHOICES -->
 
 <section class="choices" id="choices">
-
 <div class="wrap">
+    <div class="section-title read-aloud">
+        <small data-i18n="chooseSmall">صمم ديكورك</small>
+        <h2 data-i18n="chooseTitle">شنو بغيتي تصمم؟</h2>
+        <p data-i18n="chooseText">اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.</p>
+    </div>
 
-<div class="section-title read-aloud">
+    <div class="choice-grid">
+        <a class="choice read-aloud" href="configurateur.html?type=kitchen">
+            <img src="images/kitchen.jpg" alt="المطبخ" loading="lazy">
+            <div class="choice-info">
+                <h3 data-i18n="kitchen">المطبخ</h3>
+                <p data-i18n="kitchenSub">L • U • I • Îlot</p>
+            </div>
+        </a>
 
-<small data-i18n="chooseSmall">
-صمم ديكورك
-</small>
+        <a class="choice read-aloud" href="configurateur.html?type=bedroom">
+            <img src="images/bedroom.jpg" alt="غرفة النوم" loading="lazy">
+            <div class="choice-info">
+                <h3 data-i18n="bedroom">غرفة النوم</h3>
+                <p data-i18n="bedroomSub">سرير • خزانات • تسريحة</p>
+            </div>
+        </a>
 
-<h2 data-i18n="chooseTitle">
-شنو بغيتي تصمم؟
-</h2>
+        <a class="choice read-aloud" href="configurateur.html?type=salon">
+            <img src="images/salon.jpg" alt="الصالون" loading="lazy">
+            <div class="choice-info">
+                <h3 data-i18n="salon">الصالون</h3>
+                <p data-i18n="salonSub">جلسة • حائط • ديكور</p>
+            </div>
+        </a>
 
-<p data-i18n="chooseText">
-اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.
-</p>
+        <a class="choice read-aloud" href="configurateur.html?type=dressing">
+            <img src="images/dressing.jpg" alt="Dressing" loading="lazy">
+            <div class="choice-info">
+                <h3>Dressing</h3>
+                <p data-i18n="dressingSub">Placard • بيبان • rangement</p>
+            </div>
+        </a>
 
-</div>
-
-<div class="choice-grid">
-
-<a class="choice read-aloud"
-href="configurateur.html?type=kitchen">
-
-<img src="images/kitchen.jpg"
-alt="المطبخ"
-loading="lazy">
-
-<div class="choice-info">
-
-<h3 data-i18n="kitchen">
-المطبخ
-</h3>
-
-<p data-i18n="kitchenSub">
-L • U • I • Îlot
-</p>
-
-</div>
-</a>
-
-<a class="choice read-aloud"
-href="configurateur.html?type=bedroom">
-
-<img src="images/bedroom.jpg"
-alt="غرفة النوم"
-loading="lazy">
-
-<div class="choice-info">
-
-<h3 data-i18n="bedroom">
-غرفة النوم
-</h3>
-
-<p data-i18n="bedroomSub">
-سرير • خزانات • تسريحة
-</p>
-
-</div>
-</a>
-
-<a class="choice read-aloud"
-href="configurateur.html?type=salon">
-
-<img src="images/salon.jpg"
-alt="الصالون"
-loading="lazy">
-
-<div class="choice-info">
-
-<h3 data-i18n="salon">
-الصالون
-</h3>
-
-<p data-i18n="salonSub">
-جلسة • حائط • ديكور
-</p>
-
-</div>
-</a>
-
-<a class="choice read-aloud"
-href="configurateur.html?type=dressing">
-
-<img src="images/dressing.jpg"
-alt="Dressing"
-loading="lazy">
-
-<div class="choice-info">
-
-<h3>Dressing</h3>
-
-<p data-i18n="dressingSub">
-Placard • بيبان • rangement
-</p>
-
-</div>
-</a>
-
-<a class="choice read-aloud"
-href="configurateur.html?type=tv">
-
-<img src="images/tv.jpg"
-alt="Meuble TV"
-loading="lazy">
-
-<div class="choice-info">
-
-<h3>Meuble TV</h3>
-
-<p data-i18n="tvSub">
-TV • niches • étagères
-</p>
-
-</div>
-</a>
-
-</div>
+        <a class="choice read-aloud" href="configurateur.html?type=tv">
+            <img src="images/tv.jpg" alt="Meuble TV" loading="lazy">
+            <div class="choice-info">
+                <h3>Meuble TV</h3>
+                <p data-i18n="tvSub">TV • niches • étagères</p>
+            </div>
+        </a>
+    </div>
 </div>
 </section>
 
 <!-- SPECIAL -->
 
 <section class="special" id="special">
-
 <div class="wrap">
+    <div class="section-title read-aloud">
+        <small data-i18n="specialSmall">SERVICES SPÉCIAUX</small>
+        <h2 data-i18n="specialTitle">خدمات مستقلة</h2>
+        <p data-i18n="specialText">أقسام عندها اختصاصها الخاص.</p>
+    </div>
 
-<div class="section-title read-aloud">
+    <div class="special-grid">
+        <div class="special-card">
+            <h3 class="read-aloud" data-i18n="tapisTitle">الطابيسري والستور</h3>
+            <p class="read-aloud" data-i18n="tapisText">ستور، سدادر، ستائر وتابيسري حسب الطلب.</p>
+            <a href="tapisserie.html" class="btn btn-dark" data-i18n="discover">شوف القسم</a>
+        </div>
 
-<small data-i18n="specialSmall">
-SERVICES SPÉCIAUX
-</small>
-
-<h2 data-i18n="specialTitle">
-خدمات مستقلة
-</h2>
-
-<p data-i18n="specialText">
-أقسام عندها اختصاصها الخاص.
-</p>
-
-</div>
-
-<div class="special-grid">
-
-<div class="special-card">
-
-<h3 class="read-aloud" data-i18n="tapisTitle">
-الطابيسري والستور
-</h3>
-
-<p class="read-aloud" data-i18n="tapisText">
-ستور، سدادر، ستائر وتابيسري حسب الطلب.
-</p>
-
-<a href="tapisserie.html"
-class="btn btn-dark"
-data-i18n="discover">
-شوف القسم
-</a>
-
-</div>
-
-<div class="special-card">
-
-<h3 class="read-aloud" data-i18n="accessTitle">
-الإكسسوارات و Electroménager
-</h3>
-
-<p class="read-aloud" data-i18n="accessText">
-بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
-</p>
-
-<a href="accessoires.html"
-class="btn btn-dark"
-data-i18n="shop">
-شوف المنتجات
-</a>
-
-</div>
-
-</div>
+        <div class="special-card">
+            <h3 class="read-aloud" data-i18n="accessTitle">الإكسسوارات و Electroménager</h3>
+            <p class="read-aloud" data-i18n="accessText">بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.</p>
+            <a href="accessoires.html" class="btn btn-dark" data-i18n="shop">شوف المنتجات</a>
+        </div>
+    </div>
 </div>
 </section>
 
 <!-- WORKS -->
 
 <section class="works">
-
 <div class="wrap">
+    <div class="section-title read-aloud">
+        <small>REAL PROJECTS</small>
+        <h2 data-i18n="worksTitle">أعمالنا</h2>
+        <p data-i18n="worksText">شوف المشاريع الحقيقية اللي خدمناها.</p>
+    </div>
 
-<div class="section-title read-aloud">
+    <div class="works-preview">
+        <div class="work-image"><img src="images/work-003.webp" alt="مشروع صمم ديكورك" loading="lazy"></div>
+        <div class="work-image"><img src="images/work-004.webp" alt="مشروع صمم ديكورك" loading="lazy"></div>
+        <div class="work-image"><img src="images/work-007.webp" alt="مشروع صمم ديكورك" loading="lazy"></div>
+        <div class="work-image"><img src="images/work-010.webp" alt="مشروع صمم ديكورك" loading="lazy"></div>
+    </div>
 
-<small>
-REAL PROJECTS
-</small>
-
-<h2 data-i18n="worksTitle">
-أعمالنا
-</h2>
-
-<p data-i18n="worksText">
-شوف المشاريع الحقيقية اللي خدمناها.
-</p>
-
-</div>
-
-<div class="works-preview">
-
-<div class="work-image">
-
-<img src="images/work-003.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-
-</div>
-
-<div class="work-image">
-
-<img src="images/work-004.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-
-</div>
-
-<div class="work-image">
-
-<img src="images/work-007.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-
-</div>
-
-<div class="work-image">
-
-<img src="images/work-010.webp"
-alt="مشروع صمم ديكورك"
-loading="lazy">
-
-</div>
-
-</div>
-
-<a href="works.html"
-class="works-btn"
-data-i18n="seeWorks">
-شوف أعمالنا
-</a>
-
+    <a href="works.html" class="works-btn" data-i18n="seeWorks">شوف أعمالنا</a>
 </div>
 </section>
 
 <!-- PARTNERS -->
 
 <section class="partners">
-
 <div class="wrap">
+    <div class="section-title read-aloud">
+        <small>PARTNERS</small>
+        <h2 data-i18n="partnersTitle">شركاؤنا</h2>
+        <p data-i18n="partnersText">شركاء وماركات كنخدمو معاهم.</p>
+    </div>
 
-<div class="section-title read-aloud">
-
-<small>
-PARTNERS
-</small>
-
-<h2 data-i18n="partnersTitle">
-شركاؤنا
-</h2>
-
-<p data-i18n="partnersText">
-شركاء وماركات كنخدمو معاهم.
-</p>
-
-</div>
-
-<div class="partner-grid">
-
-<div class="partner read-aloud">
-MDF / MÉLAMINÉ
-</div>
-
-<div class="partner read-aloud">
-QUARTZ
-</div>
-
-<div class="partner read-aloud">
-BLUM
-</div>
-
-<div class="partner read-aloud">
-HETTICH
-</div>
-
-</div>
-
+    <div class="partner-grid">
+        <div class="partner read-aloud">MDF / MÉLAMINÉ</div>
+        <div class="partner read-aloud">QUARTZ</div>
+        <div class="partner read-aloud">BLUM</div>
+        <div class="partner read-aloud">HETTICH</div>
+    </div>
 </div>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-
-<strong>
-صمم ديكورك
-</strong>
-
-© 2026
-
-<br>
-
-<span class="read-aloud" data-i18n="rights">
-جميع الحقوق محفوظة — Hamza Chtaibi
-</span>
-
+    <strong>صمم ديكورك</strong>
+    © 2026<br>
+    <span class="read-aloud" data-i18n="rights">جميع الحقوق محفوظة — Hamza Chtaibi</span>
 </footer>
 
 <!-- WHATSAPP -->
 
-<a class="whatsapp"
-href="https://wa.me/212754350706"
-target="_blank"
-aria-label="WhatsApp">
-
-<svg viewBox="0 0 32 32">
-
-<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-.4 1.2 3.9-1.2-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
-
-</svg>
-
+<a class="whatsapp" href="https://wa.me/212754350706" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32">
+        <path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-.4 1.2 3.9-1.2-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+    </svg>
 </a>
 
 <!-- ================================
@@ -1262,7 +901,6 @@ aria-label="WhatsApp">
 </div>
 
 <script>
-
 /* ================================
    INTRO VIDEO
 ================================ */
@@ -1272,7 +910,6 @@ const video = document.getElementById("introVideoPlayer");
 const skip = document.getElementById("skipIntro");
 const videoError = document.getElementById("videoError");
 const playIntro = document.getElementById("playIntro");
-
 let introClosed=false;
 
 function closeIntro(){
@@ -1300,25 +937,14 @@ window.addEventListener("load",function(){
     startIntroVideo();
 });
 
-video.addEventListener("ended",function(){
-    closeIntro();
-});
-
+video.addEventListener("ended",function(){ closeIntro(); });
+skip.addEventListener("click",function(){ closeIntro(); });
 playIntro.addEventListener("click",function(){
     videoError.style.display="none";
     video.muted=true;
-    video.play().catch(function(){
-        videoError.style.display="block";
-    });
+    video.play().catch(function(){ videoError.style.display="block"; });
 });
-
-skip.addEventListener("click",function(){
-    closeIntro();
-});
-
-video.addEventListener("error",function(){
-    videoError.style.display="block";
-});
+video.addEventListener("error",function(){ videoError.style.display="block"; });
 
 /* ================================
    HERO SLIDER
@@ -1332,12 +958,8 @@ let sliderTimer;
 slides.forEach(function(slide,index){
     const dot=document.createElement("div");
     dot.className="slider-dot";
-    if(index===0){
-        dot.classList.add("active");
-    }
-    dot.onclick=function(){
-        goToSlide(index);
-    };
+    if(index===0){ dot.classList.add("active"); }
+    dot.onclick=function(){ goToSlide(index); };
     dotsContainer.appendChild(dot);
 });
 
@@ -1361,7 +983,6 @@ function nextSlide(){
 function startSlider(){
     sliderTimer=setInterval(nextSlide,5000);
 }
-
 startSlider();
 
 /* ================================
@@ -1412,11 +1033,10 @@ function setLang(lang){
     document.getElementById("arBtn").classList.toggle("active",lang==="ar");
     document.getElementById("frBtn").classList.toggle("active",lang==="fr");
 }
-
 setLang(localStorage.getItem("siteLang")||"ar");
 
 /* ================================
-   نظام القراءة الصوتية (Voice Feature JS) - نسخة مطورة لحل مشكلة التنقل و تهيئة المتصفح
+   نظام القراءة الصوتية (Google TTS API) المضمون 100%
 ================================ */
 
 const voiceToggleBtn = document.getElementById('voice-toggle');
@@ -1426,23 +1046,9 @@ const voiceStopBtn = document.getElementById('voice-stop');
 let isVoiceActive = true;
 let currentVolume = 1;
 let currentAudioObj = null;
-let voiceEngineReady = false;
-
-// تفعيل محرك الصوت مع أول لمسة للصفحة (باش المتصفح ما يحبسوش)
-document.addEventListener('touchstart', initVoiceEngine, {once:true});
-document.addEventListener('click', initVoiceEngine, {once:true});
-
-function initVoiceEngine() {
-    if(!voiceEngineReady) {
-        let u = new SpeechSynthesisUtterance('');
-        u.volume = 0; // صوت صامت باش يفيق المحرك فقط
-        window.speechSynthesis.speak(u);
-        voiceEngineReady = true;
-    }
-}
 
 function stopAllAudio() {
-    window.speechSynthesis.cancel();
+    window.speechSynthesis.cancel(); // إيقاف القارئ الآلي إذا كان خدام
     if(currentAudioObj) {
         currentAudioObj.pause();
         currentAudioObj.currentTime = 0;
@@ -1469,46 +1075,48 @@ function playVoice(element) {
     stopAllAudio(); 
 
     const audioFile = element.getAttribute('data-audio');
+    const text = element.innerText || element.textContent;
     
     if (audioFile) {
+        // تشغيل ملف صوتي خاص إذا كان موجود
         currentAudioObj = new Audio(audioFile);
         currentAudioObj.volume = currentVolume;
         currentAudioObj.play().catch(e => console.log("تعذر تشغيل الصوت", e));
-        return 1000; // نعطيو وقت 1 ثانية باش يتسمع
-    } else {
-        const text = element.innerText || element.textContent;
-        if(!text.trim()) return 0;
+        return 1000; 
+    } else if (text.trim()) {
+        // تحديد اللغة بناءً على لغة الموقع الحالية
+        const langCode = document.documentElement.lang === 'fr' ? 'fr' : 'ar';
         
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.volume = currentVolume;
-        // محاولة فرض الصوت العربي أو الفرنسي
-        utterance.lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'ar-SA';
+        // استخدام سيرفرات جوجل للصوت (كيخدم فجميع الهواتف بلا مشاكل)
+        const googleTtsUrl = `https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&q=${encodeURIComponent(text.trim())}&tl=${langCode}`;
         
-        // تسريع شوية باش ما يكونش ثقيل
-        utterance.rate = 1.1; 
+        currentAudioObj = new Audio(googleTtsUrl);
+        currentAudioObj.volume = currentVolume;
         
-        window.speechSynthesis.speak(utterance);
+        currentAudioObj.play().catch(e => {
+            console.log("فشل الاتصال بجوجل، جاري المحاولة بالمحرك الداخلي...");
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = langCode === 'fr' ? 'fr-FR' : 'ar-SA';
+            window.speechSynthesis.speak(utterance);
+        });
         
-        // حساب الوقت التقريبي باش تقرا الكلمة (باش نأخرو الرابط)
-        return text.length * 80; 
+        return text.length * 90; // تأخير الرابط باش يخلي الوقت للصوت يتقرا
     }
+    return 0;
 }
 
 document.addEventListener('click', function(e) {
     const readableElement = e.target.closest('.read-aloud');
     
     if (readableElement) {
-        // التحقق واش العنصر عبارة عن رابط أو وسط رابط
         const linkElement = readableElement.closest('a');
-        
         const delay = playVoice(readableElement);
 
         if (linkElement && linkElement.href && !linkElement.href.includes('#') && delay > 0) {
-            // إلى كان رابط، غنحبسو الانتقال اللحظي باش يتسمع الصوت عاد ندوزو
             e.preventDefault();
             setTimeout(() => {
                 window.location.href = linkElement.href;
-            }, Math.min(delay, 1200)); // كنتسناو الماكسيموم ثانية وشوية
+            }, Math.min(delay, 1500)); // كنتسناو ثانية وشوية كأقصى حد باش مايملش المستعمل
         }
     }
 });

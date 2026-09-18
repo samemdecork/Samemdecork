@@ -943,7 +943,7 @@ data-i18n="contact">
 
 <div class="choice-grid">
 
-<a class="choice"
+<a class="choice read-aloud"
 href="configurateur.html?type=kitchen">
 
 <img src="images/kitchen.jpg"
@@ -952,18 +952,18 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 class="read-aloud" data-i18n="kitchen">
+<h3 data-i18n="kitchen">
 المطبخ
 </h3>
 
-<p class="read-aloud" data-i18n="kitchenSub">
+<p data-i18n="kitchenSub">
 L • U • I • Îlot
 </p>
 
 </div>
 </a>
 
-<a class="choice"
+<a class="choice read-aloud"
 href="configurateur.html?type=bedroom">
 
 <img src="images/bedroom.jpg"
@@ -972,18 +972,18 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 class="read-aloud" data-i18n="bedroom">
+<h3 data-i18n="bedroom">
 غرفة النوم
 </h3>
 
-<p class="read-aloud" data-i18n="bedroomSub">
+<p data-i18n="bedroomSub">
 سرير • خزانات • تسريحة
 </p>
 
 </div>
 </a>
 
-<a class="choice"
+<a class="choice read-aloud"
 href="configurateur.html?type=salon">
 
 <img src="images/salon.jpg"
@@ -992,18 +992,18 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 class="read-aloud" data-i18n="salon">
+<h3 data-i18n="salon">
 الصالون
 </h3>
 
-<p class="read-aloud" data-i18n="salonSub">
+<p data-i18n="salonSub">
 جلسة • حائط • ديكور
 </p>
 
 </div>
 </a>
 
-<a class="choice"
+<a class="choice read-aloud"
 href="configurateur.html?type=dressing">
 
 <img src="images/dressing.jpg"
@@ -1012,16 +1012,16 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 class="read-aloud">Dressing</h3>
+<h3>Dressing</h3>
 
-<p class="read-aloud" data-i18n="dressingSub">
+<p data-i18n="dressingSub">
 Placard • بيبان • rangement
 </p>
 
 </div>
 </a>
 
-<a class="choice"
+<a class="choice read-aloud"
 href="configurateur.html?type=tv">
 
 <img src="images/tv.jpg"
@@ -1030,9 +1030,9 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 class="read-aloud">Meuble TV</h3>
+<h3>Meuble TV</h3>
 
-<p class="read-aloud" data-i18n="tvSub">
+<p data-i18n="tvSub">
 TV • niches • étagères
 </p>
 
@@ -1231,7 +1231,7 @@ HETTICH
 
 <br>
 
-<span data-i18n="rights">
+<span class="read-aloud" data-i18n="rights">
 جميع الحقوق محفوظة — Hamza Chtaibi
 </span>
 
@@ -1267,479 +1267,156 @@ aria-label="WhatsApp">
    INTRO VIDEO
 ================================ */
 
-const intro =
-document.getElementById("introVideo");
-
-const video =
-document.getElementById("introVideoPlayer");
-
-const skip =
-document.getElementById("skipIntro");
-
-const videoError =
-document.getElementById("videoError");
-
-const playIntro =
-document.getElementById("playIntro");
+const intro = document.getElementById("introVideo");
+const video = document.getElementById("introVideoPlayer");
+const skip = document.getElementById("skipIntro");
+const videoError = document.getElementById("videoError");
+const playIntro = document.getElementById("playIntro");
 
 let introClosed=false;
 
-
-/* إغلاق الافتتاحية */
-
 function closeIntro(){
-
-if(introClosed) return;
-
-introClosed=true;
-
-video.pause();
-
-intro.classList.add("hide");
-
-setTimeout(function(){
-
-intro.style.display="none";
-
-},700);
-
+    if(introClosed) return;
+    introClosed=true;
+    video.pause();
+    intro.classList.add("hide");
+    setTimeout(function(){
+        intro.style.display="none";
+    },700);
 }
-
-
-/* تشغيل الفيديو */
 
 function startIntroVideo(){
-
-video.muted=true;
-
-const promise=video.play();
-
-if(promise!==undefined){
-
-promise.catch(function(){
-
-/*
-إذا الهاتف منع autoplay،
-نظهر زر التشغيل.
-*/
-
-videoError.style.display="block";
-
-});
-
+    video.muted=true;
+    const promise=video.play();
+    if(promise!==undefined){
+        promise.catch(function(){
+            videoError.style.display="block";
+        });
+    }
 }
-
-}
-
-
-/* منين الصفحة تحمل */
 
 window.addEventListener("load",function(){
-
-video.currentTime=0;
-
-startIntroVideo();
-
+    video.currentTime=0;
+    startIntroVideo();
 });
-
-
-/*
-الفيديو كيسالي →
-ندخل للموقع.
-ما كاين حتى timer.
-*/
 
 video.addEventListener("ended",function(){
-
-closeIntro();
-
+    closeIntro();
 });
-
-
-/*
-زر تشغيل الفيديو
-*/
 
 playIntro.addEventListener("click",function(){
-
-videoError.style.display="none";
-
-video.muted=true;
-
-video.play().catch(function(){
-
-videoError.style.display="block";
-
+    videoError.style.display="none";
+    video.muted=true;
+    video.play().catch(function(){
+        videoError.style.display="block";
+    });
 });
-
-});
-
-
-/*
-زر تخطي
-*/
 
 skip.addEventListener("click",function(){
-
-closeIntro();
-
+    closeIntro();
 });
-
-
-/*
-إذا وقع خطأ فالفيديو
-*/
 
 video.addEventListener("error",function(){
-
-videoError.style.display="block";
-
+    videoError.style.display="block";
 });
-
 
 /* ================================
    HERO SLIDER
 ================================ */
 
-const slides =
-document.querySelectorAll(".hero-slide");
-
-const dotsContainer =
-document.getElementById("sliderDots");
-
+const slides = document.querySelectorAll(".hero-slide");
+const dotsContainer = document.getElementById("sliderDots");
 let currentSlide=0;
 let sliderTimer;
 
 slides.forEach(function(slide,index){
-
-const dot=
-document.createElement("div");
-
-dot.className="slider-dot";
-
-if(index===0){
-dot.classList.add("active");
-}
-
-dot.onclick=function(){
-
-goToSlide(index);
-
-};
-
-dotsContainer.appendChild(dot);
-
+    const dot=document.createElement("div");
+    dot.className="slider-dot";
+    if(index===0){
+        dot.classList.add("active");
+    }
+    dot.onclick=function(){
+        goToSlide(index);
+    };
+    dotsContainer.appendChild(dot);
 });
 
-const dots=
-document.querySelectorAll(".slider-dot");
-
+const dots=document.querySelectorAll(".slider-dot");
 
 function goToSlide(index){
-
-slides[currentSlide].classList.remove("active");
-
-dots[currentSlide].classList.remove("active");
-
-currentSlide=index;
-
-slides[currentSlide].classList.add("active");
-
-dots[currentSlide].classList.add("active");
-
-clearInterval(sliderTimer);
-
-startSlider();
-
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+    currentSlide=index;
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+    clearInterval(sliderTimer);
+    startSlider();
 }
-
 
 function nextSlide(){
-
-let next=
-(currentSlide+1)%slides.length;
-
-goToSlide(next);
-
+    let next=(currentSlide+1)%slides.length;
+    goToSlide(next);
 }
 
-
 function startSlider(){
-
-sliderTimer=
-setInterval(nextSlide,5000);
-
+    sliderTimer=setInterval(nextSlide,5000);
 }
 
 startSlider();
-
 
 /* ================================
    LANGUAGES
 ================================ */
 
 const T={
-
 ar:{
-
-design:"صمم دابا",
-works:"أعمالنا",
-special:"الخدمات الخاصة",
-
-kicker:"تصميم • ديكور • تنفيذ",
-
-hero1:"دار عليك",
-hero2:"وديكور علينا",
-
-heroText:
-"اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
-
-start:"ابدأ التصميم",
-contact:"تواصل معنا",
-
-q1:"اختار",
-q1s:"القسم",
-
-q2:"صورة",
-q2s:"ديال المكان",
-
-q3:"قياسات",
-q3s:"العرض والطول والعلو",
-
-q4:"إرسال",
-q4s:"الطلب",
-
-chooseSmall:"صمم ديكورك",
-
-chooseTitle:"شنو بغيتي تصمم؟",
-
-chooseText:
-"اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
-
-kitchen:"المطبخ",
-kitchenSub:"L • U • I • Îlot",
-
-bedroom:"غرفة النوم",
-bedroomSub:"سرير • خزانات • تسريحة",
-
-salon:"الصالون",
-salonSub:"جلسة • حائط • ديكور",
-
-dressingSub:
-"Placard • بيبان • rangement",
-
-tvSub:
-"TV • niches • étagères",
-
-specialSmall:
-"SERVICES SPÉCIAUX",
-
-specialTitle:
-"خدمات مستقلة",
-
-specialText:
-"أقسام عندها اختصاصها الخاص.",
-
-tapisTitle:
-"الطابيسري والستور",
-
-tapisText:
-"ستور، سدادر، ستائر وتابيسري حسب الطلب.",
-
-accessTitle:
-"الإكسسوارات و Electroménager",
-
-accessText:
-"بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
-
-discover:"شوف القسم",
-
-shop:"شوف المنتجات",
-
-worksTitle:"أعمالنا",
-
-worksText:
-"شوف المشاريع الحقيقية اللي خدمناها.",
-
-seeWorks:
-"شوف أعمالنا",
-
-partnersTitle:
-"شركاؤنا",
-
-partnersText:
-"شركاء وماركات كنخدمو معاهم.",
-
-rights:
-"جميع الحقوق محفوظة — Hamza Chtaibi"
-
+design:"صمم دابا", works:"أعمالنا", special:"الخدمات الخاصة",
+kicker:"تصميم • ديكور • تنفيذ", hero1:"دار عليك", hero2:"وديكور علينا",
+heroText:"اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
+start:"ابدأ التصميم", contact:"تواصل معنا", q1:"اختار", q1s:"القسم",
+q2:"صورة", q2s:"ديال المكان", q3:"قياسات", q3s:"العرض والطول والعلو", q4:"إرسال", q4s:"الطلب",
+chooseSmall:"صمم ديكورك", chooseTitle:"شنو بغيتي تصمم؟", chooseText:"اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
+kitchen:"المطبخ", kitchenSub:"L • U • I • Îlot", bedroom:"غرفة النوم", bedroomSub:"سرير • خزانات • تسريحة",
+salon:"الصالون", salonSub:"جلسة • حائط • ديكور", dressingSub:"Placard • بيبان • rangement", tvSub:"TV • niches • étagères",
+specialSmall:"SERVICES SPÉCIAUX", specialTitle:"خدمات مستقلة", specialText:"أقسام عندها اختصاصها الخاص.",
+tapisTitle:"الطابيسري والستور", tapisText:"ستور، سدادر، ستائر وتابيسري حسب الطلب.", accessTitle:"الإكسسوارات و Electroménager",
+accessText:"بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.", discover:"شوف القسم", shop:"شوف المنتجات",
+worksTitle:"أعمالنا", worksText:"شوف المشاريع الحقيقية اللي خدمناها.", seeWorks:"شوف أعمالنا",
+partnersTitle:"شركاؤنا", partnersText:"شركاء وماركات كنخدمو معاهم.", rights:"جميع الحقوق محفوظة — Hamza Chtaibi"
 },
-
 fr:{
-
-design:"Créer mon projet",
-
-works:"Nos réalisations",
-
-special:"Services spécialisés",
-
-kicker:
-"DESIGN • DÉCORATION • RÉALISATION",
-
-hero1:
-"Votre projet",
-
-hero2:
-"Notre savoir-faire",
-
-heroText:
-"Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
-
-start:"Commencer",
-
-contact:"Nous contacter",
-
-q1:"Choisir",
-q1s:"la catégorie",
-
-q2:"Photo",
-q2s:"de l'espace",
-
-q3:"Dimensions",
-q3s:"largeur • longueur • hauteur",
-
-q4:"Envoyer",
-q4s:"la demande",
-
-chooseSmall:
-"VOTRE PROJET",
-
-chooseTitle:
-"Que souhaitez-vous réaliser ?",
-
-chooseText:
-"Choisissez une catégorie pour passer directement à l'étape suivante.",
-
-kitchen:
-"Cuisine",
-
-kitchenSub:
-"L • U • I • Îlot",
-
-bedroom:
-"Chambre",
-
-bedroomSub:
-"Lit • placards • coiffeuse",
-
-salon:
-"Salon",
-
-salonSub:
-"Séjour • mur • décoration",
-
-dressingSub:
-"Placard • portes • rangement",
-
-tvSub:
-"TV • niches • étagères",
-
-specialSmall:
-"SERVICES SPÉCIALISÉS",
-
-specialTitle:
-"Services indépendants",
-
-specialText:
-"Des services avec leurs propres spécialistes.",
-
-tapisTitle:
-"Tapisserie & Rideaux",
-
-tapisText:
-"Rideaux, coussins, tissus et tapisserie sur mesure.",
-
-accessTitle:
-"Accessoires & Electroménager",
-
-accessText:
-"Vente d'accessoires et d'appareils électroménagers.",
-
-discover:
-"Découvrir",
-
-shop:
-"Voir les produits",
-
-worksTitle:
-"Nos réalisations",
-
-worksText:
-"Découvrez nos vrais projets réalisés.",
-
-seeWorks:
-"Voir nos réalisations",
-
-partnersTitle:
-"Nos partenaires",
-
-partnersText:
-"Les marques et partenaires avec lesquels nous travaillons.",
-
-rights:
-"Tous droits réservés — Hamza Chtaibi"
-
+design:"Créer mon projet", works:"Nos réalisations", special:"Services spécialisés",
+kicker:"DESIGN • DÉCORATION • RÉALISATION", hero1:"Votre projet", hero2:"Notre savoir-faire",
+heroText:"Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
+start:"Commencer", contact:"Nous contacter", q1:"Choisir", q1s:"la catégorie",
+q2:"Photo", q2s:"de l'espace", q3:"Dimensions", q3s:"largeur • longueur • hauteur", q4:"Envoyer", q4s:"la demande",
+chooseSmall:"VOTRE PROJET", chooseTitle:"Que souhaitez-vous réaliser ?", chooseText:"Choisissez une catégorie pour passer directement à l'étape suivante.",
+kitchen:"Cuisine", kitchenSub:"L • U • I • Îlot", bedroom:"Chambre", bedroomSub:"Lit • placards • coiffeuse",
+salon:"Salon", salonSub:"Séjour • mur • décoration", dressingSub:"Placard • portes • rangement", tvSub:"TV • niches • étagères",
+specialSmall:"SERVICES SPÉCIALISÉS", specialTitle:"Services indépendants", specialText:"Des services avec leurs propres spécialistes.",
+tapisTitle:"Tapisserie & Rideaux", tapisText:"Rideaux, coussins, tissus et tapisserie sur mesure.", accessTitle:"Accessoires & Electroménager",
+accessText:"Vente d'accessoires et d'appareils électroménagers.", discover:"Découvrir", shop:"Voir les produits",
+worksTitle:"Nos réalisations", worksText:"Découvrez nos vrais projets réalisés.", seeWorks:"Voir nos réalisations",
+partnersTitle:"Nos partenaires", partnersText:"Les marques et partenaires avec lesquels nous travaillons.", rights:"Tous droits réservés — Hamza Chtaibi"
 }
-
 };
 
-
 function setLang(lang){
-
-localStorage.setItem("siteLang",lang);
-
-document.documentElement.lang=
-lang==="fr"?"fr":"ar";
-
-document.documentElement.dir=
-lang==="fr"?"ltr":"rtl";
-
-document.querySelectorAll("[data-i18n]")
-.forEach(function(el){
-
-const key=el.dataset.i18n;
-
-if(T[lang][key]){
-
-el.textContent=T[lang][key];
-
+    localStorage.setItem("siteLang",lang);
+    document.documentElement.lang=lang==="fr"?"fr":"ar";
+    document.documentElement.dir=lang==="fr"?"ltr":"rtl";
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+        const key=el.dataset.i18n;
+        if(T[lang][key]){ el.textContent=T[lang][key]; }
+    });
+    document.getElementById("arBtn").classList.toggle("active",lang==="ar");
+    document.getElementById("frBtn").classList.toggle("active",lang==="fr");
 }
 
-});
-
-
-document.getElementById("arBtn")
-.classList.toggle(
-"active",
-lang==="ar"
-);
-
-
-document.getElementById("frBtn")
-.classList.toggle(
-"active",
-lang==="fr"
-);
-
-}
-
-
-setLang(
-localStorage.getItem("siteLang")||"ar"
-);
+setLang(localStorage.getItem("siteLang")||"ar");
 
 /* ================================
-   نظام القراءة الصوتية (Voice Feature JS)
+   نظام القراءة الصوتية (Voice Feature JS) - نسخة مطورة لحل مشكلة التنقل و تهيئة المتصفح
 ================================ */
 
 const voiceToggleBtn = document.getElementById('voice-toggle');
@@ -1749,6 +1426,20 @@ const voiceStopBtn = document.getElementById('voice-stop');
 let isVoiceActive = true;
 let currentVolume = 1;
 let currentAudioObj = null;
+let voiceEngineReady = false;
+
+// تفعيل محرك الصوت مع أول لمسة للصفحة (باش المتصفح ما يحبسوش)
+document.addEventListener('touchstart', initVoiceEngine, {once:true});
+document.addEventListener('click', initVoiceEngine, {once:true});
+
+function initVoiceEngine() {
+    if(!voiceEngineReady) {
+        let u = new SpeechSynthesisUtterance('');
+        u.volume = 0; // صوت صامت باش يفيق المحرك فقط
+        window.speechSynthesis.speak(u);
+        voiceEngineReady = true;
+    }
+}
 
 function stopAllAudio() {
     window.speechSynthesis.cancel();
@@ -1774,38 +1465,51 @@ voiceToggleBtn.addEventListener('click', function() {
 });
 
 function playVoice(element) {
-    // إيقاف أي قراءة سابقة
-    if(!isVoiceActive || currentVolume === 0) return;
+    if(!isVoiceActive || currentVolume === 0) return 0;
     stopAllAudio(); 
 
-    // البحث عن ملف صوتي إن وجد
     const audioFile = element.getAttribute('data-audio');
     
     if (audioFile) {
         currentAudioObj = new Audio(audioFile);
         currentAudioObj.volume = currentVolume;
         currentAudioObj.play().catch(e => console.log("تعذر تشغيل الصوت", e));
+        return 1000; // نعطيو وقت 1 ثانية باش يتسمع
     } else {
-        // قراءة النص مباشرة (TTS)
         const text = element.innerText || element.textContent;
-        if(!text.trim()) return;
+        if(!text.trim()) return 0;
         
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.volume = currentVolume;
-        // قراءة النص باللغة الحالية للموقع
+        // محاولة فرض الصوت العربي أو الفرنسي
         utterance.lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'ar-SA';
+        
+        // تسريع شوية باش ما يكونش ثقيل
+        utterance.rate = 1.1; 
+        
         window.speechSynthesis.speak(utterance);
+        
+        // حساب الوقت التقريبي باش تقرا الكلمة (باش نأخرو الرابط)
+        return text.length * 80; 
     }
 }
 
-// مراقبة الضغط على أي عنصر في الصفحة
 document.addEventListener('click', function(e) {
-    // إذا كان العنصر المضغوط (أو الآب ديالو) عندو كلاس read-aloud
     const readableElement = e.target.closest('.read-aloud');
+    
     if (readableElement) {
-        // نمنع الانتقال المباشر إذا كان رابط باش يتسمع الصوت أولا
-        // e.preventDefault(); (يمكن إضافتها لاحقا إذا أردت إيقاف انتقال الروابط فورا)
-        playVoice(readableElement);
+        // التحقق واش العنصر عبارة عن رابط أو وسط رابط
+        const linkElement = readableElement.closest('a');
+        
+        const delay = playVoice(readableElement);
+
+        if (linkElement && linkElement.href && !linkElement.href.includes('#') && delay > 0) {
+            // إلى كان رابط، غنحبسو الانتقال اللحظي باش يتسمع الصوت عاد ندوزو
+            e.preventDefault();
+            setTimeout(() => {
+                window.location.href = linkElement.href;
+            }, Math.min(delay, 1200)); // كنتسناو الماكسيموم ثانية وشوية
+        }
     }
 });
 

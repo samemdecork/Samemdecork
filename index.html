@@ -1,83 +1,1727 @@
-<script>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>صمم ديكورك | Hamza Chtaibi</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f5f5f3;
+color:#17211c;
+line-height:1.7
+}
+
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
+
+.wrap{
+width:min(1180px,92%);
+margin:auto
+}
+
 /* ================================
-   نظام القراءة الصوتية المدمج (النسخة المصححة)
+   INTRO VIDEO
 ================================ */
-window.addEventListener('DOMContentLoaded', function() {
-    // 1. إنشاء واجهة التحكم في الصوت بأمان
-    const voiceWidget = document.createElement('div');
-    voiceWidget.innerHTML = `
-        <div id="voice-panel" style="position:fixed; bottom:90px; left:18px; background:rgba(12,18,15,0.95); backdrop-filter:blur(8px); color:#fff; padding:8px 15px; border-radius:25px; display:flex; align-items:center; gap:12px; z-index:999999; border:1px solid rgba(207,210,212,0.2); box-shadow:0 5px 20px rgba(0,0,0,0.4); direction:ltr; transition:0.3s;">
-            <button id="voice-toggle" title="تفعيل/تعطيل الصوت" style="background:none; border:none; color:#cfd2d4; cursor:pointer; font-size:20px; padding:0; display:flex;">🔊</button>
-            <input type="range" id="voice-volume" min="0" max="1" step="0.1" value="1" title="مستوى الصوت" style="width:70px; cursor:pointer; accent-color:#cfd2d4;">
-            <button id="voice-stop" title="حبس الصوت" style="background:#cfd2d4; border:none; color:#17211c; cursor:pointer; font-size:13px; font-weight:bold; padding:4px 10px; border-radius:15px; transition:0.2s;">قف 🛑</button>
-        </div>
-    `;
-    document.body.appendChild(voiceWidget);
 
-    // 2. المتغيرات الأساسية
-    let isVoiceActive = true;
-    let currentVolume = 1;
-    let currentAudioObj = null;
+#introVideo{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+background:#000;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+opacity:1;
+visibility:visible;
+transition:opacity .7s ease,visibility .7s ease;
+}
 
-    const toggleBtn = document.getElementById('voice-toggle');
-    const volumeSlider = document.getElementById('voice-volume');
-    const stopBtn = document.getElementById('voice-stop');
+#introVideo.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
 
-    // 3. دوال التحكم
-    function stopAllAudio() {
-        window.speechSynthesis.cancel();
-        if(currentAudioObj) {
-            currentAudioObj.pause();
-            currentAudioObj.currentTime = 0;
-        }
-    }
+#introVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+background:#000;
+}
 
-    stopBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        stopAllAudio();
-    });
+#skipIntro{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+z-index:10;
+border:1px solid rgba(255,255,255,.8);
+background:rgba(0,0,0,.55);
+color:#fff;
+padding:10px 25px;
+border-radius:25px;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+backdrop-filter:blur(8px);
+}
 
-    volumeSlider.addEventListener('input', function(e) {
-        e.stopPropagation();
-        currentVolume = parseFloat(this.value);
-        if(currentAudioObj) currentAudioObj.volume = currentVolume;
-        toggleBtn.innerHTML = currentVolume === 0 ? '🔇' : '🔊';
-    });
+#skipIntro:hover{
+background:#fff;
+color:#17211c;
+}
 
-    toggleBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        isVoiceActive = !isVoiceActive;
-        this.innerHTML = isVoiceActive ? (currentVolume > 0 ? '🔊' : '🔇') : '🔕';
-        this.style.opacity = isVoiceActive ? '1' : '0.5';
-        if(!isVoiceActive) stopAllAudio();
-    });
+#videoError{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:#fff;
+text-align:center;
+display:none;
+z-index:5;
+}
 
-    // 4. دالة القراءة
-    function playVoice(element) {
-        if(!isVoiceActive || currentVolume === 0) return;
-        stopAllAudio(); 
+#videoError p{
+margin-bottom:15px;
+}
 
-        const audioFile = element.getAttribute('data-audio');
-        if (audioFile) {
-            currentAudioObj = new Audio(audioFile);
-            currentAudioObj.volume = currentVolume;
-            currentAudioObj.play().catch(e => console.log("تعذر تشغيل الصوت", e));
-        } else {
-            const text = element.innerText || element.textContent;
-            if(!text.trim()) return;
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.volume = currentVolume;
-            utterance.lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'ar-SA';
-            window.speechSynthesis.speak(utterance);
-        }
-    }
+#playIntro{
+border:1px solid #fff;
+background:#fff;
+color:#17211c;
+padding:11px 25px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    // 5. ربط الخاصية بالعناصر المطلوبة
-    document.addEventListener('click', function(e) {
-        const readableElement = e.target.closest('.read-aloud');
-        if (readableElement) {
-            playVoice(readableElement);
-        }
-    });
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:72px;
+background:rgba(12,18,15,.94);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(207,210,212,.15)
+}
+
+.nav{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+color:#fff;
+white-space:nowrap
+}
+
+.logo span{
+color:#cfd2d4
+}
+
+.navlinks{
+display:flex;
+align-items:center;
+gap:25px
+}
+
+.navlinks a{
+color:#fff;
+font-size:14px;
+transition:.25s
+}
+
+.navlinks a:hover{
+color:#cfd2d4
+}
+
+.lang{
+display:flex;
+gap:4px;
+background:#27332d;
+padding:4px;
+border-radius:20px
+}
+
+.lang button{
+border:0;
+background:transparent;
+color:#fff;
+padding:6px 10px;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold
+}
+
+.lang button.active{
+background:#cfd2d4;
+color:#17211c
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+min-height:650px;
+position:relative;
+overflow:hidden;
+color:#fff;
+padding-top:72px;
+display:flex;
+align-items:center
+}
+
+.hero-slides{
+position:absolute;
+inset:0;
+z-index:0
+}
+
+.hero-slide{
+position:absolute;
+inset:0;
+opacity:0;
+background-position:center;
+background-size:cover;
+background-repeat:no-repeat;
+transform:scale(1.05);
+transition:opacity 1.2s ease,transform 6s ease
+}
+
+.hero-slide.active{
+opacity:1;
+transform:scale(1)
+}
+
+.hero-slide:nth-child(1){
+background-image:url("images/hero-2.webp")
+}
+
+.hero-slide:nth-child(2){
+background-image:url("images/hero-3.webp")
+}
+
+.hero-slide:nth-child(3){
+background-image:url("images/kitchen.jpg")
+}
+
+.hero-slide:nth-child(4){
+background-image:url("images/dressing.jpg")
+}
+
+.hero-slide:nth-child(5){
+background-image:url("images/salon.jpg")
+}
+
+.hero-slide:nth-child(6){
+background-image:url("images/bedroom.jpg")
+}
+
+.hero-slide:nth-child(7){
+background-image:url("images/tv.jpg")
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+z-index:1;
+background:
+linear-gradient(
+90deg,
+rgba(5,10,7,.94),
+rgba(5,10,7,.68),
+rgba(5,10,7,.18)
+)
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:720px
+}
+
+.kicker{
+font-size:12px;
+letter-spacing:3px;
+color:#cfd2d4;
+font-weight:bold;
+margin-bottom:15px
+}
+
+.hero h1{
+font-size:clamp(44px,7vw,82px);
+line-height:1.05;
+margin-bottom:22px;
+font-weight:900
+}
+
+.hero h1 span{
+color:#cfd2d4
+}
+
+.hero p{
+font-size:18px;
+color:#f0f0f0;
+max-width:650px;
+margin-bottom:30px
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:13px 25px;
+min-height:50px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s
+}
+
+.btn:hover{
+transform:translateY(-2px)
+}
+
+.btn-light{
+background:#cfd2d4;
+color:#17211c
+}
+
+.btn-dark{
+background:#17211c;
+color:#fff
+}
+
+.btn-outline{
+border:1px solid #fff;
+color:#fff;
+background:rgba(0,0,0,.12)
+}
+
+.btn-outline:hover{
+background:#fff;
+color:#17211c
+}
+
+/* DOTS */
+
+.slider-dots{
+position:absolute;
+z-index:3;
+bottom:28px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:7px
+}
+
+.slider-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#ffffff66;
+cursor:pointer;
+transition:.3s
+}
+
+.slider-dot.active{
+width:28px;
+border-radius:10px;
+background:#cfd2d4
+}
+
+/* QUICK */
+
+.quick{
+background:#fff;
+padding:24px 0;
+border-bottom:1px solid #ddd
+}
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px
+}
+
+.quick-item{
+display:flex;
+align-items:center;
+gap:11px
+}
+
+.quick-number{
+width:40px;
+height:40px;
+min-width:40px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#17211c;
+color:#cfd2d4;
+font-weight:bold
+}
+
+/* SECTIONS */
+
+section{
+padding:85px 0
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px
+}
+
+.section-title small{
+color:#68716c;
+letter-spacing:2px;
+font-weight:bold
+}
+
+.section-title h2{
+font-size:clamp(30px,5vw,50px);
+margin:5px 0
+}
+
+.section-title p{
+color:#707873
+}
+
+/* CHOICES */
+
+.choices{
+background:#17211c;
+color:#fff
+}
+
+.choices .section-title small{
+color:#cfd2d4
+}
+
+.choices .section-title p{
+color:#c4ccc7
+}
+
+.choice-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:17px
+}
+
+.choice{
+height:310px;
+position:relative;
+overflow:hidden;
+border-radius:8px;
+background:#111
+}
+
+.choice img{
+height:100%;
+object-fit:cover;
+transition:.5s
+}
+
+.choice:hover img{
+transform:scale(1.07)
+}
+
+.choice:after{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(4,8,6,.95),
+rgba(4,8,6,.02)
+)
+}
+
+.choice-info{
+position:absolute;
+bottom:18px;
+right:18px;
+left:18px;
+z-index:2
+}
+
+.choice-info h3{
+font-size:23px
+}
+
+.choice-info p{
+font-size:13px;
+color:#d0d5d2
+}
+
+/* SPECIAL */
+
+.special{
+background:#e7e8e6
+}
+
+.special-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
+}
+
+.special-card{
+background:#fff;
+padding:35px;
+border-radius:8px;
+border:1px solid #d8dad8
+}
+
+.special-card h3{
+font-size:25px;
+margin-bottom:8px
+}
+
+.special-card p{
+color:#707873;
+margin-bottom:20px
+}
+
+/* WORKS */
+
+.works{
+background:#fff;
+text-align:center
+}
+
+.works-preview{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:30px
+}
+
+.work-image{
+height:210px;
+overflow:hidden;
+border-radius:7px
+}
+
+.work-image img{
+height:100%;
+object-fit:cover;
+transition:.4s
+}
+
+.work-image:hover img{
+transform:scale(1.06)
+}
+
+.works-btn{
+display:inline-flex;
+padding:14px 30px;
+background:#17211c;
+color:#fff;
+border-radius:6px;
+font-weight:bold
+}
+
+/* PARTNERS */
+
+.partners{
+background:#eeeeec
+}
+
+.partner-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px
+}
+
+.partner{
+background:#fff;
+min-height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid #ddd;
+font-weight:bold;
+color:#626b66
+}
+
+/* FOOTER */
+
+footer{
+background:#0e1511;
+color:#999;
+text-align:center;
+padding:30px
+}
+
+footer strong{
+color:#cfd2d4
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+left:18px;
+bottom:18px;
+width:56px;
+height:56px;
+border-radius:50%;
+background:#25d366;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3000;
+box-shadow:0 5px 20px #0005
+}
+
+.whatsapp svg{
+width:30px;
+height:30px;
+fill:#fff
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+.navlinks{
+display:none
+}
+
+.quick-grid{
+grid-template-columns:1fr 1fr
+}
+
+.choice-grid{
+grid-template-columns:1fr 1fr
+}
+
+.works-preview{
+grid-template-columns:1fr 1fr
+}
+
+.partner-grid{
+grid-template-columns:1fr 1fr
+}
+
+.special-grid{
+grid-template-columns:1fr
+}
+
+}
+
+@media(max-width:550px){
+
+.hero{
+min-height:650px;
+text-align:center
+}
+
+.hero-content{
+margin:auto
+}
+
+.hero p{
+font-size:16px
+}
+
+.buttons{
+flex-direction:column
+}
+
+.btn{
+width:100%
+}
+
+.choice-grid{
+grid-template-columns:1fr
+}
+
+.works-preview{
+grid-template-columns:1fr 1fr
+}
+
+.work-image{
+height:170px
+}
+
+#skipIntro{
+bottom:25px;
+font-size:13px;
+padding:9px 20px
+}
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+.hero-slide{
+transition:none
+}
+
+.choice img,
+.work-image img{
+transition:none
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================
+     INTRO VIDEO
+================================ -->
+
+<div id="introVideo">
+
+<video
+id="introVideoPlayer"
+autoplay
+muted
+playsinline
+preload="auto"
+controlslist="nodownload">
+
+<source
+src="videos/MindVideo_20260830002849_522.mp4"
+type="video/mp4">
+
+المتصفح ديالك ما كيدعمش الفيديو.
+
+</video>
+
+<div id="videoError">
+
+<p>
+تعذر تشغيل الفيديو تلقائياً.
+</p>
+
+<button id="playIntro">
+تشغيل الفيديو
+</button>
+
+</div>
+
+<button id="skipIntro">
+تخطي
+</button>
+
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="wrap nav">
+
+<a href="index.html" class="logo">
+صمم <span>ديكورك</span>
+</a>
+
+<nav class="navlinks">
+
+<a href="#choices" data-i18n="design">
+صمم دابا
+</a>
+
+<a href="works.html" data-i18n="works">
+أعمالنا
+</a>
+
+<a href="#special" data-i18n="special">
+الخدمات الخاصة
+</a>
+
+</nav>
+
+<div class="lang">
+
+<button id="arBtn"
+class="active"
+onclick="setLang('ar')">
+دارجة
+</button>
+
+<button id="frBtn"
+onclick="setLang('fr')">
+FR
+</button>
+
+</div>
+
+</div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-slides">
+
+<div class="hero-slide active"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+<div class="hero-slide"></div>
+
+</div>
+
+<div class="hero-overlay"></div>
+
+<div class="wrap hero-content">
+
+<div class="kicker" data-i18n="kicker">
+تصميم • ديكور • تنفيذ
+</div>
+
+<h1>
+
+<span data-i18n="hero1">
+دار عليك
+</span>
+
+<br>
+
+<span data-i18n="hero2">
+وديكور علينا
+</span>
+
+</h1>
+
+<p data-i18n="heroText">
+اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
+وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
+</p>
+
+<div class="buttons">
+
+<a href="#choices"
+class="btn btn-light"
+data-i18n="start">
+ابدأ التصميم
+</a>
+
+<a href="https://wa.me/212754350706"
+target="_blank"
+class="btn btn-outline"
+data-i18n="contact">
+تواصل معنا
+</a>
+
+</div>
+
+</div>
+
+<div class="slider-dots" id="sliderDots"></div>
+
+</section>
+
+<!-- QUICK -->
+
+<section class="quick">
+
+<div class="wrap">
+
+<div class="quick-grid">
+
+<div class="quick-item">
+
+<div class="quick-number">1</div>
+
+<div>
+<b data-i18n="q1">اختار</b>
+<br>
+<span data-i18n="q1s">القسم</span>
+</div>
+
+</div>
+
+<div class="quick-item">
+
+<div class="quick-number">2</div>
+
+<div>
+<b data-i18n="q2">صورة</b>
+<br>
+<span data-i18n="q2s">ديال المكان</span>
+</div>
+
+</div>
+
+<div class="quick-item">
+
+<div class="quick-number">3</div>
+
+<div>
+<b data-i18n="q3">قياسات</b>
+<br>
+<span data-i18n="q3s">العرض والطول والعلو</span>
+</div>
+
+</div>
+
+<div class="quick-item">
+
+<div class="quick-number">4</div>
+
+<div>
+<b data-i18n="q4">إرسال</b>
+<br>
+<span data-i18n="q4s">الطلب</span>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CHOICES -->
+
+<section class="choices" id="choices">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small data-i18n="chooseSmall">
+صمم ديكورك
+</small>
+
+<h2 data-i18n="chooseTitle">
+شنو بغيتي تصمم؟
+</h2>
+
+<p data-i18n="chooseText">
+اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.
+</p>
+
+</div>
+
+<div class="choice-grid">
+
+<a class="choice"
+href="configurateur.html?type=kitchen">
+
+<img src="images/kitchen.jpg"
+alt="المطبخ"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="kitchen">
+المطبخ
+</h3>
+
+<p data-i18n="kitchenSub">
+L • U • I • Îlot
+</p>
+
+</div>
+</a>
+
+<a class="choice"
+href="configurateur.html?type=bedroom">
+
+<img src="images/bedroom.jpg"
+alt="غرفة النوم"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="bedroom">
+غرفة النوم
+</h3>
+
+<p data-i18n="bedroomSub">
+سرير • خزانات • تسريحة
+</p>
+
+</div>
+</a>
+
+<a class="choice"
+href="configurateur.html?type=salon">
+
+<img src="images/salon.jpg"
+alt="الصالون"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3 data-i18n="salon">
+الصالون
+</h3>
+
+<p data-i18n="salonSub">
+جلسة • حائط • ديكور
+</p>
+
+</div>
+</a>
+
+<a class="choice"
+href="configurateur.html?type=dressing">
+
+<img src="images/dressing.jpg"
+alt="Dressing"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>Dressing</h3>
+
+<p data-i18n="dressingSub">
+Placard • بيبان • rangement
+</p>
+
+</div>
+</a>
+
+<a class="choice"
+href="configurateur.html?type=tv">
+
+<img src="images/tv.jpg"
+alt="Meuble TV"
+loading="lazy">
+
+<div class="choice-info">
+
+<h3>Meuble TV</h3>
+
+<p data-i18n="tvSub">
+TV • niches • étagères
+</p>
+
+</div>
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- SPECIAL -->
+
+<section class="special" id="special">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small data-i18n="specialSmall">
+SERVICES SPÉCIAUX
+</small>
+
+<h2 data-i18n="specialTitle">
+خدمات مستقلة
+</h2>
+
+<p data-i18n="specialText">
+أقسام عندها اختصاصها الخاص.
+</p>
+
+</div>
+
+<div class="special-grid">
+
+<div class="special-card">
+
+<h3 data-i18n="tapisTitle">
+الطابيسري والستور
+</h3>
+
+<p data-i18n="tapisText">
+ستور، سدادر، ستائر وتابيسري حسب الطلب.
+</p>
+
+<a href="tapisserie.html"
+class="btn btn-dark"
+data-i18n="discover">
+شوف القسم
+</a>
+
+</div>
+
+<div class="special-card">
+
+<h3 data-i18n="accessTitle">
+الإكسسوارات و Electroménager
+</h3>
+
+<p data-i18n="accessText">
+بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
+</p>
+
+<a href="accessoires.html"
+class="btn btn-dark"
+data-i18n="shop">
+شوف المنتجات
+</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- WORKS -->
+
+<section class="works">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small>
+REAL PROJECTS
+</small>
+
+<h2 data-i18n="worksTitle">
+أعمالنا
+</h2>
+
+<p data-i18n="worksText">
+شوف المشاريع الحقيقية اللي خدمناها.
+</p>
+
+</div>
+
+<div class="works-preview">
+
+<div class="work-image">
+
+<img src="images/work-003.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+<div class="work-image">
+
+<img src="images/work-004.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+<div class="work-image">
+
+<img src="images/work-007.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+<div class="work-image">
+
+<img src="images/work-010.webp"
+alt="مشروع صمم ديكورك"
+loading="lazy">
+
+</div>
+
+</div>
+
+<a href="works.html"
+class="works-btn"
+data-i18n="seeWorks">
+شوف أعمالنا
+</a>
+
+</div>
+</section>
+
+<!-- PARTNERS -->
+
+<section class="partners">
+
+<div class="wrap">
+
+<div class="section-title">
+
+<small>
+PARTNERS
+</small>
+
+<h2 data-i18n="partnersTitle">
+شركاؤنا
+</h2>
+
+<p data-i18n="partnersText">
+شركاء وماركات كنخدمو معاهم.
+</p>
+
+</div>
+
+<div class="partner-grid">
+
+<div class="partner">
+MDF / MÉLAMINÉ
+</div>
+
+<div class="partner">
+QUARTZ
+</div>
+
+<div class="partner">
+BLUM
+</div>
+
+<div class="partner">
+HETTICH
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<strong>
+صمم ديكورك
+</strong>
+
+© 2026
+
+<br>
+
+<span data-i18n="rights">
+جميع الحقوق محفوظة — Hamza Chtaibi
+</span>
+
+</footer>
+
+<!-- WHATSAPP -->
+
+<a class="whatsapp"
+href="https://wa.me/212754350706"
+target="_blank"
+aria-label="WhatsApp">
+
+<svg viewBox="0 0 32 32">
+
+<path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-.4 1.2 3.9-1.2-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/>
+
+</svg>
+
+</a>
+
+<script>
+
+/* ================================
+   INTRO VIDEO
+================================ */
+
+const intro =
+document.getElementById("introVideo");
+
+const video =
+document.getElementById("introVideoPlayer");
+
+const skip =
+document.getElementById("skipIntro");
+
+const videoError =
+document.getElementById("videoError");
+
+const playIntro =
+document.getElementById("playIntro");
+
+let introClosed=false;
+
+
+/* إغلاق الافتتاحية */
+
+function closeIntro(){
+
+if(introClosed) return;
+
+introClosed=true;
+
+video.pause();
+
+intro.classList.add("hide");
+
+setTimeout(function(){
+
+intro.style.display="none";
+
+},700);
+
+}
+
+
+/* تشغيل الفيديو */
+
+function startIntroVideo(){
+
+video.muted=true;
+
+const promise=video.play();
+
+if(promise!==undefined){
+
+promise.catch(function(){
+
+/*
+إذا الهاتف منع autoplay،
+نظهر زر التشغيل.
+*/
+
+videoError.style.display="block";
+
 });
+
+}
+
+}
+
+
+/* منين الصفحة تحمل */
+
+window.addEventListener("load",function(){
+
+video.currentTime=0;
+
+startIntroVideo();
+
+});
+
+
+/*
+الفيديو كيسالي →
+ندخل للموقع.
+ما كاين حتى timer.
+*/
+
+video.addEventListener("ended",function(){
+
+closeIntro();
+
+});
+
+
+/*
+زر تشغيل الفيديو
+*/
+
+playIntro.addEventListener("click",function(){
+
+videoError.style.display="none";
+
+video.muted=true;
+
+video.play().catch(function(){
+
+videoError.style.display="block";
+
+});
+
+});
+
+
+/*
+زر تخطي
+*/
+
+skip.addEventListener("click",function(){
+
+closeIntro();
+
+});
+
+
+/*
+إذا وقع خطأ فالفيديو
+*/
+
+video.addEventListener("error",function(){
+
+videoError.style.display="block";
+
+});
+
+
+/* ================================
+   HERO SLIDER
+================================ */
+
+const slides =
+document.querySelectorAll(".hero-slide");
+
+const dotsContainer =
+document.getElementById("sliderDots");
+
+let currentSlide=0;
+let sliderTimer;
+
+slides.forEach(function(slide,index){
+
+const dot=
+document.createElement("div");
+
+dot.className="slider-dot";
+
+if(index===0){
+dot.classList.add("active");
+}
+
+dot.onclick=function(){
+
+goToSlide(index);
+
+};
+
+dotsContainer.appendChild(dot);
+
+});
+
+const dots=
+document.querySelectorAll(".slider-dot");
+
+
+function goToSlide(index){
+
+slides[currentSlide].classList.remove("active");
+
+dots[currentSlide].classList.remove("active");
+
+currentSlide=index;
+
+slides[currentSlide].classList.add("active");
+
+dots[currentSlide].classList.add("active");
+
+clearInterval(sliderTimer);
+
+startSlider();
+
+}
+
+
+function nextSlide(){
+
+let next=
+(currentSlide+1)%slides.length;
+
+goToSlide(next);
+
+}
+
+
+function startSlider(){
+
+sliderTimer=
+setInterval(nextSlide,5000);
+
+}
+
+startSlider();
+
+
+/* ================================
+   LANGUAGES
+================================ */
+
+const T={
+
+ar:{
+
+design:"صمم دابا",
+works:"أعمالنا",
+special:"الخدمات الخاصة",
+
+kicker:"تصميم • ديكور • تنفيذ",
+
+hero1:"دار عليك",
+hero2:"وديكور علينا",
+
+heroText:
+"اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
+
+start:"ابدأ التصميم",
+contact:"تواصل معنا",
+
+q1:"اختار",
+q1s:"القسم",
+
+q2:"صورة",
+q2s:"ديال المكان",
+
+q3:"قياسات",
+q3s:"العرض والطول والعلو",
+
+q4:"إرسال",
+q4s:"الطلب",
+
+chooseSmall:"صمم ديكورك",
+
+chooseTitle:"شنو بغيتي تصمم؟",
+
+chooseText:
+"اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
+
+kitchen:"المطبخ",
+kitchenSub:"L • U • I • Îlot",
+
+bedroom:"غرفة النوم",
+bedroomSub:"سرير • خزانات • تسريحة",
+
+salon:"الصالون",
+salonSub:"جلسة • حائط • ديكور",
+
+dressingSub:
+"Placard • بيبان • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIAUX",
+
+specialTitle:
+"خدمات مستقلة",
+
+specialText:
+"أقسام عندها اختصاصها الخاص.",
+
+tapisTitle:
+"الطابيسري والستور",
+
+tapisText:
+"ستور، سدادر، ستائر وتابيسري حسب الطلب.",
+
+accessTitle:
+"الإكسسوارات و Electroménager",
+
+accessText:
+"بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
+
+discover:"شوف القسم",
+
+shop:"شوف المنتجات",
+
+worksTitle:"أعمالنا",
+
+worksText:
+"شوف المشاريع الحقيقية اللي خدمناها.",
+
+seeWorks:
+"شوف أعمالنا",
+
+partnersTitle:
+"شركاؤنا",
+
+partnersText:
+"شركاء وماركات كنخدمو معاهم.",
+
+rights:
+"جميع الحقوق محفوظة — Hamza Chtaibi"
+
+},
+
+fr:{
+
+design:"Créer mon projet",
+
+works:"Nos réalisations",
+
+special:"Services spécialisés",
+
+kicker:
+"DESIGN • DÉCORATION • RÉALISATION",
+
+hero1:
+"Votre projet",
+
+hero2:
+"Notre savoir-faire",
+
+heroText:
+"Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
+
+start:"Commencer",
+
+contact:"Nous contacter",
+
+q1:"Choisir",
+q1s:"la catégorie",
+
+q2:"Photo",
+q2s:"de l'espace",
+
+q3:"Dimensions",
+q3s:"largeur • longueur • hauteur",
+
+q4:"Envoyer",
+q4s:"la demande",
+
+chooseSmall:
+"VOTRE PROJET",
+
+chooseTitle:
+"Que souhaitez-vous réaliser ?",
+
+chooseText:
+"Choisissez une catégorie pour passer directement à l'étape suivante.",
+
+kitchen:
+"Cuisine",
+
+kitchenSub:
+"L • U • I • Îlot",
+
+bedroom:
+"Chambre",
+
+bedroomSub:
+"Lit • placards • coiffeuse",
+
+salon:
+"Salon",
+
+salonSub:
+"Séjour • mur • décoration",
+
+dressingSub:
+"Placard • portes • rangement",
+
+tvSub:
+"TV • niches • étagères",
+
+specialSmall:
+"SERVICES SPÉCIALISÉS",
+
+specialTitle:
+"Services indépendants",
+
+specialText:
+"Des services avec leurs propres spécialistes.",
+
+tapisTitle:
+"Tapisserie & Rideaux",
+
+tapisText:
+"Rideaux, coussins, tissus et tapisserie sur mesure.",
+
+accessTitle:
+"Accessoires & Electroménager",
+
+accessText:
+"Vente d'accessoires et d'appareils électroménagers.",
+
+discover:
+"Découvrir",
+
+shop:
+"Voir les produits",
+
+worksTitle:
+"Nos réalisations",
+
+worksText:
+"Découvrez nos vrais projets réalisés.",
+
+seeWorks:
+"Voir nos réalisations",
+
+partnersTitle:
+"Nos partenaires",
+
+partnersText:
+"Les marques et partenaires avec lesquels nous travaillons.",
+
+rights:
+"Tous droits réservés — Hamza Chtaibi"
+
+}
+
+};
+
+
+function setLang(lang){
+
+localStorage.setItem("siteLang",lang);
+
+document.documentElement.lang=
+lang==="fr"?"fr":"ar";
+
+document.documentElement.dir=
+lang==="fr"?"ltr":"rtl";
+
+document.querySelectorAll("[data-i18n]")
+.forEach(function(el){
+
+const key=el.dataset.i18n;
+
+if(T[lang][key]){
+
+el.textContent=T[lang][key];
+
+}
+
+});
+
+
+document.getElementById("arBtn")
+.classList.toggle(
+"active",
+lang==="ar"
+);
+
+
+document.getElementById("frBtn")
+.classList.toggle(
+"active",
+lang==="fr"
+);
+
+}
+
+
+setLang(
+localStorage.getItem("siteLang")||"ar"
+);
+
 </script>
+
+</body>
+</html>

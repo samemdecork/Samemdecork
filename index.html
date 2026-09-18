@@ -273,7 +273,8 @@ margin-bottom:15px
 font-size:clamp(44px,7vw,82px);
 line-height:1.05;
 margin-bottom:22px;
-font-weight:900
+font-weight:900;
+cursor: pointer;
 }
 
 .hero h1 span{
@@ -284,7 +285,8 @@ color:#cfd2d4
 font-size:18px;
 color:#f0f0f0;
 max-width:650px;
-margin-bottom:30px
+margin-bottom:30px;
+cursor: pointer;
 }
 
 .buttons{
@@ -374,7 +376,8 @@ gap:15px
 .quick-item{
 display:flex;
 align-items:center;
-gap:11px
+gap:11px;
+cursor: pointer;
 }
 
 .quick-number{
@@ -398,7 +401,8 @@ padding:85px 0
 
 .section-title{
 text-align:center;
-margin-bottom:40px
+margin-bottom:40px;
+cursor: pointer;
 }
 
 .section-title small{
@@ -476,12 +480,14 @@ z-index:2
 }
 
 .choice-info h3{
-font-size:23px
+font-size:23px;
+cursor: pointer;
 }
 
 .choice-info p{
 font-size:13px;
-color:#d0d5d2
+color:#d0d5d2;
+cursor: pointer;
 }
 
 /* SPECIAL */
@@ -505,12 +511,14 @@ border:1px solid #d8dad8
 
 .special-card h3{
 font-size:25px;
-margin-bottom:8px
+margin-bottom:8px;
+cursor: pointer;
 }
 
 .special-card p{
 color:#707873;
-margin-bottom:20px
+margin-bottom:20px;
+cursor: pointer;
 }
 
 /* WORKS */
@@ -805,11 +813,11 @@ FR
 
 <div class="wrap hero-content">
 
-<div class="kicker" data-i18n="kicker">
+<div class="kicker read-aloud" data-i18n="kicker">
 تصميم • ديكور • تنفيذ
 </div>
 
-<h1>
+<h1 class="read-aloud">
 
 <span data-i18n="hero1">
 دار عليك
@@ -823,7 +831,7 @@ FR
 
 </h1>
 
-<p data-i18n="heroText">
+<p class="read-aloud" data-i18n="heroText">
 اختار شنو بغيتي تصمم، صيفط الصورة والقياسات،
 وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
 </p>
@@ -859,7 +867,7 @@ data-i18n="contact">
 
 <div class="quick-grid">
 
-<div class="quick-item">
+<div class="quick-item read-aloud">
 
 <div class="quick-number">1</div>
 
@@ -871,7 +879,7 @@ data-i18n="contact">
 
 </div>
 
-<div class="quick-item">
+<div class="quick-item read-aloud">
 
 <div class="quick-number">2</div>
 
@@ -883,7 +891,7 @@ data-i18n="contact">
 
 </div>
 
-<div class="quick-item">
+<div class="quick-item read-aloud">
 
 <div class="quick-number">3</div>
 
@@ -895,7 +903,7 @@ data-i18n="contact">
 
 </div>
 
-<div class="quick-item">
+<div class="quick-item read-aloud">
 
 <div class="quick-number">4</div>
 
@@ -917,7 +925,7 @@ data-i18n="contact">
 
 <div class="wrap">
 
-<div class="section-title">
+<div class="section-title read-aloud">
 
 <small data-i18n="chooseSmall">
 صمم ديكورك
@@ -944,11 +952,11 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 data-i18n="kitchen">
+<h3 class="read-aloud" data-i18n="kitchen">
 المطبخ
 </h3>
 
-<p data-i18n="kitchenSub">
+<p class="read-aloud" data-i18n="kitchenSub">
 L • U • I • Îlot
 </p>
 
@@ -964,11 +972,11 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 data-i18n="bedroom">
+<h3 class="read-aloud" data-i18n="bedroom">
 غرفة النوم
 </h3>
 
-<p data-i18n="bedroomSub">
+<p class="read-aloud" data-i18n="bedroomSub">
 سرير • خزانات • تسريحة
 </p>
 
@@ -984,11 +992,11 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3 data-i18n="salon">
+<h3 class="read-aloud" data-i18n="salon">
 الصالون
 </h3>
 
-<p data-i18n="salonSub">
+<p class="read-aloud" data-i18n="salonSub">
 جلسة • حائط • ديكور
 </p>
 
@@ -1004,9 +1012,9 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3>Dressing</h3>
+<h3 class="read-aloud">Dressing</h3>
 
-<p data-i18n="dressingSub">
+<p class="read-aloud" data-i18n="dressingSub">
 Placard • بيبان • rangement
 </p>
 
@@ -1022,9 +1030,9 @@ loading="lazy">
 
 <div class="choice-info">
 
-<h3>Meuble TV</h3>
+<h3 class="read-aloud">Meuble TV</h3>
 
-<p data-i18n="tvSub">
+<p class="read-aloud" data-i18n="tvSub">
 TV • niches • étagères
 </p>
 
@@ -1041,7 +1049,7 @@ TV • niches • étagères
 
 <div class="wrap">
 
-<div class="section-title">
+<div class="section-title read-aloud">
 
 <small data-i18n="specialSmall">
 SERVICES SPÉCIAUX
@@ -1061,11 +1069,11 @@ SERVICES SPÉCIAUX
 
 <div class="special-card">
 
-<h3 data-i18n="tapisTitle">
+<h3 class="read-aloud" data-i18n="tapisTitle">
 الطابيسري والستور
 </h3>
 
-<p data-i18n="tapisText">
+<p class="read-aloud" data-i18n="tapisText">
 ستور، سدادر، ستائر وتابيسري حسب الطلب.
 </p>
 
@@ -1079,11 +1087,11 @@ data-i18n="discover">
 
 <div class="special-card">
 
-<h3 data-i18n="accessTitle">
+<h3 class="read-aloud" data-i18n="accessTitle">
 الإكسسوارات و Electroménager
 </h3>
 
-<p data-i18n="accessText">
+<p class="read-aloud" data-i18n="accessText">
 بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.
 </p>
 
@@ -1105,7 +1113,7 @@ data-i18n="shop">
 
 <div class="wrap">
 
-<div class="section-title">
+<div class="section-title read-aloud">
 
 <small>
 REAL PROJECTS
@@ -1172,7 +1180,7 @@ data-i18n="seeWorks">
 
 <div class="wrap">
 
-<div class="section-title">
+<div class="section-title read-aloud">
 
 <small>
 PARTNERS
@@ -1190,19 +1198,19 @@ PARTNERS
 
 <div class="partner-grid">
 
-<div class="partner">
+<div class="partner read-aloud">
 MDF / MÉLAMINÉ
 </div>
 
-<div class="partner">
+<div class="partner read-aloud">
 QUARTZ
 </div>
 
-<div class="partner">
+<div class="partner read-aloud">
 BLUM
 </div>
 
-<div class="partner">
+<div class="partner read-aloud">
 HETTICH
 </div>
 
@@ -1243,6 +1251,15 @@ aria-label="WhatsApp">
 </svg>
 
 </a>
+
+<!-- ================================
+   واجهة التحكم في الصوت (Voice Widget HTML)
+================================ -->
+<div id="voice-panel" style="position:fixed; bottom:90px; left:18px; background:rgba(12,18,15,0.95); backdrop-filter:blur(8px); color:#fff; padding:8px 15px; border-radius:25px; display:flex; align-items:center; gap:12px; z-index:9999; border:1px solid rgba(207,210,212,0.2); box-shadow:0 5px 20px rgba(0,0,0,0.4); direction:ltr; transition:0.3s;">
+    <button id="voice-toggle" title="تفعيل/تعطيل الصوت" style="background:none; border:none; color:#cfd2d4; cursor:pointer; font-size:20px; padding:0; display:flex;">🔊</button>
+    <input type="range" id="voice-volume" min="0" max="1" step="0.1" value="1" title="مستوى الصوت" style="width:70px; cursor:pointer; accent-color:#cfd2d4;">
+    <button id="voice-stop" title="حبس الصوت" style="background:#cfd2d4; border:none; color:#17211c; cursor:pointer; font-size:13px; font-weight:bold; padding:4px 10px; border-radius:15px; transition:0.2s;">قف 🛑</button>
+</div>
 
 <script>
 
@@ -1720,6 +1737,77 @@ lang==="fr"
 setLang(
 localStorage.getItem("siteLang")||"ar"
 );
+
+/* ================================
+   نظام القراءة الصوتية (Voice Feature JS)
+================================ */
+
+const voiceToggleBtn = document.getElementById('voice-toggle');
+const voiceVolumeSlider = document.getElementById('voice-volume');
+const voiceStopBtn = document.getElementById('voice-stop');
+
+let isVoiceActive = true;
+let currentVolume = 1;
+let currentAudioObj = null;
+
+function stopAllAudio() {
+    window.speechSynthesis.cancel();
+    if(currentAudioObj) {
+        currentAudioObj.pause();
+        currentAudioObj.currentTime = 0;
+    }
+}
+
+voiceStopBtn.addEventListener('click', stopAllAudio);
+
+voiceVolumeSlider.addEventListener('input', function() {
+    currentVolume = parseFloat(this.value);
+    if(currentAudioObj) currentAudioObj.volume = currentVolume;
+    voiceToggleBtn.innerHTML = currentVolume === 0 ? '🔇' : '🔊';
+});
+
+voiceToggleBtn.addEventListener('click', function() {
+    isVoiceActive = !isVoiceActive;
+    this.innerHTML = isVoiceActive ? (currentVolume > 0 ? '🔊' : '🔇') : '🔕';
+    this.style.opacity = isVoiceActive ? '1' : '0.5';
+    if(!isVoiceActive) stopAllAudio();
+});
+
+function playVoice(element) {
+    // إيقاف أي قراءة سابقة
+    if(!isVoiceActive || currentVolume === 0) return;
+    stopAllAudio(); 
+
+    // البحث عن ملف صوتي إن وجد
+    const audioFile = element.getAttribute('data-audio');
+    
+    if (audioFile) {
+        currentAudioObj = new Audio(audioFile);
+        currentAudioObj.volume = currentVolume;
+        currentAudioObj.play().catch(e => console.log("تعذر تشغيل الصوت", e));
+    } else {
+        // قراءة النص مباشرة (TTS)
+        const text = element.innerText || element.textContent;
+        if(!text.trim()) return;
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.volume = currentVolume;
+        // قراءة النص باللغة الحالية للموقع
+        utterance.lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'ar-SA';
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
+// مراقبة الضغط على أي عنصر في الصفحة
+document.addEventListener('click', function(e) {
+    // إذا كان العنصر المضغوط (أو الآب ديالو) عندو كلاس read-aloud
+    const readableElement = e.target.closest('.read-aloud');
+    if (readableElement) {
+        // نمنع الانتقال المباشر إذا كان رابط باش يتسمع الصوت أولا
+        // e.preventDefault(); (يمكن إضافتها لاحقا إذا أردت إيقاف انتقال الروابط فورا)
+        playVoice(readableElement);
+    }
+});
 
 </script>
 

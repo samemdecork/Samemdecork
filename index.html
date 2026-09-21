@@ -777,8 +777,8 @@ if(aiForm) {
         : `أنت مهندس ديكور داخلي محترف في المغرب. قم بتحليل صورة الغرفة المرفقة. العميل يريد تجديد هذا المكان بستايل: ${styleRequested}. أعطني وصفاً دقيقاً وواقعياً للتغييرات المقترحة بالدارجة المغربية أو لغة بسيطة ومفهومة، واذكر المواد التي يجب استخدامها (بدون ذكر الأسعار نهائياً).`;
 
       try {
-        // تم تغيير اسم الموديل هنا إلى gemini-1.5-pro ليشتغل بشكل صحيح
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${GEMINI_API_KEY}`, {
+        // تم تصحيح رابط النسخة الرسمية والاستقرار v1 مع gemini-1.5-flash
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

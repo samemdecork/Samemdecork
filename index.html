@@ -302,7 +302,8 @@ min-height:50px;
 border-radius:6px;
 font-weight:bold;
 cursor:pointer;
-transition:.25s
+transition:.25s;
+border:none;
 }
 
 .btn:hover{
@@ -415,6 +416,19 @@ margin:5px 0
 .section-title p{
 color:#707873
 }
+
+/* ================================
+   AI GENERATOR STYLES
+================================ */
+.ai-generator { background:#fff; border-bottom:1px solid #ddd; }
+.ai-form { max-width:600px; margin:0 auto 40px auto; background:#f5f5f3; padding:30px; border-radius:8px; border:1px solid #d8dad8; }
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-weight:bold; margin-bottom:8px; color:#17211c; }
+.form-group input, .form-group select { width:100%; padding:12px; border:1px solid #cfd2d4; border-radius:6px; font-family:inherit; font-size:15px; outline:none; transition:0.3s;}
+.form-group input:focus, .form-group select:focus { border-color:#17211c;}
+.ai-result-box { max-width:900px; margin:0 auto; padding:25px; background:#17211c; color:#fff; border-radius:8px; }
+.result-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.cost-report { background:#27332d; padding:20px; border-radius:6px; font-size:14px; line-height:1.8; }
 
 /* CHOICES */
 
@@ -621,6 +635,10 @@ display:none
 
 .quick-grid{
 grid-template-columns:1fr 1fr
+}
+
+.result-grid{
+grid-template-columns:1fr
 }
 
 .choice-grid{
@@ -909,6 +927,56 @@ data-i18n="contact">
 
 </div>
 </div>
+</section>
+
+<!-- AI GENERATOR (القسم الجديد) -->
+<section class="ai-generator" id="ai-generator">
+  <div class="wrap">
+    <div class="section-title">
+      <small data-i18n="aiSmall">الذكاء الاصطناعي</small>
+      <h2 data-i18n="aiTitle">جرب تصميم الذكاء الاصطناعي</h2>
+      <p data-i18n="aiText">حط تصويرة ديال البلاصة، حدد الميزانية، وشوف الديكور الجديد فالبلاصة.</p>
+    </div>
+
+    <form id="aiDesignForm" class="ai-form">
+      
+      <div class="form-group">
+        <label data-i18n="aiLabelImage">صورة المكان:</label>
+        <input type="file" id="roomImage" accept="image/*" required>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="aiLabelBudget">الميزانية التقريبية (بالدرهم):</label>
+        <input type="number" id="roomBudget" placeholder="15000" required>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="aiLabelStyle">الستيل المطلوب:</label>
+        <select id="roomStyle" required>
+          <option value="modern_kitchen" data-i18n="aiOptKitchen">كوزينة (رخام كحل، خشب، بلاكار كاسكيط طالع للسقف)</option>
+          <option value="tv_wall" data-i18n="aiOptTv">ديكور تلفزة (تقسيم خشب ونيش مضيء)</option>
+          <option value="moroccan_salon" data-i18n="aiOptSalon">صالون مغربي تقليدي/عصري</option>
+          <option value="modern_bedroom" data-i18n="aiOptBed">غرفة نوم عصرية</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 10px;" id="aiSubmitBtn" data-i18n="aiSubmit">
+        صاوب ليا الديكور
+      </button>
+
+    </form>
+
+    <div id="aiResult" class="ai-result-box" style="display: none;">
+      <h3 style="margin-bottom: 15px;" data-i18n="aiResultTitle">النتيجة المقترحة:</h3>
+      <div class="result-grid">
+        <img id="generatedImage" src="" alt="التصميم الجديد" style="width:100%; border-radius:8px;">
+        <div id="aiCostReport" class="cost-report">
+          <!-- التقرير غادي يبان هنا -->
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- CHOICES -->
@@ -1458,7 +1526,7 @@ startSlider();
 
 
 /* ================================
-   LANGUAGES
+   LANGUAGES & AI TRANSLATION
 ================================ */
 
 const T={
@@ -1482,77 +1550,72 @@ contact:"تواصل معنا",
 
 q1:"اختار",
 q1s:"القسم",
-
 q2:"صورة",
 q2s:"ديال المكان",
-
 q3:"قياسات",
 q3s:"العرض والطول والعلو",
-
 q4:"إرسال",
 q4s:"الطلب",
 
+/* ترجمات الذكاء الاصطناعي - دارجة */
+aiSmall: "الذكاء الاصطناعي",
+aiTitle: "جرب تصميم الذكاء الاصطناعي",
+aiText: "حط تصويرة ديال البلاصة، حدد الميزانية، وشوف الديكور الجديد فالبلاصة.",
+aiLabelImage: "صورة المكان:",
+aiLabelBudget: "الميزانية التقريبية (بالدرهم):",
+aiLabelStyle: "الستيل المطلوب:",
+aiOptKitchen: "كوزينة (رخام كحل، خشب، بلاكار كاسكيط طالع للسقف)",
+aiOptTv: "ديكور تلفزة (تقسيم خشب ونيش مضيء)",
+aiOptSalon: "صالون مغربي تقليدي/عصري",
+aiOptBed: "غرفة نوم عصرية",
+aiSubmit: "صاوب ليا الديكور",
+aiResultTitle: "النتيجة المقترحة:",
+
 chooseSmall:"صمم ديكورك",
-
 chooseTitle:"شنو بغيتي تصمم؟",
-
 chooseText:
 "اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
 
 kitchen:"المطبخ",
 kitchenSub:"L • U • I • Îlot",
-
 bedroom:"غرفة النوم",
 bedroomSub:"سرير • خزانات • تسريحة",
-
 salon:"الصالون",
 salonSub:"جلسة • حائط • ديكور",
-
 dressingSub:
 "Placard • بيبان • rangement",
-
 tvSub:
 "TV • niches • étagères",
 
 specialSmall:
 "SERVICES SPÉCIAUX",
-
 specialTitle:
 "خدمات مستقلة",
-
 specialText:
 "أقسام عندها اختصاصها الخاص.",
 
 tapisTitle:
 "الطابيسري والستور",
-
 tapisText:
 "ستور، سدادر، ستائر وتابيسري حسب الطلب.",
-
 accessTitle:
 "الإكسسوارات و Electroménager",
-
 accessText:
 "بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.",
 
 discover:"شوف القسم",
-
 shop:"شوف المنتجات",
 
 worksTitle:"أعمالنا",
-
 worksText:
 "شوف المشاريع الحقيقية اللي خدمناها.",
-
 seeWorks:
 "شوف أعمالنا",
 
 partnersTitle:
 "شركاؤنا",
-
 partnersText:
 "شركاء وماركات كنخدمو معاهم.",
-
 rights:
 "جميع الحقوق محفوظة — Hamza Chtaibi"
 
@@ -1561,9 +1624,7 @@ rights:
 fr:{
 
 design:"Créer mon projet",
-
 works:"Nos réalisations",
-
 special:"Services spécialisés",
 
 kicker:
@@ -1571,104 +1632,92 @@ kicker:
 
 hero1:
 "Votre projet",
-
 hero2:
 "Notre savoir-faire",
-
 heroText:
 "Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
-
 start:"Commencer",
-
 contact:"Nous contacter",
 
 q1:"Choisir",
 q1s:"la catégorie",
-
 q2:"Photo",
 q2s:"de l'espace",
-
 q3:"Dimensions",
 q3s:"largeur • longueur • hauteur",
-
 q4:"Envoyer",
 q4s:"la demande",
 
+/* ترجمات الذكاء الاصطناعي - فرنسية */
+aiSmall: "INTELLIGENCE ARTIFICIELLE",
+aiTitle: "Essayez le design par l'IA",
+aiText: "Téléchargez une photo, définissez le budget et visualisez le nouveau décor instantanément.",
+aiLabelImage: "Photo de l'espace :",
+aiLabelBudget: "Budget estimé (en MAD) :",
+aiLabelStyle: "Style souhaité :",
+aiOptKitchen: "Cuisine (marbre noir, bois, placard jusqu'au plafond)",
+aiOptTv: "Meuble TV (séparation en bois, niche lumineuse)",
+aiOptSalon: "Salon marocain traditionnel/moderne",
+aiOptBed: "Chambre à coucher moderne",
+aiSubmit: "Générer le design",
+aiResultTitle: "Résultat suggéré :",
+
 chooseSmall:
 "VOTRE PROJET",
-
 chooseTitle:
 "Que souhaitez-vous réaliser ?",
-
 chooseText:
 "Choisissez une catégorie pour passer directement à l'étape suivante.",
 
 kitchen:
 "Cuisine",
-
 kitchenSub:
 "L • U • I • Îlot",
-
 bedroom:
 "Chambre",
-
 bedroomSub:
 "Lit • placards • coiffeuse",
-
 salon:
 "Salon",
-
 salonSub:
 "Séjour • mur • décoration",
-
 dressingSub:
 "Placard • portes • rangement",
-
 tvSub:
 "TV • niches • étagères",
 
 specialSmall:
 "SERVICES SPÉCIALISÉS",
-
 specialTitle:
 "Services indépendants",
-
 specialText:
 "Des services avec leurs propres spécialistes.",
 
 tapisTitle:
 "Tapisserie & Rideaux",
-
 tapisText:
 "Rideaux, coussins, tissus et tapisserie sur mesure.",
-
 accessTitle:
 "Accessoires & Electroménager",
-
 accessText:
 "Vente d'accessoires et d'appareils électroménagers.",
 
 discover:
 "Découvrir",
-
 shop:
 "Voir les produits",
 
 worksTitle:
 "Nos réalisations",
-
 worksText:
 "Découvrez nos vrais projets réalisés.",
-
 seeWorks:
 "Voir nos réalisations",
 
 partnersTitle:
 "Nos partenaires",
-
 partnersText:
 "Les marques et partenaires avec lesquels nous travaillons.",
-
 rights:
 "Tous droits réservés — Hamza Chtaibi"
 
@@ -1693,9 +1742,7 @@ document.querySelectorAll("[data-i18n]")
 const key=el.dataset.i18n;
 
 if(T[lang][key]){
-
 el.textContent=T[lang][key];
-
 }
 
 });
@@ -1720,6 +1767,75 @@ lang==="fr"
 setLang(
 localStorage.getItem("siteLang")||"ar"
 );
+
+
+/* ================================
+   AI DESIGN GENERATOR LOGIC
+================================ */
+const aiForm = document.getElementById('aiDesignForm');
+const aiResult = document.getElementById('aiResult');
+const generatedImage = document.getElementById('generatedImage');
+const aiCostReport = document.getElementById('aiCostReport');
+const aiSubmitBtn = document.getElementById('aiSubmitBtn');
+
+if(aiForm) {
+  aiForm.addEventListener('submit', async function(e) {
+    e.preventDefault(); 
+    
+    const currentLang = document.documentElement.lang;
+    const originalText = aiSubmitBtn.innerText;
+    
+    // تبديل النص ديال الزر فاش يبدا التحميل
+    aiSubmitBtn.innerText = currentLang === 'fr' ? "Génération en cours..." : "جاري التصميم... تسنى شوية";
+    aiSubmitBtn.disabled = true;
+
+    const budget = document.getElementById('roomBudget').value;
+
+    try {
+      // محاكاة (Simulation) للوقت لي غياخدو Gemini باش يجاوب
+      setTimeout(() => {
+        aiResult.style.display = 'block';
+        generatedImage.src = 'images/kitchen.jpg'; // حط تصويرة تجريبية هنا
+        
+        // التقرير المالي باللغة المناسبة
+        if(currentLang === 'fr') {
+            aiCostReport.innerHTML = `
+              <h4 style="color: #cfd2d4; margin-bottom:10px;">Répartition pour ${budget} MAD:</h4>
+              <ul>
+                <li>Bois (MDF/Mélaminé): 40%</li>
+                <li>Marbre (Noir/Galaxy): 30%</li>
+                <li>Accessoires (Blum/Hettich): 15%</li>
+                <li>Main d'œuvre: 15%</li>
+              </ul>
+              <p style="margin-top:15px; color:#a1a8a4; font-size:12px;">Note: Cette estimation est générée par l'IA Gemini.</p>
+            `;
+        } else {
+            aiCostReport.innerHTML = `
+              <h4 style="color: #cfd2d4; margin-bottom:10px;">تقسيم ميزانية ${budget} درهم:</h4>
+              <ul>
+                <li>الخشب (MDF/Mélaminé): 40%</li>
+                <li>الرخام (الأسود/Galaxy): 30%</li>
+                <li>الإكسسوارات (Blum/Hettich): 15%</li>
+                <li>اليد العاملة: 15%</li>
+              </ul>
+              <p style="margin-top:15px; color:#a1a8a4; font-size:12px;">ملاحظة: هذا التقدير مبني على الذكاء الاصطناعي Gemini.</p>
+            `;
+        }
+        
+        aiSubmitBtn.innerText = originalText;
+        aiSubmitBtn.disabled = false;
+        
+        // يهبط الشاشة باش يشوف النتيجة
+        aiResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 2500);
+
+    } catch (error) {
+      alert(currentLang === 'fr' ? "Erreur de connexion, veuillez réessayer." : "وقع شي مشكل فالاتصال، عاود جرب.");
+      aiSubmitBtn.innerText = originalText;
+      aiSubmitBtn.disabled = false;
+    }
+  });
+}
 
 </script>
 

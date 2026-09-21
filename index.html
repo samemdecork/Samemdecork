@@ -361,6 +361,9 @@ section{padding:85px 0}
 .form-group label { display:block; font-weight:bold; margin-bottom:8px; color:#17211c; }
 .form-group input, .form-group select { width:100%; padding:12px; border:1px solid #cfd2d4; border-radius:6px; font-family:inherit; font-size:15px; outline:none; transition:0.3s;}
 .form-group input:focus, .form-group select:focus { border-color:#17211c;}
+.ai-result-box { max-width:900px; margin:0 auto; padding:25px; background:#17211c; color:#fff; border-radius:8px; text-align: right; }
+.result-grid { display:grid; grid-template-columns:1fr; gap:20px; }
+.gemini-analysis { background:#27332d; padding:25px; border-radius:6px; font-size:15px; line-height:1.9; color: #e4e7e5; white-space: pre-wrap;}
 
 /* CHOICES */
 
@@ -508,13 +511,13 @@ footer strong{color:#cfd2d4}
 </div>
 </section>
 
-<!-- AI / WHATSAPP CONSULTATION -->
+<!-- AI GENERATOR -->
 <section class="ai-generator" id="ai-generator">
   <div class="wrap">
     <div class="section-title">
-      <small data-i18n="aiSmall">استشارة الديكور</small>
-      <h2 data-i18n="aiTitle">تواصل مع مهندس الديكور عبر الواتساب</h2>
-      <p data-i18n="aiText">اختر الستايل المطلوب واضغط للإرسال مباشرة عبر الواتساب مع إرفاق صورة المكان.</p>
+      <small data-i18n="aiSmall">الذكاء الاصطناعي</small>
+      <h2 data-i18n="aiTitle">استشر مهندس الذكاء الاصطناعي</h2>
+      <p data-i18n="aiText">حط تصويرة ديال البلاصة واختار الستيل باش تاخد أفكار وتصور واقعي للتجديد.</p>
     </div>
     <form id="aiDesignForm" class="ai-form">
       <div class="form-group">
@@ -531,9 +534,15 @@ footer strong{color:#cfd2d4}
         </select>
       </div>
       <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 10px;" id="aiSubmitBtn" data-i18n="aiSubmit">
-        إرسال الطلب عبر الواتساب
+        حلل واقترح الديكور (بواسطة Gemini)
       </button>
     </form>
+    <div id="aiResult" class="ai-result-box" style="display: none;">
+      <h3 style="margin-bottom: 20px; color: #cfd2d4;" data-i18n="aiResultTitle">تحليل وتصور التصميم:</h3>
+      <div class="result-grid">
+        <div id="geminiTextResponse" class="gemini-analysis"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -678,10 +687,11 @@ const T = {
     hero1: "دار عليك", hero2: "وديكور علينا", heroText: "اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
     start: "ابدأ التصميم", contact: "تواصل معنا", q1: "اختار", q1s: "القسم", q2: "صورة", q2s: "ديال المكان",
     q3: "قياسات", q3s: "العرض والطول والعلو", q4: "إرسال", q4s: "الطلب",
-    aiSmall: "استشارة الديكور", aiTitle: "تواصل مع مهندس الديكور عبر الواتساب", aiText: "اختر الستايل المطلوب واضغط للإرسال مباشرة عبر الواتساب مع إرفاق صورة المكان.",
+    aiSmall: "الذكاء الاصطناعي", aiTitle: "استشر مهندس الذكاء الاصطناعي", aiText: "حط تصويرة ديال البلاصة واختار الستيل باش تاخد أفكار وتصور واقعي للتجديد.",
     aiLabelImage: "صورة المكان (JPG أو PNG):", aiLabelStyle: "الستيل المطلوب:",
     aiOptKitchen: "كوزينة (رخام كحل، خشب، بلاكار كاسكيط)", aiOptTv: "ديكور تلفزة (تقسيم خشب ونيش مضيء)",
-    aiOptSalon: "صالون مغربي تقليدي/عصري", aiOptBed: "غرفة نوم عصرية", aiSubmit: "إرسال الطلب عبر الواتساب",
+    aiOptSalon: "صالون مغربي تقليدي/عصري", aiOptBed: "غرفة نوم عصرية", aiSubmit: "حلل واقترح الديكور (بواسطة Gemini)",
+    aiResultTitle: "تحليل وتصور التصميم:",
     chooseSmall: "صمم ديكورك", chooseTitle: "شنو بغيتي تصمم؟", chooseText: "اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
     kitchen: "المطبخ", kitchenSub: "L • U • I • Îlot", bedroom: "غرفة النوم", bedroomSub: "سرير • خزانات • تسريحة",
     salon: "الصالون", salonSub: "جلسة • حائط • ديكور", dressingSub: "Placard • بيبان • rangement", tvSub: "TV • niches • étagères",
@@ -696,10 +706,11 @@ const T = {
     hero1: "Votre projet", hero2: "Notre savoir-faire", heroText: "Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
     start: "Commencer", contact: "Nous contacter", q1: "Choisir", q1s: "la catégorie", q2: "Photo", q2s: "de l'espace",
     q3: "Dimensions", q3s: "largeur • longueur • hauteur", q4: "Envoyer", q4s: "la demande",
-    aiSmall: "CONSULTATION DÉCORATION", aiTitle: "Contactez l'architecte sur WhatsApp", aiText: "Choisissez votre style et envoyez votre demande directement sur WhatsApp avec la photo.",
+    aiSmall: "INTELLIGENCE ARTIFICIELLE", aiTitle: "Consultez l'IA Designer", aiText: "Téléchargez une photo et l'IA vous proposera les meilleurs matériaux et designs.",
     aiLabelImage: "Photo de l'espace :", aiLabelStyle: "Style souhaité :",
     aiOptKitchen: "Cuisine (marbre noir, bois, placard plafond)", aiOptTv: "Meuble TV (séparation bois, niche lumineuse)",
-    aiOptSalon: "Salon marocain traditionnel/moderne", aiOptBed: "Chambre à coucher moderne", aiSubmit: "Envoyer la demande sur WhatsApp",
+    aiOptSalon: "Salon marocain traditionnel/moderne", aiOptBed: "Chambre à coucher moderne", aiSubmit: "Analyser le design (via Gemini)",
+    aiResultTitle: "Analyse et proposition :",
     chooseSmall: "VOTRE PROJET", chooseTitle: "Que souhaitez-vous réaliser ?", chooseText: "Choisissez une catégorie pour passer directement à l'étape suivante.",
     kitchen: "Cuisine", kitchenSub: "L • U • I • Îlot", bedroom: "Chambre", bedroomSub: "Lit • placards • coiffeuse",
     salon: "Salon", salonSub: "Séjour • mur • décoration", dressingSub: "Placard • portes • rangement", tvSub: "TV • niches • étagères",
@@ -732,25 +743,81 @@ setLang(localStorage.getItem("siteLang") || "ar");
 
 
 /* ================================
-   4. WHATSAPP REDIRECT INTEGRATION
+   4. REAL GEMINI API INTEGRATION
 ================================ */
 const aiForm = document.getElementById('aiDesignForm');
+const aiResult = document.getElementById('aiResult');
+const geminiTextResponse = document.getElementById('geminiTextResponse');
+const aiSubmitBtn = document.getElementById('aiSubmitBtn');
+
+const GEMINI_API_KEY = "AQ.Ab8RN6JpP-PrX1P3tM1sno8M8_m8LC9M_icsomdBRuvdY91D7A"; 
 
 if(aiForm) {
-  aiForm.addEventListener('submit', function(e) {
+  aiForm.addEventListener('submit', async function(e) {
     e.preventDefault(); 
     
     const currentLang = document.documentElement.lang;
-    const styleSelect = document.getElementById('roomStyle');
-    const styleText = styleSelect.options[styleSelect.selectedIndex].text;
+    const originalText = aiSubmitBtn.innerText;
     
-    const message = currentLang === 'fr'
-      ? `Bonjour, je souhaite réaliser ce style de décoration : ${styleText}. Voici ma photo ci-joint.`
-      : `سلام، بغيت نصمم هاد الستايل فديكوري: ${styleText}. راني صيفط ليك التصويرة فالتشات.`;
+    aiSubmitBtn.innerText = currentLang === 'fr' ? "Analyse en cours..." : "جاري تحليل المكان... تسنى شوية";
+    aiSubmitBtn.disabled = true;
+    aiResult.style.display = 'none';
 
-    const whatsappUrl = `https://wa.me/212754350706?text=${encodeURIComponent(message)}`;
-    
-    window.open(whatsappUrl, '_blank');
+    const imageFile = document.getElementById('roomImage').files[0];
+    const styleRequested = document.getElementById('roomStyle').value;
+
+    const reader = new FileReader();
+    reader.onloadend = async function() {
+      const base64Data = reader.result.split(',')[1]; 
+      const mimeType = imageFile.type;
+
+      const promptText = currentLang === 'fr' 
+        ? `Agis comme un architecte d'intérieur expert au Maroc. Analyse cette image. Le client souhaite un style: ${styleRequested}. Décris de manière réaliste et professionnelle les modifications à apporter (sans mentionner les prix). Utilise des tirets pour les matériaux recommandés.`
+        : `أنت مهندس ديكور داخلي محترف في المغرب. قم بتحليل صورة الغرفة المرفقة. العميل يريد تجديد هذا المكان بستايل: ${styleRequested}. أعطني وصفاً دقيقاً وواقعياً للتغييرات المقترحة بالدارجة المغربية أو لغة بسيطة ومفهومة، واذكر المواد التي يجب استخدامها (بدون ذكر الأسعار نهائياً).`;
+
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GEMINI_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "gemini-1.5-flash",
+            messages: [
+              {
+                role: "user",
+                content: [
+                  { type: "text", text: promptText },
+                  { type: "image_url", image_url: { url: `data:${mimeType};base64,${base64Data}` } }
+                ]
+              }
+            ],
+            temperature: 0.7
+          })
+        });
+
+        const data = await response.json();
+
+        if(data.error) {
+            alert("وقع مشكل فـ API: " + (data.error.message || JSON.stringify(data.error)));
+        } else {
+            const aiText = data.choices[0].message.content;
+            geminiTextResponse.innerText = aiText;
+            aiResult.style.display = 'block';
+            aiResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (error) {
+        alert(currentLang === 'fr' ? "Erreur de connexion à Gemini." : "وقع شي مشكل فالاتصال بـ Gemini.");
+      } finally {
+        aiSubmitBtn.innerText = originalText;
+        aiSubmitBtn.disabled = false;
+      }
+    };
+
+    if (imageFile) {
+        reader.readAsDataURL(imageFile);
+    }
   });
 }
 </script>

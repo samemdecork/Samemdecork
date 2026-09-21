@@ -362,6 +362,33 @@ section{padding:85px 0}
 .form-group input, .form-group select { width:100%; padding:12px; border:1px solid #cfd2d4; border-radius:6px; font-family:inherit; font-size:15px; outline:none; transition:0.3s;}
 .form-group input:focus, .form-group select:focus { border-color:#17211c;}
 
+/* VOICE RECORD BUTTON */
+.voice-btn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.25s;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.voice-btn.recording {
+  background: #ff3b30;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
 /* CHOICES */
 
 .choices{background:#17211c;color:#fff}
@@ -508,13 +535,13 @@ footer strong{color:#cfd2d4}
 </div>
 </section>
 
-<!-- AI CONSULTATION -->
+<!-- VOICE & WHATSAPP CONSULTATION -->
 <section class="ai-generator" id="ai-generator">
   <div class="wrap">
     <div class="section-title">
-      <small data-i18n="aiSmall">استشارة الديكور الذكية</small>
-      <h2 data-i18n="aiTitle">إرسال طلب التصميم عبر الواتساب</h2>
-      <p data-i18n="aiText">اختر الستايل وأرفق صورة المكان ليتم إرسال طلبك مباشرة للمهندس.</p>
+      <small data-i18n="aiSmall">الطلب الصوتي الذكي</small>
+      <h2 data-i18n="aiTitle">سجل رسالتك الصوتية أو راسلنا</h2>
+      <p data-i18n="aiText">اختر الستايل وأرفق صورة المكان، ثم سجل طلبك الصوتي للإرسال الفوري عبر الواتساب.</p>
     </div>
     <form id="aiDesignForm" class="ai-form">
       <div class="form-group">
@@ -530,8 +557,15 @@ footer strong{color:#cfd2d4}
           <option value="غرفة نوم عصرية بألوان هادئة وخزانات مدمجة" data-i18n="aiOptBed">غرفة نوم عصرية</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-dark" style="width: 100%; margin-top: 10px;" id="aiSubmitBtn" data-i18n="aiSubmit">
-        إرسال الطلب للمهندس (عبر الواتساب)
+      
+      <!-- Voice Record Button -->
+      <button type="button" id="voiceBtn" class="voice-btn">
+        🎤 <span data-i18n="voiceRecord">اضغط لتسجيل طلب صوتي</span>
+      </button>
+      <p id="voiceStatus" style="font-size: 13px; color: #68716c; text-align: center; margin-bottom: 15px; display: none;"></p>
+
+      <button type="submit" class="btn btn-dark" style="width: 100%;" id="aiSubmitBtn" data-i18n="aiSubmit">
+        إرسال الطلب والصورة عبر الواتساب
       </button>
     </form>
   </div>
@@ -678,10 +712,11 @@ const T = {
     hero1: "دار عليك", hero2: "وديكور علينا", heroText: "اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.",
     start: "ابدأ التصميم", contact: "تواصل معنا", q1: "اختار", q1s: "القسم", q2: "صورة", q2s: "ديال المكان",
     q3: "قياسات", q3s: "العرض والطول والعلو", q4: "إرسال", q4s: "الطلب",
-    aiSmall: "استشارة الديكور الذكية", aiTitle: "إرسال طلب التصميم عبر الواتساب", aiText: "اختر الستايل وأرفق صورة المكان ليتم إرسال طلبك مباشرة للمهندس.",
+    aiSmall: "الطلب الصوتي الذكي", aiTitle: "سجل رسالتك الصوتية أو راسلنا", aiText: "اختر الستايل وأرفق صورة المكان، ثم سجل طلبك الصوتي للإرسال الفوري عبر الواتساب.",
     aiLabelImage: "صورة المكان (JPG أو PNG):", aiLabelStyle: "الستيل المطلوب:",
     aiOptKitchen: "كوزينة (رخام كحل، خشب، بلاكار كاسكيط)", aiOptTv: "ديكور تلفزة (تقسيم خشب ونيش مضيء)",
-    aiOptSalon: "صالون مغربي تقليدي/عصري", aiOptBed: "غرفة نوم عصرية", aiSubmit: "إرسال الطلب للمهندس (عبر الواتساب)",
+    aiOptSalon: "صالون مغربي تقليدي/عصري", aiOptBed: "غرفة نوم عصرية", voiceRecord: "اضغط لتسجيل طلب صوتي",
+    aiSubmit: "إرسال الطلب والصورة عبر الواتساب",
     chooseSmall: "صمم ديكورك", chooseTitle: "شنو بغيتي تصمم؟", chooseText: "اختار القسم وغادي تنتاقل مباشرة للمرحلة الموالية.",
     kitchen: "المطبخ", kitchenSub: "L • U • I • Îlot", bedroom: "غرفة النوم", bedroomSub: "سرير • خزانات • تسريحة",
     salon: "الصالون", salonSub: "جلسة • حائط • ديكور", dressingSub: "Placard • بيبان • rangement", tvSub: "TV • niches • étagères",
@@ -694,12 +729,13 @@ const T = {
   fr: {
     design: "Créer mon projet", works: "Nos réalisations", special: "Services spécialisés", kicker: "DESIGN • DÉCORATION • RÉALISATION",
     hero1: "Votre projet", hero2: "Notre savoir-faire", heroText: "Choisissez votre projet, envoyez une photo et les dimensions, et nous vous proposons une solution adaptée.",
-    start: "Commencer", contact: "Nous contacter", q1: "Choisir", q1s: "la catégorie", q2: "Photo", q2s: "de l'espace",
+    start: "Commencer", contact: "Nos contacter", q1: "Choisir", q1s: "la catégorie", q2: "Photo", q2s: "de l'espace",
     q3: "Dimensions", q3s: "largeur • longueur • hauteur", q4: "Envoyer", q4s: "la demande",
-    aiSmall: "CONSULTATION DÉCORATION", aiTitle: "Envoyer votre demande sur WhatsApp", aiText: "Choisissez votre style et envoyez votre demande directement avec la photo.",
+    aiSmall: "COMMANDE VOCALE", aiTitle: "Enregistrez votre message vocal", aiText: "Choisissez votre style, ajoutez la photo et enregistrez votre demande vocale sur WhatsApp.",
     aiLabelImage: "Photo de l'espace :", aiLabelStyle: "Style souhaité :",
     aiOptKitchen: "Cuisine (marbre noir, bois, placard plafond)", aiOptTv: "Meuble TV (séparation bois, niche lumineuse)",
-    aiOptSalon: "Salon marocain traditionnel/moderne", aiOptBed: "Chambre à coucher moderne", aiSubmit: "Envoyer la demande sur WhatsApp",
+    aiOptSalon: "Salon marocain traditionnel/moderne", aiOptBed: "Chambre à coucher moderne", voiceRecord: "Appuyer pour enregistrer un message vocal",
+    aiSubmit: "Envoyer la demande sur WhatsApp",
     chooseSmall: "VOTRE PROJET", chooseTitle: "Que souhaitez-vous réaliser ?", chooseText: "Choisissez une catégorie pour passer directement à l'étape suivante.",
     kitchen: "Cuisine", kitchenSub: "L • U • I • Îlot", bedroom: "Chambre", bedroomSub: "Lit • placards • coiffeuse",
     salon: "Salon", salonSub: "Séjour • mur • décoration", dressingSub: "Placard • portes • rangement", tvSub: "TV • niches • étagères",
@@ -732,9 +768,57 @@ setLang(localStorage.getItem("siteLang") || "ar");
 
 
 /* ================================
-   4. WHATSAPP SUBMISSION INTEGRATION
+   4. VOICE RECORDING & WHATSAPP
 ================================ */
+let recordedVoiceText = "";
+const voiceBtn = document.getElementById('voiceBtn');
+const voiceStatus = document.getElementById('voiceStatus');
 const aiForm = document.getElementById('aiDesignForm');
+
+if (voiceBtn) {
+  voiceBtn.addEventListener('click', function() {
+    const currentLang = document.documentElement.lang;
+    
+    // التحقق من دعم المتصفح لتسجيل الصوت والتعرف على الكلام
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+    if (!SpeechRecognition) {
+      alert(currentLang === 'fr' ? "Votre navigateur ne supporte pas l'enregistrement vocal." : "المتصفح ديالك ما كيدعمش التسجيل الصوتي المباشر، عافاك كتب طلبك أو راسلنا مباشرة.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = currentLang === 'fr' ? 'fr-FR' : 'ar-MA';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    voiceBtn.classList.add('recording');
+    voiceBtn.innerHTML = currentLang === 'fr' ? "🔴 Enregistrement en cours..." : "🔴 جاري التسجيل... هضر دابا";
+    voiceStatus.style.display = 'block';
+    voiceStatus.textContent = currentLang === 'fr' ? "Parlez maintenant..." : "كنسمع ليك، شرح طلبك دابا...";
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+      const speechResult = event.results[0][0].transcript;
+      recordedVoiceText = speechResult;
+      voiceBtn.classList.remove('recording');
+      voiceBtn.innerHTML = currentLang === 'fr' ? "🎙️ Enregistré avec succès" : "✅ تم تسجيل الصوت بنجاح";
+      voiceStatus.textContent = (currentLang === 'fr' ? "Message : " : "التسجيل: ") + `"${speechResult}"`;
+    };
+
+    recognition.onerror = function() {
+      voiceBtn.classList.remove('recording');
+      voiceBtn.innerHTML = currentLang === 'fr' ? "🎙️ Réessayer" : "🎤 اضغط لتسجيل طلب صوتي";
+      voiceStatus.textContent = currentLang === 'fr' ? "Erreur d'enregistrement." : "وقع خطأ فالتسجيل، عاود حاول.";
+    };
+
+    recognition.onspeechend = function() {
+      recognition.stop();
+      voiceBtn.classList.remove('recording');
+    };
+  });
+}
 
 if(aiForm) {
   aiForm.addEventListener('submit', function(e) {
@@ -744,9 +828,15 @@ if(aiForm) {
     const styleSelect = document.getElementById('roomStyle');
     const styleText = styleSelect.options[styleSelect.selectedIndex].text;
     
-    const message = currentLang === 'fr'
-      ? `Bonjour Hamza, je souhaite réaliser ce style de décoration : ${styleText}. Voici ma photo ci-joint.`
-      : `سلام حمزة، بغيت نصمم هاد الستايل فديكوري: ${styleText}. راني صيفط ليك التصويرة فالتشات.`;
+    let message = currentLang === 'fr'
+      ? `Bonjour Hamza, je souhaite réaliser ce style : ${styleText}.`
+      : `سلام حمزة، بغيت نصمم هاد الستايل: ${styleText}.`;
+
+    if (recordedVoiceText) {
+      message += (currentLang === 'fr' ? `\n\nMon message vocal : "${recordedVoiceText}"` : `\n\nتفاصيل الصوتية من الزبون: "${recordedVoiceText}"`);
+    }
+    
+    message += (currentLang === 'fr' ? `\nVoici ma photo ci-joint.` : `\nراني صيفط ليك التصويرة فالتشات.`);
 
     const whatsappUrl = `https://wa.me/212754350706?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

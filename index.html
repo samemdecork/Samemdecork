@@ -751,17 +751,12 @@ const aiResult = document.getElementById('aiResult');
 const geminiTextResponse = document.getElementById('geminiTextResponse');
 const aiSubmitBtn = document.getElementById('aiSubmitBtn');
 
-// ⚠️⚠️ حط الـ API KEY ديالك هنا ⚠️⚠️
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; 
+const GEMINI_API_KEY = "AQ.Ab8RN6JpP-PrX1P3tM1sno8M8_m8LC9M_icsomdBRuvdY91D7A"; 
 
 if(aiForm) {
   aiForm.addEventListener('submit', async function(e) {
     e.preventDefault(); 
     
-    const GEMINI_API_KEY = "AQ.Ab8RN6JpP-PrX1P3tM1sno8M8_m8LC9M_icsomdBRuvdY91D7A";
-
-    }
-
     const currentLang = document.documentElement.lang;
     const originalText = aiSubmitBtn.innerText;
     

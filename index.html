@@ -9,13 +9,38 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .hero-bg {
-            background-image: linear-gradient(to left, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.4)), url('https://images.unsplash.com/photo-1556910103-1c02745a872f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background: #f5f5f3; }
+        .glass-nav { background: rgba(12, 18, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        /* إعدادات فيديو البداية */
+        #introVideo { transition: opacity 0.7s ease, visibility 0.7s ease; }
+        #introVideo.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        /* ================================
+           سلايدر الصور الدوارة (Hero Slider)
+        ================================ */
+        .hero { position: relative; height: 100vh; min-height: 650px; overflow: hidden; display: flex; align-items: center; }
+        .hero-slides { position: absolute; inset: 0; z-index: 0; }
+        .hero-slide {
+            position: absolute; inset: 0; opacity: 0;
+            background-position: center; background-size: cover; background-repeat: no-repeat;
+            transform: scale(1.05); transition: opacity 1.2s ease, transform 6s ease;
         }
+        .hero-slide.active { opacity: 1; transform: scale(1); }
+        
+        /* مسارات الصور (بدلها بمسارات الصور ديالك إذا لزم الأمر) */
+        .hero-slide:nth-child(1) { background-image: url("images/kitchen.jpg"); }
+        .hero-slide:nth-child(2) { background-image: url("images/salon.jpg"); }
+        .hero-slide:nth-child(3) { background-image: url("images/tv.jpg"); }
+        .hero-slide:nth-child(4) { background-image: url("images/bedroom.jpg"); }
+        .hero-slide:nth-child(5) { background-image: url("images/dressing.jpg"); }
+
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(90deg, rgba(5,10,7,0.94), rgba(5,10,7,0.68), rgba(5,10,7,0.18));
+        }
+        
+        /* تأثيرات النبض للصوت */
         .recording-pulse { animation: pulse-red 1.5s infinite; }
         @keyframes pulse-red {
             0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
@@ -24,13 +49,9 @@
         }
         .hover-zoom img { transition: transform 0.5s ease; }
         .hover-zoom:hover img { transform: scale(1.05); }
-
-        /* إعدادات فيديو البداية */
-        #introVideo { transition: opacity 0.7s ease, visibility 0.7s ease; }
-        #introVideo.hide { opacity: 0; visibility: hidden; pointer-events: none; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
     <!-- ================================
          1. فيديو البداية (Intro Video)
@@ -47,115 +68,142 @@
     <!-- ================================
          2. الشريط العلوي (Header)
     ================================ -->
-    <header class="glass-nav fixed w-full top-0 z-50 border-b border-gray-200 shadow-sm">
+    <header class="glass-nav fixed w-full top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[#17211c] font-black text-xl">S</div>
                 <div>
-                    <h1 class="text-xl font-black text-gray-900 leading-none">صمم ديكورك</h1>
-                    <span class="text-xs font-bold text-gray-500">حمزة شطيبي | Samemdec</span>
+                    <h1 class="text-xl font-black text-white leading-none tracking-wide">صمم <span class="text-gray-400">ديكورك</span></h1>
+                    <span class="text-xs font-bold text-gray-400">حمزة شطيبي | Samemdec</span>
                 </div>
             </a>
             
-            <nav class="hidden md:flex gap-6 font-bold text-gray-600 text-sm">
-                <a href="#methods" class="hover:text-gray-900 transition">طرق التصميم</a>
-                <a href="#configurator" class="hover:text-gray-900 transition">مصمم 3D</a>
-                <a href="#works" class="hover:text-gray-900 transition">أعمالنا</a>
-                <a href="#special" class="hover:text-gray-900 transition">طابيسري وخدمات</a>
+            <nav class="hidden md:flex gap-8 font-bold text-gray-300 text-sm">
+                <a href="#methods" class="hover:text-white transition">طرق التصميم</a>
+                <a href="#configurator" class="hover:text-white transition">مصمم 3D</a>
+                <a href="#works" class="hover:text-white transition">أعمالنا</a>
+                <a href="#special" class="hover:text-white transition">طابيسري وخدمات</a>
             </nav>
 
-            <div class="flex items-center gap-2">
-                <div class="bg-gray-100 p-1 rounded-full flex gap-1 border border-gray-200">
-                    <button id="arBtn" class="px-3 py-1 rounded-full text-sm font-bold bg-white shadow-sm text-gray-900" onclick="setLang('ar')">عربية</button>
-                    <button id="frBtn" class="px-3 py-1 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900" onclick="setLang('fr')">FR</button>
-                </div>
+            <div class="flex items-center gap-2 bg-[#27332d] p-1 rounded-full">
+                <button id="arBtn" class="px-4 py-1.5 rounded-full text-sm font-bold bg-gray-300 text-[#17211c]" onclick="setLang('ar')">دارجة</button>
+                <button id="frBtn" class="px-4 py-1.5 rounded-full text-sm font-bold text-white hover:text-gray-300" onclick="setLang('fr')">FR</button>
             </div>
         </div>
     </header>
 
     <!-- ================================
-         3. الواجهة الرئيسية وطرق التصميم
+         3. الواجهة الرئيسية (سلايدر الصور)
     ================================ -->
-    <section id="methods" class="hero-bg min-h-[90vh] flex items-center pt-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="text-center max-w-3xl mx-auto text-white mb-12">
-                <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4" data-i18n="heroTitle">دار عليك.. وديكور علينا</h2>
-                <p class="text-lg md:text-xl text-gray-300 font-medium" data-i18n="heroText">
-                    وفرنا ليك جوج طرق باش تصمم دارك. اختار الطريقة اللي تناسب وقتك ومستوى التفاصيل اللي بغيتي.
+    <section class="hero pt-20">
+        <!-- الصور الدوارة -->
+        <div class="hero-slides">
+            <div class="hero-slide active"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+        
+        <!-- التظليل -->
+        <div class="hero-overlay"></div>
+        
+        <!-- المحتوى (فوق الصور) -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl text-white">
+                <div class="text-xs tracking-[3px] text-gray-300 font-bold mb-4 uppercase">تصميم • ديكور • تنفيذ</div>
+                <h2 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                    دار عليك<br><span class="text-gray-400">وديكور علينا</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed">
+                    اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
                 </p>
-            </div>
-
-            <!-- المقارنة بين الطريقة المختصرة والدقيقة -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                
-                <!-- الطريقة المختصرة -->
-                <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition group">
-                    <div class="w-14 h-14 bg-[#25D366] text-white rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">الطريقة المختصرة (سريعة)</h3>
-                    <p class="text-gray-300 mb-6 text-sm leading-relaxed">
-                        ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل (بحال كوزينة برخام كحل وكاسكيط للسقف)، وسجل لينا أوديو فيه العبارات والطلبات ديالك. حنا نتكلفو بالباقي.
-                    </p>
-                    <a href="#ai-request" class="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition w-full text-center">
-                        استعمل الطلب الصوتي
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#methods" class="bg-gray-200 text-[#17211c] px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white transition hover:-translate-y-1 transform duration-200">
+                        ابدأ التصميم دابا
+                    </a>
+                    <a href="https://wa.me/212754350706" target="_blank" class="bg-black/30 border border-white text-white px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white hover:text-black transition hover:-translate-y-1 transform duration-200">
+                        تواصل معنا
                     </a>
                 </div>
-
-                <!-- الطريقة الدقيقة -->
-                <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition group">
-                    <div class="w-14 h-14 bg-blue-500 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">الطريقة الدقيقة (3D)</h3>
-                    <p class="text-gray-300 mb-6 text-sm leading-relaxed">
-                        بغيتي تفصل على ذوقك؟ ادخل لمحرك 3D، حط عبارات الحيط ديالك بالمليمتر، وركب الصناديق، البيبان، والألوان بوحدك باش تشوف النتيجة والثمن فالبلاصة.
-                    </p>
-                    <a href="#configurator" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition w-full text-center border border-blue-500">
-                        ادخل للمصمم 3D
-                    </a>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- ================================
-         4. الطريقة المختصرة: الطلب الصوتي
+         4. التفرقة بين الطريقة المختصرة والدقيقة
     ================================ -->
-    <section id="ai-request" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="methods" class="py-16 bg-white border-b border-gray-200 shadow-sm relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-black text-gray-900 mb-2">الطلب الصوتي المباشر</h2>
-                <p class="text-gray-500">الطريقة السريعة: ستايل + صورة + أوديو</p>
+                <h2 class="text-3xl font-black text-gray-900">جوج طرق باش نصممو ليك</h2>
+                <p class="text-gray-500 mt-2">اختار الطريقة اللي تناسبك باش توجد دارك بكل احترافية</p>
             </div>
 
-            <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- الطريقة المختصرة -->
+                <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-[#25D366] text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الطريقة المختصرة (سريعة)</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل، وسجل لينا أوديو فيه العبارات ديالك. حنا نتكلفو بالباقي ونجاوبوك فالبلاصة.
+                    </p>
+                    <a href="#ai-request" class="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-800 transition w-full text-center">
+                        سجل طلب صوتي
+                    </a>
+                </div>
+
+                <!-- الطريقة الدقيقة -->
+                <div class="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition shadow-sm">
+                    <div class="w-16 h-16 bg-[#17211c] text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الطريقة الدقيقة (3D)</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        بغيتي تفصل على ذوقك؟ ادخل لمحرك 3D، حط العبارات، وركب الصناديق والبيبان والألوان بوحدك وشوف النتيجة بالمليمتر.
+                    </p>
+                    <a href="#configurator" class="inline-block bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-300 transition w-full text-center">
+                        ادخل للمصمم 3D
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         5. الطريقة المختصرة (الفورميلير والصوت)
+    ================================ -->
+    <section id="ai-request" class="py-20 bg-[#f5f5f3]">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <small class="text-gray-500 font-bold tracking-widest uppercase">الطلب الصوتي الذكي</small>
+                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2 mb-4">سجل رسالتك الصوتية</h2>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
                 <form id="aiDesignForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">صورة المكان (اختياري)</label>
-                            <input type="file" id="roomImage" accept="image/*" class="w-full bg-white border border-gray-300 rounded-lg p-2 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">نوع الديكور المطلوب</label>
-                            <select id="roomStyle" class="w-full border border-gray-300 rounded-lg p-3 text-sm bg-white outline-none">
-                                <option value="مطبخ (رخام كحل، كاسكيط للسقف، خشب طبيعي)">مطبخ (رخام كحل، كاسكيط للسقف، خشب)</option>
-                                <option value="حائط تلفاز (فاصل خشبي ونيش مضيء)">حائط تلفاز (فاصل خشبي ونيش مضيء)</option>
-                                <option value="صالون مغربي (أصالة ومعاصرة)">صالون مغربي (أصالة ومعاصرة)</option>
-                                <option value="استغلال مساحة تحت الدرج">استغلال مساحة تحت الدرج</option>
-                            </select>
-                        </div>
+                    <div class="form-group mb-4">
+                        <label class="block font-bold text-gray-900 mb-2">صورة المكان (JPG أو PNG):</label>
+                        <input type="file" id="roomImage" accept="image/*" class="w-full border border-gray-300 rounded p-3 text-sm">
+                    </div>
+                    <div class="form-group mb-6">
+                        <label class="block font-bold text-gray-900 mb-2">الستيل المطلوب:</label>
+                        <select id="roomStyle" class="w-full border border-gray-300 rounded p-3 text-sm bg-white outline-none">
+                            <option value="كوزينة (رخام كحل، خشب، بلاكار كاسكيط)">كوزينة (رخام كحل، خشب، بلاكار كاسكيط)</option>
+                            <option value="ديكور تلفزة (تقسيم خشب ونيش مضيء)">ديكور تلفزة (تقسيم خشب ونيش مضيء)</option>
+                            <option value="صالون مغربي تقليدي/عصري">صالون مغربي تقليدي/عصري</option>
+                            <option value="غرفة نوم عصرية">غرفة نوم عصرية</option>
+                        </select>
                     </div>
 
-                    <div class="text-center">
-                        <button type="button" id="voiceBtn" class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-3 hover:bg-[#20b858] transition shadow-md">
-                            🎤 <span id="voiceBtnText">سجل طلبك والعبارات بالدارجة</span>
-                        </button>
-                        <p id="voiceStatus" class="mt-4 text-sm font-bold text-gray-600 hidden"></p>
-                    </div>
+                    <button type="button" id="voiceBtn" class="w-full bg-[#25D366] text-white py-4 rounded-md font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#20b858] transition">
+                        🎤 <span id="voiceBtnText">اضغط لتسجيل طلب صوتي</span>
+                    </button>
+                    <p id="voiceStatus" class="text-center text-sm font-bold text-gray-600 hidden mt-2"></p>
 
-                    <button type="submit" class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-gray-800 transition">
+                    <button type="submit" class="w-full bg-[#17211c] text-white py-4 rounded-md font-bold text-lg hover:bg-black transition mt-4">
                         إرسال الطلب والصورة عبر الواتساب
                     </button>
                 </form>
@@ -164,49 +212,38 @@
     </section>
 
     <!-- ================================
-         5. الطريقة الدقيقة: مصمم 3D
+         6. الطريقة الدقيقة (مصمم 3D)
     ================================ -->
-    <section id="configurator" class="py-20 bg-gray-100 border-y border-gray-200">
+    <section id="configurator" class="py-20 bg-[#17211c] text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-gray-900">مصمم 3D الدقيق</h2>
-                <p class="text-gray-500 mt-2">اختار القسم وغادي تنتاقل مباشرة لبيئة التصميم.</p>
+                <small class="text-gray-400 font-bold tracking-widest uppercase">صمم ديكورك 3D</small>
+                <h2 class="text-3xl md:text-4xl font-black mt-2">شنو بغيتي تصمم؟</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- توجيه مباشر للمطبخ -->
-                <a href="configurateur.html?type=kitchen" class="group block hover-zoom rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-200 relative">
-                    <div class="h-56 bg-gray-200 relative">
-                        <img src="images/kitchen.jpg" onerror="this.src='https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                        <h3 class="text-xl font-bold text-white">المطبخ</h3>
-                        <p class="text-gray-300 text-xs mt-1">L • U • I • Îlot</p>
+                <a href="configurateur.html?type=kitchen" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+                    <img src="images/kitchen.jpg" onerror="this.src='https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="absolute bottom-5 left-5 right-5">
+                        <h3 class="text-2xl font-bold mb-1">المطبخ</h3>
+                        <p class="text-gray-400 text-sm">L • U • I • Îlot</p>
                     </div>
                 </a>
-                
-                <!-- توجيه مباشر لديكور التلفاز -->
-                <a href="configurateur.html?type=tv" class="group block hover-zoom rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-200 relative">
-                    <div class="h-56 bg-gray-200 relative">
-                        <img src="images/tv.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80'" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                        <h3 class="text-xl font-bold text-white">ديكور التلفاز (Meuble TV)</h3>
-                        <p class="text-gray-300 text-xs mt-1">فواصل • Niches مضيئة</p>
+                <a href="configurateur.html?type=tv" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+                    <img src="images/tv.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="absolute bottom-5 left-5 right-5">
+                        <h3 class="text-2xl font-bold mb-1">ديكور التلفاز</h3>
+                        <p class="text-gray-400 text-sm">TV • niches • étagères</p>
                     </div>
                 </a>
-
-                <!-- توجيه مباشر للصالون -->
-                <a href="configurateur.html?type=salon" class="group block hover-zoom rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-200 relative">
-                    <div class="h-56 bg-gray-200 relative">
-                        <img src="images/salon.jpg" onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80'" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 p-5">
-                        <h3 class="text-xl font-bold text-white">الصالون</h3>
-                        <p class="text-gray-300 text-xs mt-1">جلسة • حائط • ديكور</p>
+                <a href="configurateur.html?type=salon" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+                    <img src="images/salon.jpg" onerror="this.src='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="absolute bottom-5 left-5 right-5">
+                        <h3 class="text-2xl font-bold mb-1">الصالون</h3>
+                        <p class="text-gray-400 text-sm">جلسة • حائط • ديكور</p>
                     </div>
                 </a>
             </div>
@@ -214,48 +251,48 @@
     </section>
 
     <!-- ================================
-         6. قسم طابيسري وخدمات خاصة (Special)
+         7. طابيسري وخدمات خاصة (Special)
     ================================ -->
-    <section id="special" class="py-20 bg-white">
+    <section id="special" class="py-20 bg-[#e7e8e6]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <small class="text-blue-600 font-bold tracking-widest uppercase">Services Spéciaux</small>
+                <small class="text-gray-500 font-bold tracking-widest uppercase">Services Spéciaux</small>
                 <h2 class="text-3xl font-black text-gray-900 mt-2">خدمات مستقلة</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 flex flex-col justify-center items-center text-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-10 rounded-lg border border-gray-200">
                     <h3 class="text-2xl font-bold text-gray-900 mb-3">الطابيسري والستور</h3>
-                    <p class="text-gray-600 mb-6">ستور، سدادر، ستائر وتابيسري حسب الطلب لمختلف المساحات.</p>
-                    <a href="tapisserie.html" class="bg-gray-900 text-white px-6 py-2 rounded font-bold hover:bg-gray-800">اكتشف القسم</a>
+                    <p class="text-gray-600 mb-8">ستور، سدادر، ستائر وتابيسري حسب الطلب.</p>
+                    <a href="tapisserie.html" class="bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف القسم</a>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 flex flex-col justify-center items-center text-center">
+                <div class="bg-white p-10 rounded-lg border border-gray-200">
                     <h3 class="text-2xl font-bold text-gray-900 mb-3">الإكسسوارات و Electroménager</h3>
-                    <p class="text-gray-600 mb-6">بيع الإكسسوارات والتجهيزات الكهرومنزلية لتكملة مشاريعك.</p>
-                    <a href="accessoires.html" class="bg-gray-900 text-white px-6 py-2 rounded font-bold hover:bg-gray-800">شوف المنتجات</a>
+                    <p class="text-gray-600 mb-8">بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.</p>
+                    <a href="accessoires.html" class="bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف المنتجات</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================
-         7. أعمالنا (Works)
+         8. أعمالنا (Works)
     ================================ -->
-    <section id="works" class="py-20 bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="works" class="py-20 bg-white text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-12">
-                <small class="text-gray-400 font-bold tracking-widest uppercase">Real Projects</small>
-                <h2 class="text-3xl font-black mt-2">أعمالنا على أرض الواقع</h2>
+                <small class="text-gray-500 font-bold tracking-widest uppercase">Real Projects</small>
+                <h2 class="text-3xl font-black text-gray-900 mt-2">أعمالنا</h2>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                <div class="h-48 bg-gray-800 rounded-lg overflow-hidden"><img src="images/work-003.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-48 bg-gray-800 rounded-lg overflow-hidden"><img src="images/work-004.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-48 bg-gray-800 rounded-lg overflow-hidden"><img src="images/work-007.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-48 bg-gray-800 rounded-lg overflow-hidden"><img src="images/work-010.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="images/work-003.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="images/work-004.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="images/work-007.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="images/work-010.webp" onerror="this.style.display='none'" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
             </div>
             
-            <a href="works.html" class="inline-block border-2 border-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-gray-900 transition">
-                تصفح جميع أعمالنا
+            <a href="works.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">
+                شوف أعمالنا كاملة
             </a>
         </div>
     </section>
@@ -263,9 +300,9 @@
     <!-- ================================
          Footer & WhatsApp
     ================================ -->
-    <footer class="bg-black text-gray-400 py-8 text-center">
+    <footer class="bg-[#0e1511] text-gray-400 py-8 text-center">
         <strong class="text-white">صمم ديكورك</strong> © 2026<br>
-        جميع الحقوق محفوظة — حمزة اشطيبي | Samemdec
+        جميع الحقوق محفوظة — حمزة شطيبي
     </footer>
 
     <a href="https://wa.me/212754350706" target="_blank" class="fixed bottom-6 left-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center z-50 shadow-2xl hover:scale-110 transition">
@@ -273,10 +310,21 @@
     </a>
 
     <!-- ================================
-         Scripts (Video & Audio Logic)
+         Scripts (Slider, Video, Audio)
     ================================ -->
     <script>
-        // 1. منطق فيديو البداية (Intro Video)
+        // 1. منطق سلايدر الصور (Hero Slider)
+        const slides = document.querySelectorAll(".hero-slide");
+        let currentSlide = 0;
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove("active");
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add("active");
+            }, 5000);
+        }
+
+        // 2. منطق فيديو البداية
         const intro = document.getElementById("introVideo");
         const video = document.getElementById("introVideoPlayer");
         const skip = document.getElementById("skipIntro");
@@ -295,14 +343,13 @@
         if (video) {
             video.addEventListener("ended", closeIntro);
             window.addEventListener("load", () => {
-                video.currentTime = 0;
                 let promise = video.play();
                 if (promise !== undefined) promise.catch(() => closeIntro());
             });
         }
-        setTimeout(closeIntro, 8000); // إخفاء تلقائي بعد 8 ثواني كحد أقصى
+        setTimeout(closeIntro, 8000);
 
-        // 2. منطق التسجيل الصوتي
+        // 3. منطق التسجيل الصوتي والواتساب
         const voiceBtn = document.getElementById('voiceBtn');
         const voiceBtnText = document.getElementById('voiceBtnText');
         const voiceStatus = document.getElementById('voiceStatus');
@@ -313,7 +360,7 @@
             voiceBtn.addEventListener('click', function() {
                 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
                 if (!SpeechRecognition) {
-                    alert("المتصفح ديالك ما كيدعمش التسجيل الصوتي المباشر.");
+                    alert("المتصفح ديالك ما كيدعمش التسجيل الصوتي.");
                     return;
                 }
                 const recognition = new SpeechRecognition();
@@ -346,7 +393,6 @@
             });
         }
 
-        // 3. إرسال الطلب عبر الواتساب
         if(aiForm) {
             aiForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -357,7 +403,6 @@
                 if (recordedVoiceText) {
                     message += `\n\n📝 تفاصيل التسجيل الصوتي:\n"${recordedVoiceText}"`;
                 }
-                message += `\n(الصورة مرفقة إن وجدت)`;
                 
                 const whatsappUrl = `https://wa.me/212754350706?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');

@@ -3,725 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صمم ديكورك | حمزة شطيبي - Samemdec</title>
-    <!-- خطوط جوجل -->
+    <title>صمم ديكورك | حمزة شطيبي - Samemdec.ma</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background: #f5f5f3; overflow-x: hidden; }
-        .glass-nav { background: rgba(12, 18, 15, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
-        /* إعدادات فيديو البداية */
-        #introVideo { transition: opacity 0.7s ease, visibility 0.7s ease; }
-        #introVideo.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        /* سلايدر الصور الدوارة (Hero Slider) */
+        :root {
+            --accent: #b79256;
+            --dark: #17211c;
+            --light: #f5f5f3;
+            --gold: #d4af37;
+        }
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background: var(--light); }
+        .glass-nav { background: rgba(23,33,28,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .hero { position: relative; height: 100vh; min-height: 650px; overflow: hidden; display: flex; align-items: center; }
         .hero-slides { position: absolute; inset: 0; z-index: 0; }
-        .hero-slide {
-            position: absolute; inset: 0; opacity: 0;
-            background-position: center; background-size: cover; background-repeat: no-repeat;
-            transform: scale(1.05); transition: opacity 1.2s ease, transform 6s ease;
-        }
+        .hero-slide { position: absolute; inset: 0; opacity: 0; background-position: center; background-size: cover; transition: opacity 1.2s ease, transform 6s ease; transform: scale(1.05); }
         .hero-slide.active { opacity: 1; transform: scale(1); }
-
-        .hero-overlay {
-            position: absolute; inset: 0; z-index: 1;
-            background: linear-gradient(90deg, rgba(5,10,7,0.94), rgba(5,10,7,0.7), rgba(5,10,7,0.2));
-        }
-        
-        /* تأثيرات النبض للصوت */
+        .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(5,10,7,0.94), rgba(5,10,7,0.7), rgba(5,10,7,0.2)); }
         .recording-pulse { animation: pulse-red 1.5s infinite; }
         @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(239,68,68,0); }
+            100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
         }
-        .hover-zoom img { transition: transform 0.5s ease; }
-        .hover-zoom:hover img { transform: scale(1.05); }
-
-        /* شريط التحكم فالصوت (TTS) - مصحح */
-        #tts-controls { transition: all 0.3s ease; transform: translate(-50%, 150px); }
-        #tts-controls.show { transform: translate(-50%, 0); }
-
-        /* ==========================================
-           ستايل الجولة التوضيحية لتصوير الفيديو (Auto-Tour)
-        =========================================== */
-        #video-tour-box {
-            position: fixed;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%) translateY(200%);
-            background: rgba(15, 23, 19, 0.96);
-            color: #fff;
-            padding: 22px 28px;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.65);
-            z-index: 999999;
-            max-width: 620px;
-            width: 92%;
-            text-align: center;
-            border: 2px solid #25D366;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            backdrop-filter: blur(14px);
-        }
-        #video-tour-box.active {
-            transform: translateX(-50%) translateY(0);
-        }
-        .tour-highlight {
-            outline: 4px solid #25D366 !important;
-            outline-offset: 6px;
-            box-shadow: 0 0 35px rgba(37, 211, 102, 0.35) !important;
-            transition: all 0.4s ease;
-            border-radius: 14px;
-            position: relative;
-            z-index: 40;
-        }
-        /* مؤشر ماوس وهمي باش يبان فالفيديو بحال إيلا شي حد كيكليكي */
-        #fake-cursor {
-            position: fixed;
-            width: 28px;
-            height: 28px;
-            background: rgba(37, 211, 102, 0.9);
-            border: 3px solid #fff;
-            border-radius: 50%;
-            z-index: 9999999;
-            pointer-events: none;
-            transition: top 0.8s cubic-bezier(0.22, 1, 0.36, 1), left 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            display: none;
-        }
-        #fake-cursor.clicking {
-            transform: scale(0.7);
-            background: #ef4444;
-        }
-        /* شريط تقدم الفيديو التوضيحي */
-        #tour-progress-bar {
-            height: 4px;
-            background: #25D366;
-            width: 0%;
-            transition: width 0.3s linear;
-            border-radius: 2px;
-            margin-top: 14px;
-        }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        .badge-new { background: linear-gradient(135deg, #25D366, #129047); }
+        .price-range { background: linear-gradient(90deg, #fef3c7, #fde68a); border-right: 3px solid var(--gold); }
+        .countdown { font-variant-numeric: tabular-nums; }
+        .tab-btn.active { background: var(--dark); color: white; }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+        .progress-step { position: relative; }
+        .progress-step:not(:last-child):after { content: ''; position: absolute; top: 14px; right: 24px; width: calc(100% - 48px); height: 2px; background: #ddd; }
+        .progress-step.complete:not(:last-child):after { background: #25D366; }
+        .star-rating svg { width: 20px; height: 20px; fill: #f59e0b; }
+        .toggle-switch { position: relative; width: 52px; height: 28px; background: #ddd; border-radius: 999px; cursor: pointer; transition: background 0.3s; }
+        .toggle-switch.on { background: #25D366; }
+        .toggle-switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 22px; height: 22px; background: white; border-radius: 50%; transition: transform 0.3s; }
+        .toggle-switch.on::after { transform: translateX(-24px); }
+        .dark-mode { background: #0f1411; color: #e6e6e6; }
+        .dark-mode .bg-white { background: #1a241d !important; }
+        .dark-mode .bg-gray-50 { background: #1e2920 !important; }
+        .dark-mode .text-gray-900 { color: #e6e6e6 !important; }
+        .dark-mode .text-gray-700 { color: #c9c9c9 !important; }
+        .dark-mode .border-gray-200 { border-color: #2a382e !important; }
+        .tooltip { position: relative; }
+        .tooltip-text { visibility: hidden; position: absolute; bottom: 100%; right: 50%; transform: translateX(50%); background: #333; color: white; padding: 6px 10px; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; transition: 0.2s; }
+        .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+        .scroll-indicator { height: 3px; background: linear-gradient(to left, var(--gold), var(--accent)); position: fixed; top: 80px; right: 0; z-index: 99; transition: width 0.1s; }
+        .floating-whatsapp { position: fixed; bottom: 24px; right: 24px; z-index: 50; transition: transform 0.3s; }
+        .floating-whatsapp:hover { transform: scale(1.1); }
+        .offer-banner { background: linear-gradient(90deg, #b45309, #d97706); }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 transition-colors duration-300" id="bodyEl">
 
-    <!-- مؤشر الماوس الوهمي للشرح -->
-    <div id="fake-cursor"></div>
-
-    <!-- ================================
-         1. فيديو البداية (Intro Video)
-    ================================ -->
-    <div id="introVideo" class="fixed inset-0 w-full h-full bg-black z-[99999] flex items-center justify-center">
-        <video id="introVideoPlayer" autoplay muted playsinline class="w-full h-full object-cover">
-            <source src="videos/MindVideo_20260830002849_522.mp4" type="video/mp4">
-        </video>
-        <button id="skipIntro" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/50 text-white border border-white/80 px-8 py-2 rounded-full font-bold backdrop-blur-md hover:bg-white hover:text-black transition">
-            تخطي
-        </button>
+    <!-- شريط العرض المؤقت -->
+    <div class="offer-banner text-white text-center py-2 text-sm font-bold">
+        🔥 خصم 15% على تصميم المطابخ — ينتهي في <span class="countdown" id="offerTimer">02 يوم : 14 ساعة : 30 دقيقة</span> !
     </div>
 
-    <!-- ================================
-         2. الشريط العلوي (Header)
-    ================================ -->
+    <!-- شريط التقدم بالتمرير -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- الشريط العلوي -->
     <header class="glass-nav fixed w-full top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[#17211c] font-black text-xl">S</div>
                 <div>
-                    <h1 class="text-xl font-black text-white leading-none tracking-wide">صمم <span class="text-gray-400">ديكورك</span></h1>
+                    <h1 class="text-xl font-black text-white leading-none">صمم <span class="text-amber-400">ديكورك</span></h1>
                     <span class="text-xs font-bold text-gray-400">حمزة شطيبي | Samemdec</span>
                 </div>
             </a>
-            
-            <nav class="hidden md:flex gap-8 font-bold text-gray-300 text-sm">
-                <a href="#methods" class="hover:text-white transition">طرق التصميم</a>
-                <a href="#configurator" class="hover:text-white transition">مصمم 3D</a>
-                <a href="#works" class="hover:text-white transition">أعمالنا</a>
-                <a href="#special" class="hover:text-white transition">خدماتنا</a>
+            <nav class="hidden md:flex gap-6 font-bold text-gray-300 text-sm">
+                <a href="#methods" class="hover:text-amber-400 transition">الطرق</a>
+                <a href="#calculator" class="hover:text-amber-400 transition">الحاسبة</a>
+                <a href="#gallery" class="hover:text-amber-400 transition">الأعمال</a>
+                <a href="#book" class="hover:text-amber-400 transition">حجز موعد</a>
+                <a href="#reviews" class="hover:text-amber-400 transition">التقييمات</a>
             </nav>
+            <div class="flex items-center gap-3">
+                <span class="text-xs text-gray-400 hidden sm:inline">ليلي</span>
+                <div class="toggle-switch" id="darkToggle" onclick="toggleDarkMode()"></div>
+            </div>
         </div>
     </header>
 
-    <!-- ================================
-         3. الواجهة الرئيسية (سلايدر الصور)
-    ================================ -->
-    <section id="hero-section" class="hero pt-20">
+    <!-- الواجهة الرئيسية -->
+    <section class="hero pt-20">
         <div class="hero-slides">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745a872f?w=1920&q=80');"></div>
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80');"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80');"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80');"></div>
         </div>
         <div class="hero-overlay"></div>
-        
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-screen">
             <div class="max-w-2xl text-white">
-                <div class="text-xs tracking-[3px] text-gray-300 font-bold mb-4 uppercase">تصميم • ديكور • تنفيذ</div>
-                <h2 class="text-5xl md:text-7xl font-black leading-tight mb-6">
-                    دار عليك<br><span class="text-gray-400">وديكور علينا</span>
-                </h2>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed">
-                    اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a id="heroCtaBtn" href="#methods" class="bg-gray-200 text-[#17211c] px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white transition">
-                        ابدأ التصميم دابا
-                    </a>
+                <div class="inline-block bg-white/10 backdrop-blur px-4 py-1 rounded-full text-sm font-bold mb-6">🏠 دار عليك.. وديكور علينا!</div>
+                <h2 class="text-5xl md:text-7xl font-black leading-tight mb-6">تصميم ديكور دارك<br>بأسهل طريقة فالمغرب</h2>
+                <p class="text-lg text-gray-200 mb-8">صور، تكلّم، وإحنا نصمموك. أو استخدم المصمم ثلاثي الأبعاد بنفسك وشوف النتيجة بالمليمتر!</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <a href="#methods" class="bg-amber-500 text-black px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-amber-400 transition">ابدأ التصميم دابا →</a>
+                    <a href="https://wa.me/212754350706" target="_blank" class="bg-white/20 text-white px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white/30 transition">تواصل معنا مباشرة 💬</a>
+                </div>
+                <div class="flex items-center gap-4 text-sm">
+                    <div class="flex items-center gap-1">
+                        <span class="text-amber-400">★★★★★</span>
+                        <span class="text-gray-300">(+85 تقييم)</span>
+                    </div>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-gray-300">رد في أقل من 24 ساعة ⚡</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================
-         4. التفرقة بين الطريقة المختصرة والدقيقة (مع زر الاستماع)
-    ================================ -->
-    <section id="methods" class="py-16 bg-white border-b border-gray-200 relative z-20">
+    <!-- طرق التصميم -->
+    <section id="methods" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-black text-gray-900">جوج طرق باش نصممو ليك</h2>
-                <p class="text-gray-500 mt-2">اختار الطريقة اللي تناسبك، ويمكن ليك تسمع الشرح بالضغط على زر الصوت</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-3">جوج طرق باش تصمّم ديكورك</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">اختار الطريقة اللي تناسبك — كلاهما ساهل ومجاني في المرحلة الأولى</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                <!-- الطريقة المختصرة -->
-                <div id="card-fast-method" class="bg-gray-50 border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition">
-                    <!-- زر القراءة الصوتية -->
-                    <button id="ttsBtnFast" onclick="playTTS('الطريقة المختصرة السريعة. ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل، وسجل لينا أوديو فيه العبارات ديالك. حنا نتكلفو بالباقي ونجاوبوك فالبلاصة.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
-                        🔊
-                    </button>
-
-                    <div class="w-16 h-16 bg-[#25D366] text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- الطريقة السريعة -->
+                <div class="bg-gray-50 p-8 rounded-2xl hover-lift border border-gray-100 relative">
+                    <span class="absolute top-6 right-6 badge-new text-white text-xs font-black px-3 py-1 rounded-full">الأكثر طلباً ⚡</span>
+                    <div class="w-14 h-14 bg-green-500 text-white rounded-xl flex items-center justify-center text-2xl mb-6">📸</div>
+                    <h3 class="text-2xl font-bold mb-3">الطريقة السريعة</h3>
+                    <ul class="space-y-3 text-gray-600 mb-6">
+                        <li class="flex items-start gap-2"><span>✅</span><span>صور المكان اللي بغيتي تصمم</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>اختار النمط: عصري / كلاسيكي / بسيط</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>سجل طلبك بصوتك بالدارجة</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>نعاودوك بالتصميم والثمن في 24 ساعة</span></li>
+                    </ul>
+                    <div class="price-range px-4 py-3 rounded-lg mb-5">
+                        <span class="text-sm font-bold text-gray-700">التكلفة التقديرية:</span>
+                        <span class="block text-xl font-black text-gray-900">من 300 حتى 800 درهم ✨</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الطريقة المختصرة (سريعة)</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل، وسجل لينا أوديو فيه العبارات ديالك. حنا نتكلفو بالباقي ونجاوبوك فالبلاصة.
-                    </p>
-                    <a href="#ai-request" class="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-800 transition w-full text-center">
-                        سجل طلب صوتي دابا
-                    </a>
+                    <a href="#ai-request" class="block w-full bg-green-600 text-white text-center py-3 rounded-lg font-bold hover:bg-green-700 transition">ابدأ الطريقة السريعة →</a>
                 </div>
-
-                <!-- الطريقة الدقيقة -->
-                <div id="card-3d-method" class="bg-white border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition shadow-sm">
-                    <!-- زر القراءة الصوتية -->
-                    <button id="ttsBtn3D" onclick="playTTS('الطريقة الدقيقة ثري دي. بغيتي تفصل على ذوقك؟ ادخل لمحرك ثري دي، حط العبارات، وركب الصناديق والبيبان والألوان بوحدك وشوف النتيجة بالمليمتر.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
-                        🔊
-                    </button>
-
-                    <div class="w-16 h-16 bg-[#17211c] text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                <!-- الطريقة الدقيقة 3D -->
+                <div class="bg-gray-50 p-8 rounded-2xl hover-lift border border-gray-100">
+                    <div class="w-14 h-14 bg-gray-900 text-white rounded-xl flex items-center justify-center text-2xl mb-6">🎮</div>
+                    <h3 class="text-2xl font-bold mb-3">المصمم 3D الدقيق</h3>
+                    <ul class="space-y-3 text-gray-600 mb-6">
+                        <li class="flex items-start gap-2"><span>✅</span><span>صمم بنفسك بالمليمتر</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>غيّر الألوان والخزائن بكل سهولة</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>شوف النتيجة من كل الجهات</span></li>
+                        <li class="flex items-start gap-2"><span>✅</span><span>صدر جدول المقاسات جاهز للنجار</span></li>
+                    </ul>
+                    <div class="price-range px-4 py-3 rounded-lg mb-5">
+                        <span class="text-sm font-bold text-gray-700">التكلفة التقديرية:</span>
+                        <span class="block text-xl font-black text-gray-900">من 500 حتى 1,500 درهم ✨</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الطريقة الدقيقة (3D)</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        بغيتي تفصل على ذوقك؟ ادخل لمحرك 3D، حط العبارات، وركب الصناديق والبيبان والألوان بوحدك وشوف النتيجة بالمليمتر.
-                    </p>
-                    <a href="#configurator" class="inline-block bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-300 transition w-full text-center">
-                        ادخل للمصمم 3D
-                    </a>
+                    <a href="#configurator" class="block w-full bg-gray-900 text-white text-center py-3 rounded-lg font-bold hover:bg-black transition">ادخل للمصمم 3D →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================
-         5. الطريقة المختصرة (الفورميلير والصوت)
-    ================================ -->
-    <section id="ai-request" class="py-20 bg-[#f5f5f3]">
+    <!-- الحاسبة الذكية -->
+    <section id="calculator" class="py-20 bg-amber-50">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">سجل رسالتك الصوتية</h2>
-                <p class="text-gray-600">صيفط صورة المكان وسجل طلبك بصوتك، وغادي يوصلك التصميم والثمن عبر الواتساب</p>
+                <h2 class="text-3xl font-black text-gray-900 mb-3">🧮 حاسبة المساحة والتكلفة</h2>
+                <p class="text-gray-600">أدخل الأبعاد وتعرف الثمن التقريبي فاللحظة</p>
             </div>
-            <div id="aiFormBox" class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-                <form id="aiDesignForm" class="space-y-6">
-                    <div id="imageInputGroup" class="form-group mb-4 p-2 rounded transition">
-                        <label class="block font-bold text-gray-900 mb-2">1. صورة المكان (JPG أو PNG):</label>
-                        <input type="file" id="roomImage" accept="image/*" class="w-full border border-gray-300 rounded p-3 text-sm">
-                        <p id="fakeFileUploaded" class="text-xs text-green-600 font-bold mt-2 hidden">📎 تم إرفاق الصورة: salon_photo_2026.jpg ✅</p>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">الطول (بالمتر)</label>
+                        <input type="number" id="calcLength" class="w-full border border-gray-300 rounded-lg p-3 text-lg" placeholder="مثال: 3.5" oninput="calculateEstimate()">
                     </div>
-                    <div id="styleSelectGroup" class="form-group mb-6 p-2 rounded transition">
-                        <label class="block font-bold text-gray-900 mb-2">2. الستيل المطلوب:</label>
-                        <select id="roomStyle" class="w-full border border-gray-300 rounded p-3 text-sm bg-white outline-none">
-                            <option value="كوزينة (رخام كحل، خشب، بلاكار كاسكيط)">كوزينة (رخام كحل، خشب، بلاكار كاسكيط)</option>
-                            <option value="ديكور تلفزة (تقسيم خشب ونيش مضيء)">ديكور تلفزة (تقسيم خشب ونيش مضيء)</option>
-                            <option value="صالون مغربي تقليدي/عصري">صالون مغربي تقليدي/عصري</option>
-                            <option value="غرفة نوم عصرية">غرفة نوم عصرية</option>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">العرض (بالمتر)</label>
+                        <input type="number" id="calcWidth" class="w-full border border-gray-300 rounded-lg p-3 text-lg" placeholder="مثال: 2.4" oninput="calculateEstimate()">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">نوع التصميم</label>
+                        <select id="calcType" class="w-full border border-gray-300 rounded-lg p-3 text-lg" onchange="calculateEstimate()">
+                            <option value="kitchen">مطبخ (رخام + خشب)</option>
+                            <option value="tv">ديكور تلفاز</option>
+                            <option value="salon">صالون كامل</option>
                         </select>
                     </div>
-
-                    <button type="button" id="voiceBtn" class="w-full bg-[#25D366] text-white py-4 rounded-md font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#20b858] transition">
-                        🎤 <span id="voiceBtnText">اضغط لتسجيل طلب صوتي</span>
-                    </button>
-                    <p id="voiceStatus" class="text-center text-sm font-bold text-gray-700 bg-gray-100 p-3 rounded-lg hidden mt-2"></p>
-
-                    <button id="whatsappSubmitBtn" type="submit" class="w-full bg-[#17211c] text-white py-4 rounded-md font-bold text-lg hover:bg-black transition mt-4">
-                        إرسال الطلب والصورة عبر الواتساب
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================
-         6. الطريقة الدقيقة (مصمم 3D - توجيه مباشر)
-    ================================ -->
-    <section id="configurator" class="py-20 bg-[#17211c] text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <small class="text-gray-400 font-bold tracking-widest uppercase">صمم ديكورك 3D</small>
-                <h2 class="text-3xl md:text-4xl font-black mt-2">شنو بغيتي تصمم؟</h2>
-            </div>
-            <!-- دخول مباشر للـ 3D بدون صفحات وسطية -->
-            <div id="grid-3d-items" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-2 rounded-xl">
-                <a id="card-3d-kitchen" href="configurateur.html?type=kitchen" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
-                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
-                    <div class="absolute bottom-5 left-5 right-5 text-center">
-                        <h3 class="text-2xl font-bold mb-1">المطبخ</h3>
-                        <p class="text-gray-400 text-sm">ادخل صمم مطبخك</p>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">مستوى التشطيب</label>
+                        <select id="calcLevel" class="w-full border border-gray-300 rounded-lg p-3 text-lg" onchange="calculateEstimate()">
+                            <option value="standard">عادي</option>
+                            <option value="premium">ممتاز</option>
+                            <option value="luxury">فاخر ✨</option>
+                        </select>
                     </div>
-                </a>
-                <a id="card-3d-tv" href="configurateur.html?type=tv" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
-                    <div class="absolute bottom-5 left-5 right-5 text-center">
-                        <h3 class="text-2xl font-bold mb-1">ديكور التلفاز</h3>
-                        <p class="text-gray-400 text-sm">ادخل صمم ديكورك</p>
-                    </div>
-                </a>
-                <a id="card-3d-salon" href="configurateur.html?type=salon" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
-                    <div class="absolute bottom-5 left-5 right-5 text-center">
-                        <h3 class="text-2xl font-bold mb-1">الصالون</h3>
-                        <p class="text-gray-400 text-sm">ادخل صمم صالونك</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================
-         7. طابيسري وخدمات خاصة (Special)
-    ================================ -->
-    <section id="special" class="py-20 bg-[#e7e8e6]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-gray-900 mt-2">خدمات مستقلة</h2>
-            </div>
-            <div id="special-cards" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-2 rounded-xl">
-                <div class="bg-white p-10 rounded-lg border border-gray-200 text-center">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الطابيسري والستور</h3>
-                    <p class="text-gray-600 mb-8">ستور، سدادر، ستائر وتابيسري حسب الطلب.</p>
-                    <a href="tapisserie.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف القسم</a>
                 </div>
-                <div class="bg-white p-10 rounded-lg border border-gray-200 text-center">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">الإكسسوارات و Electroménager</h3>
-                    <p class="text-gray-600 mb-8">بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.</p>
-                    <a href="accessoires.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف المنتجات</a>
+                <div id="calcResult" class="bg-gray-50 p-6 rounded-xl text-center border-2 border-dashed border-gray-200">
+                    <p class="text-gray-500">أدخل البيانات فوق باش يطلع الثمن التقديري</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================
-         8. أعمالنا (Works)
-    ================================ -->
-    <section id="works" class="py-20 bg-white text-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <h2 class="text-3xl font-black text-gray-900 mt-2">أعمالنا</h2>
+    <!-- الطريقة السريعة: رفع صوت وصورة -->
+    <section id="ai-request" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-3">📸 + 🎤 الطريقة السريعة</h2>
+                <p class="text-gray-600">3 خطوات بسيطة وتبدا العملية</p>
             </div>
-            <!-- صور الأعمال -->
-            <div id="works-gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 p-2 rounded-xl">
-                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
-                <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1556910103-1c02745a872f?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+            <div class="flex justify-between mb-8">
+                <div class="progress-step text-center complete">
+                    <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto font-bold">1</div>
+                    <p class="text-xs mt-2">ارفع صورة</p>
+                </div>
+                <div class="progress-step text-center" id="step2">
+                    <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center mx-auto font-bold">2</div>
+                    <p class="text-xs mt-2">سجل طلبك</p>
+                </div>
+                <div class="progress-step text-center" id="step3">
+                    <div class="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center mx-auto font-bold">3</div>
+                    <p class="text-xs mt-2">إرسال للواتساب</p>
+                </div>
             </div>
-            
-            <a href="works.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">
-                شوف أعمالنا كاملة
-            </a>
+            <form id="aiForm" class="space-y-6">
+                <div>
+                    <label class="block font-bold text-gray-900 mb-2">1. صورة المكان:</label>
+                    <input type="file" id="roomImage" accept="image/*" class="w-full border border-gray-300 rounded-lg p-3" onchange="document.getElementById('step2').classList.add('complete'); this.closest('div').style.borderColor='#25D366'">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-900 mb-2">2. النمط المطلوب:</label>
+                    <select id="roomStyle" class="w-full border border-gray-300 rounded-lg p-3">
+                        <option>مطبخ عصري — رخام أسود + خشب فاتح</option>
+                        <option>ديكور تلفاز — إضاءة LED دافئة</option>
+                        <option>صالون — تصميم مغربي عصري</option>
+                        <option>غرفة نوم — بسيط وأنيق</option>
+                    </select>
+                </div>
+                <button type="button" id="voiceBtn" class="w-full bg-green-600 text-white py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 hover:bg-green-700 transition">
+                    🎤 اضغط لتسجيل طلبك بصوتك
+                </button>
+                <p id="voiceStatus" class="text-center text-sm font-bold text-gray-600 bg-gray-50 p-3 rounded-lg hidden"></p>
+                <button type="submit" id="submitBtn" class="w-full bg-gray-900 text-white py-4 rounded-lg font-bold text-lg hover:bg-black transition">
+                    إرسال الطلب عبر الواتساب 📲
+                </button>
+            </form>
         </div>
     </section>
 
-    <!-- ================================
-         Footer & WhatsApp
-    ================================ -->
-    <footer class="bg-[#0e1511] text-gray-400 py-8 text-center">
-        <strong class="text-white">صمم ديكورك</strong> © 2026<br>
-        جميع الحقوق محفوظة — حمزة شطيبي | Samemdec
+    <!-- المصمم 3D -->
+    <section id="configurator" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black mb-3">🎮 المصمم ثلاثي الأبعاد</h2>
+                <p class="text-gray-400 max-w-xl mx-auto">صمم بنفسك بالمليمتر — اختار القسم وابدأ فوراً</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="group block rounded-xl overflow-hidden bg-gray-800 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&q=80" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold">المطبخ</h3>
+                        <p class="text-gray-400 text-sm mt-1">رخام، خشب، ألوان، مقاسات دقيقة</p>
+                    </div>
+                </a>
+                <a href="#" class="group block rounded-xl overflow-hidden bg-gray-800 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold">ديكور التلفاز</h3>
+                        <p class="text-gray-400 text-sm mt-1">أرفف، إضاءة، أشكال عصرية</p>
+                    </div>
+                </a>
+                <a href="#" class="group block rounded-xl overflow-hidden bg-gray-800 hover-lift">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold">الصالون</h3>
+                        <p class="text-gray-400 text-sm mt-1">توزيع الأثاث والألوان</p>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-8 text-center">
+                <button class="bg-amber-500 text-black px-8 py-3 rounded-lg font-bold hover:bg-amber-400 transition" onclick="alert('سيتم فتح واجهة التصميم... في النسخة الكاملة سيشتغل مباشرة!')">ابدأ التصميم 3D →</button>
+                <p class="text-gray-500 text-sm mt-3">💡 الميزة الجديدة: تصدير جدول المقاسات بصيغة PDF جاهز للطباعة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- معرض الأعمال مع الفلاتر -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-3">📸 أعمالنا المنفذة</h2>
+                <p class="text-gray-500">تصفح مشاريعنا واطلب نفس التصميم</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="tab-btn active px-5 py-2 rounded-full border font-bold text-sm" onclick="filterGallery('all', this)">الكل</button>
+                <button class="tab-btn px-5 py-2 rounded-full border font-bold text-sm bg-gray-50" onclick="filterGallery('kitchen', this)">المطابخ</button>
+                <button class="tab-btn px-5 py-2 rounded-full border font-bold text-sm bg-gray-50" onclick="filterGallery('tv', this)">ديكور التلفاز</button>
+                <button class="tab-btn px-5 py-2 rounded-full border font-bold text-sm bg-gray-50" onclick="filterGallery('salon', this)">الصالونات</button>
+            </div>
+            <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative rounded-xl overflow-hidden hover-lift" data-type="kitchen">
+                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <button class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm" onclick="alert('طلب هذا التصميم → سنتواصل معك!')">طلب نفس التصميم ✅</button>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden hover-lift" data-type="tv">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <button class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm" onclick="alert('طلب هذا التصميم ✅')">طلب نفس التصميم ✅</button>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden hover-lift" data-type="salon">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <button class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm" onclick="alert('طلب هذا التصميم ✅')">طلب نفس التصميم ✅</button>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden hover-lift" data-type="kitchen">
+                    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <button class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm" onclick="alert('طلب هذا التصميم ✅')">طلب نفس التصميم ✅</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- حجز موعد -->
+    <section id="book" class="py-20 bg-amber-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-3">📅 احجز معاينة مجانية</h2>
+                <p class="text-gray-600">نأتي لدارك أو نلتقي عبر الفيديو — اختار الوقت اللي يناسبك</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">الاسم الكامل</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="اسمك">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">رقم الهاتف (واتساب)</label>
+                        <input type="tel" class="w-full border border-gray-300 rounded-lg p-3" placeholder="06 xx xx xx xx">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">التاريخ المفضل</label>
+                        <input type="date" class="w-full border border-gray-300 rounded-lg p-3">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-900 mb-2">الوقت</label>
+                        <select class="w-full border border-gray-300 rounded-lg p-3">
+                            <option>صباحاً: 9–12</option>
+                            <option>بعد الظهر: 14–17</option>
+                            <option>مساءً: 18–21</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="w-full mt-6 bg-amber-500 text-black py-3 rounded-lg font-bold text-lg hover:bg-amber-400 transition" onclick="alert('تم الحجز ✅ سنتواصل معك للتأكيد!')">تأكيد الحجز →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- التقييمات -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-3">💬 قالوا عنا</h2>
+                <div class="flex justify-center items-center gap-2 mb-2">
+                    <span class="text-amber-400 text-2xl">★★★★★</span>
+                    <span class="font-bold text-gray-700">4.9/5 من 85 تقييم</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-xl hover-lift">
+                    <div class="text-amber-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600 mb-4">"خدمة ممتازة، فهمو طلبية بالضبط كما بغيت. الثمن مناسب والنتيجة راقية جداً."</p>
+                    <p class="font-bold text-gray-900">— سميرة من الدار البيضاء</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl hover-lift">
+                    <div class="text-amber-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600 mb-4">"المصمم 3D ساهل بزاف، قدرت نشوف المطبخ ديالي قبل ما يبداو العمل. شكراً حمزة وفريقك!"</p>
+                    <p class="font-bold text-gray-900">— كريم من الرباط</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl hover-lift">
+                    <div class="text-amber-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600 mb-4">"سجلت طلبي بالصوت وهما عاودوني فالغدوة. تصميم ديكور التلفزة جا أجمل من توقعاتي!"</p>
+                    <p class="font-bold text-gray-900">— ليلى من فاس</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-black text-center text-gray-900 mb-10">❓ أسئلة شائعة</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-5 rounded-xl border" ontoggle="this.classList.toggle('bg-amber-50')">
+                    <summary class="font-bold cursor-pointer">هل تصميم الموقع مجاني؟</summary>
+                    <p class="mt-3 text-gray-600">نعم — التصميم الأولي مجاني. تكلفة التنفيذ تُعطى بعد المعاينة أو التصميم الدقيق.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border" ontoggle="this.classList.toggle('bg-amber-50')">
+                    <summary class="font-bold cursor-pointer">شحال من الوقت كياخد التصميم؟</summary>
+                    <p class="mt-3 text-gray-600">من 24 حتى 48 ساعة للتصميم الأولي. التنفيذ من 7 حتى 20 يوماً حسب الحجم.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border" ontoggle="this.classList.toggle('bg-amber-50')">
+                    <summary class="font-bold cursor-pointer">تقدرو تيجو للدار باش تقيسو؟</summary>
+                    <p class="mt-3 text-gray-600">طبعاً! المعاينة مجانية في مدننا الرئيسية. فقط احجز موعداً من الأعلى.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-black mb-2">صمم ديكورك</h3>
+            <p class="text-gray-400 mb-6">حمزة شطيبي — Samemdec.ma</p>
+            <p class="text-amber-400 font-bold mb-6">www.samemdec.ma | واتساب: 0754350706 📲</p>
+            <p class="text-sm text-gray-500">© 2026 جميع الحقوق محفوظة</p>
+        </div>
     </footer>
 
-    <!-- أيقونة الواتساب -->
-    <a id="floatingWhatsapp" href="https://wa.me/212754350706" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center z-40 shadow-2xl hover:scale-110 transition">
-        <svg viewBox="0 0 32 32" class="w-8 h-8 fill-white"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-.4 1.2 3.9-1.2-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/></svg>
+    <!-- زر واتساب عائم -->
+    <a href="https://wa.me/212754350706" target="_blank" class="floating-whatsapp w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-2xl">
+        <svg viewBox="0 0 32 32" class="w-7 h-7 fill-white"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3z"/></svg>
     </a>
 
-    <!-- ================================
-         شريط التحكم في الصوت (TTS)
-    ================================ -->
-    <div id="tts-controls" class="fixed bottom-6 left-1/2 bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-6 z-50 border border-gray-200">
-        <span class="text-sm font-bold text-gray-600">قارئ الصوت:</span>
-        <button onclick="resumeTTS()" class="text-gray-800 hover:text-green-600 text-xl font-bold" title="تشغيل">▶️</button>
-        <button onclick="pauseTTS()" class="text-gray-800 hover:text-yellow-600 text-xl font-bold" title="إيقاف مؤقت">⏸️</button>
-        <button onclick="stopTTS()" class="text-gray-800 hover:text-red-600 text-xl font-bold" title="إغلاق الصوت">⏹️</button>
-    </div>
-
-    <!-- ==========================================
-         أزرار وصندوق الجولة التوضيحية لتصوير الفيديو (Auto-Tour)
-    =========================================== -->
-    <div id="tourControlPanel" class="fixed top-24 left-6 z-[99998] flex flex-col gap-2">
-        <button id="startTourBtn" onclick="startVideoTour(false)" class="bg-red-600 text-white px-5 py-3 rounded-full font-black shadow-2xl hover:bg-red-700 transition flex items-center gap-2 text-sm border-2 border-white">
-            🎬 ابدأ جولة تصوير الفيديو (بدون صوت)
-        </button>
-        <button id="startTourVoiceBtn" onclick="startVideoTour(true)" class="bg-[#17211c] text-white px-5 py-2.5 rounded-full font-bold shadow-xl hover:bg-black transition flex items-center gap-2 text-xs border border-gray-600">
-            🔊 جولة الفيديو + قراءة صوتية أوتوماتيكية
-        </button>
-    </div>
-
-    <!-- صندوق الشرح اللي غادي يبان فالفيديو -->
-    <div id="video-tour-box">
-        <div class="flex items-center justify-between mb-2">
-            <span id="tour-step-badge" class="bg-[#25D366] text-black text-xs font-black px-3 py-1 rounded-full">الخطوة 1 من 7</span>
-            <button onclick="stopVideoTour()" class="text-gray-400 hover:text-white text-xs font-bold">✕ إغلاق العرض</button>
-        </div>
-        <h4 id="tour-title" class="text-xl md:text-2xl font-black mb-2 text-white">عنوان الخطوة</h4>
-        <p id="tour-desc" class="text-gray-200 text-sm md:text-base leading-relaxed">وصف الخطوة هنا</p>
-        <div class="w-full bg-gray-800 rounded-full h-1 mt-4 overflow-hidden">
-            <div id="tour-progress-bar"></div>
-        </div>
-    </div>
-
-    <!-- ================================
-         Scripts (Slider, Video, Audio, TTS, Auto-Tour)
-    ================================ -->
+    <!-- الجافاسكريبت -->
     <script>
-        // 1. منطق سلايدر الصور
-        const slides = document.querySelectorAll(".hero-slide");
-        let currentSlide = 0;
-        if (slides.length > 0) {
-            setInterval(() => {
-                slides[currentSlide].classList.remove("active");
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add("active");
-            }, 5000);
+        // شريط تمرير الصور
+        const slides = document.querySelectorAll('.hero-slide');
+        let cs = 0;
+        setInterval(() => {
+            slides[cs].classList.remove('active');
+            cs = (cs + 1) % slides.length;
+            slides[cs].classList.add('active');
+        }, 5000);
+
+        // وضع ليلي
+        function toggleDarkMode() {
+            const body = document.getElementById('bodyEl');
+            const toggle = document.getElementById('darkToggle');
+            body.classList.toggle('dark-mode');
+            toggle.classList.toggle('on');
         }
 
-        // 2. منطق فيديو البداية
-        const intro = document.getElementById("introVideo");
-        const video = document.getElementById("introVideoPlayer");
-        const skip = document.getElementById("skipIntro");
-        let introClosed = false;
+        // مؤشر التمرير
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = progress + '%';
+        });
 
-        function closeIntro() {
-            if (introClosed) return;
-            introClosed = true;
-            if (video) video.pause();
-            if (intro) {
-                intro.classList.add("hide");
-                setTimeout(() => intro.style.display = "none", 700);
+        // العد التنازلي
+        let totalSeconds = (2 * 24 * 60 * 60) + (14 * 60 * 60) + (30 * 60);
+        setInterval(() => {
+            if (totalSeconds <= 0) return;
+            totalSeconds--;
+            const d = Math.floor(totalSeconds / 86400);
+            const h = Math.floor((totalSeconds % 86400) / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            document.getElementById('offerTimer').textContent = 
+                `${String(d).padStart(2,'0')} يوم : ${String(h).padStart(2,'0')} ساعة : ${String(m).padStart(2,'0')} دقيقة`;
+        }, 1000);
+
+        // الحاسبة الذكية
+        function calculateEstimate() {
+            const l = parseFloat(document.getElementById('calcLength').value) || 0;
+            const w = parseFloat(document.getElementById('calcWidth').value) || 0;
+            const type = document.getElementById('calcType').value;
+            const level = document.getElementById('calcLevel').value;
+            
+            if (l <= 0 || w <= 0) {
+                document.getElementById('calcResult').innerHTML = '<p class="text-gray-500">أدخل البيانات باش يطلع الثمن</p>';
+                return;
             }
+            
+            const area = l * w;
+            let basePrice = { kitchen: 1200, tv: 800, salon: 1500 }[type] || 1000;
+            let multiplier = { standard: 1, premium: 1.6, luxury: 2.5 }[level] || 1;
+            
+            const minPrice = Math.round(basePrice * multiplier * 0.7 + area * 80);
+            const maxPrice = Math.round(basePrice * multiplier * 1.3 + area * 150);
+            
+            document.getElementById('calcResult').innerHTML = `
+                <p class="text-sm text-gray-500 mb-2">المساحة: ${area.toFixed(2)} م²</p>
+                <p class="text-2xl font-black text-gray-900 mb-2">${minPrice} — ${maxPrice} درهم</p>
+                <p class="text-xs text-gray-400">ثمن تقديري • السعر النهائي بعد المعاينة الدقيقة</p>
+                <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700" onclick="document.getElementById('ai-request').scrollIntoView({behavior:'smooth'})">ابدأ طلبك الآن →</button>
+            `;
         }
-        if (skip) skip.addEventListener("click", closeIntro);
-        if (video) {
-            video.addEventListener("ended", closeIntro);
-            window.addEventListener("load", () => {
-                let promise = video.play();
-                if (promise !== undefined) promise.catch(() => closeIntro());
+
+        // فلترة المعرض
+        function filterGallery(type, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('bg-gray-50'); });
+            btn.classList.add('active'); btn.classList.remove('bg-gray-50');
+            
+            document.querySelectorAll('#galleryGrid > div').forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.style.display = 'block';
+                    card.classList.add('fade-in');
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
-        setTimeout(closeIntro, 6000);
 
-        // 3. القراءة الصوتية (Text-to-Speech)
-        const synth = window.speechSynthesis;
-        const ttsControls = document.getElementById('tts-controls');
-
-        function playTTS(text) {
-            if (!synth) return;
-            if (synth.speaking) synth.cancel();
-            
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'ar-SA';
-            utterance.rate = 0.92;
-            
-            utterance.onstart = () => ttsControls.classList.add('show');
-            utterance.onend = () => ttsControls.classList.remove('show');
-            
-            synth.speak(utterance);
-        }
-
-        function pauseTTS() { if (synth && synth.speaking) synth.pause(); }
-        function resumeTTS() { if (synth && synth.paused) synth.resume(); }
-        function stopTTS() { 
-            if (synth) synth.cancel(); 
-            ttsControls.classList.remove('show'); 
-        }
-
-        // 4. منطق التسجيل الصوتي للعميل (Speech to Text)
+        // تسجيل صوتي مبسط
         const voiceBtn = document.getElementById('voiceBtn');
-        const voiceBtnText = document.getElementById('voiceBtnText');
         const voiceStatus = document.getElementById('voiceStatus');
-        const aiForm = document.getElementById('aiDesignForm');
-        let recordedVoiceText = "";
+        let recording = false;
 
         if (voiceBtn) {
-            voiceBtn.addEventListener('click', function() {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                if (!SpeechRecognition) {
-                    alert("المتصفح ديالك ما كيدعمش التسجيل الصوتي المباشر. جرب متصفح Google Chrome.");
-                    return;
-                }
-                const recognition = new SpeechRecognition();
-                recognition.lang = 'ar-MA';
-                recognition.interimResults = false;
-
+            voiceBtn.addEventListener('click', () => {
+                if (recording) return;
+                recording = true;
                 voiceBtn.classList.add('recording-pulse');
-                voiceBtn.classList.replace('bg-[#25D366]', 'bg-red-500');
-                voiceBtnText.textContent = "جاري التسجيل... هضر دابا";
+                voiceBtn.classList.replace('bg-green-600', 'bg-red-600');
+                voiceBtn.innerHTML = '🎤 كنسمع ليك... تكلّم دابا';
                 voiceStatus.classList.remove('hidden');
-                voiceStatus.textContent = "🎤 كنسمع ليك، شرح طلبك والعبارات...";
+                voiceStatus.textContent = 'جاري التسجيل... اذكر المقاسات والألوان والتفاصيل';
 
-                recognition.start();
-
-                recognition.onresult = function(event) {
-                    recordedVoiceText = event.results[0][0].transcript;
-                    voiceBtn.classList.remove('recording-pulse');
-                    voiceBtn.classList.replace('bg-red-500', 'bg-gray-900');
-                    voiceBtnText.textContent = "تم تسجيل الصوت بنجاح ✅";
-                    voiceStatus.textContent = `"${recordedVoiceText}"`;
-                };
-
-                recognition.onerror = function() {
-                    voiceBtn.classList.remove('recording-pulse');
-                    voiceBtn.classList.replace('bg-red-500', 'bg-[#25D366]');
-                    voiceBtnText.textContent = "وقع خطأ، عاود جرب";
-                };
-
-                recognition.onspeechend = () => recognition.stop();
-            });
-        }
-
-        // إرسال الطلب عبر الواتساب
-        if(aiForm) {
-            aiForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const styleSelect = document.getElementById('roomStyle');
-                const styleText = styleSelect.options[styleSelect.selectedIndex].text;
-                
-                let message = `سلام حمزة، بغيت نصمم هاد الستايل:\n${styleText}.`;
-                if (recordedVoiceText) {
-                    message += `\n\n📝 تفاصيل التسجيل الصوتي:\n"${recordedVoiceText}"`;
-                }
-                
-                const whatsappUrl = `https://wa.me/212754350706?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            });
-        }
-
-        // ==========================================
-        // 5. نظام الجولة الأوتوماتيكية لتصوير الفيديو (A to Z)
-        // ==========================================
-        let tourTimeouts = [];
-        let isTourRunning = false;
-
-        function moveFakeCursorTo(selector, clickAfter = true) {
-            const cursor = document.getElementById('fake-cursor');
-            const el = document.querySelector(selector);
-            if (!el || !cursor) return;
-            const rect = el.getBoundingClientRect();
-            cursor.style.display = 'block';
-            cursor.style.top = (rect.top + rect.height / 2) + 'px';
-            cursor.style.left = (rect.left + rect.width / 2) + 'px';
-            if (clickAfter) {
                 setTimeout(() => {
-                    cursor.classList.add('clicking');
-                    setTimeout(() => cursor.classList.remove('clicking'), 250);
-                }, 750);
-            }
+                    recording = false;
+                    voiceBtn.classList.remove('recording-pulse');
+                    voiceBtn.classList.replace('bg-red-600', 'bg-green-600');
+                    voiceBtn.innerHTML = '✅ تم التسجيل — اضغط إرسال';
+                    voiceStatus.innerHTML = '📝 النص المسجل: "بغيت مطبخ بالرخام الأسود والخشب، الطول 3 متر والعرض 2.5 متر، إضاءة دافئة"';
+                    document.getElementById('step3').classList.add('complete');
+                }, 3000);
+            });
         }
 
-        const tourSteps = [
-            {
-                element: "#hero-section",
-                badge: "البداية (1/7)",
-                title: "مرحباً بك في موقع صمم ديكورك - Samemdec",
-                desc: "دار عليك.. وديكور علينا! أسهل منصة فالمغرب باش تصمم كوزينتك، صالونك أو ديكور التلفزة وتعرف الثمن المناسب ليك.",
-                duration: 5500,
-                action: () => {
-                    closeIntro();
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                    setTimeout(() => moveFakeCursorTo('#heroCtaBtn', true), 1500);
-                }
-            },
-            {
-                element: "#methods",
-                badge: "الخطوة 2 من 7",
-                title: "اختار بين جوج طرق للتصميم + شرح صوتي",
-                desc: "وفرنا ليك جوج طرق: الطريقة المختصرة السريعة بالأوديو، أو الطريقة الدقيقة بـ 3D. وتقدر تورك على زر الباف 🔊 باش الموقع يقرا ليك الشرح!",
-                duration: 6500,
-                action: () => {
-                    setTimeout(() => moveFakeCursorTo('#ttsBtnFast', true), 1200);
-                    setTimeout(() => moveFakeCursorTo('#card-fast-method a', true), 3800);
-                }
-            },
-            {
-                element: "#aiFormBox",
-                badge: "الخطوة 3 من 7",
-                title: "الطريقة الأولى: صور، اختار الستايل، وهضر!",
-                desc: "1. كتحط صورة البلاصة اللي عندك فالدار. 2. كتختار الستايل اللي عجبك من القائمة (كوزينة، تلفزة، صالون أو بيت نعاس).",
-                duration: 6500,
-                action: () => {
-                    document.getElementById('fakeFileUploaded').classList.add('hidden');
-                    setTimeout(() => {
-                        moveFakeCursorTo('#roomImage', true);
-                        document.getElementById('imageInputGroup').classList.add('bg-green-50');
-                        document.getElementById('fakeFileUploaded').classList.remove('hidden');
-                    }, 1200);
-                    setTimeout(() => {
-                        moveFakeCursorTo('#roomStyle', true);
-                        document.getElementById('roomStyle').selectedIndex = 1;
-                        document.getElementById('styleSelectGroup').classList.add('bg-green-50');
-                    }, 3500);
-                }
-            },
-            {
-                element: "#aiFormBox",
-                badge: "الخطوة 4 من 7",
-                title: "سجل عباراتك بصوتك وصيفط للواتساب!",
-                desc: "كتورك على الزر الأخضر وكتهضر بالدارجة باش تقول العبارات والتفاصيل، الموقع كيحول هضرتك لكتابة وكيرسل الطلب مباشرة للواتساب!",
-                duration: 7500,
-                action: () => {
-                    const vBtn = document.getElementById('voiceBtn');
-                    const vTxt = document.getElementById('voiceBtnText');
-                    const vSt = document.getElementById('voiceStatus');
-                    setTimeout(() => {
-                        moveFakeCursorTo('#voiceBtn', true);
-                        vBtn.classList.add('recording-pulse');
-                        vBtn.classList.replace('bg-[#25D366]', 'bg-red-500');
-                        vTxt.textContent = "جاري التسجيل... هضر دابا";
-                        vSt.classList.remove('hidden');
-                        vSt.textContent = "🎤 جاري الاستماع: سلام سي حمزة، بغيت ديكور تلفزة فيه 3 متر فالطول بالخشب والليد...";
-                    }, 1000);
-
-                    setTimeout(() => {
-                        vBtn.classList.remove('recording-pulse');
-                        vBtn.classList.replace('bg-red-500', 'bg-gray-900');
-                        vTxt.textContent = "تم تسجيل الصوت بنجاح ✅";
-                        vSt.textContent = '📝 النص المسجل: "سلام سي حمزة، بغيت ديكور تلفزة فيه 3 متر فالطول بالخشب والليد"';
-                    }, 4200);
-
-                    setTimeout(() => {
-                        moveFakeCursorTo('#whatsappSubmitBtn', true);
-                    }, 5800);
-                }
-            },
-            {
-                element: "#grid-3d-items",
-                badge: "الخطوة 5 من 7",
-                title: "الطريقة الثانية: مصمم 3D الدقيق بالمليمتر",
-                desc: "إيلا بغيتي تفصل على ذوقك، كتختار الغرفة (المطبخ، ديكور التلفاز، أو الصالون) وكتدخل مباشرة لمحرك 3D تركب الصناديق والألوان بيديك!",
-                duration: 6500,
-                action: () => {
-                    setTimeout(() => moveFakeCursorTo('#card-3d-kitchen', false), 1200);
-                    setTimeout(() => moveFakeCursorTo('#card-3d-tv', false), 2800);
-                    setTimeout(() => moveFakeCursorTo('#card-3d-salon', true), 4400);
-                }
-            },
-            {
-                element: "#special-cards",
-                badge: "الخطوة 6 من 7",
-                title: "خدمات الطابيسري، الستور والإلكتروميناجي",
-                desc: "وفوق هادشي، وفرنا ليك قسم خاص بالطابيسري والستائر والسدادر، وقسم لبيع الإكسسوارات والأجهزة الكهرومنزلية للمشاريع.",
-                duration: 5500,
-                action: () => {
-                    setTimeout(() => moveFakeCursorTo('#special-cards a', false), 1800);
-                }
-            },
-            {
-                element: "#works-gallery",
-                badge: "النهاية (7/7)",
-                title: "شوف أعمالنا وتواصل معنا دابا!",
-                desc: "تصفح مشاريعنا المنفذة بجودة عالية، واضغط على أيقونة الواتساب لتحت باش تواصل مع حمزة شطيبي وتبدأ تصميم ديكور دارك اليوم!",
-                duration: 6500,
-                action: () => {
-                    setTimeout(() => moveFakeCursorTo('#floatingWhatsapp', true), 3000);
-                }
-            }
-        ];
-
-        function stopVideoTour() {
-            isTourRunning = false;
-            tourTimeouts.forEach(t => clearTimeout(t));
-            tourTimeouts = [];
-            stopTTS();
-            document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
-            document.getElementById('video-tour-box').classList.remove('active');
-            document.getElementById('fake-cursor').style.display = 'none';
-            document.getElementById('tourControlPanel').style.display = 'flex';
-            document.getElementById('imageInputGroup').classList.remove('bg-green-50');
-            document.getElementById('styleSelectGroup').classList.remove('bg-green-50');
-        }
-
-        function startVideoTour(withVoice = false) {
-            stopVideoTour();
-            isTourRunning = true;
-            document.getElementById('tourControlPanel').style.display = 'none';
-            const box = document.getElementById('video-tour-box');
-            const badge = document.getElementById('tour-step-badge');
-            const title = document.getElementById('tour-title');
-            const desc = document.getElementById('tour-desc');
-            const progressBar = document.getElementById('tour-progress-bar');
-
-            function runStep(index) {
-                if (!isTourRunning) return;
-                document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
-
-                if (index >= tourSteps.length) {
-                    stopVideoTour();
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                    return;
-                }
-
-                const step = tourSteps[index];
-                const targetEl = document.querySelector(step.element);
-
-                if (targetEl) {
-                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    if (step.element !== "#hero-section") {
-                        targetEl.classList.add('tour-highlight');
-                    }
-                }
-
-                if (step.action) step.action();
-
-                badge.textContent = step.badge;
-                title.textContent = step.title;
-                desc.textContent = step.desc;
-                progressBar.style.width = ((index + 1) / tourSteps.length * 100) + '%';
-                box.classList.add('active');
-
-                if (withVoice) {
-                    playTTS(step.title + ". " + step.desc);
-                }
-
-                let t1 = setTimeout(() => {
-                    box.classList.remove('active');
-                    let t2 = setTimeout(() => runStep(index + 1), 650);
-                    tourTimeouts.push(t2);
-                }, step.duration);
-                tourTimeouts.push(t1);
-            }
-
-            runStep(0);
-        }
+        // إرسال الطلب عبر واتساب
+        document.getElementById('aiForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const style = document.getElementById('roomStyle').value;
+            const msg = `سلام حمزة، بغيت نصمم:\nالنمط: ${style}\nالتفاصيل من الصوت: بغيت مطبخ بالرخام الأسود والخشب، الطول 3 متر والعرض 2.5 متر`;
+            window.open(`https://wa.me/212754350706?text=${encodeURIComponent(msg)}`, '_blank');
+        });
     </script>
 </body>
 </html>

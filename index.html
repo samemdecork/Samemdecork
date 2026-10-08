@@ -9,7 +9,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background: #f5f5f3; }
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background: #f5f5f3; overflow-x: hidden; }
         .glass-nav { background: rgba(12, 18, 15, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
         /* إعدادات فيديو البداية */
@@ -25,12 +25,6 @@
             transform: scale(1.05); transition: opacity 1.2s ease, transform 6s ease;
         }
         .hero-slide.active { opacity: 1; transform: scale(1); }
-        
-        /* مسارات الصور */
-        .hero-slide:nth-child(1) { background-image: url("images/kitchen.jpg"); }
-        .hero-slide:nth-child(2) { background-image: url("images/salon.jpg"); }
-        .hero-slide:nth-child(3) { background-image: url("images/tv.jpg"); }
-        .hero-slide:nth-child(4) { background-image: url("images/bedroom.jpg"); }
 
         .hero-overlay {
             position: absolute; inset: 0; z-index: 1;
@@ -47,12 +41,76 @@
         .hover-zoom img { transition: transform 0.5s ease; }
         .hover-zoom:hover img { transform: scale(1.05); }
 
-        /* شريط التحكم فالصوت (TTS) */
-        #tts-controls { transition: all 0.3s ease; transform: translateY(100px); }
-        #tts-controls.show { transform: translateY(0); }
+        /* شريط التحكم فالصوت (TTS) - مصحح */
+        #tts-controls { transition: all 0.3s ease; transform: translate(-50%, 150px); }
+        #tts-controls.show { transform: translate(-50%, 0); }
+
+        /* ==========================================
+           ستايل الجولة التوضيحية لتصوير الفيديو (Auto-Tour)
+        =========================================== */
+        #video-tour-box {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(200%);
+            background: rgba(15, 23, 19, 0.96);
+            color: #fff;
+            padding: 22px 28px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.65);
+            z-index: 999999;
+            max-width: 620px;
+            width: 92%;
+            text-align: center;
+            border: 2px solid #25D366;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            backdrop-filter: blur(14px);
+        }
+        #video-tour-box.active {
+            transform: translateX(-50%) translateY(0);
+        }
+        .tour-highlight {
+            outline: 4px solid #25D366 !important;
+            outline-offset: 6px;
+            box-shadow: 0 0 35px rgba(37, 211, 102, 0.35) !important;
+            transition: all 0.4s ease;
+            border-radius: 14px;
+            position: relative;
+            z-index: 40;
+        }
+        /* مؤشر ماوس وهمي باش يبان فالفيديو بحال إيلا شي حد كيكليكي */
+        #fake-cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            background: rgba(37, 211, 102, 0.9);
+            border: 3px solid #fff;
+            border-radius: 50%;
+            z-index: 9999999;
+            pointer-events: none;
+            transition: top 0.8s cubic-bezier(0.22, 1, 0.36, 1), left 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            display: none;
+        }
+        #fake-cursor.clicking {
+            transform: scale(0.7);
+            background: #ef4444;
+        }
+        /* شريط تقدم الفيديو التوضيحي */
+        #tour-progress-bar {
+            height: 4px;
+            background: #25D366;
+            width: 0%;
+            transition: width 0.3s linear;
+            border-radius: 2px;
+            margin-top: 14px;
+        }
     </style>
 </head>
 <body class="text-gray-800">
+
+    <!-- مؤشر الماوس الوهمي للشرح -->
+    <div id="fake-cursor"></div>
 
     <!-- ================================
          1. فيديو البداية (Intro Video)
@@ -91,11 +149,12 @@
     <!-- ================================
          3. الواجهة الرئيسية (سلايدر الصور)
     ================================ -->
-    <section class="hero pt-20">
+    <section id="hero-section" class="hero pt-20">
         <div class="hero-slides">
             <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745a872f?w=1920&q=80');"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80');"></div>
             <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=80');"></div>
         </div>
         <div class="hero-overlay"></div>
         
@@ -109,7 +168,7 @@
                     اختار شنو بغيتي تصمم، صيفط الصورة والقياسات، وإحنا نعاونك تلقى الشكل والثمن المناسب ليك.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#methods" class="bg-gray-200 text-[#17211c] px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white transition">
+                    <a id="heroCtaBtn" href="#methods" class="bg-gray-200 text-[#17211c] px-8 py-4 rounded-md font-bold text-lg text-center hover:bg-white transition">
                         ابدأ التصميم دابا
                     </a>
                 </div>
@@ -130,9 +189,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
                 <!-- الطريقة المختصرة -->
-                <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition">
+                <div id="card-fast-method" class="bg-gray-50 border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition">
                     <!-- زر القراءة الصوتية -->
-                    <button onclick="playTTS('الطريقة المختصرة السريعة. ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل، وسجل لينا أوديو فيه العبارات ديالك. حنا نتكلفو بالباقي ونجاوبوك فالبلاصة.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
+                    <button id="ttsBtnFast" onclick="playTTS('الطريقة المختصرة السريعة. ما عندكش الوقت ترسم؟ صور البلاصة، اختار الستايل، وسجل لينا أوديو فيه العبارات ديالك. حنا نتكلفو بالباقي ونجاوبوك فالبلاصة.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
                         🔊
                     </button>
 
@@ -149,9 +208,9 @@
                 </div>
 
                 <!-- الطريقة الدقيقة -->
-                <div class="bg-white border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition shadow-sm">
+                <div id="card-3d-method" class="bg-white border border-gray-200 p-8 rounded-2xl relative hover:shadow-lg transition shadow-sm">
                     <!-- زر القراءة الصوتية -->
-                    <button onclick="playTTS('الطريقة الدقيقة ثري دي. بغيتي تفصل على ذوقك؟ ادخل لمحرك ثري دي، حط العبارات، وركب الصناديق والبيبان والألوان بوحدك وشوف النتيجة بالمليمتر.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
+                    <button id="ttsBtn3D" onclick="playTTS('الطريقة الدقيقة ثري دي. بغيتي تفصل على ذوقك؟ ادخل لمحرك ثري دي، حط العبارات، وركب الصناديق والبيبان والألوان بوحدك وشوف النتيجة بالمليمتر.')" class="absolute top-6 left-6 w-10 h-10 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow-sm hover:bg-gray-100 text-blue-600 transition" title="استمع للشرح">
                         🔊
                     </button>
 
@@ -177,15 +236,17 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">سجل رسالتك الصوتية</h2>
+                <p class="text-gray-600">صيفط صورة المكان وسجل طلبك بصوتك، وغادي يوصلك التصميم والثمن عبر الواتساب</p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <div id="aiFormBox" class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
                 <form id="aiDesignForm" class="space-y-6">
-                    <div class="form-group mb-4">
-                        <label class="block font-bold text-gray-900 mb-2">صورة المكان (JPG أو PNG):</label>
+                    <div id="imageInputGroup" class="form-group mb-4 p-2 rounded transition">
+                        <label class="block font-bold text-gray-900 mb-2">1. صورة المكان (JPG أو PNG):</label>
                         <input type="file" id="roomImage" accept="image/*" class="w-full border border-gray-300 rounded p-3 text-sm">
+                        <p id="fakeFileUploaded" class="text-xs text-green-600 font-bold mt-2 hidden">📎 تم إرفاق الصورة: salon_photo_2026.jpg ✅</p>
                     </div>
-                    <div class="form-group mb-6">
-                        <label class="block font-bold text-gray-900 mb-2">الستيل المطلوب:</label>
+                    <div id="styleSelectGroup" class="form-group mb-6 p-2 rounded transition">
+                        <label class="block font-bold text-gray-900 mb-2">2. الستيل المطلوب:</label>
                         <select id="roomStyle" class="w-full border border-gray-300 rounded p-3 text-sm bg-white outline-none">
                             <option value="كوزينة (رخام كحل، خشب، بلاكار كاسكيط)">كوزينة (رخام كحل، خشب، بلاكار كاسكيط)</option>
                             <option value="ديكور تلفزة (تقسيم خشب ونيش مضيء)">ديكور تلفزة (تقسيم خشب ونيش مضيء)</option>
@@ -197,9 +258,9 @@
                     <button type="button" id="voiceBtn" class="w-full bg-[#25D366] text-white py-4 rounded-md font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#20b858] transition">
                         🎤 <span id="voiceBtnText">اضغط لتسجيل طلب صوتي</span>
                     </button>
-                    <p id="voiceStatus" class="text-center text-sm font-bold text-gray-600 hidden mt-2"></p>
+                    <p id="voiceStatus" class="text-center text-sm font-bold text-gray-700 bg-gray-100 p-3 rounded-lg hidden mt-2"></p>
 
-                    <button type="submit" class="w-full bg-[#17211c] text-white py-4 rounded-md font-bold text-lg hover:bg-black transition mt-4">
+                    <button id="whatsappSubmitBtn" type="submit" class="w-full bg-[#17211c] text-white py-4 rounded-md font-bold text-lg hover:bg-black transition mt-4">
                         إرسال الطلب والصورة عبر الواتساب
                     </button>
                 </form>
@@ -217,8 +278,8 @@
                 <h2 class="text-3xl md:text-4xl font-black mt-2">شنو بغيتي تصمم؟</h2>
             </div>
             <!-- دخول مباشر للـ 3D بدون صفحات وسطية -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="configurateur.html?type=kitchen" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+            <div id="grid-3d-items" class="grid grid-cols-1 md:grid-cols-3 gap-6 p-2 rounded-xl">
+                <a id="card-3d-kitchen" href="configurateur.html?type=kitchen" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
                     <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                     <div class="absolute bottom-5 left-5 right-5 text-center">
@@ -226,7 +287,7 @@
                         <p class="text-gray-400 text-sm">ادخل صمم مطبخك</p>
                     </div>
                 </a>
-                <a href="configurateur.html?type=tv" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+                <a id="card-3d-tv" href="configurateur.html?type=tv" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                     <div class="absolute bottom-5 left-5 right-5 text-center">
@@ -234,7 +295,7 @@
                         <p class="text-gray-400 text-sm">ادخل صمم ديكورك</p>
                     </div>
                 </a>
-                <a href="configurateur.html?type=salon" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
+                <a id="card-3d-salon" href="configurateur.html?type=salon" class="group block hover-zoom rounded-lg overflow-hidden bg-black relative h-[310px]">
                     <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                     <div class="absolute bottom-5 left-5 right-5 text-center">
@@ -254,16 +315,16 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black text-gray-900 mt-2">خدمات مستقلة</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div id="special-cards" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-2 rounded-xl">
                 <div class="bg-white p-10 rounded-lg border border-gray-200 text-center">
                     <h3 class="text-2xl font-bold text-gray-900 mb-3">الطابيسري والستور</h3>
                     <p class="text-gray-600 mb-8">ستور، سدادر، ستائر وتابيسري حسب الطلب.</p>
-                    <a href="tapisserie.html" class="bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف القسم</a>
+                    <a href="tapisserie.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف القسم</a>
                 </div>
                 <div class="bg-white p-10 rounded-lg border border-gray-200 text-center">
                     <h3 class="text-2xl font-bold text-gray-900 mb-3">الإكسسوارات و Electroménager</h3>
                     <p class="text-gray-600 mb-8">بيع الإكسسوارات وتجهيزات وأجهزة كهرومنزلية للمشاريع.</p>
-                    <a href="accessoires.html" class="bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف المنتجات</a>
+                    <a href="accessoires.html" class="inline-block bg-[#17211c] text-white px-8 py-3 rounded-md font-bold hover:bg-black transition">شوف المنتجات</a>
                 </div>
             </div>
         </div>
@@ -277,8 +338,8 @@
             <div class="mb-12">
                 <h2 class="text-3xl font-black text-gray-900 mt-2">أعمالنا</h2>
             </div>
-            <!-- صور الأعمال (يمكنك تغيير الروابط لصورك الخاصة) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <!-- صور الأعمال -->
+            <div id="works-gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 p-2 rounded-xl">
                 <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
                 <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
                 <div class="h-52 bg-gray-200 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
@@ -300,22 +361,47 @@
     </footer>
 
     <!-- أيقونة الواتساب -->
-    <a href="https://wa.me/212754350706" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center z-40 shadow-2xl hover:scale-110 transition">
+    <a id="floatingWhatsapp" href="https://wa.me/212754350706" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center z-40 shadow-2xl hover:scale-110 transition">
         <svg viewBox="0 0 32 32" class="w-8 h-8 fill-white"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.1 0 13-5.7 13-12.8S23.1 3 16 3zm0 23.2c-2 0-4-.5-5.7-1.5l-.4-.2-.4 1.2 3.9-1.2-.3-.4c-1-1.7-1.5-3.6-1.5-5.6C5.4 10.2 10.2 5.5 16 5.5s10.6 4.7 10.6 10.5S21.8 26.2 16 26.2z"/></svg>
     </a>
 
     <!-- ================================
          شريط التحكم في الصوت (TTS)
     ================================ -->
-    <div id="tts-controls" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-6 z-50 border border-gray-200">
+    <div id="tts-controls" class="fixed bottom-6 left-1/2 bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-6 z-50 border border-gray-200">
         <span class="text-sm font-bold text-gray-600">قارئ الصوت:</span>
         <button onclick="resumeTTS()" class="text-gray-800 hover:text-green-600 text-xl font-bold" title="تشغيل">▶️</button>
         <button onclick="pauseTTS()" class="text-gray-800 hover:text-yellow-600 text-xl font-bold" title="إيقاف مؤقت">⏸️</button>
         <button onclick="stopTTS()" class="text-gray-800 hover:text-red-600 text-xl font-bold" title="إغلاق الصوت">⏹️</button>
     </div>
 
+    <!-- ==========================================
+         أزرار وصندوق الجولة التوضيحية لتصوير الفيديو (Auto-Tour)
+    =========================================== -->
+    <div id="tourControlPanel" class="fixed top-24 left-6 z-[99998] flex flex-col gap-2">
+        <button id="startTourBtn" onclick="startVideoTour(false)" class="bg-red-600 text-white px-5 py-3 rounded-full font-black shadow-2xl hover:bg-red-700 transition flex items-center gap-2 text-sm border-2 border-white">
+            🎬 ابدأ جولة تصوير الفيديو (بدون صوت)
+        </button>
+        <button id="startTourVoiceBtn" onclick="startVideoTour(true)" class="bg-[#17211c] text-white px-5 py-2.5 rounded-full font-bold shadow-xl hover:bg-black transition flex items-center gap-2 text-xs border border-gray-600">
+            🔊 جولة الفيديو + قراءة صوتية أوتوماتيكية
+        </button>
+    </div>
+
+    <!-- صندوق الشرح اللي غادي يبان فالفيديو -->
+    <div id="video-tour-box">
+        <div class="flex items-center justify-between mb-2">
+            <span id="tour-step-badge" class="bg-[#25D366] text-black text-xs font-black px-3 py-1 rounded-full">الخطوة 1 من 7</span>
+            <button onclick="stopVideoTour()" class="text-gray-400 hover:text-white text-xs font-bold">✕ إغلاق العرض</button>
+        </div>
+        <h4 id="tour-title" class="text-xl md:text-2xl font-black mb-2 text-white">عنوان الخطوة</h4>
+        <p id="tour-desc" class="text-gray-200 text-sm md:text-base leading-relaxed">وصف الخطوة هنا</p>
+        <div class="w-full bg-gray-800 rounded-full h-1 mt-4 overflow-hidden">
+            <div id="tour-progress-bar"></div>
+        </div>
+    </div>
+
     <!-- ================================
-         Scripts (Slider, Video, Audio, TTS)
+         Scripts (Slider, Video, Audio, TTS, Auto-Tour)
     ================================ -->
     <script>
         // 1. منطق سلايدر الصور
@@ -352,18 +438,19 @@
                 if (promise !== undefined) promise.catch(() => closeIntro());
             });
         }
-        setTimeout(closeIntro, 8000);
+        setTimeout(closeIntro, 6000);
 
         // 3. القراءة الصوتية (Text-to-Speech)
         const synth = window.speechSynthesis;
         const ttsControls = document.getElementById('tts-controls');
 
         function playTTS(text) {
-            if (synth.speaking) synth.cancel(); // وقف أي صوت كان خدام
+            if (!synth) return;
+            if (synth.speaking) synth.cancel();
             
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'ar-SA'; // نطق عربي
-            utterance.rate = 0.9; // سرعة القراءة
+            utterance.lang = 'ar-SA';
+            utterance.rate = 0.92;
             
             utterance.onstart = () => ttsControls.classList.add('show');
             utterance.onend = () => ttsControls.classList.remove('show');
@@ -371,10 +458,10 @@
             synth.speak(utterance);
         }
 
-        function pauseTTS() { if (synth.speaking) synth.pause(); }
-        function resumeTTS() { if (synth.paused) synth.resume(); }
+        function pauseTTS() { if (synth && synth.speaking) synth.pause(); }
+        function resumeTTS() { if (synth && synth.paused) synth.resume(); }
         function stopTTS() { 
-            synth.cancel(); 
+            if (synth) synth.cancel(); 
             ttsControls.classList.remove('show'); 
         }
 
@@ -389,18 +476,18 @@
             voiceBtn.addEventListener('click', function() {
                 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
                 if (!SpeechRecognition) {
-                    alert("المتصفح ديالك ما كيدعمش التسجيل الصوتي.");
+                    alert("المتصفح ديالك ما كيدعمش التسجيل الصوتي المباشر. جرب متصفح Google Chrome.");
                     return;
                 }
                 const recognition = new SpeechRecognition();
-                recognition.lang = 'ar-MA'; // الدارجة
+                recognition.lang = 'ar-MA';
                 recognition.interimResults = false;
 
                 voiceBtn.classList.add('recording-pulse');
                 voiceBtn.classList.replace('bg-[#25D366]', 'bg-red-500');
                 voiceBtnText.textContent = "جاري التسجيل... هضر دابا";
                 voiceStatus.classList.remove('hidden');
-                voiceStatus.textContent = "كنسمع ليك، شرح طلبك...";
+                voiceStatus.textContent = "🎤 كنسمع ليك، شرح طلبك والعبارات...";
 
                 recognition.start();
 
@@ -437,6 +524,203 @@
                 const whatsappUrl = `https://wa.me/212754350706?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             });
+        }
+
+        // ==========================================
+        // 5. نظام الجولة الأوتوماتيكية لتصوير الفيديو (A to Z)
+        // ==========================================
+        let tourTimeouts = [];
+        let isTourRunning = false;
+
+        function moveFakeCursorTo(selector, clickAfter = true) {
+            const cursor = document.getElementById('fake-cursor');
+            const el = document.querySelector(selector);
+            if (!el || !cursor) return;
+            const rect = el.getBoundingClientRect();
+            cursor.style.display = 'block';
+            cursor.style.top = (rect.top + rect.height / 2) + 'px';
+            cursor.style.left = (rect.left + rect.width / 2) + 'px';
+            if (clickAfter) {
+                setTimeout(() => {
+                    cursor.classList.add('clicking');
+                    setTimeout(() => cursor.classList.remove('clicking'), 250);
+                }, 750);
+            }
+        }
+
+        const tourSteps = [
+            {
+                element: "#hero-section",
+                badge: "البداية (1/7)",
+                title: "مرحباً بك في موقع صمم ديكورك - Samemdec",
+                desc: "دار عليك.. وديكور علينا! أسهل منصة فالمغرب باش تصمم كوزينتك، صالونك أو ديكور التلفزة وتعرف الثمن المناسب ليك.",
+                duration: 5500,
+                action: () => {
+                    closeIntro();
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                    setTimeout(() => moveFakeCursorTo('#heroCtaBtn', true), 1500);
+                }
+            },
+            {
+                element: "#methods",
+                badge: "الخطوة 2 من 7",
+                title: "اختار بين جوج طرق للتصميم + شرح صوتي",
+                desc: "وفرنا ليك جوج طرق: الطريقة المختصرة السريعة بالأوديو، أو الطريقة الدقيقة بـ 3D. وتقدر تورك على زر الباف 🔊 باش الموقع يقرا ليك الشرح!",
+                duration: 6500,
+                action: () => {
+                    setTimeout(() => moveFakeCursorTo('#ttsBtnFast', true), 1200);
+                    setTimeout(() => moveFakeCursorTo('#card-fast-method a', true), 3800);
+                }
+            },
+            {
+                element: "#aiFormBox",
+                badge: "الخطوة 3 من 7",
+                title: "الطريقة الأولى: صور، اختار الستايل، وهضر!",
+                desc: "1. كتحط صورة البلاصة اللي عندك فالدار. 2. كتختار الستايل اللي عجبك من القائمة (كوزينة، تلفزة، صالون أو بيت نعاس).",
+                duration: 6500,
+                action: () => {
+                    document.getElementById('fakeFileUploaded').classList.add('hidden');
+                    setTimeout(() => {
+                        moveFakeCursorTo('#roomImage', true);
+                        document.getElementById('imageInputGroup').classList.add('bg-green-50');
+                        document.getElementById('fakeFileUploaded').classList.remove('hidden');
+                    }, 1200);
+                    setTimeout(() => {
+                        moveFakeCursorTo('#roomStyle', true);
+                        document.getElementById('roomStyle').selectedIndex = 1;
+                        document.getElementById('styleSelectGroup').classList.add('bg-green-50');
+                    }, 3500);
+                }
+            },
+            {
+                element: "#aiFormBox",
+                badge: "الخطوة 4 من 7",
+                title: "سجل عباراتك بصوتك وصيفط للواتساب!",
+                desc: "كتورك على الزر الأخضر وكتهضر بالدارجة باش تقول العبارات والتفاصيل، الموقع كيحول هضرتك لكتابة وكيرسل الطلب مباشرة للواتساب!",
+                duration: 7500,
+                action: () => {
+                    const vBtn = document.getElementById('voiceBtn');
+                    const vTxt = document.getElementById('voiceBtnText');
+                    const vSt = document.getElementById('voiceStatus');
+                    setTimeout(() => {
+                        moveFakeCursorTo('#voiceBtn', true);
+                        vBtn.classList.add('recording-pulse');
+                        vBtn.classList.replace('bg-[#25D366]', 'bg-red-500');
+                        vTxt.textContent = "جاري التسجيل... هضر دابا";
+                        vSt.classList.remove('hidden');
+                        vSt.textContent = "🎤 جاري الاستماع: سلام سي حمزة، بغيت ديكور تلفزة فيه 3 متر فالطول بالخشب والليد...";
+                    }, 1000);
+
+                    setTimeout(() => {
+                        vBtn.classList.remove('recording-pulse');
+                        vBtn.classList.replace('bg-red-500', 'bg-gray-900');
+                        vTxt.textContent = "تم تسجيل الصوت بنجاح ✅";
+                        vSt.textContent = '📝 النص المسجل: "سلام سي حمزة، بغيت ديكور تلفزة فيه 3 متر فالطول بالخشب والليد"';
+                    }, 4200);
+
+                    setTimeout(() => {
+                        moveFakeCursorTo('#whatsappSubmitBtn', true);
+                    }, 5800);
+                }
+            },
+            {
+                element: "#grid-3d-items",
+                badge: "الخطوة 5 من 7",
+                title: "الطريقة الثانية: مصمم 3D الدقيق بالمليمتر",
+                desc: "إيلا بغيتي تفصل على ذوقك، كتختار الغرفة (المطبخ، ديكور التلفاز، أو الصالون) وكتدخل مباشرة لمحرك 3D تركب الصناديق والألوان بيديك!",
+                duration: 6500,
+                action: () => {
+                    setTimeout(() => moveFakeCursorTo('#card-3d-kitchen', false), 1200);
+                    setTimeout(() => moveFakeCursorTo('#card-3d-tv', false), 2800);
+                    setTimeout(() => moveFakeCursorTo('#card-3d-salon', true), 4400);
+                }
+            },
+            {
+                element: "#special-cards",
+                badge: "الخطوة 6 من 7",
+                title: "خدمات الطابيسري، الستور والإلكتروميناجي",
+                desc: "وفوق هادشي، وفرنا ليك قسم خاص بالطابيسري والستائر والسدادر، وقسم لبيع الإكسسوارات والأجهزة الكهرومنزلية للمشاريع.",
+                duration: 5500,
+                action: () => {
+                    setTimeout(() => moveFakeCursorTo('#special-cards a', false), 1800);
+                }
+            },
+            {
+                element: "#works-gallery",
+                badge: "النهاية (7/7)",
+                title: "شوف أعمالنا وتواصل معنا دابا!",
+                desc: "تصفح مشاريعنا المنفذة بجودة عالية، واضغط على أيقونة الواتساب لتحت باش تواصل مع حمزة شطيبي وتبدأ تصميم ديكور دارك اليوم!",
+                duration: 6500,
+                action: () => {
+                    setTimeout(() => moveFakeCursorTo('#floatingWhatsapp', true), 3000);
+                }
+            }
+        ];
+
+        function stopVideoTour() {
+            isTourRunning = false;
+            tourTimeouts.forEach(t => clearTimeout(t));
+            tourTimeouts = [];
+            stopTTS();
+            document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
+            document.getElementById('video-tour-box').classList.remove('active');
+            document.getElementById('fake-cursor').style.display = 'none';
+            document.getElementById('tourControlPanel').style.display = 'flex';
+            document.getElementById('imageInputGroup').classList.remove('bg-green-50');
+            document.getElementById('styleSelectGroup').classList.remove('bg-green-50');
+        }
+
+        function startVideoTour(withVoice = false) {
+            stopVideoTour();
+            isTourRunning = true;
+            document.getElementById('tourControlPanel').style.display = 'none';
+            const box = document.getElementById('video-tour-box');
+            const badge = document.getElementById('tour-step-badge');
+            const title = document.getElementById('tour-title');
+            const desc = document.getElementById('tour-desc');
+            const progressBar = document.getElementById('tour-progress-bar');
+
+            function runStep(index) {
+                if (!isTourRunning) return;
+                document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
+
+                if (index >= tourSteps.length) {
+                    stopVideoTour();
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                    return;
+                }
+
+                const step = tourSteps[index];
+                const targetEl = document.querySelector(step.element);
+
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (step.element !== "#hero-section") {
+                        targetEl.classList.add('tour-highlight');
+                    }
+                }
+
+                if (step.action) step.action();
+
+                badge.textContent = step.badge;
+                title.textContent = step.title;
+                desc.textContent = step.desc;
+                progressBar.style.width = ((index + 1) / tourSteps.length * 100) + '%';
+                box.classList.add('active');
+
+                if (withVoice) {
+                    playTTS(step.title + ". " + step.desc);
+                }
+
+                let t1 = setTimeout(() => {
+                    box.classList.remove('active');
+                    let t2 = setTimeout(() => runStep(index + 1), 650);
+                    tourTimeouts.push(t2);
+                }, step.duration);
+                tourTimeouts.push(t1);
+            }
+
+            runStep(0);
         }
     </script>
 </body>
